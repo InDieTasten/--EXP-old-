@@ -1,17 +1,17 @@
 //includes
 #include <iostream>
-#include "DataBank.hpp"
-#include "Vector.hpp"
-#include "Actor.hpp"
-#include "GUIManager.hpp"
-#include "GraphicsEngine.hpp"
-#include "PhysicsEngine.hpp"
-#include "ModModule.hpp"
-#include "EventManager.hpp"
+#include <DataBank.hpp>
+#include <Vector.hpp>
+#include <Actor.hpp>
+#include <GUIManager.hpp>
+#include <GraphicsEngine.hpp>
+#include <PhysicsEngine.hpp>
+#include <ModModule.hpp>
+#include <EventManager.hpp>
 #include <conio.h>
-#include "Logger.hpp"
+#include <Logger.hpp>
 #include <time.h>
-#include "util.hpp"
+#include <util.hpp>
 #include <SFML\System.hpp>
 
 	float EvtThread =  60.0; //Cycles per second
@@ -91,7 +91,7 @@ int main()
 		GraphicsThread.Launch();
 		init.log(20, "Launch Physics...");
 		PhysicsThread.Launch();
-		
+
 		init.log(20, "Initialization finished :)");
 		init.log(20, "Switch from Init to Main(-Event)-Logger");
 
@@ -158,7 +158,7 @@ void StockRegister(DataBank* dBank)
 
 
 		dBank->FontLoad   ("$_menuTitle");
-		
+
 		dBank->TextureLoad("$_closeButtonNormal");
 		dBank->TextureLoad("$_closeButtonHover");
 		dBank->TextureLoad("$_closeButtonPushed");

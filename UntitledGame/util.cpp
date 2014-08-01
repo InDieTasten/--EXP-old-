@@ -89,14 +89,7 @@ double util::toDouble(std::string _value)
 
 std::list<std::string> util::getFolderContent(std::string _path)
 {
-	std::list<std::string> result;
-
-	std::system( std::string(std::string("cd \"") + _path + std::string("\"")).c_str() );
-	std::system( std::string(std::string("dir /b ") + _path + std::string(" > filelist.tmp")).c_str());
-
-	//load list from file
-
-	std::system(std::string("del filelist.tmp").c_str());
-
-	return result;
+    std::list<std::string> result;
+    //add folder content to result
+    return result;
 }
