@@ -2,10 +2,10 @@
 //CONSTRUCTORS
 GUIElement::GUIElement()
 {
-	CodeBox.Setup();
-	Button.Setup();
-	Label.Setup();
-	HorSlider.Setup();
+	codeBox.Setup();
+	button.Setup();
+	label.Setup();
+	horSlider.Setup();
 }
 //DESTRUCTORS
 
@@ -22,39 +22,39 @@ void GUIElement::Hide()
 void GUIElement::update(DataBank *dataLink, int _x, int _y)
 {
 	if(Type == "codebox") {
-		CodeBox.isActive = isActive;
-		CodeBox.Update(dataLink, _x+X, _y+Y);
+		codeBox.isActive = isActive;
+		codeBox.Update(dataLink, _x+X, _y+Y);
 	} else if (Type == "button") {
-		Button.isActive = isActive;
-		Button.Update(dataLink, _x+X, _y+Y);
+		button.isActive = isActive;
+		button.Update(dataLink, _x+X, _y+Y);
 	} else if (Type == "label") {
-		Label.Update(dataLink, _x+X, _y+Y);
+		label.Update(dataLink, _x+X, _y+Y);
 	} else if (Type == "horslider") {
-		HorSlider.isActive = isActive;
-		HorSlider.Update(dataLink, _x+X, _y+Y);
+		horSlider.isActive = isActive;
+		horSlider.Update(dataLink, _x+X, _y+Y);
 	}
 }
 void GUIElement::render(DataBank *dataLink)
 {
 	if(Type == "codebox"){
-		CodeBox.Render(dataLink);
+		codeBox.Render(dataLink);
 	} else if (Type == "button") {
-		Button.Render(dataLink);
+		button.Render(dataLink);
 	} else if (Type == "label") {
-		Label.Render(dataLink);
+		label.Render(dataLink);
 	} else if (Type == "horslider") {
-		HorSlider.Render(dataLink);
+		horSlider.Render(dataLink);
 	}
 }
 void GUIElement::handleEvent(DataBank* datalink, sf::Event* _event, const sf::Input* _input, int _x, int _y)
 {
 	if(Type == "codebox"){
-		CodeBox.handleEvent(_event, _input, _x+X, _y+Y);
+		codeBox.handleEvent(_event, _input, _x+X, _y+Y);
 	} else if (Type == "button") {
-		Button.handleEvent(datalink, _event, _input, _x+X, _y+Y, ID);
+		button.handleEvent(datalink, _event, _input, _x+X, _y+Y, ID);
 	} else if (Type == "horslider") {
-		HorSlider.handleEvent(datalink, _event, _input, _x+X, _y+Y, ID);
+		horSlider.handleEvent(datalink, _event, _input, _x+X, _y+Y, ID);
 	} else if (Type == "label") {
-		Label.handleEvent(_event, _input);
+		label.handleEvent(_event, _input);
 	}
 }
