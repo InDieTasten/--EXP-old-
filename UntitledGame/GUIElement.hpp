@@ -17,10 +17,10 @@ class GUIElement
 	//MEMBERS
 private:
 public:
-	Button Button;
-	CodeBox CodeBox;
-	Label Label;
-	HorSlider HorSlider;
+	Button button;
+	CodeBox codeBox;
+	Label label;
+	HorSlider horSlider;
 
 	std::string Type;
 	std::string ID;
