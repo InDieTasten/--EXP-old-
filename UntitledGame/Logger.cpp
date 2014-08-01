@@ -15,18 +15,11 @@ void Logger::log(int detail,std::string msg)
 {
 	if(detail <= *Level)
 	{
-		time_t Zeitstempel;
-		tm *nun;
-		Zeitstempel = time(0);
-		nun = localtime(&Zeitstempel);
-		localtime_s(nun, &Zeitstempel);
-		char buffer [80];
-		strftime (buffer,80,"%j|%X",nun);
-		std::ostringstream sstream;
+	    std::ostringstream sstream;
 		if(detail < 10)
-			sstream << buffer <<" [0"<<detail<<" "<<Source<<"] "<< msg <<std::endl;
+			sstream <<" [0"<<detail<<" "<<Source<<"] "<< msg <<std::endl;
 		else
-			sstream << buffer <<" ["<<detail<<" "<<Source<<"] "<< msg <<std::endl;
+			sstream <<" ["<<detail<<" "<<Source<<"] "<< msg <<std::endl;
 		std::string result= sstream.str();
 
 		//writing to console
