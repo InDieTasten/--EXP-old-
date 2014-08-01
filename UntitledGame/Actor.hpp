@@ -18,7 +18,7 @@ public:
 
 	//DESTRUCTORS
 
-	//METHODS	
+	//METHODS
 };
 
 #endif

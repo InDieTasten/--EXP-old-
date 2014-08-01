@@ -39,7 +39,7 @@ public:
 	bool runPhysics;
 	bool runModules;
 
-	std::list<std::list<std::string>> softEvents;
+	std::list<std::list<std::string> > softEvents;
 
 	//CONSTRUCTORS
 	DataBank(int* _level);
@@ -52,25 +52,25 @@ public:
 	std::list<Script>* GetScripts();
 	//Texture Management
 	void TextureRegister(std::string _id, std::string _path);
-	void TextureErase(std::string _id);	
+	void TextureErase(std::string _id);
 	void TextureLoad(std::string _id);
 	void TextureUnload(std::string _id);
 	sf::Image* TextureGet(std::string _id);
 	//Font Management
 	void FontRegister(std::string _id, std::string _path);
-	void FontErase(std::string _id);	
+	void FontErase(std::string _id);
 	void FontLoad(std::string _id);
 	void FontUnload(std::string _id);
 	sf::Font* FontGet(std::string _id);
 	//Sound Management
 	void SoundRegister(std::string _id, std::string _path);
-	void SoundErase(std::string _id);	
+	void SoundErase(std::string _id);
 	void SoundLoad(std::string _id);
 	void SoundUnload(std::string _id);
 	sf::SoundBuffer* SoundGet(std::string _id);
 	//Track Management
 	void TrackRegister(std::string _id, std::string _path);
-	void TrackErase(std::string _id);	
+	void TrackErase(std::string _id);
 	void TrackLoad(std::string _id);
 	void TrackUnload(std::string _id);
 	sf::SoundBuffer* TrackGet(std::string _id);
