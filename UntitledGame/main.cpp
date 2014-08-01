@@ -28,6 +28,7 @@ using namespace std;
 
 int main()
 {
+    cout << "test";
 	try
 	{
 		int DEBUG_LEVEL = 99;
