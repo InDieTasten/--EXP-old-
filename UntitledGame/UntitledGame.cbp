@@ -14,12 +14,21 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="../libraries/SFML-Framework/include" />
+					<Add directory="../UntitledGame" />
+					<Add directory="../libraries/Lua/include" />
 				</Compiler>
 				<Linker>
 					<Add option="-lsfml-audio" />
 					<Add option="-lsfml-graphics" />
 					<Add option="-lsfml-window" />
 					<Add option="-lsfml-system" />
+					<Add library="..\libraries\Lua\src\Lua5.2.3\bin\Release\libLua5.2.3.a" />
+					<Add library="..\libraries\SFML-Framework\extlibs\libs-mingw\libfreetype.a" />
+					<Add library="..\libraries\SFML-Framework\extlibs\libs-mingw\libopenal32.a" />
+					<Add library="..\libraries\SFML-Framework\extlibs\libs-mingw\libsndfile.a" />
+					<Add directory="../libraries/SFML-Framework/lib" />
+					<Add directory="../libraries/SFML-Framework/extlibs/libs-mingw" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -29,6 +38,9 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="../libraries/SFML-Framework/include" />
+					<Add directory="../UntitledGame" />
+					<Add directory="../libraries/Lua/include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -36,6 +48,12 @@
 					<Add option="-lsfml-graphics" />
 					<Add option="-lsfml-window" />
 					<Add option="-lsfml-system" />
+					<Add library="..\libraries\Lua\src\Lua5.2.3\bin\Release\libLua5.2.3.a" />
+					<Add library="..\libraries\SFML-Framework\extlibs\libs-mingw\libfreetype.a" />
+					<Add library="..\libraries\SFML-Framework\extlibs\libs-mingw\libopenal32.a" />
+					<Add library="..\libraries\SFML-Framework\extlibs\libs-mingw\libsndfile.a" />
+					<Add directory="../libraries/SFML-Framework/lib" />
+					<Add directory="../libraries/SFML-Framework/extlibs/libs-mingw" />
 				</Linker>
 			</Target>
 		</Build>
@@ -95,7 +113,9 @@
 			<Option virtualFolder="Platform-Specific/" />
 		</Unit>
 		<Unit filename="Loader.hpp" />
-		<Unit filename="Logger.cpp" />
+		<Unit filename="Logger.cpp">
+			<Option virtualFolder="Platform-Specific/" />
+		</Unit>
 		<Unit filename="Logger.hpp" />
 		<Unit filename="ModModule.cpp" />
 		<Unit filename="ModModule.hpp" />
