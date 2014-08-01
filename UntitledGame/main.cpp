@@ -1,19 +1,19 @@
 //includes
 #include <iostream>
-#include <DataBank.hpp>
-#include <Vector.hpp>
-#include <Actor.hpp>
-#include <GUIManager.hpp>
-#include <GraphicsEngine.hpp>
-#include <PhysicsEngine.hpp>
-#include <ModModule.hpp>
-#include <EventManager.hpp>
+#include "DataBank.hpp"
+#include "Vector.hpp"
+#include "Actor.hpp"
+#include "GUIManager.hpp"
+#include "GraphicsEngine.hpp"
+#include "PhysicsEngine.hpp"
+#include "ModModule.hpp"
+#include "EventManager.hpp"
 #include <conio.h>
-#include <Logger.hpp>
+#include "Logger.hpp"
 #include <time.h>
 #include <util.hpp>
 #include <SFML\System.hpp>
-
+    // Thread Throttleling
 	float EvtThread =  60.0; //Cycles per second
 	float ModThread =  40.0; //Cycles per second
 	float PhyThread = 100.0; //Cycles per second
@@ -28,7 +28,7 @@ using namespace std;
 
 int main()
 {
-    cout << "test";
+    cout << "TEST OUTPUT!!!";
 	try
 	{
 		int DEBUG_LEVEL = 99;
