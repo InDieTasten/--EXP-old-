@@ -310,7 +310,7 @@ void GUIManager::render()
 		sf::Sprite temp2;
 		temp2.SetImage(*(dataLink->TextureGet(it->ImageID)));
 		temp2.SetPosition(3.0f, (float)(i*(dockWidth+1)+3));
-		
+
 		temp2.SetScaleX(((float)dockWidth)/((float)dataLink->TextureGet(it->ImageID)->GetWidth()+4.0f));
 		temp2.SetScaleY(((float)dockWidth)/((float)dataLink->TextureGet(it->ImageID)->GetHeight()+4.0f));
 
@@ -352,36 +352,36 @@ void GUIManager::add_MainMenu()
 	elem1.Type = "button";
 	elem1.X = 10;
 	elem1.Y = 10;
-	elem1.Button.Width = 180;
-	elem1.Button.Height = 16;
-	elem1.Button.Text = "Start new...";
+	elem1.button.Width = 180;
+	elem1.button.Height = 16;
+	elem1.button.Text = "Start new...";
 
 	GUIElement elem2;
 	elem2.ID = "$_mainMenu.save";
 	elem2.Type = "button";
 	elem2.X = 10;
 	elem2.Y = 36;
-	elem2.Button.Width = 180;
-	elem2.Button.Height = 16;
-	elem2.Button.Text = "Save current...";
+	elem2.button.Width = 180;
+	elem2.button.Height = 16;
+	elem2.button.Text = "Save current...";
 
 	GUIElement elem3;
 	elem3.ID = "$_mainMenu.load";
 	elem3.Type = "button";
 	elem3.X = 10;
 	elem3.Y = 62;
-	elem3.Button.Width = 180;
-	elem3.Button.Height = 16;
-	elem3.Button.Text = "Load other...";
+	elem3.button.Width = 180;
+	elem3.button.Height = 16;
+	elem3.button.Text = "Load other...";
 
 	GUIElement elem4;
 	elem4.ID = "$_mainMenu.close";
 	elem4.Type = "button";
 	elem4.X = 10;
 	elem4.Y = 88;
-	elem4.Button.Width = 180;
-	elem4.Button.Height = 16;
-	elem4.Button.Text = "Close without saving!";
+	elem4.button.Width = 180;
+	elem4.button.Height = 16;
+	elem4.button.Text = "Close without saving!";
 
 	main.GuiElements.push_back(elem1);
 	main.GuiElements.push_back(elem2);
@@ -407,12 +407,12 @@ void GUIManager::add_OptionMenu()
 	elem1.Type = "horslider";
 	elem1.X = 10;
 	elem1.Y = 10;
-	elem1.HorSlider.max = 200;
-	elem1.HorSlider.min = 1;
-	elem1.HorSlider.Width = 200;
-	elem1.HorSlider.Height = 16;
-	elem1.HorSlider.ratio = 0.5;
-	elem1.HorSlider.value = 10;
+	elem1.horSlider.max = 200;
+	elem1.horSlider.min = 1;
+	elem1.horSlider.Width = 200;
+	elem1.horSlider.Height = 16;
+	elem1.horSlider.ratio = 0.5;
+	elem1.horSlider.value = 10;
 
 	main.GuiElements.push_back(elem1);
 
@@ -434,8 +434,8 @@ void GUIManager::add_CodeIDE()
 	elem1.Type = "codebox";
 	elem1.X = 10;
 	elem1.Y = 10;
-	elem1.CodeBox.Width = 280;
-	elem1.CodeBox.Height = 260;
+	elem1.codeBox.Width = 280;
+	elem1.codeBox.Height = 260;
 
 	menu.GuiElements.push_back(elem1);
 	menu.update(dataLink);
