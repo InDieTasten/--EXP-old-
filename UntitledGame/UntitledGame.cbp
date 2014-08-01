@@ -5,7 +5,7 @@
 		<Option title="UntitledGame" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="Headers\;" />
+		<Option virtualFolders="Headers\;Platform-Specific\;" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/UntitledGame" prefix_auto="1" extension_auto="1" />
@@ -15,6 +15,12 @@
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
+				<Linker>
+					<Add option="-lsfml-audio" />
+					<Add option="-lsfml-graphics" />
+					<Add option="-lsfml-window" />
+					<Add option="-lsfml-system" />
+				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/UntitledGame" prefix_auto="1" extension_auto="1" />
@@ -26,6 +32,10 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add option="-lsfml-audio" />
+					<Add option="-lsfml-graphics" />
+					<Add option="-lsfml-window" />
+					<Add option="-lsfml-system" />
 				</Linker>
 			</Target>
 		</Build>
@@ -33,18 +43,20 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 			<Add directory="../libraries/SFML-Framework/include" />
-			<Add directory="../libraries/Lua/src" />
+			<Add directory="../UntitledGame" />
+			<Add directory="../libraries/Lua/include" />
 		</Compiler>
 		<Linker>
-			<Add library="..\libraries\SFML-Framework\lib\sfml-audio-s.lib" />
-			<Add library="..\libraries\SFML-Framework\lib\sfml-graphics-s.lib" />
-			<Add library="..\libraries\SFML-Framework\lib\sfml-main.lib" />
-			<Add library="..\libraries\SFML-Framework\lib\sfml-network-s.lib" />
-			<Add library="..\libraries\SFML-Framework\lib\sfml-system-s.lib" />
-			<Add library="..\libraries\SFML-Framework\lib\sfml-window-s.lib" />
-			<Add library="..\libraries\Lua\src\lua5.2.lib" />
-			<Add library="..\libraries\Lua\src\lua5.2-static.lib" />
-			<Add library="..\libraries\Lua\src\luac.lib" />
+			<Add option="-lsfml-audio" />
+			<Add option="-lsfml-graphics" />
+			<Add option="-lsfml-window" />
+			<Add option="-lsfml-system" />
+			<Add library="..\libraries\Lua\src\Lua5.2.3\bin\Release\libLua5.2.3.a" />
+			<Add library="..\libraries\SFML-Framework\extlibs\libs-mingw\libfreetype.a" />
+			<Add library="..\libraries\SFML-Framework\extlibs\libs-mingw\libopenal32.a" />
+			<Add library="..\libraries\SFML-Framework\extlibs\libs-mingw\libsndfile.a" />
+			<Add directory="../libraries/SFML-Framework/lib" />
+			<Add directory="../libraries/SFML-Framework/extlibs/libs-mingw" />
 		</Linker>
 		<Unit filename="Actor.cpp" />
 		<Unit filename="Actor.hpp" />
@@ -79,7 +91,9 @@
 		<Unit filename="KeyBind.hpp" />
 		<Unit filename="Label.cpp" />
 		<Unit filename="Label.hpp" />
-		<Unit filename="Loader.cpp" />
+		<Unit filename="Loader.cpp">
+			<Option virtualFolder="Platform-Specific/" />
+		</Unit>
 		<Unit filename="Loader.hpp" />
 		<Unit filename="Logger.cpp" />
 		<Unit filename="Logger.hpp" />
