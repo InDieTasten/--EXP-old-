@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2009 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2014 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -26,93 +26,120 @@
 // Headers
 ////////////////////////////////////////////////////////////
 #include <SFML/Audio/Listener.hpp>
-#include <SFML/Audio/OpenAL.hpp>
+#include <SFML/Audio/ALCheck.hpp>
+
+
+namespace
+{
+    float        listenerVolume = 100.f;
+    sf::Vector3f listenerPosition (0.f, 0.f, 0.f);
+    sf::Vector3f listenerDirection(0.f, 0.f, -1.f);
+    sf::Vector3f listenerUpVector (0.f, 1.f, 0.f);
+}
 
 
 namespace sf
 {
 ////////////////////////////////////////////////////////////
-/// Change the global volume of all the sounds
-////////////////////////////////////////////////////////////
-void Listener::SetGlobalVolume(float Volume)
+void Listener::setGlobalVolume(float volume)
 {
-    ALCheck(alListenerf(AL_GAIN, Volume * 0.01f));
+	if (volume != listenerVolume)
+    {
+        priv::ensureALInit();
+
+        alCheck(alListenerf(AL_GAIN, volume * 0.01f));
+        listenerVolume = volume;
+    }
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Get the current value of the global volume of all the sounds
-////////////////////////////////////////////////////////////
-float Listener::GetGlobalVolume()
+float Listener::getGlobalVolume()
 {
-    float Volume = 0.f;
-    ALCheck(alGetListenerf(AL_GAIN, &Volume));
-
-    return Volume;
+    return listenerVolume;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Change the position of the listener (take 3 values)
-////////////////////////////////////////////////////////////
-void Listener::SetPosition(float X, float Y, float Z)
+void Listener::setPosition(float x, float y, float z)
 {
-    ALCheck(alListener3f(AL_POSITION, X, Y, Z));
+    setPosition(Vector3f(x, y, z));
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Change the position of the listener (take a 3D vector)
-////////////////////////////////////////////////////////////
-void Listener::SetPosition(const Vector3f& Position)
+void Listener::setPosition(const Vector3f& position)
 {
-    SetPosition(Position.x, Position.y, Position.z);
+    if (position != listenerPosition)
+    {
+        priv::ensureALInit();
+
+        alCheck(alListener3f(AL_POSITION, position.x, position.y, position.z));
+        listenerPosition = position;
+    }
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Get the current position of the listener
-////////////////////////////////////////////////////////////
-Vector3f Listener::GetPosition()
+Vector3f Listener::getPosition()
 {
-    Vector3f Position;
-    ALCheck(alGetListener3f(AL_POSITION, &Position.x, &Position.y, &Position.z));
-
-    return Position;
+    return listenerPosition;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Change the orientation of the listener (the point
-/// he must look at) (take 3 values)
-////////////////////////////////////////////////////////////
-void Listener::SetTarget(float X, float Y, float Z)
+void Listener::setDirection(float x, float y, float z)
 {
-    float Orientation[] = {X, Y, Z, 0.f, 1.f, 0.f};
-    ALCheck(alListenerfv(AL_ORIENTATION, Orientation));
+    setDirection(Vector3f(x, y, z));
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Change the orientation of the listener (the point
-/// he must look at) (take a 3D vector)
-////////////////////////////////////////////////////////////
-void Listener::SetTarget(const Vector3f& Target)
+void Listener::setDirection(const Vector3f& direction)
 {
-    SetTarget(Target.x, Target.y, Target.z);
+    if (direction != listenerDirection)
+    {
+        priv::ensureALInit();
+
+        float orientation[] = {direction.x, direction.y, direction.z, listenerUpVector.x, listenerUpVector.y, listenerUpVector.z};
+        alCheck(alListenerfv(AL_ORIENTATION, orientation));
+        listenerDirection = direction;
+    }
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Get the current orientation of the listener (the point
-/// he's looking at)
-////////////////////////////////////////////////////////////
-Vector3f Listener::GetTarget()
+Vector3f Listener::getDirection()
 {
-    float Orientation[6];
-    ALCheck(alGetListenerfv(AL_ORIENTATION, Orientation));
+    return listenerDirection;
+}
 
-    return Vector3f(Orientation[0], Orientation[1], Orientation[2]);
+
+////////////////////////////////////////////////////////////
+void Listener::setUpVector(float x, float y, float z)
+{
+    setUpVector(Vector3f(x, y, z));
+}
+
+
+////////////////////////////////////////////////////////////
+void Listener::setUpVector(const Vector3f& upVector)
+{
+    if (upVector != listenerUpVector)
+    {
+        priv::ensureALInit();
+
+        float orientation[] = {listenerDirection.x, listenerDirection.y, listenerDirection.z, upVector.x, upVector.y, upVector.z};
+        alCheck(alListenerfv(AL_ORIENTATION, orientation));
+        listenerUpVector = upVector;
+    }
+}
+
+
+////////////////////////////////////////////////////////////
+Vector3f Listener::getUpVector()
+{
+    return listenerUpVector;
 }
 
 } // namespace sf
