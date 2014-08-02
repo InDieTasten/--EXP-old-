@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2009 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2014 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -27,7 +27,9 @@
 ////////////////////////////////////////////////////////////
 #include <SFML/Window/WindowImpl.hpp>
 #include <SFML/Window/Event.hpp>
-#include <SFML/Window/WindowListener.hpp>
+#include <SFML/Window/JoystickManager.hpp>
+#include <SFML/Window/SensorManager.hpp>
+#include <SFML/System/Sleep.hpp>
 #include <algorithm>
 #include <cmath>
 
@@ -38,13 +40,23 @@
 
 #elif defined(SFML_SYSTEM_LINUX) || defined(SFML_SYSTEM_FREEBSD)
 
-    #include <SFML/Window/Linux/WindowImplX11.hpp>
+    #include <SFML/Window/Unix/WindowImplX11.hpp>
     typedef sf::priv::WindowImplX11 WindowImplType;
 
 #elif defined(SFML_SYSTEM_MACOS)
 
-	#include <SFML/Window/Cocoa/WindowImplCocoa.hpp>
-	typedef sf::priv::WindowImplCocoa WindowImplType;
+    #include <SFML/Window/OSX/WindowImplCocoa.hpp>
+    typedef sf::priv::WindowImplCocoa WindowImplType;
+
+#elif defined(SFML_SYSTEM_IOS)
+
+    #include <SFML/Window/iOS/WindowImplUIKit.hpp>
+    typedef sf::priv::WindowImplUIKit WindowImplType;
+
+#elif defined(SFML_SYSTEM_ANDROID)
+
+    #include <SFML/Window/Android/WindowImplAndroid.hpp>
+    typedef sf::priv::WindowImplAndroid WindowImplType;
 
 #endif
 
@@ -54,45 +66,34 @@ namespace sf
 namespace priv
 {
 ////////////////////////////////////////////////////////////
-/// Create a new window depending on the current OS
-////////////////////////////////////////////////////////////
-WindowImpl* WindowImpl::New()
+WindowImpl* WindowImpl::create(VideoMode mode, const String& title, Uint32 style, const ContextSettings& settings)
 {
-    return new WindowImplType();
+    return new WindowImplType(mode, title, style, settings);
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Create a new window depending on the current OS
-////////////////////////////////////////////////////////////
-WindowImpl* WindowImpl::New(VideoMode Mode, const std::string& Title, unsigned long WindowStyle, WindowSettings& Params)
+WindowImpl* WindowImpl::create(WindowHandle handle)
 {
-    return new WindowImplType(Mode, Title, WindowStyle, Params);
+    return new WindowImplType(handle);
 }
 
 
-////////////////////////////////////////////////////////////
-/// Create a new window depending on the current OS
-////////////////////////////////////////////////////////////
-WindowImpl* WindowImpl::New(WindowHandle Handle, WindowSettings& Params)
-{
-    return new WindowImplType(Handle, Params);
-}
-
-
-////////////////////////////////////////////////////////////
-/// Default constructor
 ////////////////////////////////////////////////////////////
 WindowImpl::WindowImpl() :
-myWidth       (0),
-myHeight      (0),
-myJoyThreshold(0.1f)
+m_joystickThreshold(0.1f)
 {
+    // Get the initial joystick states
+    JoystickManager::getInstance().update();
+    for (unsigned int i = 0; i < Joystick::Count; ++i)
+        m_joystickStates[i] = JoystickManager::getInstance().getState(i);
+
+    // Get the initial sensor states
+    for (unsigned int i = 0; i < Sensor::Count; ++i)
+        m_sensorValue[i] = Vector3f(0, 0, 0);
 }
 
 
-////////////////////////////////////////////////////////////
-/// Destructor
 ////////////////////////////////////////////////////////////
 WindowImpl::~WindowImpl()
 {
@@ -101,163 +102,155 @@ WindowImpl::~WindowImpl()
 
 
 ////////////////////////////////////////////////////////////
-/// Add a listener to the window
-////////////////////////////////////////////////////////////
-void WindowImpl::AddListener(WindowListener* Listener)
+void WindowImpl::setJoystickThreshold(float threshold)
 {
-    if (Listener)
-        myListeners.insert(Listener);
+    m_joystickThreshold = threshold;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Remove a listener from the window
-////////////////////////////////////////////////////////////
-void WindowImpl::RemoveListener(WindowListener* Listener)
+bool WindowImpl::popEvent(Event& event, bool block)
 {
-    myListeners.erase(Listener);
-}
-
-
-////////////////////////////////////////////////////////////
-/// Initialize window's states that can't be done at construction
-////////////////////////////////////////////////////////////
-void WindowImpl::Initialize()
-{
-    // Initialize the joysticks
-    for (unsigned int i = 0; i < Joy::Count; ++i)
+    // If the event queue is empty, let's first check if new events are available from the OS
+    if (m_events.empty())
     {
-        myJoysticks[i].Initialize(i);
-        myJoyStates[i] = myJoysticks[i].UpdateState();
+        // Get events from the system
+        processJoystickEvents();
+        processSensorEvents();
+        processEvents();
+
+        // In blocking mode, we must process events until one is triggered
+        if (block)
+        {
+            // Here we use a manual wait loop instead of the optimized
+            // wait-event provided by the OS, so that we don't skip joystick
+            // events (which require polling)
+            while (m_events.empty())
+            {
+                sleep(milliseconds(10));
+                processJoystickEvents();
+                processSensorEvents();
+                processEvents();
+            }
+        }
     }
-}
 
-
-////////////////////////////////////////////////////////////
-/// Get the client width of the window
-////////////////////////////////////////////////////////////
-unsigned int WindowImpl::GetWidth() const
-{
-    return myWidth;
-}
-
-
-////////////////////////////////////////////////////////////
-/// Get the client height of the window
-////////////////////////////////////////////////////////////
-unsigned int WindowImpl::GetHeight() const
-{
-    return myHeight;
-}
-
-
-////////////////////////////////////////////////////////////
-/// Change the joystick threshold, ie. the value below which
-/// no move event will be generated
-////////////////////////////////////////////////////////////
-void WindowImpl::SetJoystickThreshold(float Threshold)
-{
-    myJoyThreshold = Threshold;
-}
-
-
-////////////////////////////////////////////////////////////
-/// Process incoming events from operating system
-////////////////////////////////////////////////////////////
-void WindowImpl::DoEvents()
-{
-    // Read the joysticks state and generate the appropriate events
-    ProcessJoystickEvents();
-
-    // Let the derived class process other events
-    ProcessEvents();
-}
-
-
-////////////////////////////////////////////////////////////
-/// Check if there's an active context on the current thread
-////////////////////////////////////////////////////////////
-bool WindowImpl::IsContextActive()
-{
-    return WindowImplType::IsContextActive();
-}
-
-
-////////////////////////////////////////////////////////////
-/// Send an event to listeners
-////////////////////////////////////////////////////////////
-void WindowImpl::SendEvent(const Event& EventToSend)
-{
-    for (std::set<WindowListener*>::iterator i = myListeners.begin(); i != myListeners.end(); ++i)
+    // Pop the first event of the queue, if it is not empty
+    if (!m_events.empty())
     {
-        (*i)->OnEvent(EventToSend);
+        event = m_events.front();
+        m_events.pop();
+
+        return true;
     }
+
+    return false;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Evaluate a pixel format configuration.
-/// This functions can be used by implementations that have
-/// several valid formats and want to get the best one
-////////////////////////////////////////////////////////////
-int WindowImpl::EvaluateConfig(const VideoMode& Mode, const WindowSettings& Settings, int ColorBits, int DepthBits, int StencilBits, int Antialiasing)
+void WindowImpl::pushEvent(const Event& event)
 {
-    return abs(static_cast<int>(Mode.BitsPerPixel          - ColorBits))   +
-           abs(static_cast<int>(Settings.DepthBits         - DepthBits))   +
-           abs(static_cast<int>(Settings.StencilBits       - StencilBits)) +
-           abs(static_cast<int>(Settings.AntialiasingLevel - Antialiasing));
+    m_events.push(event);
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Read the joysticks state and generate the appropriate events
-////////////////////////////////////////////////////////////
-void WindowImpl::ProcessJoystickEvents()
+void WindowImpl::processJoystickEvents()
 {
-    for (unsigned int i = 0; i < Joy::Count; ++i)
+    // First update the global joystick states
+    JoystickManager::getInstance().update();
+
+    for (unsigned int i = 0; i < Joystick::Count; ++i)
     {
         // Copy the previous state of the joystick and get the new one
-        JoystickState PreviousState = myJoyStates[i];
-        myJoyStates[i] = myJoysticks[i].UpdateState();
+        JoystickState previousState = m_joystickStates[i];
+        m_joystickStates[i] = JoystickManager::getInstance().getState(i);
+        JoystickCaps caps = JoystickManager::getInstance().getCapabilities(i);
 
-        // Axis
-        for (unsigned int j = 0; j < Joy::AxisCount; ++j)
+        // Connection state
+        bool connected = m_joystickStates[i].connected;
+        if (previousState.connected ^ connected)
         {
-            Joy::Axis Axis = static_cast<Joy::Axis>(j);
-            if (myJoysticks[i].HasAxis(Axis))
+            Event event;
+            event.type = connected ? Event::JoystickConnected : Event::JoystickDisconnected;
+            event.joystickButton.joystickId = i;
+            pushEvent(event);
+        }
+
+        if (connected)
+        {
+            // Axes
+            for (unsigned int j = 0; j < Joystick::AxisCount; ++j)
             {
-                float PrevPos = PreviousState.Axis[j];
-                float CurrPos = myJoyStates[i].Axis[j];
-                if (fabs(CurrPos - PrevPos) >= myJoyThreshold)
+                if (caps.axes[j])
                 {
-                    Event Event;
-                    Event.Type               = Event::JoyMoved;
-                    Event.JoyMove.JoystickId = i;
-                    Event.JoyMove.Axis       = Axis;
-                    Event.JoyMove.Position   = CurrPos;
-                    SendEvent(Event);
+                    Joystick::Axis axis = static_cast<Joystick::Axis>(j);
+                    float prevPos = previousState.axes[axis];
+                    float currPos = m_joystickStates[i].axes[axis];
+                    if (fabs(currPos - prevPos) >= m_joystickThreshold)
+                    {
+                        Event event;
+                        event.type = Event::JoystickMoved;
+                        event.joystickMove.joystickId = i;
+                        event.joystickMove.axis = axis;
+                        event.joystickMove.position = currPos;
+                        pushEvent(event);
+                    }
+                }
+            }
+
+            // Buttons
+            for (unsigned int j = 0; j < caps.buttonCount; ++j)
+            {
+                bool prevPressed = previousState.buttons[j];
+                bool currPressed = m_joystickStates[i].buttons[j];
+
+                if (prevPressed ^ currPressed)
+                {
+                    Event event;
+                    event.type = currPressed ? Event::JoystickButtonPressed : Event::JoystickButtonReleased;
+                    event.joystickButton.joystickId = i;
+                    event.joystickButton.button = j;
+                    pushEvent(event);
                 }
             }
         }
+    }
+}
 
-        // Buttons
-        for (unsigned int j = 0; j < myJoysticks[i].GetButtonsCount(); ++j)
+
+////////////////////////////////////////////////////////////
+void WindowImpl::processSensorEvents()
+{
+    // First update the sensor states
+    SensorManager::getInstance().update();
+
+    for (unsigned int i = 0; i < Sensor::Count; ++i)
+    {
+        Sensor::Type sensor = static_cast<Sensor::Type>(i);
+
+        // Only process enabled sensors
+        if (SensorManager::getInstance().isEnabled(sensor))
         {
-            bool PrevPressed = PreviousState.Buttons[j];
-            bool CurrPressed = myJoyStates[i].Buttons[j];
+            // Copy the previous value of the sensor and get the new one
+            Vector3f previousValue = m_sensorValue[i];
+            m_sensorValue[i] = SensorManager::getInstance().getValue(sensor);
 
-            if ((!PrevPressed && CurrPressed) || (PrevPressed && !CurrPressed))
+            // If the value has changed, trigger an event
+            if (m_sensorValue[i] != previousValue) // @todo use a threshold?
             {
-                Event Event;
-                Event.Type                 = CurrPressed ? Event::JoyButtonPressed : Event::JoyButtonReleased;
-                Event.JoyButton.JoystickId = i;
-                Event.JoyButton.Button     = j;
-                SendEvent(Event);
+                Event event;
+                event.type = Event::SensorChanged;
+                event.sensor.type = sensor;
+                event.sensor.x = m_sensorValue[i].x;
+                event.sensor.y = m_sensorValue[i].y;
+                event.sensor.z = m_sensorValue[i].z;
+                pushEvent(event);
             }
         }
     }
 }
-
 
 } // namespace priv
 

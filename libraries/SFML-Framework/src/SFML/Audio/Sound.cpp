@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2009 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2014 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -27,378 +27,174 @@
 ////////////////////////////////////////////////////////////
 #include <SFML/Audio/Sound.hpp>
 #include <SFML/Audio/SoundBuffer.hpp>
-#include <SFML/Audio/OpenAL.hpp>
+#include <SFML/Audio/ALCheck.hpp>
 
 
 namespace sf
 {
 ////////////////////////////////////////////////////////////
-/// Default constructor
-////////////////////////////////////////////////////////////
-Sound::Sound()
+Sound::Sound() :
+m_buffer(NULL)
 {
-    ALCheck(alGenSources(1, &mySource));
-    ALCheck(alSourcei(mySource, AL_BUFFER, 0));
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Construct the sound from its parameters
-////////////////////////////////////////////////////////////
-Sound::Sound(const SoundBuffer& Buffer, bool Loop, float Pitch, float Volume, const Vector3f& Position) :
-myBuffer(NULL)
+Sound::Sound(const SoundBuffer& buffer) :
+m_buffer(NULL)
 {
-    ALCheck(alGenSources(1, &mySource));
-
-    SetBuffer(Buffer);
-    SetLoop(Loop);
-    SetPitch(Pitch);
-    SetVolume(Volume);
-    SetPosition(Position);
+    setBuffer(buffer);
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Copy constructor
-////////////////////////////////////////////////////////////
-Sound::Sound(const Sound& Copy) :
-AudioResource(Copy),
-myBuffer(NULL)
+Sound::Sound(const Sound& copy) :
+SoundSource(copy),
+m_buffer   (NULL)
 {
-    ALCheck(alGenSources(1, &mySource));
-
-    if (Copy.myBuffer)
-        SetBuffer(*Copy.myBuffer);
-    SetLoop(Copy.GetLoop());
-    SetPitch(Copy.GetPitch());
-    SetVolume(Copy.GetVolume());
-    SetPosition(Copy.GetPosition());
-    SetRelativeToListener(Copy.IsRelativeToListener());
-    SetMinDistance(Copy.GetMinDistance());
-    SetAttenuation(Copy.GetAttenuation());
+    if (copy.m_buffer)
+        setBuffer(*copy.m_buffer);
+    setLoop(copy.getLoop());
 }
 
 
-////////////////////////////////////////////////////////////
-/// Destructor
 ////////////////////////////////////////////////////////////
 Sound::~Sound()
 {
-    if (mySource)
-    {
-        if (myBuffer)
-        {
-            Stop();
-            ALCheck(alSourcei(mySource, AL_BUFFER, 0));
-            myBuffer->DetachSound(this);
-        }
-        ALCheck(alDeleteSources(1, &mySource));
-    }
+    stop();
+    if (m_buffer)
+        m_buffer->detachSound(this);
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Play the sound
-////////////////////////////////////////////////////////////
-void Sound::Play()
+void Sound::play()
 {
-    ALCheck(alSourcePlay(mySource));
+    alCheck(alSourcePlay(m_source));
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Pause the sound
-////////////////////////////////////////////////////////////
-void Sound::Pause()
+void Sound::pause()
 {
-    ALCheck(alSourcePause(mySource));
+    alCheck(alSourcePause(m_source));
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Stop the sound
-////////////////////////////////////////////////////////////
-void Sound::Stop()
+void Sound::stop()
 {
-    ALCheck(alSourceStop(mySource));
+    alCheck(alSourceStop(m_source));
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Set the source buffer
-////////////////////////////////////////////////////////////
-void Sound::SetBuffer(const SoundBuffer& Buffer)
+void Sound::setBuffer(const SoundBuffer& buffer)
 {
     // First detach from the previous buffer
-    if (myBuffer)
+    if (m_buffer)
     {
-        Stop();
-        myBuffer->DetachSound(this);
+        stop();
+        m_buffer->detachSound(this);
     }
 
     // Assign and use the new buffer
-    myBuffer = &Buffer;
-    myBuffer->AttachSound(this);
-    ALCheck(alSourcei(mySource, AL_BUFFER, myBuffer->myBuffer));
+    m_buffer = &buffer;
+    m_buffer->attachSound(this);
+    alCheck(alSourcei(m_source, AL_BUFFER, m_buffer->m_buffer));
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Set the sound loop state
-////////////////////////////////////////////////////////////
-void Sound::SetLoop(bool Loop)
+void Sound::setLoop(bool loop)
 {
-    ALCheck(alSourcei(mySource, AL_LOOPING, Loop));
+    alCheck(alSourcei(m_source, AL_LOOPING, loop));
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Set the sound pitch
-////////////////////////////////////////////////////////////
-void Sound::SetPitch(float Pitch)
+void Sound::setPlayingOffset(Time timeOffset)
 {
-    ALCheck(alSourcef(mySource, AL_PITCH, Pitch));
+    alCheck(alSourcef(m_source, AL_SEC_OFFSET, timeOffset.asSeconds()));
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Set the sound volume
-////////////////////////////////////////////////////////////
-void Sound::SetVolume(float Volume)
+const SoundBuffer* Sound::getBuffer() const
 {
-    ALCheck(alSourcef(mySource, AL_GAIN, Volume * 0.01f));
+    return m_buffer;
 }
 
+
 ////////////////////////////////////////////////////////////
-/// Set the sound position (take 3 values).
-/// The default position is (0, 0, 0)
-////////////////////////////////////////////////////////////
-void Sound::SetPosition(float X, float Y, float Z)
+bool Sound::getLoop() const
 {
-    ALCheck(alSource3f(mySource, AL_POSITION, X, Y, Z));
+    ALint loop;
+    alCheck(alGetSourcei(m_source, AL_LOOPING, &loop));
+
+    return loop != 0;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Set the sound position (take a 3D vector).
-/// The default position is (0, 0, 0)
-////////////////////////////////////////////////////////////
-void Sound::SetPosition(const Vector3f& Position)
+Time Sound::getPlayingOffset() const
 {
-    SetPosition(Position.x, Position.y, Position.z);
+    ALfloat secs = 0.f;
+    alCheck(alGetSourcef(m_source, AL_SEC_OFFSET, &secs));
+
+    return seconds(secs);
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Make the sound's position relative to the listener's
-/// position, or absolute.
-/// The default value is false (absolute)
-////////////////////////////////////////////////////////////
-void Sound::SetRelativeToListener(bool Relative)
+Sound::Status Sound::getStatus() const
 {
-    ALCheck(alSourcei(mySource, AL_SOURCE_RELATIVE, Relative));
+    return SoundSource::getStatus();
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Set the minimum distance - closer than this distance,
-/// the listener will hear the sound at its maximum volume.
-/// The default minimum distance is 1.0
-////////////////////////////////////////////////////////////
-void Sound::SetMinDistance(float MinDistance)
-{
-    ALCheck(alSourcef(mySource, AL_REFERENCE_DISTANCE, MinDistance));
-}
-
-
-////////////////////////////////////////////////////////////
-/// Set the attenuation factor - the higher the attenuation, the
-/// more the sound will be attenuated with distance from listener.
-/// The default attenuation factor 1.0
-////////////////////////////////////////////////////////////
-void Sound::SetAttenuation(float Attenuation)
-{
-    ALCheck(alSourcef(mySource, AL_ROLLOFF_FACTOR, Attenuation));
-}
-
-
-////////////////////////////////////////////////////////////
-/// Set the current playing position of the sound
-////////////////////////////////////////////////////////////
-void Sound::SetPlayingOffset(float TimeOffset)
-{
-    ALCheck(alSourcef(mySource, AL_SEC_OFFSET, TimeOffset));
-}
-
-
-////////////////////////////////////////////////////////////
-/// Get the source buffer
-////////////////////////////////////////////////////////////
-const SoundBuffer* Sound::GetBuffer() const
-{
-    return myBuffer;
-}
-
-
-////////////////////////////////////////////////////////////
-/// Tell whether or not the sound is looping
-////////////////////////////////////////////////////////////
-bool Sound::GetLoop() const
-{
-    ALint Loop;
-    ALCheck(alGetSourcei(mySource, AL_LOOPING, &Loop));
-
-    return Loop != 0;
-}
-
-
-////////////////////////////////////////////////////////////
-/// Get the pitch
-////////////////////////////////////////////////////////////
-float Sound::GetPitch() const
-{
-    ALfloat Pitch;
-    ALCheck(alGetSourcef(mySource, AL_PITCH, &Pitch));
-
-    return Pitch;
-}
-
-
-////////////////////////////////////////////////////////////
-/// Get the volume
-////////////////////////////////////////////////////////////
-float Sound::GetVolume() const
-{
-    ALfloat Gain;
-    ALCheck(alGetSourcef(mySource, AL_GAIN, &Gain));
-
-    return Gain * 100.f;
-}
-
-
-////////////////////////////////////////////////////////////
-/// Get the sound position
-////////////////////////////////////////////////////////////
-Vector3f Sound::GetPosition() const
-{
-    Vector3f Position;
-    ALCheck(alGetSource3f(mySource, AL_POSITION, &Position.x, &Position.y, &Position.z));
-
-    return Position;
-}
-
-
-////////////////////////////////////////////////////////////
-/// Tell if the sound's position is relative to the listener's
-/// position, or if it's absolute
-////////////////////////////////////////////////////////////
-bool Sound::IsRelativeToListener() const
-{
-    ALint Relative;
-    ALCheck(alGetSourcei(mySource, AL_SOURCE_RELATIVE, &Relative));
-
-    return Relative != 0;
-}
-
-
-////////////////////////////////////////////////////////////
-/// Get the minimum distance
-////////////////////////////////////////////////////////////
-float Sound::GetMinDistance() const
-{
-    ALfloat MinDistance;
-    ALCheck(alGetSourcef(mySource, AL_REFERENCE_DISTANCE, &MinDistance));
-
-    return MinDistance;
-}
-
-
-////////////////////////////////////////////////////////////
-/// Get the attenuation factor
-////////////////////////////////////////////////////////////
-float Sound::GetAttenuation() const
-{
-    ALfloat Attenuation;
-    ALCheck(alGetSourcef(mySource, AL_ROLLOFF_FACTOR, &Attenuation));
-
-    return Attenuation;
-}
-
-
-////////////////////////////////////////////////////////////
-/// Get the current playing position of the sound
-////////////////////////////////////////////////////////////
-float Sound::GetPlayingOffset() const
-{
-    ALfloat Seconds = 0.f;
-    ALCheck(alGetSourcef(mySource, AL_SEC_OFFSET, &Seconds));
-
-    return Seconds;
-}
-
-
-////////////////////////////////////////////////////////////
-/// Get the status of the sound (stopped, paused, playing)
-////////////////////////////////////////////////////////////
-Sound::Status Sound::GetStatus() const
-{
-    ALint State;
-    ALCheck(alGetSourcei(mySource, AL_SOURCE_STATE, &State));
-
-    switch (State)
-    {
-        case AL_INITIAL :
-        case AL_STOPPED : return Stopped;
-        case AL_PAUSED :  return Paused;
-        case AL_PLAYING : return Playing;
-    }
-
-    return Stopped;
-}
-
-
-////////////////////////////////////////////////////////////
-/// Assignment operator
-////////////////////////////////////////////////////////////
-Sound& Sound::operator =(const Sound& Other)
+Sound& Sound::operator =(const Sound& right)
 {
     // Here we don't use the copy-and-swap idiom, because it would mess up
     // the list of sound instances contained in the buffers
 
     // Detach the sound instance from the previous buffer (if any)
-    if (myBuffer)
+    if (m_buffer)
     {
-        Stop();
-        myBuffer->DetachSound(this);
-        myBuffer = NULL;
+        stop();
+        m_buffer->detachSound(this);
+        m_buffer = NULL;
     }
 
     // Copy the sound attributes
-    if (Other.myBuffer)
-        SetBuffer(*Other.myBuffer);
-    SetLoop(Other.GetLoop());
-    SetPitch(Other.GetPitch());
-    SetVolume(Other.GetVolume());
-    SetPosition(Other.GetPosition());
-    SetRelativeToListener(Other.IsRelativeToListener());
-    SetMinDistance(Other.GetMinDistance());
-    SetAttenuation(Other.GetAttenuation());
+    if (right.m_buffer)
+        setBuffer(*right.m_buffer);
+    setLoop(right.getLoop());
+    setPitch(right.getPitch());
+    setVolume(right.getVolume());
+    setPosition(right.getPosition());
+    setRelativeToListener(right.isRelativeToListener());
+    setMinDistance(right.getMinDistance());
+    setAttenuation(right.getAttenuation());
 
     return *this;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Reset the internal buffer
-////////////////////////////////////////////////////////////
-void Sound::ResetBuffer()
+void Sound::resetBuffer()
 {
     // First stop the sound in case it is playing
-    Stop();
+    stop();
 
     // Detach the buffer
-    ALCheck(alSourcei(mySource, AL_BUFFER, 0));
-    myBuffer = NULL;
+    if (m_buffer)
+    {
+        alCheck(alSourcei(m_source, AL_BUFFER, 0));
+        m_buffer->detachSound(this);
+        m_buffer = NULL;
+    }
 }
 
 } // namespace sf

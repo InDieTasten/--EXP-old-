@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2009 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2014 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -30,273 +30,217 @@
 ////////////////////////////////////////////////////////////
 #include <SFML/Config.hpp>
 #include <SFML/System/NonCopyable.hpp>
+#include <SFML/System/String.hpp>
+#include <SFML/Window/Event.hpp>
 #include <SFML/Window/Joystick.hpp>
+#include <SFML/Window/JoystickImpl.hpp>
+#include <SFML/Window/Sensor.hpp>
+#include <SFML/Window/SensorImpl.hpp>
 #include <SFML/Window/VideoMode.hpp>
 #include <SFML/Window/WindowHandle.hpp>
-#include <SFML/Window/WindowSettings.hpp>
+#include <SFML/Window/ContextSettings.hpp>
+#include <queue>
 #include <set>
-#include <string>
-
 
 namespace sf
 {
-class Event;
 class WindowListener;
 
 namespace priv
 {
 ////////////////////////////////////////////////////////////
-/// Abstract base class for OS-specific window implementation
+/// \brief Abstract base class for OS-specific window implementation
+///
 ////////////////////////////////////////////////////////////
 class WindowImpl : NonCopyable
 {
 public :
 
     ////////////////////////////////////////////////////////////
-    /// Create a new window depending on the current OS
+    /// \brief Create a new window depending on the current OS
     ///
-    /// \return Pointer to the created window
+    /// \param mode  Video mode to use
+    /// \param title Title of the window
+    /// \param style Window style
+    /// \param settings Additional settings for the underlying OpenGL context
+    ///
+    /// \return Pointer to the created window (don't forget to delete it)
     ///
     ////////////////////////////////////////////////////////////
-    static WindowImpl* New();
+    static WindowImpl* create(VideoMode mode, const String& title, Uint32 style, const ContextSettings& settings);
 
     ////////////////////////////////////////////////////////////
-    /// Create a new window depending on the current OS
+    /// \brief Create a new window depending on to the current OS
     ///
-    /// \param Mode :        Video mode to use
-    /// \param Title :       Title of the window
-    /// \param WindowStyle : Window style
-    /// \param Params :      Creation parameters
+    /// \param handle Platform-specific handle of the control
     ///
-    /// \return Pointer to the created window
+    /// \return Pointer to the created window (don't forget to delete it)
     ///
     ////////////////////////////////////////////////////////////
-    static WindowImpl* New(VideoMode Mode, const std::string& Title, unsigned long WindowStyle, WindowSettings& Params);
-
-    ////////////////////////////////////////////////////////////
-    /// Create a new window depending on to the current OS
-    ///
-    /// \param Handle : Platform-specific handle of the control
-    /// \param Params : Creation parameters
-    ///
-    /// \return Pointer to the created window
-    ///
-    ////////////////////////////////////////////////////////////
-    static WindowImpl* New(WindowHandle Handle, WindowSettings& Params);
+    static WindowImpl* create(WindowHandle handle);
 
 public :
 
     ////////////////////////////////////////////////////////////
-    /// Destructor
+    /// \brief Destructor
     ///
     ////////////////////////////////////////////////////////////
     virtual ~WindowImpl();
 
     ////////////////////////////////////////////////////////////
-    /// Add a listener to the window
+    /// \brief Change the joystick threshold, ie. the value below which
+    ///        no move event will be generated
     ///
-    /// \param Listener : Listener to add
+    /// \param threshold : New threshold, in range [0, 100]
     ///
     ////////////////////////////////////////////////////////////
-    void AddListener(WindowListener* Listener);
+    void setJoystickThreshold(float threshold);
 
     ////////////////////////////////////////////////////////////
-    /// Remove a listener from the window
+    /// \brief Return the next window event available
     ///
-    /// \param Listener : Listener to remove
+    /// If there's no event available, this function calls the
+    /// window's internal event processing function.
+    /// The \a block parameter controls the behaviour of the function
+    /// if no event is available: if it is true then the function
+    /// doesn't return until a new event is triggered; otherwise it
+    /// returns false to indicate that no event is available.
+    ///
+    /// \param event Event to be returned
+    /// \param block Use true to block the thread until an event arrives
     ///
     ////////////////////////////////////////////////////////////
-    void RemoveListener(WindowListener* Listener);
+    bool popEvent(Event& event, bool block);
 
     ////////////////////////////////////////////////////////////
-    /// Initialize window's states that can't be done at construction
+    /// \brief Get the OS-specific handle of the window
+    ///
+    /// \return Handle of the window
     ///
     ////////////////////////////////////////////////////////////
-    void Initialize();
+    virtual WindowHandle getSystemHandle() const = 0;
 
     ////////////////////////////////////////////////////////////
-    /// Get the client width of the window
+    /// \brief Get the position of the window
     ///
-    /// \return Width of the window in pixels
+    /// \return Position of the window, in pixels
     ///
     ////////////////////////////////////////////////////////////
-    unsigned int GetWidth() const;
+    virtual Vector2i getPosition() const = 0;
 
     ////////////////////////////////////////////////////////////
-    /// Get the client height of the window
+    /// \brief Change the position of the window on screen
     ///
-    /// \return Height of the window in pixels
+    /// \param position New position of the window, in pixels
     ///
     ////////////////////////////////////////////////////////////
-    unsigned int GetHeight() const;
+    virtual void setPosition(const Vector2i& position) = 0;
 
     ////////////////////////////////////////////////////////////
-    /// Activate of deactivate the window as the current target
-    /// for rendering
+    /// \brief Get the client size of the window
     ///
-    /// \param Active : True to activate, false to deactivate (true by default)
+    /// \return Size of the window, in pixels
     ///
     ////////////////////////////////////////////////////////////
-    virtual void SetActive(bool Active = true) const = 0;
+    virtual Vector2u getSize() const = 0;
 
     ////////////////////////////////////////////////////////////
-    /// Change the joystick threshold, ie. the value below which
-    /// no move event will be generated
+    /// \brief Change the size of the rendering region of the window
     ///
-    /// \param Threshold : New threshold, in range [0, 100]
+    /// \param size New size, in pixels
     ///
     ////////////////////////////////////////////////////////////
-    void SetJoystickThreshold(float Threshold);
+    virtual void setSize(const Vector2u& size) = 0;
 
     ////////////////////////////////////////////////////////////
-    /// Process incoming events from operating system
+    /// \brief Change the title of the window
+    ///
+    /// \param title New title
     ///
     ////////////////////////////////////////////////////////////
-    void DoEvents();
+    virtual void setTitle(const String& title) = 0;
 
     ////////////////////////////////////////////////////////////
-    /// Check if there's an active context on the current thread
+    /// \brief Change the window's icon
     ///
-    /// \return True if there's a context bound to the current thread
+    /// \param width  Icon's width, in pixels
+    /// \param height Icon's height, in pixels
+    /// \param pixels Pointer to the pixels in memory, format must be RGBA 32 bits
     ///
     ////////////////////////////////////////////////////////////
-    static bool IsContextActive();
+    virtual void setIcon(unsigned int width, unsigned int height, const Uint8* pixels) = 0;
 
     ////////////////////////////////////////////////////////////
-    /// Display the window on screen
+    /// \brief Show or hide the window
+    ///
+    /// \param visible True to show, false to hide
     ///
     ////////////////////////////////////////////////////////////
-    virtual void Display() = 0;
+    virtual void setVisible(bool visible) = 0;
 
     ////////////////////////////////////////////////////////////
-    /// Enable / disable vertical synchronization
+    /// \brief Show or hide the mouse cursor
     ///
-    /// \param Enabled : True to enable v-sync, false to deactivate
+    /// \param visible True to show, false to hide
     ///
     ////////////////////////////////////////////////////////////
-    virtual void UseVerticalSync(bool Enabled) = 0;
+    virtual void setMouseCursorVisible(bool visible) = 0;
 
     ////////////////////////////////////////////////////////////
-    /// Show or hide the mouse cursor
+    /// \brief Enable or disable automatic key-repeat
     ///
-    /// \param Show : True to show, false to hide
-    ///
-    ////////////////////////////////////////////////////////////
-    virtual void ShowMouseCursor(bool Show) = 0;
-
-    ////////////////////////////////////////////////////////////
-    /// Change the position of the mouse cursor
-    ///
-    /// \param Left : Left coordinate of the cursor, relative to the window
-    /// \param Top :  Top coordinate of the cursor, relative to the window
+    /// \param enabled True to enable, false to disable
     ///
     ////////////////////////////////////////////////////////////
-    virtual void SetCursorPosition(unsigned int Left, unsigned int Top) = 0;
-
-    ////////////////////////////////////////////////////////////
-    /// Change the position of the window on screen
-    ///
-    /// \param Left : Left position
-    /// \param Top :  Top position
-    ///
-    ////////////////////////////////////////////////////////////
-    virtual void SetPosition(int Left, int Top) = 0;
-
-    ////////////////////////////////////////////////////////////
-    /// Change the size of the rendering region of the window
-    ///
-    /// \param Width :  New width
-    /// \param Height : New height
-    ///
-    ////////////////////////////////////////////////////////////
-    virtual void SetSize(unsigned int Width, unsigned int Height) = 0;
-
-    ////////////////////////////////////////////////////////////
-    /// Show or hide the window
-    ///
-    /// \param State : True to show, false to hide
-    ///
-    ////////////////////////////////////////////////////////////
-    virtual void Show(bool State) = 0;
-
-    ////////////////////////////////////////////////////////////
-    /// Enable or disable automatic key-repeat
-    ///
-    /// \param Enabled : True to enable, false to disable
-    ///
-    ////////////////////////////////////////////////////////////
-    virtual void EnableKeyRepeat(bool Enabled) = 0;
-
-    ////////////////////////////////////////////////////////////
-    /// Change the window's icon
-    ///
-    /// \param Width :  Icon's width, in pixels
-    /// \param Height : Icon's height, in pixels
-    /// \param Pixels : Pointer to the pixels in memory, format must be RGBA 32 bits
-    ///
-    ////////////////////////////////////////////////////////////
-    virtual void SetIcon(unsigned int Width, unsigned int Height, const Uint8* Pixels) = 0;
+    virtual void setKeyRepeatEnabled(bool enabled) = 0;
 
 protected :
 
     ////////////////////////////////////////////////////////////
-    /// Default constructor
+    /// \brief Default constructor
     ///
     ////////////////////////////////////////////////////////////
     WindowImpl();
 
     ////////////////////////////////////////////////////////////
-    /// Send an event to listeners (for derived classes only)
+    /// \brief Push a new event into the event queue
     ///
-    /// \param EventToSend : Event to send
+    /// This function is to be used by derived classes, to
+    /// notify the SFML window that a new event was triggered
+    /// by the system.
+    ///
+    /// \param event Event to push
     ///
     ////////////////////////////////////////////////////////////
-    void SendEvent(const Event& EventToSend);
+    void pushEvent(const Event& event);
 
     ////////////////////////////////////////////////////////////
-    /// Evaluate a pixel format configuration.
-    /// This functions can be used by implementations that have
-    /// several valid formats and want to get the best one
-    ///
-    /// \param Mode :         Requested video mode
-    /// \param Settings :     Requested additionnal settings
-    /// \param ColorBits :    Color bits of the configuration to evaluate
-    /// \param DepthBits :    Depth bits of the configuration to evaluate
-    /// \param StencilBits :  Stencil bits of the configuration to evaluate
-    /// \param Antialiasing : Antialiasing level of the configuration to evaluate
-    ///
-    /// \return Score of the configuration : the lower the better
+    /// \brief Process incoming events from the operating system
     ///
     ////////////////////////////////////////////////////////////
-    static int EvaluateConfig(const VideoMode& Mode, const WindowSettings& Settings, int ColorBits, int DepthBits, int StencilBits, int Antialiasing);
-
-    ////////////////////////////////////////////////////////////
-    // Member data
-    ////////////////////////////////////////////////////////////
-    unsigned int myWidth;  ///< Internal width of the window
-    unsigned int myHeight; ///< Internal height of the window
+    virtual void processEvents() = 0;
 
 private :
 
     ////////////////////////////////////////////////////////////
-    /// Read the joysticks state and generate the appropriate events
+    /// \brief Read the joysticks state and generate the appropriate events
     ///
     ////////////////////////////////////////////////////////////
-    void ProcessJoystickEvents();
-
+    void processJoystickEvents();
+    
     ////////////////////////////////////////////////////////////
-    /// Process incoming events from operating system
+    /// \brief Read the sensors state and generate the appropriate events
     ///
     ////////////////////////////////////////////////////////////
-    virtual void ProcessEvents() = 0;
+    void processSensorEvents();
 
     ////////////////////////////////////////////////////////////
     // Member data
     ////////////////////////////////////////////////////////////
-    std::set<WindowListener*> myListeners;             ///< Array of listeners connected to the window
-    Joystick                  myJoysticks[Joy::Count]; ///< Joysticks to observe
-    JoystickState             myJoyStates[Joy::Count]; ///< Current states of the joysticks
-    float                     myJoyThreshold;          ///< Joystick threshold (minimum motion for MOVE event to be generated)
+    std::queue<Event> m_events;                          ///< Queue of available events
+    JoystickState     m_joystickStates[Joystick::Count]; ///< Previous state of the joysticks
+    Vector3f          m_sensorValue[Sensor::Count];      ///< Previous value of the sensors
+    float             m_joystickThreshold;               ///< Joystick threshold (minimum motion for "move" event to be generated)
 };
 
 } // namespace priv

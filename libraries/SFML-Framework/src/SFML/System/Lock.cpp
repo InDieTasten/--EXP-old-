@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2009 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2014 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -32,21 +32,17 @@
 namespace sf
 {
 ////////////////////////////////////////////////////////////
-/// Construct the lock with a target mutex (lock it)
-////////////////////////////////////////////////////////////
-Lock::Lock(Mutex& Mutex) :
-myMutex(Mutex)
+Lock::Lock(Mutex& mutex) :
+m_mutex(mutex)
 {
-    myMutex.Lock();
+    m_mutex.lock();
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Destructor (unlocks the mutex)
-////////////////////////////////////////////////////////////
 Lock::~Lock()
 {
-    myMutex.Unlock();
+    m_mutex.unlock();
 }
 
 } // namespace sf
