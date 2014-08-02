@@ -11,7 +11,7 @@
 #include <conio.h>
 #include "Logger.hpp"
 #include <time.h>
-#include <util.hpp>
+#include "util.hpp"
 #include <SFML\System.hpp>
     // Thread Throttleling
 	float EvtThread =  60.0; //Cycles per second

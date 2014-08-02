@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2009 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2014 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -26,448 +26,392 @@
 // Headers
 ////////////////////////////////////////////////////////////
 #include <SFML/Window/Window.hpp>
-#include <SFML/Window/Context.hpp>
+#include <SFML/Window/GlContext.hpp>
 #include <SFML/Window/WindowImpl.hpp>
 #include <SFML/System/Sleep.hpp>
-#include <iostream>
+#include <SFML/System/Err.hpp>
 
 
-////////////////////////////////////////////////////////////
-// Private data
-////////////////////////////////////////////////////////////
 namespace
 {
-    const sf::Window* FullscreenWindow = NULL;
+    const sf::Window* fullscreenWindow = NULL;
 }
 
 
 namespace sf
 {
 ////////////////////////////////////////////////////////////
-/// Default constructor
-////////////////////////////////////////////////////////////
 Window::Window() :
-myWindow        (NULL),
-myLastFrameTime (0.f),
-myIsExternal    (false),
-myFramerateLimit(0),
-mySetCursorPosX (0xFFFF),
-mySetCursorPosY (0xFFFF)
+m_impl          (NULL),
+m_context       (NULL),
+m_frameTimeLimit(Time::Zero),
+m_size          (0, 0)
 {
 
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Construct a new window
-////////////////////////////////////////////////////////////
-Window::Window(VideoMode Mode, const std::string& Title, unsigned long WindowStyle, const WindowSettings& Params) :
-myWindow        (NULL),
-myLastFrameTime (0.f),
-myIsExternal    (false),
-myFramerateLimit(0),
-mySetCursorPosX (0xFFFF),
-mySetCursorPosY (0xFFFF)
+Window::Window(VideoMode mode, const String& title, Uint32 style, const ContextSettings& settings) :
+m_impl          (NULL),
+m_context       (NULL),
+m_frameTimeLimit(Time::Zero),
+m_size          (0, 0)
 {
-    Create(Mode, Title, WindowStyle, Params);
+    create(mode, title, style, settings);
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Construct the window from an existing control
-////////////////////////////////////////////////////////////
-Window::Window(WindowHandle Handle, const WindowSettings& Params) :
-myWindow        (NULL),
-myLastFrameTime (0.f),
-myIsExternal    (true),
-myFramerateLimit(0),
-mySetCursorPosX (0xFFFF),
-mySetCursorPosY (0xFFFF)
+Window::Window(WindowHandle handle, const ContextSettings& settings) :
+m_impl          (NULL),
+m_context       (NULL),
+m_frameTimeLimit(Time::Zero),
+m_size          (0, 0)
 {
-    Create(Handle, Params);
+    create(handle, settings);
 }
 
 
-////////////////////////////////////////////////////////////
-/// Destructor
 ////////////////////////////////////////////////////////////
 Window::~Window()
 {
-    // Close the window
-    Close();
+    close();
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Create the window
-////////////////////////////////////////////////////////////
-void Window::Create(VideoMode Mode, const std::string& Title, unsigned long WindowStyle, const WindowSettings& Params)
+void Window::create(VideoMode mode, const String& title, Uint32 style, const ContextSettings& settings)
 {
     // Destroy the previous window implementation
-    Close();
+    close();
 
     // Fullscreen style requires some tests
-    if (WindowStyle & Style::Fullscreen)
+    if (style & Style::Fullscreen)
     {
         // Make sure there's not already a fullscreen window (only one is allowed)
-        if (FullscreenWindow)
+        if (fullscreenWindow)
         {
-            std::cerr << "Creating two fullscreen windows is not allowed, switching to windowed mode" << std::endl;
-            WindowStyle &= ~Style::Fullscreen;
+            err() << "Creating two fullscreen windows is not allowed, switching to windowed mode" << std::endl;
+            style &= ~Style::Fullscreen;
         }
         else
         {
-            // Make sure the chosen video mode is compatible
-            if (!Mode.IsValid())
+            // Make sure that the chosen video mode is compatible
+            if (!mode.isValid())
             {
-                std::cerr << "The requested video mode is not available, switching to a valid mode" << std::endl;
-                Mode = VideoMode::GetMode(0);
+                err() << "The requested video mode is not available, switching to a valid mode" << std::endl;
+                mode = VideoMode::getFullscreenModes()[0];
             }
 
             // Update the fullscreen window
-            FullscreenWindow = this;
+            fullscreenWindow = this;
         }
     }
 
-    // Check validity of style
-    if ((WindowStyle & Style::Close) || (WindowStyle & Style::Resize))
-        WindowStyle |= Style::Titlebar;
+    // Check validity of style according to the underlying platform
+    #if defined(SFML_SYSTEM_IOS) || defined(SFML_SYSTEM_ANDROID)
+        if (style & Style::Fullscreen)
+            style &= ~Style::Titlebar;
+        else
+            style |= Style::Titlebar;
+    #else
+        if ((style & Style::Close) || (style & Style::Resize))
+            style |= Style::Titlebar;
+    #endif
 
-    // Activate the global context
-    Context::GetGlobal().SetActive(true);
+    // Recreate the window implementation
+    m_impl = priv::WindowImpl::create(mode, title, style, settings);
 
-    mySettings = Params;
-    Initialize(priv::WindowImpl::New(Mode, Title, WindowStyle, mySettings));
+    // Recreate the context
+    m_context = priv::GlContext::create(settings, m_impl, mode.bitsPerPixel);
+
+    // Perform common initializations
+    initialize();
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Create the window from an existing control
-////////////////////////////////////////////////////////////
-void Window::Create(WindowHandle Handle, const WindowSettings& Params)
+void Window::create(WindowHandle handle, const ContextSettings& settings)
 {
     // Destroy the previous window implementation
-    Close();
+    close();
 
-    // Activate the global context
-    Context::GetGlobal().SetActive(true);
+    // Recreate the window implementation
+    m_impl = priv::WindowImpl::create(handle);
 
-    mySettings = Params;
-    Initialize(priv::WindowImpl::New(Handle, mySettings));
+    // Recreate the context
+    m_context = priv::GlContext::create(settings, m_impl, VideoMode::getDesktopMode().bitsPerPixel);
+
+    // Perform common initializations
+    initialize();
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Close (destroy) the window.
-/// The sf::Window instance remains valid and you can call
-/// Create to recreate the window
-////////////////////////////////////////////////////////////
-void Window::Close()
+void Window::close()
 {
+    // Delete the context
+    delete m_context;
+    m_context = NULL;
+
     // Delete the window implementation
-    delete myWindow;
-    myWindow = NULL;
+    delete m_impl;
+    m_impl = NULL;
 
     // Update the fullscreen window
-    if (this == FullscreenWindow)
-        FullscreenWindow = NULL;
+    if (this == fullscreenWindow)
+        fullscreenWindow = NULL;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Tell whether or not the window is opened (ie. has been created).
-/// Note that a hidden window (Show(false))
-/// will still return true
-////////////////////////////////////////////////////////////
-bool Window::IsOpened() const
+bool Window::isOpen() const
 {
-    return myWindow != NULL;
+    return m_impl != NULL;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Get the width of the rendering region of the window
-////////////////////////////////////////////////////////////
-unsigned int Window::GetWidth() const
+const ContextSettings& Window::getSettings() const
 {
-    return myWindow ? myWindow->GetWidth() : 0;
+    static const ContextSettings empty(0, 0, 0);
+
+    return m_context ? m_context->getSettings() : empty;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Get the height of the rendering region of the window
-////////////////////////////////////////////////////////////
-unsigned int Window::GetHeight() const
+bool Window::pollEvent(Event& event)
 {
-    return myWindow ? myWindow->GetHeight() : 0;
-}
-
-
-////////////////////////////////////////////////////////////
-/// Get the creation settings of the window
-////////////////////////////////////////////////////////////
-const WindowSettings& Window::GetSettings() const
-{
-    return mySettings;
-}
-
-
-////////////////////////////////////////////////////////////
-/// Get the event on top of events stack, if any
-////////////////////////////////////////////////////////////
-bool Window::GetEvent(Event& EventReceived)
-{
-    // Let the window implementation process incoming events if the events queue is empty
-    if (myWindow && myEvents.empty())
-        myWindow->DoEvents();
-
-    // Pop first event of queue, if not empty
-    if (!myEvents.empty())
+    if (m_impl && m_impl->popEvent(event, false))
     {
-        EventReceived = myEvents.front();
-        myEvents.pop();
-
-        return true;
-    }
-
-    return false;
-}
-
-
-////////////////////////////////////////////////////////////
-/// Enable / disable vertical synchronization
-////////////////////////////////////////////////////////////
-void Window::UseVerticalSync(bool Enabled)
-{
-    if (SetActive())
-        myWindow->UseVerticalSync(Enabled);
-}
-
-
-////////////////////////////////////////////////////////////
-/// Show or hide the mouse cursor
-////////////////////////////////////////////////////////////
-void Window::ShowMouseCursor(bool Show)
-{
-    if (myWindow)
-        myWindow->ShowMouseCursor(Show);
-}
-
-
-////////////////////////////////////////////////////////////
-/// Change the position of the mouse cursor
-////////////////////////////////////////////////////////////
-void Window::SetCursorPosition(unsigned int Left, unsigned int Top)
-{
-    if (myWindow)
-    {
-        // Keep coordinates for later checking (to reject the generated MouseMoved event)
-        mySetCursorPosX = Left;
-        mySetCursorPosY = Top;
-
-        myWindow->SetCursorPosition(Left, Top);
-    }
-}
-
-
-////////////////////////////////////////////////////////////
-/// Change the position of the window on screen
-////////////////////////////////////////////////////////////
-void Window::SetPosition(int Left, int Top)
-{
-    if (!myIsExternal)
-    {
-        if (myWindow)
-            myWindow->SetPosition(Left, Top);
+        return filterEvent(event);
     }
     else
     {
-        std::cerr << "Warning : trying to change the position of an external SFML window, which is not allowed" << std::endl;
+        return false;
     }
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Change the size of the rendering region of the window
-////////////////////////////////////////////////////////////
-void Window::SetSize(unsigned int Width, unsigned int Height)
+bool Window::waitEvent(Event& event)
 {
-    if (myWindow)
-        myWindow->SetSize(Width, Height);
-}
-
-
-////////////////////////////////////////////////////////////
-/// Show or hide the window
-////////////////////////////////////////////////////////////
-void Window::Show(bool State)
-{
-    if (!myIsExternal)
+    if (m_impl && m_impl->popEvent(event, true))
     {
-        if (myWindow)
-            myWindow->Show(State);
+        return filterEvent(event);
     }
-}
-
-
-////////////////////////////////////////////////////////////
-/// Enable or disable automatic key-repeat.
-/// Automatic key-repeat is enabled by default
-////////////////////////////////////////////////////////////
-void Window::EnableKeyRepeat(bool Enabled)
-{
-    if (myWindow)
-        myWindow->EnableKeyRepeat(Enabled);
-}
-
-
-////////////////////////////////////////////////////////////
-/// Change the window's icon
-////////////////////////////////////////////////////////////
-void Window::SetIcon(unsigned int Width, unsigned int Height, const Uint8* Pixels)
-{
-    if (myWindow)
-        myWindow->SetIcon(Width, Height, Pixels);
-}
-
-
-////////////////////////////////////////////////////////////
-/// Activate of deactivate the window as the current target
-/// for rendering
-////////////////////////////////////////////////////////////
-bool Window::SetActive(bool Active) const
-{
-    if (myWindow)
+    else
     {
-        myWindow->SetActive(Active);
-        return true;
+        return false;
     }
-
-    return false;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Display the window on screen
-////////////////////////////////////////////////////////////
-void Window::Display()
+Vector2i Window::getPosition() const
 {
-    // Limit the framerate if needed
-    if (myFramerateLimit > 0)
+    return m_impl ? m_impl->getPosition() : Vector2i();
+}
+
+
+////////////////////////////////////////////////////////////
+void Window::setPosition(const Vector2i& position)
+{
+    if (m_impl)
+        m_impl->setPosition(position);
+}
+
+
+////////////////////////////////////////////////////////////
+Vector2u Window::getSize() const
+{
+    return m_size;
+}
+
+
+////////////////////////////////////////////////////////////
+void Window::setSize(const Vector2u& size)
+{
+    if (m_impl)
     {
-        float RemainingTime = 1.f / myFramerateLimit - myClock.GetElapsedTime();
-        if (RemainingTime > 0)
-            Sleep(RemainingTime);
+        m_impl->setSize(size);
+
+        // Cache the new size
+        m_size.x = size.x;
+        m_size.y = size.y;
+
+        // Notify the derived class
+        onResize();
     }
+}
 
-    // Measure the time elapsed since last frame
-    myLastFrameTime = myClock.GetElapsedTime();
-    myClock.Reset();
 
+////////////////////////////////////////////////////////////
+void Window::setTitle(const String& title)
+{
+    if (m_impl)
+        m_impl->setTitle(title);
+}
+
+
+////////////////////////////////////////////////////////////
+void Window::setIcon(unsigned int width, unsigned int height, const Uint8* pixels)
+{
+    if (m_impl)
+        m_impl->setIcon(width, height, pixels);
+}
+
+
+////////////////////////////////////////////////////////////
+void Window::setVisible(bool visible)
+{
+    if (m_impl)
+        m_impl->setVisible(visible);
+}
+
+
+////////////////////////////////////////////////////////////
+void Window::setVerticalSyncEnabled(bool enabled)
+{
+    if (setActive())
+        m_context->setVerticalSyncEnabled(enabled);
+}
+
+
+////////////////////////////////////////////////////////////
+void Window::setMouseCursorVisible(bool visible)
+{
+    if (m_impl)
+        m_impl->setMouseCursorVisible(visible);
+}
+
+
+////////////////////////////////////////////////////////////
+void Window::setKeyRepeatEnabled(bool enabled)
+{
+    if (m_impl)
+        m_impl->setKeyRepeatEnabled(enabled);
+}
+
+
+////////////////////////////////////////////////////////////
+void Window::setFramerateLimit(unsigned int limit)
+{
+    if (limit > 0)
+        m_frameTimeLimit = seconds(1.f / limit);
+    else
+        m_frameTimeLimit = Time::Zero;
+}
+
+
+////////////////////////////////////////////////////////////
+void Window::setJoystickThreshold(float threshold)
+{
+    if (m_impl)
+        m_impl->setJoystickThreshold(threshold);
+}
+
+
+////////////////////////////////////////////////////////////
+bool Window::setActive(bool active) const
+{
+    if (m_context)
+    {
+        if (m_context->setActive(active))
+        {
+            return true;
+        }
+        else
+        {
+            err() << "Failed to activate the window's context" << std::endl;
+            return false;
+        }
+    }
+    else
+    {
+        return false;
+    }
+}
+
+
+////////////////////////////////////////////////////////////
+void Window::display()
+{
     // Display the backbuffer on screen
-    if (SetActive())
-        myWindow->Display();
+    if (setActive())
+        m_context->display();
+
+    // Limit the framerate if needed
+    if (m_frameTimeLimit != Time::Zero)
+    {
+        sleep(m_frameTimeLimit - m_clock.getElapsedTime());
+        m_clock.restart();
+    }
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Get the input manager of the window
-////////////////////////////////////////////////////////////
-const Input& Window::GetInput() const
+WindowHandle Window::getSystemHandle() const
 {
-    return myInput;
+    return m_impl ? m_impl->getSystemHandle() : 0;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Set the framerate at a fixed frequency
-////////////////////////////////////////////////////////////
-void Window::SetFramerateLimit(unsigned int Limit)
-{
-    myFramerateLimit = Limit;
-}
-
-
-////////////////////////////////////////////////////////////
-/// Get time elapsed since last frame
-////////////////////////////////////////////////////////////
-float Window::GetFrameTime() const
-{
-    return myLastFrameTime;
-}
-
-
-////////////////////////////////////////////////////////////
-/// Change the joystick threshold, ie. the value below which
-/// no move event will be generated
-////////////////////////////////////////////////////////////
-void Window::SetJoystickThreshold(float Threshold)
-{
-    if (myWindow)
-        myWindow->SetJoystickThreshold(Threshold);
-}
-
-
-////////////////////////////////////////////////////////////
-/// Called after the window has been created
-////////////////////////////////////////////////////////////
-void Window::OnCreate()
+void Window::onCreate()
 {
     // Nothing by default
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Receive an event from window
-////////////////////////////////////////////////////////////
-void Window::OnEvent(const Event& EventReceived)
+void Window::onResize()
 {
-    // Discard MouseMove events generated by SetCursorPosition
-    if ((EventReceived.Type        == Event::MouseMoved) &&
-        (EventReceived.MouseMove.X == mySetCursorPosX)   &&
-        (EventReceived.MouseMove.Y == mySetCursorPosY))
-    {
-        mySetCursorPosX = 0xFFFF;
-        mySetCursorPosY = 0xFFFF;
-        return;
-    }
-
-    myEvents.push(EventReceived);
+    // Nothing by default
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Initialize internal window
-////////////////////////////////////////////////////////////
-void Window::Initialize(priv::WindowImpl* Window)
+bool Window::filterEvent(const Event& event)
 {
-    // Assign and initialize the new window
-    myWindow = Window;
-    myWindow->Initialize();
+    // Notify resize events to the derived class
+    if (event.type == Event::Resized)
+    {
+        // Cache the new size
+        m_size.x = event.size.width;
+        m_size.y = event.size.height;
 
-    // Clear the event queue
-    while (!myEvents.empty())
-        myEvents.pop();
+        // Notify the derived class
+        onResize();
+    }
 
-    // Listen to events from the new window
-    myWindow->AddListener(this);
-    myWindow->AddListener(&myInput);
+    return true;
+}
 
+
+////////////////////////////////////////////////////////////
+void Window::initialize()
+{
     // Setup default behaviours (to get a consistent behaviour across different implementations)
-    Show(true);
-    UseVerticalSync(false);
-    ShowMouseCursor(true);
-    EnableKeyRepeat(true);
+    setVisible(true);
+    setMouseCursorVisible(true);
+    setVerticalSyncEnabled(false);
+    setKeyRepeatEnabled(true);
+    setFramerateLimit(0);
+
+    // Get and cache the initial size of the window
+    m_size = m_impl->getSize();
 
     // Reset frame time
-    myClock.Reset();
-    myLastFrameTime = 0.f;
+    m_clock.restart();
 
     // Activate the window
-    SetActive(true);
+    setActive();
 
     // Notify the derived class
-    OnCreate();
+    onCreate();
 }
 
 } // namespace sf

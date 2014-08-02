@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2009 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2014 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -29,164 +29,106 @@
 #include <SFML/Audio/SoundFile.hpp>
 #include <SFML/Audio/Sound.hpp>
 #include <SFML/Audio/AudioDevice.hpp>
-#include <SFML/Audio/OpenAL.hpp>
-#include <iostream>
+#include <SFML/Audio/ALCheck.hpp>
+#include <SFML/System/Err.hpp>
 #include <memory>
 
 
 namespace sf
 {
 ////////////////////////////////////////////////////////////
-/// Default constructor
-////////////////////////////////////////////////////////////
 SoundBuffer::SoundBuffer() :
-myBuffer  (0),
-myDuration(0.f)
+m_buffer  (0),
+m_duration()
 {
+    priv::ensureALInit();
+
     // Create the buffer
-    ALCheck(alGenBuffers(1, &myBuffer));
+    alCheck(alGenBuffers(1, &m_buffer));
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Copy constructor
-////////////////////////////////////////////////////////////
-SoundBuffer::SoundBuffer(const SoundBuffer& Copy) :
-AudioResource        (Copy),
-Resource<SoundBuffer>(Copy),
-myBuffer             (0),
-mySamples            (Copy.mySamples),
-myDuration           (Copy.myDuration),
-mySounds             () // don't copy the attached sounds
+SoundBuffer::SoundBuffer(const SoundBuffer& copy) :
+m_buffer  (0),
+m_samples (copy.m_samples),
+m_duration(copy.m_duration),
+m_sounds  () // don't copy the attached sounds
 {
     // Create the buffer
-    ALCheck(alGenBuffers(1, &myBuffer));
+    alCheck(alGenBuffers(1, &m_buffer));
 
     // Update the internal buffer with the new samples
-    Update(Copy.GetChannelsCount(), Copy.GetSampleRate());
+    update(copy.getChannelCount(), copy.getSampleRate());
 }
 
 
-////////////////////////////////////////////////////////////
-/// Destructor
 ////////////////////////////////////////////////////////////
 SoundBuffer::~SoundBuffer()
 {
     // First detach the buffer from the sounds that use it (to avoid OpenAL errors)
-    for (SoundList::const_iterator it = mySounds.begin(); it != mySounds.end(); ++it)
-        (*it)->ResetBuffer();
+    for (SoundList::const_iterator it = m_sounds.begin(); it != m_sounds.end(); ++it)
+        (*it)->resetBuffer();
 
     // Destroy the buffer
-    if (myBuffer)
-        ALCheck(alDeleteBuffers(1, &myBuffer));
+    if (m_buffer)
+        alCheck(alDeleteBuffers(1, &m_buffer));
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Load the sound buffer from a file
-////////////////////////////////////////////////////////////
-bool SoundBuffer::LoadFromFile(const std::string& Filename)
+bool SoundBuffer::loadFromFile(const std::string& filename)
 {
-    // Create the sound file
-    std::auto_ptr<priv::SoundFile> File(priv::SoundFile::CreateRead(Filename));
-
-    // Open the sound file
-    if (File.get())
-    {
-        // Get the sound parameters
-        std::size_t  NbSamples     = File->GetSamplesCount();
-        unsigned int ChannelsCount = File->GetChannelsCount();
-        unsigned int SampleRate    = File->GetSampleRate();
-
-        // Read the samples from the opened file
-        mySamples.resize(NbSamples);
-        if (File->Read(&mySamples[0], NbSamples) == NbSamples)
-        {
-            // Update the internal buffer with the new samples
-            return Update(ChannelsCount, SampleRate);
-        }
-        else
-        {
-            // Error...
-            std::cerr << "Failed to read audio data from file \"" << Filename << "\"" << std::endl;
-
-            return false;
-        }
-    }
+    priv::SoundFile file;
+    if (file.openRead(filename))
+        return initialize(file);
     else
-    {
-        // Error...
-        std::cerr << "Failed to load sound buffer from file \"" << Filename << "\"" << std::endl;
-
         return false;
-    }
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Load the sound buffer from a file in memory
-////////////////////////////////////////////////////////////
-bool SoundBuffer::LoadFromMemory(const char* Data, std::size_t SizeInBytes)
+bool SoundBuffer::loadFromMemory(const void* data, std::size_t sizeInBytes)
 {
-    // Create the sound file
-    std::auto_ptr<priv::SoundFile> File(priv::SoundFile::CreateRead(Data, SizeInBytes));
-
-    // Open the sound file
-    if (File.get())
-    {
-        // Get the sound parameters
-        std::size_t  NbSamples     = File->GetSamplesCount();
-        unsigned int ChannelsCount = File->GetChannelsCount();
-        unsigned int SampleRate    = File->GetSampleRate();
-
-        // Read the samples from the opened file
-        mySamples.resize(NbSamples);
-        if (File->Read(&mySamples[0], NbSamples) == NbSamples)
-        {
-            // Update the internal buffer with the new samples
-            return Update(ChannelsCount, SampleRate);
-        }
-        else
-        {
-            // Error...
-            std::cerr << "Failed to read audio data from file in memory" << std::endl;
-
-            return false;
-        }
-    }
+    priv::SoundFile file;
+    if (file.openRead(data, sizeInBytes))
+        return initialize(file);
     else
-    {
-        // Error...
-        std::cerr << "Failed to load sound buffer from file in memory" << std::endl;
-
         return false;
-    }
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Load the sound buffer from an array of samples  - assumed format for
-/// samples is 16 bits signed integer
-////////////////////////////////////////////////////////////
-bool SoundBuffer::LoadFromSamples(const Int16* Samples, std::size_t SamplesCount, unsigned int ChannelsCount, unsigned int SampleRate)
+bool SoundBuffer::loadFromStream(InputStream& stream)
 {
-    if (Samples && SamplesCount && ChannelsCount && SampleRate)
+    priv::SoundFile file;
+    if (file.openRead(stream))
+        return initialize(file);
+    else
+        return false;
+}
+
+
+////////////////////////////////////////////////////////////
+bool SoundBuffer::loadFromSamples(const Int16* samples, std::size_t sampleCount, unsigned int channelCount, unsigned int sampleRate)
+{
+    if (samples && sampleCount && channelCount && sampleRate)
     {
         // Copy the new audio samples
-        mySamples.assign(Samples, Samples + SamplesCount);
+        m_samples.assign(samples, samples + sampleCount);
 
         // Update the internal buffer with the new samples
-        return Update(ChannelsCount, SampleRate);
+        return update(channelCount, sampleRate);
     }
     else
     {
         // Error...
-        std::cerr << "Failed to load sound buffer from memory ("
-                  << "Samples : "        << Samples       << ", "
-                  << "Samples count : "  << SamplesCount  << ", "
-                  << "Channels count : " << ChannelsCount << ", "
-                  << "Sample rate : "    << SampleRate    << ")"
-                  << std::endl;
+        err() << "Failed to load sound buffer from samples ("
+              << "array: "      << samples      << ", "
+              << "count: "      << sampleCount  << ", "
+              << "channels: "   << channelCount << ", "
+              << "samplerate: " << sampleRate   << ")"
+              << std::endl;
 
         return false;
     }
@@ -194,141 +136,151 @@ bool SoundBuffer::LoadFromSamples(const Int16* Samples, std::size_t SamplesCount
 
 
 ////////////////////////////////////////////////////////////
-/// Save the sound buffer to a file
-////////////////////////////////////////////////////////////
-bool SoundBuffer::SaveToFile(const std::string& Filename) const
+bool SoundBuffer::saveToFile(const std::string& filename) const
 {
     // Create the sound file in write mode
-    std::auto_ptr<priv::SoundFile> File(priv::SoundFile::CreateWrite(Filename, GetChannelsCount(), GetSampleRate()));
-    if (File.get())
+    priv::SoundFile file;
+    if (file.openWrite(filename, getChannelCount(), getSampleRate()))
     {
         // Write the samples to the opened file
-        File->Write(&mySamples[0], mySamples.size());
+        file.write(&m_samples[0], m_samples.size());
 
         return true;
     }
     else
     {
-        // Error...
-        std::cerr << "Failed to save sound buffer to file \"" << Filename << "\"" << std::endl;
-
         return false;
     }
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Return the sound samples
-////////////////////////////////////////////////////////////
-const Int16* SoundBuffer::GetSamples() const
+const Int16* SoundBuffer::getSamples() const
 {
-    return mySamples.empty() ? NULL : &mySamples[0];
+    return m_samples.empty() ? NULL : &m_samples[0];
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Return the samples count
-////////////////////////////////////////////////////////////
-std::size_t SoundBuffer::GetSamplesCount() const
+std::size_t SoundBuffer::getSampleCount() const
 {
-    return mySamples.size();
+    return m_samples.size();
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Get the sample rate
-////////////////////////////////////////////////////////////
-unsigned int SoundBuffer::GetSampleRate() const
+unsigned int SoundBuffer::getSampleRate() const
 {
-    ALint SampleRate;
-    ALCheck(alGetBufferi(myBuffer, AL_FREQUENCY, &SampleRate));
+    ALint sampleRate;
+    alCheck(alGetBufferi(m_buffer, AL_FREQUENCY, &sampleRate));
 
-    return SampleRate;
+    return sampleRate;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Return the number of channels (1 = mono, 2 = stereo, ...)
-////////////////////////////////////////////////////////////
-unsigned int SoundBuffer::GetChannelsCount() const
+unsigned int SoundBuffer::getChannelCount() const
 {
-    ALint ChannelsCount;
-    ALCheck(alGetBufferi(myBuffer, AL_CHANNELS, &ChannelsCount));
+    ALint channelCount;
+    alCheck(alGetBufferi(m_buffer, AL_CHANNELS, &channelCount));
 
-    return ChannelsCount;
+    return channelCount;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Get the sound duration
-////////////////////////////////////////////////////////////
-float SoundBuffer::GetDuration() const
+Time SoundBuffer::getDuration() const
 {
-    return myDuration;
+    return m_duration;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Assignment operator
-////////////////////////////////////////////////////////////
-SoundBuffer& SoundBuffer::operator =(const SoundBuffer& Other)
+SoundBuffer& SoundBuffer::operator =(const SoundBuffer& right)
 {
-    SoundBuffer Temp(Other);
+    SoundBuffer temp(right);
 
-    std::swap(mySamples,  Temp.mySamples);
-    std::swap(myBuffer,   Temp.myBuffer);
-    std::swap(myDuration, Temp.myDuration);
-    std::swap(mySounds,   Temp.mySounds); // swap sounds too, so that they are detached when Temp is destroyed
+    std::swap(m_samples,  temp.m_samples);
+    std::swap(m_buffer,   temp.m_buffer);
+    std::swap(m_duration, temp.m_duration);
+    std::swap(m_sounds,   temp.m_sounds); // swap sounds too, so that they are detached when temp is destroyed
 
     return *this;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Update the internal buffer with the audio samples
+bool SoundBuffer::initialize(priv::SoundFile& file)
+{
+    // Retrieve the sound parameters
+    std::size_t  sampleCount  = file.getSampleCount();
+    unsigned int channelCount = file.getChannelCount();
+    unsigned int sampleRate   = file.getSampleRate();
+
+    // Read the samples from the provided file
+    m_samples.resize(sampleCount);
+    if (file.read(&m_samples[0], sampleCount) == sampleCount)
+    {
+        // Update the internal buffer with the new samples
+        return update(channelCount, sampleRate);
+    }
+    else
+    {
+        return false;
+    }
+}
+
+
 ////////////////////////////////////////////////////////////
-bool SoundBuffer::Update(unsigned int ChannelsCount, unsigned int SampleRate)
+bool SoundBuffer::update(unsigned int channelCount, unsigned int sampleRate)
 {
     // Check parameters
-    if (!SampleRate || !ChannelsCount || mySamples.empty())
+    if (!channelCount || !sampleRate || m_samples.empty())
         return false;
 
     // Find the good format according to the number of channels
-    ALenum Format = priv::AudioDevice::GetInstance().GetFormatFromChannelsCount(ChannelsCount);
+    ALenum format = priv::AudioDevice::getFormatFromChannelCount(channelCount);
 
     // Check if the format is valid
-    if (Format == 0)
+    if (format == 0)
     {
-        std::cerr << "Unsupported number of channels (" << ChannelsCount << ")" << std::endl;
+        err() << "Failed to load sound buffer (unsupported number of channels: " << channelCount << ")" << std::endl;
         return false;
     }
 
+    // First make a copy of the list of sounds so we can reattach later
+    SoundList sounds(m_sounds);
+
+    // Detach the buffer from the sounds that use it (to avoid OpenAL errors)
+    for (SoundList::const_iterator it = sounds.begin(); it != sounds.end(); ++it)
+        (*it)->resetBuffer();
+
     // Fill the buffer
-    ALsizei Size = static_cast<ALsizei>(mySamples.size()) * sizeof(Int16);
-    ALCheck(alBufferData(myBuffer, Format, &mySamples[0], Size, SampleRate));
+    ALsizei size = static_cast<ALsizei>(m_samples.size()) * sizeof(Int16);
+    alCheck(alBufferData(m_buffer, format, &m_samples[0], size, sampleRate));
 
     // Compute the duration
-    myDuration = static_cast<float>(mySamples.size()) / SampleRate / ChannelsCount;
+    m_duration = seconds(static_cast<float>(m_samples.size()) / sampleRate / channelCount);
+
+    // Now reattach the buffer to the sounds that use it
+    for (SoundList::const_iterator it = sounds.begin(); it != sounds.end(); ++it)
+        (*it)->setBuffer(*this);
 
     return true;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Add a sound to the list of sounds that use this buffer
-////////////////////////////////////////////////////////////
-void SoundBuffer::AttachSound(Sound* Instance) const
+void SoundBuffer::attachSound(Sound* sound) const
 {
-    mySounds.insert(Instance);
+    m_sounds.insert(sound);
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Remove a sound from the list of sounds that use this buffer
-////////////////////////////////////////////////////////////
-void SoundBuffer::DetachSound(Sound* Instance) const
+void SoundBuffer::detachSound(Sound* sound) const
 {
-    mySounds.erase(Instance);
+    m_sounds.erase(sound);
 }
 
 } // namespace sf

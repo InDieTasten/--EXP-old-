@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2009 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2014 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -26,183 +26,215 @@
 // Headers
 ////////////////////////////////////////////////////////////
 #include <SFML/Graphics/View.hpp>
-#include <algorithm>
+#include <cmath>
 
 
 namespace sf
 {
 ////////////////////////////////////////////////////////////
-/// Construct the view from a rectangle
-////////////////////////////////////////////////////////////
-View::View(const FloatRect& ViewRect)
+View::View() :
+m_center             (),
+m_size               (),
+m_rotation           (0),
+m_viewport           (0, 0, 1, 1),
+m_transformUpdated   (false),
+m_invTransformUpdated(false)
 {
-    SetFromRect(ViewRect);
+    reset(FloatRect(0, 0, 1000, 1000));
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Construct the view from its center and half-size
-////////////////////////////////////////////////////////////
-View::View(const sf::Vector2f& Center, const sf::Vector2f& HalfSize) :
-myCenter    (Center),
-myHalfSize  (HalfSize),
-myNeedUpdate(true)
+View::View(const FloatRect& rectangle) :
+m_center             (),
+m_size               (),
+m_rotation           (0),
+m_viewport           (0, 0, 1, 1),
+m_transformUpdated   (false),
+m_invTransformUpdated(false)
 {
-
+    reset(rectangle);
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Change the center of the view (take 2 values)
-////////////////////////////////////////////////////////////
-void View::SetCenter(float X, float Y)
+View::View(const Vector2f& center, const Vector2f& size) :
+m_center             (center),
+m_size               (size),
+m_rotation           (0),
+m_viewport           (0, 0, 1, 1),
+m_transformUpdated   (false),
+m_invTransformUpdated(false)
 {
-    myCenter.x   = X;
-    myCenter.y   = Y;
-    myNeedUpdate = true;
+
+}
+
+////////////////////////////////////////////////////////////
+void View::setCenter(float x, float y)
+{
+    m_center.x = x;
+    m_center.y = y;
+
+    m_transformUpdated    = false;
+    m_invTransformUpdated = false;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Change the center of the view (take a vector)
-////////////////////////////////////////////////////////////
-void View::SetCenter(const sf::Vector2f& Center)
+void View::setCenter(const Vector2f& center)
 {
-    SetCenter(Center.x, Center.y);
+    setCenter(center.x, center.y);
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Change the half-size of the view (take 2 values)
-////////////////////////////////////////////////////////////
-void View::SetHalfSize(float HalfWidth, float HalfHeight)
+void View::setSize(float width, float height)
 {
-    myHalfSize.x = HalfWidth;
-    myHalfSize.y = HalfHeight;
-    myNeedUpdate = true;
+    m_size.x = width;
+    m_size.y = height;
+
+    m_transformUpdated    = false;
+    m_invTransformUpdated = false;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Change the half-size of the view (take a vector)
-////////////////////////////////////////////////////////////
-void View::SetHalfSize(const sf::Vector2f& HalfSize)
+void View::setSize(const Vector2f& size)
 {
-    SetHalfSize(HalfSize.x, HalfSize.y);
+    setSize(size.x, size.y);
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Rebuild the view from a rectangle
-////////////////////////////////////////////////////////////
-void View::SetFromRect(const FloatRect& ViewRect)
+void View::setRotation(float angle)
 {
-    SetCenter(  (ViewRect.Right + ViewRect.Left) / 2, (ViewRect.Bottom + ViewRect.Top) / 2);
-    SetHalfSize((ViewRect.Right - ViewRect.Left) / 2, (ViewRect.Bottom - ViewRect.Top) / 2);
+    m_rotation = static_cast<float>(fmod(angle, 360));
+    if (m_rotation < 0)
+        m_rotation += 360.f;
+
+    m_transformUpdated    = false;
+    m_invTransformUpdated = false;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Get the center of the view
-////////////////////////////////////////////////////////////
-const sf::Vector2f& View::GetCenter() const
+void View::setViewport(const FloatRect& viewport)
 {
-    return myCenter;
+    m_viewport = viewport;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Get the half-size of the view
-////////////////////////////////////////////////////////////
-const sf::Vector2f& View::GetHalfSize() const
+void View::reset(const FloatRect& rectangle)
 {
-    return myHalfSize;
+    m_center.x = rectangle.left + rectangle.width / 2.f;
+    m_center.y = rectangle.top + rectangle.height / 2.f;
+    m_size.x   = rectangle.width;
+    m_size.y   = rectangle.height;
+    m_rotation = 0;
+
+    m_transformUpdated    = false;
+    m_invTransformUpdated = false;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Get the bounding rectangle of the view
-////////////////////////////////////////////////////////////
-const sf::FloatRect& View::GetRect() const
+const Vector2f& View::getCenter() const
 {
-    // Recompute it if needed
-    if (myNeedUpdate)
-        const_cast<View*>(this)->RecomputeMatrix();
-
-    return myRect;
+    return m_center;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Move the view (take 2 values)
-////////////////////////////////////////////////////////////
-void View::Move(float OffsetX, float OffsetY)
+const Vector2f& View::getSize() const
 {
-    myCenter.x  += OffsetX;
-    myCenter.y  += OffsetY;
-    myNeedUpdate = true;
+    return m_size;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Move the view (take a vector)
-////////////////////////////////////////////////////////////
-void View::Move(const sf::Vector2f& Offset)
+float View::getRotation() const
 {
-    Move(Offset.x, Offset.y);
+    return m_rotation;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Resize the view rectangle to simulate a zoom / unzoom effect
-////////////////////////////////////////////////////////////
-void View::Zoom(float Factor)
+const FloatRect& View::getViewport() const
 {
-    if (Factor != 0)
-    {
-        myHalfSize  /= Factor;
-        myNeedUpdate = true;
-    }
+    return m_viewport;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Get the projection matrix of the view
+void View::move(float offsetX, float offsetY)
+{
+    setCenter(m_center.x + offsetX, m_center.y + offsetY);
+}
+
+
 ////////////////////////////////////////////////////////////
-const Matrix3& View::GetMatrix() const
+void View::move(const Vector2f& offset)
+{
+    setCenter(m_center + offset);
+}
+
+
+////////////////////////////////////////////////////////////
+void View::rotate(float angle)
+{
+    setRotation(m_rotation + angle);
+}
+
+
+////////////////////////////////////////////////////////////
+void View::zoom(float factor)
+{
+    setSize(m_size.x * factor, m_size.y * factor);
+}
+
+
+////////////////////////////////////////////////////////////
+const Transform& View::getTransform() const
 {
     // Recompute the matrix if needed
-    if (myNeedUpdate)
-        const_cast<View*>(this)->RecomputeMatrix();
+    if (!m_transformUpdated)
+    {
+        // Rotation components
+        float angle  = m_rotation * 3.141592654f / 180.f;
+        float cosine = static_cast<float>(std::cos(angle));
+        float sine   = static_cast<float>(std::sin(angle));
+        float tx     = -m_center.x * cosine - m_center.y * sine + m_center.x;
+        float ty     =  m_center.x * sine - m_center.y * cosine + m_center.y;
 
-    return myMatrix;
+        // Projection components
+        float a =  2.f / m_size.x;
+        float b = -2.f / m_size.y;
+        float c = -a * m_center.x;
+        float d = -b * m_center.y;
+
+        // Rebuild the projection matrix
+        m_transform = Transform( a * cosine, a * sine,   a * tx + c,
+                                -b * sine,   b * cosine, b * ty + d,
+                                 0.f,        0.f,        1.f);
+        m_transformUpdated = true;
+    }
+
+    return m_transform;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Recompute the view rectangle and the projection matrix
-////////////////////////////////////////////////////////////
-void View::RecomputeMatrix()
+const Transform& View::getInverseTransform() const
 {
-    // Compute the 4 corners of the view
-    float Left   = myCenter.x - myHalfSize.x;
-    float Top    = myCenter.y - myHalfSize.y;
-    float Right  = myCenter.x + myHalfSize.x;
-    float Bottom = myCenter.y + myHalfSize.y;
+    // Recompute the matrix if needed
+    if (!m_invTransformUpdated)
+    {
+        m_inverseTransform = getTransform().getInverse();
+        m_invTransformUpdated = true;
+    }
 
-    // Update the view rectangle - be careful, reversed views are allowed !
-    myRect.Left   = std::min(Left, Right);
-    myRect.Top    = std::min(Top, Bottom);
-    myRect.Right  = std::max(Left, Right);
-    myRect.Bottom = std::max(Top, Bottom);
-
-    // Update the projection matrix
-    myMatrix(0, 0) = 2.f / (Right - Left);
-    myMatrix(1, 1) = 2.f / (Top - Bottom);
-    myMatrix(0, 2) = (Left + Right) / (Left - Right);
-    myMatrix(1, 2) = (Bottom + Top) / (Bottom - Top);
-
-    myNeedUpdate = false;
+    return m_inverseTransform;
 }
 
 } // namespace sf

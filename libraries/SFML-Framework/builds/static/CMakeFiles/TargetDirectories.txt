@@ -1,0 +1,6 @@
+C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/src/SFML/Audio/CMakeFiles/sfml-audio.dir
+C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir
+C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/src/SFML/Main/CMakeFiles/sfml-main.dir
+C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/src/SFML/Network/CMakeFiles/sfml-network.dir
+C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/src/SFML/System/CMakeFiles/sfml-system.dir
+C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/src/SFML/Window/CMakeFiles/sfml-window.dir
