@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2009 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2014 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -26,201 +26,149 @@
 // Headers
 ////////////////////////////////////////////////////////////
 #include <SFML/Graphics/Sprite.hpp>
-#include <SFML/Graphics/Image.hpp>
-#include <SFML/Graphics/GraphicsContext.hpp>
+#include <SFML/Graphics/Texture.hpp>
+#include <SFML/Graphics/RenderTarget.hpp>
+#include <cstdlib>
 
 
 namespace sf
 {
 ////////////////////////////////////////////////////////////
-/// Default constructor
-////////////////////////////////////////////////////////////
 Sprite::Sprite() :
-mySubRect   (0, 0, 1, 1),
-myIsFlippedX(false),
-myIsFlippedY(false)
+m_texture    (NULL),
+m_textureRect()
 {
-
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Construct the sprite from a source image
-////////////////////////////////////////////////////////////
-Sprite::Sprite(const Image& Img, const Vector2f& Position, const Vector2f& Scale, float Rotation, const Color& Col) :
-Drawable    (Position, Scale, Rotation, Col),
-mySubRect   (0, 0, 1, 1),
-myIsFlippedX(false),
-myIsFlippedY(false)
+Sprite::Sprite(const Texture& texture) :
+m_texture    (NULL),
+m_textureRect()
 {
-    SetImage(Img);
+    setTexture(texture);
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Set the image of the sprite
-////////////////////////////////////////////////////////////
-void Sprite::SetImage(const Image& Img)
+Sprite::Sprite(const Texture& texture, const IntRect& rectangle) :
+m_texture    (NULL),
+m_textureRect()
 {
-    // If there was no source image before and the new image is valid, adjust the source rectangle
-    if (!myImage && (Img.GetWidth() > 0) && (Img.GetHeight() > 0))
+    setTexture(texture);
+    setTextureRect(rectangle);
+}
+
+
+////////////////////////////////////////////////////////////
+void Sprite::setTexture(const Texture& texture, bool resetRect)
+{
+    // Recompute the texture area if requested, or if there was no valid texture & rect before
+    if (resetRect || (!m_texture && (m_textureRect == sf::IntRect())))
+        setTextureRect(IntRect(0, 0, texture.getSize().x, texture.getSize().y));
+
+    // Assign the new texture
+    m_texture = &texture;
+}
+
+
+////////////////////////////////////////////////////////////
+void Sprite::setTextureRect(const IntRect& rectangle)
+{
+    if (rectangle != m_textureRect)
     {
-        SetSubRect(IntRect(0, 0, Img.GetWidth(), Img.GetHeight()));
-    }
-
-    // Assign the new image
-    myImage = &Img;
-}
-
-
-////////////////////////////////////////////////////////////
-/// Set the sub-rectangle of the sprite inside the source image
-////////////////////////////////////////////////////////////
-void Sprite::SetSubRect(const IntRect& SubRect)
-{
-    mySubRect = SubRect;
-}
-
-
-////////////////////////////////////////////////////////////
-/// Resize the sprite (by changing its scale factors) (take 2 values).
-/// The default size is defined by the subrect
-////////////////////////////////////////////////////////////
-void Sprite::Resize(float Width, float Height)
-{
-    int LocalWidth  = mySubRect.GetWidth();
-    int LocalHeight = mySubRect.GetHeight();
-
-    if ((LocalWidth > 0) && (LocalHeight > 0))
-        SetScale(Width / LocalWidth, Height / LocalHeight);
-}
-
-
-////////////////////////////////////////////////////////////
-/// Resize the object (by changing its scale factors) (take a 2D vector)
-/// The default size is defined by the subrect
-////////////////////////////////////////////////////////////
-void Sprite::Resize(const Vector2f& Size)
-{
-    Resize(Size.x, Size.y);
-}
-
-
-////////////////////////////////////////////////////////////
-/// Flip the sprite horizontally
-////////////////////////////////////////////////////////////
-void Sprite::FlipX(bool Flipped)
-{
-    myIsFlippedX = Flipped;
-}
-
-
-////////////////////////////////////////////////////////////
-/// Flip the sprite vertically
-////////////////////////////////////////////////////////////
-void Sprite::FlipY(bool Flipped)
-{
-    myIsFlippedY = Flipped;
-}
-
-
-////////////////////////////////////////////////////////////
-/// Get the source image of the sprite
-////////////////////////////////////////////////////////////
-const Image* Sprite::GetImage() const
-{
-    return myImage;
-}
-
-
-////////////////////////////////////////////////////////////
-/// Get the sub-rectangle of the sprite inside the source image
-////////////////////////////////////////////////////////////
-const IntRect& Sprite::GetSubRect() const
-{
-    return mySubRect;
-}
-
-
-////////////////////////////////////////////////////////////
-/// Get the sprite size
-////////////////////////////////////////////////////////////
-Vector2f Sprite::GetSize() const
-{
-    return Vector2f(mySubRect.GetWidth() * GetScale().x, mySubRect.GetHeight() * GetScale().y);
-}
-
-
-////////////////////////////////////////////////////////////
-/// Get the color of a given pixel in the sprite
-/// (point is in local coordinates)
-////////////////////////////////////////////////////////////
-Color Sprite::GetPixel(unsigned int X, unsigned int Y) const
-{
-    if (myImage)
-    {
-        unsigned int ImageX = mySubRect.Left + X;
-        unsigned int ImageY = mySubRect.Top  + Y;
-
-        if (myIsFlippedX) ImageX = mySubRect.GetWidth()  - ImageX - 1;
-        if (myIsFlippedY) ImageY = mySubRect.GetHeight() - ImageY - 1;
-
-        return myImage->GetPixel(ImageX, ImageY) * GetColor();
-    }
-    else
-    {
-        return GetColor();
+        m_textureRect = rectangle;
+        updatePositions();
+        updateTexCoords();
     }
 }
 
 
 ////////////////////////////////////////////////////////////
-/// /see sfDrawable::Render
-////////////////////////////////////////////////////////////
-void Sprite::Render(RenderTarget&) const
+void Sprite::setColor(const Color& color)
 {
-    // Get the sprite size
-    float Width  = static_cast<float>(mySubRect.GetWidth());
-    float Height = static_cast<float>(mySubRect.GetHeight());
+    // Update the vertices' color
+    m_vertices[0].color = color;
+    m_vertices[1].color = color;
+    m_vertices[2].color = color;
+    m_vertices[3].color = color;
+}
 
-    // Check if the image is valid
-    if (myImage && (myImage->GetWidth() > 0) && (myImage->GetHeight() > 0))
+
+////////////////////////////////////////////////////////////
+const Texture* Sprite::getTexture() const
+{
+    return m_texture;
+}
+
+
+////////////////////////////////////////////////////////////
+const IntRect& Sprite::getTextureRect() const
+{
+    return m_textureRect;
+}
+
+
+////////////////////////////////////////////////////////////
+const Color& Sprite::getColor() const
+{
+    return m_vertices[0].color;
+}
+
+
+////////////////////////////////////////////////////////////
+FloatRect Sprite::getLocalBounds() const
+{
+    float width = static_cast<float>(std::abs(m_textureRect.width));
+    float height = static_cast<float>(std::abs(m_textureRect.height));
+
+    return FloatRect(0.f, 0.f, width, height);
+}
+
+
+////////////////////////////////////////////////////////////
+FloatRect Sprite::getGlobalBounds() const
+{
+    return getTransform().transformRect(getLocalBounds());
+}
+
+
+////////////////////////////////////////////////////////////
+void Sprite::draw(RenderTarget& target, RenderStates states) const
+{
+    if (m_texture)
     {
-        // Use the "offset trick" to get pixel-perfect rendering
-        // see http://www.opengl.org/resources/faq/technical/transformations.htm#tran0030
-        GLCheck(glTranslatef(0.375f, 0.375f, 0.f));
-
-        // Bind the texture
-        myImage->Bind();
-
-        // Calculate the texture coordinates
-        FloatRect TexCoords = myImage->GetTexCoords(mySubRect);
-        FloatRect Rect(myIsFlippedX ? TexCoords.Right  : TexCoords.Left,
-                       myIsFlippedY ? TexCoords.Bottom : TexCoords.Top,
-                       myIsFlippedX ? TexCoords.Left   : TexCoords.Right,
-                       myIsFlippedY ? TexCoords.Top    : TexCoords.Bottom);
-
-        // Draw the sprite's triangles
-        glBegin(GL_QUADS);
-            glTexCoord2f(Rect.Left,  Rect.Top);    glVertex2f(0,     0);
-            glTexCoord2f(Rect.Left,  Rect.Bottom); glVertex2f(0,     Height);
-            glTexCoord2f(Rect.Right, Rect.Bottom); glVertex2f(Width, Height);
-            glTexCoord2f(Rect.Right, Rect.Top);    glVertex2f(Width, 0) ;
-        glEnd();
+        states.transform *= getTransform();
+        states.texture = m_texture;
+        target.draw(m_vertices, 4, TrianglesStrip, states);
     }
-    else
-    {
-        // Disable texturing
-        GLCheck(glDisable(GL_TEXTURE_2D));
+}
 
-        // Draw the sprite's triangles
-        glBegin(GL_QUADS);
-            glVertex2f(0,     0);
-            glVertex2f(0,     Height);
-            glVertex2f(Width, Height);
-            glVertex2f(Width, 0);
-        glEnd();
-    }
+
+////////////////////////////////////////////////////////////
+void Sprite::updatePositions()
+{
+    FloatRect bounds = getLocalBounds();
+
+    m_vertices[0].position = Vector2f(0, 0);
+    m_vertices[1].position = Vector2f(0, bounds.height);
+    m_vertices[2].position = Vector2f(bounds.width, 0);
+    m_vertices[3].position = Vector2f(bounds.width, bounds.height);
+}
+
+
+////////////////////////////////////////////////////////////
+void Sprite::updateTexCoords()
+{
+    float left   = static_cast<float>(m_textureRect.left);
+    float right  = left + m_textureRect.width;
+    float top    = static_cast<float>(m_textureRect.top);
+    float bottom = top + m_textureRect.height;
+
+    m_vertices[0].texCoords = Vector2f(left, top);
+    m_vertices[1].texCoords = Vector2f(left, bottom);
+    m_vertices[2].texCoords = Vector2f(right, top);
+    m_vertices[3].texCoords = Vector2f(right, bottom);
 }
 
 } // namespace sf

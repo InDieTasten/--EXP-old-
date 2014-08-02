@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2009 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2014 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -26,16 +26,11 @@
 // Headers
 ////////////////////////////////////////////////////////////
 #include <SFML/Graphics/RenderWindow.hpp>
-#include <SFML/Graphics/Drawable.hpp>
-#include <SFML/Graphics/Image.hpp>
-#include <SFML/Graphics/GraphicsContext.hpp>
-#include <iostream>
+#include <SFML/Graphics/GLCheck.hpp>
 
 
 namespace sf
 {
-////////////////////////////////////////////////////////////
-/// Default constructor
 ////////////////////////////////////////////////////////////
 RenderWindow::RenderWindow()
 {
@@ -44,25 +39,21 @@ RenderWindow::RenderWindow()
 
 
 ////////////////////////////////////////////////////////////
-/// Construct the window
-////////////////////////////////////////////////////////////
-RenderWindow::RenderWindow(VideoMode Mode, const std::string& Title, unsigned long WindowStyle, const WindowSettings& Params)
+RenderWindow::RenderWindow(VideoMode mode, const String& title, Uint32 style, const ContextSettings& settings)
 {
-    Create(Mode, Title, WindowStyle, Params);
+    // Don't call the base class constructor because it contains virtual function calls
+    create(mode, title, style, settings);
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Construct the window from an existing control
-////////////////////////////////////////////////////////////
-RenderWindow::RenderWindow(WindowHandle Handle, const WindowSettings& Params)
+RenderWindow::RenderWindow(WindowHandle handle, const ContextSettings& settings)
 {
-    Create(Handle, Params);
+    // Don't call the base class constructor because it contains virtual function calls
+    create(handle, settings);
 }
 
 
-////////////////////////////////////////////////////////////
-/// Destructor
 ////////////////////////////////////////////////////////////
 RenderWindow::~RenderWindow()
 {
@@ -71,97 +62,56 @@ RenderWindow::~RenderWindow()
 
 
 ////////////////////////////////////////////////////////////
-/// /see RenderTarget::Activate
-////////////////////////////////////////////////////////////
-bool RenderWindow::Activate(bool Active)
+bool RenderWindow::activate(bool active)
 {
-    // For performances and consistency reasons, we only handle activation
-    if (Active)
-        return SetActive();
-    else
-        return true;
+    return setActive(active);
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Get the width of the rendering region of the window
-////////////////////////////////////////////////////////////
-unsigned int RenderWindow::GetWidth() const
+Vector2u RenderWindow::getSize() const
 {
-    return sf::Window::GetWidth();
+    return Window::getSize();
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Get the height of the rendering region of the window
-////////////////////////////////////////////////////////////
-unsigned int RenderWindow::GetHeight() const
+Image RenderWindow::capture() const
 {
-    return sf::Window::GetHeight();
-}
-
-
-////////////////////////////////////////////////////////////
-/// Save the content of the window to an image
-////////////////////////////////////////////////////////////
-Image RenderWindow::Capture() const
-{
-    // Get the window dimensions
-    const unsigned int Width  = GetWidth();
-    const unsigned int Height = GetHeight();
-
-    // Set our window as the current target for rendering
-    if (SetActive())
+    Image image;
+    if (setActive())
     {
-        // Make sure we have a valid context
-        priv::GraphicsContext Ctx;
+        int width = static_cast<int>(getSize().x);
+        int height = static_cast<int>(getSize().y);
 
-        // Get pixels from the backbuffer
-        std::vector<Uint8> Pixels(Width * Height * 4);
-        Uint8* PixelsPtr = &Pixels[0];
-        GLCheck(glReadPixels(0, 0, Width, Height, GL_RGBA, GL_UNSIGNED_BYTE, PixelsPtr));
+        // copy rows one by one and flip them (OpenGL's origin is bottom while SFML's origin is top)
+        std::vector<Uint8> pixels(width * height * 4);
+        for (int i = 0; i < height; ++i)
+        {
+            Uint8* ptr = &pixels[i * width * 4];
+            glCheck(glReadPixels(0, height - i - 1, width, 1, GL_RGBA, GL_UNSIGNED_BYTE, ptr));
+        }
 
-        // Flip the pixels
-        unsigned int Pitch = Width * 4;
-        for (unsigned int y = 0; y < Height / 2; ++y)
-            std::swap_ranges(PixelsPtr + y * Pitch, PixelsPtr + (y + 1) * Pitch, PixelsPtr + (Height - y - 1) * Pitch);
-
-        // Create an image from the pixel buffer and return it
-        return Image(Width, Height, PixelsPtr);
+        image.create(width, height, &pixels[0]);
     }
-    else
-    {
-        return Image(Width, Height, Color::White);
-    }
+
+    return image;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Convert a point in window coordinates into view coordinates
-////////////////////////////////////////////////////////////
-sf::Vector2f RenderWindow::ConvertCoords(unsigned int WindowX, unsigned int WindowY, const View* TargetView) const
+void RenderWindow::onCreate()
 {
-    // Use the current view if none has been passed
-    if (!TargetView)
-        TargetView = &GetView();
-
-    float Left   = TargetView->GetCenter().x - TargetView->GetHalfSize().x;
-    float Top    = TargetView->GetCenter().y - TargetView->GetHalfSize().y;
-    float Right  = TargetView->GetCenter().x + TargetView->GetHalfSize().x;
-    float Bottom = TargetView->GetCenter().y + TargetView->GetHalfSize().y;
-
-    return sf::Vector2f(Left + WindowX * (Right - Left) / GetWidth(),
-                        Top  + WindowY * (Bottom - Top) / GetHeight());
+    // Just initialize the render target part
+    RenderTarget::initialize();
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Called after the window has been created
-////////////////////////////////////////////////////////////
-void RenderWindow::OnCreate()
+void RenderWindow::onResize()
 {
-    // We can now initialize the render target part
-    RenderTarget::Initialize();
+    // Update the current view (recompute the viewport, which is stored in relative coordinates)
+    setView(getView());
 }
 
 } // namespace sf

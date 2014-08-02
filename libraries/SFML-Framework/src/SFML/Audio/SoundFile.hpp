@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2009 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2014 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -29,176 +29,198 @@
 // Headers
 ////////////////////////////////////////////////////////////
 #include <SFML/System/NonCopyable.hpp>
+#include <SFML/System/Time.hpp>
+#include <sndfile.h>
 #include <string>
 
 
 namespace sf
 {
+class InputStream;
+
 namespace priv
 {
 ////////////////////////////////////////////////////////////
-/// SoundFile is the abstract base class for loading
-/// and saving different sound file formats
+/// \brief Provide read and write access to sound files
+///
 ////////////////////////////////////////////////////////////
 class SoundFile : NonCopyable
 {
 public :
 
     ////////////////////////////////////////////////////////////
-    /// Create a new sound from a file, for reading
-    ///
-    /// \param Filename :      Path of sound file
-    /// \param NbSamples :     Number of samples in the file
-    /// \param ChannelsCount : Number of channels in the loaded sound
-    /// \param SampleRate :    Sample rate of the loaded sound
-    ///
-    /// \return Pointer to the new sound file (NULL if failed)
-    ///
-    ////////////////////////////////////////////////////////////
-    static SoundFile* CreateRead(const std::string& Filename);
-
-    ////////////////////////////////////////////////////////////
-    /// Create a new sound from a file in memory, for reading
-    ///
-    /// \param Data :          Pointer to the file data in memory
-    /// \param SizeInBytes :   Size of the data to load, in bytes
-    /// \param NbSamples :     Number of samples in the file
-    /// \param ChannelsCount : Number of channels in the loaded sound
-    /// \param SampleRate :    Sample rate of the loaded sound
-    ///
-    /// \return Pointer to the new sound file (NULL if failed)
-    ///
-    ////////////////////////////////////////////////////////////
-    static SoundFile* CreateRead(const char* Data, std::size_t SizeInBytes);
-
-    ////////////////////////////////////////////////////////////
-    /// Create a new sound from a file, for writing
-    ///
-    /// \param Filename :      Path of sound file
-    /// \param ChannelsCount : Number of channels in the sound
-    /// \param SampleRate :    Sample rate of the sound
-    ///
-    /// \return Pointer to the new sound file (NULL if failed)
-    ///
-    ////////////////////////////////////////////////////////////
-    static SoundFile* CreateWrite(const std::string& Filename, unsigned int ChannelsCount, unsigned int SampleRate);
-
-    ////////////////////////////////////////////////////////////
-    /// Virtual destructor
-    ///
-    ////////////////////////////////////////////////////////////
-    virtual ~SoundFile();
-
-    ////////////////////////////////////////////////////////////
-    /// Get the total number of samples in the file
-    ///
-    /// \return Number of samples
-    ///
-    ////////////////////////////////////////////////////////////
-    std::size_t GetSamplesCount() const;
-
-    ////////////////////////////////////////////////////////////
-    /// Get the number of channels used by the sound
-    ///
-    /// \return Number of channels (1 = mono, 2 = stereo)
-    ///
-    ////////////////////////////////////////////////////////////
-    unsigned int GetChannelsCount() const;
-
-    ////////////////////////////////////////////////////////////
-    /// Get the sample rate of the sound
-    ///
-    /// \return Sample rate, in samples / sec
-    ///
-    ////////////////////////////////////////////////////////////
-    unsigned int GetSampleRate() const;
-
-    ////////////////////////////////////////////////////////////
-    /// Restart the sound from the beginning
-    ///
-    /// \return True if restart was successful
-    ///
-    ////////////////////////////////////////////////////////////
-    bool Restart();
-
-    ////////////////////////////////////////////////////////////
-    /// Read samples from the loaded sound
-    ///
-    /// \param Data :      Pointer to the samples array to fill
-    /// \param NbSamples : Number of samples to read
-    ///
-    /// \return Number of samples read
-    ///
-    ////////////////////////////////////////////////////////////
-    virtual std::size_t Read(Int16* Data, std::size_t NbSamples);
-
-    ////////////////////////////////////////////////////////////
-    /// Write samples to the file
-    ///
-    /// \param Data :      Pointer to the samples array to write
-    /// \param NbSamples : Number of samples to write
-    ///
-    ////////////////////////////////////////////////////////////
-    virtual void Write(const Int16* Data, std::size_t NbSamples);
-
-protected :
-
-    ////////////////////////////////////////////////////////////
-    /// Default constructor
+    /// \brief Default constructor
     ///
     ////////////////////////////////////////////////////////////
     SoundFile();
 
+    ////////////////////////////////////////////////////////////
+    /// \brief Destructor
+    ///
+    ////////////////////////////////////////////////////////////
+    ~SoundFile();
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Get the total number of audio samples in the file
+    ///
+    /// \return Number of samples
+    ///
+    ////////////////////////////////////////////////////////////
+    std::size_t getSampleCount() const;
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Get the number of channels used by the sound
+    ///
+    /// \return Number of channels (1 = mono, 2 = stereo)
+    ///
+    ////////////////////////////////////////////////////////////
+    unsigned int getChannelCount() const;
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Get the sample rate of the sound
+    ///
+    /// \return Sample rate, in samples per second
+    ///
+    ////////////////////////////////////////////////////////////
+    unsigned int getSampleRate() const;
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Open a sound file for reading
+    ///
+    /// \param filename Path of the sound file to load
+    ///
+    /// \return True if the file was successfully opened
+    ///
+    ////////////////////////////////////////////////////////////
+    bool openRead(const std::string& filename);
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Open a sound file in memory for reading
+    ///
+    /// \param data        Pointer to the file data in memory
+    /// \param sizeInBytes Size of the data to load, in bytes
+    ///
+    /// \return True if the file was successfully opened
+    ///
+    ////////////////////////////////////////////////////////////
+    bool openRead(const void* data, std::size_t sizeInBytes);
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Open a sound file from a custom stream for reading
+    ///
+    /// \param stream Source stream to read from
+    ///
+    /// \return True if the file was successfully opened
+    ///
+    ////////////////////////////////////////////////////////////
+    bool openRead(InputStream& stream);
+
+    ////////////////////////////////////////////////////////////
+    /// \brief a the sound file for writing
+    ///
+    /// \param filename     Path of the sound file to write
+    /// \param channelCount Number of channels in the sound
+    /// \param sampleRate   Sample rate of the sound
+    ///
+    /// \return True if the file was successfully opened
+    ///
+    ////////////////////////////////////////////////////////////
+    bool openWrite(const std::string& filename, unsigned int channelCount, unsigned int sampleRate);
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Read audio samples from the loaded sound
+    ///
+    /// \param data        Pointer to the sample array to fill
+    /// \param sampleCount Number of samples to read
+    ///
+    /// \return Number of samples actually read (may be less than \a sampleCount)
+    ///
+    ////////////////////////////////////////////////////////////
+    std::size_t read(Int16* data, std::size_t sampleCount);
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Write audio samples to the file
+    ///
+    /// \param data        Pointer to the sample array to write
+    /// \param sampleCount Number of samples to write
+    ///
+    ////////////////////////////////////////////////////////////
+    void write(const Int16* data, std::size_t sampleCount);
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Change the current read position in the file
+    ///
+    /// \param timeOffset New playing position, from the beginning of the file
+    ///
+    ////////////////////////////////////////////////////////////
+    void seek(Time timeOffset);
+
 private :
 
     ////////////////////////////////////////////////////////////
-    /// Open the sound file for reading
+    /// \brief Initialize the internal state of the sound file
     ///
-    /// \param Filename :      Path of sound file to load
-    /// \param NbSamples :     Number of samples in the file
-    /// \param ChannelsCount : Number of channels in the loaded sound
-    /// \param SampleRate :    Sample rate of the loaded sound
+    /// This function is called by all the openRead functions.
     ///
-    /// \return True if the file was successfully opened
+    /// \param fileInfo Information about the loaded sound file
     ///
     ////////////////////////////////////////////////////////////
-    virtual bool OpenRead(const std::string& Filename, std::size_t& NbSamples, unsigned int& ChannelsCount, unsigned int& SampleRate);
+    void initialize(SF_INFO fileInfo);
 
     ////////////////////////////////////////////////////////////
-    /// Open the sound file in memory for reading
+    /// \brief Get the internal format of an audio file according to
+    ///        its filename extension
     ///
-    /// \param Data :          Pointer to the file data in memory
-    /// \param SizeInBytes :   Size of the data to load, in bytes
-    /// \param NbSamples :     Number of samples in the file
-    /// \param ChannelsCount : Number of channels in the loaded sound
-    /// \param SampleRate :    Sample rate of the loaded sound
+    /// \param filename Filename to check
     ///
-    /// \return True if the file was successfully opened
+    /// \return Internal format matching the filename (-1 if no match)
     ///
     ////////////////////////////////////////////////////////////
-    virtual bool OpenRead(const char* Data, std::size_t SizeInBytes, std::size_t& NbSamples, unsigned int& ChannelsCount, unsigned int& SampleRate);
+    static int getFormatFromFilename(const std::string& filename);
 
     ////////////////////////////////////////////////////////////
-    /// Open the sound file for writing
-    ///
-    /// \param Filename :      Path of sound file to write
-    /// \param ChannelsCount : Number of channels in the sound
-    /// \param SampleRate :    Sample rate of the sound
-    ///
-    /// \return True if the file was successfully opened
+    /// \brief Data and callbacks for opening from memory
     ///
     ////////////////////////////////////////////////////////////
-    virtual bool OpenWrite(const std::string& Filename, unsigned int ChannelsCount, unsigned int SampleRate);
+    struct Memory
+    {
+        const char* begin;
+        const char* current;
+        sf_count_t  size;
+
+        static sf_count_t getLength(void* user);
+        static sf_count_t read(void* ptr, sf_count_t count, void* user);
+        static sf_count_t seek(sf_count_t offset, int whence, void* user);
+        static sf_count_t tell(void* user);
+    };
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Data and callbacks for opening from stream
+    ///
+    ////////////////////////////////////////////////////////////
+    struct Stream
+    {
+        InputStream* source;
+        Int64 size;
+
+        static sf_count_t getLength(void* user);
+        static sf_count_t read(void* ptr, sf_count_t count, void* user);
+        static sf_count_t seek(sf_count_t offset, int whence, void* user);
+        static sf_count_t tell(void* user);
+    };
 
     ////////////////////////////////////////////////////////////
     // Member data
     ////////////////////////////////////////////////////////////
-    std::size_t  myNbSamples;     ///< Total number of samples in the file
-    unsigned int myChannelsCount; ///< Number of channels used by the sound
-    unsigned int mySampleRate;    ///< Number of samples per second
-    std::string  myFilename;      ///< Path of the file (valid if loaded from a file)
-    const char*  myData;          ///< Pointer to the file in memory (valid if loaded from memory)
-    std::size_t  mySize;          ///< Size of the file in memory  (valid if loaded from memory)
+    SNDFILE*     m_file;         ///< File descriptor
+    Memory       m_memory;       ///< Memory reading info
+    Stream       m_stream;       ///< Stream reading info
+    std::size_t  m_sampleCount;  ///< Total number of samples in the file
+    unsigned int m_channelCount; ///< Number of channels used by the sound
+    unsigned int m_sampleRate;   ///< Number of samples per second
+    #ifdef SFML_SYSTEM_ANDROID
+    void*        m_resourceStream; ///< Asset file streamer (if loaded from file)
+    #endif
 };
 
 } // namespace priv

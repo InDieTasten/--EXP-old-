@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2009 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2014 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -30,8 +30,8 @@
 ////////////////////////////////////////////////////////////
 #include <SFML/Window/Event.hpp>
 #include <SFML/Window/WindowImpl.hpp>
+#include <SFML/System/String.hpp>
 #include <windows.h>
-#include <string>
 
 
 namespace sf
@@ -39,213 +39,204 @@ namespace sf
 namespace priv
 {
 ////////////////////////////////////////////////////////////
-/// WindowImplWin32 is the Win32 implementation of WindowImpl
+/// \brief Windows implementation of WindowImpl
+///
 ////////////////////////////////////////////////////////////
 class WindowImplWin32 : public WindowImpl
 {
 public :
 
     ////////////////////////////////////////////////////////////
-    /// Default constructor
-    /// (creates a dummy window to provide a valid OpenGL context)
+    /// \brief Construct the window implementation from an existing control
+    ///
+    /// \param handle Platform-specific handle of the control
     ///
     ////////////////////////////////////////////////////////////
-    WindowImplWin32();
+    WindowImplWin32(WindowHandle handle);
 
     ////////////////////////////////////////////////////////////
-    /// Construct the window implementation from an existing control
+    /// \brief Create the window implementation
     ///
-    /// \param Handle : Platform-specific handle of the control
-    /// \param Params : Creation settings
+    /// \param mode  Video mode to use
+    /// \param title Title of the window
+    /// \param style Window style
+    /// \param settings Additional settings for the underlying OpenGL context
     ///
     ////////////////////////////////////////////////////////////
-    WindowImplWin32(WindowHandle Handle, WindowSettings& Params);
+    WindowImplWin32(VideoMode mode, const String& title, Uint32 style, const ContextSettings& settings);
 
     ////////////////////////////////////////////////////////////
-    /// Create the window implementation
-    ///
-    /// \param Mode :        Video mode to use
-    /// \param Title :       Title of the window
-    /// \param WindowStyle : Window style
-    /// \param Params :      Creation settings
-    ///
-    ////////////////////////////////////////////////////////////
-    WindowImplWin32(VideoMode Mode, const std::string& Title, unsigned long WindowStyle, WindowSettings& Params);
-
-    ////////////////////////////////////////////////////////////
-    /// Destructor
+    /// \brief Destructor
     ///
     ////////////////////////////////////////////////////////////
     ~WindowImplWin32();
 
     ////////////////////////////////////////////////////////////
-    /// Check if there's an active context on the current thread
+    /// \brief Get the OS-specific handle of the window
     ///
-    /// \return True if there's a context bound to the current thread
+    /// \return Handle of the window
     ///
     ////////////////////////////////////////////////////////////
-    static bool IsContextActive();
+    virtual WindowHandle getSystemHandle() const;
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Get the position of the window
+    ///
+    /// \return Position of the window, in pixels
+    ///
+    ////////////////////////////////////////////////////////////
+    virtual Vector2i getPosition() const;
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Change the position of the window on screen
+    ///
+    /// \param position New position of the window, in pixels
+    ///
+    ////////////////////////////////////////////////////////////
+    virtual void setPosition(const Vector2i& position);
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Get the client size of the window
+    ///
+    /// \return Size of the window, in pixels
+    ///
+    ////////////////////////////////////////////////////////////
+    virtual Vector2u getSize() const;
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Change the size of the rendering region of the window
+    ///
+    /// \param size New size, in pixels
+    ///
+    ////////////////////////////////////////////////////////////
+    virtual void setSize(const Vector2u& size);
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Change the title of the window
+    ///
+    /// \param title New title
+    ///
+    ////////////////////////////////////////////////////////////
+    virtual void setTitle(const String& title);
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Change the window's icon
+    ///
+    /// \param width  Icon's width, in pixels
+    /// \param height Icon's height, in pixels
+    /// \param pixels Pointer to the pixels in memory, format must be RGBA 32 bits
+    ///
+    ////////////////////////////////////////////////////////////
+    virtual void setIcon(unsigned int width, unsigned int height, const Uint8* pixels);
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Show or hide the window
+    ///
+    /// \param visible True to show, false to hide
+    ///
+    ////////////////////////////////////////////////////////////
+    virtual void setVisible(bool visible);
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Show or hide the mouse cursor
+    ///
+    /// \param visible True to show, false to hide
+    ///
+    ////////////////////////////////////////////////////////////
+    virtual void setMouseCursorVisible(bool visible);
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Enable or disable automatic key-repeat
+    ///
+    /// \param enabled True to enable, false to disable
+    ///
+    ////////////////////////////////////////////////////////////
+    virtual void setKeyRepeatEnabled(bool enabled);
+
+protected:
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Process incoming events from the operating system
+    ///
+    ////////////////////////////////////////////////////////////
+    virtual void processEvents();
 
 private :
-
-    ////////////////////////////////////////////////////////////
-    /// /see WindowImpl::ProcessEvents
-    ///
-    ////////////////////////////////////////////////////////////
-    virtual void ProcessEvents();
-
-    ////////////////////////////////////////////////////////////
-    /// /see WindowImpl::Display
-    ///
-    ////////////////////////////////////////////////////////////
-    virtual void Display();
-
-    ////////////////////////////////////////////////////////////
-    /// /see WindowImpl::SetActive
-    ///
-    ////////////////////////////////////////////////////////////
-    virtual void SetActive(bool Active = true) const;
-
-    ////////////////////////////////////////////////////////////
-    /// /see WindowImpl::UseVerticalSync
-    ///
-    ////////////////////////////////////////////////////////////
-    virtual void UseVerticalSync(bool Enabled);
-
-    ////////////////////////////////////////////////////////////
-    /// /see WindowImpl::ShowMouseCursor
-    ///
-    ////////////////////////////////////////////////////////////
-    virtual void ShowMouseCursor(bool Show);
-
-    ////////////////////////////////////////////////////////////
-    /// /see WindowImpl::SetCursorPosition
-    ///
-    ////////////////////////////////////////////////////////////
-    virtual void SetCursorPosition(unsigned int Left, unsigned int Top);
-
-    ////////////////////////////////////////////////////////////
-    /// /see WindowImpl::SetPosition
-    ///
-    ////////////////////////////////////////////////////////////
-    virtual void SetPosition(int Left, int Top);
-
-    ////////////////////////////////////////////////////////////
-    /// /see WindowImpl::SetSize
-    ///
-    ////////////////////////////////////////////////////////////
-    virtual void SetSize(unsigned int Width, unsigned int Height);
-
-    ////////////////////////////////////////////////////////////
-    /// /see WindowImpl::Show
-    ///
-    ////////////////////////////////////////////////////////////
-    virtual void Show(bool State);
-
-    ////////////////////////////////////////////////////////////
-    /// /see WindowImpl::EnableKeyRepeat
-    ///
-    ////////////////////////////////////////////////////////////
-    virtual void EnableKeyRepeat(bool Enabled);
-
-    ////////////////////////////////////////////////////////////
-    /// /see WindowImpl::SetIcon
-    ///
-    ////////////////////////////////////////////////////////////
-    virtual void SetIcon(unsigned int Width, unsigned int Height, const Uint8* Pixels);
 
     ////////////////////////////////////////////////////////////
     /// Register the window class
     ///
     ////////////////////////////////////////////////////////////
-    void RegisterWindowClass();
+    void registerWindowClass();
 
     ////////////////////////////////////////////////////////////
-    /// Switch to fullscreen mode
+    /// \brief Switch to fullscreen mode
     ///
-    /// \param Mode : video mode to switch to
+    /// \param mode Video mode to switch to
     ///
     ////////////////////////////////////////////////////////////
-    void SwitchToFullscreen(const VideoMode& Mode);
+    void switchToFullscreen(const VideoMode& mode);
 
     ////////////////////////////////////////////////////////////
-    /// Construct the context from graphics settings
-    ///
-    /// \param Mode :   Video mode
-    /// \param Params : Creation settings
+    /// \brief Free all the graphical resources attached to the window
     ///
     ////////////////////////////////////////////////////////////
-    void CreateContext(const VideoMode& Mode, WindowSettings& Params);
+    void cleanup();
 
     ////////////////////////////////////////////////////////////
-    /// Free all the graphical resources attached to the window
+    /// \brief Process a Win32 event
+    ///
+    /// \param message Message to process
+    /// \param wParam  First parameter of the event
+    /// \param lParam  Second parameter of the event
     ///
     ////////////////////////////////////////////////////////////
-    void Cleanup();
+    void processEvent(UINT message, WPARAM wParam, LPARAM lParam);
 
     ////////////////////////////////////////////////////////////
-    /// Process a Win32 event
+    /// \brief Enables or disables tracking for the mouse cursor leaving the window
     ///
-    /// \param Message : Message to process
-    /// \param WParam :  First parameter of the event
-    /// \param LParam :  Second parameter of the event
+    /// \param track True to enable, false to disable
     ///
     ////////////////////////////////////////////////////////////
-    void ProcessEvent(UINT Message, WPARAM WParam, LPARAM LParam);
+    void setTracking(bool track);
 
     ////////////////////////////////////////////////////////////
-    /// Convert a Win32 virtual key code to a SFML key code
+    /// \brief Convert a Win32 virtual key code to a SFML key code
     ///
-    /// \param VirtualKey : Virtual key code to convert
-    /// \param Flags :      Additional flags
+    /// \param key   Virtual key code to convert
+    /// \param flags Additional flags
     ///
-    /// \return SFML key code corresponding to VirtualKey
+    /// \return SFML key code corresponding to the key
     ///
     ////////////////////////////////////////////////////////////
-    static Key::Code VirtualKeyCodeToSF(WPARAM VirtualKey, LPARAM Flags);
+    static Keyboard::Key virtualKeyCodeToSF(WPARAM key, LPARAM flags);
 
     ////////////////////////////////////////////////////////////
-    /// Check if the current version of the OS supports unicode
-    /// messages and functions ; Windows 95/98/Me may not support
-    /// it, whereas Windows NT/2000/XP/Vista will
+    /// \brief Function called whenever one of our windows receives a message
     ///
-    /// \return True if the OS supports unicode
+    /// \param handle  Win32 handle of the window
+    /// \param message Message received
+    /// \param wParam  First parameter of the message
+    /// \param lParam  Second parameter of the message
     ///
-    ////////////////////////////////////////////////////////////
-    static bool HasUnicodeSupport();
-
-    ////////////////////////////////////////////////////////////
-    /// Function called whenever one of our windows receives a message
-    ///
-    /// \param Handle :  Win32 handle of the window
-    /// \param Message : Message received
-    /// \param WParam :  First parameter of the message
-    /// \param LParam :  Second parameter of the message
-    ///
-    /// \return Something...
+    /// \return True to discard the event after it has been processed
     ///
     ////////////////////////////////////////////////////////////
-    static LRESULT CALLBACK GlobalOnEvent(HWND Handle, UINT Message, WPARAM WParam, LPARAM LParam);
-
-    ////////////////////////////////////////////////////////////
-    // Static member data
-    ////////////////////////////////////////////////////////////
-    static unsigned int     ourWindowCount;      ///< Number of windows that we own
-    static const char*      ourClassNameA;       ///< Win32 window class name (ANSI version)
-    static const wchar_t*   ourClassNameW;       ///< Win32 window class name (unicode version)
-    static WindowImplWin32* ourFullscreenWindow; ///< Window currently in fullscreen
+    static LRESULT CALLBACK globalOnEvent(HWND handle, UINT message, WPARAM wParam, LPARAM lParam);
 
     ////////////////////////////////////////////////////////////
     // Member data
     ////////////////////////////////////////////////////////////
-    HWND          myHandle;           ///< Win32 handle of the window
-    long          myCallback;         ///< Stores the original event callback function of the control
-    HCURSOR       myCursor;           ///< The system cursor to display into the window
-    HICON         myIcon;             ///< Custom icon assigned to the window
-    bool          myKeyRepeatEnabled; ///< Automatic key-repeat state for keydown events
-    bool          myIsCursorIn;       ///< Is the mouse cursor in the window's area ?
-    HDC           myDeviceContext;    ///< HDC associated to the window
-    HGLRC         myGLContext;        ///< OpenGL rendering context associated to the HDC
+    HWND     m_handle;           ///< Win32 handle of the window
+    LONG_PTR m_callback;         ///< Stores the original event callback function of the control
+    HCURSOR  m_cursor;           ///< The system cursor to display into the window
+    HICON    m_icon;             ///< Custom icon assigned to the window
+    bool     m_keyRepeatEnabled; ///< Automatic key-repeat state for keydown events
+    Vector2u m_lastSize;         ///< The last handled size of the window
+    bool     m_resizing;         ///< Is the window being resized?
+    Uint16   m_surrogate;        ///< First half of the surrogate pair, in case we're receiving a Unicode character in two events
+    bool     m_mouseInside;      ///< Mouse is inside the window?
 };
 
 } // namespace priv

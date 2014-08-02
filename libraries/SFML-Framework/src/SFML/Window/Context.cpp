@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2009 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2014 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -26,62 +26,38 @@
 // Headers
 ////////////////////////////////////////////////////////////
 #include <SFML/Window/Context.hpp>
-#include <SFML/Window/WindowImpl.hpp>
-
-
-namespace
-{
-    // Make sure the dummy context is created at global startup
-    sf::Context& Dummy = sf::Context::GetGlobal();
-}
+#include <SFML/Window/GlContext.hpp>
 
 
 namespace sf
 {
 ////////////////////////////////////////////////////////////
-/// Default constructor, create the context
-////////////////////////////////////////////////////////////
 Context::Context()
 {
-    myDummyWindow = priv::WindowImpl::New();
+    m_context = priv::GlContext::create();
+    setActive(true);
 }
 
 
-////////////////////////////////////////////////////////////
-/// Destructor, destroy the context
 ////////////////////////////////////////////////////////////
 Context::~Context()
 {
-    delete myDummyWindow;
+    delete m_context;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Activate or deactivate the context
-////////////////////////////////////////////////////////////
-void Context::SetActive(bool Active)
+bool Context::setActive(bool active)
 {
-    myDummyWindow->SetActive(Active);
+    return m_context->setActive(active);
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Check if there's a context bound to the current thread
-////////////////////////////////////////////////////////////
-bool Context::IsContextActive()
+Context::Context(const ContextSettings& settings, unsigned int width, unsigned int height)
 {
-    return priv::WindowImpl::IsContextActive();
-}
-
-
-////////////////////////////////////////////////////////////
-/// Get the global context
-////////////////////////////////////////////////////////////
-Context& Context::GetGlobal()
-{
-    static Context* GlobalContext = new Context; // Never deleted, on purpose
-
-    return *GlobalContext;
+    m_context = priv::GlContext::create(settings, width, height);
+    setActive(true);
 }
 
 } // namespace sf

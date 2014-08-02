@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2009 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2014 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -26,143 +26,98 @@
 // Headers
 ////////////////////////////////////////////////////////////
 #include <SFML/Audio/AudioDevice.hpp>
-#include <SFML/Audio/AudioResource.hpp>
+#include <SFML/Audio/ALCheck.hpp>
 #include <SFML/Audio/Listener.hpp>
-#include <algorithm>
-#include <iostream>
+#include <SFML/System/Err.hpp>
 
+
+namespace 
+{
+    ALCdevice*  audioDevice  = NULL;
+    ALCcontext* audioContext = NULL;
+}
 
 namespace sf
 {
 namespace priv
 {
 ////////////////////////////////////////////////////////////
-// Static member data
-////////////////////////////////////////////////////////////
-AudioDevice* AudioDevice::ourInstance;
-
-
-////////////////////////////////////////////////////////////
-/// Default constructor
-////////////////////////////////////////////////////////////
-AudioDevice::AudioDevice() :
-myRefCount(0)
+AudioDevice::AudioDevice()
 {
     // Create the device
-    myDevice = alcOpenDevice(NULL);
+    audioDevice = alcOpenDevice(NULL);
 
-    if (myDevice)
+    if (audioDevice)
     {
         // Create the context
-        myContext = alcCreateContext(myDevice, NULL);
+        audioContext = alcCreateContext(audioDevice, NULL);
 
-        if (myContext)
+        if (audioContext)
         {
             // Set the context as the current one (we'll only need one)
-            alcMakeContextCurrent(myContext);
-
-            // Initialize the listener, located at the origin and looking along the Z axis
-            Listener::SetPosition(0.f, 0.f, 0.f);
-            Listener::SetTarget(0.f, 0.f, -1.f);
+            alcMakeContextCurrent(audioContext);
         }
         else
         {
-            std::cerr << "Failed to create the audio context" << std::endl;
+            err() << "Failed to create the audio context" << std::endl;
         }
     }
     else
     {
-        std::cerr << "Failed to open the audio device" << std::endl;
+        err() << "Failed to open the audio device" << std::endl;
     }
 }
 
 
-////////////////////////////////////////////////////////////
-/// Destructor
 ////////////////////////////////////////////////////////////
 AudioDevice::~AudioDevice()
 {
     // Destroy the context
     alcMakeContextCurrent(NULL);
-    if (myContext)
-        alcDestroyContext(myContext);
-    
+    if (audioContext)
+        alcDestroyContext(audioContext);
+
     // Destroy the device
-    if (myDevice)
-        alcCloseDevice(myDevice);
+    if (audioDevice)
+        alcCloseDevice(audioDevice);
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Get the unique instance of the class
-////////////////////////////////////////////////////////////
-AudioDevice& AudioDevice::GetInstance()
+bool AudioDevice::isExtensionSupported(const std::string& extension)
 {
-    // Create the audio device if it doesn't exist
-    if (!ourInstance)
-        ourInstance = new AudioDevice;
+    ensureALInit();
 
-    return *ourInstance;
+    if ((extension.length() > 2) && (extension.substr(0, 3) == "ALC"))
+        return alcIsExtensionPresent(audioDevice, extension.c_str()) != AL_FALSE;
+    else
+        return alIsExtensionPresent(extension.c_str()) != AL_FALSE;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Add a reference to the audio device
-////////////////////////////////////////////////////////////
-void AudioDevice::AddReference()
+int AudioDevice::getFormatFromChannelCount(unsigned int channelCount)
 {
-    // Create the audio device if it doesn't exist
-    if (!ourInstance)
-        ourInstance = new AudioDevice;
+    ensureALInit();
 
-    // Increase the references count
-    ourInstance->myRefCount++;
-}
-
-
-////////////////////////////////////////////////////////////
-/// Remove a reference to the audio device
-////////////////////////////////////////////////////////////
-void AudioDevice::RemoveReference()
-{
-    // Decrease the references count
-    ourInstance->myRefCount--;
-
-    // Destroy the audio device if the references count reaches 0
-    if (ourInstance->myRefCount == 0)
-    {
-        delete ourInstance;
-        ourInstance = NULL;
-    }
-}
-
-
-////////////////////////////////////////////////////////////
-/// Get the OpenAL audio device
-////////////////////////////////////////////////////////////
-ALCdevice* AudioDevice::GetDevice() const
-{
-    return myDevice;
-}
-
-
-////////////////////////////////////////////////////////////
-/// Get the OpenAL format that matches the given number of channels
-////////////////////////////////////////////////////////////
-ALenum AudioDevice::GetFormatFromChannelsCount(unsigned int ChannelsCount) const
-{
     // Find the good format according to the number of channels
-    switch (ChannelsCount)
+    int format = 0;
+    switch (channelCount)
     {
-        case 1 : return AL_FORMAT_MONO16;
-        case 2 : return AL_FORMAT_STEREO16;
-        case 4 : return alGetEnumValue("AL_FORMAT_QUAD16");
-        case 6 : return alGetEnumValue("AL_FORMAT_51CHN16");
-        case 7 : return alGetEnumValue("AL_FORMAT_61CHN16");
-        case 8 : return alGetEnumValue("AL_FORMAT_71CHN16");
+        case 1  : format = AL_FORMAT_MONO16;                    break;
+        case 2  : format = AL_FORMAT_STEREO16;                  break;
+        case 4  : format = alGetEnumValue("AL_FORMAT_QUAD16");  break;
+        case 6  : format = alGetEnumValue("AL_FORMAT_51CHN16"); break;
+        case 7  : format = alGetEnumValue("AL_FORMAT_61CHN16"); break;
+        case 8  : format = alGetEnumValue("AL_FORMAT_71CHN16"); break;
+        default : format = 0;                                   break;
     }
 
-    return 0;
+    // Fixes a bug on OS X
+    if (format == -1)
+        format = 0;
+
+    return format;
 }
 
 } // namespace priv

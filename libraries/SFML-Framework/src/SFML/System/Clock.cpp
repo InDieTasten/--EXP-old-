@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2009 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2014 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -26,35 +26,38 @@
 // Headers
 ////////////////////////////////////////////////////////////
 #include <SFML/System/Clock.hpp>
-#include <SFML/System/Platform.hpp>
+
+#if defined(SFML_SYSTEM_WINDOWS)
+    #include <SFML/System/Win32/ClockImpl.hpp>
+#else
+    #include <SFML/System/Unix/ClockImpl.hpp>
+#endif
 
 
 namespace sf
 {
 ////////////////////////////////////////////////////////////
-/// Default constructor
-////////////////////////////////////////////////////////////
-Clock::Clock()
+Clock::Clock() :
+m_startTime(priv::ClockImpl::getCurrentTime())
 {
-    Reset();
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Get the time elapsed since last reset
-////////////////////////////////////////////////////////////
-float Clock::GetElapsedTime() const
+Time Clock::getElapsedTime() const
 {
-    return static_cast<float>(sf::priv::Platform::GetSystemTime() - myStartTime);
+    return priv::ClockImpl::getCurrentTime() - m_startTime;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Restart the timer
-////////////////////////////////////////////////////////////
-void Clock::Reset()
+Time Clock::restart()
 {
-    myStartTime = sf::priv::Platform::GetSystemTime();
+    Time now = priv::ClockImpl::getCurrentTime();
+    Time elapsed = now - m_startTime;
+    m_startTime = now;
+
+    return elapsed;
 }
 
 } // namespace sf

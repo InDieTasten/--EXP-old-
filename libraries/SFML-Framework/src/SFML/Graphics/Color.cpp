@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2009 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2014 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -42,10 +42,9 @@ const Color Color::Blue(0, 0, 255);
 const Color Color::Yellow(255, 255, 0);
 const Color Color::Magenta(255, 0, 255);
 const Color Color::Cyan(0, 255, 255);
+const Color Color::Transparent(0, 0, 0, 0);
 
 
-////////////////////////////////////////////////////////////
-/// Default constructor
 ////////////////////////////////////////////////////////////
 Color::Color() :
 r(0),
@@ -58,85 +57,81 @@ a(255)
 
 
 ////////////////////////////////////////////////////////////
-/// Construct the color from its 4 RGBA components
-////////////////////////////////////////////////////////////
-Color::Color(Uint8 R, Uint8 G, Uint8 B, Uint8 A) :
-r(R),
-g(G),
-b(B),
-a(A)
+Color::Color(Uint8 red, Uint8 green, Uint8 blue, Uint8 alpha) :
+r(red),
+g(green),
+b(blue),
+a(alpha)
 {
 
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Operator += overload to add a color
-////////////////////////////////////////////////////////////
-Color& Color::operator +=(const Color& Other)
+bool operator ==(const Color& left, const Color& right)
 {
-    r = static_cast<Uint8>(std::min(r + Other.r, 255));
-    g = static_cast<Uint8>(std::min(g + Other.g, 255));
-    b = static_cast<Uint8>(std::min(b + Other.b, 255));
-    a = static_cast<Uint8>(std::min(a + Other.a, 255));
-
-    return *this;
+    return (left.r == right.r) &&
+           (left.g == right.g) &&
+           (left.b == right.b) &&
+           (left.a == right.a);
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Operator *= overload to modulate a color
-////////////////////////////////////////////////////////////
-Color& Color::operator *=(const Color& Other)
+bool operator !=(const Color& left, const Color& right)
 {
-    r = static_cast<Uint8>(r * Other.r / 255);
-    g = static_cast<Uint8>(g * Other.g / 255);
-    b = static_cast<Uint8>(b * Other.b / 255);
-    a = static_cast<Uint8>(a * Other.a / 255);
-
-    return *this;
+    return !(left == right);
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Compare two colors (for equality)
-////////////////////////////////////////////////////////////
-bool Color::operator ==(const Color& Other) const
+Color operator +(const Color& left, const Color& right)
 {
-    return (r == Other.r) && (g == Other.g) && (b == Other.b) && (a == Other.a);
+    return Color(Uint8(std::min(int(left.r) + right.r, 255)),
+                 Uint8(std::min(int(left.g) + right.g, 255)),
+                 Uint8(std::min(int(left.b) + right.b, 255)),
+                 Uint8(std::min(int(left.a) + right.a, 255)));
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Compare two colors (for difference)
-////////////////////////////////////////////////////////////
-bool Color::operator !=(const Color& Other) const
+Color operator -(const Color& left, const Color& right)
 {
-    return (r != Other.r) || (g != Other.g) || (b != Other.b) || (a != Other.a);
+    return Color(Uint8(std::max(int(left.r) - right.r, 0)),
+                 Uint8(std::max(int(left.g) - right.g, 0)),
+                 Uint8(std::max(int(left.b) - right.b, 0)),
+                 Uint8(std::max(int(left.a) - right.a, 0)));
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Operator + overload to add two colors
-////////////////////////////////////////////////////////////
-Color operator +(const Color& Color1, const Color& Color2)
+Color operator *(const Color& left, const Color& right)
 {
-    Color c = Color1;
-    c += Color2;
-
-    return c;
+    return Color(Uint8(int(left.r) * right.r / 255),
+                 Uint8(int(left.g) * right.g / 255),
+                 Uint8(int(left.b) * right.b / 255),
+                 Uint8(int(left.a) * right.a / 255));
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Operator * overload to modulate two colors
-////////////////////////////////////////////////////////////
-Color operator *(const Color& Color1, const Color& Color2)
+Color& operator +=(Color& left, const Color& right)
 {
-    Color c = Color1;
-    c *= Color2;
+    return left = left + right;
+}
 
-    return c;
+
+////////////////////////////////////////////////////////////
+Color& operator -=(Color& left, const Color& right)
+{
+    return left = left - right;
+}
+
+
+////////////////////////////////////////////////////////////
+Color& operator *=(Color& left, const Color& right)
+{
+    return left = left * right;
 }
 
 } // namespace sf

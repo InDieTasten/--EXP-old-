@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2009 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2014 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -26,128 +26,126 @@
 // Headers
 ////////////////////////////////////////////////////////////
 #include <SFML/Audio/Music.hpp>
-#include <SFML/Audio/OpenAL.hpp>
+#include <SFML/Audio/ALCheck.hpp>
 #include <SFML/Audio/SoundFile.hpp>
+#include <SFML/System/Lock.hpp>
+#include <SFML/System/Err.hpp>
 #include <fstream>
-#include <iostream>
 
 
 namespace sf
 {
 ////////////////////////////////////////////////////////////
-/// Construct the music with a buffer size
-////////////////////////////////////////////////////////////
-Music::Music(std::size_t BufferSize) :
-myFile    (NULL),
-myDuration(0.f),
-mySamples (BufferSize)
+Music::Music() :
+m_file    (new priv::SoundFile),
+m_duration()
 {
 
 }
 
 
-////////////////////////////////////////////////////////////
-/// Destructor
 ////////////////////////////////////////////////////////////
 Music::~Music()
 {
-    // We must stop before destroying the file :)
-    Stop();
+    // We must stop before destroying the file
+    stop();
 
-    delete myFile;
+    delete m_file;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Open a music file (doesn't play it -- call Play() for that)
-////////////////////////////////////////////////////////////
-bool Music::OpenFromFile(const std::string& Filename)
+bool Music::openFromFile(const std::string& filename)
 {
     // First stop the music if it was already running
-    Stop();
+    stop();
 
-    // Create the sound file implementation, and open it in read mode
-    delete myFile;
-    myFile = priv::SoundFile::CreateRead(Filename);
-    if (!myFile)
-    {
-        std::cerr << "Failed to open \"" << Filename << "\" for reading" << std::endl;
+    // Open the underlying sound file
+    if (!m_file->openRead(filename))
         return false;
-    }
 
-    // Compute the duration
-    myDuration = static_cast<float>(myFile->GetSamplesCount()) / myFile->GetSampleRate() / myFile->GetChannelsCount();
-
-    // Initialize the stream
-    Initialize(myFile->GetChannelsCount(), myFile->GetSampleRate());
+    // Perform common initializations
+    initialize();
 
     return true;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Open a music file from memory (doesn't play it -- call Play() for that)
-////////////////////////////////////////////////////////////
-bool Music::OpenFromMemory(const char* Data, std::size_t SizeInBytes)
+bool Music::openFromMemory(const void* data, std::size_t sizeInBytes)
 {
     // First stop the music if it was already running
-    Stop();
+    stop();
 
-    // Create the sound file implementation, and open it in read mode
-    delete myFile;
-    myFile = priv::SoundFile::CreateRead(Data, SizeInBytes);
-    if (!myFile)
-    {
-        std::cerr << "Failed to open music from memory for reading" << std::endl;
+    // Open the underlying sound file
+    if (!m_file->openRead(data, sizeInBytes))
         return false;
-    }
 
-    // Compute the duration
-    myDuration = static_cast<float>(myFile->GetSamplesCount()) / myFile->GetSampleRate();
-
-    // Initialize the stream
-    Initialize(myFile->GetChannelsCount(), myFile->GetSampleRate());
+    // Perform common initializations
+    initialize();
 
     return true;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// /see SoundStream::OnStart
-////////////////////////////////////////////////////////////
-bool Music::OnStart()
+bool Music::openFromStream(InputStream& stream)
 {
-    return myFile && myFile->Restart();
-}
+    // First stop the music if it was already running
+    stop();
 
-
-////////////////////////////////////////////////////////////
-/// /see SoundStream::OnGetData
-////////////////////////////////////////////////////////////
-bool Music::OnGetData(SoundStream::Chunk& Data)
-{
-    if (myFile)
-    {
-        // Fill the chunk parameters
-        Data.Samples   = &mySamples[0];
-        Data.NbSamples = myFile->Read(&mySamples[0], mySamples.size());
-
-        // Check if we have reached the end of the audio file
-        return Data.NbSamples == mySamples.size();
-    }
-    else
-    {
+    // Open the underlying sound file
+    if (!m_file->openRead(stream))
         return false;
-    }
+
+    // Perform common initializations
+    initialize();
+
+    return true;
 }
 
 
 ////////////////////////////////////////////////////////////
-/// Get the sound duration
-////////////////////////////////////////////////////////////
-float Music::GetDuration() const
+Time Music::getDuration() const
 {
-    return myDuration;
+    return m_duration;
+}
+
+
+////////////////////////////////////////////////////////////
+bool Music::onGetData(SoundStream::Chunk& data)
+{
+    Lock lock(m_mutex);
+
+    // Fill the chunk parameters
+    data.samples     = &m_samples[0];
+    data.sampleCount = m_file->read(&m_samples[0], m_samples.size());
+
+    // Check if we have reached the end of the audio file
+    return data.sampleCount == m_samples.size();
+}
+
+
+////////////////////////////////////////////////////////////
+void Music::onSeek(Time timeOffset)
+{
+    Lock lock(m_mutex);
+
+    m_file->seek(timeOffset);
+}
+
+
+////////////////////////////////////////////////////////////
+void Music::initialize()
+{
+    // Compute the music duration
+    m_duration = seconds(static_cast<float>(m_file->getSampleCount()) / m_file->getSampleRate() / m_file->getChannelCount());
+
+    // Resize the internal buffer so that it can contain 1 second of audio samples
+    m_samples.resize(m_file->getSampleRate() * m_file->getChannelCount());
+
+    // Initialize the stream
+    SoundStream::initialize(m_file->getChannelCount(), m_file->getSampleRate());
 }
 
 } // namespace sf
