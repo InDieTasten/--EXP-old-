@@ -1,0 +1,93 @@
+# depslib dependency file v1.0
+1264608024 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\libraries\sfml-framework\src\sfml\system\clock.cpp
+	<SFML/System/Clock.hpp>
+	<SFML/System/Platform.hpp>
+
+1264607636 c:\users\indie\bibliotheken\documents\github\--untitledgame--\libraries\sfml-framework\include\sfml\system\clock.hpp
+	<SFML/Config.hpp>
+
+1264607642 c:\users\indie\bibliotheken\documents\github\--untitledgame--\libraries\sfml-framework\include\sfml\config.hpp
+	<climits>
+
+1264608024 c:\users\indie\bibliotheken\documents\github\--untitledgame--\libraries\sfml-framework\src\sfml\system\platform.hpp
+	<SFML/Config.hpp>
+	<SFML/System/Win32/Platform.hpp>
+	<SFML/System/Unix/Platform.hpp>
+
+1264608020 c:\users\indie\bibliotheken\documents\github\--untitledgame--\libraries\sfml-framework\src\sfml\system\win32\platform.hpp
+	<SFML/Config.hpp>
+	<vector>
+
+1264608020 c:\users\indie\bibliotheken\documents\github\--untitledgame--\libraries\sfml-framework\src\sfml\system\unix\platform.hpp
+	<SFML/Config.hpp>
+	<vector>
+
+1264608024 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\libraries\sfml-framework\src\sfml\system\lock.cpp
+	<SFML/System/Lock.hpp>
+	<SFML/System/Mutex.hpp>
+
+1264607636 c:\users\indie\bibliotheken\documents\github\--untitledgame--\libraries\sfml-framework\include\sfml\system\lock.hpp
+	<SFML/System/NonCopyable.hpp>
+
+1264607636 c:\users\indie\bibliotheken\documents\github\--untitledgame--\libraries\sfml-framework\include\sfml\system\noncopyable.hpp
+	<SFML/Config.hpp>
+
+1264607636 c:\users\indie\bibliotheken\documents\github\--untitledgame--\libraries\sfml-framework\include\sfml\system\mutex.hpp
+	<SFML/Config.hpp>
+	<SFML/System/Win32/Mutex.hpp>
+	<SFML/System/Unix/Mutex.hpp>
+
+1264607636 c:\users\indie\bibliotheken\documents\github\--untitledgame--\libraries\sfml-framework\include\sfml\system\win32\mutex.hpp
+	<SFML/System/NonCopyable.hpp>
+	<windows.h>
+
+1264607634 c:\users\indie\bibliotheken\documents\github\--untitledgame--\libraries\sfml-framework\include\sfml\system\unix\mutex.hpp
+	<SFML/System/NonCopyable.hpp>
+	<pthread.h>
+
+1268925302 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\libraries\sfml-framework\src\sfml\system\randomizer.cpp
+	<SFML/System/Randomizer.hpp>
+	<stdlib.h>
+	<time.h>
+
+1264607636 c:\users\indie\bibliotheken\documents\github\--untitledgame--\libraries\sfml-framework\include\sfml\system\randomizer.hpp
+	<SFML/Config.hpp>
+
+1264608024 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\libraries\sfml-framework\src\sfml\system\sleep.cpp
+	<SFML/System/Sleep.hpp>
+	<SFML/System/Platform.hpp>
+
+1264607636 c:\users\indie\bibliotheken\documents\github\--untitledgame--\libraries\sfml-framework\include\sfml\system\sleep.hpp
+	<SFML/Config.hpp>
+
+1264608024 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\libraries\sfml-framework\src\sfml\system\unicode.cpp
+	<SFML/System/Unicode.hpp>
+	<stdexcept>
+	<string.h>
+
+1264607636 c:\users\indie\bibliotheken\documents\github\--untitledgame--\libraries\sfml-framework\include\sfml\system\unicode.hpp
+	<SFML/Config.hpp>
+	<iterator>
+	<locale>
+	<string>
+	<stdlib.h>
+	<SFML/System/Unicode.inl>
+
+1264607636 c:\users\indie\bibliotheken\documents\github\--untitledgame--\libraries\sfml-framework\include\sfml\system\unicode.inl
+
+1264608020 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\libraries\sfml-framework\src\sfml\system\win32\mutex.cpp
+	<SFML/System/Win32/Mutex.hpp>
+
+1264608020 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\libraries\sfml-framework\src\sfml\system\win32\platform.cpp
+	<SFML/System/Win32/Platform.hpp>
+	<windows.h>
+
+1268925296 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\libraries\sfml-framework\src\sfml\system\win32\thread.cpp
+	<SFML/System/Win32/Thread.hpp>
+	<process.h>
+	<iostream>
+
+1264607636 c:\users\indie\bibliotheken\documents\github\--untitledgame--\libraries\sfml-framework\include\sfml\system\win32\thread.hpp
+	<SFML/System/NonCopyable.hpp>
+	<windows.h>
+

@@ -28,7 +28,7 @@
 ////////////////////////////////////////////////////////////
 template <typename T>
 ResourcePtr<T>::ResourcePtr() :
-myResource(NULL)
+myResource(__null)
 {
 
 }
@@ -138,6 +138,7 @@ const T* ResourcePtr<T>::operator ->() const
 }
 
 
+
 ////////////////////////////////////////////////////////////
 /// Function called when the observed resource is about to be
 /// destroyed
@@ -145,5 +146,5 @@ const T* ResourcePtr<T>::operator ->() const
 template <typename T>
 void ResourcePtr<T>::OnResourceDestroyed()
 {
-    myResource = NULL;
+    myResource = __null;
 }
