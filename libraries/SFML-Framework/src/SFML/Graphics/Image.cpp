@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2014 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2013 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -28,9 +28,6 @@
 #include <SFML/Graphics/Image.hpp>
 #include <SFML/Graphics/ImageLoader.hpp>
 #include <SFML/System/Err.hpp>
-#ifdef SFML_SYSTEM_ANDROID
-    #include <SFML/System/Android/ResourceStream.hpp>
-#endif
 #include <algorithm>
 #include <cstring>
 
@@ -41,23 +38,7 @@ namespace sf
 Image::Image() :
 m_size(0, 0)
 {
-    #ifdef SFML_SYSTEM_ANDROID
 
-    m_stream = NULL;
-
-    #endif
-}
-
-
-////////////////////////////////////////////////////////////
-Image::~Image()
-{
-    #ifdef SFML_SYSTEM_ANDROID
-
-        if (m_stream)
-            delete (priv::ResourceStream*)m_stream;
-
-    #endif
 }
 
 
@@ -121,19 +102,7 @@ void Image::create(unsigned int width, unsigned int height, const Uint8* pixels)
 ////////////////////////////////////////////////////////////
 bool Image::loadFromFile(const std::string& filename)
 {
-    #ifndef SFML_SYSTEM_ANDROID
-
-        return priv::ImageLoader::getInstance().loadImageFromFile(filename, m_pixels, m_size);
-
-    #else
-
-        if (m_stream)
-            delete (priv::ResourceStream*)m_stream;
-
-        m_stream = new priv::ResourceStream(filename);
-        return loadFromStream(*(priv::ResourceStream*)m_stream);
-
-    #endif
+    return priv::ImageLoader::getInstance().loadImageFromFile(filename, m_pixels, m_size);
 }
 
 
@@ -302,19 +271,20 @@ void Image::flipHorizontally()
 {
     if (!m_pixels.empty())
     {
-        std::size_t rowSize = m_size.x * 4;
-
-        for (std::size_t y = 0; y < m_size.y; ++y)
+        std::vector<Uint8> before = m_pixels;
+        for (unsigned int y = 0; y < m_size.y; ++y)
         {
-            std::vector<Uint8>::iterator left = m_pixels.begin() + y * rowSize;
-            std::vector<Uint8>::iterator right = m_pixels.begin() + (y + 1) * rowSize - 4;
-
-            for (std::size_t x = 0; x < m_size.x / 2; ++x)
+            const Uint8* source = &before[y * m_size.x * 4];
+            Uint8* dest = &m_pixels[(y + 1) * m_size.x * 4 - 4];
+            for (unsigned int x = 0; x < m_size.x; ++x)
             {
-                std::swap_ranges(left, left + 4, right);
+                dest[0] = source[0];
+                dest[1] = source[1];
+                dest[2] = source[2];
+                dest[3] = source[3];
 
-                left += 4;
-                right -= 4;
+                source += 4;
+                dest -= 4;
             }
         }
     }
@@ -326,17 +296,16 @@ void Image::flipVertically()
 {
     if (!m_pixels.empty())
     {
+        std::vector<Uint8> before = m_pixels;
+        const Uint8* source = &before[m_size.x * (m_size.y - 1) * 4];
+        Uint8* dest = &m_pixels[0];
         std::size_t rowSize = m_size.x * 4;
 
-        std::vector<Uint8>::iterator top = m_pixels.begin();
-        std::vector<Uint8>::iterator bottom = m_pixels.end() - rowSize;
-
-        for (std::size_t y = 0; y < m_size.y / 2; ++y)
+        for (unsigned int y = 0; y < m_size.y; ++y)
         {
-            std::swap_ranges(top, top + rowSize, bottom);
-
-            top += rowSize;
-            bottom -= rowSize;
+            std::memcpy(dest, source, rowSize);
+            source -= rowSize;
+            dest += rowSize;
         }
     }
 }

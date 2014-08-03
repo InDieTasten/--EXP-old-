@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2014 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2013 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -25,27 +25,20 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-
 #include <SFML/Window/JoystickImpl.hpp>
 #include <SFML/System/Clock.hpp>
-#include <SFML/System/Err.hpp>
 #include <windows.h>
-#include <stdlib.h>
 #include <cmath>
-#include <stdio.h>
-#include <regstr.h>
-#include <tchar.h>
-#include <string>
-#include <sstream>
-#include <vector>
+
 
 namespace
 {
     struct ConnectionCache
     {
-        ConnectionCache() : connected(false) {}
+        ConnectionCache() : connected(false), firstTime(true) {}
         bool connected;
         sf::Clock timer;
+        bool firstTime;
     };
 
     const sf::Time connectionRefreshDelay = sf::milliseconds(500);
@@ -57,42 +50,16 @@ namespace sf
 namespace priv
 {
 ////////////////////////////////////////////////////////////
-void JoystickImpl::initialize()
-{
-    // Perform the initial scan and populate the connection cache
-    for (unsigned int i = 0; i < Joystick::Count; ++i)
-    {
-        ConnectionCache& cache = connectionCache[i];
-
-        // Check if the joystick is connected
-        JOYINFOEX joyInfo;
-        joyInfo.dwSize = sizeof(joyInfo);
-        joyInfo.dwFlags = 0;
-        cache.connected = joyGetPosEx(JOYSTICKID1 + i, &joyInfo) == JOYERR_NOERROR;
-
-        // start the timeout
-        cache.timer.restart();
-    }
-}
-
-
-////////////////////////////////////////////////////////////
-void JoystickImpl::cleanup()
-{
-    // Nothing to do
-}
-
-
-////////////////////////////////////////////////////////////
 bool JoystickImpl::isConnected(unsigned int index)
 {
     // We check the connection state of joysticks only every N milliseconds,
     // because of a strange (buggy?) behaviour of joyGetPosEx when joysticks
     // are just plugged/unplugged -- it takes really long and kills the app performances
     ConnectionCache& cache = connectionCache[index];
-    if (cache.timer.getElapsedTime() > connectionRefreshDelay)
+    if (cache.firstTime || (cache.timer.getElapsedTime() > connectionRefreshDelay))
     {
         cache.timer.restart();
+        cache.firstTime = false;
 
         JOYINFOEX joyInfo;
         joyInfo.dwSize = sizeof(joyInfo);
@@ -115,16 +82,7 @@ bool JoystickImpl::open(unsigned int index)
     m_index = JOYSTICKID1 + index;
 
     // Store the joystick capabilities
-    bool success = joyGetDevCaps(m_index, &m_caps, sizeof(m_caps)) == JOYERR_NOERROR;
-
-    if (success)
-    {
-        m_identification.name = getDeviceName(m_index, m_caps);
-        m_identification.productId = m_caps.wPid;
-        m_identification.vendorId = m_caps.wMid;
-    }
-
-    return success;
+    return joyGetDevCaps(m_index, &m_caps, sizeof(m_caps)) == JOYERR_NOERROR;
 }
 
 
@@ -133,6 +91,7 @@ void JoystickImpl::close()
 {
     // Nothing to do
 }
+
 
 ////////////////////////////////////////////////////////////
 JoystickCaps JoystickImpl::getCapabilities() const
@@ -153,13 +112,6 @@ JoystickCaps JoystickImpl::getCapabilities() const
     caps.axes[Joystick::PovY] = (m_caps.wCaps & JOYCAPS_HASPOV) != 0;
 
     return caps;
-}
-
-
-////////////////////////////////////////////////////////////
-Joystick::Identification JoystickImpl::getIdentification() const
-{
-    return m_identification;
 }
 
 
@@ -190,8 +142,8 @@ JoystickState JoystickImpl::update()
         if (pos.dwPOV != 0xFFFF)
         {
             float angle = pos.dwPOV / 18000.f * 3.141592654f;
-            state.axes[Joystick::PovX] = std::sin(angle) * 100;
-            state.axes[Joystick::PovY] = std::cos(angle) * 100;
+            state.axes[Joystick::PovX] = std::cos(angle) * 100;
+            state.axes[Joystick::PovY] = std::sin(angle) * 100;
         }
         else
         {
@@ -205,101 +157,6 @@ JoystickState JoystickImpl::update()
     }
 
     return state;
-}
-
-
-////////////////////////////////////////////////////////////
-sf::String JoystickImpl::getDeviceName(unsigned int index, JOYCAPS caps)
-{
-    // Give the joystick a default name
-    sf::String joystickDescription = "Unknown Joystick";
-
-    std::basic_ostringstream<TCHAR, std::char_traits<TCHAR> > ss;
-    ss << REGSTR_PATH_JOYCONFIG << "\\" << caps.szRegKey << "\\" << REGSTR_KEY_JOYCURR;
-    std::basic_string<TCHAR> subkey = ss.str().substr(0, 255);
-
-    HKEY currentKey;
-    LONG result;
-    HKEY rootKey = HKEY_LOCAL_MACHINE;
-
-    result = RegOpenKeyEx(rootKey, subkey.c_str(), 0, KEY_READ, &currentKey);
-    if (result != ERROR_SUCCESS)
-    {
-        rootKey = HKEY_CURRENT_USER;
-        result = RegOpenKeyEx(rootKey, subkey.c_str(), 0, KEY_READ, &currentKey);
-    }
-
-    if (result == ERROR_SUCCESS)
-    {
-        ss.clear();
-        ss.str(_T(""));
-        ss << "Joystick" << index + 1 << REGSTR_VAL_JOYOEMNAME;
-        std::basic_string<TCHAR> keyName = ss.str().substr(0, 255);
-
-        TCHAR keyData[256];
-        DWORD keyNameSize = sizeof(keyData);
-        result = RegQueryValueEx(currentKey, keyName.c_str(), NULL, NULL, (LPBYTE)keyData, &keyNameSize);
-        RegCloseKey(currentKey);
-
-        if (result == ERROR_SUCCESS)
-        {
-            ss.clear();
-            ss.str(_T(""));
-            ss << REGSTR_PATH_JOYOEM << "\\" << keyData;
-            subkey = ss.str().substr(0, 255);
-
-            result = RegOpenKeyEx(rootKey, subkey.c_str(), 0, KEY_READ, &currentKey);
-            if (result == ERROR_SUCCESS)
-            {
-                keyNameSize = sizeof(keyData);
-                unsigned int productKeyLength = keyNameSize / sizeof(TCHAR);
-                std::vector<TCHAR> productKey(productKeyLength);
-
-                result = RegQueryValueEx(currentKey, REGSTR_VAL_JOYOEMNAME, NULL, NULL, (LPBYTE) &productKey[0], &keyNameSize);
-                if (result == ERROR_SUCCESS)
-                {
-                    while (productKeyLength > 0 && productKey[productKeyLength - 1] == 0)
-                    {
-                        --productKeyLength;
-                    }
-
-                    joystickDescription = std::basic_string<TCHAR>(&productKey[0], productKeyLength);
-                }
-                else
-                {
-                    err() << "Unable to query name for joystick at index " << index << ": " << getErrorString(GetLastError()).toAnsiString() << std::endl;
-                }
-                RegCloseKey(currentKey);
-            }
-            else
-            {
-                err() << "Unable to open registry key for joystick at index " << index << ": " << getErrorString(GetLastError()).toAnsiString() << std::endl;
-            }
-        }
-        else
-        {
-            err() << "Unable to query registry key for joystick at index " << index << ": " << getErrorString(GetLastError()).toAnsiString() << std::endl;
-        }
-    }
-    else
-    {
-        err() << "Unable to open registry for joystick at index " << index << ": " << getErrorString(GetLastError()).toAnsiString() << std::endl;
-    }
-
-    return joystickDescription;
-}
-
-
-////////////////////////////////////////////////////////////
-sf::String JoystickImpl::getErrorString(DWORD /*errorCode*/)
-{
-    std::basic_ostringstream<TCHAR, std::char_traits<TCHAR> > ss;
-    TCHAR errBuff[256];
-    FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), 0, errBuff, sizeof(errBuff), NULL);
-    ss << errBuff;
-    sf::String errMsg(ss.str());
-
-    return errMsg;
 }
 
 } // namespace priv

@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2014 Marco Antognini (antognini.marco@gmail.com),
+// Copyright (C) 2007-2013 Marco Antognini (antognini.marco@gmail.com), 
 //                         Laurent Gomila (laurent.gom@gmail.com),
 //
 // This software is provided 'as-is', without any express or implied warranty.
@@ -30,10 +30,7 @@
 // Headers
 ////////////////////////////////////////////////////////////
 #include <SFML/Window/JoystickImpl.hpp>
-#include <SFML/System/String.hpp>
-#include <CoreFoundation/CoreFoundation.h>
 #include <IOKit/hid/IOHIDDevice.h>
-#include <IOKit/hid/IOHIDKeys.h>
 #include <map>
 #include <vector>
 
@@ -48,18 +45,6 @@ namespace priv
 class JoystickImpl
 {
 public :
-
-    ////////////////////////////////////////////////////////////
-    /// \brief Perform the global initialization of the joystick module
-    ///
-    ////////////////////////////////////////////////////////////
-    static void initialize();
-
-    ////////////////////////////////////////////////////////////
-    /// \brief Perform the global cleanup of the joystick module
-    ///
-    ////////////////////////////////////////////////////////////
-    static void cleanup();
 
     ////////////////////////////////////////////////////////////
     /// \brief Check if a joystick is currently connected
@@ -96,14 +81,6 @@ public :
     JoystickCaps getCapabilities() const;
 
     ////////////////////////////////////////////////////////////
-    /// \brief Get the joystick identification
-    ///
-    /// \return Joystick identification
-    ///
-    ////////////////////////////////////////////////////////////
-    Joystick::Identification getIdentification() const;
-
-    ////////////////////////////////////////////////////////////
     /// \brief Update the joystick and get its new state
     ///
     /// \return Joystick state
@@ -114,51 +91,18 @@ public :
 private :
 
     ////////////////////////////////////////////////////////////
-    /// Get HID device property key as a string
-    ///
-    /// \param ref HID device
-    /// \param prop Property to retrieve from the device
-    ///
-    /// \return Value of the property
-    ///
-    ////////////////////////////////////////////////////////////
-    std::string getDeviceString(IOHIDDeviceRef ref, CFStringRef prop);
-
-    ////////////////////////////////////////////////////////////
-    /// Get HID device property key as an unsigned int
-    ///
-    /// \param ref HID device
-    /// \param prop Property to retrieve from the device
-    ///
-    /// \return Value of the property
-    ///
-    ////////////////////////////////////////////////////////////
-    unsigned int getDeviceUint(IOHIDDeviceRef ref, CFStringRef prop);
-
-    ////////////////////////////////////////////////////////////
-    /// Convert a CFStringRef to std::string
-    ///
-    /// \param cfString CFStringRef to convert
-    ///
-    /// \return std::string
-    ///
-    ////////////////////////////////////////////////////////////
-    std::string stringFromCFString(CFStringRef cfString);
-
-    ////////////////////////////////////////////////////////////
     // Member data
     ////////////////////////////////////////////////////////////
     typedef long                                          Location;
     typedef std::map<sf::Joystick::Axis, IOHIDElementRef> AxisMap;
     typedef std::vector<IOHIDElementRef>                  ButtonsVector;
-
-    AxisMap       m_axis;                      ///< Axis (IOHIDElementRef) connected to the joystick
-    ButtonsVector m_buttons;                   ///< Buttons (IOHIDElementRef) connected to the joystick
-    unsigned int  m_index;                     ///< SFML index
-    Joystick::Identification m_identification; ///< Joystick identification
-
+    
+    AxisMap       m_axis;    ///< Axis (IOHIDElementRef) connected to the joystick
+    ButtonsVector m_buttons; ///< Buttons (IOHIDElementRef) connected to the joystick
+    unsigned int  m_index;   ///< SFML index
+    
     static Location m_locationIDs[sf::Joystick::Count]; ///< Global Joystick register
-    /// For a corresponding SFML index, m_locationIDs is either some usb
+    /// For a corresponding SFML index, m_locationIDs is either some usb 
     /// location or 0 if there isn't currently a connected joystick device
 };
 

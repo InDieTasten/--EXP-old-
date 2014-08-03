@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2014 Marco Antognini (antognini.marco@gmail.com),
-//                         Laurent Gomila (laurent.gom@gmail.com),
+// Copyright (C) 2007-2012 Marco Antognini (antognini.marco@gmail.com), 
+//                         Laurent Gomila (laurent.gom@gmail.com), 
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -34,103 +34,76 @@ namespace sf {
     }
 }
 
-@class SFSilentResponder;
-
 ////////////////////////////////////////////////////////////
-/// \brief Specialized NSOpenGLView
+/// \brief Spesialized NSOpenGLView
 ///
 /// Handle event and send them back to the requester.
 ///
-/// NSTrackingArea is used to keep track of mouse events. We also
-/// need to be able to ignore mouse event when exiting fullscreen.
+/// In order to send correct mouse coordonate to the requester when
+/// the window is in fullscreen we use m_realSize to represent the
+/// back buffer size (see SFWindowController). If 'm_realSize' is
+/// bound to its default value we don't recompute the mouse position
+/// and assume it's correct.
 ///
-/// Modifiers keys (cmd, ctrl, alt, shift) are handled by this class
-/// but the actual logic is done in SFKeyboardModifiersHelper.(h|mm).
+/// As I don't have the right control keycode I cannot implement left-right
+/// recognition for this key. (See SFOpenGLView.mm for more info.)
 ///
 ////////////////////////////////////////////////////////////
-@interface SFOpenGLView : NSOpenGLView
-{
-    sf::priv::WindowImplCocoa*    m_requester;      ///< View's requester
-    BOOL                          m_useKeyRepeat;   ///< Key repeat setting
-    BOOL                          m_mouseIsIn;      ///< Mouse positional state
-    NSTrackingArea*               m_trackingArea;   ///< Mouse tracking area
-    BOOL                          m_fullscreen;     ///< Indicate whether the window is fullscreen or not
-    CGFloat                       m_scaleFactor;    ///< Display scale factor (e.g. 1x for classic display, 2x for retina)
-
-    // Hidden text view used to convert key event to actual chars.
-    // We use a silent responder to prevent sound alerts.
-    SFSilentResponder*  m_silentResponder;
-    NSTextView*         m_hiddenTextView;
+@interface SFOpenGLView : NSOpenGLView {
+    sf::priv::WindowImplCocoa*    m_requester;
+    BOOL                          m_useKeyRepeat;
+    NSTrackingRectTag             m_trackingTag;
+    BOOL                          m_mouseIsIn;
+    NSSize                        m_realSize;
+    
+    /// 'modifiers' state
+    BOOL m_rightShiftWasDown;
+    BOOL m_leftShiftWasDown;
+    BOOL m_rightCommandWasDown;
+    BOOL m_leftCommandWasDown;
+    BOOL m_rightAlternateWasDown;
+    BOOL m_leftAlternateWasDown;
+    BOOL m_controlWasDown;
 }
 
 ////////////////////////////////////////////////////////////
-/// \brief Create the SFML OpenGL view
-///
-/// NB: -initWithFrame: is also implemented to default isFullscreen to NO
-/// in case SFOpenGLView is created with the standard message.
-///
-/// To finish the initialization -finishInit should be called too.
-///
-/// \param frameRect dimension of the view
-/// \param isFullscreen fullscreen flag
-///
-/// \return an initialized view
-///
+/// Create the SFML opengl view to fit the given area.
+/// 
 ////////////////////////////////////////////////////////////
--(id)initWithFrame:(NSRect)frameRect fullscreen:(BOOL)isFullscreen;
+-(id)initWithFrame:(NSRect)frameRect;
 
 ////////////////////////////////////////////////////////////
-/// \brief Finish the creation of the SFML OpenGL view
-///
-/// This method should be called after the view was added to a window
-///
+/// Apply the given resquester to the view.
+/// 
 ////////////////////////////////////////////////////////////
--(void)finishInit;
+-(void)setRequesterTo:(sf::priv::WindowImplCocoa *)requester;
 
 ////////////////////////////////////////////////////////////
-/// \brief Apply the given requester to the view
-///
-/// \param requester new 'requester' of the view
-///
+/// Set the real size of view (it should be the back buffer size).
+/// If not set, or set to its default value NSZeroSize, the view
+/// won't recompute the mouse coordinates before sending them
+/// to the requester.
+/// 
 ////////////////////////////////////////////////////////////
--(void)setRequesterTo:(sf::priv::WindowImplCocoa*)requester;
+-(void)setRealSize:(NSSize)newSize;
 
 ////////////////////////////////////////////////////////////
-/// \brief Compute the position in global coordinate
-///
-/// \param point a point in SFML coordinate
-///
-/// \return the global coordinates of the point
-///
+/// Move the mouse cursor to (x,y) (SFML Coordinates).
+/// 
 ////////////////////////////////////////////////////////////
--(NSPoint)computeGlobalPositionOfRelativePoint:(NSPoint)point;
+-(void)setCursorPositionToX:(unsigned int)x Y:(unsigned int)y;
 
 ////////////////////////////////////////////////////////////
-/// \brief Enable key repeat
-///
+/// Adjust key repeat configuration.
+/// 
 ////////////////////////////////////////////////////////////
 -(void)enableKeyRepeat;
-
-////////////////////////////////////////////////////////////
-/// \brief Disable key repeat
-///
-////////////////////////////////////////////////////////////
 -(void)disableKeyRepeat;
 
 ////////////////////////////////////////////////////////////
-/// \brief Get the display scale factor
-///
-/// \return e.g. 1.0 for classic display, 2.0 for retina display
-///
+/// Compute the position of the cursor.
+/// 
 ////////////////////////////////////////////////////////////
--(CGFloat)displayScaleFactor;
-
-////////////////////////////////////////////////////////////
-/// \brief Compute the position of the cursor
-///
-/// \param eventOrNil if nil the cursor position is the current one
-///
-////////////////////////////////////////////////////////////
--(NSPoint)cursorPositionFromEvent:(NSEvent*)eventOrNil;
+-(NSPoint)cursorPositionFromEvent:(NSEvent *)eventOrNil;
 
 @end

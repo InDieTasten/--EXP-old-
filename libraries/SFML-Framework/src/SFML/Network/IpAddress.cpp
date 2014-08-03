@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2014 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2013 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -28,7 +28,6 @@
 #include <SFML/Network/IpAddress.hpp>
 #include <SFML/Network/Http.hpp>
 #include <SFML/Network/SocketImpl.hpp>
-#include <cstring>
 
 
 namespace
@@ -49,19 +48,9 @@ namespace
                 return ip;
 
             // Not a valid address, try to convert it as a host name
-            addrinfo hints;
-            std::memset(&hints, 0, sizeof(hints));
-            hints.ai_family = AF_INET;
-            addrinfo* result = NULL;
-            if (getaddrinfo(address.c_str(), NULL, &hints, &result) == 0)
-            {
-                if (result)
-                {
-                    ip = reinterpret_cast<sockaddr_in*>(result->ai_addr)->sin_addr.s_addr;
-                    freeaddrinfo(result);
-                    return ip;
-                }
-            }
+            hostent* host = gethostbyname(address.c_str());
+            if (host)
+                return reinterpret_cast<in_addr*>(host->h_addr)->s_addr;
 
             // Not a valid address nor a host name
             return 0;
@@ -148,7 +137,7 @@ IpAddress IpAddress::getLocalAddress()
         return localAddress;
 
     // Connect the socket to localhost on any port
-    sockaddr_in address = priv::SocketImpl::createAddress(ntohl(INADDR_LOOPBACK), 9);
+    sockaddr_in address = priv::SocketImpl::createAddress(ntohl(INADDR_LOOPBACK), 0);
     if (connect(sock, reinterpret_cast<sockaddr*>(&address), sizeof(address)) == -1)
     {
         priv::SocketImpl::close(sock);

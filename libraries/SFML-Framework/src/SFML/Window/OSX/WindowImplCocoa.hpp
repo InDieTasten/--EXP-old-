@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2014 Marco Antognini (antognini.marco@gmail.com),
-//                         Laurent Gomila (laurent.gom@gmail.com),
+// Copyright (C) 2007-2013 Marco Antognini (antognini.marco@gmail.com), 
+//                         Laurent Gomila (laurent.gom@gmail.com), 
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -34,7 +34,7 @@
 #include <SFML/System/String.hpp>
 
 ////////////////////////////////////////////////////////////
-/// Predefine OBJ-C classes
+/// Predefine OBJC classes
 ////////////////////////////////////////////////////////////
 #ifdef __OBJC__
 
@@ -71,154 +71,153 @@ public :
     ///
     ////////////////////////////////////////////////////////////
     WindowImplCocoa(WindowHandle handle);
-
+    
     ////////////////////////////////////////////////////////////
     /// \brief Create the window implementation
     ///
     /// \param mode  Video mode to use
     /// \param title Title of the window
-    /// \param style Window style (resizeable, fixed, or fullscren)
-    /// \param settings Additional settings for the underlying OpenGL context
+    /// \param style Window style (resizable, fixed, or fullscren)
     ///
     ////////////////////////////////////////////////////////////
-    WindowImplCocoa(VideoMode mode, const String& title, unsigned long style, const ContextSettings& settings);
-
+    WindowImplCocoa(VideoMode mode, const String& title, unsigned long style);
+    
     ////////////////////////////////////////////////////////////
     /// \brief Destructor
     ///
     ////////////////////////////////////////////////////////////
     ~WindowImplCocoa();
-
+    
     ////////////////////////////////////////////////////////////
-    /// \brief Window Closed Event – called by the cocoa window object
+    /// \brief Window Closed Event – called by the cocoa window object.
     ///
     /// Send the event to SFML WindowImpl class.
     ///
     ////////////////////////////////////////////////////////////
     void windowClosed(void);
-
+    
     ////////////////////////////////////////////////////////////
-    /// \brief Window Resized Event – called by the cocoa window object
+    /// \brief Window Resized Event – called by the cocoa window object.
     ///
     /// Send the event to SFML WindowImpl class.
     ///
-    /// \param width new width
-    /// \param height new height
+    /// \param width
+    /// \param height
     ///
     ////////////////////////////////////////////////////////////
     void windowResized(unsigned int width, unsigned int height);
-
+    
     ////////////////////////////////////////////////////////////
-    /// \brief Window Lost Focus Event – called by the cocoa window object
+    /// \brief Window Lost Focus Event – called by the cocoa window object.
     ///
     /// Send the event to SFML WindowImpl class.
     ///
     ////////////////////////////////////////////////////////////
     void windowLostFocus(void);
-
+    
     ////////////////////////////////////////////////////////////
-    /// \brief Window Get Focus Event – called by the cocoa window object
+    /// \brief Window Get Focus Event – called by the cocoa window object.
     ///
     /// Send the event to SFML WindowImpl class.
     ///
     ////////////////////////////////////////////////////////////
     void windowGainedFocus(void);
-
+    
     ////////////////////////////////////////////////////////////
-    /// \brief Mouse Down Event – called by the cocoa view object
+    /// \brief Mouse Down Event – called by the cocoa view object.
     ///
     /// Send the event to SFML WindowImpl class.
     ///
-    /// \param button active button
-    /// \param x mouse x position
-    /// \param y mouse y position
+    /// \param button
+    /// \param x
+    /// \param y
     ///
     ////////////////////////////////////////////////////////////
     void mouseDownAt(Mouse::Button button, int x, int y);
-
+    
     ////////////////////////////////////////////////////////////
-    /// \brief Mouse Up Event – called by the cocoa view object
+    /// \brief Mouse Up Event – called by the cocoa view object.
     ///
     /// Send the event to SFML WindowImpl class.
     ///
-    /// \param button active button
-    /// \param x mouse x position
-    /// \param y mouse y position
+    /// \param button
+    /// \param x
+    /// \param y
     ///
     ////////////////////////////////////////////////////////////
     void mouseUpAt(Mouse::Button button, int x, int y);
-
+    
     ////////////////////////////////////////////////////////////
-    /// \brief Mouse Moved Event – called by the cocoa view object
+    /// \brief Mouse Moved Event – called by the cocoa view object.
     ///
     /// Send the event to SFML WindowImpl class.
     ///
-    /// \param x mouse x position
-    /// \param y mouse y position
+    /// \param x
+    /// \param y
     ///
     ////////////////////////////////////////////////////////////
     void mouseMovedAt(int x, int y);
-
+    
     ////////////////////////////////////////////////////////////
-    /// \brief Mouse Wheel Scrolled Event – called by the cocoa view object
+    /// \brief Mouse Wheel Scrolled Event – called by the cocoa view object.
     ///
     /// Send the event to SFML WindowImpl class.
     ///
-    /// \param delta scrolling delta
-    /// \param x mouse x position
-    /// \param y mouse y position
+    /// \param delta
+    /// \param x
+    /// \param y
     ///
     ////////////////////////////////////////////////////////////
     void mouseWheelScrolledAt(float delta, int x, int y);
-
+    
     ////////////////////////////////////////////////////////////
-    /// \brief Mouse In Event – called by the cocoa view object
+    /// \brief Mouse In Event – called by the cocoa view object.
     ///
     /// Send the event to SFML WindowImpl class.
     ///
     ////////////////////////////////////////////////////////////
     void mouseMovedIn(void);
-
+    
     ////////////////////////////////////////////////////////////
-    /// \brief Mouse Out Event – called by the cocoa view object
+    /// \brief Mouse Out Event – called by the cocoa view object.
     ///
     /// Send the event to SFML WindowImpl class.
     ///
     ////////////////////////////////////////////////////////////
     void mouseMovedOut(void);
-
+    
     ////////////////////////////////////////////////////////////
-    /// \brief Key Down Event – called by the cocoa view object
+    /// \brief Key Down Event – called by the cocoa view object.
     ///
     /// Send the event to SFML WindowImpl class.
     ///
-    /// \param key active key
+    /// \param key
     ///
     ////////////////////////////////////////////////////////////
     void keyDown(Event::KeyEvent key);
-
+    
     ////////////////////////////////////////////////////////////
-    /// \brief Key Up Event – called by the cocoa view object
+    /// \brief Key Up Event – called by the cocoa view object.
     ///
     /// Send the event to SFML WindowImpl class.
     ///
-    /// \param key active key
+    /// \param key
     ///
     ////////////////////////////////////////////////////////////
     void keyUp(Event::KeyEvent key);
-
+    
     ////////////////////////////////////////////////////////////
-    /// \brief Text Entred Event – called by the cocoa view object
+    /// \brief Text Entred Event – called by the cocoa view object.
     ///
     /// Send the event to SFML WindowImpl class.
     ///
-    /// \param charcode Unicode input
+    /// \param charcode Input unicode
     ///
     ////////////////////////////////////////////////////////////
     void textEntered(unichar charcode);
-
+    
     ////////////////////////////////////////////////////////////
-    /// \brief Apply the context to the view
+    /// \brief Apply the context to the view.
     ///
     /// Called by the SFML context object to finalize its creation.
     ///
@@ -226,18 +225,16 @@ public :
     ///
     ////////////////////////////////////////////////////////////
     void applyContext(NSOpenGLContextRef context) const;
-
+    
     ////////////////////////////////////////////////////////////
-    /// \brief Change the type of the current process
-    ///
-    /// The type of the process is changed to become a full GUI app.
-    /// Also ensure NSApp is constructed.
+    /// \brief Change the type of the current process to become a full GUI app.
+    ///        Also ensure NSApp is constructed.
     ///
     ////////////////////////////////////////////////////////////
     static void setUpProcess(void);
-
+    
 public :
-
+    
     ////////////////////////////////////////////////////////////
     /// \brief Get the OS-specific handle of the window
     ///
@@ -245,7 +242,7 @@ public :
     ///
     ////////////////////////////////////////////////////////////
     virtual WindowHandle getSystemHandle() const;
-
+    
     ////////////////////////////////////////////////////////////
     /// \brief Get the position of the window
     ///
@@ -334,11 +331,11 @@ private :
     // Member data
     ////////////////////////////////////////////////////////////
     WindowImplDelegateRef m_delegate;   ///< Implementation in Obj-C.
-    bool                  m_showCursor; ///< Is the cursor displayed or hidden?
+    bool                  m_showCursor; ///< Is the cursor displayed or hidden ?
 };
-
+    
 } // namespace priv
-
+    
 } // namespace sf
 
 

@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2014 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2013 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -63,12 +63,9 @@ Shape::~Shape()
 ////////////////////////////////////////////////////////////
 void Shape::setTexture(const Texture* texture, bool resetRect)
 {
-    if (texture)
-    {
-        // Recompute the texture area if requested, or if there was no texture & rect before
-        if (resetRect || (!m_texture && (m_textureRect == sf::IntRect())))
-            setTextureRect(IntRect(0, 0, texture->getSize().x, texture->getSize().y));
-    }
+    // Recompute the texture area if requested, or if there was no texture before
+    if (texture && (resetRect || !m_texture))
+        setTextureRect(IntRect(0, 0, texture->getSize().x, texture->getSize().y));
 
     // Assign the new texture
     m_texture = texture;
@@ -240,8 +237,8 @@ void Shape::updateTexCoords()
 {
     for (unsigned int i = 0; i < m_vertices.getVertexCount(); ++i)
     {
-        float xratio = m_insideBounds.width > 0 ? (m_vertices[i].position.x - m_insideBounds.left) / m_insideBounds.width : 0;
-        float yratio = m_insideBounds.height > 0 ? (m_vertices[i].position.y - m_insideBounds.top) / m_insideBounds.height : 0;
+        float xratio = (m_vertices[i].position.x - m_insideBounds.left) / m_insideBounds.width;
+        float yratio = (m_vertices[i].position.y - m_insideBounds.top) / m_insideBounds.height;
         m_vertices[i].texCoords.x = m_textureRect.left + m_textureRect.width * xratio;
         m_vertices[i].texCoords.y = m_textureRect.top + m_textureRect.height * yratio;
     }
