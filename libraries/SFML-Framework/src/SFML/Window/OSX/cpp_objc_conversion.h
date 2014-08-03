@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2014 Marco Antognini (antognini.marco@gmail.com),
-//                         Laurent Gomila (laurent.gom@gmail.com),
+// Copyright (C) 2007-2012 Marco Antognini (antognini.marco@gmail.com), 
+//                         Laurent Gomila (laurent.gom@gmail.com), 
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -26,19 +26,14 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/System/String.hpp>
 #include <string>
+#include <SFML/System/String.hpp>
 
 #import <Foundation/Foundation.h>
 
 ////////////////////////////////////////////////////////////
-/// \brief Returns a NSString construct with +stringWithCString:encoding:
+/// \brief Returns a NSString construct with +stringWithCString:encoding:.
 ///
 ////////////////////////////////////////////////////////////
-NSString* stringToNSString(const std::string& string);
-
-////////////////////////////////////////////////////////////
-/// \brief Returns a NSString construct with +stringWithCString:encoding:
-///
-////////////////////////////////////////////////////////////
-NSString* sfStringToNSString(const sf::String& string);
+NSString* stringToNSString(std::string const& string);
+NSString* sfStringToNSString(sf::String const& string);

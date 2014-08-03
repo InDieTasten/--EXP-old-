@@ -68,7 +68,7 @@ int main(int, char const**)
                 window.close();
             }
 
-            // Escape pressed : exit
+            // Espace pressed : exit
             if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
                 window.close();
             }
@@ -86,6 +86,6 @@ int main(int, char const**)
         // Update the window
         window.display();
     }
-
+    
     return EXIT_SUCCESS;
 }

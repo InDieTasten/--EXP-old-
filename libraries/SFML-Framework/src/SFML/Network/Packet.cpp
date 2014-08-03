@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2014 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2013 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -29,7 +29,6 @@
 #include <SFML/Network/SocketImpl.hpp>
 #include <SFML/System/String.hpp>
 #include <cstring>
-#include <cwchar>
 
 
 namespace sf
@@ -405,7 +404,9 @@ Packet& Packet::operator <<(double data)
 Packet& Packet::operator <<(const char* data)
 {
     // First insert string length
-    Uint32 length = static_cast<Uint32>(std::strlen(data));
+    Uint32 length = 0;
+    for (const char* c = data; *c != '\0'; ++c)
+        ++length;
     *this << length;
 
     // Then insert characters
@@ -424,7 +425,9 @@ Packet& Packet::operator <<(const std::string& data)
 
     // Then insert characters
     if (length > 0)
+    {
         append(data.c_str(), length * sizeof(std::string::value_type));
+    }
 
     return *this;
 }
@@ -434,7 +437,9 @@ Packet& Packet::operator <<(const std::string& data)
 Packet& Packet::operator <<(const wchar_t* data)
 {
     // First insert string length
-    Uint32 length = static_cast<Uint32>(std::wcslen(data));
+    Uint32 length = 0;
+    for (const wchar_t* c = data; *c != L'\0'; ++c)
+        ++length;
     *this << length;
 
     // Then insert characters
