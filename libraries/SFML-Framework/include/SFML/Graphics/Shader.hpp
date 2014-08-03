@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2014 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2013 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -63,20 +63,11 @@ public :
     };
 
     ////////////////////////////////////////////////////////////
-    /// \brief Special type that can be passed to setParameter,
+    /// \brief Special type/value that can be passed to setParameter,
     ///        and that represents the texture of the object being drawn
-    ///
-    /// \see setParameter(const std::string&, CurrentTextureType)
     ///
     ////////////////////////////////////////////////////////////
     struct CurrentTextureType {};
-
-    ////////////////////////////////////////////////////////////
-    /// \brief Represents the texture of the object being drawn
-    ///
-    /// \see setParameter(const std::string&, CurrentTextureType)
-    ///
-    ////////////////////////////////////////////////////////////
     static CurrentTextureType CurrentTexture;
 
 public :
@@ -517,20 +508,9 @@ private :
     void bindTextures() const;
 
     ////////////////////////////////////////////////////////////
-    /// \brief Get the location ID of a shader parameter
-    ///
-    /// \param name Name of the parameter to search
-    ///
-    /// \return Location ID of the parameter, or -1 if not found
-    ///
-    ////////////////////////////////////////////////////////////
-    int getParamLocation(const std::string& name);
-
-    ////////////////////////////////////////////////////////////
     // Types
     ////////////////////////////////////////////////////////////
     typedef std::map<int, const Texture*> TextureTable;
-    typedef std::map<std::string, int> ParamTable;
 
     ////////////////////////////////////////////////////////////
     // Member data
@@ -538,7 +518,6 @@ private :
     unsigned int m_shaderProgram;  ///< OpenGL identifier for the program
     int          m_currentTexture; ///< Location of the current texture in the shader
     TextureTable m_textures;       ///< Texture variables in the shader, mapped to their location
-    ParamTable   m_params;         ///< Parameters location cache
 };
 
 } // namespace sf

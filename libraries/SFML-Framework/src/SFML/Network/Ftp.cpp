@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2014 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2013 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -27,13 +27,10 @@
 ////////////////////////////////////////////////////////////
 #include <SFML/Network/Ftp.hpp>
 #include <SFML/Network/IpAddress.hpp>
-#include <SFML/System/Err.hpp>
 #include <algorithm>
-#include <cctype>
 #include <fstream>
 #include <iterator>
 #include <sstream>
-#include <cstdio>
 
 
 namespace sf
@@ -50,10 +47,10 @@ public :
     Ftp::Response open(Ftp::TransferMode mode);
 
     ////////////////////////////////////////////////////////////
-    void send(std::istream& stream);
+    void send(const std::vector<char>& data);
 
     ////////////////////////////////////////////////////////////
-    void receive(std::ostream& stream);
+    void receive(std::vector<char>& data);
 
 private :
 
@@ -117,16 +114,17 @@ const std::string& Ftp::DirectoryResponse::getDirectory() const
 
 
 ////////////////////////////////////////////////////////////
-Ftp::ListingResponse::ListingResponse(const Ftp::Response& response, const std::string& data) :
+Ftp::ListingResponse::ListingResponse(const Ftp::Response& response, const std::vector<char>& data) :
 Ftp::Response(response)
 {
     if (isOk())
     {
         // Fill the array of strings
+        std::string paths(data.begin(), data.end());
         std::string::size_type lastPos = 0;
-        for (std::string::size_type pos = data.find("\r\n"); pos != std::string::npos; pos = data.find("\r\n", lastPos))
+        for (std::string::size_type pos = paths.find("\r\n"); pos != std::string::npos; pos = paths.find("\r\n", lastPos))
         {
-            m_listing.push_back(data.substr(lastPos, pos - lastPos));
+            m_listing.push_back(paths.substr(lastPos, pos - lastPos));
             lastPos = pos + 2;
         }
     }
@@ -207,7 +205,7 @@ Ftp::DirectoryResponse Ftp::getWorkingDirectory()
 Ftp::ListingResponse Ftp::getDirectoryListing(const std::string& directory)
 {
     // Open a data channel on default port (20) using ASCII transfer mode
-    std::ostringstream directoryData;
+    std::vector<char> directoryData;
     DataChannel data(*this);
     Response response = data.open(Ascii);
     if (response.isOk())
@@ -224,7 +222,7 @@ Ftp::ListingResponse Ftp::getDirectoryListing(const std::string& directory)
         }
     }
 
-    return ListingResponse(response, directoryData.str());
+    return ListingResponse(response, directoryData);
 }
 
 
@@ -286,34 +284,33 @@ Ftp::Response Ftp::download(const std::string& remoteFile, const std::string& lo
         response = sendCommand("RETR", remoteFile);
         if (response.isOk())
         {
-            // Extract the filename from the file path
-            std::string filename = remoteFile;
-            std::string::size_type pos = filename.find_last_of("/\\");
-            if (pos != std::string::npos)
-                filename = filename.substr(pos + 1);
-
-            // Make sure the destination path ends with a slash
-            std::string path = localPath;
-            if (!path.empty() && (path[path.size() - 1] != '\\') && (path[path.size() - 1] != '/'))
-                path += "/";
-
-            // Create the file and truncate it if necessary
-            std::ofstream file((path + filename).c_str(), std::ios_base::binary | std::ios_base::trunc);
-            if (!file)
-                return Response(Response::InvalidFile);
-
             // Receive the file data
-            data.receive(file);
-
-            // Close the file
-            file.close();
+            std::vector<char> fileData;
+            data.receive(fileData);
 
             // Get the response from the server
             response = getResponse();
+            if (response.isOk())
+            {
+                // Extract the filename from the file path
+                std::string filename = remoteFile;
+                std::string::size_type pos = filename.find_last_of("/\\");
+                if (pos != std::string::npos)
+                    filename = filename.substr(pos + 1);
 
-            // If the download was unsuccessful, delete the partial file
-            if (!response.isOk())
-                std::remove((path + filename).c_str());
+                // Make sure the destination path ends with a slash
+                std::string path = localPath;
+                if (!path.empty() && (path[path.size() - 1] != '\\') && (path[path.size() - 1] != '/'))
+                    path += "/";
+
+                // Create the file and copy the received data into it
+                std::ofstream file((path + filename).c_str(), std::ios_base::binary);
+                if (!file)
+                    return Response(Response::InvalidFile);
+
+                if (!fileData.empty())
+                    file.write(&fileData[0], static_cast<std::streamsize>(fileData.size()));
+            }
         }
     }
 
@@ -328,6 +325,13 @@ Ftp::Response Ftp::upload(const std::string& localFile, const std::string& remot
     std::ifstream file(localFile.c_str(), std::ios_base::binary);
     if (!file)
         return Response(Response::InvalidFile);
+
+    file.seekg(0, std::ios::end);
+    std::size_t length = static_cast<std::size_t>(file.tellg());
+    file.seekg(0, std::ios::beg);
+    std::vector<char> fileData(length);
+    if (length > 0)
+        file.read(&fileData[0], static_cast<std::streamsize>(length));
 
     // Extract the filename from the file path
     std::string filename = localFile;
@@ -350,7 +354,7 @@ Ftp::Response Ftp::upload(const std::string& localFile, const std::string& remot
         if (response.isOk())
         {
             // Send the file data
-            data.send(file);
+            data.send(fileData);
 
             // Get the response from the server
             response = getResponse();
@@ -433,6 +437,9 @@ Ftp::Response Ftp::getResponse()
                     // we haven't reached the end of the multiline response
                     if ((separator != '-') && ((code == lastCode) || (lastCode == 0)))
                     {
+                        // Clear the multiline flag
+                        isInsideMultiline = false;
+
                         // Extract the line
                         std::string line;
                         std::getline(in, line);
@@ -579,20 +586,15 @@ Ftp::Response Ftp::DataChannel::open(Ftp::TransferMode mode)
 
 
 ////////////////////////////////////////////////////////////
-void Ftp::DataChannel::receive(std::ostream& stream)
+void Ftp::DataChannel::receive(std::vector<char>& data)
 {
     // Receive data
+    data.clear();
     char buffer[1024];
     std::size_t received;
     while (m_dataSocket.receive(buffer, sizeof(buffer), received) == Socket::Done)
     {
-        stream.write(buffer, static_cast<std::streamsize>(received));
-
-        if (!stream.good())
-        {
-            err() << "FTP Error: Writing to the file has failed" << std::endl;
-            break;
-        }
+        std::copy(buffer, buffer + received, std::back_inserter(data));
     }
 
     // Close the data socket
@@ -601,37 +603,11 @@ void Ftp::DataChannel::receive(std::ostream& stream)
 
 
 ////////////////////////////////////////////////////////////
-void Ftp::DataChannel::send(std::istream& stream)
+void Ftp::DataChannel::send(const std::vector<char>& data)
 {
     // Send data
-    char buffer[1024];
-    std::size_t count;
-
-    for (;;)
-    {
-        // read some data from the stream
-        stream.read(buffer, sizeof(buffer));
-
-        if (!stream.good() && !stream.eof())
-        {
-            err() << "FTP Error: Reading from the file has failed" << std::endl;
-            break;
-        }
-
-        count = stream.gcount();
-
-        if (count > 0)
-        {
-            // we could read more data from the stream: send them
-            if (m_dataSocket.send(buffer, count) != Socket::Done)
-                break;
-        }
-        else
-        {
-            // no more data: exit the loop
-            break;
-        }
-    }
+    if (!data.empty())
+        m_dataSocket.send(&data[0], data.size());
 
     // Close the data socket
     m_dataSocket.disconnect();
