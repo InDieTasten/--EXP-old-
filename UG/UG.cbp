@@ -7,8 +7,8 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin\Debug\UG" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj\Debug\" />
+				<Option output="bin/Debug/UG" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -16,8 +16,8 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin\Release\UG" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj\Release\" />
+				<Option output="bin/Release/UG" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -31,22 +31,21 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
-			<Add directory="..\libraries\Lua\include" />
-			<Add directory="..\libraries\SFML-Framework\include" />
+			<Add directory="../libraries/Lua/include" />
+			<Add directory="../libraries/SFML-Framework/include" />
 		</Compiler>
 		<Linker>
-			<Add option="-lsfml-audio" />
-			<Add option="-lsfml-network" />
 			<Add option="-lsfml-graphics" />
 			<Add option="-lsfml-window" />
 			<Add option="-lsfml-system" />
-			<Add directory="..\libraries\Lua\src\Lua5.2.3\bin\Release" />
-			<Add directory="..\libraries\SFML-Framework\lib" />
+			<Add directory="../libraries/Lua/src/Lua5.2.3/bin/Release" />
+			<Add directory="../libraries/SFML-Framework/lib" />
 		</Linker>
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
+			<envvars />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
