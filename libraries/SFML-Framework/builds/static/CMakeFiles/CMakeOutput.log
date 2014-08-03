@@ -28,34 +28,34 @@ The CXX compiler identification is GNU, found in "C:/Users/InDie/Bibliotheken/Do
 Determining if the C compiler works passed with the following output:
 Change Dir: C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe" "cmTryCompileExec3014837180/fast"
-C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTryCompileExec3014837180.dir\build.make CMakeFiles/cmTryCompileExec3014837180.dir/build
+Run Build Command:"C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe" "cmTryCompileExec4069745777/fast"
+C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTryCompileExec4069745777.dir\build.make CMakeFiles/cmTryCompileExec4069745777.dir/build
 mingw32-make.exe[1]: Entering directory `C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/CMakeFiles/CMakeTmp'
 "C:\Program Files\CMake\bin\cmake.exe" -E cmake_progress_report C:\Users\InDie\Bibliotheken\Documents\GitHub\--UntitledGame--\libraries\SFML-Framework\builds\static\CMakeFiles\CMakeTmp\CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec3014837180.dir/testCCompiler.c.obj
-C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe    -o CMakeFiles\cmTryCompileExec3014837180.dir\testCCompiler.c.obj   -c C:\Users\InDie\Bibliotheken\Documents\GitHub\--UntitledGame--\libraries\SFML-Framework\builds\static\CMakeFiles\CMakeTmp\testCCompiler.c
-Linking C executable cmTryCompileExec3014837180.exe
-"C:\Program Files\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTryCompileExec3014837180.dir\link.txt --verbose=1
-"C:\Program Files\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTryCompileExec3014837180.dir/objects.a
-C:\PROGRA~1\CODEBL~1\MinGW\bin\ar.exe cr CMakeFiles\cmTryCompileExec3014837180.dir/objects.a @CMakeFiles\cmTryCompileExec3014837180.dir\objects1.rsp
-C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe       -Wl,--whole-archive CMakeFiles\cmTryCompileExec3014837180.dir/objects.a -Wl,--no-whole-archive  -o cmTryCompileExec3014837180.exe -Wl,--out-implib,libcmTryCompileExec3014837180.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
+Building C object CMakeFiles/cmTryCompileExec4069745777.dir/testCCompiler.c.obj
+C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe    -o CMakeFiles\cmTryCompileExec4069745777.dir\testCCompiler.c.obj   -c C:\Users\InDie\Bibliotheken\Documents\GitHub\--UntitledGame--\libraries\SFML-Framework\builds\static\CMakeFiles\CMakeTmp\testCCompiler.c
+Linking C executable cmTryCompileExec4069745777.exe
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTryCompileExec4069745777.dir\link.txt --verbose=1
+"C:\Program Files\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTryCompileExec4069745777.dir/objects.a
+C:\PROGRA~1\CODEBL~1\MinGW\bin\ar.exe cr CMakeFiles\cmTryCompileExec4069745777.dir/objects.a @CMakeFiles\cmTryCompileExec4069745777.dir\objects1.rsp
+C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe       -Wl,--whole-archive CMakeFiles\cmTryCompileExec4069745777.dir/objects.a -Wl,--no-whole-archive  -o cmTryCompileExec4069745777.exe -Wl,--out-implib,libcmTryCompileExec4069745777.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
 mingw32-make.exe[1]: Leaving directory `C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/CMakeFiles/CMakeTmp'
 
 
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe" "cmTryCompileExec1466505738/fast"
-C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTryCompileExec1466505738.dir\build.make CMakeFiles/cmTryCompileExec1466505738.dir/build
+Run Build Command:"C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe" "cmTryCompileExec4114756940/fast"
+C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTryCompileExec4114756940.dir\build.make CMakeFiles/cmTryCompileExec4114756940.dir/build
 mingw32-make.exe[1]: Entering directory `C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/CMakeFiles/CMakeTmp'
 "C:\Program Files\CMake\bin\cmake.exe" -E cmake_progress_report C:\Users\InDie\Bibliotheken\Documents\GitHub\--UntitledGame--\libraries\SFML-Framework\builds\static\CMakeFiles\CMakeTmp\CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec1466505738.dir/CMakeCCompilerABI.c.obj
-C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe    -o CMakeFiles\cmTryCompileExec1466505738.dir\CMakeCCompilerABI.c.obj   -c "C:\Program Files\CMake\share\cmake-3.0\Modules\CMakeCCompilerABI.c"
-Linking C executable cmTryCompileExec1466505738.exe
-"C:\Program Files\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTryCompileExec1466505738.dir\link.txt --verbose=1
-"C:\Program Files\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTryCompileExec1466505738.dir/objects.a
-C:\PROGRA~1\CODEBL~1\MinGW\bin\ar.exe cr CMakeFiles\cmTryCompileExec1466505738.dir/objects.a @CMakeFiles\cmTryCompileExec1466505738.dir\objects1.rsp
-C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe     -v -Wl,--whole-archive CMakeFiles\cmTryCompileExec1466505738.dir/objects.a -Wl,--no-whole-archive  -o cmTryCompileExec1466505738.exe -Wl,--out-implib,libcmTryCompileExec1466505738.dll.a -Wl,--major-image-version,0,--minor-image-version,0   
+Building C object CMakeFiles/cmTryCompileExec4114756940.dir/CMakeCCompilerABI.c.obj
+C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe    -o CMakeFiles\cmTryCompileExec4114756940.dir\CMakeCCompilerABI.c.obj   -c "C:\Program Files\CMake\share\cmake-3.0\Modules\CMakeCCompilerABI.c"
+Linking C executable cmTryCompileExec4114756940.exe
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTryCompileExec4114756940.dir\link.txt --verbose=1
+"C:\Program Files\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTryCompileExec4114756940.dir/objects.a
+C:\PROGRA~1\CODEBL~1\MinGW\bin\ar.exe cr CMakeFiles\cmTryCompileExec4114756940.dir/objects.a @CMakeFiles\cmTryCompileExec4114756940.dir\objects1.rsp
+C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe     -v -Wl,--whole-archive CMakeFiles\cmTryCompileExec4114756940.dir/objects.a -Wl,--no-whole-archive  -o cmTryCompileExec4114756940.exe -Wl,--out-implib,libcmTryCompileExec4114756940.dll.a -Wl,--major-image-version,0,--minor-image-version,0   
 Using built-in specs.
 COLLECT_GCC=C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe
 COLLECT_LTO_WRAPPER=c:/progra~1/codebl~1/mingw/bin/../libexec/gcc/mingw32/4.7.1/lto-wrapper.exe
@@ -65,8 +65,8 @@ Thread model: win32
 gcc version 4.7.1 (tdm-1) 
 COMPILER_PATH=c:/progra~1/codebl~1/mingw/bin/../libexec/gcc/mingw32/4.7.1/;c:/progra~1/codebl~1/mingw/bin/../libexec/gcc/;c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../../mingw32/bin/
 LIBRARY_PATH=c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/;c:/progra~1/codebl~1/mingw/bin/../lib/gcc/;c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../../mingw32/lib/;c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec1466505738.exe' '-mtune=i386' '-march=i386'
- c:/progra~1/codebl~1/mingw/bin/../libexec/gcc/mingw32/4.7.1/collect2.exe -Bdynamic -o cmTryCompileExec1466505738.exe c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../crt2.o c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/crtbegin.o -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1 -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../../mingw32/lib -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../.. --whole-archive CMakeFiles\cmTryCompileExec1466505738.dir/objects.a --no-whole-archive --out-implib libcmTryCompileExec1466505738.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lmoldname -lmingwex -lmsvcrt c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/crtend.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec4114756940.exe' '-mtune=i386' '-march=i386'
+ c:/progra~1/codebl~1/mingw/bin/../libexec/gcc/mingw32/4.7.1/collect2.exe -Bdynamic -o cmTryCompileExec4114756940.exe c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../crt2.o c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/crtbegin.o -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1 -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../../mingw32/lib -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../.. --whole-archive CMakeFiles\cmTryCompileExec4114756940.dir/objects.a --no-whole-archive --out-implib libcmTryCompileExec4114756940.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lmoldname -lmingwex -lmsvcrt c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/crtend.o
 mingw32-make.exe[1]: Leaving directory `C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/CMakeFiles/CMakeTmp'
 
 
@@ -74,17 +74,17 @@ Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld\.exe|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe" "cmTryCompileExec1466505738/fast"]
-  ignore line: [C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTryCompileExec1466505738.dir\build.make CMakeFiles/cmTryCompileExec1466505738.dir/build]
+  ignore line: [Run Build Command:"C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe" "cmTryCompileExec4114756940/fast"]
+  ignore line: [C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTryCompileExec4114756940.dir\build.make CMakeFiles/cmTryCompileExec4114756940.dir/build]
   ignore line: [mingw32-make.exe[1]: Entering directory `C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/CMakeFiles/CMakeTmp']
   ignore line: ["C:\Program Files\CMake\bin\cmake.exe" -E cmake_progress_report C:\Users\InDie\Bibliotheken\Documents\GitHub\--UntitledGame--\libraries\SFML-Framework\builds\static\CMakeFiles\CMakeTmp\CMakeFiles 1]
-  ignore line: [Building C object CMakeFiles/cmTryCompileExec1466505738.dir/CMakeCCompilerABI.c.obj]
-  ignore line: [C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe    -o CMakeFiles\cmTryCompileExec1466505738.dir\CMakeCCompilerABI.c.obj   -c "C:\Program Files\CMake\share\cmake-3.0\Modules\CMakeCCompilerABI.c"]
-  ignore line: [Linking C executable cmTryCompileExec1466505738.exe]
-  ignore line: ["C:\Program Files\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTryCompileExec1466505738.dir\link.txt --verbose=1]
-  ignore line: ["C:\Program Files\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTryCompileExec1466505738.dir/objects.a]
-  ignore line: [C:\PROGRA~1\CODEBL~1\MinGW\bin\ar.exe cr CMakeFiles\cmTryCompileExec1466505738.dir/objects.a @CMakeFiles\cmTryCompileExec1466505738.dir\objects1.rsp]
-  ignore line: [C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe     -v -Wl,--whole-archive CMakeFiles\cmTryCompileExec1466505738.dir/objects.a -Wl,--no-whole-archive  -o cmTryCompileExec1466505738.exe -Wl,--out-implib,libcmTryCompileExec1466505738.dll.a -Wl,--major-image-version,0,--minor-image-version,0   ]
+  ignore line: [Building C object CMakeFiles/cmTryCompileExec4114756940.dir/CMakeCCompilerABI.c.obj]
+  ignore line: [C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe    -o CMakeFiles\cmTryCompileExec4114756940.dir\CMakeCCompilerABI.c.obj   -c "C:\Program Files\CMake\share\cmake-3.0\Modules\CMakeCCompilerABI.c"]
+  ignore line: [Linking C executable cmTryCompileExec4114756940.exe]
+  ignore line: ["C:\Program Files\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTryCompileExec4114756940.dir\link.txt --verbose=1]
+  ignore line: ["C:\Program Files\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTryCompileExec4114756940.dir/objects.a]
+  ignore line: [C:\PROGRA~1\CODEBL~1\MinGW\bin\ar.exe cr CMakeFiles\cmTryCompileExec4114756940.dir/objects.a @CMakeFiles\cmTryCompileExec4114756940.dir\objects1.rsp]
+  ignore line: [C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe     -v -Wl,--whole-archive CMakeFiles\cmTryCompileExec4114756940.dir/objects.a -Wl,--no-whole-archive  -o cmTryCompileExec4114756940.exe -Wl,--out-implib,libcmTryCompileExec4114756940.dll.a -Wl,--major-image-version,0,--minor-image-version,0   ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe]
   ignore line: [COLLECT_LTO_WRAPPER=c:/progra~1/codebl~1/mingw/bin/../libexec/gcc/mingw32/4.7.1/lto-wrapper.exe]
@@ -99,12 +99,12 @@ Parsed C implicit link information from above output:
   ignore line: [c:/progra~1/codebl~1/mingw/bin/../lib/gcc/]
   ignore line: [c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../../mingw32/lib/]
   ignore line: [c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec1466505738.exe' '-mtune=i386' '-march=i386']
-  link line: [ c:/progra~1/codebl~1/mingw/bin/../libexec/gcc/mingw32/4.7.1/collect2.exe -Bdynamic -o cmTryCompileExec1466505738.exe c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../crt2.o c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/crtbegin.o -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1 -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../../mingw32/lib -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../.. --whole-archive CMakeFiles\cmTryCompileExec1466505738.dir/objects.a --no-whole-archive --out-implib libcmTryCompileExec1466505738.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lmoldname -lmingwex -lmsvcrt c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/crtend.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec4114756940.exe' '-mtune=i386' '-march=i386']
+  link line: [ c:/progra~1/codebl~1/mingw/bin/../libexec/gcc/mingw32/4.7.1/collect2.exe -Bdynamic -o cmTryCompileExec4114756940.exe c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../crt2.o c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/crtbegin.o -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1 -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../../mingw32/lib -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../.. --whole-archive CMakeFiles\cmTryCompileExec4114756940.dir/objects.a --no-whole-archive --out-implib libcmTryCompileExec4114756940.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lmoldname -lmingwex -lmsvcrt c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/crtend.o]
     arg [c:/progra~1/codebl~1/mingw/bin/../libexec/gcc/mingw32/4.7.1/collect2.exe] ==> ignore
     arg [-Bdynamic] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTryCompileExec1466505738.exe] ==> ignore
+    arg [cmTryCompileExec4114756940.exe] ==> ignore
     arg [c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../crt2.o] ==> ignore
     arg [c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/crtbegin.o] ==> ignore
     arg [-Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1] ==> dir [c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1]
@@ -112,10 +112,10 @@ Parsed C implicit link information from above output:
     arg [-Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../../mingw32/lib] ==> dir [c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../../mingw32/lib]
     arg [-Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../..] ==> dir [c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../..]
     arg [--whole-archive] ==> ignore
-    arg [CMakeFiles\cmTryCompileExec1466505738.dir/objects.a] ==> ignore
+    arg [CMakeFiles\cmTryCompileExec4114756940.dir/objects.a] ==> ignore
     arg [--no-whole-archive] ==> ignore
     arg [--out-implib] ==> ignore
-    arg [libcmTryCompileExec1466505738.dll.a] ==> ignore
+    arg [libcmTryCompileExec4114756940.dll.a] ==> ignore
     arg [--major-image-version] ==> ignore
     arg [0] ==> ignore
     arg [--minor-image-version] ==> ignore
@@ -149,34 +149,34 @@ Parsed C implicit link information from above output:
 Determining if the CXX compiler works passed with the following output:
 Change Dir: C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe" "cmTryCompileExec1671046023/fast"
-C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTryCompileExec1671046023.dir\build.make CMakeFiles/cmTryCompileExec1671046023.dir/build
+Run Build Command:"C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe" "cmTryCompileExec10992590/fast"
+C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTryCompileExec10992590.dir\build.make CMakeFiles/cmTryCompileExec10992590.dir/build
 mingw32-make.exe[1]: Entering directory `C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/CMakeFiles/CMakeTmp'
 "C:\Program Files\CMake\bin\cmake.exe" -E cmake_progress_report C:\Users\InDie\Bibliotheken\Documents\GitHub\--UntitledGame--\libraries\SFML-Framework\builds\static\CMakeFiles\CMakeTmp\CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec1671046023.dir/testCXXCompiler.cxx.obj
-C:\PROGRA~1\CODEBL~1\MinGW\bin\G__~1.EXE     -o CMakeFiles\cmTryCompileExec1671046023.dir\testCXXCompiler.cxx.obj -c C:\Users\InDie\Bibliotheken\Documents\GitHub\--UntitledGame--\libraries\SFML-Framework\builds\static\CMakeFiles\CMakeTmp\testCXXCompiler.cxx
-Linking CXX executable cmTryCompileExec1671046023.exe
-"C:\Program Files\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTryCompileExec1671046023.dir\link.txt --verbose=1
-"C:\Program Files\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTryCompileExec1671046023.dir/objects.a
-C:\PROGRA~1\CODEBL~1\MinGW\bin\ar.exe cr CMakeFiles\cmTryCompileExec1671046023.dir/objects.a @CMakeFiles\cmTryCompileExec1671046023.dir\objects1.rsp
-C:\PROGRA~1\CODEBL~1\MinGW\bin\G__~1.EXE       -Wl,--whole-archive CMakeFiles\cmTryCompileExec1671046023.dir/objects.a -Wl,--no-whole-archive  -o cmTryCompileExec1671046023.exe -Wl,--out-implib,libcmTryCompileExec1671046023.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
+Building CXX object CMakeFiles/cmTryCompileExec10992590.dir/testCXXCompiler.cxx.obj
+C:\PROGRA~1\CODEBL~1\MinGW\bin\G__~1.EXE     -o CMakeFiles\cmTryCompileExec10992590.dir\testCXXCompiler.cxx.obj -c C:\Users\InDie\Bibliotheken\Documents\GitHub\--UntitledGame--\libraries\SFML-Framework\builds\static\CMakeFiles\CMakeTmp\testCXXCompiler.cxx
+Linking CXX executable cmTryCompileExec10992590.exe
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTryCompileExec10992590.dir\link.txt --verbose=1
+"C:\Program Files\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTryCompileExec10992590.dir/objects.a
+C:\PROGRA~1\CODEBL~1\MinGW\bin\ar.exe cr CMakeFiles\cmTryCompileExec10992590.dir/objects.a @CMakeFiles\cmTryCompileExec10992590.dir\objects1.rsp
+C:\PROGRA~1\CODEBL~1\MinGW\bin\G__~1.EXE       -Wl,--whole-archive CMakeFiles\cmTryCompileExec10992590.dir/objects.a -Wl,--no-whole-archive  -o cmTryCompileExec10992590.exe -Wl,--out-implib,libcmTryCompileExec10992590.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
 mingw32-make.exe[1]: Leaving directory `C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/CMakeFiles/CMakeTmp'
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe" "cmTryCompileExec3294736857/fast"
-C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTryCompileExec3294736857.dir\build.make CMakeFiles/cmTryCompileExec3294736857.dir/build
+Run Build Command:"C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe" "cmTryCompileExec2180255164/fast"
+C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTryCompileExec2180255164.dir\build.make CMakeFiles/cmTryCompileExec2180255164.dir/build
 mingw32-make.exe[1]: Entering directory `C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/CMakeFiles/CMakeTmp'
 "C:\Program Files\CMake\bin\cmake.exe" -E cmake_progress_report C:\Users\InDie\Bibliotheken\Documents\GitHub\--UntitledGame--\libraries\SFML-Framework\builds\static\CMakeFiles\CMakeTmp\CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec3294736857.dir/CMakeCXXCompilerABI.cpp.obj
-C:\PROGRA~1\CODEBL~1\MinGW\bin\G__~1.EXE     -o CMakeFiles\cmTryCompileExec3294736857.dir\CMakeCXXCompilerABI.cpp.obj -c "C:\Program Files\CMake\share\cmake-3.0\Modules\CMakeCXXCompilerABI.cpp"
-Linking CXX executable cmTryCompileExec3294736857.exe
-"C:\Program Files\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTryCompileExec3294736857.dir\link.txt --verbose=1
-"C:\Program Files\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTryCompileExec3294736857.dir/objects.a
-C:\PROGRA~1\CODEBL~1\MinGW\bin\ar.exe cr CMakeFiles\cmTryCompileExec3294736857.dir/objects.a @CMakeFiles\cmTryCompileExec3294736857.dir\objects1.rsp
-C:\PROGRA~1\CODEBL~1\MinGW\bin\G__~1.EXE     -v -Wl,--whole-archive CMakeFiles\cmTryCompileExec3294736857.dir/objects.a -Wl,--no-whole-archive  -o cmTryCompileExec3294736857.exe -Wl,--out-implib,libcmTryCompileExec3294736857.dll.a -Wl,--major-image-version,0,--minor-image-version,0   
+Building CXX object CMakeFiles/cmTryCompileExec2180255164.dir/CMakeCXXCompilerABI.cpp.obj
+C:\PROGRA~1\CODEBL~1\MinGW\bin\G__~1.EXE     -o CMakeFiles\cmTryCompileExec2180255164.dir\CMakeCXXCompilerABI.cpp.obj -c "C:\Program Files\CMake\share\cmake-3.0\Modules\CMakeCXXCompilerABI.cpp"
+Linking CXX executable cmTryCompileExec2180255164.exe
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTryCompileExec2180255164.dir\link.txt --verbose=1
+"C:\Program Files\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTryCompileExec2180255164.dir/objects.a
+C:\PROGRA~1\CODEBL~1\MinGW\bin\ar.exe cr CMakeFiles\cmTryCompileExec2180255164.dir/objects.a @CMakeFiles\cmTryCompileExec2180255164.dir\objects1.rsp
+C:\PROGRA~1\CODEBL~1\MinGW\bin\G__~1.EXE     -v -Wl,--whole-archive CMakeFiles\cmTryCompileExec2180255164.dir/objects.a -Wl,--no-whole-archive  -o cmTryCompileExec2180255164.exe -Wl,--out-implib,libcmTryCompileExec2180255164.dll.a -Wl,--major-image-version,0,--minor-image-version,0   
 Using built-in specs.
 COLLECT_GCC=C:\PROGRA~1\CODEBL~1\MinGW\bin\G__~1.EXE
 COLLECT_LTO_WRAPPER=c:/progra~1/codebl~1/mingw/bin/../libexec/gcc/mingw32/4.7.1/lto-wrapper.exe
@@ -186,8 +186,8 @@ Thread model: win32
 gcc version 4.7.1 (tdm-1) 
 COMPILER_PATH=c:/progra~1/codebl~1/mingw/bin/../libexec/gcc/mingw32/4.7.1/;c:/progra~1/codebl~1/mingw/bin/../libexec/gcc/;c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../../mingw32/bin/
 LIBRARY_PATH=c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/;c:/progra~1/codebl~1/mingw/bin/../lib/gcc/;c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../../mingw32/lib/;c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec3294736857.exe' '-mtune=i386' '-march=i386'
- c:/progra~1/codebl~1/mingw/bin/../libexec/gcc/mingw32/4.7.1/collect2.exe -Bdynamic -o cmTryCompileExec3294736857.exe c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../crt2.o c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/crtbegin.o -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1 -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../../mingw32/lib -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../.. --whole-archive CMakeFiles\cmTryCompileExec3294736857.dir/objects.a --no-whole-archive --out-implib libcmTryCompileExec3294736857.dll.a --major-image-version 0 --minor-image-version 0 -Bstatic -lstdc++ -Bdynamic -lmingw32 -lgcc -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lmoldname -lmingwex -lmsvcrt c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/crtend.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec2180255164.exe' '-mtune=i386' '-march=i386'
+ c:/progra~1/codebl~1/mingw/bin/../libexec/gcc/mingw32/4.7.1/collect2.exe -Bdynamic -o cmTryCompileExec2180255164.exe c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../crt2.o c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/crtbegin.o -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1 -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../../mingw32/lib -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../.. --whole-archive CMakeFiles\cmTryCompileExec2180255164.dir/objects.a --no-whole-archive --out-implib libcmTryCompileExec2180255164.dll.a --major-image-version 0 --minor-image-version 0 -Bstatic -lstdc++ -Bdynamic -lmingw32 -lgcc -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lmoldname -lmingwex -lmsvcrt c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/crtend.o
 mingw32-make.exe[1]: Leaving directory `C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/CMakeFiles/CMakeTmp'
 
 
@@ -195,17 +195,17 @@ Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld\.exe|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe" "cmTryCompileExec3294736857/fast"]
-  ignore line: [C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTryCompileExec3294736857.dir\build.make CMakeFiles/cmTryCompileExec3294736857.dir/build]
+  ignore line: [Run Build Command:"C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe" "cmTryCompileExec2180255164/fast"]
+  ignore line: [C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTryCompileExec2180255164.dir\build.make CMakeFiles/cmTryCompileExec2180255164.dir/build]
   ignore line: [mingw32-make.exe[1]: Entering directory `C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/CMakeFiles/CMakeTmp']
   ignore line: ["C:\Program Files\CMake\bin\cmake.exe" -E cmake_progress_report C:\Users\InDie\Bibliotheken\Documents\GitHub\--UntitledGame--\libraries\SFML-Framework\builds\static\CMakeFiles\CMakeTmp\CMakeFiles 1]
-  ignore line: [Building CXX object CMakeFiles/cmTryCompileExec3294736857.dir/CMakeCXXCompilerABI.cpp.obj]
-  ignore line: [C:\PROGRA~1\CODEBL~1\MinGW\bin\G__~1.EXE     -o CMakeFiles\cmTryCompileExec3294736857.dir\CMakeCXXCompilerABI.cpp.obj -c "C:\Program Files\CMake\share\cmake-3.0\Modules\CMakeCXXCompilerABI.cpp"]
-  ignore line: [Linking CXX executable cmTryCompileExec3294736857.exe]
-  ignore line: ["C:\Program Files\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTryCompileExec3294736857.dir\link.txt --verbose=1]
-  ignore line: ["C:\Program Files\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTryCompileExec3294736857.dir/objects.a]
-  ignore line: [C:\PROGRA~1\CODEBL~1\MinGW\bin\ar.exe cr CMakeFiles\cmTryCompileExec3294736857.dir/objects.a @CMakeFiles\cmTryCompileExec3294736857.dir\objects1.rsp]
-  ignore line: [C:\PROGRA~1\CODEBL~1\MinGW\bin\G__~1.EXE     -v -Wl,--whole-archive CMakeFiles\cmTryCompileExec3294736857.dir/objects.a -Wl,--no-whole-archive  -o cmTryCompileExec3294736857.exe -Wl,--out-implib,libcmTryCompileExec3294736857.dll.a -Wl,--major-image-version,0,--minor-image-version,0   ]
+  ignore line: [Building CXX object CMakeFiles/cmTryCompileExec2180255164.dir/CMakeCXXCompilerABI.cpp.obj]
+  ignore line: [C:\PROGRA~1\CODEBL~1\MinGW\bin\G__~1.EXE     -o CMakeFiles\cmTryCompileExec2180255164.dir\CMakeCXXCompilerABI.cpp.obj -c "C:\Program Files\CMake\share\cmake-3.0\Modules\CMakeCXXCompilerABI.cpp"]
+  ignore line: [Linking CXX executable cmTryCompileExec2180255164.exe]
+  ignore line: ["C:\Program Files\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTryCompileExec2180255164.dir\link.txt --verbose=1]
+  ignore line: ["C:\Program Files\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTryCompileExec2180255164.dir/objects.a]
+  ignore line: [C:\PROGRA~1\CODEBL~1\MinGW\bin\ar.exe cr CMakeFiles\cmTryCompileExec2180255164.dir/objects.a @CMakeFiles\cmTryCompileExec2180255164.dir\objects1.rsp]
+  ignore line: [C:\PROGRA~1\CODEBL~1\MinGW\bin\G__~1.EXE     -v -Wl,--whole-archive CMakeFiles\cmTryCompileExec2180255164.dir/objects.a -Wl,--no-whole-archive  -o cmTryCompileExec2180255164.exe -Wl,--out-implib,libcmTryCompileExec2180255164.dll.a -Wl,--major-image-version,0,--minor-image-version,0   ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=C:\PROGRA~1\CODEBL~1\MinGW\bin\G__~1.EXE]
   ignore line: [COLLECT_LTO_WRAPPER=c:/progra~1/codebl~1/mingw/bin/../libexec/gcc/mingw32/4.7.1/lto-wrapper.exe]
@@ -220,12 +220,12 @@ Parsed CXX implicit link information from above output:
   ignore line: [c:/progra~1/codebl~1/mingw/bin/../lib/gcc/]
   ignore line: [c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../../mingw32/lib/]
   ignore line: [c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec3294736857.exe' '-mtune=i386' '-march=i386']
-  link line: [ c:/progra~1/codebl~1/mingw/bin/../libexec/gcc/mingw32/4.7.1/collect2.exe -Bdynamic -o cmTryCompileExec3294736857.exe c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../crt2.o c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/crtbegin.o -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1 -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../../mingw32/lib -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../.. --whole-archive CMakeFiles\cmTryCompileExec3294736857.dir/objects.a --no-whole-archive --out-implib libcmTryCompileExec3294736857.dll.a --major-image-version 0 --minor-image-version 0 -Bstatic -lstdc++ -Bdynamic -lmingw32 -lgcc -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lmoldname -lmingwex -lmsvcrt c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/crtend.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec2180255164.exe' '-mtune=i386' '-march=i386']
+  link line: [ c:/progra~1/codebl~1/mingw/bin/../libexec/gcc/mingw32/4.7.1/collect2.exe -Bdynamic -o cmTryCompileExec2180255164.exe c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../crt2.o c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/crtbegin.o -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1 -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../../mingw32/lib -Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../.. --whole-archive CMakeFiles\cmTryCompileExec2180255164.dir/objects.a --no-whole-archive --out-implib libcmTryCompileExec2180255164.dll.a --major-image-version 0 --minor-image-version 0 -Bstatic -lstdc++ -Bdynamic -lmingw32 -lgcc -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lmoldname -lmingwex -lmsvcrt c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/crtend.o]
     arg [c:/progra~1/codebl~1/mingw/bin/../libexec/gcc/mingw32/4.7.1/collect2.exe] ==> ignore
     arg [-Bdynamic] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTryCompileExec3294736857.exe] ==> ignore
+    arg [cmTryCompileExec2180255164.exe] ==> ignore
     arg [c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../crt2.o] ==> ignore
     arg [c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/crtbegin.o] ==> ignore
     arg [-Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1] ==> dir [c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1]
@@ -233,10 +233,10 @@ Parsed CXX implicit link information from above output:
     arg [-Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../../mingw32/lib] ==> dir [c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../../../mingw32/lib]
     arg [-Lc:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../..] ==> dir [c:/progra~1/codebl~1/mingw/bin/../lib/gcc/mingw32/4.7.1/../../..]
     arg [--whole-archive] ==> ignore
-    arg [CMakeFiles\cmTryCompileExec3294736857.dir/objects.a] ==> ignore
+    arg [CMakeFiles\cmTryCompileExec2180255164.dir/objects.a] ==> ignore
     arg [--no-whole-archive] ==> ignore
     arg [--out-implib] ==> ignore
-    arg [libcmTryCompileExec3294736857.dll.a] ==> ignore
+    arg [libcmTryCompileExec2180255164.dll.a] ==> ignore
     arg [--major-image-version] ==> ignore
     arg [0] ==> ignore
     arg [--minor-image-version] ==> ignore
@@ -273,68 +273,68 @@ Parsed CXX implicit link information from above output:
 Determining if the include file sys/types.h exists passed with the following output:
 Change Dir: C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe" "cmTryCompileExec1646154135/fast"
-C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTryCompileExec1646154135.dir\build.make CMakeFiles/cmTryCompileExec1646154135.dir/build
+Run Build Command:"C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe" "cmTryCompileExec3723560641/fast"
+C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTryCompileExec3723560641.dir\build.make CMakeFiles/cmTryCompileExec3723560641.dir/build
 mingw32-make.exe[1]: Entering directory `C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/CMakeFiles/CMakeTmp'
 "C:\Program Files\CMake\bin\cmake.exe" -E cmake_progress_report C:\Users\InDie\Bibliotheken\Documents\GitHub\--UntitledGame--\libraries\SFML-Framework\builds\static\CMakeFiles\CMakeTmp\CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec1646154135.dir/CheckIncludeFile.c.obj
-C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe    -o CMakeFiles\cmTryCompileExec1646154135.dir\CheckIncludeFile.c.obj   -c C:\Users\InDie\Bibliotheken\Documents\GitHub\--UntitledGame--\libraries\SFML-Framework\builds\static\CMakeFiles\CMakeTmp\CheckIncludeFile.c
-Linking C executable cmTryCompileExec1646154135.exe
-"C:\Program Files\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTryCompileExec1646154135.dir\link.txt --verbose=1
-"C:\Program Files\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTryCompileExec1646154135.dir/objects.a
-C:\PROGRA~1\CODEBL~1\MinGW\bin\ar.exe cr CMakeFiles\cmTryCompileExec1646154135.dir/objects.a @CMakeFiles\cmTryCompileExec1646154135.dir\objects1.rsp
-C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe       -Wl,--whole-archive CMakeFiles\cmTryCompileExec1646154135.dir/objects.a -Wl,--no-whole-archive  -o cmTryCompileExec1646154135.exe -Wl,--out-implib,libcmTryCompileExec1646154135.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
+Building C object CMakeFiles/cmTryCompileExec3723560641.dir/CheckIncludeFile.c.obj
+C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe    -o CMakeFiles\cmTryCompileExec3723560641.dir\CheckIncludeFile.c.obj   -c C:\Users\InDie\Bibliotheken\Documents\GitHub\--UntitledGame--\libraries\SFML-Framework\builds\static\CMakeFiles\CMakeTmp\CheckIncludeFile.c
+Linking C executable cmTryCompileExec3723560641.exe
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTryCompileExec3723560641.dir\link.txt --verbose=1
+"C:\Program Files\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTryCompileExec3723560641.dir/objects.a
+C:\PROGRA~1\CODEBL~1\MinGW\bin\ar.exe cr CMakeFiles\cmTryCompileExec3723560641.dir/objects.a @CMakeFiles\cmTryCompileExec3723560641.dir\objects1.rsp
+C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe       -Wl,--whole-archive CMakeFiles\cmTryCompileExec3723560641.dir/objects.a -Wl,--no-whole-archive  -o cmTryCompileExec3723560641.exe -Wl,--out-implib,libcmTryCompileExec3723560641.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
 mingw32-make.exe[1]: Leaving directory `C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/CMakeFiles/CMakeTmp'
 
 
 Determining if the include file stdint.h exists passed with the following output:
 Change Dir: C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe" "cmTryCompileExec2152034296/fast"
-C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTryCompileExec2152034296.dir\build.make CMakeFiles/cmTryCompileExec2152034296.dir/build
+Run Build Command:"C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe" "cmTryCompileExec2295015020/fast"
+C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTryCompileExec2295015020.dir\build.make CMakeFiles/cmTryCompileExec2295015020.dir/build
 mingw32-make.exe[1]: Entering directory `C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/CMakeFiles/CMakeTmp'
 "C:\Program Files\CMake\bin\cmake.exe" -E cmake_progress_report C:\Users\InDie\Bibliotheken\Documents\GitHub\--UntitledGame--\libraries\SFML-Framework\builds\static\CMakeFiles\CMakeTmp\CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec2152034296.dir/CheckIncludeFile.c.obj
-C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe    -o CMakeFiles\cmTryCompileExec2152034296.dir\CheckIncludeFile.c.obj   -c C:\Users\InDie\Bibliotheken\Documents\GitHub\--UntitledGame--\libraries\SFML-Framework\builds\static\CMakeFiles\CMakeTmp\CheckIncludeFile.c
-Linking C executable cmTryCompileExec2152034296.exe
-"C:\Program Files\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTryCompileExec2152034296.dir\link.txt --verbose=1
-"C:\Program Files\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTryCompileExec2152034296.dir/objects.a
-C:\PROGRA~1\CODEBL~1\MinGW\bin\ar.exe cr CMakeFiles\cmTryCompileExec2152034296.dir/objects.a @CMakeFiles\cmTryCompileExec2152034296.dir\objects1.rsp
-C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe       -Wl,--whole-archive CMakeFiles\cmTryCompileExec2152034296.dir/objects.a -Wl,--no-whole-archive  -o cmTryCompileExec2152034296.exe -Wl,--out-implib,libcmTryCompileExec2152034296.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
+Building C object CMakeFiles/cmTryCompileExec2295015020.dir/CheckIncludeFile.c.obj
+C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe    -o CMakeFiles\cmTryCompileExec2295015020.dir\CheckIncludeFile.c.obj   -c C:\Users\InDie\Bibliotheken\Documents\GitHub\--UntitledGame--\libraries\SFML-Framework\builds\static\CMakeFiles\CMakeTmp\CheckIncludeFile.c
+Linking C executable cmTryCompileExec2295015020.exe
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTryCompileExec2295015020.dir\link.txt --verbose=1
+"C:\Program Files\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTryCompileExec2295015020.dir/objects.a
+C:\PROGRA~1\CODEBL~1\MinGW\bin\ar.exe cr CMakeFiles\cmTryCompileExec2295015020.dir/objects.a @CMakeFiles\cmTryCompileExec2295015020.dir\objects1.rsp
+C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe       -Wl,--whole-archive CMakeFiles\cmTryCompileExec2295015020.dir/objects.a -Wl,--no-whole-archive  -o cmTryCompileExec2295015020.exe -Wl,--out-implib,libcmTryCompileExec2295015020.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
 mingw32-make.exe[1]: Leaving directory `C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/CMakeFiles/CMakeTmp'
 
 
 Determining if the include file stddef.h exists passed with the following output:
 Change Dir: C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe" "cmTryCompileExec1037219927/fast"
-C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTryCompileExec1037219927.dir\build.make CMakeFiles/cmTryCompileExec1037219927.dir/build
+Run Build Command:"C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe" "cmTryCompileExec445560175/fast"
+C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTryCompileExec445560175.dir\build.make CMakeFiles/cmTryCompileExec445560175.dir/build
 mingw32-make.exe[1]: Entering directory `C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/CMakeFiles/CMakeTmp'
 "C:\Program Files\CMake\bin\cmake.exe" -E cmake_progress_report C:\Users\InDie\Bibliotheken\Documents\GitHub\--UntitledGame--\libraries\SFML-Framework\builds\static\CMakeFiles\CMakeTmp\CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec1037219927.dir/CheckIncludeFile.c.obj
-C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe    -o CMakeFiles\cmTryCompileExec1037219927.dir\CheckIncludeFile.c.obj   -c C:\Users\InDie\Bibliotheken\Documents\GitHub\--UntitledGame--\libraries\SFML-Framework\builds\static\CMakeFiles\CMakeTmp\CheckIncludeFile.c
-Linking C executable cmTryCompileExec1037219927.exe
-"C:\Program Files\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTryCompileExec1037219927.dir\link.txt --verbose=1
-"C:\Program Files\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTryCompileExec1037219927.dir/objects.a
-C:\PROGRA~1\CODEBL~1\MinGW\bin\ar.exe cr CMakeFiles\cmTryCompileExec1037219927.dir/objects.a @CMakeFiles\cmTryCompileExec1037219927.dir\objects1.rsp
-C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe       -Wl,--whole-archive CMakeFiles\cmTryCompileExec1037219927.dir/objects.a -Wl,--no-whole-archive  -o cmTryCompileExec1037219927.exe -Wl,--out-implib,libcmTryCompileExec1037219927.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
+Building C object CMakeFiles/cmTryCompileExec445560175.dir/CheckIncludeFile.c.obj
+C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe    -o CMakeFiles\cmTryCompileExec445560175.dir\CheckIncludeFile.c.obj   -c C:\Users\InDie\Bibliotheken\Documents\GitHub\--UntitledGame--\libraries\SFML-Framework\builds\static\CMakeFiles\CMakeTmp\CheckIncludeFile.c
+Linking C executable cmTryCompileExec445560175.exe
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTryCompileExec445560175.dir\link.txt --verbose=1
+"C:\Program Files\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTryCompileExec445560175.dir/objects.a
+C:\PROGRA~1\CODEBL~1\MinGW\bin\ar.exe cr CMakeFiles\cmTryCompileExec445560175.dir/objects.a @CMakeFiles\cmTryCompileExec445560175.dir\objects1.rsp
+C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe       -Wl,--whole-archive CMakeFiles\cmTryCompileExec445560175.dir/objects.a -Wl,--no-whole-archive  -o cmTryCompileExec445560175.exe -Wl,--out-implib,libcmTryCompileExec445560175.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
 mingw32-make.exe[1]: Leaving directory `C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/CMakeFiles/CMakeTmp'
 
 
 Determining size of void* passed with the following output:
 Change Dir: C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe" "cmTryCompileExec1048529063/fast"
-C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTryCompileExec1048529063.dir\build.make CMakeFiles/cmTryCompileExec1048529063.dir/build
+Run Build Command:"C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe" "cmTryCompileExec2566856726/fast"
+C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTryCompileExec2566856726.dir\build.make CMakeFiles/cmTryCompileExec2566856726.dir/build
 mingw32-make.exe[1]: Entering directory `C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/CMakeFiles/CMakeTmp'
 "C:\Program Files\CMake\bin\cmake.exe" -E cmake_progress_report C:\Users\InDie\Bibliotheken\Documents\GitHub\--UntitledGame--\libraries\SFML-Framework\builds\static\CMakeFiles\CMakeTmp\CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec1048529063.dir/SIZEOF_VOID_PTR.c.obj
-C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe    -o CMakeFiles\cmTryCompileExec1048529063.dir\SIZEOF_VOID_PTR.c.obj   -c C:\Users\InDie\Bibliotheken\Documents\GitHub\--UntitledGame--\libraries\SFML-Framework\builds\static\CMakeFiles\CheckTypeSize\SIZEOF_VOID_PTR.c
-Linking C executable cmTryCompileExec1048529063.exe
-"C:\Program Files\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTryCompileExec1048529063.dir\link.txt --verbose=1
-"C:\Program Files\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTryCompileExec1048529063.dir/objects.a
-C:\PROGRA~1\CODEBL~1\MinGW\bin\ar.exe cr CMakeFiles\cmTryCompileExec1048529063.dir/objects.a @CMakeFiles\cmTryCompileExec1048529063.dir\objects1.rsp
-C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe       -Wl,--whole-archive CMakeFiles\cmTryCompileExec1048529063.dir/objects.a -Wl,--no-whole-archive  -o cmTryCompileExec1048529063.exe -Wl,--out-implib,libcmTryCompileExec1048529063.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
+Building C object CMakeFiles/cmTryCompileExec2566856726.dir/SIZEOF_VOID_PTR.c.obj
+C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe    -o CMakeFiles\cmTryCompileExec2566856726.dir\SIZEOF_VOID_PTR.c.obj   -c C:\Users\InDie\Bibliotheken\Documents\GitHub\--UntitledGame--\libraries\SFML-Framework\builds\static\CMakeFiles\CheckTypeSize\SIZEOF_VOID_PTR.c
+Linking C executable cmTryCompileExec2566856726.exe
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTryCompileExec2566856726.dir\link.txt --verbose=1
+"C:\Program Files\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTryCompileExec2566856726.dir/objects.a
+C:\PROGRA~1\CODEBL~1\MinGW\bin\ar.exe cr CMakeFiles\cmTryCompileExec2566856726.dir/objects.a @CMakeFiles\cmTryCompileExec2566856726.dir\objects1.rsp
+C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe       -Wl,--whole-archive CMakeFiles\cmTryCompileExec2566856726.dir/objects.a -Wl,--no-whole-archive  -o cmTryCompileExec2566856726.exe -Wl,--out-implib,libcmTryCompileExec2566856726.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
 mingw32-make.exe[1]: Leaving directory `C:/Users/InDie/Bibliotheken/Documents/GitHub/--UntitledGame--/libraries/SFML-Framework/builds/static/CMakeFiles/CMakeTmp'
 
 

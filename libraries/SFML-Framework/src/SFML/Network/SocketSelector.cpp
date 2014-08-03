@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2014 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2013 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -76,20 +76,11 @@ void SocketSelector::add(Socket& socket)
     SocketHandle handle = socket.getHandle();
     if (handle != priv::SocketImpl::invalidSocket())
     {
-        if (handle < FD_SETSIZE)
-        {
-            FD_SET(handle, &m_impl->AllSockets);
+        FD_SET(handle, &m_impl->AllSockets);
 
-            int size = static_cast<int>(handle);
-            if (size > m_impl->MaxSocket)
-                m_impl->MaxSocket = size;
-        }
-        else
-        {
-            err() << "The socket can't be added to the selector because its "
-                  << "ID is too high. This is a limitation of your operating "
-                  << "system's FD_SETSIZE setting.";
-        }
+        int size = static_cast<int>(handle);
+        if (size > m_impl->MaxSocket)
+            m_impl->MaxSocket = size;
     }
 }
 

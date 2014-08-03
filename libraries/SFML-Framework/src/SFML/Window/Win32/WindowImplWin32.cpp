@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2014 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2013 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -55,7 +55,8 @@
 namespace
 {
     unsigned int               windowCount      = 0;
-    const wchar_t*             className        = L"SFML_Window";
+    const char*                classNameA       = "SFML_Window";
+    const wchar_t*             classNameW       = L"SFML_Window";
     sf::priv::WindowImplWin32* fullscreenWindow = NULL;
 }
 
@@ -70,31 +71,29 @@ m_callback        (0),
 m_cursor          (NULL),
 m_icon            (NULL),
 m_keyRepeatEnabled(true),
+m_isCursorIn      (false),
 m_lastSize        (0, 0),
-m_resizing        (false),
-m_surrogate       (0),
-m_mouseInside     (false)
+m_resizing        (false)
 {
     if (m_handle)
     {
         // We change the event procedure of the control (it is important to save the old one)
-        SetWindowLongPtrW(m_handle, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(this));
-        m_callback = SetWindowLongPtrW(m_handle, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(&WindowImplWin32::globalOnEvent));
+        SetWindowLongPtr(m_handle, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(this));
+        m_callback = SetWindowLongPtr(m_handle, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(&WindowImplWin32::globalOnEvent));
     }
 }
 
 
 ////////////////////////////////////////////////////////////
-WindowImplWin32::WindowImplWin32(VideoMode mode, const String& title, Uint32 style, const ContextSettings& /*settings*/) :
+WindowImplWin32::WindowImplWin32(VideoMode mode, const String& title, Uint32 style) :
 m_handle          (NULL),
 m_callback        (0),
 m_cursor          (NULL),
 m_icon            (NULL),
 m_keyRepeatEnabled(true),
+m_isCursorIn      (false),
 m_lastSize        (mode.width, mode.height),
-m_resizing        (false),
-m_surrogate       (0),
-m_mouseInside     (false)
+m_resizing        (false)
 {
     // Register the window class at first call
     if (windowCount == 0)
@@ -102,8 +101,8 @@ m_mouseInside     (false)
 
     // Compute position and size
     HDC screenDC = GetDC(NULL);
-    int left   = (GetDeviceCaps(screenDC, HORZRES) - static_cast<int>(mode.width))  / 2;
-    int top    = (GetDeviceCaps(screenDC, VERTRES) - static_cast<int>(mode.height)) / 2;
+    int left   = (GetDeviceCaps(screenDC, HORZRES) - mode.width)  / 2;
+    int top    = (GetDeviceCaps(screenDC, VERTRES) - mode.height) / 2;
     int width  = mode.width;
     int height = mode.height;
     ReleaseDC(NULL, screenDC);
@@ -132,11 +131,14 @@ m_mouseInside     (false)
     }
 
     // Create the window
-    m_handle = CreateWindowW(className, title.toWideString().c_str(), win32Style, left, top, width, height, NULL, NULL, GetModuleHandle(NULL), this);
-
-    // By default, the OS limits the size of the window the the desktop size,
-    // we have to resize it after creation to apply the real size
-    setSize(Vector2u(mode.width, mode.height));
+    if (hasUnicodeSupport())
+    {
+        m_handle = CreateWindowW(classNameW, title.toWideString().c_str(), win32Style, left, top, width, height, NULL, NULL, GetModuleHandle(NULL), this);
+    }
+    else
+    {
+        m_handle = CreateWindowA(classNameA, title.toAnsiString().c_str(), win32Style, left, top, width, height, NULL, NULL, GetModuleHandle(NULL), this);
+    }
 
     // Switch to fullscreen if requested
     if (fullscreen)
@@ -165,12 +167,21 @@ WindowImplWin32::~WindowImplWin32()
 
         // Unregister window class if we were the last window
         if (windowCount == 0)
-            UnregisterClassW(className, GetModuleHandleW(NULL));
+        {
+            if (hasUnicodeSupport())
+            {
+                UnregisterClassW(classNameW, GetModuleHandle(NULL));
+            }
+            else
+            {
+                UnregisterClassA(classNameA, GetModuleHandle(NULL));
+            }
+        }
     }
     else
     {
         // The window is external : remove the hook on its message callback
-        SetWindowLongPtrW(m_handle, GWLP_WNDPROC, m_callback);
+        SetWindowLongPtr(m_handle, GWLP_WNDPROC, m_callback);
     }
 }
 
@@ -189,10 +200,10 @@ void WindowImplWin32::processEvents()
     if (!m_callback)
     {
         MSG message;
-        while (PeekMessageW(&message, NULL, 0, 0, PM_REMOVE))
+        while (PeekMessage(&message, m_handle, 0, 0, PM_REMOVE))
         {
             TranslateMessage(&message);
-            DispatchMessageW(&message);
+            DispatchMessage(&message);
         }
     }
 }
@@ -230,7 +241,7 @@ void WindowImplWin32::setSize(const Vector2u& size)
 {
     // SetWindowPos wants the total size of the window (including title bar and borders),
     // so we have to compute it
-    RECT rectangle = {0, 0, static_cast<long>(size.x), static_cast<long>(size.y)};
+    RECT rectangle = {0, 0, size.x, size.y};
     AdjustWindowRect(&rectangle, GetWindowLong(m_handle, GWL_STYLE), false);
     int width  = rectangle.right - rectangle.left;
     int height = rectangle.bottom - rectangle.top;
@@ -242,7 +253,14 @@ void WindowImplWin32::setSize(const Vector2u& size)
 ////////////////////////////////////////////////////////////
 void WindowImplWin32::setTitle(const String& title)
 {
-    SetWindowTextW(m_handle, title.toWideString().c_str());
+    if (hasUnicodeSupport())
+    {
+        SetWindowTextW(m_handle, title.toWideString().c_str());
+    }
+    else
+    {
+        SetWindowTextA(m_handle, title.toAnsiString().c_str());
+    }
 }
 
 
@@ -264,13 +282,13 @@ void WindowImplWin32::setIcon(unsigned int width, unsigned int height, const Uin
     }
 
     // Create the icon from the pixel array
-    m_icon = CreateIcon(GetModuleHandleW(NULL), width, height, 1, 32, NULL, &iconPixels[0]);
+    m_icon = CreateIcon(GetModuleHandle(NULL), width, height, 1, 32, NULL, &iconPixels[0]);
 
     // Set it as both big and small icon of the window
     if (m_icon)
     {
-        SendMessageW(m_handle, WM_SETICON, ICON_BIG,   (LPARAM)m_icon);
-        SendMessageW(m_handle, WM_SETICON, ICON_SMALL, (LPARAM)m_icon);
+        SendMessage(m_handle, WM_SETICON, ICON_BIG,   (LPARAM)m_icon);
+        SendMessage(m_handle, WM_SETICON, ICON_SMALL, (LPARAM)m_icon);
     }
     else
     {
@@ -290,7 +308,7 @@ void WindowImplWin32::setVisible(bool visible)
 void WindowImplWin32::setMouseCursorVisible(bool visible)
 {
     if (visible)
-        m_cursor = LoadCursorW(NULL, IDC_ARROW);
+        m_cursor = LoadCursor(NULL, IDC_ARROW);
     else
         m_cursor = NULL;
 
@@ -308,18 +326,36 @@ void WindowImplWin32::setKeyRepeatEnabled(bool enabled)
 ////////////////////////////////////////////////////////////
 void WindowImplWin32::registerWindowClass()
 {
-    WNDCLASSW windowClass;
-    windowClass.style         = 0;
-    windowClass.lpfnWndProc   = &WindowImplWin32::globalOnEvent;
-    windowClass.cbClsExtra    = 0;
-    windowClass.cbWndExtra    = 0;
-    windowClass.hInstance     = GetModuleHandleW(NULL);
-    windowClass.hIcon         = NULL;
-    windowClass.hCursor       = 0;
-    windowClass.hbrBackground = 0;
-    windowClass.lpszMenuName  = NULL;
-    windowClass.lpszClassName = className;
-    RegisterClassW(&windowClass);
+    if (hasUnicodeSupport())
+    {
+        WNDCLASSW windowClass;
+        windowClass.style         = 0;
+        windowClass.lpfnWndProc   = &WindowImplWin32::globalOnEvent;
+        windowClass.cbClsExtra    = 0;
+        windowClass.cbWndExtra    = 0;
+        windowClass.hInstance     = GetModuleHandle(NULL);
+        windowClass.hIcon         = NULL;
+        windowClass.hCursor       = 0;
+        windowClass.hbrBackground = 0;
+        windowClass.lpszMenuName  = NULL;
+        windowClass.lpszClassName = classNameW;
+        RegisterClassW(&windowClass);
+    }
+    else
+    {
+        WNDCLASSA windowClass;
+        windowClass.style         = 0;
+        windowClass.lpfnWndProc   = &WindowImplWin32::globalOnEvent;
+        windowClass.cbClsExtra    = 0;
+        windowClass.cbWndExtra    = 0;
+        windowClass.hInstance     = GetModuleHandle(NULL);
+        windowClass.hIcon         = NULL;
+        windowClass.hCursor       = 0;
+        windowClass.hbrBackground = 0;
+        windowClass.lpszMenuName  = NULL;
+        windowClass.lpszClassName = classNameA;
+        RegisterClassA(&windowClass);
+    }
 }
 
 
@@ -334,15 +370,15 @@ void WindowImplWin32::switchToFullscreen(const VideoMode& mode)
     devMode.dmFields     = DM_PELSWIDTH | DM_PELSHEIGHT | DM_BITSPERPEL;
 
     // Apply fullscreen mode
-    if (ChangeDisplaySettingsW(&devMode, CDS_FULLSCREEN) != DISP_CHANGE_SUCCESSFUL)
+    if (ChangeDisplaySettings(&devMode, CDS_FULLSCREEN) != DISP_CHANGE_SUCCESSFUL)
     {
         err() << "Failed to change display mode for fullscreen" << std::endl;
         return;
     }
 
     // Make the window flags compatible with fullscreen mode
-    SetWindowLongW(m_handle, GWL_STYLE, WS_POPUP | WS_CLIPCHILDREN | WS_CLIPSIBLINGS);
-    SetWindowLongW(m_handle, GWL_EXSTYLE, WS_EX_APPWINDOW);
+    SetWindowLong(m_handle, GWL_STYLE, WS_POPUP | WS_CLIPCHILDREN | WS_CLIPSIBLINGS);
+    SetWindowLong(m_handle, GWL_EXSTYLE, WS_EX_APPWINDOW);
 
     // Resize the window so that it fits the entire screen
     SetWindowPos(m_handle, HWND_TOP, 0, 0, mode.width, mode.height, SWP_FRAMECHANGED);
@@ -359,30 +395,12 @@ void WindowImplWin32::cleanup()
     // Restore the previous video mode (in case we were running in fullscreen)
     if (fullscreenWindow == this)
     {
-        ChangeDisplaySettingsW(NULL, 0);
+        ChangeDisplaySettings(NULL, 0);
         fullscreenWindow = NULL;
     }
 
     // Unhide the mouse cursor (in case it was hidden)
     setMouseCursorVisible(true);
-
-    // No longer track the cursor
-    setTracking(false);
-
-    // No longer capture the cursor
-    ReleaseCapture();
-}
-
-
-////////////////////////////////////////////////////////////
-void WindowImplWin32::setTracking(bool track)
-{
-    TRACKMOUSEEVENT mouseEvent;
-    mouseEvent.cbSize = sizeof(TRACKMOUSEEVENT);
-    mouseEvent.dwFlags = track ? TME_LEAVE : TME_CANCEL;
-    mouseEvent.hwndTrack = m_handle;
-    mouseEvent.dwHoverTime = HOVER_DEFAULT;
-    TrackMouseEvent(&mouseEvent);
 }
 
 
@@ -442,14 +460,14 @@ void WindowImplWin32::processEvent(UINT message, WPARAM wParam, LPARAM lParam)
         }
 
         // Start resizing
-        case WM_ENTERSIZEMOVE :
+        case WM_ENTERSIZEMOVE:
         {
             m_resizing = true;
             break;
         }
 
         // Stop resizing
-        case WM_EXITSIZEMOVE :
+        case WM_EXITSIZEMOVE:
         {
             m_resizing = false;
 
@@ -466,17 +484,6 @@ void WindowImplWin32::processEvent(UINT message, WPARAM wParam, LPARAM lParam)
                 event.size.height = m_lastSize.y;
                 pushEvent(event);
             }
-            break;
-        }
-
-        // The system request the min/max window size and position
-        case WM_GETMINMAXINFO :
-        {
-            // We override the returned information to remove the default limit
-            // (the OS doesn't allow windows bigger than the desktop by default)
-            MINMAXINFO* info = reinterpret_cast<MINMAXINFO*>(lParam);
-            info->ptMaxTrackSize.x = 50000;
-            info->ptMaxTrackSize.y = 50000;
             break;
         }
 
@@ -503,32 +510,10 @@ void WindowImplWin32::processEvent(UINT message, WPARAM wParam, LPARAM lParam)
         {
             if (m_keyRepeatEnabled || ((lParam & (1 << 30)) == 0))
             {
-                // Get the code of the typed character
-                Uint32 character = static_cast<Uint32>(wParam);
-
-                // Check if it is the first part of a surrogate pair, or a regular character
-                if ((character >= 0xD800) && (character <= 0xDBFF))
-                {
-                    // First part of a surrogate pair: store it and wait for the second one
-                    m_surrogate = static_cast<Uint16>(character);
-                }
-                else
-                {
-                    // Check if it is the second part of a surrogate pair, or a regular character
-                    if ((character >= 0xDC00) && (character <= 0xDFFF))
-                    {
-                        // Convert the UTF-16 surrogate pair to a single UTF-32 value
-                        Uint16 utf16[] = {m_surrogate, static_cast<Uint16>(character)};
-                        sf::Utf16::toUtf32(utf16, utf16 + 2, &character);
-                        m_surrogate = 0;
-                    }
-
-                    // Send a TextEntered event
-                    Event event;
-                    event.type = Event::TextEntered;
-                    event.text.unicode = character;
-                    pushEvent(event);
-                }
+                Event event;
+                event.type = Event::TextEntered;
+                event.text.unicode = static_cast<Uint32>(wParam);
+                pushEvent(event);
             }
             break;
         }
@@ -680,85 +665,40 @@ void WindowImplWin32::processEvent(UINT message, WPARAM wParam, LPARAM lParam)
             break;
         }
 
-        // Mouse leave event
-        case WM_MOUSELEAVE :
-        {
-            // Avoid this firing a second time in case the cursor is dragged outside
-            if (m_mouseInside)
-            {
-                m_mouseInside = false;
-
-                // Generate a MouseLeft event
-                Event event;
-                event.type = Event::MouseLeft;
-                pushEvent(event);
-            }
-            break;
-        }
-
         // Mouse move event
         case WM_MOUSEMOVE :
         {
-            // Extract the mouse local coordinates
-            int x = static_cast<Int16>(LOWORD(lParam));
-            int y = static_cast<Int16>(HIWORD(lParam));
-
-            // Get the client area of the window
-            RECT area;
-            GetClientRect(m_handle, &area);
-
-            // Capture the mouse in case the user wants to drag it outside
-            if ((wParam & (MK_LBUTTON | MK_MBUTTON | MK_RBUTTON | MK_XBUTTON1 | MK_XBUTTON2)) == 0)
+            // Check if we need to generate a MouseEntered event
+            if (!m_isCursorIn)
             {
-                // Only release the capture if we really have it
-                if (GetCapture() == m_handle)
-                    ReleaseCapture();
-            }
-            else if (GetCapture() != m_handle)
-            {
-                // Set the capture to continue receiving mouse events
-                SetCapture(m_handle);
+                TRACKMOUSEEVENT mouseEvent;
+                mouseEvent.cbSize    = sizeof(TRACKMOUSEEVENT);
+                mouseEvent.hwndTrack = m_handle;
+                mouseEvent.dwFlags   = TME_LEAVE;
+                TrackMouseEvent(&mouseEvent);
+
+                m_isCursorIn = true;
+
+                Event event;
+                event.type = Event::MouseEntered;
+                pushEvent(event);
             }
 
-            // If the cursor is outside the client area...
-            if ((x < area.left) || (x > area.right) || (y < area.top) || (y > area.bottom))
-            {
-                // and it used to be inside, the mouse left it.
-                if (m_mouseInside)
-                {
-                    m_mouseInside = false;
-
-                    // No longer care for the mouse leaving the window
-                    setTracking(false);
-
-                    // Generate a MouseLeft event
-                    Event event;
-                    event.type = Event::MouseLeft;
-                    pushEvent(event);
-                }
-            }
-            else
-            {
-                // and vice-versa
-                if (!m_mouseInside)
-                {
-                    m_mouseInside = true;
-
-                    // Look for the mouse leaving the window
-                    setTracking(true);
-
-                    // Generate a MouseEntered event
-                    Event event;
-                    event.type = Event::MouseEntered;
-                    pushEvent(event);
-                }
-            }
-
-            // Generate a MouseMove event
             Event event;
             event.type        = Event::MouseMoved;
-            event.mouseMove.x = x;
-            event.mouseMove.y = y;
+            event.mouseMove.x = static_cast<Int16>(LOWORD(lParam));
+            event.mouseMove.y = static_cast<Int16>(HIWORD(lParam));
+            pushEvent(event);
+            break;
+        }
+
+        // Mouse leave event
+        case WM_MOUSELEAVE :
+        {
+            m_isCursorIn = false;
+
+            Event event;
+            event.type = Event::MouseLeft;
             pushEvent(event);
             break;
         }
@@ -774,7 +714,7 @@ Keyboard::Key WindowImplWin32::virtualKeyCodeToSF(WPARAM key, LPARAM flags)
         // Check the scancode to distinguish between left and right shift
         case VK_SHIFT :
         {
-            static UINT lShift = MapVirtualKeyW(VK_LSHIFT, MAPVK_VK_TO_VSC);
+            static UINT lShift = MapVirtualKey(VK_LSHIFT, MAPVK_VK_TO_VSC);
             UINT scancode = static_cast<UINT>((flags & (0xFF << 16)) >> 16);
             return scancode == lShift ? Keyboard::LShift : Keyboard::RShift;
         }
@@ -888,6 +828,24 @@ Keyboard::Key WindowImplWin32::virtualKeyCodeToSF(WPARAM key, LPARAM flags)
 
 
 ////////////////////////////////////////////////////////////
+bool WindowImplWin32::hasUnicodeSupport()
+{
+    OSVERSIONINFO version;
+    ZeroMemory(&version, sizeof(version));
+    version.dwOSVersionInfoSize = sizeof(version);
+
+    if (GetVersionEx(&version))
+    {
+        return version.dwPlatformId == VER_PLATFORM_WIN32_NT;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+
+////////////////////////////////////////////////////////////
 LRESULT CALLBACK WindowImplWin32::globalOnEvent(HWND handle, UINT message, WPARAM wParam, LPARAM lParam)
 {
     // Associate handle and Window instance when the creation message is received
@@ -897,11 +855,11 @@ LRESULT CALLBACK WindowImplWin32::globalOnEvent(HWND handle, UINT message, WPARA
         LONG_PTR window = (LONG_PTR)reinterpret_cast<CREATESTRUCT*>(lParam)->lpCreateParams;
 
         // Set as the "user data" parameter of the window
-        SetWindowLongPtrW(handle, GWLP_USERDATA, window);
+        SetWindowLongPtr(handle, GWLP_USERDATA, window);
     }
 
     // Get the WindowImpl instance corresponding to the window handle
-    WindowImplWin32* window = handle ? reinterpret_cast<WindowImplWin32*>(GetWindowLongPtr(handle, GWLP_USERDATA)) : NULL;
+    WindowImplWin32* window = reinterpret_cast<WindowImplWin32*>(GetWindowLongPtr(handle, GWLP_USERDATA));
 
     // Forward the event to the appropriate function
     if (window)
@@ -909,18 +867,16 @@ LRESULT CALLBACK WindowImplWin32::globalOnEvent(HWND handle, UINT message, WPARA
         window->processEvent(message, wParam, lParam);
 
         if (window->m_callback)
-            return CallWindowProcW(reinterpret_cast<WNDPROC>(window->m_callback), handle, message, wParam, lParam);
+            return CallWindowProc(reinterpret_cast<WNDPROC>(window->m_callback), handle, message, wParam, lParam);
     }
 
     // We don't forward the WM_CLOSE message to prevent the OS from automatically destroying the window
     if (message == WM_CLOSE)
         return 0;
 
-    // Don't forward the menu system command, so that pressing ALT or F10 doesn't steal the focus
-    if ((message == WM_SYSCOMMAND) && (wParam == SC_KEYMENU))
-        return 0;
-
-    return DefWindowProcW(handle, message, wParam, lParam);
+    static const bool hasUnicode = hasUnicodeSupport();
+    return hasUnicode ? DefWindowProcW(handle, message, wParam, lParam) :
+                        DefWindowProcA(handle, message, wParam, lParam);
 }
 
 } // namespace priv

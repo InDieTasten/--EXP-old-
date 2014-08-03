@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2014 Marco Antognini (antognini.marco@gmail.com),
-//                         Laurent Gomila (laurent.gom@gmail.com),
+// Copyright (C) 2007-2013 Marco Antognini (antognini.marco@gmail.com), 
+//                         Laurent Gomila (laurent.gom@gmail.com), 
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -29,33 +29,29 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
+#include <SFML/System/NonCopyable.hpp>
 #include <SFML/Window/JoystickImpl.hpp>
 #include <SFML/Window/Keyboard.hpp>
 #include <SFML/Window/Mouse.hpp>
-#include <SFML/System/NonCopyable.hpp>
 #include <Carbon/Carbon.h>
-#include <IOKit/hid/IOHIDDevice.h>
 #include <IOKit/hid/IOHIDManager.h>
+#include <IOKit/hid/IOHIDDevice.h>
 #include <vector>
 
 namespace sf
 {
 namespace priv
 {
-
-typedef std::vector<IOHIDElementRef> IOHIDElements;
-
 ////////////////////////////////////////////////////////////
-/// \brief sf::priv::InputImpl helper
-///
-/// This class manage as a singleton instance the keyboard and mouse states.
-/// It's only purpose is to help sf::priv::InputImpl class.
+/// \brief This class manage as a singleton instance the
+/// keyboard and mouse states. It's only purpose is
+/// to help sf::priv::InputImpl class.
 ///
 ////////////////////////////////////////////////////////////
 class HIDInputManager : NonCopyable
 {
 public :
-
+    
     ////////////////////////////////////////////////////////////
     /// \brief Get the unique instance of the class
     ///
@@ -65,7 +61,7 @@ public :
     ///
     ////////////////////////////////////////////////////////////
     static HIDInputManager& getInstance();
-
+    
     ////////////////////////////////////////////////////////////
     /// \brief Check if a key is pressed
     ///
@@ -75,7 +71,7 @@ public :
     ///
     ////////////////////////////////////////////////////////////
     bool isKeyPressed(Keyboard::Key key);
-
+    
     ////////////////////////////////////////////////////////////
     /// \brief Check if a mouse button is pressed
     ///
@@ -87,7 +83,7 @@ public :
     bool isMouseButtonPressed(Mouse::Button button);
 
 public :
-
+    
     ////////////////////////////////////////////////////////////
     /// \brief Get the usb location ID of a given device
     ///
@@ -98,7 +94,7 @@ public :
     ///
     ////////////////////////////////////////////////////////////
     static long getLocationID(IOHIDDeviceRef device);
-
+    
     ////////////////////////////////////////////////////////////
     /// \brief Create a mask (dictionary) for an IOHIDManager
     ///
@@ -108,7 +104,7 @@ public :
     ///
     ////////////////////////////////////////////////////////////
     static CFDictionaryRef copyDevicesMask(UInt32 page, UInt32 usage);
-
+    
     ////////////////////////////////////////////////////////////
     /// Try to convert a character into a SFML key code.
     ///
@@ -121,7 +117,7 @@ public :
     ///
     ////////////////////////////////////////////////////////////
     static Keyboard::Key localizedKeys(UniChar ch);
-
+    
     ////////////////////////////////////////////////////////////
     /// Try to convert a virtual keycode into a SFML key code.
     ///
@@ -137,13 +133,13 @@ private :
     ///
     ////////////////////////////////////////////////////////////
     HIDInputManager();
-
+    
     ////////////////////////////////////////////////////////////
     /// \brief Destructor
     ///
     ////////////////////////////////////////////////////////////
     ~HIDInputManager();
-
+    
     ////////////////////////////////////////////////////////////
     /// \brief Initialize the keyboard part of this class
     ///
@@ -151,7 +147,7 @@ private :
     ///
     ////////////////////////////////////////////////////////////
     void initializeKeyboard();
-
+    
     ////////////////////////////////////////////////////////////
     /// \brief Initialize the mouse part of this class
     ///
@@ -159,7 +155,7 @@ private :
     ///
     ////////////////////////////////////////////////////////////
     void initializeMouse();
-
+    
     ////////////////////////////////////////////////////////////
     /// \brief Load the given keyboard into m_keys
     ///
@@ -170,7 +166,7 @@ private :
     ///
     ////////////////////////////////////////////////////////////
     void loadKeyboard(IOHIDDeviceRef keyboard);
-
+    
     ////////////////////////////////////////////////////////////
     /// \brief Load the given mouse into m_buttons
     ///
@@ -181,7 +177,7 @@ private :
     ///
     ////////////////////////////////////////////////////////////
     void loadMouse(IOHIDDeviceRef mouse);
-
+    
     ////////////////////////////////////////////////////////////
     /// \brief Load the given key into m_keys
     ///
@@ -191,7 +187,7 @@ private :
     ///
     ////////////////////////////////////////////////////////////
     void loadKey(IOHIDElementRef key);
-
+    
     ////////////////////////////////////////////////////////////
     /// \brief Load the given button into m_buttons
     ///
@@ -201,7 +197,7 @@ private :
     ///
     ////////////////////////////////////////////////////////////
     void loadButton(IOHIDElementRef button);
-
+    
     ////////////////////////////////////////////////////////////
     /// \brief Release all resources
     ///
@@ -210,9 +206,9 @@ private :
     ///
     ////////////////////////////////////////////////////////////
     void freeUp();
-
+    
     ////////////////////////////////////////////////////////////
-    /// \brief Filter the devices and return them
+    /// \brief Filter the devices and return them.
     ///
     /// freeUp is _not_ called by this function.
     ///
@@ -222,19 +218,7 @@ private :
     ///
     ////////////////////////////////////////////////////////////
     CFSetRef copyDevices(UInt32 page, UInt32 usage);
-
-    ////////////////////////////////////////////////////////////
-    /// \brief Check if a key / mouse button is pressed
-    ///
-    /// \param elements HID elements mapping to this key / mouse button
-    ///
-    /// \return True if the key / button is pressed, false otherwise
-    ///
-    /// \see isKeyPressed, isMouseButtonPressed
-    ///
-    ////////////////////////////////////////////////////////////
-    bool isPressed(IOHIDElements& elements);
-
+    
     ////////////////////////////////////////////////////////////
     /// \brief Convert a HID key usage to its corresponding virtual code
     ///
@@ -248,7 +232,7 @@ private :
     static UInt8 usageToVirtualCode(UInt32 usage);
 
 private :
-
+    
     ////////////////////////////////////////////////////////////
     // Member data
     ////////////////////////////////////////////////////////////
@@ -256,10 +240,11 @@ private :
     CFDataRef         m_layoutData;                 ///< CFData containing the layout
     UCKeyboardLayout* m_layout;                     ///< Current Keyboard Layout
     IOHIDManagerRef   m_manager;                    ///< HID Manager
-
+    
+    typedef std::vector<IOHIDElementRef> IOHIDElements;
     IOHIDElements     m_keys[Keyboard::KeyCount];   ///< All the keys on any connected keyboard
     IOHIDElements     m_buttons[Mouse::ButtonCount];///< All the buttons on any connected mouse
-
+    
     ////////////////////////////////////////////////////////////
     /// m_keys' index corresponds to sf::Keyboard::Key enum.
     /// if no key is assigned with key XYZ then m_keys[XYZ].size() == 0.
@@ -273,7 +258,7 @@ private :
 };
 
 } // namespace priv
-
+    
 } // namespace sf
 
 #endif
