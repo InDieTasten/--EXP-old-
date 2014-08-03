@@ -10,6 +10,7 @@ Authors
 
 Laurent Gomila - main developer (laurent.gom@gmail.com)
 Marco Antognini - OS X developer (antognini.marco@gmail.com)
+Jonathan De Wachter - Android developer (dewachter.jonathan@gmail.com)
 
 Download
 --------
@@ -26,8 +27,8 @@ Learn
 -----
 
 There are several places to learn SFML:
-* The official tutorials (http://www.sfml-dev.org/tutorials.php)
-* The online API documentation (http://www.sfml-dev.org/documentation.php)
+* The official tutorials (http://www.sfml-dev.org/resources.php#tutorials)
+* The online API documentation (http://www.sfml-dev.org/resources.php#documentation)
 * The community wiki (https://github.com/LaurentGomila/SFML/wiki/)
 * The community forum (http://en.sfml-dev.org/forums/) (or http://fr.sfml-dev.org/forums/ for french people)
 

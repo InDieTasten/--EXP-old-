@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2013 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2014 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -44,7 +44,8 @@ namespace sf
 Window::Window() :
 m_impl          (NULL),
 m_context       (NULL),
-m_frameTimeLimit(Time::Zero)
+m_frameTimeLimit(Time::Zero),
+m_size          (0, 0)
 {
 
 }
@@ -54,7 +55,8 @@ m_frameTimeLimit(Time::Zero)
 Window::Window(VideoMode mode, const String& title, Uint32 style, const ContextSettings& settings) :
 m_impl          (NULL),
 m_context       (NULL),
-m_frameTimeLimit(Time::Zero)
+m_frameTimeLimit(Time::Zero),
+m_size          (0, 0)
 {
     create(mode, title, style, settings);
 }
@@ -64,7 +66,8 @@ m_frameTimeLimit(Time::Zero)
 Window::Window(WindowHandle handle, const ContextSettings& settings) :
 m_impl          (NULL),
 m_context       (NULL),
-m_frameTimeLimit(Time::Zero)
+m_frameTimeLimit(Time::Zero),
+m_size          (0, 0)
 {
     create(handle, settings);
 }
@@ -106,12 +109,19 @@ void Window::create(VideoMode mode, const String& title, Uint32 style, const Con
         }
     }
 
-    // Check validity of style
-    if ((style & Style::Close) || (style & Style::Resize))
-        style |= Style::Titlebar;
+    // Check validity of style according to the underlying platform
+    #if defined(SFML_SYSTEM_IOS) || defined(SFML_SYSTEM_ANDROID)
+        if (style & Style::Fullscreen)
+            style &= ~Style::Titlebar;
+        else
+            style |= Style::Titlebar;
+    #else
+        if ((style & Style::Close) || (style & Style::Resize))
+            style |= Style::Titlebar;
+    #endif
 
     // Recreate the window implementation
-    m_impl = priv::WindowImpl::create(mode, title, style);
+    m_impl = priv::WindowImpl::create(mode, title, style, settings);
 
     // Recreate the context
     m_context = priv::GlContext::create(settings, m_impl, mode.bitsPerPixel);
@@ -141,19 +151,13 @@ void Window::create(WindowHandle handle, const ContextSettings& settings)
 ////////////////////////////////////////////////////////////
 void Window::close()
 {
-    if (m_context)
-    {
-        // Delete the context
-        delete m_context;
-        m_context = NULL;
-    }
+    // Delete the context
+    delete m_context;
+    m_context = NULL;
 
-    if (m_impl)
-    {
-        // Delete the window implementation
-        delete m_impl;
-        m_impl = NULL;
-    }
+    // Delete the window implementation
+    delete m_impl;
+    m_impl = NULL;
 
     // Update the fullscreen window
     if (this == fullscreenWindow)
@@ -223,15 +227,24 @@ void Window::setPosition(const Vector2i& position)
 ////////////////////////////////////////////////////////////
 Vector2u Window::getSize() const
 {
-    return m_impl ? m_impl->getSize() : Vector2u();
+    return m_size;
 }
 
 
 ////////////////////////////////////////////////////////////
-void Window::setSize(const Vector2u size)
+void Window::setSize(const Vector2u& size)
 {
     if (m_impl)
+    {
         m_impl->setSize(size);
+
+        // Cache the new size
+        m_size.x = size.x;
+        m_size.y = size.y;
+
+        // Notify the derived class
+        onResize();
+    }
 }
 
 
@@ -365,7 +378,14 @@ bool Window::filterEvent(const Event& event)
 {
     // Notify resize events to the derived class
     if (event.type == Event::Resized)
+    {
+        // Cache the new size
+        m_size.x = event.size.width;
+        m_size.y = event.size.height;
+
+        // Notify the derived class
         onResize();
+    }
 
     return true;
 }
@@ -379,6 +399,10 @@ void Window::initialize()
     setMouseCursorVisible(true);
     setVerticalSyncEnabled(false);
     setKeyRepeatEnabled(true);
+    setFramerateLimit(0);
+
+    // Get and cache the initial size of the window
+    m_size = m_impl->getSize();
 
     // Reset frame time
     m_clock.restart();
