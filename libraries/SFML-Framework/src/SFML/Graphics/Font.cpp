@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2013 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2014 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -26,6 +26,10 @@
 // Headers
 ////////////////////////////////////////////////////////////
 #include <SFML/Graphics/Font.hpp>
+#include <SFML/Graphics/GLCheck.hpp>
+#ifdef SFML_SYSTEM_ANDROID
+    #include <SFML/System/Android/ResourceStream.hpp>
+#endif
 #include <SFML/System/InputStream.hpp>
 #include <SFML/System/Err.hpp>
 #include <ft2build.h>
@@ -66,9 +70,12 @@ Font::Font() :
 m_library  (NULL),
 m_face     (NULL),
 m_streamRec(NULL),
-m_refCount (NULL)
+m_refCount (NULL),
+m_info     ()
 {
-
+    #ifdef SFML_SYSTEM_ANDROID
+        m_stream = NULL;
+    #endif
 }
 
 
@@ -78,9 +85,14 @@ m_library    (copy.m_library),
 m_face       (copy.m_face),
 m_streamRec  (copy.m_streamRec),
 m_refCount   (copy.m_refCount),
+m_info       (copy.m_info),
 m_pages      (copy.m_pages),
 m_pixelBuffer(copy.m_pixelBuffer)
 {
+    #ifdef SFML_SYSTEM_ANDROID
+        m_stream = NULL;
+    #endif
+
     // Note: as FreeType doesn't provide functions for copying/cloning,
     // we must share all the FreeType pointers
 
@@ -93,12 +105,21 @@ m_pixelBuffer(copy.m_pixelBuffer)
 Font::~Font()
 {
     cleanup();
+
+    #ifdef SFML_SYSTEM_ANDROID
+
+    if (m_stream)
+        delete (priv::ResourceStream*)m_stream;
+
+    #endif
 }
 
 
 ////////////////////////////////////////////////////////////
 bool Font::loadFromFile(const std::string& filename)
 {
+    #ifndef SFML_SYSTEM_ANDROID
+
     // Cleanup the previous resources
     cleanup();
     m_refCount = new int(1);
@@ -126,13 +147,27 @@ bool Font::loadFromFile(const std::string& filename)
     if (FT_Select_Charmap(face, FT_ENCODING_UNICODE) != 0)
     {
         err() << "Failed to load font \"" << filename << "\" (failed to set the Unicode character set)" << std::endl;
+        FT_Done_Face(face);
         return false;
     }
 
     // Store the loaded font in our ugly void* :)
     m_face = face;
 
+    // Store the font information
+    m_info.family = face->family_name ? face->family_name : std::string();
+
     return true;
+
+    #else
+
+    if (m_stream)
+        delete (priv::ResourceStream*)m_stream;
+
+    m_stream = new priv::ResourceStream(filename);
+    return loadFromStream(*(priv::ResourceStream*)m_stream);
+
+    #endif
 }
 
 
@@ -166,11 +201,15 @@ bool Font::loadFromMemory(const void* data, std::size_t sizeInBytes)
     if (FT_Select_Charmap(face, FT_ENCODING_UNICODE) != 0)
     {
         err() << "Failed to load font from memory (failed to set the Unicode character set)" << std::endl;
+        FT_Done_Face(face);
         return false;
     }
 
     // Store the loaded font in our ugly void* :)
     m_face = face;
+
+    // Store the font information
+    m_info.family = face->family_name ? face->family_name : std::string();
 
     return true;
 }
@@ -194,6 +233,9 @@ bool Font::loadFromStream(InputStream& stream)
     }
     m_library = library;
 
+    // Make sure that the stream's reading position is at the beginning
+    stream.seek(0);
+
     // Prepare a wrapper for our stream, that we'll pass to FreeType callbacks
     FT_StreamRec* rec = new FT_StreamRec;
     std::memset(rec, 0, sizeof(*rec));
@@ -215,6 +257,7 @@ bool Font::loadFromStream(InputStream& stream)
     if (FT_Open_Face(static_cast<FT_Library>(m_library), &args, 0, &face) != 0)
     {
         err() << "Failed to load font from stream (failed to create the font face)" << std::endl;
+        delete rec;
         return false;
     }
 
@@ -222,6 +265,8 @@ bool Font::loadFromStream(InputStream& stream)
     if (FT_Select_Charmap(face, FT_ENCODING_UNICODE) != 0)
     {
         err() << "Failed to load font from stream (failed to set the Unicode character set)" << std::endl;
+        FT_Done_Face(face);
+        delete rec;
         return false;
     }
 
@@ -229,7 +274,17 @@ bool Font::loadFromStream(InputStream& stream)
     m_face = face;
     m_streamRec = rec;
 
+    // Store the font information
+    m_info.family = face->family_name ? face->family_name : std::string();
+
     return true;
+}
+
+
+////////////////////////////////////////////////////////////
+const Font::Info& Font::getInfo() const
+{
+    return m_info;
 }
 
 
@@ -277,6 +332,10 @@ int Font::getKerning(Uint32 first, Uint32 second, unsigned int characterSize) co
         FT_Vector kerning;
         FT_Get_Kerning(face, index1, index2, FT_KERNING_DEFAULT, &kerning);
 
+        // X advance is already in pixels for bitmap fonts
+        if (!FT_IS_SCALABLE(face))
+            return kerning.x;
+
         // Return the X advance
         return kerning.x >> 6;
     }
@@ -305,6 +364,46 @@ int Font::getLineSpacing(unsigned int characterSize) const
 
 
 ////////////////////////////////////////////////////////////
+int Font::getUnderlinePosition(unsigned int characterSize) const
+{
+    FT_Face face = static_cast<FT_Face>(m_face);
+
+    if (face && setCurrentSize(characterSize))
+    {
+        // Return a fixed position if font is a bitmap font
+        if (!FT_IS_SCALABLE(face))
+            return characterSize / 10;
+
+        return (FT_MulFix(face->underline_position, face->size->metrics.y_scale) >> 6);
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+
+////////////////////////////////////////////////////////////
+int Font::getUnderlineThickness(unsigned int characterSize) const
+{
+    FT_Face face = static_cast<FT_Face>(m_face);
+
+    if (face && setCurrentSize(characterSize))
+    {
+        // Return a fixed thickness if font is a bitmap font
+        if (!FT_IS_SCALABLE(face))
+            return characterSize / 14;
+
+        return (FT_MulFix(face->underline_thickness, face->size->metrics.y_scale) >> 6);
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+
+////////////////////////////////////////////////////////////
 const Texture& Font::getTexture(unsigned int characterSize) const
 {
     return m_pages[characterSize].texture;
@@ -318,9 +417,11 @@ Font& Font::operator =(const Font& right)
 
     std::swap(m_library,     temp.m_library);
     std::swap(m_face,        temp.m_face);
+    std::swap(m_streamRec,   temp.m_streamRec);
+    std::swap(m_refCount,    temp.m_refCount);
+    std::swap(m_info,        temp.m_info);
     std::swap(m_pages,       temp.m_pages);
     std::swap(m_pixelBuffer, temp.m_pixelBuffer);
-    std::swap(m_refCount,    temp.m_refCount);
 
     return *this;
 }
@@ -381,7 +482,7 @@ Glyph Font::loadGlyph(Uint32 codePoint, unsigned int characterSize, bool bold) c
         return glyph;
 
     // Load the glyph corresponding to the code point
-    if (FT_Load_Char(face, codePoint, FT_LOAD_TARGET_NORMAL) != 0)
+    if (FT_Load_Char(face, codePoint, FT_LOAD_TARGET_NORMAL | FT_LOAD_FORCE_AUTOHINT) != 0)
         return glyph;
 
     // Retrieve the glyph
@@ -416,6 +517,12 @@ Glyph Font::loadGlyph(Uint32 codePoint, unsigned int characterSize, bool bold) c
 
     int width  = bitmap.width;
     int height = bitmap.rows;
+    int ascender = face->size->metrics.ascender >> 6;
+
+    // Offset to make up for empty space between ascender and virtual top of the typeface
+    // Only applied to scalable fonts i.e. not to bitmap fonts
+    int offset = FT_IS_SCALABLE(face) ? (characterSize - ascender) : 0;
+
     if ((width > 0) && (height > 0))
     {
         // Leave a small padding around characters, so that filtering doesn't
@@ -430,7 +537,7 @@ Glyph Font::loadGlyph(Uint32 codePoint, unsigned int characterSize, bool bold) c
 
         // Compute the glyph's bounding box
         glyph.bounds.left   = bitmapGlyph->left - padding;
-        glyph.bounds.top    = -bitmapGlyph->top - padding;
+        glyph.bounds.top    = -bitmapGlyph->top - padding - offset;
         glyph.bounds.width  = width + 2 * padding;
         glyph.bounds.height = height + 2 * padding;
 
@@ -476,6 +583,10 @@ Glyph Font::loadGlyph(Uint32 codePoint, unsigned int characterSize, bool bold) c
 
     // Delete the FT glyph
     FT_Done_Glyph(glyphDesc);
+
+    // Force an OpenGL flush, so that the font's texture will appear updated
+    // in all contexts immediately (solves problems in multi-threaded apps)
+    glCheck(glFlush());
 
     // Done :)
     return glyph;
@@ -561,7 +672,23 @@ bool Font::setCurrentSize(unsigned int characterSize) const
 
     if (currentSize != characterSize)
     {
-        return FT_Set_Pixel_Sizes(face, 0, characterSize) == 0;
+        FT_Error result = FT_Set_Pixel_Sizes(face, 0, characterSize);
+
+        if (result == FT_Err_Invalid_Pixel_Size)
+        {
+            // In the case of bitmap fonts, resizing can
+            // fail if the requested size is not available
+            if (!FT_IS_SCALABLE(face))
+            {
+                err() << "Failed to set bitmap font size to " << characterSize << std::endl;
+                err() << "Available sizes are: ";
+                for (int i = 0; i < face->num_fixed_sizes; ++i)
+                    err() << face->available_sizes[i].height << " ";
+                err() << std::endl;
+            }
+        }
+
+        return result == FT_Err_Ok;
     }
     else
     {
@@ -572,7 +699,7 @@ bool Font::setCurrentSize(unsigned int characterSize) const
 
 ////////////////////////////////////////////////////////////
 Font::Page::Page() :
-nextRow(2)
+nextRow(3)
 {
     // Make sure that the texture is initialized by default
     sf::Image image;
