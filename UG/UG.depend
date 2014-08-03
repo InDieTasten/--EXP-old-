@@ -1,6 +1,5 @@
 # depslib dependency file v1.0
-1407067305 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\main.cpp
-	<iostream>
+1407067408 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\main.cpp
 	<SFML\Graphics.hpp>
 
 1264607642 c:\users\indie\bibliotheken\documents\github\--untitledgame--\libraries\sfml-framework\include\sfml\graphics.hpp
