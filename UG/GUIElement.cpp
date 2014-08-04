@@ -60,22 +60,22 @@ void GUIElement::render(DataBank *dataLink)
         horSlider.Render(dataLink);
     }
 }
-void GUIElement::handleEvent(DataBank* datalink, sf::Event* _event, const sf::Input* _input, int _x, int _y)
+void GUIElement::handleEvent(DataBank* datalink, sf::Event* _event, int _x, int _y)
 {
     if(Type == "codebox")
     {
-        codeBox.handleEvent(_event, _input, _x+X, _y+Y);
+        codeBox.handleEvent(_event, _x+X, _y+Y);
     }
     else if (Type == "button")
     {
-        button.handleEvent(datalink, _event, _input, _x+X, _y+Y, ID);
+        button.handleEvent(datalink, _event, _x+X, _y+Y, ID);
     }
     else if (Type == "horslider")
     {
-        horSlider.handleEvent(datalink, _event, _input, _x+X, _y+Y, ID);
+        horSlider.handleEvent(datalink, _event, _x+X, _y+Y, ID);
     }
     else if (Type == "label")
     {
-        label.handleEvent(_event, _input);
+        label.handleEvent(_event);
     }
 }

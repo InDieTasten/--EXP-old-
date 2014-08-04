@@ -80,7 +80,7 @@ void GraphicsEngine::Run()
             renderSprite.setScale(Zoom,Zoom);
 
             //set the center relative to the texture size
-            renderSprite.setOrigin(renderSprite.GetSize().x/2.0f, renderSprite.GetSize().y/2.0f);
+            renderSprite.setOrigin(renderSprite.getLocalBounds().width/2.0f, renderSprite.getLocalBounds().height/2.0f);
 
             //set the right rotation relative to the camera
             renderSprite.setRotation(sObject->Rotation - renderCam->Rotation);
@@ -90,14 +90,14 @@ void GraphicsEngine::Run()
             posY = (float)renderCam->Position.y*(-renderCam->Zoom)+((float)sObject->Position.y*renderCam->Zoom)+dataLink->renderWindow->getSize().x/2.0f;
 
             //check for field of view
-            if (posX < (dataLink->renderWindow->GetWidth()/2.0f)*1.5f &&
-                    posX > (dataLink->renderWindow->GetWidth()/2.0f)*-1.5f &&
-                    posY < (dataLink->renderWindow->GetHeight()/2.0f)*1.5f &&
-                    posY > (dataLink->renderWindow->GetHeight()/2.0f)*-1.5f)
+            if (posX < (dataLink->renderWindow->getSize().x/2.0f)*1.5f &&
+                    posX > (dataLink->renderWindow->getSize().x/2.0f)*-1.5f &&
+                    posY < (dataLink->renderWindow->getSize().y/2.0f)*1.5f &&
+                    posY > (dataLink->renderWindow->getSize().y/2.0f)*-1.5f)
             {
-                renderSprite.SetPosition(posX,posY);
+                renderSprite.setPosition(posX,posY);
                 //finally draw it
-                dataLink->renderWindow->Draw(renderSprite);
+                dataLink->renderWindow->draw(renderSprite);
             }
         }
 
@@ -114,7 +114,7 @@ void GraphicsEngine::Run()
         GMutex.unlock();
     }
     logger.log(2, "Thread stopped");
-    dataLink->renderWindow->SetActive(false);
+    dataLink->renderWindow->setActive(false);
 }
 void GraphicsEngine::Stop()
 {

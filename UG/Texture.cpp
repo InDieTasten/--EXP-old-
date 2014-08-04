@@ -11,7 +11,7 @@ Texture::Texture(std::string _id, std::string _path)
 //METHODS
 void Texture::load()
 {
-    sf::Image img;
+    sf::Texture img;
     img.LoadFromFile(path);
     img.SetSmooth(false);
     image.push_back(img);
@@ -23,7 +23,7 @@ void Texture::unload()
         image.pop_front();
     }
 }
-sf::Image* Texture::getImage()
+sf::Texture* Texture::getImage()
 {
     return &(*image.begin());
 }
