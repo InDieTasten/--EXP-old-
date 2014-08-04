@@ -197,13 +197,13 @@ void GUIManager::SetDataLink(DataBank * _dataLink)
     add_OptionMenu();
     add_CodeIDE();
 }
-void GUIManager::handleEvent(sf::Event *_event, const sf::Input* _input)
+void GUIManager::handleEvent(sf::Event *_event)
 {
-    if(_event->Type == sf::Event::MouseMoved)
+    if(_event->type == sf::Event::MouseMoved)
     {
         int x,y;
-        x = _input->GetMouseX();
-        y = _input->GetMouseY();
+        x = sf::Mouse::getPosition().x;
+        y = sf::Mouse::getPosition().y;
         int i = 0;
         for(std::list<GUIDockItem>::iterator it = dockButtons.begin(); it != dockButtons.end(); it++)
         {
@@ -232,7 +232,7 @@ void GUIManager::handleEvent(sf::Event *_event, const sf::Input* _input)
             i++;
         }
     }
-    if(_event->Type == sf::Event::MouseButtonPressed)
+    if(_event->type == sf::Event::MouseButtonPressed)
     {
         for(std::list<GUIDockItem>::iterator it = dockButtons.begin(); it != dockButtons.end(); it++)
         {
@@ -246,7 +246,7 @@ void GUIManager::handleEvent(sf::Event *_event, const sf::Input* _input)
         }
         for(std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
         {
-            if(it->isHit(_input->GetMouseX(), _input->GetMouseY()))
+            if(it->isHit(sf::Mouse::getPosition().x, sf::Mouse::getPosition().y))
             {
                 if(!it->isActive)
                 {
@@ -266,7 +266,7 @@ void GUIManager::handleEvent(sf::Event *_event, const sf::Input* _input)
             }
         }
     }
-    if(_event->Type == sf::Event::MouseButtonReleased)
+    if(_event->type == sf::Event::MouseButtonReleased)
     {
         for(std::list<GUIDockItem>::iterator it = dockButtons.begin(); it != dockButtons.end(); it++)
         {
@@ -281,7 +281,7 @@ void GUIManager::handleEvent(sf::Event *_event, const sf::Input* _input)
     }
     for(std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
     {
-        it->handleEvent(dataLink, _event, _input);
+        it->handleEvent(dataLink, _event);
     }
 }
 void GUIManager::handleSoftEvent(std::list<std::string> _args)
@@ -291,32 +291,42 @@ void GUIManager::handleSoftEvent(std::list<std::string> _args)
 
 void GUIManager::update()
 {
-    dock = sf::RectangleShape::Rectangle((float)-1,(float)-1,(float)dockWidth+3,(float)dataLink->renderWindow->GetHeight()+2.0f,sf::Color::Black,1.0f,sf::Color::Green);
-    dock.EnableFill(true);
-    dock.EnableOutline(true);
-    dock.SetPosition((float)-1,(float)-1);
+    dock.setPosition((float)-1,(float)-1);
+    dock.setSize(sf::Vector2f((float)dockWidth+4,(float)dataLink->renderWindow->getSize().y+3.0f));
+    dock.setFillColor(sf::Color::Black);
+    dock.setOutlineThickness(1.0f);
+    dock.setOutlineColor(sf::Color::Green);
 }
 void GUIManager::render()
 {
     //render the dock
-    dataLink->renderWindow->Draw(dock);
+    dataLink->renderWindow->draw(dock);
     int i = 0;
     for (std::list<GUIDockItem>::iterator it = dockButtons.begin(); it != dockButtons.end(); it++)
     {
         sf::RectangleShape temp;
-        if(it->mouseHover)
-            temp = sf::RectangleShape::Rectangle(2.0f, (float)(i*(dockWidth+1)+2), (float)dockWidth, (float)((i+1)*dockWidth+i), sf::Color::Black,1.0f,sf::Color::White);
-        else
-            temp = sf::RectangleShape::Rectangle(2.0f, (float)(i*(dockWidth+1)+2), (float)dockWidth, (float)((i+1)*dockWidth+i), sf::Color::Black,1.0f,sf::Color::Green);
-        dataLink->renderWindow->Draw(temp);
+        if(it->mouseHover) {
+            temp.setPosition(2.0f,(float)(i*(dockWidth+1)+2));
+            temp.setSize(sf::Vector2f((float)dockWidth-2.0,(float)(i+1)*dockWidth+i-(i*(dockWidth+1)+2)));
+            temp.setFillColor(sf::Color::Black);
+            temp.setOutlineThickness(1.0f);
+            temp.setOutlineColor(sf::Color::White);
+        } else {
+            temp.setPosition(2.0f,(float)(i*(dockWidth+1)+2));
+            temp.setSize(sf::Vector2f((float)dockWidth-2.0,(float)(i+1)*dockWidth+i-(i*(dockWidth+1)+2)));
+            temp.setFillColor(sf::Color::Black);
+            temp.setOutlineThickness(1.0f);
+            temp.setOutlineColor(sf::Color::White);
+        }
+        dataLink->renderWindow->draw(temp);
         sf::Sprite temp2;
-        temp2.SetImage(*(dataLink->TextureGet(it->ImageID)));
-        temp2.SetPosition(3.0f, (float)(i*(dockWidth+1)+3));
+        temp2.setTexture(*(dataLink->TextureGet(it->ImageID)));
+        temp2.setPosition(3.0f, (float)(i*(dockWidth+1)+3));
 
-        temp2.SetScaleX(((float)dockWidth)/((float)dataLink->TextureGet(it->ImageID)->GetWidth()+4.0f));
-        temp2.SetScaleY(((float)dockWidth)/((float)dataLink->TextureGet(it->ImageID)->GetHeight()+4.0f));
+        temp2.setScale(((float)dockWidth)/((float)dataLink->TextureGet(it->ImageID)->getSize().x+4.0f),
+                       (((float)dockWidth)/((float)dataLink->TextureGet(it->ImageID)->getSize().y+4.0f)));
 
-        dataLink->renderWindow->Draw(temp2);
+        dataLink->renderWindow->draw(temp2);
         i++;
     }
     //render the menus

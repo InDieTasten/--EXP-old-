@@ -9,7 +9,7 @@ class Texture
 {
 	//MEMBERS
 private:
-	std::list<sf::Image> image;
+	std::list<sf::Texture> image;
 public:
 	std::string id;
 	std::string path;
@@ -23,7 +23,7 @@ public:
 	//METHODS
 	void load();
 	void unload();
-	sf::Image* getImage();
+	sf::Texture* getImage();
 };
 
 #endif

@@ -75,7 +75,7 @@ void DataBank::TextureUnload(std::string _id)
     }
     logger.log(8, "Tried unloading non-registered texture");
 }
-sf::Image* DataBank::TextureGet(std::string _id)
+sf::Texture* DataBank::TextureGet(std::string _id)
 {
     for(std::list<Texture>::iterator it = textures.begin(); it != textures.end(); it++)
     {
