@@ -72,12 +72,12 @@ int main ( int argc, char *argv[] )
         // 3. Processing
         //Graphics Engine
         init.log(20, "Create Graphics Thread...");
-        GraphicsEngine GraphicsThread(&dBank, &gManager, &DEBUG_LEVEL);
+        GraphicsEngine graphicsThread(&dBank, &gManager, &DEBUG_LEVEL);
         init.log(20, "Relocate Render Thread...");
         App.SetActive(false);
         //Physics Engine
         init.log(20, "Create Physics Thread...");
-        PhysicsEngine PhysicsThread(&dBank, &DEBUG_LEVEL);
+        PhysicsEngine physicsThread(&dBank, &DEBUG_LEVEL);
         //Modding Module
         init.log(20, "Create Plugin Handler...");
         ModModule mModule;
@@ -85,14 +85,15 @@ int main ( int argc, char *argv[] )
         //Event Manager
         init.log(20, "Create Event Manager...");
         EventManager EventMan;
-        EventMan.SetDataLink(&dBank, &gManager, &GraphicsThread, &PhysicsThread, &mModule, &DEBUG_LEVEL);
+        EventMan.SetDataLink(&dBank, &gManager, &graphicsThread, &physicsThread, &mModule, &DEBUG_LEVEL);
 
         //Starting Engines
         init.log(20, "Launch Graphics...");
-        GraphicsThread.launch();
+        sf::Thread grTHREAD(&graphicsThread::Run, &graphicsThread);
+        grTHREAD.launch();
         init.log(20, "Launch Physics...");
-        PhysicsThread.launch();
-
+        sf::Thread phTHREAD(&physicsThread::Run, &physicsThread);
+        phTHREAD.launch();
         init.log(20, "Initialization finished :)");
         init.log(20, "Switch from Init to Main(-Event)-Logger");
 
