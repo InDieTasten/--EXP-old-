@@ -24,22 +24,22 @@ void GUIMenu::update(DataBank *datalink)
         //recalcualte the renderShapes
         if(isActive)
         {
-            mainBackground = sf::Shape::Rectangle((float)X,(float)Y,(float)X+Width,(float)Y+Height+16,sf::Color(0,0,0,opacity),1.0f,sf::Color::Green);
+            mainBackground = sf::RectangleShape::Rectangle((float)X,(float)Y,(float)X+Width,(float)Y+Height+16,sf::Color(0,0,0,opacity),1.0f,sf::Color::Green);
         }
         else
         {
-            mainBackground = sf::Shape::Rectangle((float)X,(float)Y,(float)X+Width,(float)Y+Height+16,sf::Color(0,0,0,opacity),1.0f,sf::Color::White);
+            mainBackground = sf::RectangleShape::Rectangle((float)X,(float)Y,(float)X+Width,(float)Y+Height+16,sf::Color(0,0,0,opacity),1.0f,sf::Color::White);
         }
         mainBackground.EnableFill(true);
         mainBackground.EnableOutline(true);
 
         if(isActive)
         {
-            titleBar = sf::Shape::Rectangle((float)X,(float)Y,(float)X+Width,(float)Y+16,sf::Color(10,10,10,opacity),1.0f,sf::Color::Green);
+            titleBar = sf::RectangleShape::Rectangle((float)X,(float)Y,(float)X+Width,(float)Y+16,sf::Color(10,10,10,opacity),1.0f,sf::Color::Green);
         }
         else
         {
-            titleBar = sf::Shape::Rectangle((float)X,(float)Y,(float)X+Width,(float)Y+16,sf::Color(10,10,10,opacity),1.0f,sf::Color::White);
+            titleBar = sf::RectangleShape::Rectangle((float)X,(float)Y,(float)X+Width,(float)Y+16,sf::Color(10,10,10,opacity),1.0f,sf::Color::White);
         }
         titleBar.EnableFill(true);
         titleBar.EnableOutline(true);

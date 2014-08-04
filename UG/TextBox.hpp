@@ -9,13 +9,13 @@ class TextBox
 {
 	//MEMBERS
 private:
-	sf::Shape rect;
+	sf::RectangleShape rect;
 	char tmp;
-	sf::String text1;
+	sf::Text text1;
 
 public:
 	std::string text;
-	//std::list<sf::String> text1;
+	//std::list<sf::Text> text1;
 	int X;
 	int Y;
 	int Height;
@@ -34,7 +34,7 @@ public:
 	void Setup();
 	void Update(DataBank* _dataLink, int _x, int _y);
 	void Render(DataBank* _dataLink);
-	void handleEvent(sf::Event* _event, const sf::Input* _input, int _x, int _y);
+	void handleEvent(sf::Event* _event, int _x, int _y);
 	char getInput(int Type,sf::Event* _event);
 };
 
