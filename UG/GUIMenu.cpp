@@ -41,8 +41,6 @@ void GUIMenu::update(DataBank *datalink)
         {
             titleBar = sf::RectangleShape::Rectangle((float)X,(float)Y,(float)X+Width,(float)Y+16,sf::Color(10,10,10,opacity),1.0f,sf::Color::White);
         }
-        titleBar.EnableFill(true);
-        titleBar.EnableOutline(true);
 
         menuTitle.SetFont(*datalink->FontGet("$_menuTitle"));
         menuTitle.SetSize(12.0f);

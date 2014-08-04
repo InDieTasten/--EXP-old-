@@ -55,7 +55,7 @@ public:
 	void TextureErase(std::string _id);
 	void TextureLoad(std::string _id);
 	void TextureUnload(std::string _id);
-	sf::Image* TextureGet(std::string _id);
+	sf::Texture* TextureGet(std::string _id);
 	//Font Management
 	void FontRegister(std::string _id, std::string _path);
 	void FontErase(std::string _id);
