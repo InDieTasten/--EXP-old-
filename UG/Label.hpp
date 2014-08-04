@@ -8,7 +8,7 @@ class Label
 {
 	//MEMBERS
 private:
-	sf::String displayText;
+	sf::Text displayText;
 public:
 	int X;
 	int Y;
@@ -24,7 +24,7 @@ public:
 	void Setup();
 	void Update(DataBank* _dataLink, int _x, int _y);
 	void Render(DataBank* _dataLink);
-	void handleEvent(sf::Event* _event, const sf::Input* _input);
+	void handleEvent(sf::Event* _event);
 };
 
 #endif
