@@ -9,9 +9,9 @@ class GUIMenu
 	//MEMBERS
 private:
 	sf::Sprite closeButton;
-	sf::Shape mainBackground;
-	sf::Shape titleBar;
-	sf::String menuTitle;
+	sf::RectangleShape mainBackground;
+	sf::RectangleShape titleBar;
+	sf::Text menuTitle;
 	int X;      // Unit = pixel
 	int Y;      // Unit = pixel
 	int Height; // Unit = pixel
@@ -40,7 +40,7 @@ public:
 	void SetY(int _y);
 	void SetMenuTitle(std::string _title);
 	void render(DataBank *dataLink);
-	void handleEvent(DataBank* _dataLink, sf::Event* _event, const sf::Input* _input);
+	void handleEvent(DataBank* _dataLink, sf::Event* _event);
 	void Enable();
 	void Disable();
 	void Show();

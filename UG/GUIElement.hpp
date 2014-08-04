@@ -41,7 +41,7 @@ public:
 
 	void update(DataBank *_dataLink, int, int);
 	void render(DataBank *_dataLink);
-	void handleEvent(DataBank* _datalink, sf::Event *_event, const sf::Input* _input, int _x, int _y);
+	void handleEvent(DataBank* _datalink, sf::Event *_event, int _x, int _y);
 };
 
 #endif

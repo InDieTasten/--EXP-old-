@@ -17,7 +17,7 @@ void TextBox::Update(DataBank* _dataLink, int _x, int _y)
     text1.SetFont(*_dataLink->FontGet("$_menuTitle"));
     text1.SetSize(12.0);
     text1.SetScale(1.0,1.0);
-    rect = sf::Shape::Rectangle((float)_x,(float)_y,(float)_x+Width,(float)_y+Height,sf::Color(20,20,20,150),1.0f,sf::Color(255,255,255,50));
+    rect = sf::RectangleShape::Rectangle((float)_x,(float)_y,(float)_x+Width,(float)_y+Height,sf::Color(20,20,20,150),1.0f,sf::Color(255,255,255,50));
 }
 void TextBox::Render(DataBank* _dataLink)
 {

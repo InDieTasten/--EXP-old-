@@ -9,8 +9,8 @@ class Button
 {
 	//MEMBERS
 private:
-	sf::Shape rect;
-	sf::String displayText;
+	sf::RectangleShape rect;
+	sf::Text displayText;
 	bool mouseHover;
 public:
 	int X;
@@ -29,7 +29,7 @@ public:
 	void Setup();
 	void Update(DataBank* _dataLink, int _x, int _y);
 	void Render(DataBank* _dataLink);
-	void handleEvent(DataBank* datalink, sf::Event* _event, const sf::Input* _input, int _x, int _y, std::string _id);
+	void handleEvent(DataBank* datalink, sf::Event* _event, int _x, int _y, std::string _id);
 };
 
 #endif
