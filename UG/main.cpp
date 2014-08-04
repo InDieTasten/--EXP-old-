@@ -100,8 +100,8 @@ int main ( int argc, char *argv[] )
         logger.init(&DEBUG_LEVEL, "Main        ");
         sf::Clock timer;
         sf::Clock limit;
-        timer.reset();
-        limit.reset();
+        timer.restart();
+        limit.restart();
         while(App.isOpened())
         {
             GMutex.unlock();
@@ -109,12 +109,12 @@ int main ( int argc, char *argv[] )
             {
                 sf::sleep(1.0/EvtThread - limit.getElapsedTime());
             }
-            limit.reset();
+            limit.restart();
             GMutex.lock();
-            if (timer.getElapsedTime() > 1.f)
+            if (timer.getElapsedTime() > 1.0f)
             {
                 logger.log(11,"Thread running");
-                timer.reset();
+                timer.restart();
             }
             sf::Event Event;
             while(App.pollEvent(Event))

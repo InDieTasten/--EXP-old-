@@ -10,10 +10,10 @@ class CodeBox
 {
 	//MEMBERS
 private:
-	sf::String text1;
+	sf::Text text1;
 	char tmp;
-	sf::Shape rect;
-	sf::Shape c;
+	sf::RectangleShape rect;
+	sf::RectangleShape c;
 	int ViewY;
 	int ViewX;
 	int cursor_line;
@@ -39,7 +39,7 @@ public:
 	void Update(DataBank* _dataLink, int _x, int _y);
 
 	void Render(DataBank* _dataLink);
-	void handleEvent(sf::Event* _event, const sf::Input* _input, int _x, int _y);
+	void handleEvent(sf::Event* _event, int _x, int _y);
 
 	char getInput(int Type,sf::Event* _event);
 

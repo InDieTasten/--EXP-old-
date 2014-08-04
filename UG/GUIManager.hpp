@@ -10,13 +10,13 @@ class GUIManager
 {
 	//MEMBERS
 private:
-	sf::Shape dock;
+	sf::RectangleShape dock;
 	std::list<GUIMenu> guiMenus;
 	std::list<GUIDockItem> dockButtons;
 	int dockWidth;
 	DataBank *dataLink;
 public:
-	
+
 	//CONSTRUCTORS
 	GUIManager();
 	//DESTRUCTORS
@@ -30,7 +30,7 @@ public:
 	void DisableMenu(std::string _id);
 	void ShowMenu(std::string _id);
 	void HideMenu(std::string _id);
-	
+
 	void AddGuiElement(std::string _menuid, std::string _elemid);
 	void EditElemPosition(std::string _menuid, std::string _elemid, int _x, int _y);
 	void EditElemSize(std::string _menuid, std::string _elemid, int _width, int _height);
@@ -41,7 +41,7 @@ public:
 
 	void SetDataLink(DataBank *_dataLink);
 
-	void handleEvent(sf::Event *_event, const sf::Input* _input);
+	void handleEvent(sf::Event *_event);
 	void handleSoftEvent(std::list<std::string> _args);
 
 	void update();

@@ -291,7 +291,7 @@ void GUIManager::handleSoftEvent(std::list<std::string> _args)
 
 void GUIManager::update()
 {
-    dock = sf::Shape::Rectangle((float)-1,(float)-1,(float)dockWidth+3,(float)dataLink->renderWindow->GetHeight()+2.0f,sf::Color::Black,1.0f,sf::Color::Green);
+    dock = sf::RectangleShape::Rectangle((float)-1,(float)-1,(float)dockWidth+3,(float)dataLink->renderWindow->GetHeight()+2.0f,sf::Color::Black,1.0f,sf::Color::Green);
     dock.EnableFill(true);
     dock.EnableOutline(true);
     dock.SetPosition((float)-1,(float)-1);
@@ -303,11 +303,11 @@ void GUIManager::render()
     int i = 0;
     for (std::list<GUIDockItem>::iterator it = dockButtons.begin(); it != dockButtons.end(); it++)
     {
-        sf::Shape temp;
+        sf::RectangleShape temp;
         if(it->mouseHover)
-            temp = sf::Shape::Rectangle(2.0f, (float)(i*(dockWidth+1)+2), (float)dockWidth, (float)((i+1)*dockWidth+i), sf::Color::Black,1.0f,sf::Color::White);
+            temp = sf::RectangleShape::Rectangle(2.0f, (float)(i*(dockWidth+1)+2), (float)dockWidth, (float)((i+1)*dockWidth+i), sf::Color::Black,1.0f,sf::Color::White);
         else
-            temp = sf::Shape::Rectangle(2.0f, (float)(i*(dockWidth+1)+2), (float)dockWidth, (float)((i+1)*dockWidth+i), sf::Color::Black,1.0f,sf::Color::Green);
+            temp = sf::RectangleShape::Rectangle(2.0f, (float)(i*(dockWidth+1)+2), (float)dockWidth, (float)((i+1)*dockWidth+i), sf::Color::Black,1.0f,sf::Color::Green);
         dataLink->renderWindow->Draw(temp);
         sf::Sprite temp2;
         temp2.SetImage(*(dataLink->TextureGet(it->ImageID)));

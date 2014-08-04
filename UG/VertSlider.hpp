@@ -26,7 +26,7 @@ public:
 	void Setup();
 	void Update(DataBank* _dataLink);
 	void Render(DataBank* _dataLink);
-	void handleEvent(sf::Event* _event, const sf::Input* _input);
+	void handleEvent(sf::Event* _event);
 };
 
 #endif

@@ -10,10 +10,10 @@ class HorSlider
 	//MEMBERS
 private:
 	bool mouseHover;
-	sf::Shape bar;
-	sf::Shape decBox;
-	sf::Shape incBox;
-	sf::Shape slider;
+	sf::RectangleShape bar;
+	sf::RectangleShape decBox;
+	sf::RectangleShape incBox;
+	sf::RectangleShape slider;
 	bool hoverSlide;
 	bool moveSlide;
 	int oldMouseX;
@@ -39,7 +39,7 @@ public:
 	void Setup();
 	void Update(DataBank* _dataLink, int _x, int _y);
 	void Render(DataBank* _dataLink);
-	void handleEvent(DataBank* datalink, sf::Event* _event, const sf::Input* _input, int _x, int _y, std::string _id);
+	void handleEvent(DataBank* datalink, sf::Event* _event, int _x, int _y, std::string _id);
 };
 
 #endif

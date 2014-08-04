@@ -12,10 +12,10 @@ void HorSlider::Setup()
 }
 void HorSlider::Update(DataBank* _dataLink, int _x, int _y)
 {
-    decBox = sf::Shape::Rectangle((float)_x, (float)_y, (float)_x+Height, (float)_y+16, sf::Color(0,0,0,128), 1.0, sf::Color(255,0,0,200));
-    incBox = sf::Shape::Rectangle((float)_x + Width-Height, (float)_y, (float)_x + Width, (float)_y+16, sf::Color(0,0,0,128), 1.0, sf::Color(0,0,255,200));
-    bar    = sf::Shape::Rectangle((float)_x+7, (float)_y+Height/2-2, (float)_x + Width-7, (float)_y+Height/2+2, sf::Color(0,0,0,128), 1.0, sf::Color(120,120,120,200));
-    slider = sf::Shape::Rectangle((float) 2 + _x + Height+((ratio*(Width-2*Height))/2) + ((value-min)/(max-min))*(Width-2*Height-(ratio*(Width-2*Height))) - (ratio*(Width-2*Height))/2, (float)_y, (float) (-2) + _x + Height+((ratio*(Width-2*Height))/2) + ((value-min)/(max-min))*(Width-2*Height-(ratio*(Width-2*Height))) + (ratio*(Width-2*Height))/2, (float)_y+Height, sf::Color(0,0,0,128), 1.0, sf::Color(0,255,0,200));
+    decBox = sf::RectangleShape::Rectangle((float)_x, (float)_y, (float)_x+Height, (float)_y+16, sf::Color(0,0,0,128), 1.0, sf::Color(255,0,0,200));
+    incBox = sf::RectangleShape::Rectangle((float)_x + Width-Height, (float)_y, (float)_x + Width, (float)_y+16, sf::Color(0,0,0,128), 1.0, sf::Color(0,0,255,200));
+    bar    = sf::RectangleShape::Rectangle((float)_x+7, (float)_y+Height/2-2, (float)_x + Width-7, (float)_y+Height/2+2, sf::Color(0,0,0,128), 1.0, sf::Color(120,120,120,200));
+    slider = sf::RectangleShape::Rectangle((float) 2 + _x + Height+((ratio*(Width-2*Height))/2) + ((value-min)/(max-min))*(Width-2*Height-(ratio*(Width-2*Height))) - (ratio*(Width-2*Height))/2, (float)_y, (float) (-2) + _x + Height+((ratio*(Width-2*Height))/2) + ((value-min)/(max-min))*(Width-2*Height-(ratio*(Width-2*Height))) + (ratio*(Width-2*Height))/2, (float)_y+Height, sf::Color(0,0,0,128), 1.0, sf::Color(0,255,0,200));
 }
 void HorSlider::Render(DataBank* _dataLink)
 {
