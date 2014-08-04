@@ -12,16 +12,15 @@ void EventManager::handleEvent(sf::Event *_event)
         dataLink->runGraphics = false;
         dataLink->runPhysics = false;
         GMutex.unlock();
-        GEngine->wait();
-        PEngine->wait();
+        sf::sleep(sf::seconds(2.0f)); //wait for threads to finish
         GMutex.lock();
         dataLink->renderWindow->close();
         return;
     }
     if(_event->type == sf::Event::Resized)
     {
-        *dataLink->standardView = sf::View(sf::FloatRect(0.f, 0.f, static_cast<float>(dataLink->renderWindow->GetWidth()), static_cast<float>(dataLink->renderWindow->GetHeight())));
-        dataLink->renderWindow->SetView(*dataLink->standardView);
+        *dataLink->standardView = sf::View(sf::FloatRect(0.f, 0.f, static_cast<float>(dataLink->renderWindow->getSize().x), static_cast<float>(dataLink->renderWindow->getSize().y)));
+        dataLink->renderWindow->setView(*dataLink->standardView);
         return;
     }
     return;
@@ -36,11 +35,10 @@ void EventManager::handleSoftEvent(std::list<std::string> _args)
         {
             dataLink->runGraphics = false;
             dataLink->runPhysics = false;
-            GMutex.Unlock();
-            GEngine->Wait();
-            PEngine->Wait();
-            GMutex.Lock();
-            dataLink->renderWindow->Close();
+            GMutex.unlock();
+            sf::sleep(sf::seconds(2.0f)); //wait for threads to finish
+            GMutex.lock();
+            dataLink->renderWindow->close();
             return;
         }
     }
@@ -56,14 +54,11 @@ void EventManager::SetDataLink(DataBank *_dataLink, GUIManager *_gManager, Graph
 }
 void EventManager::processEvent(sf::Event *_event)
 {
-    const sf::Input& input = dataLink->renderWindow->GetInput();
-
     handleEvent(_event);
-    gManager->handleEvent(_event, &input);
+    gManager->handleEvent(_event);
 }
 void EventManager::processSoftEvent(std::list<std::string> _args)
 {
-    const sf::Input& input = dataLink->renderWindow->GetInput();
     handleSoftEvent(_args);
     gManager->handleSoftEvent(_args);
 }
