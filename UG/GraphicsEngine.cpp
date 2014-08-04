@@ -43,51 +43,51 @@ float GraphicsEngine::calcDistance (Vector _obj1, Vector _obj2)
 void GraphicsEngine::Run()
 {
     logger.log(2, "Thread launched");
-    dataLink->renderWindow->SetActive(true);
+    dataLink->renderWindow->setActive(true);
     Camera *renderCam;
     sf::Clock limit;
     sf::Clock runningInfo;
-    runningInfo.Reset();
-    limit.Reset();
+    runningInfo.restart();
+    limit.restart();
     float posX;
     float posY;
     while (dataLink->runGraphics)
     {
-        if(limit.GetElapsedTime() < 1.0/VidThread)
+        if(limit.getElapsedTime().asSeconds() < 1.0/VidThread)
         {
-            sf::Sleep(1.0/VidThread - limit.GetElapsedTime());
+            sf::sleep(sf::milliseconds(1.0/VidThread - limit.getElapsedTime().asSeconds()));
         }
-        limit.Reset();
-        if(runningInfo.GetElapsedTime() >= 1.0f)
+        limit.restart();
+        if(runningInfo.getElapsedTime().asSeconds() >= 1.0f)
         {
-            runningInfo.Reset();
+            runningInfo.restart();
             logger.log(11, "Thread running");
         }
-        dataLink->renderWindow->Clear(); //clear renderBuffer with black
+        dataLink->renderWindow->clear(); //clear renderBuffer with black
         renderCam = dataLink->CameraGetActive();
         //RREENNDDEERR background image
 
         //RREENNDDEERR tiny stars
 
         //RREENNDDEERR space objects
-        GMutex.Lock();
+        GMutex.lock();
         for (std::list<SpaceObject>::iterator sObject = dataLink->Level.SpaceObjectList.begin(); sObject != dataLink->Level.SpaceObjectList.end(); sObject++)
         {
             // set the right Texture
-            renderSprite.SetImage(*dataLink->TextureGet(sObject->TextureID));
+            renderSprite.setTexture(*dataLink->TextureGet(sObject->TextureID));
 
             //set the right scale for the zoom factor
-            renderSprite.SetScale(Zoom,Zoom);
+            renderSprite.setScale(Zoom,Zoom);
 
-            //set the center realtive to the texture size
-            renderSprite.SetCenter(renderSprite.GetSize().x/2.0f, renderSprite.GetSize().y/2.0f);
+            //set the center relative to the texture size
+            renderSprite.setOrigin(renderSprite.GetSize().x/2.0f, renderSprite.GetSize().y/2.0f);
 
             //set the right rotation relative to the camera
-            renderSprite.SetRotation(sObject->Rotation - renderCam->Rotation);
+            renderSprite.setRotation(sObject->Rotation - renderCam->Rotation);
 
             //set the relative position to the Camera including zoom and centering to the screen //missing rotation
-            posX = (float)renderCam->Position.x*(-renderCam->Zoom)+((float)sObject->Position.x*renderCam->Zoom)+dataLink->renderWindow->GetWidth()/2.0f;
-            posY = (float)renderCam->Position.y*(-renderCam->Zoom)+((float)sObject->Position.y*renderCam->Zoom)+dataLink->renderWindow->GetHeight()/2.0f;
+            posX = (float)renderCam->Position.x*(-renderCam->Zoom)+((float)sObject->Position.x*renderCam->Zoom)+dataLink->renderWindow->getSize().x/2.0f;
+            posY = (float)renderCam->Position.y*(-renderCam->Zoom)+((float)sObject->Position.y*renderCam->Zoom)+dataLink->renderWindow->getSize().x/2.0f;
 
             //check for field of view
             if (posX < (dataLink->renderWindow->GetWidth()/2.0f)*1.5f &&
@@ -110,8 +110,8 @@ void GraphicsEngine::Run()
         gManager->render();
 
         //Display the damn frame
-        dataLink->renderWindow->Display();
-        GMutex.Unlock();
+        dataLink->renderWindow->display();
+        GMutex.unlock();
     }
     logger.log(2, "Thread stopped");
     dataLink->renderWindow->SetActive(false);

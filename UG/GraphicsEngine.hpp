@@ -10,7 +10,7 @@
 extern float VidThread;
 extern sf::Mutex GMutex;
 
-class GraphicsEngine : public sf::Thread
+class GraphicsEngine
 {
 	//MEMBERS
 private:
@@ -34,7 +34,7 @@ private:
 	double calcDistanceX(Vector _obj1, Vector _obj2);
 	double calcDistanceY(Vector _obj1, Vector _obj2);
 	float calcDistance(Vector _obj1, Vector _obj2);
-	virtual void Run();
+	void Run();
 public:
 	void Stop();
 };
