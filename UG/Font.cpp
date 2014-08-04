@@ -11,7 +11,7 @@ void Font::load()
     if(font.size() == 0)
     {
         sf::Font temp;
-        temp.LoadFromFile(path,12);
+        temp.loadFromFile(path);
         font.push_back(temp);
     }
 }
