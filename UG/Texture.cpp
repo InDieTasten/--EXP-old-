@@ -12,8 +12,8 @@ Texture::Texture(std::string _id, std::string _path)
 void Texture::load()
 {
     sf::Texture img;
-    img.LoadFromFile(path);
-    img.SetSmooth(false);
+    img.loadFromFile(path);
+    img.setSmooth(false);
     image.push_back(img);
 }
 void Texture::unload()
