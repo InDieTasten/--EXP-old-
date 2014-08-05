@@ -52,8 +52,7 @@ void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,s
                         }
                     }
                 }
-
-        else if (_event->type == sf::Event::TextEntered)
+        else if(_event->type == sf::Event::TextEntered)
         {
             if (_event->text.unicode < 128)
             {
