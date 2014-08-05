@@ -41,7 +41,7 @@ public:
 	void Hide();
 
 	void update(DataBank *_dataLink, int, int);
-	void render(DataBank *_dataLink);
+	void render(DataBank *_dataLink, int, int);
 	void handleEvent(DataBank* _datalink, sf::Event *_event, int _x, int _y);
 };
 
