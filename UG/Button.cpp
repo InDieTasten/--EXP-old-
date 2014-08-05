@@ -9,7 +9,7 @@ void Button::Setup()
 {
     mouseHover = false;
 }
-void Button::Update(DataBank* _dataLink, int _x, int _y)
+void Button::Update(DataBank* _dataLink, int _x, int _y, std::string _id)
 {
     if(!mouseHover)
     {
@@ -48,7 +48,7 @@ void Button::Update(DataBank* _dataLink, int _x, int _y)
     displayText.setPosition(floorf(_x+(Width/2.0)),floorf(_y+(Height/2.0)));
     displayText.setCharacterSize(12);
 }
-void Button::Render(DataBank* _dataLink)
+void Button::Render(DataBank* _dataLink, int _x, int _y, std::string _id)
 {
     _dataLink->renderWindow->draw(rect);
     _dataLink->renderWindow->draw(displayText);
