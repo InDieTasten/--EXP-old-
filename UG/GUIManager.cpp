@@ -316,7 +316,7 @@ void GUIManager::render()
             temp.setSize(sf::Vector2f((float)dockWidth-2.0,(float)(i+1)*dockWidth+i-(i*(dockWidth+1)+2)));
             temp.setFillColor(sf::Color::Black);
             temp.setOutlineThickness(1.0f);
-            temp.setOutlineColor(sf::Color::White);
+            temp.setOutlineColor(sf::Color::Green);
         }
         dataLink->renderWindow->draw(temp);
         sf::Sprite temp2;
