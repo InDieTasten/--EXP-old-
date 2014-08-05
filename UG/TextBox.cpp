@@ -33,11 +33,7 @@ void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,s
 {
     if(isActive)
     {
-        if (_event->type == sf::Event::TextEntered)
-        {
-            if (_event->text.unicode < 128)
-            {
-                if(_event->type == sf::Event::KeyPressed)
+        if(_event->type == sf::Event::KeyPressed)
                 {
                     if(_event->key.code == 58)
                     {
@@ -56,10 +52,12 @@ void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,s
                         }
                     }
                 }
-                else
-                {
-                    text+=(_event->text.unicode);
-                }
+
+        else if (_event->type == sf::Event::TextEntered)
+        {
+            if (_event->text.unicode < 128)
+            {
+                text+=(_event->text.unicode);
             }
         }
     }
