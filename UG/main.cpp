@@ -103,6 +103,9 @@ int main ( int argc, char *argv[] )
         EventMan.SetDataLink(&dBank, &gManager, &graphicsThread, &physicsThread, &mModule, &DEBUG_LEVEL);
 
         //Starting Engines
+        init.log(20, "Launch Plugins...");
+        sf::Thread plTHREAD(&ModModule::Run, &mModule);
+        plTHREAD.launch();
         init.log(20, "Launch Graphics...");
         sf::Thread grTHREAD(&GraphicsEngine::Run, &graphicsThread);
         grTHREAD.launch();
