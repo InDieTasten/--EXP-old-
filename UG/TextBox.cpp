@@ -66,12 +66,7 @@ void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,s
             {
                 if(!multiline)
                 {
-                    if(text == "MouseScroller stinkt!")
-                    {
-                        text = "";
-                    } else {
-                        text += _event->text.unicode;
-                    }
+                    text += _event->text.unicode;
                 }
             }
         }
