@@ -34,7 +34,7 @@ public:
 
 	void Setup();
 	void Update(DataBank* _dataLink, int _x, int _y,std::string _id);
-	void Render(DataBank* _dataLink,std::string _id);
+	void Render(DataBank* _dataLink, int _x, int _y, std::string _id);
 	void handleEvent(DataBank* _dataLink,sf::Event* _event, int _x, int _y,std::string _id);
 };
 
