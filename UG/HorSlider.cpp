@@ -10,7 +10,7 @@ void HorSlider::Setup()
     isActive = false;
     moveSlide = false;
 }
-void HorSlider::Update(DataBank* _dataLink, int _x, int _y)
+void HorSlider::Update(DataBank* _dataLink, int _x, int _y, std::string _id)
 {
     decBox.setPosition((float)_x, (float)_y);
     decBox.setSize(sf::Vector2f((float)Height, (float)Height));
@@ -36,7 +36,7 @@ void HorSlider::Update(DataBank* _dataLink, int _x, int _y)
     slider.setOutlineThickness(1.0f);
     slider.setOutlineColor(sf::Color(0,255,0,200));
 }
-void HorSlider::Render(DataBank* _dataLink)
+void HorSlider::Render(DataBank* _dataLink, int _x, int _y, std::string _id)
 {
     _dataLink->renderWindow->draw(bar);
     _dataLink->renderWindow->draw(decBox);
