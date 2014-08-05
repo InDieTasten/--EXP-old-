@@ -10,7 +10,7 @@ void TextBox::Setup()
     multiline = false;
 
 }
-void TextBox::Update(DataBank* _dataLink, int _x, int _y)
+void TextBox::Update(DataBank* _dataLink, int _x, int _y,std::string _id)
 {
     text1.setString(text);
     text1.setPosition((float)_x, (float)_y);
@@ -24,12 +24,12 @@ void TextBox::Update(DataBank* _dataLink, int _x, int _y)
     rect.setOutlineThickness(1.0f);
     rect.setOutlineColor(sf::Color(255,255,255,50));
 }
-void TextBox::Render(DataBank* _dataLink)
+void TextBox::Render(DataBank* _dataLink,std::string _id)
 {
     _dataLink->renderWindow->draw(rect);
     _dataLink->renderWindow->draw(text1);
 }
-void TextBox::handleEvent(sf::Event* _event, int _x, int _y)
+void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,std::string _id)
 {
     if(isActive)
     {
