@@ -49,14 +49,9 @@ void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,s
                 {
                     text+=10;
                 }
-<<<<<<< HEAD
             }
         }
-
-        else if (_event->type == sf::Event::TextEntered)
-=======
         else if(_event->type == sf::Event::TextEntered)
->>>>>>> origin/master
         {
             if (_event->text.unicode < 128)
             {
