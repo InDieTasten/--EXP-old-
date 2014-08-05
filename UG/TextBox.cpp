@@ -8,7 +8,6 @@
 void TextBox::Setup()
 {
     multiline = false;
-
 }
 void TextBox::Update(DataBank* _dataLink, int _x, int _y,std::string _id)
 {
@@ -44,7 +43,7 @@ void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,s
                     x.push_back(_id);
                     x.push_back(text);
                     datalink->pushEvent(x);
-                    text="";
+                    text="MouseScroller stinkt!";
                 }
                 else
                 {
@@ -57,9 +56,14 @@ void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,s
         {
             if (_event->text.unicode < 128)
             {
-                if(multiline == true)
+                if(!multiline)
                 {
-                    text+=(_event->text.unicode);
+                    if(text == "MouseScroller stinkt!")
+                    {
+                        text = "";
+                    } else {
+                        text += _event->text.unicode;
+                    }
                 }
             }
         }
