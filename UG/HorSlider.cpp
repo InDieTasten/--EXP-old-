@@ -45,10 +45,11 @@ void HorSlider::Render(DataBank* _dataLink)
 }
 void HorSlider::handleEvent(DataBank* datalink, sf::Event* _event, int _x, int _y, std::string _id)
 {
-    int mousex = sf::Mouse::getPosition().x;
+    int mousex;
     if(_event->type == sf::Event::MouseMoved && isActive)
     {
-        int mousey = sf::Mouse::getPosition().y;
+        mousex = _event->mouseMove.x;
+        int mousey = _event->mouseMove.y;
         hoverSlide = false;
         if(mousey >= _y && mousey <= _y+Height)
         {
@@ -74,6 +75,7 @@ void HorSlider::handleEvent(DataBank* datalink, sf::Event* _event, int _x, int _
     }
     if(_event->type == sf::Event::MouseButtonReleased && isActive)
     {
+        mousex = _event->mouseButton.x;
         if(moveSlide)
         {
             moveSlide = false;
@@ -81,6 +83,7 @@ void HorSlider::handleEvent(DataBank* datalink, sf::Event* _event, int _x, int _
     }
     if(_event->type == sf::Event::MouseButtonPressed && isActive)
     {
+        mousex = _event->mouseButton.x;
         if(hoverSlide)
         {
             moveSlide = true;
