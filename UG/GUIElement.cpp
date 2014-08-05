@@ -20,61 +20,62 @@ void GUIElement::Hide()
     isHidden = true;
 }
 
-void GUIElement::update(DataBank *dataLink, int _x, int _y)
+void GUIElement::update(DataBank *datalink, int _x, int _y)
 {
     if(Type == "codebox")
     {
         codeBox.isActive = isActive;
-        codeBox.Update(dataLink, _x+X, _y+Y);
+        codeBox.Update(datalink, _x+X, _y+Y, ID);
     }
     else if (Type == "button")
     {
         button.isActive = isActive;
-        button.Update(dataLink, _x+X, _y+Y);
+        button.Update(datalink, _x+X, _y+Y, ID);
     }
     else if (Type == "label")
     {
-        label.Update(dataLink, _x+X, _y+Y);
+        label.isActive = isActive;
+        label.Update(datalink, _x+X, _y+Y, ID);
     }
     else if (Type == "horslider")
     {
         horSlider.isActive = isActive;
-        horSlider.Update(dataLink, _x+X, _y+Y);
+        horSlider.Update(datalink, _x+X, _y+Y, ID);
     }
     else if (Type == "textbox")
     {
         textBox.isActive = isActive;
-        textBox.Update(dataLink, _x+X, _y+Y);
+        textBox.Update(datalink, _x+X, _y+Y, ID);
     }
 }
-void GUIElement::render(DataBank *dataLink)
+void GUIElement::render(DataBank *datalink)
 {
     if(Type == "codebox")
     {
-        codeBox.Render(dataLink);
+        codeBox.Render(datalink, _x+X, _y+Y, ID);
     }
     else if (Type == "button")
     {
-        button.Render(dataLink);
+        button.Render(datalink, _x+X, _y+Y, ID);
     }
     else if (Type == "label")
     {
-        label.Render(dataLink);
+        label.Render(datalink, _x+X, _y+Y, ID);
     }
     else if (Type == "horslider")
     {
-        horSlider.Render(dataLink);
+        horSlider.Render(datalink, _x+X, _y+Y, ID);
     }
     else if (Type == "textbox")
     {
-        textBox.Render(dataLink);
+        textBox.Render(datalink, _x+X, _y+Y, ID);
     }
 }
 void GUIElement::handleEvent(DataBank* datalink, sf::Event* _event, int _x, int _y)
 {
     if(Type == "codebox")
     {
-        codeBox.handleEvent(_event, _x+X, _y+Y);
+        codeBox.handleEvent(datalink, _event, _x+X, _y+Y, ID);
     }
     else if (Type == "button")
     {
@@ -86,10 +87,10 @@ void GUIElement::handleEvent(DataBank* datalink, sf::Event* _event, int _x, int 
     }
     else if (Type == "label")
     {
-        label.handleEvent(_event);
+        label.handleEvent(datalink, _event, _x+X, _y+Y, ID);
     }
     else if (Type == "textbox")
     {
-        textBox.handleEvent(_event, _x+X, _y+Y);
+        textBox.handleEvent(datalink, _event, _x+X, _y+Y, ID);
     }
 }
