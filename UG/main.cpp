@@ -55,7 +55,7 @@ int main ( int argc, char *argv[] )
         init.log(20, "Generate RenderDevice(Window)...");
         sf::RenderWindow App(sf::VideoMode(1280, 720, 32), "[[UntitledGame]]", sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
         init.log(20, "Re-Apply view...");
-        sf::View View(App.GetDefaultView());
+        sf::View View(App.getDefaultView());
         init.log(20, "Launch RenderLink...");
         dBank.renderWindow = &App;
         init.log(20, "Launch ViewLink...");
@@ -74,7 +74,7 @@ int main ( int argc, char *argv[] )
         init.log(20, "Create Graphics Thread...");
         GraphicsEngine graphicsThread(&dBank, &gManager, &DEBUG_LEVEL);
         init.log(20, "Relocate Render Thread...");
-        App.SetActive(false);
+        App.setActive(false);
         //Physics Engine
         init.log(20, "Create Physics Thread...");
         PhysicsEngine physicsThread(&dBank, &DEBUG_LEVEL);
@@ -89,10 +89,10 @@ int main ( int argc, char *argv[] )
 
         //Starting Engines
         init.log(20, "Launch Graphics...");
-        sf::Thread grTHREAD(&graphicsThread::Run, &graphicsThread);
+        sf::Thread grTHREAD(&GraphicsEngine::Run, &graphicsThread);
         grTHREAD.launch();
         init.log(20, "Launch Physics...");
-        sf::Thread phTHREAD(&physicsThread::Run, &physicsThread);
+        sf::Thread phTHREAD(&PhysicsEngine::Run, &physicsThread);
         phTHREAD.launch();
         init.log(20, "Initialization finished :)");
         init.log(20, "Switch from Init to Main(-Event)-Logger");
@@ -103,16 +103,16 @@ int main ( int argc, char *argv[] )
         sf::Clock limit;
         timer.restart();
         limit.restart();
-        while(App.isOpened())
+        while(App.isOpen())
         {
             GMutex.unlock();
-            if(limit.getElapsedTime() < 1.0/EvtThread)
+            if(limit.getElapsedTime().asSeconds() < 1.0/EvtThread)
             {
-                sf::sleep(1.0/EvtThread - limit.getElapsedTime());
+                sf::sleep(sf::seconds(1.0/EvtThread - limit.getElapsedTime().asSeconds()));
             }
             limit.restart();
             GMutex.lock();
-            if (timer.getElapsedTime() > 1.0f)
+            if (timer.getElapsedTime().asSeconds() > 1.0f)
             {
                 logger.log(11,"Thread running");
                 timer.restart();
@@ -122,10 +122,10 @@ int main ( int argc, char *argv[] )
             {
                 EventMan.processEvent(&Event);
                 //DEBUG
-                if(Event.Type == sf::Event::KeyPressed)
+                if(Event.type == sf::Event::KeyPressed)
                 {
                     ostringstream x;
-                    x << "Key Code -> " << Event.KeyEvent.code << endl;
+                    x << "Key Code -> " << Event.key.code << endl;
                     logger.log(1, x.str());
                 }
             }

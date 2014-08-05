@@ -9,7 +9,7 @@
 extern float ModThread;
 extern sf::Mutex GMutex;
 
-class ModModule : public sf::Thread
+class ModModule
 {
 	//MEMBERS
 private:
@@ -23,11 +23,11 @@ public:
 	//CONSTRUCTORS
 
 	//DESTRUCTORS
-	
+
 	//METHODS
 private:
 	int lPrint(lua_State *L); //message
-	
+
 	int lAddMenu(lua_State *L); //menu_id
 	int lEditMenuPosition(lua_State *L); //menu_id
 	int lEditMenuSize(lua_State *L); //menu_id
@@ -38,10 +38,10 @@ private:
 
 	int lAddGuiElement(lua_State *L); //menu_id, elem_id
 public:
-	virtual void Run();
+	void Run();
 	void Stop();
 	void SetDataLink(DataBank* _datalink, GUIManager* _gmanager, int *_level);
-	
+
 
 };
 
