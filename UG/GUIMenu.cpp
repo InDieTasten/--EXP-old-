@@ -110,8 +110,8 @@ void GUIMenu::handleEvent(DataBank* _datalink, sf::Event* _event)
     //start?
     if(_event->type == sf::Event::MouseButtonPressed)
     {
-        x = sf::Mouse::getPosition().x;
-        y = sf::Mouse::getPosition().y;
+        x = _event->mouseButton.x;
+        y = _event->mouseButton.y;
         if(x >= X && x <= X+Width && y >= Y && y <= Y+16)
         {
             moving = true;
@@ -126,8 +126,8 @@ void GUIMenu::handleEvent(DataBank* _datalink, sf::Event* _event)
     }
     if(_event->type == sf::Event::MouseMoved)
     {
-        x = sf::Mouse::getPosition().x;
-        y = sf::Mouse::getPosition().y;
+        x = _event->mouseMove.x;
+        y = _event->mouseMove.y;
         if(moving)
         {
             X += x-movingD.x;
