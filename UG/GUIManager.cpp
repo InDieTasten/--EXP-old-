@@ -446,8 +446,8 @@ void GUIManager::add_CodeIDE()
     elem1.Type = "textbox";
     elem1.X = 10;
     elem1.Y = 10;
-    elem1.codeBox.Width = 280;
-    elem1.codeBox.Height = 260;
+    elem1.textBox.Width = 280;
+    elem1.textBox.Height = 260;
 
     menu.GuiElements.push_back(elem1);
     menu.update(dataLink);

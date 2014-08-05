@@ -22,6 +22,7 @@ public:
 	int Width;
 	std::string ID;
 	bool isActive;
+	bool multiline;
 
 	//CONSTRUCTORS
 
