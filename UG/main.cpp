@@ -28,7 +28,6 @@ using namespace std;
 
 int main ( int argc, char *argv[] )
 {
-    cout << "TEST OUTPUT!!!";
     try
     {
         int DEBUG_LEVEL = 99;
