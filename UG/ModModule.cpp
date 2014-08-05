@@ -6,6 +6,14 @@
 //METHODS
 void ModModule::Run()
 {
+    std::list<Script> *scripts;
+    scripts = datalink->GetScripts();
+
+    for(std::list<Script>::iterator it = scripts->begin(); it != scripts->end(); it++)
+    {
+
+    }
+
     sf::Clock limiter;
     limiter.restart();
     while(datalink->runModules)
@@ -16,6 +24,9 @@ void ModModule::Run()
         }
         limiter.restart();
         GMutex.lock();
+
+        // run
+
         GMutex.unlock();
     }
 }
@@ -28,7 +39,7 @@ void ModModule::SetDataLink(DataBank* _datalink, GUIManager* _gmanager, int *_le
     gManager = _gmanager;
 }
 
-int ModModule::lPrint(lua_State *L)
+int ModModule::lPrint(lua_State *L) // api.print("mein text hat ", 5, "Wörter")
 {
     //number of arguments
     int n = lua_gettop(L);
@@ -43,7 +54,7 @@ int ModModule::lPrint(lua_State *L)
     return 0;
 }
 
-int ModModule::lAddMenu(lua_State *L)
+int ModModule::lAddMenu(lua_State *L) // api.addMenu(_id)
 {
     //number of arguments
     int n = lua_gettop(L);

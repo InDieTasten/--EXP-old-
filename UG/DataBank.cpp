@@ -7,6 +7,7 @@ DataBank::DataBank(int* _level)
     runModules = true;
     guiMode = false;
     logger.init(_level, "MemBank");
+    loadPlugins();
 }
 
 //DESTRUCTORS
@@ -15,9 +16,11 @@ DataBank::DataBank(int* _level)
 void DataBank::loadPlugins(void)
 {
     Loader pLoader;
-    std::list<std::string> folder = pLoader.getFolderContent("content/stock/scripts");
+    std::list<std::string> folder = pLoader.getFolderContent("./content/stock/scripts");
     for (std::list<std::string>::iterator it = folder.begin(); it != folder.end(); it++)
     {
+        it->append(".lua");
+        std::cout << "Found script: ./content/stock/scripts/" << *it << std::endl;
         scripts.push_back(Script(*it));
     }
 }
