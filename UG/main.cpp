@@ -10,6 +10,8 @@
 #include "EventManager.hpp"
 #include <conio.h>
 #include "Logger.hpp"
+#include "Loader.hpp"
+#include <list>
 #include <time.h>
 #include "util.hpp"
 #include <SFML\System.hpp>
@@ -25,9 +27,23 @@ void StockRegister(DataBank* datalink);
 using namespace std;
 
 
-
 int main ( int argc, char *argv[] )
 {
+    //Test-Zone
+    std::cout << "\nTESTZONE\n\n";
+
+    Loader loader;
+    std::list<std::string> content;
+    content = loader.getFolderContent("./content/stock/scripts");
+    cout << "Size: " << content.size() << endl;
+    for(std::list<std::string>::iterator it = content.begin(); it != content.end(); it++)
+    {
+        std::cout << *it << std::endl;
+    }
+
+    std::cout << "\n\nTESTZONE\n";
+    //Test-Zone
+
     try
     {
         int DEBUG_LEVEL = 99;
