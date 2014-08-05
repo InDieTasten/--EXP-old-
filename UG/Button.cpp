@@ -59,8 +59,8 @@ void Button::handleEvent(DataBank* datalink, sf::Event* _event, int _x, int _y, 
     {
         if(_event->type == sf::Event::MouseMoved)
         {
-            int mouseX = sf::Mouse::getPosition().x;
-            int mouseY = sf::Mouse::getPosition().y;
+            int mouseX = _event->mouseMove.x;
+            int mouseY = _event->mouseMove.y;
             if(mouseX >= _x && mouseX <= _x+Width)
             {
                 if(mouseY >= _y && mouseY <= _y+Height)

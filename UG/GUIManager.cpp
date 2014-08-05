@@ -202,8 +202,8 @@ void GUIManager::handleEvent(sf::Event *_event)
     if(_event->type == sf::Event::MouseMoved)
     {
         int x,y;
-        x = sf::Mouse::getPosition().x;
-        y = sf::Mouse::getPosition().y;
+        x = _event->mouseMove.x;
+        y = _event->mouseMove.y;
         int i = 0;
         for(std::list<GUIDockItem>::iterator it = dockButtons.begin(); it != dockButtons.end(); it++)
         {
@@ -246,7 +246,7 @@ void GUIManager::handleEvent(sf::Event *_event)
         }
         for(std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
         {
-            if(it->isHit(sf::Mouse::getPosition().x, sf::Mouse::getPosition().y))
+            if(it->isHit(_event->mouseButton.x, _event->mouseButton.y))
             {
                 if(!it->isActive)
                 {

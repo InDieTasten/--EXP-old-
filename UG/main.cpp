@@ -146,7 +146,7 @@ int main ( int argc, char *argv[] )
         std::printf("Fatal Error: Unexpected non std::exception thrown!");
     }
     printf("\n=|=|=|=|=|=|=|=|=|=|=|=|=|=\n\nThe game closed. If you see errors above, pls contact the developers");
-    getchar();
+    //getchar();
     return EXIT_SUCCESS;
 }
 
