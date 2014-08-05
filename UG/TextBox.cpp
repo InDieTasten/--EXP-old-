@@ -24,7 +24,7 @@ void TextBox::Update(DataBank* _dataLink, int _x, int _y,std::string _id)
     rect.setOutlineThickness(1.0f);
     rect.setOutlineColor(sf::Color(255,255,255,50));
 }
-void TextBox::Render(DataBank* _dataLink,std::string _id)
+void TextBox::Render(DataBank* _dataLink, int _x, int _y, std::string _id)
 {
     _dataLink->renderWindow->draw(rect);
     _dataLink->renderWindow->draw(text1);
