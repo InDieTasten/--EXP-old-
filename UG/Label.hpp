@@ -22,9 +22,9 @@ public:
 
 	//METHODS
 	void Setup();
-	void Update(DataBank* _dataLink, int _x, int _y);
-	void Render(DataBank* _dataLink);
-	void handleEvent(sf::Event* _event);
+	void Update(DataBank* _dataLink, int _x, int _y, std::string _id);
+	void Render(DataBank* _dataLink, int _x, int _y, std::string _id);
+	void handleEvent(DataBank* _dataLink, sf::Event* _event, int _x, int _y, std::string _id);
 };
 
 #endif
