@@ -48,7 +48,7 @@ void GUIElement::update(DataBank *datalink, int _x, int _y)
         textBox.Update(datalink, _x+X, _y+Y, ID);
     }
 }
-void GUIElement::render(DataBank *datalink)
+void GUIElement::render(DataBank *datalink, int _x, int _y)
 {
     if(Type == "codebox")
     {
