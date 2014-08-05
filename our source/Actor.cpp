@@ -1,6 +1,0 @@
-#include "Actor.hpp"
-//CONSTRUCTORS
-
-//DESTRUCTORS
-
-//METHODS
