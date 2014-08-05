@@ -24,34 +24,47 @@ void GUIMenu::update(DataBank *datalink)
         //recalcualte the renderShapes
         if(isActive)
         {
-            mainBackground = sf::RectangleShape::Rectangle((float)X,(float)Y,(float)X+Width,(float)Y+Height+16,sf::Color(0,0,0,opacity),1.0f,sf::Color::Green);
+            mainBackground.setPosition((float)X,(float)Y);
+            mainBackground.setSize(sf::Vector2f((float)Width,(float)Height+16));
+            mainBackground.setFillColor(sf::Color(0,0,0,opacity));
+            mainBackground.setOutlineThickness(1.0f);
+            mainBackground.setOutlineColor(sf::Color::Green);
         }
         else
         {
-            mainBackground = sf::RectangleShape::Rectangle((float)X,(float)Y,(float)X+Width,(float)Y+Height+16,sf::Color(0,0,0,opacity),1.0f,sf::Color::White);
+            mainBackground.setPosition((float)X,(float)Y);
+            mainBackground.setSize(sf::Vector2f((float)Width,(float)Height+16));
+            mainBackground.setFillColor(sf::Color(0,0,0,opacity));
+            mainBackground.setOutlineThickness(1.0f);
+            mainBackground.setOutlineColor(sf::Color::White);
         }
-        mainBackground.EnableFill(true);
-        mainBackground.EnableOutline(true);
-
         if(isActive)
         {
-            titleBar = sf::RectangleShape::Rectangle((float)X,(float)Y,(float)X+Width,(float)Y+16,sf::Color(10,10,10,opacity),1.0f,sf::Color::Green);
+            titleBar.setPosition((float)X,(float)Y);
+            titleBar.setSize(sf::Vector2f((float)Width,(float)16));
+            titleBar.setFillColor(sf::Color(10,10,10,opacity));
+            titleBar.setOutlineThickness(1.0f);
+            titleBar.setOutlineColor(sf::Color::Green);
         }
         else
         {
-            titleBar = sf::RectangleShape::Rectangle((float)X,(float)Y,(float)X+Width,(float)Y+16,sf::Color(10,10,10,opacity),1.0f,sf::Color::White);
+            titleBar.setPosition((float)X,(float)Y);
+            titleBar.setSize(sf::Vector2f((float)Width,(float)16));
+            titleBar.setFillColor(sf::Color(10,10,10,opacity));
+            titleBar.setOutlineThickness(1.0f);
+            titleBar.setOutlineColor(sf::Color::White);
         }
 
-        menuTitle.SetFont(*datalink->FontGet("$_menuTitle"));
-        menuTitle.SetSize(12.0f);
-        menuTitle.SetPosition((float)(X+4),(float)(Y));
-        menuTitle.SetColor(sf::Color(200,200,200,255));
+        menuTitle.setFont(*datalink->FontGet("$_menuTitle"));
+        menuTitle.setCharacterSize(12.0f);
+        menuTitle.setPosition((float)(X+4),(float)(Y));
+        menuTitle.setColor(sf::Color(200,200,200,255));
 
         if (closeButtonHover)
-            closeButton.SetImage(*datalink->TextureGet("$_closeButtonHover"));
+            closeButton.setTexture(*datalink->TextureGet("$_closeButtonHover"));
         else
-            closeButton.SetImage(*datalink->TextureGet("$_closeButtonNormal"));
-        closeButton.SetPosition((float)(X+Width-15),(float)(Y+1));
+            closeButton.setTexture(*datalink->TextureGet("$_closeButtonNormal"));
+        closeButton.setPosition((float)(X+Width-15),(float)(Y+1));
     }
 }
 void GUIMenu::SetHeight(int _height)
@@ -72,17 +85,17 @@ void GUIMenu::SetY(int _y)
 }
 void GUIMenu::SetMenuTitle(std::string _title)
 {
-    menuTitle.SetText(_title);
+    menuTitle.setString(_title);
 }
 void GUIMenu::render(DataBank *dataLink)
 {
     if(isHidden == false)
     {
         //Rendermyself
-        dataLink->renderWindow->Draw(mainBackground);
-        dataLink->renderWindow->Draw(titleBar);
-        dataLink->renderWindow->Draw(menuTitle);
-        dataLink->renderWindow->Draw(closeButton);
+        dataLink->renderWindow->draw(mainBackground);
+        dataLink->renderWindow->draw(titleBar);
+        dataLink->renderWindow->draw(menuTitle);
+        dataLink->renderWindow->draw(closeButton);
         //RenderElements:
         for (std::list<GUIElement>::iterator it = GuiElements.begin(); it != GuiElements.end(); it++)
         {
@@ -90,15 +103,15 @@ void GUIMenu::render(DataBank *dataLink)
         }
     }
 }
-void GUIMenu::handleEvent(DataBank* _datalink, sf::Event* _event, const sf::Input* _input)
+void GUIMenu::handleEvent(DataBank* _datalink, sf::Event* _event)
 {
     //moving menu
     int x,y;
     //start?
-    if(_event->Type == sf::Event::MouseButtonPressed)
+    if(_event->type == sf::Event::MouseButtonPressed)
     {
-        x = _input->GetMouseX();
-        y = _input->GetMouseY();
+        x = sf::Mouse::getPosition().x;
+        y = sf::Mouse::getPosition().y;
         if(x >= X && x <= X+Width && y >= Y && y <= Y+16)
         {
             moving = true;
@@ -107,14 +120,14 @@ void GUIMenu::handleEvent(DataBank* _datalink, sf::Event* _event, const sf::Inpu
         }
     }
     //end?
-    if(_event->Type == sf::Event::MouseButtonReleased)
+    if(_event->type == sf::Event::MouseButtonReleased)
     {
         moving = false;
     }
-    if(_event->Type == sf::Event::MouseMoved)
+    if(_event->type == sf::Event::MouseMoved)
     {
-        x = _input->GetMouseX();
-        y = _input->GetMouseY();
+        x = sf::Mouse::getPosition().x;
+        y = sf::Mouse::getPosition().y;
         if(moving)
         {
             X += x-movingD.x;
@@ -129,9 +142,9 @@ void GUIMenu::handleEvent(DataBank* _datalink, sf::Event* _event, const sf::Inpu
         }
         closeButtonHover = (x >= (X+Width-15) && y >= (Y+1) && x <= (X+Width-1) && y <= (Y+15));
     }
-    if(_event->Type == sf::Event::MouseButtonReleased)
+    if(_event->type == sf::Event::MouseButtonReleased)
     {
-        if(_event->MouseButton.Button == sf::Mouse::Left)
+        if(_event->mouseButton.button == sf::Mouse::Left)
         {
             if(closeButtonHover)
             {
@@ -145,7 +158,7 @@ void GUIMenu::handleEvent(DataBank* _datalink, sf::Event* _event, const sf::Inpu
     }
     for(std::list<GUIElement>::iterator it = GuiElements.begin(); it != GuiElements.end(); it++)
     {
-        it->handleEvent(_datalink, _event, _input, X, Y+16);
+        it->handleEvent(_datalink, _event, X, Y+16);
     }
 }
 void GUIMenu::Enable()

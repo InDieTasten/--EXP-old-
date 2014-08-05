@@ -12,16 +12,16 @@ void Label::Setup()
 }
 void Label::Update(DataBank* _dataLink, int _x, int _y)
 {
-    displayText.SetText(DisplayText);
-    displayText.SetPosition((float)_x,(float)_y);
-    displayText.SetFont(*_dataLink->FontGet("$_menuTitle"));
-    displayText.SetSize(12.0);
+    displayText.setString(DisplayText);
+    displayText.setPosition((float)_x,(float)_y);
+    displayText.setFont(*_dataLink->FontGet("$_menuTitle"));
+    displayText.setCharacterSize(12.0);
 }
 void Label::Render(DataBank* _dataLink)
 {
-    _dataLink->renderWindow->Draw(displayText);
+    _dataLink->renderWindow->draw(displayText);
 }
-void Label::handleEvent(sf::Event* _event, const sf::Input* _input)
+void Label::handleEvent(sf::Event* _event)
 {
 
 }

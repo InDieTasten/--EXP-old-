@@ -2,13 +2,14 @@
 #define _PhysicsEngine_hpp_
 
 #include <SFML\Graphics.hpp>
+#include <math.h>
 #include "DataBank.hpp"
 #include "Vector.hpp"
 #include <list>
 extern float PhyThread;
 extern sf::Mutex GMutex;
 
-class PhysicsEngine : public sf::Thread
+class PhysicsEngine
 {
 	//MEMBERS
 private:
@@ -31,8 +32,8 @@ private:
 	double calcDistanceX(Vector _obj1, Vector _obj2);
 	double calcDistanceY(Vector _obj1, Vector _obj2);
 	float calcDistance(Vector _obj1, Vector _obj2);
-	virtual void Run();
 public:
+    void Run();
 	void Stop();
 };
 #endif
