@@ -100,6 +100,7 @@ void GUIMenu::render(DataBank *dataLink)
         for (std::list<GUIElement>::iterator it = GuiElements.begin(); it != GuiElements.end(); it++)
         {
             it->render(dataLink);
+            it->render(datalink, X, Y+16);
         }
     }
 }
