@@ -11,6 +11,7 @@ void EventManager::handleEvent(sf::Event *_event)
     {
         dataLink->runGraphics = false;
         dataLink->runPhysics = false;
+        dataLink->runModules = false;
         GMutex.unlock();
         sf::sleep(sf::seconds(2.0f)); //wait for threads to finish
         GMutex.lock();
@@ -35,8 +36,9 @@ void EventManager::handleSoftEvent(std::list<std::string> _args)
         {
             dataLink->runGraphics = false;
             dataLink->runPhysics = false;
+            dataLink->runModules = false;
             GMutex.unlock();
-            sf::sleep(sf::seconds(2.0f)); //wait for threads to finish
+            sf::sleep(sf::seconds(1.0f)); //wait for threads to finish
             GMutex.lock();
             dataLink->renderWindow->close();
             return;
