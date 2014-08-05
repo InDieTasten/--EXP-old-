@@ -36,6 +36,7 @@ void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,s
         {
             if(_event->key.code == 58)
             {
+                clear = 1;
                 if(multiline == false)
                 {
                     std::list<std::string> x;
@@ -43,17 +44,25 @@ void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,s
                     x.push_back(_id);
                     x.push_back(text);
                     datalink->pushEvent(x);
-                    text="MouseScroller stinkt!";
+                    text="";
                 }
                 else
                 {
                     text+=10;
                 }
             }
+            else if(_event->key.code == 59)
+            {
+                clear = 1;
+                if(text.size()>=1)
+                {
+                    text =text.substr (0,text.size()-1);
+                }
+            }
         }
-        else if(_event->type == sf::Event::TextEntered)
+        else if(_event->type == sf::Event::TextEntered && clear == 0)
         {
-            if (_event->text.unicode < 128)
+            if (_event->text.unicode < 128 && _event->text.unicode > 31)
             {
                 if(!multiline)
                 {
@@ -66,5 +75,6 @@ void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,s
                 }
             }
         }
+        clear = 0;
     }
 }
