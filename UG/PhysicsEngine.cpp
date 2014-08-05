@@ -47,20 +47,20 @@ void PhysicsEngine::Run()
     logger.log(2, "Thread launched");
     sf::Clock timer;
     sf::Clock limit;
-    timer.Reset();
-    limit.Reset();
+    timer.restart();
+    limit.restart();
     while (dataLink->runPhysics)
     {
-        if(limit.GetElapsedTime() < 1.0/PhyThread)
+        if(limit.getElapsedTime().asSeconds() < 1.0/PhyThread)
         {
-            sf::Sleep(1.0/PhyThread - limit.GetElapsedTime());
+            sf::sleep(sf::seconds(1.0/PhyThread - limit.getElapsedTime().asSeconds()));
         }
-        limit.Reset();
-        GMutex.Lock();
-        if (timer.GetElapsedTime() > 1.f)
+        limit.restart();
+        GMutex.lock();
+        if (timer.getElapsedTime().asSeconds() > 1.f)
         {
             logger.log(11, "Thread running");
-            timer.Reset();
+            timer.restart();
         }
         for (std::list<SpaceObject>::iterator sObject = dataLink->Level.SpaceObjectList.begin(); sObject != dataLink->Level.SpaceObjectList.end(); sObject++)
         {
@@ -98,7 +98,7 @@ void PhysicsEngine::Run()
             //new position
             sObject->Position = Vector(sObject->Position.x + sObject->Velocity.x*frametime, sObject->Position.y + sObject->Velocity.y*frametime);
         }
-        GMutex.Unlock();
+        GMutex.unlock();
     }
     logger.log(2, "Thread stopped");
 }

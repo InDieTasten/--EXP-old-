@@ -34,8 +34,8 @@ private:
 	double calcDistanceX(Vector _obj1, Vector _obj2);
 	double calcDistanceY(Vector _obj1, Vector _obj2);
 	float calcDistance(Vector _obj1, Vector _obj2);
-	void Run();
 public:
+    void Run();
 	void Stop();
 };
 #endif

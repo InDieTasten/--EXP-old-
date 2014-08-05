@@ -7,16 +7,16 @@
 void ModModule::Run()
 {
     sf::Clock limiter;
-    limiter.Reset();
+    limiter.restart();
     while(datalink->runModules)
     {
-        if(limiter.GetElapsedTime() < 1.0/ModThread)
+        if(limiter.getElapsedTime().asSeconds() < 1.0/ModThread)
         {
-            sf::Sleep(1.0/ModThread - limiter.GetElapsedTime());
+            sf::sleep(sf::seconds(1.0/ModThread - limiter.getElapsedTime().asSeconds()));
         }
-        limiter.Reset();
-        GMutex.Lock();
-        GMutex.Unlock();
+        limiter.restart();
+        GMutex.lock();
+        GMutex.unlock();
     }
 }
 void ModModule::SetDataLink(DataBank* _datalink, GUIManager* _gmanager, int *_level)
