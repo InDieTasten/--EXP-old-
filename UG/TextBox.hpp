@@ -12,6 +12,7 @@ private:
 	sf::RectangleShape rect;
 	char tmp;
 	sf::Text text1;
+	bool clear;
 
 public:
 	std::string text;
