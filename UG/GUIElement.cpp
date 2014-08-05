@@ -6,6 +6,7 @@ GUIElement::GUIElement()
     button.Setup();
     label.Setup();
     horSlider.Setup();
+    textBox.Setup();
 }
 //DESTRUCTORS
 
@@ -40,6 +41,11 @@ void GUIElement::update(DataBank *dataLink, int _x, int _y)
         horSlider.isActive = isActive;
         horSlider.Update(dataLink, _x+X, _y+Y);
     }
+    else if (Type == "textbox")
+    {
+        textBox.isActive = isActive;
+        textBox.Update(dataLink, _x+X, _y+Y);
+    }
 }
 void GUIElement::render(DataBank *dataLink)
 {
@@ -59,6 +65,10 @@ void GUIElement::render(DataBank *dataLink)
     {
         horSlider.Render(dataLink);
     }
+    else if (Type == "textbox")
+    {
+        textBox.Render(dataLink);
+    }
 }
 void GUIElement::handleEvent(DataBank* datalink, sf::Event* _event, int _x, int _y)
 {
@@ -77,5 +87,9 @@ void GUIElement::handleEvent(DataBank* datalink, sf::Event* _event, int _x, int 
     else if (Type == "label")
     {
         label.handleEvent(_event);
+    }
+    else if (Type == "textBox")
+    {
+        textBox.handleEvent(_event, _x+X, _y+Y);
     }
 }
