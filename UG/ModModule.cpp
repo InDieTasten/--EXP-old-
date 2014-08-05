@@ -29,6 +29,7 @@ void ModModule::Run()
 
         GMutex.unlock();
     }
+    logger.log(4, "Thread stopped");
 }
 void ModModule::SetDataLink(DataBank* _datalink, GUIManager* _gmanager, int *_level)
 {
