@@ -1,3 +1,4 @@
+
 #ifndef _Loader_cpp_
 #define _Loader_cpp_
 
@@ -5,7 +6,6 @@
 #include <iostream>
 #include <conio.h>
 #include "dirent.h"
-#include <iostream>
 #include <string>
 #include <vector>
 
@@ -25,7 +25,7 @@ public:
 	//METHODS
 	std::vector<std::string> getEntries();
 	virtual bool selectDirEntry();
-};	
+};
 
 class Loader
 {
