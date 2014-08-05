@@ -46,11 +46,11 @@ std::list<std::string> Loader::getFolderContent(std::string _path)
     std::vector<std::string> ret = folder.getEntries();
     for(unsigned int i=0; i < ret.size(); i++)
     {
-        std::string temp = ret[i];
-        if (temp.find(".")) // warning!!! not tested
-        {
+        //std::string temp = ret[i];
+        //if (temp.find(".")) // warning!!! not tested
+        //{
             content.push_back(ret[i]);
-        }
+        //}
     }
     return content;
 }
