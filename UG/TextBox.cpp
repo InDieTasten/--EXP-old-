@@ -33,6 +33,12 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y)
 {
     if(isActive)
     {
-
+        if (_event->type == sf::Event::TextEntered)
+        {
+            if (_event->text.unicode < 128)
+            {
+               std::cout << "ASCII character typed: " << static_cast<char>(_event->text.unicode) << std::endl;
+            }
+        }
     }
 }
