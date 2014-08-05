@@ -37,23 +37,29 @@ void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,s
         {
             if (_event->text.unicode < 128)
             {
-                if(_event->text.unicode == 53)
+                if(_event->type == sf::Event::KeyPressed)
                 {
-                    if(multiline == false)
+                    if(_event->key.code == 58)
                     {
-                        std::list<std::string> x;
-                        x.push_back("textbox_submit");
-                        x.push_back(_id);
-                        x.push_back(text);
-                        datalink->pushEvent(x);
-                        text="";
-                    }
-                    else
-                    {
-
+                        if(multiline == false)
+                        {
+                            std::list<std::string> x;
+                            x.push_back("textbox_submit");
+                            x.push_back(_id);
+                            x.push_back(text);
+                            datalink->pushEvent(x);
+                            text="";
+                        }
+                        else
+                        {
+                            text+=10;
+                        }
                     }
                 }
-               text+=(_event->text.unicode);
+                else
+                {
+                    text+=(_event->text.unicode);
+                }
             }
         }
     }
