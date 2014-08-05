@@ -15,6 +15,7 @@ public:
 	int Height;
 	int Width;
 	std::string DisplayText;
+	bool isActive;
 
 	//CONSTRUCTORS
 
