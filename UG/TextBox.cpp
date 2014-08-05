@@ -7,7 +7,7 @@
 //METHODS
 void TextBox::Setup()
 {
-
+    multiline = false;
 
 }
 void TextBox::Update(DataBank* _dataLink, int _x, int _y)
@@ -37,7 +37,23 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y)
         {
             if (_event->text.unicode < 128)
             {
-               std::cout << "ASCII character typed: " << static_cast<char>(_event->text.unicode) << std::endl;
+                if(_event->text.unicode == 53)
+                {
+                    if(multiline == false)
+                    {
+                        std::list<std::string> x;
+                        x.push_back("textbox_submit");
+                        x.push_back(_id);
+                        x.push_back(text);
+                        datalink->pushEvent(x);
+                        text="";
+                    }
+                    else
+                    {
+
+                    }
+                }
+               text+=(_event->text.unicode);
             }
         }
     }
