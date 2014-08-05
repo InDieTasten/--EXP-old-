@@ -88,7 +88,7 @@ void GUIElement::handleEvent(DataBank* datalink, sf::Event* _event, int _x, int 
     {
         label.handleEvent(_event);
     }
-    else if (Type == "textBox")
+    else if (Type == "textbox")
     {
         textBox.handleEvent(_event, _x+X, _y+Y);
     }
