@@ -19,6 +19,7 @@ private:
 public:
 	Button button;
 	CodeBox codeBox;
+	TextBox textBox;
 	Label label;
 	HorSlider horSlider;
 
