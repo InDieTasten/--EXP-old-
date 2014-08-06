@@ -85,6 +85,23 @@ void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,s
                     cursor--;
                 }
             }
+            else if(_event->key.code == sf::Keyboard::Delete)
+            {
+                if(cursor < text.size())
+                {
+                    tmp = text.substr (0,(cursor));
+                    tmp2 = text.substr (cursor+1,text.size());
+                    text = tmp + tmp2;
+                }
+            }
+            else if(_event->key.code == sf::Keyboard::End)
+            {
+                cursor = text.size();
+            }
+            else if(_event->key.code == sf::Keyboard::Home)
+            {
+                cursor = 0;
+            }
         }
         else if(_event->type == sf::Event::TextEntered && clear == 0)
         {
