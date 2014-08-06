@@ -1,3 +1,4 @@
 *.o
 *.exe
-*.layout
+UG/UG.layout
+UG/UG.depend
