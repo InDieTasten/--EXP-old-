@@ -7,8 +7,9 @@
 //METHODS
 void TextBox::Setup()
 {
-    multiline = false;
+    multiline = true;
     cursor = 0;
+    line = 0;
 }
 void TextBox::Update(DataBank* _dataLink, int _x, int _y,std::string _id)
 {
@@ -24,7 +25,7 @@ void TextBox::Update(DataBank* _dataLink, int _x, int _y,std::string _id)
     rect.setOutlineThickness(1.0f);
     rect.setOutlineColor(sf::Color(255,255,255,50));
 
-    c.setPosition((float)_x+(cursor*7),(float)_y);
+    c.setPosition((float)_x+(cursor*7),(float)_y+(line*12));
     c.setSize(sf::Vector2f(7,12));
     c.setFillColor(sf::Color(20,150,20,150));
     c.setOutlineThickness(1.0f);
@@ -58,6 +59,8 @@ void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,s
                 else
                 {
                     text+=10;
+                    line++;
+                    cursor = 0;
                 }
             }
             else if(_event->key.code == 59)
