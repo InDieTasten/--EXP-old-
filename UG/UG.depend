@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1407282318 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\main.cpp
+1407334694 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\main.cpp
 	<iostream>
 	"DataBank.hpp"
 	"Vector.hpp"
@@ -16,6 +16,9 @@
 	<time.h>
 	"util.hpp"
 	<SFML\System.hpp>
+	<lua.h>
+	<lualib.h>
+	<lauxlib.h>
 
 1365237032 c:\users\indie\bibliotheken\documents\github\--untitledgame--\libraries\sfml-framework\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -627,10 +630,10 @@
 1407165769 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\collisionindice.cpp
 	"CollisionIndice.hpp"
 
-1407282318 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\databank.cpp
+1407347896 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\databank.cpp
 	"DataBank.hpp"
 
-1407283617 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\eventmanager.cpp
+1407348058 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\eventmanager.cpp
 	"EventManager.hpp"
 
 1402691918 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\eventmanager.hpp
@@ -711,7 +714,7 @@
 	"Vector.hpp"
 	<list>
 
-1407230704 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\modmodule.hpp
+1407347418 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\modmodule.hpp
 	<list>
 	"DataBank.hpp"
 	"GUIManager.hpp"
@@ -757,7 +760,7 @@
 	<list>
 	<Windows.h>
 
-1407282318 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\modmodule.cpp
+1407347737 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\modmodule.cpp
 	"ModModule.hpp"
 
 1407231493 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\physicsengine.cpp
@@ -778,7 +781,7 @@
 1407165770 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\spaceobject.cpp
 	"SpaceObject.hpp"
 
-1407283502 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\textbox.cpp
+1407286233 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\textbox.cpp
 	"TextBox.hpp"
 
 1407244118 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\texture.cpp

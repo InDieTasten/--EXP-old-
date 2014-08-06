@@ -1,5 +1,0 @@
--- this is the [[UG]]-Console Interpreter
-
-for k,v in pairs(_G) do
-	print(tostring(k)..tostring(v))
-end
