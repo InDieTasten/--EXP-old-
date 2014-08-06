@@ -9,3 +9,7 @@
 *.depend
 */*.depend
 */*/*.depend
+
+*.lay
+*.lay*
+
