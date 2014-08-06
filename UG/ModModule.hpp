@@ -4,6 +4,7 @@
 #include <list>
 #include "DataBank.hpp"
 #include "GUIManager.hpp"
+#include "Logger.hpp"
 #include "Script.hpp"
 #include <sstream>
 extern float ModThread;

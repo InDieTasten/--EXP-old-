@@ -52,33 +52,6 @@ int lPrint(lua_State *L) // api.print("mein text hat ", 5, "Wörter")
 
 int main ( int argc, char *argv[] )
 {
-    //Test-Zone
-    std::cout << "TESTZONE\n\n";
-
-    lua_State* L;
-
-    /* initialize Lua */
-	L = luaL_newstate();
-
-	/* load Lua base libraries */
-	luaL_openlibs(L);
-
-	/* register our function */
-	lua_register(L, "print", lPrint);
-
-	/* run the script */
-	luaL_dofile(L, "./content/stock/scripts/console.lua");
-
-	/* cleanup Lua */
-	lua_close(L);
-
-	/* pause */
-	printf( "Press enter to exit lua-test..." );
-	getchar();
-
-    std::cout << "TESTZONE\n\n";
-    //Test-Zone
-
     try
     {
         int DEBUG_LEVEL = 99;
@@ -174,13 +147,6 @@ int main ( int argc, char *argv[] )
             while(App.pollEvent(Event))
             {
                 EventMan.processEvent(&Event);
-                //DEBUG
-                if(Event.type == sf::Event::KeyPressed)
-                {
-                    ostringstream x;
-                    x << "Key Code -> " << Event.key.code << endl;
-                    logger.log(1, x.str());
-                }
             }
             while(dBank.softEvents.size() != 0)
             {

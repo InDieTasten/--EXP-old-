@@ -8,10 +8,6 @@ void ModModule::Run()
 {
     std::list<Script> *scripts;
     scripts = datalink->GetScripts();
-    for(std::list<Script>::iterator it = scripts->begin(); it != scripts->end(); it++)
-    {
-        logger.log(0, "Script found: "+it->path);
-    }
 
     for(std::list<Script>::iterator it = scripts->begin(); it != scripts->end(); it++)
     {
@@ -22,9 +18,8 @@ void ModModule::Run()
         luaL_dofile(it->state, it->path.c_str());
 
         lua_getglobal(it->state, "onLoad");
-        logger.log(0, "onLoad selected");
+
         lua_call(it->state, 0, 0);
-        logger.log(0, "onLoad called");
     }
 
     sf::Clock limiter;
@@ -79,7 +74,7 @@ int ModModule::lPrint(lua_State *L) // api.print("mein text hat ", 5, "Wörter")
 
     for(int i = 1; i <= n; i++)
     {
-        message.append(lua_tostring(L,n));
+        message.append(lua_tostring(L,i));
     }
     std::cout << message << std::endl;
     return 0;
