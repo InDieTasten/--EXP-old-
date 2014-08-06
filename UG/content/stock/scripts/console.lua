@@ -8,17 +8,15 @@ end
 
 function onLoad()
 	print("console.lua loaded :)")
-	print("Test wird gestartet:\n\n")
-	test()
 end
 function onUnload()
 	print("console.lua unloaded :(")
 end
 function onSoftEvent(...)
-	print("\\Soft-Event captured/")
+	print("\\/Soft-Event captured\\/")
 	mytab = {...}
 	for k,v in pairs(mytab) do
 		print(tostring(k)..": "..tostring(v))
 	end
-	print("/Soft-Event captured\\", 5)
+	print("/\\Soft-Event captured/\\")
 end
