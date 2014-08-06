@@ -19,9 +19,8 @@ void DataBank::loadPlugins(void)
     std::list<std::string> folder = pLoader.getFolderContent("./content/stock/scripts");
     for (std::list<std::string>::iterator it = folder.begin(); it != folder.end(); it++)
     {
-        it->append(".lua");
         std::cout << "Found script: ./content/stock/scripts/" << *it << std::endl;
-        scripts.push_back(Script(*it));
+        scripts.push_back(Script("./content/stock/scripts/"+ *it));
     }
 }
 std::list<Script>* DataBank::GetScripts()

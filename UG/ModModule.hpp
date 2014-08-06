@@ -18,7 +18,7 @@ private:
 	DataBank* datalink;
 	GUIManager* gManager;
 public:
-	std::list<sf::Event> eventBuffer;
+	std::list< std::list<std::string> > eventBuffer;
 
 	//CONSTRUCTORS
 
@@ -26,7 +26,7 @@ public:
 
 	//METHODS
 private:
-	int lPrint(lua_State *L); //message
+	static int lPrint(lua_State *L); //message
 
 	int lAddMenu(lua_State *L); //menu_id
 	int lEditMenuPosition(lua_State *L); //menu_id

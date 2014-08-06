@@ -8,10 +8,23 @@ void ModModule::Run()
 {
     std::list<Script> *scripts;
     scripts = datalink->GetScripts();
+    for(std::list<Script>::iterator it = scripts->begin(); it != scripts->end(); it++)
+    {
+        logger.log(0, "Script found: "+it->path);
+    }
 
     for(std::list<Script>::iterator it = scripts->begin(); it != scripts->end(); it++)
     {
+        luaL_openlibs(it->state);
 
+        lua_register(it->state, "print", ModModule::lPrint);
+
+        luaL_dofile(it->state, it->path.c_str());
+
+        lua_getglobal(it->state, "onLoad");
+        logger.log(0, "onLoad selected");
+        lua_call(it->state, 0, 0);
+        logger.log(0, "onLoad called");
     }
 
     sf::Clock limiter;
@@ -24,10 +37,27 @@ void ModModule::Run()
         }
         limiter.restart();
         GMutex.lock();
-
-        // run
+        for(std::list< std::list<std::string> >::iterator event = eventBuffer.begin(); event != eventBuffer.end(); event++)
+        {
+            for(std::list<Script>::iterator script = scripts->begin(); script != scripts->end(); script++)
+            {
+                lua_getglobal(script->state, "onSoftEvent");
+                for(std::list<std::string>::iterator parameter = event->begin(); parameter != event->end(); parameter++)
+                {
+                    lua_pushstring(script->state, parameter->c_str());
+                }
+                lua_call(script->state, event->size(), 0);
+            }
+            eventBuffer.erase(event);
+        }
 
         GMutex.unlock();
+    }
+    for(std::list<Script>::iterator it = scripts->begin(); it != scripts->end(); it++)
+    {
+        lua_getglobal(it->state, "onUnload");
+        lua_call(it->state, 0, 0);
+        lua_close(it->state);
     }
     logger.log(4, "Thread stopped");
 }

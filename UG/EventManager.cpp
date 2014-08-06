@@ -44,6 +44,8 @@ void EventManager::handleSoftEvent(std::list<std::string> _args)
             return;
         }
     }
+    // to the plugins
+    mModule->eventBuffer.push_back(_args);
 }
 void EventManager::SetDataLink(DataBank *_dataLink, GUIManager *_gManager, GraphicsEngine* _gEngine, PhysicsEngine* _pEngine, ModModule *_mModule, int* _level)
 {
