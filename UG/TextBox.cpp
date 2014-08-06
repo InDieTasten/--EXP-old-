@@ -63,7 +63,7 @@ void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,s
             else if(_event->key.code == 59)
             {
                 clear = 1;
-                if(text.size()>=1)
+                if(cursor>=1)
                 {
                     tmp = text.substr (0,(cursor-1));
                     tmp2 = text.substr (cursor,text.size());
