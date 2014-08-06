@@ -17,6 +17,7 @@ private:
 	bool clear;
 	sf::RectangleShape c;
 	int cursor;
+	int line;
 
 public:
 	std::string text;
