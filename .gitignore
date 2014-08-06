@@ -13,3 +13,5 @@
 *.lay
 *.lay*
 
+UG/UG.layout
+*.depend
