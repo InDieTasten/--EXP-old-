@@ -7,8 +7,10 @@ function onUnload()
 	print("console.lua unloaded :(")
 end
 function onSoftEvent(...)
+	print("\\Soft-Event captured/")
 	mytab = {...}
 	for k,v in pairs(mytab) do
-		print(k,v,"\n")
+		print(tostring(k)..": "..tostring(v))
 	end
+	print("/Soft-Event captured\\")
 end
