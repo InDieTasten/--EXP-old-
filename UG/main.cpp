@@ -15,6 +15,14 @@
 #include <time.h>
 #include "util.hpp"
 #include <SFML\System.hpp>
+
+extern "C" {
+	#include <lua.h>
+	#include <lualib.h>
+	#include <lauxlib.h>
+}
+
+
 // Thread Throttleling
 float EvtThread =  60.0; //Cycles per second
 float ModThread =  40.0; //Cycles per second
@@ -27,21 +35,48 @@ void StockRegister(DataBank* datalink);
 using namespace std;
 
 
+int lPrint(lua_State *L) // api.print("mein text hat ", 5, "Wörter")
+{
+    //number of arguments
+    int n = lua_gettop(L);
+
+    std::string message = "";
+
+    for(int i = 1; i <= n; i++)
+    {
+        message.append(lua_tostring(L,n));
+    }
+    std::cout << message << std::endl;
+    return 0;
+}
+
 int main ( int argc, char *argv[] )
 {
     //Test-Zone
-    std::cout << "\nTESTZONE\n\n";
+    std::cout << "TESTZONE\n\n";
 
-    Loader loader;
-    std::list<std::string> content;
-    content = loader.getFolderContent("./content/stock/scripts");
-    cout << "Size: " << content.size() << endl;
-    for(std::list<std::string>::iterator it = content.begin(); it != content.end(); it++)
-    {
-        std::cout << *it << std::endl;
-    }
+    lua_State* L;
 
-    std::cout << "\n\nTESTZONE\n";
+    /* initialize Lua */
+	L = luaL_newstate();
+
+	/* load Lua base libraries */
+	luaL_openlibs(L);
+
+	/* register our function */
+	lua_register(L, "print", lPrint);
+
+	/* run the script */
+	luaL_dofile(L, "./content/stock/scripts/console.lua");
+
+	/* cleanup Lua */
+	lua_close(L);
+
+	/* pause */
+	printf( "Press enter to exit lua-test..." );
+	getchar();
+
+    std::cout << "TESTZONE\n\n";
     //Test-Zone
 
     try
