@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1407334694 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\main.cpp
+1407352206 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\main.cpp
 	<iostream>
 	"DataBank.hpp"
 	"Vector.hpp"
@@ -630,10 +630,10 @@
 1407165769 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\collisionindice.cpp
 	"CollisionIndice.hpp"
 
-1407347896 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\databank.cpp
+1407348487 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\databank.cpp
 	"DataBank.hpp"
 
-1407348058 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\eventmanager.cpp
+1407348487 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\eventmanager.cpp
 	"EventManager.hpp"
 
 1402691918 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\eventmanager.hpp
@@ -714,10 +714,11 @@
 	"Vector.hpp"
 	<list>
 
-1407347418 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\modmodule.hpp
+1407353724 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\modmodule.hpp
 	<list>
 	"DataBank.hpp"
 	"GUIManager.hpp"
+	"Logger.hpp"
 	"Script.hpp"
 	<sstream>
 
@@ -751,7 +752,7 @@
 1407282318 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\loader.cpp
 	"Loader.hpp"
 
-1407165770 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\logger.cpp
+1407353724 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\logger.cpp
 	"Logger.hpp"
 
 1402615927 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\util.hpp
@@ -760,7 +761,7 @@
 	<list>
 	<Windows.h>
 
-1407347737 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\modmodule.cpp
+1407352127 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\modmodule.cpp
 	"ModModule.hpp"
 
 1407231493 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\physicsengine.cpp
@@ -781,7 +782,7 @@
 1407165770 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\spaceobject.cpp
 	"SpaceObject.hpp"
 
-1407286233 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\textbox.cpp
+1407348484 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\textbox.cpp
 	"TextBox.hpp"
 
 1407244118 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\texture.cpp
