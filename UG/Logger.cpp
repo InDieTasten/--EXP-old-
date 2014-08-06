@@ -17,9 +17,9 @@ void Logger::log(int detail,std::string msg)
     {
         std::ostringstream sstream;
         if(detail < 10)
-            sstream <<" [0"<<detail<<" "<<Source<<"] "<< msg <<std::endl;
+            sstream <<"[0"<<detail<<" "<<Source<<"] "<< msg <<std::endl;
         else
-            sstream <<" ["<<detail<<" "<<Source<<"] "<< msg <<std::endl;
+            sstream <<"["<<detail<<" "<<Source<<"] "<< msg <<std::endl;
         std::string result= sstream.str();
 
         //writing to console
