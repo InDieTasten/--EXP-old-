@@ -43,8 +43,8 @@ void ModModule::Run()
                 }
                 lua_call(script->state, event->size(), 0);
             }
-            eventBuffer.erase(event);
         }
+        eventBuffer.clear();
 
         GMutex.unlock();
     }
