@@ -1,31 +1,11 @@
 *.o
+
 *.exe
-*.layout
 
 *.layout
-
-*.layout
-*.layout
-*.layout
-*.depend
+*/*.layout
+*/*/*.layout
 
 *.depend
-
-*.depend
-*.depend
-*.depend
-
-*.layout
-*.depend
-*.layout
-*.depend
-
-*.layout
-*.depend
-*.layout
-*.depend
-
-*.layout
-*.depend
-*.layout
-*.depend
+*/*.depend
+*/*/*.depend
