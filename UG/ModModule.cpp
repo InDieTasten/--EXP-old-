@@ -64,10 +64,6 @@ void ModModule::SetDataLink(DataBank* _datalink, GUIManager* _gmanager, int *_le
     logger.log(8, "Databank connected via datalink");
     gManager = _gmanager;
 }
-void ModModule::log(std::string _msg)
-{
-    logger.log(0,_msg);
-}
 int ModModule::lPrint(lua_State *L) // api.print("mein text hat ", 5, "Wörter")
 {
     //number of arguments
@@ -79,7 +75,10 @@ int ModModule::lPrint(lua_State *L) // api.print("mein text hat ", 5, "Wörter")
     {
         message.append(lua_tostring(L,i));
     }
-    std::cout << message << std::endl;
+    Logger lo;
+    int x = 999;
+    lo.init(&x,"Plugin");
+    lo.log(0,message);
     return 0;
 }
 
