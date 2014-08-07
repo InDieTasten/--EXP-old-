@@ -5,7 +5,7 @@
 		<Option title="UG" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="Sources\;Processing\;GUI\;GUI\Elements\;\MemoryBank\;\MemoryBank\Entites\;\MemoryBank\Level\;MemoryBank\;MemoryBank\Entites\;MemoryBank\Level\;Utilities\;" />
+		<Option virtualFolders="Processing\;Utilities\;Processing\;Utilities\;Processing\Modding\;GUI\Elements\;MemoryBank\Entites\;MemoryBank\Level\;GUI\;MemoryBank\;" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/UG" prefix_auto="1" extension_auto="1" />
@@ -153,10 +153,10 @@
 			<Option virtualFolder="Utilities/" />
 		</Unit>
 		<Unit filename="ModModule.cpp">
-			<Option virtualFolder="Processing/" />
+			<Option virtualFolder="Processing/Modding/" />
 		</Unit>
 		<Unit filename="ModModule.hpp">
-			<Option virtualFolder="Processing/" />
+			<Option virtualFolder="Processing/Modding/" />
 		</Unit>
 		<Unit filename="PhysicsEngine.cpp">
 			<Option virtualFolder="Processing/" />
