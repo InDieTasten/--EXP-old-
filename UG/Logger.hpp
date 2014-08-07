@@ -15,7 +15,7 @@ private:
 public:
 	int* Level;
 	std::string Source;
-	
+
 	//CONSTRUCTORS
 
 	//DESTRUCTORS

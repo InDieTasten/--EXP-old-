@@ -12,36 +12,38 @@ extern sf::Mutex GMutex;
 
 class ModModule
 {
-	//MEMBERS
+    //MEMBERS
 private:
-	Logger logger;
-	Loader loader;
-	DataBank* datalink;
-	GUIManager* gManager;
+    Logger logger;
+    Loader loader;
+    DataBank* datalink;
+    GUIManager* gManager;
 public:
-	std::list< std::list<std::string> > eventBuffer;
+    std::list< std::list<std::string> > eventBuffer;
 
-	//CONSTRUCTORS
+    //CONSTRUCTORS
 
-	//DESTRUCTORS
+    //DESTRUCTORS
 
-	//METHODS
+    //METHODS
 private:
-	static int lPrint(lua_State *L); //message
+    void log(std::string);
+    static int lPrint(lua_State *L); //message
 
-	int lAddMenu(lua_State *L); //menu_id
-	int lEditMenuPosition(lua_State *L); //menu_id
-	int lEditMenuSize(lua_State *L); //menu_id
-	int lEnableMenu(lua_State *L); //menu_id
-	int lDisableMenu(lua_State *L); //menu_id
-	int lShowMenu(lua_State *L); //menu_id
-	int lHideMenu(lua_State *L); //menu_id
 
-	int lAddGuiElement(lua_State *L); //menu_id, elem_id
+    int lAddMenu(lua_State *L); //menu_id
+    int lEditMenuPosition(lua_State *L); //menu_id
+    int lEditMenuSize(lua_State *L); //menu_id
+    int lEnableMenu(lua_State *L); //menu_id
+    int lDisableMenu(lua_State *L); //menu_id
+    int lShowMenu(lua_State *L); //menu_id
+    int lHideMenu(lua_State *L); //menu_id
+
+    int lAddGuiElement(lua_State *L); //menu_id, elem_id
 public:
-	void Run();
-	void Stop();
-	void SetDataLink(DataBank* _datalink, GUIManager* _gmanager, int *_level);
+    void Run();
+    void Stop();
+    void SetDataLink(DataBank* _datalink, GUIManager* _gmanager, int *_level);
 
 
 };
