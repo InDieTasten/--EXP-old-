@@ -44,8 +44,6 @@ public:
     void Run();
     void Stop();
     void SetDataLink(DataBank* _datalink, GUIManager* _gmanager, int *_level);
-
-
 };
 
 #endif
