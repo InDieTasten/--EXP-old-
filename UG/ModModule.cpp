@@ -62,7 +62,7 @@ void ModModule::SetDataLink(DataBank* _datalink, GUIManager* _gmanager, int *_le
     logger.log(4, "Logger initialized");
     datalink = _datalink;
     logger.log(8, "Databank connected via datalink");
-    gManager = _gmanager;
+    ModModule::gManager = _gmanager;
 }
 int ModModule::lPrint(lua_State *L) // api.print("mein text hat ", 5, "Wörter")
 {

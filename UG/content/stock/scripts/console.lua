@@ -21,8 +21,14 @@ function onUnload()
 	print("console.lua unloaded")
 end
 function onSoftEvent(...)
-	mytab = {...}
-	for k,v in pairs(mytab) do
-		print(tostring(k)..": "..tostring(v))
+	e = {...}
+	if e[1] == "textbox_submit" then
+		if(e[2] == "$_consoleMenu.input") then
+			interpret(e[3])
+		end
 	end
+end
+
+function interpret(cmd)
+	
 end
