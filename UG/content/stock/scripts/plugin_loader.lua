@@ -1,30 +1,14 @@
--- this is the [[UG]]-Console Interpreter
-
-local function printTable(table, i)
-	if(i == nil) then i = 0 end
-	if (i > 10) then return end
-	for k,v in pairs(table) do
-		print(string.rep(" ",i*2),type(v), ": " ,k)
-		if(type(v) == "table") then
-			if(k ~= "_G" and k ~= "package") then
-				printTable(v, i+1)
-			end
-		end
-	end
-end
-
 function onLoad()
-	print("console.lua loaded :)")
-	printTable(_G)
+	print("plugin_loader.lua loaded")
+	print("")
+	print("looking for plugins...")
+	for dir in io.popen([[dir "content/plugins" /b]]):lines() do print(dir) end
+	print("")
+	print("C Path: ", package.cpath)
 end
 function onUnload()
-	print("console.lua unloaded :(")
+	print("plugin_loader.lua unloaded")
 end
 function onSoftEvent(...)
-	print("\\/Soft-Event captured\\/")
-	mytab = {...}
-	for k,v in pairs(mytab) do
-		print(tostring(k)..": "..tostring(v))
-	end
-	print("/\\Soft-Event captured/\\")
+	
 end
