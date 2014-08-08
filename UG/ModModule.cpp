@@ -13,6 +13,9 @@ void ModModule::Run()
     {
         luaL_openlibs(it->state);
 
+        lua_pushstring(it->state, it->path.c_str());
+        lua_setglobal(it->state, "_SCRIPT");
+
         lua_register(it->state, "print", ModModule::lPrint);
 
         luaL_dofile(it->state, it->path.c_str());
