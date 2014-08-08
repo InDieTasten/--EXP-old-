@@ -17,6 +17,8 @@ void ModModule::Run()
         lua_setglobal(it->state, "_SCRIPT");
 
         lua_register(it->state, "print", ModModule::lPrint);
+        lua_register(it->state, "pushEvent", ModModule::lPushTask);
+        lua_register(it->state, "pushTask", ModModule::lPushTask);
 
         luaL_dofile(it->state, it->path.c_str());
 
@@ -67,7 +69,7 @@ void ModModule::SetDataLink(DataBank* _datalink, GUIManager* _gmanager, int *_le
     logger.log(8, "Databank connected via datalink");
     ModModule::gManager = _gmanager;
 }
-int ModModule::lPrint(lua_State *L) // api.print("mein text hat ", 5, "Wörter")
+int ModModule::lPrint(lua_State *L)
 {
     //number of arguments
     int n = lua_gettop(L);
@@ -82,6 +84,34 @@ int ModModule::lPrint(lua_State *L) // api.print("mein text hat ", 5, "Wörter")
     int x = 999;
     lo.init(&x,"Plugin");
     lo.log(0,message);
+    return 0;
+}
+int ModModule::lPushEvent(lua_State *L) // api.print("mein text hat ", 5, "Wörter")
+{
+    //number of arguments
+    int n = lua_gettop(L);
+
+    std::list<std::string> event;
+
+    for(int i = 1; i <= n; i++)
+    {
+        event.push_back(lua_tostring(L,i));
+    }
+    eventBuffer.push_back(event);
+    return 0;
+}
+int ModModule::lPushTask(lua_State *L) // api.print("mein text hat ", 5, "Wörter")
+{
+    //number of arguments
+    int n = lua_gettop(L);
+
+    std::list<std::string> task;
+
+    for(int i = 1; i <= n; i++)
+    {
+        task.push_back(lua_tostring(L,i));
+    }
+    taskBuffer.push_back(task);
     return 0;
 }
 
