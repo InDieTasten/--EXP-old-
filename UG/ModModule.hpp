@@ -19,7 +19,8 @@ private:
     DataBank* datalink;
     GUIManager* gManager;
 public:
-    std::list< std::list<std::string> > eventBuffer;
+    static std::list< std::list<std::string> > eventBuffer;
+    static std::list< std::list<std::string> > taskBuffer;
 
     //CONSTRUCTORS
 
@@ -29,7 +30,8 @@ public:
 private:
     void log(std::string);
     static int lPrint(lua_State *L); //message
-
+    static int lPushEvent(lua_State *L);
+    static int lPushTask(lua_State *L);
 
     int lAddMenu(lua_State *L); //menu_id
     int lEditMenuPosition(lua_State *L); //menu_id
