@@ -56,7 +56,7 @@ void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,s
                     text="";
                     cursor = 0;
                 }
-                else
+                else if(multiline == true)
                 {
                     text+=10;
                     line++;
@@ -88,6 +88,20 @@ void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,s
                     cursor--;
                 }
             }
+            else if(_event->key.code == 73)
+            {
+                if(line >= 1)
+                {
+                    line--;
+                }
+            }
+            else if(_event->key.code == 74)
+            {
+                if(line >= 1)
+                {
+                    line++;
+                }
+            }
             else if(_event->key.code == sf::Keyboard::Delete)
             {
                 if(cursor < text.size())
@@ -110,14 +124,11 @@ void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,s
         {
             if (_event->text.unicode < 128 && _event->text.unicode > 31)
             {
-                if(!multiline)
-                {
-                    tmp = text.substr (0,(cursor));
-                    tmp2 = _event->text.unicode;
-                    tmp3 = text.substr (cursor,text.size());
-                    text = tmp +tmp2 + tmp3;
-                    cursor++;
-                }
+                tmp = text.substr (0,(cursor));
+                tmp2 = _event->text.unicode;
+                tmp3 = text.substr (cursor,text.size());
+                text = tmp +tmp2 + tmp3;
+                cursor++;
             }
         }
         clear = 0;
