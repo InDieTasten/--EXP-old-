@@ -80,7 +80,6 @@ function onUnload()
 	print("plugin_loader.lua unloaded")
 end
 function onSoftEvent(...)
-	pushEvent("Test", "arg1", "arg2")
 	for name,plugin in pairs(plugins) do
 		if (plugin.status == "loaded") then
 			if(type(_G[name] == "table")) then
