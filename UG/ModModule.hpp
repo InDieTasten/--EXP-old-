@@ -10,6 +10,11 @@
 extern float ModThread;
 extern sf::Mutex GMutex;
 
+
+extern std::list< std::list<std::string> > eventBuffer;
+extern std::list< std::list<std::string> > taskBuffer;
+
+
 class ModModule
 {
     //MEMBERS
@@ -19,8 +24,8 @@ private:
     DataBank* datalink;
     GUIManager* gManager;
 public:
-    static std::list< std::list<std::string> > eventBuffer;
-    static std::list< std::list<std::string> > taskBuffer;
+    //static std::list< std::list<std::string> > eventBuffer;
+    //static std::list< std::list<std::string> > taskBuffer;
 
     //CONSTRUCTORS
 
