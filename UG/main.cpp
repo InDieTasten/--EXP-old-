@@ -24,10 +24,14 @@ extern "C" {
 
 
 // Thread Throttleling
-float EvtThread =  60.0; //Cycles per second
-float ModThread =  40.0; //Cycles per second
-float PhyThread = 100.0; //Cycles per second
-float VidThread =  60.0; //Cycles per second
+float EvtThread =  30.0; //Cycles per second
+float ModThread =  10.0; //Cycles per second
+float PhyThread = 30.0; //Cycles per second
+float VidThread =  30.0; //Cycles per second
+
+    std::list< std::list<std::string> > eventBuffer;
+    std::list< std::list<std::string> > taskBuffer;
+
 sf::Mutex GMutex;
 
 void StockRegister(DataBank* datalink);
