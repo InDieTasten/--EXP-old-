@@ -24,9 +24,9 @@ extern "C" {
 
 
 // Thread Throttleling
-float EvtThread =  30.0; //Cycles per second
+float EvtThread =  25.0; //Cycles per second
 float ModThread =  10.0; //Cycles per second
-float PhyThread = 30.0; //Cycles per second
+float PhyThread =  01.0; //Cycles per second
 float VidThread =  30.0; //Cycles per second
 
     std::list< std::list<std::string> > eventBuffer;
