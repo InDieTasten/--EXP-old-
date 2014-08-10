@@ -17,7 +17,7 @@ void ModModule::Run()
         lua_setglobal(it->state, "_SCRIPT");
 
         lua_register(it->state, "print", ModModule::lPrint);
-        lua_register(it->state, "pushEvent", ModModule::lPushTask);
+        lua_register(it->state, "pushEvent", ModModule::lPushEvent);
         lua_register(it->state, "pushTask", ModModule::lPushTask);
 
         luaL_dofile(it->state, it->path.c_str());
@@ -29,6 +29,8 @@ void ModModule::Run()
 
     sf::Clock limiter;
     limiter.restart();
+
+    std::list< std::list<std::string> > events;
     while(datalink->runModules)
     {
         if(limiter.getElapsedTime().asSeconds() < 1.0/ModThread)
@@ -37,7 +39,9 @@ void ModModule::Run()
         }
         limiter.restart();
         GMutex.lock();
-        for(std::list< std::list<std::string> >::iterator event = eventBuffer.begin(); event != eventBuffer.end(); event++)
+        events = eventBuffer;
+        eventBuffer.clear();
+        for(std::list< std::list<std::string> >::iterator event = events.begin(); event != events.end(); event++)
         {
             for(std::list<Script>::iterator script = scripts->begin(); script != scripts->end(); script++)
             {
@@ -48,8 +52,21 @@ void ModModule::Run()
                 }
                 lua_call(script->state, event->size(), 0);
             }
+            events.pop_front();
         }
-        eventBuffer.clear();
+        for(std::list< std::list<std::string> >::iterator task = taskBuffer.begin(); task != taskBuffer.end(); task++)
+        {
+            for(std::list<Script>::iterator script = scripts->begin(); script != scripts->end(); script++)
+            {
+                lua_getglobal(script->state, "onTask");
+                for(std::list<std::string>::iterator parameter = task->begin(); parameter != task->end(); parameter++)
+                {
+                    lua_pushstring(script->state, parameter->c_str());
+                }
+                lua_call(script->state, task->size(), 0);
+            }
+        }
+        taskBuffer.clear();
 
         GMutex.unlock();
     }
