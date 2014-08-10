@@ -8,6 +8,7 @@
 #include "GUIManager.hpp"
 #include "ModModule.hpp"
 
+extern std::list< std::list<std::string> > eventBuffer;
 extern sf::Mutex GMutex;
 
 class EventManager
