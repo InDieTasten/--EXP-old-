@@ -29,7 +29,11 @@ function loadPlugin(name)
 			--load it
 			_G[name]=setmetatable({},{__index=_G})
 		    local pl, err = loadfile(plugins[name].path,"bt",_G[name])
-		    if(pl) then pl(); plugins[name].status = "loaded" else print(err) end
+		    if(pl) then
+		    	pl()
+		    	plugins[name].status = "loaded"
+		    	print("Plugin '"..name.."' successfully loaded")
+		    else print(err) end
 		else
 			print("[Error] Plugin '"..name.."' already loaded!")
 		end
@@ -76,5 +80,22 @@ function onUnload()
 	print("plugin_loader.lua unloaded")
 end
 function onSoftEvent(...)
-	
+	pushEvent("Test", "arg1", "arg2")
+	for name,plugin in pairs(plugins) do
+		if (plugin.status == "loaded") then
+			if(type(_G[name] == "table")) then
+				if(type(_G[name]["onSoftEvent"]) == "function") then
+					status, err = pcall(_G[name]["onSoftEvent"], ...)
+					if(not status) then
+						print("[Error] "..tostring(err))
+					end
+				else
+					print("[Warning] Plugin '"..name.."': onSoftEvent should be a function")
+				end
+			end
+		end
+	end
+end
+function onTask(...)
+	print("TASK DETECTED!")
 end
