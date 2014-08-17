@@ -10,6 +10,7 @@ void TextBox::Setup()
     multiline = true;
     cursor = 0;
     line = 0;
+    for(std::iterator it=text.begin();;)
 }
 void TextBox::Update(DataBank* _dataLink, int _x, int _y,std::string _id)
 {
