@@ -20,8 +20,8 @@ private:
 	int line;
 
 public:
-	std::string text;
-	//std::list<sf::Text> text1;
+	std::list<std::string> text;
+	std::list<sf::Text> text1;
 	int X;
 	int Y;
 	int Height;
