@@ -13,7 +13,6 @@ private:
 	std::string tmp;
 	std::string tmp2;
 	std::string tmp3;
-	sf::Text text1;
 	bool clear;
 	sf::RectangleShape c;
 	int cursor;
