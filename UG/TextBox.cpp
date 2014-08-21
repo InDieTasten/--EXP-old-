@@ -10,15 +10,19 @@ void TextBox::Setup()
     multiline = true;
     cursor = 0;
     line = 0;
-    for(std::iterator it=text.begin();;)
+    for(std::list<std::string>::iterator it=text.begin();;){it.push_back("");}
+    //for(std::list<sf::Text>::iterator it1=text1.begin();;){}
 }
 void TextBox::Update(DataBank* _dataLink, int _x, int _y,std::string _id)
 {
-    text1.setString(text);
-    text1.setPosition((float)_x, (float)_y);
-    text1.setFont(*_dataLink->FontGet("$_menuTitle"));
-    text1.setCharacterSize(12.0);
-    text1.setScale(1.0,1.0);
+    for(std::list<std::string>::iterator it=text.begin(); it != text.end(); ++it,++it1)
+    {
+        *it1.setString(*it);
+        *it1.setPosition((float)_x, (float)_y+(12*line));
+        *it1.setFont(*_dataLink->FontGet("$_menuTitle"));
+        *it1.setCharacterSize(12.0);
+        *it1.setScale(1.0,1.0);
+    }
 
     rect.setPosition((float)_x,(float)_y);
     rect.setSize(sf::Vector2f((float)Width,(float)Height));
@@ -59,8 +63,8 @@ void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,s
                 }
                 else if(multiline == true)
                 {
-                    text+=10;
                     line++;
+                    for(;*it != line;*it++){}
                     cursor = 0;
                 }
             }
@@ -69,15 +73,15 @@ void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,s
                 clear = 1;
                 if(cursor>=1)
                 {
-                    tmp = text.substr (0,(cursor-1));
-                    tmp2 = text.substr (cursor,text.size());
+                    tmp = *it.substr (0,(cursor-1));
+                    tmp2 = *it.substr (cursor,*it.size());
                     cursor--;
-                    text = tmp + tmp2;
+                    *it = tmp + tmp2;//?????????????
                 }
             }
             else if(_event->key.code == 72)
             {
-                if(cursor < text.size())
+                if(cursor < *it.size())
                 {
                     cursor++;
                 }
@@ -105,16 +109,16 @@ void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,s
             }
             else if(_event->key.code == sf::Keyboard::Delete)
             {
-                if(cursor < text.size())
+                if(cursor < *it.size())
                 {
-                    tmp = text.substr (0,(cursor));
-                    tmp2 = text.substr (cursor+1,text.size());
-                    text = tmp + tmp2;
+                    tmp = *it.substr (0,(cursor));
+                    tmp2 = *it.substr (cursor+1,*it.size());
+                    *it = tmp + tmp2;
                 }
             }
             else if(_event->key.code == sf::Keyboard::End)
             {
-                cursor = text.size();
+                cursor = *it.size();
             }
             else if(_event->key.code == sf::Keyboard::Home)
             {
@@ -123,12 +127,12 @@ void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,s
         }
         else if(_event->type == sf::Event::TextEntered && clear == 0)
         {
-            if (_event->text.unicode < 128 && _event->text.unicode > 31)
+            if (_event->*it.unicode < 128 && _event->*it.unicode > 31)
             {
-                tmp = text.substr (0,(cursor));
-                tmp2 = _event->text.unicode;
-                tmp3 = text.substr (cursor,text.size());
-                text = tmp +tmp2 + tmp3;
+                tmp = *it.substr (0,(cursor));
+                tmp2 = _event->*it.unicode;
+                tmp3 = *it.substr (cursor,*it.size());
+                *it = tmp +tmp2 + tmp3;
                 cursor++;
             }
         }
