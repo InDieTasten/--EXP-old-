@@ -10,19 +10,22 @@ void TextBox::Setup()
     multiline = true;
     cursor = 0;
     line = 0;
-    // (Von Max auskommentiert) for(std::list<std::string>::iterator it=text.begin();;){it.push_back("");}
-    //for(std::list<sf::Text>::iterator it1=text1.begin();;){}
+    std::list<std::string>::iterator it=text.begin();
+    text.push_back("");
+
 }
 void TextBox::Update(DataBank* _dataLink, int _x, int _y,std::string _id)
 {
-    /*for(std::list<std::string>::iterator it=text.begin(); it != text.end(); ++it,++it1) // IDT: woher soll it1 kommen?
+    for(std::list<std::string>::iterator it = text.begin(); it != text.end(); ++it)
     {
-        *it.setString(*it);
-        *it.setPosition((float)_x, (float)_y+(12*line));
-        *it.setFont(*_dataLink->FontGet("$_menuTitle"));
-        *it.setCharacterSize(12.0);
-        *it.setScale(1.0,1.0);
-    }*/
+        std::list<sf::Text>::iterator it1 = text1.begin();
+        *it1.setString(*it);
+        *it1.setPosition((float)_x, (float)_y+(12*line));
+        *it1.setFont(*_dataLink->FontGet("$_menuTitle"));
+        *it1.setCharacterSize(12.0);
+        *it1.setScale(1.0,1.0);
+        ++it1;
+    }
 
     rect.setPosition((float)_x,(float)_y);
     rect.setSize(sf::Vector2f((float)Width,(float)Height));
@@ -40,7 +43,7 @@ void TextBox::Render(DataBank* _dataLink, int _x, int _y, std::string _id)
 {
     _dataLink->renderWindow->draw(rect);
     _dataLink->renderWindow->draw(c);
-    //_dataLink->renderWindow->draw(text1); // IDT: text1 ist kein sf::Drawable, sondern eine Liste von sf::Text
+    _dataLink->renderWindow->draw(*it1);
 }
 void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,std::string _id)
 {
