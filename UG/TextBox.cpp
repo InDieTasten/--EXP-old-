@@ -10,19 +10,19 @@ void TextBox::Setup()
     multiline = true;
     cursor = 0;
     line = 0;
-    for(std::list<std::string>::iterator it=text.begin();;){it.push_back("");}
+    // (Von Max auskommentiert) for(std::list<std::string>::iterator it=text.begin();;){it.push_back("");}
     //for(std::list<sf::Text>::iterator it1=text1.begin();;){}
 }
 void TextBox::Update(DataBank* _dataLink, int _x, int _y,std::string _id)
 {
-    for(std::list<std::string>::iterator it=text.begin(); it != text.end(); ++it,++it1)
+    /*for(std::list<std::string>::iterator it=text.begin(); it != text.end(); ++it,++it1) // IDT: woher soll it1 kommen?
     {
-        *it1.setString(*it);
-        *it1.setPosition((float)_x, (float)_y+(12*line));
-        *it1.setFont(*_dataLink->FontGet("$_menuTitle"));
-        *it1.setCharacterSize(12.0);
-        *it1.setScale(1.0,1.0);
-    }
+        *it.setString(*it);
+        *it.setPosition((float)_x, (float)_y+(12*line));
+        *it.setFont(*_dataLink->FontGet("$_menuTitle"));
+        *it.setCharacterSize(12.0);
+        *it.setScale(1.0,1.0);
+    }*/
 
     rect.setPosition((float)_x,(float)_y);
     rect.setSize(sf::Vector2f((float)Width,(float)Height));
@@ -40,7 +40,7 @@ void TextBox::Render(DataBank* _dataLink, int _x, int _y, std::string _id)
 {
     _dataLink->renderWindow->draw(rect);
     _dataLink->renderWindow->draw(c);
-    _dataLink->renderWindow->draw(text1);
+    //_dataLink->renderWindow->draw(text1); // IDT: text1 ist kein sf::Drawable, sondern eine Liste von sf::Text
 }
 void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,std::string _id)
 {
@@ -56,15 +56,15 @@ void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,s
                     std::list<std::string> x;
                     x.push_back("textbox_submit");
                     x.push_back(_id);
-                    x.push_back(text);
+                    //x.push_back(text); // IDT: Listentyp ist std::string, keine Liste von std::string
                     datalink->pushEvent(x);
-                    text="";
+                    //text=""; // IDT: Du kannst eine std::list<std::string> nicht auf einen leeren string setzen
                     cursor = 0;
                 }
                 else if(multiline == true)
                 {
                     line++;
-                    for(;*it != line;*it++){}
+                    //for(;*it != line;*it++){} // IDT: "it" ist nirgendwo deklariert
                     cursor = 0;
                 }
             }
@@ -73,18 +73,18 @@ void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,s
                 clear = 1;
                 if(cursor>=1)
                 {
-                    tmp = *it.substr (0,(cursor-1));
-                    tmp2 = *it.substr (cursor,*it.size());
+                    //tmp = *it.substr (0,(cursor-1));// IDT: "it" ist nirgendwo deklariert
+                    //tmp2 = *it.substr (cursor,*it.size());// IDT: "it" ist nirgendwo deklariert
                     cursor--;
-                    *it = tmp + tmp2;//?????????????
+                    //*it = tmp + tmp2;//????????????? // IDT: "it" ist nirgendwo deklariert
                 }
             }
             else if(_event->key.code == 72)
             {
-                if(cursor < *it.size())
+                /*if(cursor < *it.size()) // IDT: "it" ist nirgendwo deklariert
                 {
                     cursor++;
-                }
+                }*/
             }
             else if(_event->key.code == 71)
             {
@@ -109,16 +109,16 @@ void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,s
             }
             else if(_event->key.code == sf::Keyboard::Delete)
             {
-                if(cursor < *it.size())
+                /*if(cursor < *it.size()) // IDT: "it" ist nirgendwo deklariert
                 {
                     tmp = *it.substr (0,(cursor));
                     tmp2 = *it.substr (cursor+1,*it.size());
                     *it = tmp + tmp2;
-                }
+                }*/
             }
             else if(_event->key.code == sf::Keyboard::End)
             {
-                cursor = *it.size();
+                //cursor = *it.size();// IDT: "it" ist nirgendwo deklariert
             }
             else if(_event->key.code == sf::Keyboard::Home)
             {
@@ -127,14 +127,14 @@ void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,s
         }
         else if(_event->type == sf::Event::TextEntered && clear == 0)
         {
-            if (_event->*it.unicode < 128 && _event->*it.unicode > 31)
+            /*if (_event->*it.unicode < 128 && _event->*it.unicode > 31) // IDT: "it" ist nirgendwo deklariert
             {
                 tmp = *it.substr (0,(cursor));
                 tmp2 = _event->*it.unicode;
                 tmp3 = *it.substr (cursor,*it.size());
                 *it = tmp +tmp2 + tmp3;
                 cursor++;
-            }
+            }*/
         }
         clear = 0;
     }
