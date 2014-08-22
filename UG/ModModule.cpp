@@ -52,7 +52,6 @@ void ModModule::Run()
                 }
                 lua_call(script->state, event->size(), 0);
             }
-            events.pop_front();
         }
         for(std::list< std::list<std::string> >::iterator task = taskBuffer.begin(); task != taskBuffer.end(); task++)
         {
