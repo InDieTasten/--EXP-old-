@@ -7,21 +7,21 @@
 
 class CollisionIndice
 {
-	//MEMBERS
+    //MEMBERS
 private:
 public:
-	int IndiceID;
-	char Type; // point / line / face
-	sf::Vector2<int> Position;
-	int preBakenMinDistance;
+    int IndiceID;
+    char Type; // point / line / face
+    sf::Vector2<int> Position;
+    int preBakenMinDistance;
 
-	//CONSTRUCTORS
-	CollisionIndice();
-	CollisionIndice(int _id, char _type, sf::Vector2<int> _position);
+    //CONSTRUCTORS
+    CollisionIndice();
+    CollisionIndice(int _id, char _type, sf::Vector2<int> _position);
 
-	//DESTRUCTORS
+    //DESTRUCTORS
 
-	//METHODS
+    //METHODS
 };
 
 #endif

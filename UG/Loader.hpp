@@ -11,33 +11,33 @@
 
 class dir
 {
-	//MEMBER
+    //MEMBER
 protected:
-	struct dirent* curDirEntry;
-	DIR *directory;
+    struct dirent* curDirEntry;
+    DIR *directory;
 public:
-	//CONSTRUCTOR
-	dir(const char *dir);
+    //CONSTRUCTOR
+    dir(const char *dir);
 
-	//DESTRUCTOR
-	~dir();
+    //DESTRUCTOR
+    ~dir();
 
-	//METHODS
-	std::vector<std::string> getEntries();
-	virtual bool selectDirEntry();
+    //METHODS
+    std::vector<std::string> getEntries();
+    virtual bool selectDirEntry();
 };
 
 class Loader
 {
-	//MEMBER
+    //MEMBER
 private:
 public:
-	//CONTRUCTOR
+    //CONTRUCTOR
 
-	//DESTRUCTOR
+    //DESTRUCTOR
 
-	//METHODS
-	std::list<std::string> getFolderContent(std::string _path);
+    //METHODS
+    std::list<std::string> getFolderContent(std::string _path);
 };
 
 #endif

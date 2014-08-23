@@ -14,35 +14,35 @@
 
 class GUIElement
 {
-	//MEMBERS
+    //MEMBERS
 private:
 public:
-	Button button;
-	CodeBox codeBox;
-	TextBox textBox;
-	Label label;
-	HorSlider horSlider;
+    Button button;
+    CodeBox codeBox;
+    TextBox textBox;
+    Label label;
+    HorSlider horSlider;
 
-	std::string Type;
-	std::string ID;
-	bool isActive;
-	int X;
-	int Y;
-	bool isHidden;
-	int Width;
-	int Height;
+    std::string Type;
+    std::string ID;
+    bool isActive;
+    int X;
+    int Y;
+    bool isHidden;
+    int Width;
+    int Height;
 
-	//CONSTRUCTORS
-	GUIElement();
-	//DESTRUCTORS
+    //CONSTRUCTORS
+    GUIElement();
+    //DESTRUCTORS
 
-	//METHODS
-	void Show();
-	void Hide();
+    //METHODS
+    void Show();
+    void Hide();
 
-	void update(DataBank *_dataLink, int, int);
-	void render(DataBank *_dataLink, int, int);
-	void handleEvent(DataBank* _datalink, sf::Event *_event, int _x, int _y);
+    void update(DataBank *_dataLink, int, int);
+    void render(DataBank *_dataLink, int, int);
+    void handleEvent(DataBank* _datalink, sf::Event *_event, int _x, int _y);
 };
 
 #endif

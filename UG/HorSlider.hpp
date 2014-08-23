@@ -7,39 +7,39 @@
 
 class HorSlider
 {
-	//MEMBERS
+    //MEMBERS
 private:
-	bool mouseHover;
-	sf::RectangleShape bar;
-	sf::RectangleShape decBox;
-	sf::RectangleShape incBox;
-	sf::RectangleShape slider;
-	bool hoverSlide;
-	bool moveSlide;
-	int oldMouseX;
+    bool mouseHover;
+    sf::RectangleShape bar;
+    sf::RectangleShape decBox;
+    sf::RectangleShape incBox;
+    sf::RectangleShape slider;
+    bool hoverSlide;
+    bool moveSlide;
+    int oldMouseX;
 public:
-	int X;
-	int Y;
-	int Height;
-	int Width;
+    int X;
+    int Y;
+    int Height;
+    int Width;
 
-	float ratio;
-	float min;
-	float max;
-	float value;
+    float ratio;
+    float min;
+    float max;
+    float value;
 
-	std::string Text;
-	bool isActive;
+    std::string Text;
+    bool isActive;
 
-	//CONSTRUCTORS
+    //CONSTRUCTORS
 
-	//DESTRUCTORS
+    //DESTRUCTORS
 
-	//METHODS
-	void Setup();
-	void Update(DataBank* _dataLink, int _x, int _y, std::string _id);
-	void Render(DataBank* _dataLink, int _x, int _y, std::string _id);
-	void handleEvent(DataBank* datalink, sf::Event* _event, int _x, int _y, std::string _id);
+    //METHODS
+    void Setup();
+    void Update(DataBank* _dataLink, int _x, int _y, std::string _id);
+    void Render(DataBank* _dataLink, int _x, int _y, std::string _id);
+    void handleEvent(DataBank* datalink, sf::Event* _event, int _x, int _y, std::string _id);
 };
 
 #endif

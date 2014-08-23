@@ -6,22 +6,22 @@
 
 class Camera
 {
-	//MEMBERS
+    //MEMBERS
 private:
 public:
-	Vector Position;
-	float Zoom;
-	float Rotation;
-	std::string id;
+    Vector Position;
+    float Zoom;
+    float Rotation;
+    std::string id;
 
-	//CONSTRUCTORS
-	Camera(std::string _id, Vector _position, float _rotation);
-	Camera(std::string _id, Vector _position, float _rotation, float _zoom);
-	Camera();
+    //CONSTRUCTORS
+    Camera(std::string _id, Vector _position, float _rotation);
+    Camera(std::string _id, Vector _position, float _rotation, float _zoom);
+    Camera();
 
-	//DECONSTRUCTORS
+    //DECONSTRUCTORS
 
-	//METHODS
+    //METHODS
 };
 
 #endif

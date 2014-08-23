@@ -7,29 +7,29 @@
 
 class Button
 {
-	//MEMBERS
+    //MEMBERS
 private:
-	sf::RectangleShape rect;
-	sf::Text displayText;
-	bool mouseHover;
+    sf::RectangleShape rect;
+    sf::Text displayText;
+    bool mouseHover;
 public:
-	int X;
-	int Y;
-	int Height;
-	int Width;
+    int X;
+    int Y;
+    int Height;
+    int Width;
 
-	std::string Text;
-	bool isActive;
+    std::string Text;
+    bool isActive;
 
-	//CONSTRUCTORS
+    //CONSTRUCTORS
 
-	//DESTRUCTORS
+    //DESTRUCTORS
 
-	//METHODS
-	void Setup();
-	void Update(DataBank* _dataLink, int _x, int _y, std::string _id);
-	void Render(DataBank* _dataLink, int _x, int _y, std::string _id);
-	void handleEvent(DataBank* datalink, sf::Event* _event, int _x, int _y, std::string _id);
+    //METHODS
+    void Setup();
+    void Update(DataBank* _dataLink, int _x, int _y, std::string _id);
+    void Render(DataBank* _dataLink, int _x, int _y, std::string _id);
+    void handleEvent(DataBank* datalink, sf::Event* _event, int _x, int _y, std::string _id);
 };
 
 #endif

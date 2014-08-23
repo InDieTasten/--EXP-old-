@@ -6,16 +6,16 @@
 
 class SolarSystem
 {
-	//MEMBERS
+    //MEMBERS
 private:
 public:
-	std::list<SpaceObject> SpaceObjectList;
+    std::list<SpaceObject> SpaceObjectList;
 
-	//CONSTRUCTORS
+    //CONSTRUCTORS
 
-	//DESTRUCTORS
+    //DESTRUCTORS
 
-	//METHODS
+    //METHODS
 };
 
 #endif
