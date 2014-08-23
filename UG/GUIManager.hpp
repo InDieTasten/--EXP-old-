@@ -50,6 +50,7 @@ private:
 	void addMenu(GUIMenu _menu);
 
 	void add_MainMenu();
+	void add_ConsoleMenu();
 	void add_OptionMenu();
 	void add_CodeIDE();
 
