@@ -44,8 +44,8 @@ void GUIElement::update(DataBank *datalink, int _x, int _y)
     }
     else if (Type == "textbox")
     {
-        textBox.isActive = isActive;
-        textBox.Update(datalink, _x+X, _y+Y, ID);
+        //textBox.isActive = isActive;
+        //textBox.Update(datalink, _x+X, _y+Y, ID);
     }
 }
 void GUIElement::render(DataBank *datalink, int _x, int _y)
