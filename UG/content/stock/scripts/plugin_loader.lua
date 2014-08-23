@@ -72,6 +72,18 @@ end
 --print(externAPI.apiFunction("Test"))
 
 function onLoad()
+
+	print("")
+	print("")
+	print("")
+	for k,v in pairs(_G) do
+		print(type(v).." "..tostring(k).." = "..tostring(v))
+	end
+	print("")
+	print("")
+	print("")
+
+
 	for dir in io.popen([[dir "content/plugins" /b]]):lines() do
 		registerPlugin("content/plugins/"..dir, string.sub(dir, 1, #dir-4))
 	end
@@ -98,3 +110,11 @@ end
 function onTask(...)
 	print("TASK DETECTED!")
 end
+
+local coroutine = coroutine
+local debug = debug
+local load = load
+local require = require
+local io = io
+local package = package
+local collectgarbage = collectgarbage
