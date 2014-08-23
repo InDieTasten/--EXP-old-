@@ -17,9 +17,9 @@
 #include <SFML\System.hpp>
 
 extern "C" {
-	#include <lua.h>
-	#include <lualib.h>
-	#include <lauxlib.h>
+#include <lua.h>
+#include <lualib.h>
+#include <lauxlib.h>
 }
 
 
@@ -29,8 +29,8 @@ float ModThread =  10.0; //Cycles per second
 float PhyThread =  01.0; //Cycles per second
 float VidThread =  30.0; //Cycles per second
 
-    std::list< std::list<std::string> > eventBuffer;
-    std::list< std::list<std::string> > taskBuffer;
+std::list< std::list<std::string> > eventBuffer;
+std::list< std::list<std::string> > taskBuffer;
 
 sf::Mutex GMutex;
 

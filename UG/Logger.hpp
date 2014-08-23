@@ -10,19 +10,19 @@
 
 class Logger
 {
-	//MEMBERS
+    //MEMBERS
 private:
 public:
-	int* Level;
-	std::string Source;
+    int* Level;
+    std::string Source;
 
-	//CONSTRUCTORS
+    //CONSTRUCTORS
 
-	//DESTRUCTORS
+    //DESTRUCTORS
 
-	//METHODS
-	void init(int* _level, std::string _source);
-	void log(int detail,std::string msg);
+    //METHODS
+    void init(int* _level, std::string _source);
+    void log(int detail,std::string msg);
 };
 
 #endif

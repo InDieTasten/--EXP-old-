@@ -3,27 +3,27 @@
 
 #include <string>
 extern "C" {
-	#include <lua.h>
-	#include <lualib.h>
-	#include <lauxlib.h>
+#include <lua.h>
+#include <lualib.h>
+#include <lauxlib.h>
 }
 
 class Script
 {
-	//MEMBERS
+    //MEMBERS
 private:
 public:
-	std::string plugin_content;
-	std::string path;
-	//std::list<lError> errorlist;
-	lua_State* state;
+    std::string plugin_content;
+    std::string path;
+    //std::list<lError> errorlist;
+    lua_State* state;
 
-	//CONSTRUCTORS
-	Script(std::string _path);
+    //CONSTRUCTORS
+    Script(std::string _path);
 
-	//DECONSTRUCTORS
+    //DECONSTRUCTORS
 
-	//METHODS
+    //METHODS
 };
 
 #endif

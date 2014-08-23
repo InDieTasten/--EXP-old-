@@ -12,30 +12,30 @@ extern sf::Mutex GMutex;
 
 class GraphicsEngine
 {
-	//MEMBERS
+    //MEMBERS
 private:
-	DataBank *dataLink;
-	Logger logger;
-	GUIManager *gManager;
-	sf::Sprite renderSprite;
+    DataBank *dataLink;
+    Logger logger;
+    GUIManager *gManager;
+    sf::Sprite renderSprite;
 public:
-	Vector CameraPosition;
-	double CameraRotation;
-	float Zoom;
-	int cyclesPerSecond;
+    Vector CameraPosition;
+    double CameraRotation;
+    float Zoom;
+    int cyclesPerSecond;
 
-	//CONSTRUCTORS
-	GraphicsEngine(DataBank *_dataLink, GUIManager *_gManager, int* _level);
+    //CONSTRUCTORS
+    GraphicsEngine(DataBank *_dataLink, GUIManager *_gManager, int* _level);
 
-	//DESTRUCTORS
+    //DESTRUCTORS
 
-	//METHODS
+    //METHODS
 private:
-	double calcDistanceX(Vector _obj1, Vector _obj2);
-	double calcDistanceY(Vector _obj1, Vector _obj2);
-	float calcDistance(Vector _obj1, Vector _obj2);
+    double calcDistanceX(Vector _obj1, Vector _obj2);
+    double calcDistanceY(Vector _obj1, Vector _obj2);
+    float calcDistance(Vector _obj1, Vector _obj2);
 public:
     void Run();
-	void Stop();
+    void Stop();
 };
 #endif
