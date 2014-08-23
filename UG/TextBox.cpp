@@ -19,11 +19,12 @@ void TextBox::Update(DataBank* _dataLink, int _x, int _y,std::string _id)
     for(std::list<std::string>::iterator it = text.begin(); it != text.end(); ++it)
     {
         std::list<sf::Text>::iterator it1 = text1.begin();
-        *it1.setString(*it);
-        *it1.setPosition((float)_x, (float)_y+(12*line));
-        *it1.setFont(*_dataLink->FontGet("$_menuTitle"));
-        *it1.setCharacterSize(12.0);
-        *it1.setScale(1.0,1.0);
+        it1->setString(*it);
+
+        it1->setPosition((float)_x, (float)_y+(12*line));
+        it1->setFont(*_dataLink->FontGet("$_menuTitle"));
+        it1->setCharacterSize(12.0);
+        it1->setScale(1.0,1.0);
         ++it1;
     }
 
@@ -43,7 +44,7 @@ void TextBox::Render(DataBank* _dataLink, int _x, int _y, std::string _id)
 {
     _dataLink->renderWindow->draw(rect);
     _dataLink->renderWindow->draw(c);
-    _dataLink->renderWindow->draw(*it1);
+    //_dataLink->renderWindow->draw(*it1); //IDT: it1 ist hier nicht deklariert. Immer noch ;)
 }
 void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,std::string _id)
 {

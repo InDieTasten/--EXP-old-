@@ -195,7 +195,9 @@ void GUIManager::SetDataLink(DataBank * _dataLink)
     add_StockButton();
     add_MainMenu();
     add_OptionMenu();
+    add_ConsoleMenu();
     add_CodeIDE();
+
 }
 void GUIManager::handleEvent(sf::Event *_event)
 {
@@ -403,6 +405,33 @@ void GUIManager::add_MainMenu()
     main.update(dataLink);
     guiMenus.push_back(main);
 }
+void GUIManager::add_ConsoleMenu()
+{
+    std::cout << "Debug 1" << std::endl;
+    GUIMenu console;
+    console.ID = "$_consoleMenu";
+    console.SetX(dockWidth+10);
+    console.SetY(100);
+    console.SetWidth(300);
+    console.SetHeight(200);
+    console.SetMenuTitle("--[[ Console ]]--");
+    std::cout << "Debug 2" << std::endl;
+
+    /*GUIElement elem1;
+    elem1.ID = "$_consoleMenu.output";
+    elem1.Type = "textbox";
+    elem1.X = 10;
+    elem1.Y = 10;
+    elem1.textBox.Width = 280;
+    elem1.textBox.Height = 160;
+    elem1.textBox.multiline = true;
+
+    console.GuiElements.push_back(elem1);*/
+
+    console.update(dataLink);
+    guiMenus.push_back(console);
+    std::cout << "Debug 3" << std::endl;
+}
 void GUIManager::add_OptionMenu()
 {
     GUIMenu main;
@@ -434,6 +463,7 @@ void GUIManager::add_OptionMenu()
 void GUIManager::add_CodeIDE()
 {
     GUIMenu menu;
+    std::cout << "Debug 4" << std::endl;
     menu.ID = "$_codeIDE";
     menu.SetX(dockWidth+500);
     menu.SetY(10);
@@ -450,7 +480,10 @@ void GUIManager::add_CodeIDE()
     elem1.textBox.Height = 260;
 
     menu.GuiElements.push_back(elem1);
+
+
     menu.update(dataLink);
+
     guiMenus.push_back(menu);
 }
 
