@@ -5,8 +5,8 @@
 
 struct KeyBind
 {
-	std::string ID;
-	int keyCode;
+    std::string ID;
+    int keyCode;
 };
 
 #endif

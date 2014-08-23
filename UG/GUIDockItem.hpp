@@ -6,20 +6,20 @@
 
 class GUIDockItem
 {
-	//MEMBERS
+    //MEMBERS
 private:
 public:
-	std::string ID;
-	std::string ImageID;
-	bool Enabled;
-	bool Pressed;
-	bool mouseHover;
-	//CONSTRUCTORS
-	GUIDockItem(std::string _id, std::string _imageid);
+    std::string ID;
+    std::string ImageID;
+    bool Enabled;
+    bool Pressed;
+    bool mouseHover;
+    //CONSTRUCTORS
+    GUIDockItem(std::string _id, std::string _imageid);
 
-	//DESTRUCTORS
+    //DESTRUCTORS
 
-	//METHODS
+    //METHODS
 };
 
 #endif

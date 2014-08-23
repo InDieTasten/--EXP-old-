@@ -307,13 +307,16 @@ void GUIManager::render()
     for (std::list<GUIDockItem>::iterator it = dockButtons.begin(); it != dockButtons.end(); it++)
     {
         sf::RectangleShape temp;
-        if(it->mouseHover) {
+        if(it->mouseHover)
+        {
             temp.setPosition(2.0f,(float)(i*(dockWidth+1)+2));
             temp.setSize(sf::Vector2f((float)dockWidth-2.0,(float)(i+1)*dockWidth+i-(i*(dockWidth+1)+2)));
             temp.setFillColor(sf::Color::Black);
             temp.setOutlineThickness(1.0f);
             temp.setOutlineColor(sf::Color::White);
-        } else {
+        }
+        else
+        {
             temp.setPosition(2.0f,(float)(i*(dockWidth+1)+2));
             temp.setSize(sf::Vector2f((float)dockWidth-2.0,(float)(i+1)*dockWidth+i-(i*(dockWidth+1)+2)));
             temp.setFillColor(sf::Color::Black);

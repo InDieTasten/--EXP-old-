@@ -3,22 +3,22 @@
 
 class Actor
 {
-	//MEMBER
+    //MEMBER
 private:
 public:
-	//rotation
-	float targetRotation;
-	//translation
-	float backTranslationBooster;
-	float frontTranslationBooster;
-	float leftTranslationBooster;
-	float rightTranslationBooster;
+    //rotation
+    float targetRotation;
+    //translation
+    float backTranslationBooster;
+    float frontTranslationBooster;
+    float leftTranslationBooster;
+    float rightTranslationBooster;
 
-	//CONSTRUCTORS
+    //CONSTRUCTORS
 
-	//DESTRUCTORS
+    //DESTRUCTORS
 
-	//METHODS
+    //METHODS
 };
 
 #endif

@@ -6,27 +6,27 @@
 
 class VertSlider
 {
-	//MEMBERS
+    //MEMBERS
 private:
 public:
-	int X;
-	int Y;
-	int Height;
-	int Width;
-	std::string ID;
+    int X;
+    int Y;
+    int Height;
+    int Width;
+    std::string ID;
 
-	//CONSTRUCTORS
+    //CONSTRUCTORS
 
-	//DESTRUCTORS
+    //DESTRUCTORS
 
-	//METHODS
-	void Show();
-	void Hide();
+    //METHODS
+    void Show();
+    void Hide();
 
-	void Setup();
-	void Update(DataBank* _dataLink);
-	void Render(DataBank* _dataLink);
-	void handleEvent(sf::Event* _event);
+    void Setup();
+    void Update(DataBank* _dataLink);
+    void Render(DataBank* _dataLink);
+    void handleEvent(sf::Event* _event);
 };
 
 #endif

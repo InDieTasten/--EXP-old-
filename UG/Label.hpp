@@ -6,26 +6,26 @@
 
 class Label
 {
-	//MEMBERS
+    //MEMBERS
 private:
-	sf::Text displayText;
+    sf::Text displayText;
 public:
-	int X;
-	int Y;
-	int Height;
-	int Width;
-	std::string DisplayText;
-	bool isActive;
+    int X;
+    int Y;
+    int Height;
+    int Width;
+    std::string DisplayText;
+    bool isActive;
 
-	//CONSTRUCTORS
+    //CONSTRUCTORS
 
-	//DESTRUCTORS
+    //DESTRUCTORS
 
-	//METHODS
-	void Setup();
-	void Update(DataBank* _dataLink, int _x, int _y, std::string _id);
-	void Render(DataBank* _dataLink, int _x, int _y, std::string _id);
-	void handleEvent(DataBank* _dataLink, sf::Event* _event, int _x, int _y, std::string _id);
+    //METHODS
+    void Setup();
+    void Update(DataBank* _dataLink, int _x, int _y, std::string _id);
+    void Render(DataBank* _dataLink, int _x, int _y, std::string _id);
+    void handleEvent(DataBank* _dataLink, sf::Event* _event, int _x, int _y, std::string _id);
 };
 
 #endif
