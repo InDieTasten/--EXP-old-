@@ -7,23 +7,23 @@
 
 class Texture
 {
-	//MEMBERS
+    //MEMBERS
 private:
-	std::list<sf::Texture> image;
+    std::list<sf::Texture> image;
 public:
-	std::string id;
-	std::string path;
-	bool isLoaded;
+    std::string id;
+    std::string path;
+    bool isLoaded;
 
-	//CONSTRUCTORS
-	Texture(std::string _id, std::string _path);
+    //CONSTRUCTORS
+    Texture(std::string _id, std::string _path);
 
-	//DESTRUCTORS
+    //DESTRUCTORS
 
-	//METHODS
-	void load();
-	void unload();
-	sf::Texture* getImage();
+    //METHODS
+    void load();
+    void unload();
+    sf::Texture* getImage();
 };
 
 #endif

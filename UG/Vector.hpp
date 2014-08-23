@@ -3,19 +3,19 @@
 
 class Vector
 {
-	//MEMBERS
+    //MEMBERS
 private:
 public:
-	double x;
-	double y;
+    double x;
+    double y;
 
-	//CONSTRUCTORS
-	Vector();
-	Vector(double _x, double _y);
+    //CONSTRUCTORS
+    Vector();
+    Vector(double _x, double _y);
 
-	//DESTRUCTORS
+    //DESTRUCTORS
 
-	//METHODS
+    //METHODS
 };
 
 #endif

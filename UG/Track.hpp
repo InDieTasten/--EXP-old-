@@ -7,22 +7,22 @@
 
 class Track
 {
-	//MEMBERS
+    //MEMBERS
 private:
-	std::list<sf::SoundBuffer> buffer;
+    std::list<sf::SoundBuffer> buffer;
 public:
-	std::string id;
-	std::string path;
+    std::string id;
+    std::string path;
 
-	//CONSTRUCTORS
-	Track(std::string _id, std::string _path);
+    //CONSTRUCTORS
+    Track(std::string _id, std::string _path);
 
-	//DESTRUCTORS
+    //DESTRUCTORS
 
-	//METHODS
-	void load();
-	void unload();
-	sf::SoundBuffer* getTrack();
+    //METHODS
+    void load();
+    void unload();
+    sf::SoundBuffer* getTrack();
 };
 
 #endif
