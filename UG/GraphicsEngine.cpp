@@ -2,7 +2,6 @@
 //CONSTRUCTORS
 GraphicsEngine::GraphicsEngine(DataBank *_dataLink, GUIManager *_gManager, int* _level)
 {
-    logger.init(_level, "Graphics    ");
     dataLink = _dataLink;
     gManager = _gManager;
     dataLink->runGraphics = true;
@@ -42,7 +41,7 @@ float GraphicsEngine::calcDistance (Vector _obj1, Vector _obj2)
 }
 void GraphicsEngine::Run()
 {
-    logger.log(2, "Thread launched");
+    log("G-Engine  ", "Thread launched");
     dataLink->renderWindow->setActive(true);
     Camera *renderCam;
     sf::Clock limit;
@@ -61,7 +60,7 @@ void GraphicsEngine::Run()
         if(runningInfo.getElapsedTime().asSeconds() >= 1.0f)
         {
             runningInfo.restart();
-            logger.log(11, "Thread running");
+            log("G-Engine  ", "Thread running");
         }
         dataLink->renderWindow->clear(); //clear renderBuffer with black
         renderCam = dataLink->CameraGetActive();
@@ -113,7 +112,7 @@ void GraphicsEngine::Run()
         dataLink->renderWindow->display();
         GMutex.unlock();
     }
-    logger.log(2, "Thread stopped");
+    log("G-Engine  ", "Thread stopped");
     dataLink->renderWindow->setActive(false);
 }
 void GraphicsEngine::Stop()

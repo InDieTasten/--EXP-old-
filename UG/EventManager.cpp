@@ -54,7 +54,6 @@ void EventManager::SetDataLink(DataBank *_dataLink, GUIManager *_gManager, Graph
     PEngine = _pEngine;
     dataLink = _dataLink;
     mModule = _mModule;
-    logger.init(_level, "EventHandler");
 }
 void EventManager::processEvent(sf::Event *_event)
 {

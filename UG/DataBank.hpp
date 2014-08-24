@@ -32,7 +32,6 @@ private:
 public:
     sf::RenderWindow *renderWindow;
     sf::View *standardView;
-    Logger logger;
     SolarSystem Level;
     bool guiMode;
     bool runGraphics;

@@ -75,14 +75,13 @@ void ModModule::Run()
         lua_call(it->state, 0, 0);
         lua_close(it->state);
     }
-    logger.log(4, "Thread stopped");
+    log(std::string("Mod-Module"), std::string("Thread stopped"));
 }
 void ModModule::SetDataLink(DataBank* _datalink, GUIManager* _gmanager, int *_level)
 {
-    logger.init(_level, "PluginEngine");
-    logger.log(4, "Logger initialized");
+    log("Mod-Module", "Logger initialized");
     datalink = _datalink;
-    logger.log(8, "Databank connected via datalink");
+    log("Mod-Module", "Databank connected via datalink");
     ModModule::gManager = _gmanager;
 }
 int ModModule::lPrint(lua_State *L)
@@ -96,10 +95,8 @@ int ModModule::lPrint(lua_State *L)
     {
         message.append(lua_tostring(L,i));
     }
-    Logger lo;
     int x = 999;
-    lo.init(&x,"Plugin");
-    lo.log(0,message);
+    log("Plugin    ",message);
     return 0;
 }
 int ModModule::lPushEvent(lua_State *L) // api.print("mein text hat ", 5, "Wörter")
