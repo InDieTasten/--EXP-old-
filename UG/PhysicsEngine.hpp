@@ -17,7 +17,6 @@ private:
     double G;
     double dX;
     DataBank *dataLink;
-    Logger logger;
     float frametime;
 public:
     int cyclesPerSecond;

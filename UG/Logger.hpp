@@ -1,5 +1,5 @@
-#ifndef _Logger_cpp_
-#define _Logger_cpp_
+#ifndef _Logger_hpp_
+#define _Logger_hpp_
 
 #include <iostream>
 #include <time.h>
@@ -8,21 +8,7 @@
 #include <stdio.h>
 #include <sstream>
 
-class Logger
-{
-    //MEMBERS
-private:
-public:
-    int* Level;
-    std::string Source;
+void log(std::string name,std::string msg);
 
-    //CONSTRUCTORS
-
-    //DESTRUCTORS
-
-    //METHODS
-    void init(int* _level, std::string _source);
-    void log(int detail,std::string msg);
-};
 
 #endif
