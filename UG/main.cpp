@@ -59,9 +59,7 @@ int main ( int argc, char *argv[] )
     try
     {
         int DEBUG_LEVEL = 99;
-        Logger init;
-        init.init(&DEBUG_LEVEL, "init        ");
-        init.log(20, "Logger enabled");
+        log("Main      ", "Logger enabled");
         ////////////////////
         // 1. DataBank    //
         //                //
@@ -71,64 +69,61 @@ int main ( int argc, char *argv[] )
         ////////////////////
 
         ///// 1. DataBank
-        init.log(20, "Create Memory Mangager Instance...");
+        log("Main      ", "Create Memory Mangager Instance...");
         DataBank dBank(&DEBUG_LEVEL);
-        init.log(20, "Registrate Prime Camera...");
+        log("Main      ", "Registrate Prime Camera...");
         dBank.CameraRegister("mainCam", Vector(0.0f,0.0f), 0.0f);
-        init.log(20, "Set active camera to Primary Cam...");
+        log("Main      ", "Set active camera to Primary Cam...");
         dBank.CameraSetActive("mainCam");
 
         //App Instance
-        init.log(20, "Generate RenderDevice(Window)...");
+        log("Main      ", "Generate RenderDevice(Window)...");
         sf::RenderWindow App(sf::VideoMode(1280, 720, 32), "[[UntitledGame]]", sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
-        init.log(20, "Re-Apply view...");
+        log("Main      ", "Re-Apply view...");
         sf::View View(App.getDefaultView());
-        init.log(20, "Launch RenderLink...");
+        log("Main      ", "Launch RenderLink...");
         dBank.renderWindow = &App;
-        init.log(20, "Launch ViewLink...");
+        log("Main      ", "Launch ViewLink...");
         dBank.standardView = &View;
 
 
         StockRegister(&dBank);
 
         // 2. GUIManager
-        init.log(20, "Create GUI Instance...");
+        log("Main      ", "Create GUI Instance...");
         GUIManager gManager;
         gManager.SetDataLink(&dBank);
 
         // 3. Processing
         //Graphics Engine
-        init.log(20, "Create Graphics Thread...");
+        log("Main      ", "Create Graphics Thread...");
         GraphicsEngine graphicsThread(&dBank, &gManager, &DEBUG_LEVEL);
-        init.log(20, "Relocate Render Thread...");
+        log("Main      ", "Relocate Render Thread...");
         App.setActive(false);
         //Physics Engine
-        init.log(20, "Create Physics Thread...");
+        log("Main      ", "Create Physics Thread...");
         PhysicsEngine physicsThread(&dBank, &DEBUG_LEVEL);
         //Modding Module
-        init.log(20, "Create Plugin Handler...");
+        log("Main      ", "Create Plugin Handler...");
         ModModule mModule;
         mModule.SetDataLink(&dBank, &gManager, &DEBUG_LEVEL);
         //Event Manager
-        init.log(20, "Create Event Manager...");
+        log("Main      ", "Create Event Manager...");
         EventManager EventMan;
         EventMan.SetDataLink(&dBank, &gManager, &graphicsThread, &physicsThread, &mModule, &DEBUG_LEVEL);
 
         //Starting Engines
-        init.log(20, "Launch Plugins...");
+        log("Main      ", "Launch Plugins...");
         sf::Thread plTHREAD(&ModModule::Run, &mModule);
         plTHREAD.launch();
-        init.log(20, "Launch Graphics...");
+        log("Main      ", "Launch Graphics...");
         sf::Thread grTHREAD(&GraphicsEngine::Run, &graphicsThread);
         grTHREAD.launch();
-        init.log(20, "Launch Physics...");
+        log("Main      ", "Launch Physics...");
         sf::Thread phTHREAD(&PhysicsEngine::Run, &physicsThread);
         phTHREAD.launch();
-        init.log(20, "Initialization finished :)");
-        init.log(20, "Switch from Init to Main(-Event)-Logger");
+        log("Main      ", "Initialization finished :)");
 
-        Logger logger;
-        logger.init(&DEBUG_LEVEL, "Main        ");
         sf::Clock timer;
         sf::Clock limit;
         timer.restart();
@@ -144,7 +139,7 @@ int main ( int argc, char *argv[] )
             GMutex.lock();
             if (timer.getElapsedTime().asSeconds() > 1.0f)
             {
-                logger.log(11,"Thread running");
+                log("Main      ","Thread running");
                 timer.restart();
             }
             sf::Event Event;

@@ -15,7 +15,6 @@ class GraphicsEngine
     //MEMBERS
 private:
     DataBank *dataLink;
-    Logger logger;
     GUIManager *gManager;
     sf::Sprite renderSprite;
 public:

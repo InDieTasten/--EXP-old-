@@ -19,7 +19,6 @@ class ModModule
 {
     //MEMBERS
 private:
-    Logger logger;
     Loader loader;
     DataBank* datalink;
     GUIManager* gManager;
@@ -33,7 +32,7 @@ public:
 
     //METHODS
 private:
-    void log(std::string);
+    //void log(std::string);
     static int lPrint(lua_State *L); //message
     static int lPushEvent(lua_State *L);
     static int lPushTask(lua_State *L);

@@ -3,7 +3,6 @@
 PhysicsEngine::PhysicsEngine(DataBank *_dataLink, int* _level)
 {
     int cyclesPerSecond = 300;
-    logger.init(_level, "Physics     ");
     dataLink = _dataLink;
     dataLink->runPhysics = true;
     frametime = 0.0f;
@@ -44,7 +43,7 @@ float PhysicsEngine::calcDistance(Vector _obj1, Vector _obj2)
 }
 void PhysicsEngine::Run()
 {
-    logger.log(2, "Thread launched");
+    log("P-Engine  ", "Thread launched");
     sf::Clock timer;
     sf::Clock limit;
     timer.restart();
@@ -59,7 +58,7 @@ void PhysicsEngine::Run()
         GMutex.lock();
         if (timer.getElapsedTime().asSeconds() > 1.f)
         {
-            logger.log(11, "Thread running");
+            log("P-Engine  ", "Thread running");
             timer.restart();
         }
         for (std::list<SpaceObject>::iterator sObject = dataLink->Level.SpaceObjectList.begin(); sObject != dataLink->Level.SpaceObjectList.end(); sObject++)
@@ -100,7 +99,7 @@ void PhysicsEngine::Run()
         }
         GMutex.unlock();
     }
-    logger.log(2, "Thread stopped");
+    log("P-Engine  ", "Thread stopped");
 }
 void PhysicsEngine::Stop()
 {
