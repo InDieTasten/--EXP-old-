@@ -20,7 +20,6 @@ private:
     PhysicsEngine* PEngine;
     GUIManager *gManager;
     ModModule *mModule;
-    Logger logger;
 
     //CONSTRUCTORS
 
