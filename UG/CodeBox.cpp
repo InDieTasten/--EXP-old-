@@ -11,13 +11,13 @@ void CodeBox::Setup()
     cursor_line = 1;
     cursor_char = 1;
 }
-void CodeBox::Update(DataBank* _dataLink, int _x, int _y, std::string _id)
+void CodeBox::Update(int _x, int _y, std::string _id)
 {
     for(std::list<std::string>::iterator it=text.begin(); it != text.end(); ++it)
     {
         text1.setString(*it);
         text1.setPosition((float)_x, (float)_y);
-        text1.setFont(*_dataLink->FontGet("$_menuTitle"));
+        text1.setFont(*dLink->FontGet("$_menuTitle"));
         text1.setCharacterSize(12);
         text1.setScale(1.0,1.0);
 
@@ -41,14 +41,14 @@ void CodeBox::Update(DataBank* _dataLink, int _x, int _y, std::string _id)
     c.setOutlineThickness(1.0f);
     c.setOutlineColor(sf::Color(50,255,50,50));
 }
-void CodeBox::Render(DataBank* _dataLink, int _x, int _y, std::string _id)
+void CodeBox::Render(int _x, int _y, std::string _id)
 {
-    _dataLink->renderWindow->draw(rect);
-    _dataLink->renderWindow->draw(c);
-    _dataLink->renderWindow->draw(text1);
+    dLink->renderWindow->draw(rect);
+    dLink->renderWindow->draw(c);
+    dLink->renderWindow->draw(text1);
 
 }
-void CodeBox::handleEvent(DataBank* _dataLink, sf::Event* _event, int _x, int _y, std::string _id)
+void CodeBox::handleEvent(sf::Event* _event, int _x, int _y, std::string _id)
 {
     std::list<std::string>::iterator it = text.begin();
     for(int i = cursor_line; i > 0; i--)

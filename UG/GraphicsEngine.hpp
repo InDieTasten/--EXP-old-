@@ -7,15 +7,16 @@
 #include "SpaceObject.hpp"
 #include "DataBank.hpp"
 #include "GUIManager.hpp"
-extern float VidThread;
+
+extern float gLimit;
+extern DataBank* dLink;
+extern GUIManager* guiLink;
 extern sf::Mutex GMutex;
 
 class GraphicsEngine
 {
     //MEMBERS
 private:
-    DataBank *dataLink;
-    GUIManager *gManager;
     sf::Sprite renderSprite;
 public:
     Vector CameraPosition;
@@ -24,7 +25,7 @@ public:
     int cyclesPerSecond;
 
     //CONSTRUCTORS
-    GraphicsEngine(DataBank *_dataLink, GUIManager *_gManager, int* _level);
+    GraphicsEngine();
 
     //DESTRUCTORS
 

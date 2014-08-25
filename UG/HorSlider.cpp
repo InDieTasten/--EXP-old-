@@ -10,7 +10,7 @@ void HorSlider::Setup()
     isActive = false;
     moveSlide = false;
 }
-void HorSlider::Update(DataBank* _dataLink, int _x, int _y, std::string _id)
+void HorSlider::Update(int _x, int _y, std::string _id)
 {
     decBox.setPosition((float)_x, (float)_y);
     decBox.setSize(sf::Vector2f((float)Height, (float)Height));
@@ -36,14 +36,14 @@ void HorSlider::Update(DataBank* _dataLink, int _x, int _y, std::string _id)
     slider.setOutlineThickness(1.0f);
     slider.setOutlineColor(sf::Color(0,255,0,200));
 }
-void HorSlider::Render(DataBank* _dataLink, int _x, int _y, std::string _id)
+void HorSlider::Render(int _x, int _y, std::string _id)
 {
-    _dataLink->renderWindow->draw(bar);
-    _dataLink->renderWindow->draw(decBox);
-    _dataLink->renderWindow->draw(incBox);
-    _dataLink->renderWindow->draw(slider);
+    dLink->renderWindow->draw(bar);
+    dLink->renderWindow->draw(decBox);
+    dLink->renderWindow->draw(incBox);
+    dLink->renderWindow->draw(slider);
 }
-void HorSlider::handleEvent(DataBank* datalink, sf::Event* _event, int _x, int _y, std::string _id)
+void HorSlider::handleEvent(sf::Event* _event, int _x, int _y, std::string _id)
 {
     int mousex;
     if(_event->type == sf::Event::MouseMoved && isActive)

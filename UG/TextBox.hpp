@@ -4,6 +4,7 @@
 #include <string.h>
 #include "DataBank.hpp"
 
+extern DataBank* dLink;
 
 class TextBox
 {
@@ -38,9 +39,9 @@ public:
     void Hide();
 
     void Setup();
-    void Update(DataBank* _dataLink, int _x, int _y,std::string _id);
-    void Render(DataBank* _dataLink, int _x, int _y, std::string _id);
-    void handleEvent(DataBank* _dataLink,sf::Event* _event, int _x, int _y,std::string _id);
+    void Update(int _x, int _y,std::string _id);
+    void Render(int _x, int _y, std::string _id);
+    void handleEvent(sf::Event* _event, int _x, int _y,std::string _id);
 };
 
 #endif

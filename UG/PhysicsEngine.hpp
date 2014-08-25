@@ -6,7 +6,9 @@
 #include "DataBank.hpp"
 #include "Vector.hpp"
 #include <list>
-extern float PhyThread;
+
+extern float pLimit;
+extern DataBank* dLink;
 extern sf::Mutex GMutex;
 
 class PhysicsEngine
@@ -16,13 +18,11 @@ private:
     double PI;
     double G;
     double dX;
-    DataBank *dataLink;
     float frametime;
 public:
-    int cyclesPerSecond;
 
     //CONSTRUCTORS
-    PhysicsEngine(DataBank *_dataLink, int* _level);
+    PhysicsEngine();
 
     //DESTRUCTORS
 

@@ -41,7 +41,7 @@ public:
     std::list<std::list<std::string> > softEvents;
 
     //CONSTRUCTORS
-    DataBank(int* _level);
+    DataBank();
 
     //DESTRUCTORS
 

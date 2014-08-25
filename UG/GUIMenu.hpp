@@ -33,14 +33,14 @@ public:
     //DESTRUCTORS
 
     //METHODS
-    void update(DataBank *datalink);
+    void update();
     void SetHeight(int _height);
     void SetWidth(int _width);
     void SetX(int _x);
     void SetY(int _y);
     void SetMenuTitle(std::string _title);
-    void render(DataBank *dataLink);
-    void handleEvent(DataBank* _dataLink, sf::Event* _event);
+    void render();
+    void handleEvent(sf::Event* _event);
     void Enable();
     void Disable();
     void Show();
