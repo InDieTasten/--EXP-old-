@@ -6,6 +6,8 @@
 #include "DataBank.hpp"
 #include "GUIDockItem.hpp"
 
+extern DataBank* dLink;
+
 class GUIManager
 {
     //MEMBERS
@@ -14,7 +16,6 @@ private:
     std::list<GUIMenu> guiMenus;
     std::list<GUIDockItem> dockButtons;
     int dockWidth;
-    DataBank *dataLink;
 public:
 
     //CONSTRUCTORS

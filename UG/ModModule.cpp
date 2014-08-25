@@ -7,7 +7,7 @@
 void ModModule::Run()
 {
     std::list<Script> *scripts;
-    scripts = datalink->GetScripts();
+    scripts = dLink->GetScripts();
 
     for(std::list<Script>::iterator it = scripts->begin(); it != scripts->end(); it++)
     {
@@ -31,11 +31,11 @@ void ModModule::Run()
     limiter.restart();
 
     std::list< std::list<std::string> > events;
-    while(datalink->runModules)
+    while(dLink->runModules)
     {
-        if(limiter.getElapsedTime().asSeconds() < 1.0/ModThread)
+        if(limiter.getElapsedTime().asSeconds() < 1.0/mLimit)
         {
-            sf::sleep(sf::seconds(1.0/ModThread - limiter.getElapsedTime().asSeconds()));
+            sf::sleep(sf::seconds(1.0/mLimit - limiter.getElapsedTime().asSeconds()));
         }
         limiter.restart();
         GMutex.lock();
@@ -76,13 +76,6 @@ void ModModule::Run()
         lua_close(it->state);
     }
     log(std::string("Mod-Module"), std::string("Thread stopped"));
-}
-void ModModule::SetDataLink(DataBank* _datalink, GUIManager* _gmanager, int *_level)
-{
-    log("Mod-Module", "Logger initialized");
-    datalink = _datalink;
-    log("Mod-Module", "Databank connected via datalink");
-    ModModule::gManager = _gmanager;
 }
 int ModModule::lPrint(lua_State *L)
 {
@@ -141,7 +134,7 @@ int ModModule::lAddMenu(lua_State *L) // api.addMenu(_id)
     //get id as string
     std::string id = lua_tostring(L,1);
 
-    gManager->AddMenu(id);
+    guiLink->AddMenu(id);
     lua_pushboolean(L,0);
     return 1;
 }

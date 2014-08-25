@@ -7,7 +7,9 @@
 #include "Logger.hpp"
 #include "Script.hpp"
 #include <sstream>
-extern float ModThread;
+extern float mLimit;
+extern DataBank* dLink;
+extern GUIManager* guiLink;
 extern sf::Mutex GMutex;
 
 
@@ -20,8 +22,6 @@ class ModModule
     //MEMBERS
 private:
     Loader loader;
-    DataBank* datalink;
-    GUIManager* gManager;
 public:
     //static std::list< std::list<std::string> > eventBuffer;
     //static std::list< std::list<std::string> > taskBuffer;

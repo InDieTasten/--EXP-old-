@@ -6,6 +6,8 @@
 #include <iostream>
 #include <list>
 
+extern DataBank* dLink;
+
 class CodeBox
 {
     //MEMBERS
@@ -36,10 +38,10 @@ public:
     //METHODS
     void Setup();
 
-    void Update(DataBank* _dataLink, int _x, int _y, std::string _id);
+    void Update(int _x, int _y, std::string _id);
 
-    void Render(DataBank* _dataLink, int _x, int _y, std::string _id);
-    void handleEvent(DataBank* _dataLink, sf::Event* _event, int _x, int _y, std::string _id);
+    void Render(int _x, int _y, std::string _id);
+    void handleEvent(sf::Event* _event, int _x, int _y, std::string _id);
 
     char getInput(int Type,sf::Event* _event);
 
