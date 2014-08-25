@@ -4,5 +4,5 @@
 //METHODS
 void log(std::string name, std::string msg)
 {
-        std::cout << "[" << name << "] " << msg << std::endl;
+    std::cout << "[" << name << "] " << msg << std::endl;
 }
