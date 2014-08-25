@@ -111,10 +111,10 @@ function onTask(...)
 	print("TASK DETECTED!")
 end
 
-local coroutine = coroutine
-local debug = debug
-local load = load
-local require = require
-local io = io
-local package = package
-local collectgarbage = collectgarbage
+--local coroutine = coroutine
+--local debug = debug
+--local load = load
+--local require = require
+--local io = io
+--local package = package
+--local collectgarbage = collectgarbage
