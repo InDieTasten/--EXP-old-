@@ -29,30 +29,25 @@ float ModThread =  10.0; //Cycles per second
 float PhyThread =  01.0; //Cycles per second
 float VidThread =  30.0; //Cycles per second
 
+// Global accessors
 std::list< std::list<std::string> > eventBuffer;
 std::list< std::list<std::string> > taskBuffer;
+// pointer
+DataBank*       dLink;
+GUIManager*     guiLink;
+GraphicsEngine* gLink;
+PhysicsEngine*  pLink;
+ModModule*      mLink;
+//threads
+sf::Thread*     gThread;
+sf::Thread*     pThread;
+sf::Thread*     mThread;
 
 sf::Mutex GMutex;
 
 void StockRegister(DataBank* datalink);
 
 using namespace std;
-
-
-int lPrint(lua_State *L) // api.print("mein text hat ", 5, "Wörter")
-{
-    //number of arguments
-    int n = lua_gettop(L);
-
-    std::string message = "";
-
-    for(int i = 1; i <= n; i++)
-    {
-        message.append(lua_tostring(L,n));
-    }
-    std::cout << message << std::endl;
-    return 0;
-}
 
 int main ( int argc, char *argv[] )
 {
