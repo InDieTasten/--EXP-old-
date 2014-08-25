@@ -1,10 +1,8 @@
 #include "GraphicsEngine.hpp"
 //CONSTRUCTORS
-GraphicsEngine::GraphicsEngine(DataBank *_dataLink, GUIManager *_gManager, int* _level)
+GraphicsEngine::GraphicsEngine()
 {
-    dataLink = _dataLink;
-    gManager = _gManager;
-    dataLink->runGraphics = true;
+    dLink->runGraphics = true;
 }
 
 //DESTRUCTORS
@@ -42,38 +40,31 @@ float GraphicsEngine::calcDistance (Vector _obj1, Vector _obj2)
 void GraphicsEngine::Run()
 {
     log("G-Engine  ", "Thread launched");
-    dataLink->renderWindow->setActive(true);
+    dLink->renderWindow->setActive(true);
     Camera *renderCam;
     sf::Clock limit;
-    sf::Clock runningInfo;
-    runningInfo.restart();
     limit.restart();
     float posX;
     float posY;
-    while (dataLink->runGraphics)
+    while (dLink->runGraphics)
     {
-        if(limit.getElapsedTime().asSeconds() < 1.0/VidThread)
+        if(limit.getElapsedTime().asSeconds() < 1.0/gLimit)
         {
-            sf::sleep(sf::milliseconds(1.0/VidThread - limit.getElapsedTime().asSeconds()));
+            sf::sleep(sf::milliseconds(1.0/gLimit - limit.getElapsedTime().asSeconds()));
         }
         limit.restart();
-        if(runningInfo.getElapsedTime().asSeconds() >= 1.0f)
-        {
-            runningInfo.restart();
-            log("G-Engine  ", "Thread running");
-        }
-        dataLink->renderWindow->clear(); //clear renderBuffer with black
-        renderCam = dataLink->CameraGetActive();
+        dLink->renderWindow->clear(); //clear renderBuffer with black
+        renderCam = dLink->CameraGetActive();
         //RREENNDDEERR background image
 
         //RREENNDDEERR tiny stars
 
         //RREENNDDEERR space objects
         GMutex.lock();
-        for (std::list<SpaceObject>::iterator sObject = dataLink->Level.SpaceObjectList.begin(); sObject != dataLink->Level.SpaceObjectList.end(); sObject++)
+        for (std::list<SpaceObject>::iterator sObject = dLink->Level.SpaceObjectList.begin(); sObject != dLink->Level.SpaceObjectList.end(); sObject++)
         {
             // set the right Texture
-            renderSprite.setTexture(*dataLink->TextureGet(sObject->TextureID));
+            renderSprite.setTexture(*dLink->TextureGet(sObject->TextureID));
 
             //set the right scale for the zoom factor
             renderSprite.setScale(Zoom,Zoom);
@@ -85,18 +76,18 @@ void GraphicsEngine::Run()
             renderSprite.setRotation(sObject->Rotation - renderCam->Rotation);
 
             //set the relative position to the Camera including zoom and centering to the screen //missing rotation
-            posX = (float)renderCam->Position.x*(-renderCam->Zoom)+((float)sObject->Position.x*renderCam->Zoom)+dataLink->renderWindow->getSize().x/2.0f;
-            posY = (float)renderCam->Position.y*(-renderCam->Zoom)+((float)sObject->Position.y*renderCam->Zoom)+dataLink->renderWindow->getSize().x/2.0f;
+            posX = (float)renderCam->Position.x*(-renderCam->Zoom)+((float)sObject->Position.x*renderCam->Zoom)+dLink->renderWindow->getSize().x/2.0f;
+            posY = (float)renderCam->Position.y*(-renderCam->Zoom)+((float)sObject->Position.y*renderCam->Zoom)+dLink->renderWindow->getSize().x/2.0f;
 
             //check for field of view
-            if (posX < (dataLink->renderWindow->getSize().x/2.0f)*1.5f &&
-                    posX > (dataLink->renderWindow->getSize().x/2.0f)*-1.5f &&
-                    posY < (dataLink->renderWindow->getSize().y/2.0f)*1.5f &&
-                    posY > (dataLink->renderWindow->getSize().y/2.0f)*-1.5f)
+            if (posX < (dLink->renderWindow->getSize().x/2.0f)*1.5f &&
+                    posX > (dLink->renderWindow->getSize().x/2.0f)*-1.5f &&
+                    posY < (dLink->renderWindow->getSize().y/2.0f)*1.5f &&
+                    posY > (dLink->renderWindow->getSize().y/2.0f)*-1.5f)
             {
                 renderSprite.setPosition(posX,posY);
                 //finally draw it
-                dataLink->renderWindow->draw(renderSprite);
+                dLink->renderWindow->draw(renderSprite);
             }
         }
 
@@ -105,17 +96,17 @@ void GraphicsEngine::Run()
         //RREENNDDEERR HUD
 
         //RREENNDDEERR GUI
-        gManager->update();
-        gManager->render();
+        guiLink->update();
+        guiLink->render();
 
         //Display the damn frame
-        dataLink->renderWindow->display();
+        dLink->renderWindow->display();
         GMutex.unlock();
     }
     log("G-Engine  ", "Thread stopped");
-    dataLink->renderWindow->setActive(false);
+    dLink->renderWindow->setActive(false);
 }
 void GraphicsEngine::Stop()
 {
-    dataLink->runGraphics = false;
+    dLink->runGraphics = false;
 }

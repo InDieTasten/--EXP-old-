@@ -14,7 +14,7 @@ void TextBox::Setup()
     text.push_back("");
 
 }
-void TextBox::Update(DataBank* _dataLink, int _x, int _y,std::string _id)
+void TextBox::Update(int _x, int _y,std::string _id)
 {
     for(std::list<std::string>::iterator it = text.begin(); it != text.end(); ++it)
     {
@@ -22,7 +22,7 @@ void TextBox::Update(DataBank* _dataLink, int _x, int _y,std::string _id)
         it1->setString(*it);
 
         it1->setPosition((float)_x, (float)_y+(12*line));
-        it1->setFont(*_dataLink->FontGet("$_menuTitle"));
+        it1->setFont(*dLink->FontGet("$_menuTitle"));
         it1->setCharacterSize(12.0);
         it1->setScale(1.0,1.0);
         ++it1;
@@ -40,13 +40,13 @@ void TextBox::Update(DataBank* _dataLink, int _x, int _y,std::string _id)
     c.setOutlineThickness(1.0f);
     c.setOutlineColor(sf::Color(255,255,255,50));
 }
-void TextBox::Render(DataBank* _dataLink, int _x, int _y, std::string _id)
+void TextBox::Render(int _x, int _y, std::string _id)
 {
-    _dataLink->renderWindow->draw(rect);
-    _dataLink->renderWindow->draw(c);
-    //_dataLink->renderWindow->draw(*it1); //IDT: it1 ist hier nicht deklariert. Immer noch ;)
+    dLink->renderWindow->draw(rect);
+    dLink->renderWindow->draw(c);
+    //dLink->renderWindow->draw(*it1); //IDT: it1 ist hier nicht deklariert. Immer noch ;)
 }
-void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,std::string _id)
+void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
 {
     if(isActive)
     {
@@ -61,7 +61,7 @@ void TextBox::handleEvent(DataBank* datalink,sf::Event* _event, int _x, int _y,s
                     x.push_back("textbox_submit");
                     x.push_back(_id);
                     //x.push_back(text); // IDT: Listentyp ist std::string, keine Liste von std::string
-                    datalink->pushEvent(x);
+                    dLink->pushEvent(x);
                     //text=""; // IDT: Du kannst eine std::list<std::string> nicht auf einen leeren string setzen
                     cursor = 0;
                 }

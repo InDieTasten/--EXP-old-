@@ -9,17 +9,14 @@
 #include "ModModule.hpp"
 
 extern std::list< std::list<std::string> > eventBuffer;
+extern DataBank* dLink;
+extern GUIManager* guiLink;
 extern sf::Mutex GMutex;
 
 class EventManager
 {
     //MEMBERS
 private:
-    DataBank *dataLink;
-    GraphicsEngine* GEngine;
-    PhysicsEngine* PEngine;
-    GUIManager *gManager;
-    ModModule *mModule;
 
     //CONSTRUCTORS
 

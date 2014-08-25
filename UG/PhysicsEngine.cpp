@@ -1,10 +1,8 @@
 #include "PhysicsEngine.hpp"
 //CONSTRUCTORS
-PhysicsEngine::PhysicsEngine(DataBank *_dataLink, int* _level)
+PhysicsEngine::PhysicsEngine()
 {
-    int cyclesPerSecond = 300;
-    dataLink = _dataLink;
-    dataLink->runPhysics = true;
+    dLink->runPhysics = true;
     frametime = 0.0f;
     PI = 3.1415926535897932384626433832795028841971693993751f;
     G = 6.67e-11;
@@ -44,24 +42,18 @@ float PhysicsEngine::calcDistance(Vector _obj1, Vector _obj2)
 void PhysicsEngine::Run()
 {
     log("P-Engine  ", "Thread launched");
-    sf::Clock timer;
+
     sf::Clock limit;
-    timer.restart();
     limit.restart();
-    while (dataLink->runPhysics)
+    while (dLink->runPhysics)
     {
-        if(limit.getElapsedTime().asSeconds() < 1.0/PhyThread)
+        if(limit.getElapsedTime().asSeconds() < 1.0/pLimit)
         {
-            sf::sleep(sf::seconds(1.0/PhyThread - limit.getElapsedTime().asSeconds()));
+            sf::sleep(sf::seconds(1.0/pLimit - limit.getElapsedTime().asSeconds()));
         }
         limit.restart();
         GMutex.lock();
-        if (timer.getElapsedTime().asSeconds() > 1.f)
-        {
-            log("P-Engine  ", "Thread running");
-            timer.restart();
-        }
-        for (std::list<SpaceObject>::iterator sObject = dataLink->Level.SpaceObjectList.begin(); sObject != dataLink->Level.SpaceObjectList.end(); sObject++)
+        for (std::list<SpaceObject>::iterator sObject = dLink->Level.SpaceObjectList.begin(); sObject != dLink->Level.SpaceObjectList.end(); sObject++)
         {
 
             ////PlayerInput
@@ -72,7 +64,7 @@ void PhysicsEngine::Run()
 
 
             ////GRAVITY
-            for (std::list<SpaceObject>::iterator sObject2 = dataLink->Level.SpaceObjectList.begin(); sObject2 != dataLink->Level.SpaceObjectList.end(); sObject2++)
+            for (std::list<SpaceObject>::iterator sObject2 = dLink->Level.SpaceObjectList.begin(); sObject2 != dLink->Level.SpaceObjectList.end(); sObject2++)
             {
                 //calc gravity force
                 if (sObject->ID != sObject2->ID)
@@ -103,5 +95,5 @@ void PhysicsEngine::Run()
 }
 void PhysicsEngine::Stop()
 {
-    dataLink->runPhysics = false;
+    dLink->runPhysics = false;
 }
