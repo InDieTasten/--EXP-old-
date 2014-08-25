@@ -5,6 +5,8 @@
 #include <math.h>
 #include "DataBank.hpp"
 
+extern DataBank* dLink;
+
 class Button
 {
     //MEMBERS
@@ -27,9 +29,9 @@ public:
 
     //METHODS
     void Setup();
-    void Update(DataBank* _dataLink, int _x, int _y, std::string _id);
-    void Render(DataBank* _dataLink, int _x, int _y, std::string _id);
-    void handleEvent(DataBank* datalink, sf::Event* _event, int _x, int _y, std::string _id);
+    void Update(int _x, int _y, std::string _id);
+    void Render(int _x, int _y, std::string _id);
+    void handleEvent(sf::Event* _event, int _x, int _y, std::string _id);
 };
 
 #endif

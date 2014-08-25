@@ -9,7 +9,7 @@ void Button::Setup()
 {
     mouseHover = false;
 }
-void Button::Update(DataBank* _dataLink, int _x, int _y, std::string _id)
+void Button::Update(int _x, int _y, std::string _id)
 {
     if(!mouseHover)
     {
@@ -42,18 +42,18 @@ void Button::Update(DataBank* _dataLink, int _x, int _y, std::string _id)
         displayText.setColor(sf::Color(200,200,200,200));
     }
     displayText.setString(Text);
-    displayText.setFont(*_dataLink->FontGet("$_menuTitle"));
+    displayText.setFont(*dLink->FontGet("$_menuTitle"));
     displayText.setScale(1.0,1.0);
     displayText.setOrigin(floorf(displayText.getLocalBounds().width/2), floorf(displayText.getLocalBounds().height/2));
     displayText.setPosition(floorf(_x+(Width/2.0)),floorf(_y+(Height/2.0)));
     displayText.setCharacterSize(12);
 }
-void Button::Render(DataBank* _dataLink, int _x, int _y, std::string _id)
+void Button::Render(int _x, int _y, std::string _id)
 {
-    _dataLink->renderWindow->draw(rect);
-    _dataLink->renderWindow->draw(displayText);
+    dLink->renderWindow->draw(rect);
+    dLink->renderWindow->draw(displayText);
 }
-void Button::handleEvent(DataBank* datalink, sf::Event* _event, int _x, int _y, std::string _id)
+void Button::handleEvent(sf::Event* _event, int _x, int _y, std::string _id)
 {
     if(isActive)
     {
@@ -70,7 +70,7 @@ void Button::handleEvent(DataBank* datalink, sf::Event* _event, int _x, int _y, 
                         std::list<std::string> x;
                         x.push_back("button_entered");
                         x.push_back(_id);
-                        datalink->pushEvent(x);
+                        dLink->pushEvent(x);
                         mouseHover = true;
                     }
                 }
@@ -81,7 +81,7 @@ void Button::handleEvent(DataBank* datalink, sf::Event* _event, int _x, int _y, 
                         std::list<std::string> x;
                         x.push_back("button_leave");
                         x.push_back(_id);
-                        datalink->pushEvent(x);
+                        dLink->pushEvent(x);
                         mouseHover = false;
                     }
                 }
@@ -94,7 +94,7 @@ void Button::handleEvent(DataBank* datalink, sf::Event* _event, int _x, int _y, 
                 std::list<std::string> x;
                 x.push_back("button_released");
                 x.push_back(_id);
-                datalink->pushEvent(x);
+                dLink->pushEvent(x);
             }
         }
         if(_event->type == sf::Event::MouseButtonPressed && isActive)
@@ -104,7 +104,7 @@ void Button::handleEvent(DataBank* datalink, sf::Event* _event, int _x, int _y, 
                 std::list<std::string> x;
                 x.push_back("button_pressed");
                 x.push_back(_id);
-                datalink->pushEvent(x);
+                dLink->pushEvent(x);
             }
         }
     }

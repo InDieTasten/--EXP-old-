@@ -2,7 +2,12 @@
 //CONSTRUCTORS
 GUIManager::GUIManager()
 {
-
+    dockWidth = 68;
+    add_StockButton();
+    add_MainMenu();
+    add_OptionMenu();
+    add_ConsoleMenu();
+    add_CodeIDE();
 }
 //DESTRUCTORS
 
@@ -188,17 +193,6 @@ void GUIManager::EditDockItemImage(std::string _itemid, std::string _imageid)
     }
 }
 
-void GUIManager::SetDataLink(DataBank * _dataLink)
-{
-    dockWidth = 68;
-    dataLink = _dataLink;
-    add_StockButton();
-    add_MainMenu();
-    add_OptionMenu();
-    add_ConsoleMenu();
-    add_CodeIDE();
-
-}
 void GUIManager::handleEvent(sf::Event *_event)
 {
     if(_event->type == sf::Event::MouseMoved)
@@ -216,7 +210,7 @@ void GUIManager::handleEvent(sf::Event *_event)
                     std::list<std::string> e;
                     e.push_back("dock_enter");
                     e.push_back(it->ID);
-                    dataLink->pushEvent(e);
+                    dLink->pushEvent(e);
                 }
                 it->mouseHover = true;
             }
@@ -227,7 +221,7 @@ void GUIManager::handleEvent(sf::Event *_event)
                     std::list<std::string> e;
                     e.push_back("dock_leave");
                     e.push_back(it->ID);
-                    dataLink->pushEvent(e);
+                    dLink->pushEvent(e);
                 }
                 it->mouseHover = false;
             }
@@ -243,7 +237,7 @@ void GUIManager::handleEvent(sf::Event *_event)
                 std::list<std::string> e;
                 e.push_back("dock_pressed");
                 e.push_back(it->ID);
-                dataLink->pushEvent(e);
+                dLink->pushEvent(e);
             }
         }
         for(std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
@@ -277,13 +271,13 @@ void GUIManager::handleEvent(sf::Event *_event)
                 std::list<std::string> e;
                 e.push_back("dock_released");
                 e.push_back(it->ID);
-                dataLink->pushEvent(e);
+                dLink->pushEvent(e);
             }
         }
     }
     for(std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
     {
-        it->handleEvent(dataLink, _event);
+        it->handleEvent(_event);
     }
 }
 void GUIManager::handleSoftEvent(std::list<std::string> _args)
@@ -294,7 +288,7 @@ void GUIManager::handleSoftEvent(std::list<std::string> _args)
 void GUIManager::update()
 {
     dock.setPosition((float)-1,(float)-1);
-    dock.setSize(sf::Vector2f((float)dockWidth+4,(float)dataLink->renderWindow->getSize().y+3.0f));
+    dock.setSize(sf::Vector2f((float)dockWidth+4,(float)dLink->renderWindow->getSize().y+3.0f));
     dock.setFillColor(sf::Color::Black);
     dock.setOutlineThickness(1.0f);
     dock.setOutlineColor(sf::Color::Green);
@@ -302,7 +296,7 @@ void GUIManager::update()
 void GUIManager::render()
 {
     //render the dock
-    dataLink->renderWindow->draw(dock);
+    dLink->renderWindow->draw(dock);
     int i = 0;
     for (std::list<GUIDockItem>::iterator it = dockButtons.begin(); it != dockButtons.end(); it++)
     {
@@ -323,22 +317,22 @@ void GUIManager::render()
             temp.setOutlineThickness(1.0f);
             temp.setOutlineColor(sf::Color::Green);
         }
-        dataLink->renderWindow->draw(temp);
+        dLink->renderWindow->draw(temp);
         sf::Sprite temp2;
-        temp2.setTexture(*(dataLink->TextureGet(it->ImageID)));
+        temp2.setTexture(*(dLink->TextureGet(it->ImageID)));
         temp2.setPosition(3.0f, (float)(i*(dockWidth+1)+3));
 
-        temp2.setScale(((float)dockWidth)/((float)dataLink->TextureGet(it->ImageID)->getSize().x+4.0f),
-                       (((float)dockWidth)/((float)dataLink->TextureGet(it->ImageID)->getSize().y+4.0f)));
+        temp2.setScale(((float)dockWidth)/((float)dLink->TextureGet(it->ImageID)->getSize().x+4.0f),
+                       (((float)dockWidth)/((float)dLink->TextureGet(it->ImageID)->getSize().y+4.0f)));
 
-        dataLink->renderWindow->draw(temp2);
+        dLink->renderWindow->draw(temp2);
         i++;
     }
     //render the menus
     for (std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
     {
-        it->update(dataLink);
-        it->render(dataLink);
+        it->update();
+        it->render();
     }
 }
 
@@ -405,7 +399,7 @@ void GUIManager::add_MainMenu()
     main.GuiElements.push_back(elem3);
     main.GuiElements.push_back(elem4);
 
-    main.update(dataLink);
+    main.update();
     guiMenus.push_back(main);
 }
 void GUIManager::add_ConsoleMenu()
@@ -431,7 +425,7 @@ void GUIManager::add_ConsoleMenu()
 
     console.GuiElements.push_back(elem1);*/
 
-    console.update(dataLink);
+    console.update();
     guiMenus.push_back(console);
     std::cout << "Debug 3" << std::endl;
 }
@@ -460,7 +454,7 @@ void GUIManager::add_OptionMenu()
 
     main.GuiElements.push_back(elem1);
 
-    main.update(dataLink);
+    main.update();
     guiMenus.push_back(main);
 }
 void GUIManager::add_CodeIDE()
@@ -485,7 +479,7 @@ void GUIManager::add_CodeIDE()
     menu.GuiElements.push_back(elem1);
 
 
-    menu.update(dataLink);
+    menu.update();
 
     guiMenus.push_back(menu);
 }

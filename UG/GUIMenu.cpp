@@ -11,7 +11,7 @@ GUIMenu::GUIMenu()
 //DESTRUCTORS
 
 //METHODS
-void GUIMenu::update(DataBank *datalink)
+void GUIMenu::update()
 {
     if(isHidden == false)
     {
@@ -19,7 +19,7 @@ void GUIMenu::update(DataBank *datalink)
         for(std::list<GUIElement>::iterator it = GuiElements.begin(); it != GuiElements.end(); it++)
         {
             it->isActive = isActive;
-            it->update(datalink, X, Y+16);
+            it->update(X, Y+16);
         }
         //recalcualte the renderShapes
         if(isActive)
@@ -55,15 +55,15 @@ void GUIMenu::update(DataBank *datalink)
             titleBar.setOutlineColor(sf::Color::White);
         }
 
-        menuTitle.setFont(*datalink->FontGet("$_menuTitle"));
+        menuTitle.setFont(*dLink->FontGet("$_menuTitle"));
         menuTitle.setCharacterSize(12.0f);
         menuTitle.setPosition((float)(X+4),(float)(Y));
         menuTitle.setColor(sf::Color(200,200,200,255));
 
         if (closeButtonHover)
-            closeButton.setTexture(*datalink->TextureGet("$_closeButtonHover"));
+            closeButton.setTexture(*dLink->TextureGet("$_closeButtonHover"));
         else
-            closeButton.setTexture(*datalink->TextureGet("$_closeButtonNormal"));
+            closeButton.setTexture(*dLink->TextureGet("$_closeButtonNormal"));
         closeButton.setPosition((float)(X+Width-15),(float)(Y+1));
     }
 }
@@ -87,23 +87,23 @@ void GUIMenu::SetMenuTitle(std::string _title)
 {
     menuTitle.setString(_title);
 }
-void GUIMenu::render(DataBank *dataLink)
+void GUIMenu::render()
 {
     if(isHidden == false)
     {
         //Rendermyself
-        dataLink->renderWindow->draw(mainBackground);
-        dataLink->renderWindow->draw(titleBar);
-        dataLink->renderWindow->draw(menuTitle);
-        dataLink->renderWindow->draw(closeButton);
+        dLink->renderWindow->draw(mainBackground);
+        dLink->renderWindow->draw(titleBar);
+        dLink->renderWindow->draw(menuTitle);
+        dLink->renderWindow->draw(closeButton);
         //RenderElements:
         for (std::list<GUIElement>::iterator it = GuiElements.begin(); it != GuiElements.end(); it++)
         {
-            it->render(dataLink, X, Y+16);
+            it->render(X, Y+16);
         }
     }
 }
-void GUIMenu::handleEvent(DataBank* _datalink, sf::Event* _event)
+void GUIMenu::handleEvent(sf::Event* _event)
 {
     //moving menu
     int x,y;
@@ -151,14 +151,14 @@ void GUIMenu::handleEvent(DataBank* _datalink, sf::Event* _event)
                 std::list<std::string> x;
                 x.push_back("menu_close");
                 x.push_back(ID);
-                _datalink->pushEvent(x);
+                dLink->pushEvent(x);
                 Hide();
             }
         }
     }
     for(std::list<GUIElement>::iterator it = GuiElements.begin(); it != GuiElements.end(); it++)
     {
-        it->handleEvent(_datalink, _event, X, Y+16);
+        it->handleEvent(_event, X, Y+16);
     }
 }
 void GUIMenu::Enable()
