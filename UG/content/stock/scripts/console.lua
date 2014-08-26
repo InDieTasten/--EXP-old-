@@ -14,10 +14,18 @@ function runCommand(cmd)
 	--- Interpretation
 	if(parts[1] == "create") then
 		if(parts[2] == "task") then
-
+			task = {}
+			for i = 3, #parts do
+				table.insert(task, parts[i])
+			end
+			pushTask(table.unpack(task))
 		end
 		if(parts[2] == "event") then
-
+			event = {}
+			for i = 3, #parts do
+				table.insert(event, parts[i])
+			end
+			pushEvent(table.unpack(event))
 		end
 	end
 
