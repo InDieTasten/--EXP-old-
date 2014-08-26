@@ -14,10 +14,6 @@ function onSoftEvent(...)
 			--interpret(e[3])
 		end
 	end
-	if e[1] == "button_pressed" then
-		pushTask("ein", "neuer", "task")
-		pushEvent("auch", "events", "können", "in die queue")
-	end
 end
 function onTask(...)
 	print("---t")
