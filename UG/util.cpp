@@ -30,15 +30,6 @@ std::string util::toString(char* _x)
     buff << _x;
     return buff.str();
 }
-std::string util::subString(std::string _string, int _start, int _end)
-{
-    std::ostringstream buff;
-    for(int i = _start-1; i-1 <= _end; i++)
-    {
-        buff << _string.c_str()[i];
-    }
-    return buff.str();
-}
 char util::getCharAt(std::string _string, int _pos)
 {
     return _string.c_str()[_pos];
@@ -51,7 +42,7 @@ int    util::toInt(std::string _value)
     if(_value.c_str()[0] == '-')
     {
         base*=-1;
-        _value = subString(_value, 2, _value.length());
+        ///_value = subString(_value, 2, _value.length());
     }
     for(int x = _value.length(); x > 0; x--)
     {

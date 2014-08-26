@@ -14,7 +14,6 @@ std::string toString(float);
 std::string toString(double);
 std::string toString(char*);
 std::string toString(std::list<std::string>);
-std::string subString(std::string, int, int);
 char getCharAt(std::string, int);
 
 int toInt(std::string);
