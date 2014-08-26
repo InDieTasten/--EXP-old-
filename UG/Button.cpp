@@ -86,6 +86,17 @@ void Button::handleEvent(sf::Event* _event, int _x, int _y, std::string _id)
                     }
                 }
             }
+            else
+            {
+                if(mouseHover)
+                {
+                    std::list<std::string> x;
+                    x.push_back("button_leave");
+                    x.push_back(_id);
+                    dLink->pushEvent(x);
+                    mouseHover = false;
+                }
+            }
         }
         if(_event->type == sf::Event::MouseButtonReleased && isActive)
         {
