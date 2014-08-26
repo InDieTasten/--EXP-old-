@@ -17,7 +17,7 @@ function registerPlugin(path, name)
 		print("[Error] -> "..tostring(err))
 	end
 	plugins[name] = {["path"]=path, ["status"]="unloaded"}
-	print("Plugin '"..name.."' successfully registered")
+	print("[Info] Plugin '"..name.."' successfully registered")
 end
 function loadPlugin(name)
 	if(type(name) ~= "string") then
@@ -32,7 +32,7 @@ function loadPlugin(name)
 		    if(pl) then
 		    	pl()
 		    	plugins[name].status = "loaded"
-		    	print("Plugin '"..name.."' successfully loaded")
+		    	print("[Info] Plugin '"..name.."' successfully loaded")
 		    else print(err) end
 		else
 			print("[Error] Plugin '"..name.."' already loaded!")
@@ -51,7 +51,7 @@ function unloadPlugin(name)
 			--unload it
 			_G[name] = false
 			plugins[name].status = "unloaded"
-			print("Plugin '"..name.."' unloaded")
+			print("[Info] Plugin '"..name.."' unloaded")
 		else
 			print("[Error] Plugin '"..name.."' already unloaded!")
 		end
@@ -72,18 +72,6 @@ end
 --print(externAPI.apiFunction("Test"))
 
 function onLoad()
-
-	print("")
-	print("")
-	print("")
-	for k,v in pairs(_G) do
-		print(type(v).." "..tostring(k).." = "..tostring(v))
-	end
-	print("")
-	print("")
-	print("")
-
-
 	for dir in io.popen([[dir "content/plugins" /b]]):lines() do
 		registerPlugin("content/plugins/"..dir, string.sub(dir, 1, #dir-4))
 	end
