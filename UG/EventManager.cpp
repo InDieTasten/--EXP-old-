@@ -55,7 +55,8 @@ void EventManager::handleSoftEvent(std::list<std::string> _args)
 }
 void EventManager::handleTask(std::list<std::string> _args)
 {
-
+    // to the plugins
+    taskBuffer.push_back(_args);
 }
 void EventManager::processEvent(sf::Event *_event)
 {
