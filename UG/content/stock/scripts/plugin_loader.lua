@@ -1,3 +1,11 @@
+local popen = io.popen
+local open = io.open
+local pushEvent = pushEvent
+local pullEvent = pullEvent
+local pushTask = pushTask
+local pullTask = pullTask
+io = nil
+
 local plugins = {}
 
 function registerPlugin(path, name)
@@ -9,7 +17,7 @@ function registerPlugin(path, name)
 		print("[Error] Plugin '"..name.."' already exists!")
 		return
 	end
-	file, err = io.open(path)
+	file, err = open(path)
 	if(file) then
 		file:close()
 	else
@@ -72,7 +80,7 @@ end
 --print(externAPI.apiFunction("Test"))
 
 function onLoad()
-	for dir in io.popen([[dir "content/plugins" /b]]):lines() do
+	for dir in popen([[dir "content/plugins" /b]]):lines() do
 		registerPlugin("content/plugins/"..dir, string.sub(dir, 1, #dir-4))
 	end
 end
@@ -96,7 +104,7 @@ function onSoftEvent(...)
 	end
 end
 function onTask(...)
-	print("TASK DETECTED!")
+	
 end
 
 --local coroutine = coroutine

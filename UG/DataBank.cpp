@@ -349,19 +349,22 @@ void DataBank::loadDataBank(std::string _path) //confusion
 
 void DataBank::pushEvent(std::list<std::string> _args)
 {
-    //DEBUG
-    std::ostringstream x;
-    x << "Soft-Event:";
-    for(std::list<std::string>::iterator it = _args.begin(); it != _args.end(); it++)
-    {
-        x << " " << *it;
-    }
-    log("MemBank   ",x.str());
     softEvents.push_back(_args);
 }
 std::list<std::string> DataBank::pullEvent()
 {
     std::list<std::string> result = *softEvents.begin();
     softEvents.pop_front();
+    return result;
+}
+
+void DataBank::pushTask(std::list<std::string> _args)
+{
+    softTasks.push_back(_args);
+}
+std::list<std::string> DataBank::pullTask()
+{
+    std::list<std::string> result = *softTasks.begin();
+    softTasks.pop_front();
     return result;
 }
