@@ -404,7 +404,6 @@ void GUIManager::add_MainMenu()
 }
 void GUIManager::add_ConsoleMenu()
 {
-    std::cout << "Debug 1" << std::endl;
     GUIMenu console;
     console.ID = "$_consoleMenu";
     console.SetX(dockWidth+10);
@@ -412,7 +411,6 @@ void GUIManager::add_ConsoleMenu()
     console.SetWidth(300);
     console.SetHeight(200);
     console.SetMenuTitle("--[[ Console ]]--");
-    std::cout << "Debug 2" << std::endl;
 
     /*GUIElement elem1;
     elem1.ID = "$_consoleMenu.output";
@@ -427,7 +425,6 @@ void GUIManager::add_ConsoleMenu()
 
     console.update();
     guiMenus.push_back(console);
-    std::cout << "Debug 3" << std::endl;
 }
 void GUIManager::add_OptionMenu()
 {
@@ -460,7 +457,6 @@ void GUIManager::add_OptionMenu()
 void GUIManager::add_CodeIDE()
 {
     GUIMenu menu;
-    std::cout << "Debug 4" << std::endl;
     menu.ID = "$_codeIDE";
     menu.SetX(dockWidth+500);
     menu.SetY(10);

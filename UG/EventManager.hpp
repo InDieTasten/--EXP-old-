@@ -9,8 +9,14 @@
 #include "ModModule.hpp"
 
 extern std::list< std::list<std::string> > eventBuffer;
+
 extern DataBank* dLink;
 extern GUIManager* guiLink;
+
+extern sf::Thread* gThread;
+extern sf::Thread* pThread;
+extern sf::Thread* mThread;
+
 extern sf::Mutex GMutex;
 
 class EventManager
