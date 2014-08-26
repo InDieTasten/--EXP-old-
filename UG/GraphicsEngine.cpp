@@ -50,7 +50,7 @@ void GraphicsEngine::Run()
     {
         if(limit.getElapsedTime().asSeconds() < 1.0/gLimit)
         {
-            sf::sleep(sf::milliseconds(1.0/gLimit - limit.getElapsedTime().asSeconds()));
+            sf::sleep(sf::seconds(1.0/gLimit - limit.getElapsedTime().asSeconds()));
         }
         limit.restart();
         dLink->renderWindow->clear(); //clear renderBuffer with black
