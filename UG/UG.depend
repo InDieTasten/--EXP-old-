@@ -1530,7 +1530,7 @@
 	<math.h>
 	"DataBank.hpp"
 
-1409048989 c:\users\aysha heuer\documents\github\--untitledgame--\ug\databank.hpp
+1409049848 c:\users\aysha heuer\documents\github\--untitledgame--\ug\databank.hpp
 	<SFML\Graphics.hpp>
 	<list>
 	"Texture.hpp"
@@ -1546,6 +1546,7 @@
 	"Logger.hpp"
 	"KeyBind.hpp"
 	"Loader.hpp"
+	"Settings.hpp"
 
 1408706864 c:\users\aysha heuer\documents\github\--untitledgame--\libraries\sfml-framework\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -2170,7 +2171,7 @@
 1409006138 source:c:\users\aysha heuer\documents\github\--untitledgame--\ug\logger.cpp
 	"Logger.hpp"
 
-1409048928 source:c:\users\aysha heuer\documents\github\--untitledgame--\ug\main.cpp
+1409049498 source:c:\users\aysha heuer\documents\github\--untitledgame--\ug\main.cpp
 	<iostream>
 	"DataBank.hpp"
 	"Vector.hpp"
@@ -2232,4 +2233,6 @@
 
 1408706861 source:c:\users\aysha heuer\documents\github\--untitledgame--\ug\vector.cpp
 	"Vector.hpp"
+
+1409050332 c:\users\aysha heuer\documents\github\--untitledgame--\ug\settings.hpp
 
