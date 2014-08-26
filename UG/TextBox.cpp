@@ -68,8 +68,8 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
             }
             else if(_event->type == sf::Event::TextEntered)
             {
-                log("DEBUG       ", util.tostring(_event->text.unicode));
-                if (static_cast<char>(_event->text.unicode) == '\n') {
+                std::cout << _event->text.unicode << std::endl;
+                if (static_cast<char>(_event->text.unicode) == sf::Uint32(13)) {
                     std::list<std::string> x;
                     x.push_back("textbox_submit");
                     x.push_back(_id);
