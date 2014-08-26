@@ -6,6 +6,7 @@
 //METHODS
 void ModModule::Run()
 {
+    log(std::string("Mod-Module"), std::string("Thread started"));
     std::list<Script> *scripts;
     scripts = dLink->GetScripts();
 
