@@ -50,10 +50,10 @@ void EventManager::handleSoftEvent(std::list<std::string> _args)
 void EventManager::processEvent(sf::Event *_event)
 {
     handleEvent(_event);
-    gLink->handleEvent(_event);
+    guiLink->handleEvent(_event);
 }
 void EventManager::processSoftEvent(std::list<std::string> _args)
 {
     handleSoftEvent(_args);
-    gLink->handleSoftEvent(_args);
+    guiLink->handleSoftEvent(_args);
 }
