@@ -6,7 +6,11 @@ function onUnload()
 end
 function runCommand(cmd)
 	print("Command issued: ", cmd)
-
+	parts = {}
+	for w in cmd:gmatch("%S+") do parts:insert(w) end
+	for k,v in pairs(parts) do
+		print("p",k,": ",v)
+	end
 end
 function onSoftEvent(...)
 	print("---e")
