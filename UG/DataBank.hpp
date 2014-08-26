@@ -16,6 +16,7 @@
 #include "Logger.hpp"
 #include "KeyBind.hpp"
 #include "Loader.hpp"
+#include "Settings.hpp"
 
 class DataBank
 {
@@ -27,7 +28,6 @@ private:
     std::list<Font> fonts;
     std::list<Sound> sounds;
     std::list<Track> tracks;
-    std::list<Camera> cameras;
     std::string activeCameraID;
 public:
     sf::RenderWindow *renderWindow;
@@ -36,6 +36,8 @@ public:
     bool runGraphics;
     bool runPhysics;
     bool runModules;
+
+    Settings settings;
 
     std::list<std::list<std::string> > softEvents;
     std::list<std::list<std::string> > softTasks;
