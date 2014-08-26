@@ -142,6 +142,10 @@ int main ( int argc, char *argv[] )
         {
             EventMan.processSoftEvent(dLink->pullEvent());
         }
+        for(int i = dLink->softTasks.size(); i > 0; i--)
+        {
+            EventMan.processTask(dLink->pullTask());
+        }
     }
     GMutex.unlock();
 

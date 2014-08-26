@@ -44,6 +44,7 @@ public:
 
     void handleEvent(sf::Event *_event);
     void handleSoftEvent(std::list<std::string> _args);
+    void handleTask(std::list<std::string> _args);
 
     void update();
     void render();

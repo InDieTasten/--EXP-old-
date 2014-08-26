@@ -25,3 +25,11 @@ void Label::handleEvent(sf::Event* _event, int _x, int _y, std::string _id)
 {
 
 }
+void Label::handleSoftEvent(std::list<std::string> _args, int _x, int _y, std::string _id)
+{
+
+}
+void Label::handleTask(std::list<std::string> _args, int _x, int _y, std::string _id)
+{
+
+}

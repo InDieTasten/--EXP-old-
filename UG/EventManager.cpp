@@ -28,6 +28,8 @@ void EventManager::handleEvent(sf::Event *_event)
 }
 void EventManager::handleSoftEvent(std::list<std::string> _args)
 {
+    // to the plugins
+    eventBuffer.push_back(_args);
     //Handling events for the game
     if(*_args.begin() == "button_released")
     {
@@ -46,8 +48,10 @@ void EventManager::handleSoftEvent(std::list<std::string> _args)
             return;
         }
     }
-    // to the plugins
-    eventBuffer.push_back(_args);
+}
+void EventManager::handleTask(std::list<std::string> _args)
+{
+
 }
 void EventManager::processEvent(sf::Event *_event)
 {
@@ -58,4 +62,9 @@ void EventManager::processSoftEvent(std::list<std::string> _args)
 {
     handleSoftEvent(_args);
     guiLink->handleSoftEvent(_args);
+}
+void EventManager::processTask(std::list<std::string> _args)
+{
+    handleTask(_args);
+    guiLink->handleTask(_args);
 }

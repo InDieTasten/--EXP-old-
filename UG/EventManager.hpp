@@ -31,10 +31,12 @@ private:
     //METHODS
     void handleEvent(sf::Event *_event);
     void handleSoftEvent(std::list<std::string> _args);
+    void handleTask(std::list<std::string> _args);
 public:
     void SetDataLink(DataBank *_dataLink, GUIManager *_gManager, GraphicsEngine* _gEngine, PhysicsEngine* _pEngine, ModModule *_mModule, int* _level);
     void processEvent(sf::Event *_event);
     void processSoftEvent(std::list<std::string> _args);
+    void processTask(std::list<std::string> _args);
 };
 
 #endif

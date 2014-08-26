@@ -161,6 +161,20 @@ void GUIMenu::handleEvent(sf::Event* _event)
         it->handleEvent(_event, X, Y+16);
     }
 }
+void GUIMenu::handleSoftEvent(std::list<std::string> _args)
+{
+    for(std::list<GUIElement>::iterator it = GuiElements.begin(); it != GuiElements.end(); it++)
+    {
+        it->handleSoftEvent(_args, X, Y+16);
+    }
+}
+void GUIMenu::handleTask(std::list<std::string> _args)
+{
+    for(std::list<GUIElement>::iterator it = GuiElements.begin(); it != GuiElements.end(); it++)
+    {
+        it->handleTask(_args, X, Y+16);
+    }
+}
 void GUIMenu::Enable()
 {
     isActive = true;
