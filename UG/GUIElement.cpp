@@ -94,3 +94,49 @@ void GUIElement::handleEvent(sf::Event* _event, int _x, int _y)
         textBox.handleEvent(_event, _x+X, _y+Y, ID);
     }
 }
+void GUIElement::handleSoftEvent(std::list<std::string> _args, int _x, int _y)
+{
+    if(Type == "codebox")
+    {
+        codeBox.handleSoftEvent(_args, _x+X, _y+Y, ID);
+    }
+    else if (Type == "button")
+    {
+        button.handleSoftEvent(_args, _x+X, _y+Y, ID);
+    }
+    else if (Type == "horslider")
+    {
+        horSlider.handleSoftEvent(_args, _x+X, _y+Y, ID);
+    }
+    else if (Type == "label")
+    {
+        label.handleSoftEvent(_args, _x+X, _y+Y, ID);
+    }
+    else if (Type == "textbox")
+    {
+        textBox.handleSoftEvent(_args, _x+X, _y+Y, ID);
+    }
+}
+void GUIElement::handleTask(std::list<std::string> _args, int _x, int _y)
+{
+    if(Type == "codebox")
+    {
+        codeBox.handleTask(_args, _x+X, _y+Y, ID);
+    }
+    else if (Type == "button")
+    {
+        button.handleTask(_args, _x+X, _y+Y, ID);
+    }
+    else if (Type == "horslider")
+    {
+        horSlider.handleTask(_args, _x+X, _y+Y, ID);
+    }
+    else if (Type == "label")
+    {
+        label.handleTask(_args, _x+X, _y+Y, ID);
+    }
+    else if (Type == "textbox")
+    {
+        textBox.handleTask(_args, _x+X, _y+Y, ID);
+    }
+}

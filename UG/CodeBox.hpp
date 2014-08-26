@@ -42,6 +42,8 @@ public:
 
     void Render(int _x, int _y, std::string _id);
     void handleEvent(sf::Event* _event, int _x, int _y, std::string _id);
+    void handleSoftEvent(std::list<std::string> _args, int _x, int _y, std::string _id);
+    void handleTask(std::list<std::string> _args, int _x, int _y, std::string _id);
 
     char getInput(int Type,sf::Event* _event);
 

@@ -39,6 +39,7 @@ public:
     bool runModules;
 
     std::list<std::list<std::string> > softEvents;
+    std::list<std::list<std::string> > softTasks;
 
     //CONSTRUCTORS
     DataBank();
@@ -86,6 +87,8 @@ public:
     //Events
     void pushEvent(std::list<std::string> _args);
     std::list<std::string> pullEvent();
+    void pushTask(std::list<std::string> _args);
+    std::list<std::string> pullTask();
 };
 
 #endif
