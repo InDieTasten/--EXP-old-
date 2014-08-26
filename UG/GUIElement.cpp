@@ -44,8 +44,8 @@ void GUIElement::update(int _x, int _y)
     }
     else if (Type == "textbox")
     {
-        //textBox.isActive = isActive;
-        //textBox.Update(_x+X, _y+Y, ID);
+        textBox.isActive = true;
+        textBox.Update(_x+X, _y+Y, ID);
     }
 }
 void GUIElement::render(int _x, int _y)

@@ -477,7 +477,7 @@ void GUIManager::add_CodeIDE()
     menu.SetMenuTitle("--[[ Lua-IDE ]]--");
 
     GUIElement elem1;
-    elem1.ID = "textbox";
+    elem1.ID = "$_codeIDE.main";
     elem1.Type = "textbox";
     elem1.X = 10;
     elem1.Y = 10;
