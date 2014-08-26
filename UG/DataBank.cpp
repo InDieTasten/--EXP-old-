@@ -271,55 +271,6 @@ sf::SoundBuffer* DataBank::TrackGet(std::string _id)
     }
     log("MemBank   ", "Trying to load non-registered track. In this case no recovery routine is available and the game might crash right after this message");
 }
-
-void DataBank::CameraRegister(std::string _id, Vector _position, float _rotation)
-{
-    for (std::list<Camera>::iterator it = cameras.begin(); it != cameras.end(); it++)
-    {
-        if (it->id == _id)
-        {
-            //FEHLER
-            return;
-        }
-    }
-    cameras.push_back(Camera(_id, _position, _rotation));
-}
-void DataBank::CameraErase(std::string _id)
-{
-    for(std::list<Camera>::iterator it = cameras.begin(); it != cameras.end(); it++)
-    {
-        if(_id == it->id)
-        {
-            cameras.erase(it);
-        }
-    }
-}
-void DataBank::CameraSetActive(std::string _id)
-{
-    activeCameraID = _id;
-}
-Camera* DataBank::CameraGetActive()
-{
-    for (std::list<Camera>::iterator it = cameras.begin(); it != cameras.end(); it++)
-    {
-        if (it->id == activeCameraID)
-        {
-            return &(*it);
-        }
-    }
-    printf("No active Camera found :'(\n");
-}
-Camera* DataBank::CameraGet(std::string _id)
-{
-    for (std::list<Camera>::iterator it = cameras.begin(); it != cameras.end(); it++)
-    {
-        if (it->id == _id)
-        {
-            return &(*it);
-        }
-    }
-}
-
 void DataBank::saveDataBank(std::string _path) //confusion
 {
     std::ofstream filehandle("SAVE.USG");
