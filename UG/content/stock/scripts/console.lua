@@ -1,7 +1,13 @@
 function onLoad()
 
 end
-function onUnload() end
+function onUnload()
+
+end
+function runCommand(cmd)
+	print("Command issued: ", cmd)
+
+end
 function onSoftEvent(...)
 	print("---e")
 	for k,v in pairs({...}) do
@@ -11,7 +17,8 @@ function onSoftEvent(...)
 	e = {...}
 	if e[1] == "textbox_submit" then
 		if(e[2] == "$_consoleMenu.input") then
-			--interpret(e[3])
+			pushTask("textbox_clear","$_consoleMenu.input")
+			status, err = pcall(runCommand, e[3])
 		end
 	end
 end
