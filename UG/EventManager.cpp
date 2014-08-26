@@ -38,7 +38,9 @@ void EventManager::handleSoftEvent(std::list<std::string> _args)
             dLink->runPhysics = false;
             dLink->runModules = false;
             GMutex.unlock();
-            sf::sleep(sf::seconds(1.0f)); //wait for threads to finish
+            gThread->wait();
+            pThread->wait();
+            mThread->wait();
             GMutex.lock();
             dLink->renderWindow->close();
             return;
