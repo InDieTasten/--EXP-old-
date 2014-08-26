@@ -64,21 +64,15 @@ int main ( int argc, char *argv[] )
     log("Main      ", "Create Memory Mangager Instance...");
     DataBank dBank;
     dLink = &dBank;
-    log("Main      ", "Registrate Prime Camera...");
-    dLink->CameraRegister("mainCam", Vector(0.0f,0.0f), 0.0f);
-    log("Main      ", "Set active camera to Primary Cam...");
-    dLink->CameraSetActive("mainCam");
 
     //App Instance
     log("Main      ", "Generate RenderDevice(Window)...");
     sf::RenderWindow App(sf::VideoMode(1280, 720, 32), "[[UntitledGame]]", sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
     log("Main      ", "Re-Apply view...");
-    sf::View View(App.getDefaultView());
+    dLink->gameView = App.getDefaultView();
+    dLink->guiView = App.getDefaultView();
     log("Main      ", "Launch RenderLink...");
     dLink->renderWindow = &App;
-    log("Main      ", "Launch ViewLink...");
-    dLink->standardView = &View;
-
 
     StockRegister();
 
