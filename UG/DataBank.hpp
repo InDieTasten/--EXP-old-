@@ -31,7 +31,6 @@ private:
     std::string activeCameraID;
 public:
     sf::RenderWindow *renderWindow;
-    sf::View *standardView;
     SolarSystem Level;
     bool guiMode;
     bool runGraphics;
@@ -74,12 +73,9 @@ public:
     void TrackLoad(std::string _id);
     void TrackUnload(std::string _id);
     sf::SoundBuffer* TrackGet(std::string _id);
-    //Camera Management
-    void CameraRegister(std::string _id, Vector _position, float _rotation);
-    void CameraErase(std::string _id);
-    void CameraSetActive(std::string _id);
-    Camera* CameraGetActive();
-    Camera* CameraGet(std::string _id);
+    //Views
+    sf::View gameView;
+    sf::View guiView;
     //Files
     void saveDataBank(std::string _path);
     void loadDataBank(std::string _path);
