@@ -1,7 +1,8 @@
 #ifndef _Settings_hpp_
 #define _Settings_hpp_
 
-struct Settings {
+struct Settings
+{
     int dockWidth;
 };
 
