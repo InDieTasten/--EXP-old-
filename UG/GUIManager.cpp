@@ -283,6 +283,18 @@ void GUIManager::handleEvent(sf::Event *_event)
 void GUIManager::handleSoftEvent(std::list<std::string> _args)
 {
     handle_StockButton(_args);
+
+    for(std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
+    {
+        it->handleSoftEvent(_args);
+    }
+}
+void GUIManager::handleTask(std::list<std::string> _args)
+{
+    for(std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
+    {
+        it->handleTask(_args);
+    }
 }
 
 void GUIManager::update()

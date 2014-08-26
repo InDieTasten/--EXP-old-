@@ -143,3 +143,11 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
         clear = 0;
     }
 }
+void TextBox::handleSoftEvent(std::list<std::string> _args, int _x, int _y, std::string _id)
+{
+
+}
+void TextBox::handleTask(std::list<std::string> _args, int _x, int _y, std::string _id)
+{
+
+}

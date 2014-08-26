@@ -41,6 +41,8 @@ public:
     void SetMenuTitle(std::string _title);
     void render();
     void handleEvent(sf::Event* _event);
+    void handleSoftEvent(std::list<std::string> _args);
+    void handleTask(std::list<std::string> _args);
     void Enable();
     void Disable();
     void Show();
