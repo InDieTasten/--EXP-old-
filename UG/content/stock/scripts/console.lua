@@ -7,10 +7,21 @@ end
 function runCommand(cmd)
 	print("Command issued: ", cmd)
 	parts = {}
-	for w in cmd:gmatch("%S+") do parts:insert(w) end
+	for w in cmd:gmatch("%S+") do table.insert(parts,w) end
 	for k,v in pairs(parts) do
 		print("p",k,": ",v)
 	end
+	--- Interpretation
+	if(parts[1] == "create") then
+		if(parts[2] == "task") then
+
+		end
+		if(parts[2] == "event") then
+
+		end
+	end
+
+
 end
 function onSoftEvent(...)
 	print("---e")
@@ -20,9 +31,12 @@ function onSoftEvent(...)
 	print("---e")
 	e = {...}
 	if e[1] == "textbox_submit" then
-		if(e[2] == "$_consoleMenu.input") then
-			pushTask("textbox_clear","$_consoleMenu.input")
+		if(e[2] == "$_codeIDE.main") then
+			pushTask("textbox_clear","$_codeIDE.main")
 			status, err = pcall(runCommand, e[3])
+			if(not status) then
+				print("[Error] "..tostring(err))
+			end
 		end
 	end
 end
