@@ -27,26 +27,13 @@ void GraphicsEngine::Run()
         dLink->renderWindow->setView(dLink->gameView);
         for (std::list<SpaceObject>::iterator it = dLink->Level.SpaceObjectList.begin(); it != dLink->Level.SpaceObjectList.end(); it++)
         {
-            // set the right Texture
             renderSprite.setTexture(*dLink->TextureGet(it->TextureID));
-
-            //set the center relative to the texture size
             renderSprite.setOrigin(renderSprite.getLocalBounds().width/2.0f, renderSprite.getLocalBounds().height/2.0f);
-
-            //set the right rotation relative to the camera
             renderSprite.setRotation(it->Rotation);
-
-            //set the relative position to the Camera including zoom and centering to the screen //missing rotation
             renderSprite.setPosition(it->Position.x, it->Position.y);
         }
-
-        //RREENNDDEERR tiny stars
-
-        //RREENNDDEERR HUD
-
-        //RREENNDDEERR GUI
-        dLink->renderWindow->setView(dLink->guiView);
         guiLink->update();
+        dLink->renderWindow->setView(dLink->guiView);
         guiLink->render();
 
         //Display the damn frame
