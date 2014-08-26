@@ -10,12 +10,14 @@ void EventManager::handleEvent(sf::Event *_event)
     if (_event->type == sf::Event::KeyPressed && _event->key.code == sf::Keyboard::Escape || _event->type == sf::Event::Closed)
     {
         dLink->runGraphics = false;
-        dLink->runPhysics = false;
-        dLink->runModules = false;
-        GMutex.unlock();
-        sf::sleep(sf::seconds(2.0f)); //wait for threads to finish
-        GMutex.lock();
-        dLink->renderWindow->close();
+            dLink->runPhysics = false;
+            dLink->runModules = false;
+            GMutex.unlock();
+            gThread->wait();
+            pThread->wait();
+            mThread->wait();
+            GMutex.lock();
+            dLink->renderWindow->close();
         return;
     }
     if(_event->type == sf::Event::Resized)
