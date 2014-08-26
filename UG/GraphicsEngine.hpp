@@ -19,11 +19,6 @@ class GraphicsEngine
 private:
     sf::Sprite renderSprite;
 public:
-    Vector CameraPosition;
-    double CameraRotation;
-    float Zoom;
-    int cyclesPerSecond;
-
     //CONSTRUCTORS
     GraphicsEngine();
 
@@ -31,9 +26,6 @@ public:
 
     //METHODS
 private:
-    double calcDistanceX(Vector _obj1, Vector _obj2);
-    double calcDistanceY(Vector _obj1, Vector _obj2);
-    float calcDistance(Vector _obj1, Vector _obj2);
 public:
     void Run();
     void Stop();
