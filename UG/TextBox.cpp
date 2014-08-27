@@ -43,9 +43,11 @@ void TextBox::Update(int _x, int _y,std::string _id)
 void TextBox::Render(int _x, int _y, std::string _id)
 {
     for(std::list<sf::Text>::iterator it1 = text1.begin(); it1 != text1.end(); ++it1)
-    dLink->renderWindow->draw(rect);
-    dLink->renderWindow->draw(c);
-    dLink->renderWindow->draw(*it1);
+    {
+        dLink->renderWindow->draw(rect);
+        dLink->renderWindow->draw(c);
+        dLink->renderWindow->draw(*it1);
+    }
 }
 void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
 {
@@ -54,6 +56,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
         //h‰‰‰‰‰‰‰‰‰‰sslich
         a = line;
         for(std::list<std::string>::iterator it = text.begin();a >= 0; it++){a--;}
+
         if(_event->type == sf::Event::KeyPressed)
         {
             if(_event->key.code == 58)
@@ -82,8 +85,8 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
                 clear = 1;
                 if(cursor>=1)
                 {
-                    tmp = it->substr (0,(cursor-1));
-                    tmp2 = it->substr (cursor,it->size());
+                    tmp = it->substr(0,(cursor-1));
+                    tmp2 = it->substr(cursor,it->size());
                     cursor--;
                     *it = tmp + tmp2;
                 }
@@ -139,7 +142,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
             if (_event->it->unicode < 128 && _event->it->unicode > 31)
             {
                 tmp = it->substr (0,(cursor));
-                tmp2 = _event->it->unicode;
+                tmp2 = _event = it->unicode;
                 tmp3 = it->substr (cursor,it->size());
                 *it = tmp +tmp2 + tmp3;
                 cursor++;
