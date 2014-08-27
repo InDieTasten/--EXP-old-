@@ -76,7 +76,6 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
                 else if(multiline == true)
                 {
                     line++;
-                    //for(;*it != line;*it++){} // IDT: "it" ist nirgendwo deklariert
                     cursor = 0;
                 }
             }
@@ -142,7 +141,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
             if (_event->it->unicode < 128 && _event->it->unicode > 31)
             {
                 tmp = it->substr (0,(cursor));
-                tmp2 = _event = it->unicode;
+                tmp2 = _event->it->unicode;
                 tmp3 = it->substr (cursor,it->size());
                 *it = tmp +tmp2 + tmp3;
                 cursor++;
