@@ -21,6 +21,7 @@ public:
 
     std::string content;
     sf::Text text;
+    std::string::iterator cursor;
     int cursorX;
     int cursorY;
     bool multiline;
