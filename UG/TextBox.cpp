@@ -84,12 +84,12 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
                 clear = 1;
                 if(cursor>=1)
                 {
-                    it->erase(cursor--);
+                    it->erase(cursor--);//
                 }
             }
             else if(_event->key.code == sf::Keyboard::Right)
             {
-                if(cursor < it->size())
+                if(cursor < it->size())//
                 {
                     cursor++;
                 }
@@ -117,14 +117,14 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
             }
             else if(_event->key.code == sf::Keyboard::Delete)
             {
-                if(cursor < it->size())
+                if(cursor < it->size())//
                 {
-                    it->erase(cursor);
+                    it->erase(cursor);//
                 }
             }
             else if(_event->key.code == sf::Keyboard::End)
             {
-                cursor = it->size();
+                cursor = it->size();//
             }
             else if(_event->key.code == sf::Keyboard::Home)
             {
@@ -135,7 +135,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
         {
             if (_event->text.unicode < 128)
             {
-                it->insert(cursor,_event->it->unicode);
+                it->insert(cursor,_event->it->unicode);//?????????????????
                 cursor++;
             }
         }
