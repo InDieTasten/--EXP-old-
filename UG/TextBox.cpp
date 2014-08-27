@@ -7,7 +7,7 @@
 //METHODS
 void TextBox::Setup()
 {
-    multiline = true;
+    multiline = false;
     cursor = 0;
     line = 0;
     std::list<std::string>::iterator it=text.begin();
@@ -42,14 +42,18 @@ void TextBox::Update(int _x, int _y,std::string _id)
 }
 void TextBox::Render(int _x, int _y, std::string _id)
 {
+    for(std::list<sf::Text>::iterator it1 = text1.begin(); it1 != text1.end(); ++it1)
     dLink->renderWindow->draw(rect);
     dLink->renderWindow->draw(c);
-    //dLink->renderWindow->draw(*it1); //IDT: it1 ist hier nicht deklariert. Immer noch ;)
+    dLink->renderWindow->draw(*it1);
 }
 void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
 {
     if(isActive)
     {
+        //h‰‰‰‰‰‰‰‰‰‰sslich
+        a = line;
+        for(std::list<std::string>::iterator it = text.begin();a >= 0; it++){a--;}
         if(_event->type == sf::Event::KeyPressed)
         {
             if(_event->key.code == 58)
@@ -57,12 +61,13 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
                 clear = 1;
                 if(multiline == false)
                 {
+                    std::list<std::string>::iterator itt =text.begin();
                     std::list<std::string> x;
                     x.push_back("textbox_submit");
                     x.push_back(_id);
-                    //x.push_back(text); // IDT: Listentyp ist std::string, keine Liste von std::string
+                    x.push_back(*itt);
                     dLink->pushEvent(x);
-                    //text=""; // IDT: Du kannst eine std::list<std::string> nicht auf einen leeren string setzen
+                    *itt="";
                     cursor = 0;
                 }
                 else if(multiline == true)
@@ -77,18 +82,18 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
                 clear = 1;
                 if(cursor>=1)
                 {
-                    //tmp = *it.substr (0,(cursor-1));// IDT: "it" ist nirgendwo deklariert
-                    //tmp2 = *it.substr (cursor,*it.size());// IDT: "it" ist nirgendwo deklariert
+                    tmp = it->substr (0,(cursor-1));
+                    tmp2 = it->substr (cursor,it->size());
                     cursor--;
-                    //*it = tmp + tmp2;//????????????? // IDT: "it" ist nirgendwo deklariert
+                    *it = tmp + tmp2;
                 }
             }
             else if(_event->key.code == 72)
             {
-                /*if(cursor < *it.size()) // IDT: "it" ist nirgendwo deklariert
+                if(cursor < it->size())
                 {
                     cursor++;
-                }*/
+                }
             }
             else if(_event->key.code == 71)
             {
@@ -113,16 +118,16 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
             }
             else if(_event->key.code == sf::Keyboard::Delete)
             {
-                /*if(cursor < *it.size()) // IDT: "it" ist nirgendwo deklariert
+                if(cursor < it->size())
                 {
-                    tmp = *it.substr (0,(cursor));
-                    tmp2 = *it.substr (cursor+1,*it.size());
+                    tmp = it->substr (0,(cursor));
+                    tmp2 = it->substr (cursor+1,it->size());
                     *it = tmp + tmp2;
-                }*/
+                }
             }
             else if(_event->key.code == sf::Keyboard::End)
             {
-                //cursor = *it.size();// IDT: "it" ist nirgendwo deklariert
+                cursor = it->size();
             }
             else if(_event->key.code == sf::Keyboard::Home)
             {
@@ -131,14 +136,14 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
         }
         else if(_event->type == sf::Event::TextEntered && clear == 0)
         {
-            /*if (_event->*it.unicode < 128 && _event->*it.unicode > 31) // IDT: "it" ist nirgendwo deklariert
+            if (_event->it->unicode < 128 && _event->it->unicode > 31)
             {
-                tmp = *it.substr (0,(cursor));
-                tmp2 = _event->*it.unicode;
-                tmp3 = *it.substr (cursor,*it.size());
+                tmp = it->substr (0,(cursor));
+                tmp2 = _event->it->unicode;
+                tmp3 = it->substr (cursor,it->size());
                 *it = tmp +tmp2 + tmp3;
                 cursor++;
-            }*/
+            }
         }
         clear = 0;
     }
