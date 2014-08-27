@@ -67,7 +67,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
                 }
                 if(_event->key.code == sf::Keyboard::Down)
                 {
-                    cursorY-;
+                    cursorY--;
                     if(cursorX < 1)
                         cursorX = 1;
                 }
