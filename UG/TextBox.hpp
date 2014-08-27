@@ -18,6 +18,7 @@ private:
     sf::RectangleShape c;
     int cursor;
     int line;
+    int a;
 
 public:
     std::list<std::string> text;
