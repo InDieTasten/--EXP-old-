@@ -32,10 +32,11 @@ function runCommand(cmd)
 
 end
 function onSoftEvent(...)
-	print("___event__")
+	print("+--event--")
 	for k,v in pairs({...}) do
 		print("I "..type(v).." "..tostring(k)..": "..tostring(v))
 	end
+	print("+---------")
 	e = {...}
 	if e[1] == "textbox_submit" then
 		if(e[2] == "$_codeIDE.main") then
@@ -48,8 +49,9 @@ function onSoftEvent(...)
 	end
 end
 function onTask(...)
-	print("___task__")
+	print("+--task---")
 	for k,v in pairs({...}) do
 		print("I "..type(v).." "..tostring(k)..": "..tostring(v))
 	end
+	print("+---------")
 end
