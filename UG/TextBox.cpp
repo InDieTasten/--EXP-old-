@@ -18,7 +18,7 @@ void TextBox::Setup()
     position = 0;
     content = "";
     isActive = true;
-    multiline = false;
+    multiline = true;
 }
 void TextBox::Update(int _x, int _y,std::string _id)
 {
