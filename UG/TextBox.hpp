@@ -12,8 +12,6 @@ class TextBox
 private:
     sf::RectangleShape rect;
     std::string tmp;
-    std::string tmp2;
-    std::string tmp3;
     bool clear;
     sf::RectangleShape c;
     int cursor;
