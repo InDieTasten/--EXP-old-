@@ -56,7 +56,6 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
         //h‰‰‰‰‰‰‰‰‰‰sslich
         a = line;
         for(std::list<std::string>::iterator it = text.begin();a != -1; it++){a--;}
-
         if(_event->type == sf::Event::KeyPressed)
         {
             if(_event->key.code == 58)
