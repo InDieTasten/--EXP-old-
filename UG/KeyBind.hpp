@@ -5,7 +5,7 @@
 
 struct KeyBind
 {
-    std::string ID;
+    std::string action;
 
     int keyCode;
 
