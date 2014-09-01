@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1407646530 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\main.cpp
+1409543562 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\main.cpp
 	<iostream>
 	"DataBank.hpp"
 	"Vector.hpp"
@@ -301,17 +301,17 @@
 1402330243 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\actor.cpp
 	"Actor.hpp"
 
-1406858080 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\actor.hpp
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\actor.hpp
 
-1407279123 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\button.cpp
+1409543562 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\button.cpp
 	"Button.hpp"
 
-1407279149 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\button.hpp
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\button.hpp
 	<string.h>
 	<math.h>
 	"DataBank.hpp"
 
-1407197984 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\databank.hpp
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\databank.hpp
 	<SFML\Graphics.hpp>
 	<list>
 	"Texture.hpp"
@@ -327,6 +327,7 @@
 	"Logger.hpp"
 	"KeyBind.hpp"
 	"Loader.hpp"
+	"Settings.hpp"
 
 1365237033 c:\users\indie\bibliotheken\documents\github\--untitledgame--\libraries\sfml-framework\include\sfml\system\export.hpp
 	<SFML/Config.hpp>
@@ -466,18 +467,18 @@
 	<string>
 	<vector>
 
-1407197982 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\texture.hpp
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\texture.hpp
 	<SFML\Graphics.hpp>
 	<string>
 	<list>
 
-1402330247 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\font.hpp
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\font.hpp
 	<SFML\Graphics.hpp>
 	<string>
 	<list>
 	<iostream>
 
-1402330249 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\sound.hpp
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\sound.hpp
 	<SFML\Audio.hpp>
 	<string>
 	<list>
@@ -542,12 +543,12 @@
 	<SFML/System/Thread.hpp>
 	<vector>
 
-1402330249 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\track.hpp
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\track.hpp
 	<SFML\Audio.hpp>
 	<string>
 	<list>
 
-1402330248 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\solarsystem.hpp
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\solarsystem.hpp
 	"SpaceObject.hpp"
 	<list>
 
@@ -560,18 +561,18 @@
 	"Camera.hpp"
 	<fstream>
 
-1402330249 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\vector.hpp
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\vector.hpp
 
-1402330244 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\collisionindice.hpp
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\collisionindice.hpp
 	<SFML\Graphics.hpp>
 	<iostream>
 	<stdio.h>
 
-1402330243 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\camera.hpp
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\camera.hpp
 	"Vector.hpp"
 	<string>
 
-1402330248 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\script.hpp
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\script.hpp
 	<string>
 	<lua.h>
 	<lualib.h>
@@ -596,7 +597,7 @@
 	<stdio.h>
 	"lua.h"
 
-1407370493 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\logger.hpp
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\logger.hpp
 	<iostream>
 	<time.h>
 	<string>
@@ -604,10 +605,10 @@
 	<stdio.h>
 	<sstream>
 
-1402330247 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\keybind.hpp
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\keybind.hpp
 	<string>
 
-1407252916 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\loader.hpp
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\loader.hpp
 	<list>
 	<iostream>
 	<conio.h>
@@ -618,10 +619,10 @@
 1407165769 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\camera.cpp
 	"Camera.hpp"
 
-1407279436 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\codebox.cpp
+1409543562 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\codebox.cpp
 	"CodeBox.hpp"
 
-1407278928 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\codebox.hpp
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\codebox.hpp
 	<string.h>
 	"DataBank.hpp"
 	<iostream>
@@ -630,13 +631,13 @@
 1407165769 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\collisionindice.cpp
 	"CollisionIndice.hpp"
 
-1407348487 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\databank.cpp
+1409543562 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\databank.cpp
 	"DataBank.hpp"
 
-1407647395 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\eventmanager.cpp
+1409543598 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\eventmanager.cpp
 	"EventManager.hpp"
 
-1407647395 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\eventmanager.hpp
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\eventmanager.hpp
 	<SFML\Graphics.hpp>
 	"DataBank.hpp"
 	"GraphicsEngine.hpp"
@@ -644,7 +645,7 @@
 	"GUIManager.hpp"
 	"ModModule.hpp"
 
-1407230992 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\graphicsengine.hpp
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\graphicsengine.hpp
 	<SFML\Graphics.hpp>
 	"Vector.hpp"
 	<list>
@@ -652,17 +653,17 @@
 	"DataBank.hpp"
 	"GUIManager.hpp"
 
-1407185264 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\guimanager.hpp
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\guimanager.hpp
 	<list>
 	"GUIMenu.hpp"
 	"DataBank.hpp"
 	"GUIDockItem.hpp"
 
-1407185237 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\guimenu.hpp
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\guimenu.hpp
 	<list>
 	"GUIElement.hpp"
 
-1407279790 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\guielement.hpp
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\guielement.hpp
 	"DataBank.hpp"
 	"Button.hpp"
 	"Canvas.hpp"
@@ -674,40 +675,40 @@
 	"TextBox.hpp"
 	"VertSlider.hpp"
 
-1407184855 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\canvas.hpp
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\canvas.hpp
 	<string.h>
 	"DataBank.hpp"
 
-1407279508 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\horslider.hpp
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\horslider.hpp
 	<string.h>
 	<math.h>
 	"DataBank.hpp"
 
-1407279468 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\label.hpp
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\label.hpp
 	<string.h>
 	"DataBank.hpp"
 
-1407184943 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\picture.hpp
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\picture.hpp
 	<string.h>
 	"DataBank.hpp"
 
-1407184957 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\progbar.hpp
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\progbar.hpp
 	<string.h>
 	"DataBank.hpp"
 
-1407368715 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\textbox.hpp
+1409544275 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\textbox.hpp
 	<string.h>
 	"DataBank.hpp"
 
-1407185050 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\vertslider.hpp
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\vertslider.hpp
 	<string.h>
 	"DataBank.hpp"
 
-1402330247 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\guidockitem.hpp
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\guidockitem.hpp
 	<string>
 	<SFML\Graphics.hpp>
 
-1407231450 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\physicsengine.hpp
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\physicsengine.hpp
 	<SFML\Graphics.hpp>
 	<math.h>
 	"DataBank.hpp"
@@ -716,7 +717,13 @@
 
 1407231450 D
 
-1407383592 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\modmodule.hpp
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\modmodule.hpp
+	<list>
+	"DataBank.hpp"
+	"GUIManager.hpp"
+	"Logger.hpp"
+	"Script.hpp"
+	<sstream>
 
 1407383592 ent of aaf9044... LuaCore #1
 	<list>
@@ -729,46 +736,46 @@
 1407192510 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\font.cpp
 	"Font.hpp"
 
-1407198199 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\graphicsengine.cpp
+1409543562 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\graphicsengine.cpp
 	"GraphicsEngine.hpp"
 
 1407165769 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\guidockitem.cpp
 	"GUIDockItem.hpp"
 
-1407279679 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\guielement.cpp
+1409543598 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\guielement.cpp
 	"GUIElement.hpp"
 
-1407278926 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\guimanager.cpp
+1409543598 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\guimanager.cpp
 	"GUIManager.hpp"
 
-1407279965 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\guimenu.cpp
+1409543562 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\guimenu.cpp
 	"GUIMenu.hpp"
 
-1407279913 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\horslider.cpp
+1409543562 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\horslider.cpp
 	"HorSlider.hpp"
 
 1402330247 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\keybind.cpp
 	"KeyBind.hpp"
 
-1407279270 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\label.cpp
+1409543562 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\label.cpp
 	"Label.hpp"
 
 1407282318 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\loader.cpp
 	"Loader.hpp"
 
-1407353724 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\logger.cpp
+1409543562 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\logger.cpp
 	"Logger.hpp"
 
-1402615927 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\util.hpp
+1409543598 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\util.hpp
 	<iostream>
 	<sstream>
 	<list>
 	<Windows.h>
 
-1407647395 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\modmodule.cpp
+1409543598 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\modmodule.cpp
 	"ModModule.hpp"
 
-1407231493 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\physicsengine.cpp
+1409543562 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\physicsengine.cpp
 	"PhysicsEngine.hpp"
 
 1407165770 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\script.cpp
@@ -795,7 +802,7 @@
 1407165770 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\track.cpp
 	"Track.hpp"
 
-1407165770 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\util.cpp
+1409543598 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\util.cpp
 	"util.hpp"
 
 1407165770 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\vector.cpp
@@ -1333,7 +1340,11 @@
 1409141163 source:c:\users\luca\documents\github\--untitledgame--\ug\databank.cpp
 	"DataBank.hpp"
 
+<<<<<<< HEAD
 1409321447 source:c:\users\luca\documents\github\--untitledgame--\ug\eventmanager.cpp
+=======
+1409149366 source:c:\users\luca\documents\github\--untitledgame--\ug\eventmanager.cpp
+>>>>>>> origin/indie-only
 	"EventManager.hpp"
 
 1409141163 c:\users\luca\documents\github\--untitledgame--\ug\eventmanager.hpp
@@ -1395,7 +1406,11 @@
 	<string.h>
 	"DataBank.hpp"
 
+<<<<<<< HEAD
 1409343651 c:\users\luca\documents\github\--untitledgame--\ug\textbox.hpp
+=======
+1409242810 c:\users\luca\documents\github\--untitledgame--\ug\textbox.hpp
+>>>>>>> origin/indie-only
 	<string.h>
 	"DataBank.hpp"
 
@@ -1431,10 +1446,17 @@
 1409141163 source:c:\users\luca\documents\github\--untitledgame--\ug\guidockitem.cpp
 	"GUIDockItem.hpp"
 
+<<<<<<< HEAD
 1409321447 source:c:\users\luca\documents\github\--untitledgame--\ug\guielement.cpp
 	"GUIElement.hpp"
 
 1409321447 source:c:\users\luca\documents\github\--untitledgame--\ug\guimanager.cpp
+=======
+1409149366 source:c:\users\luca\documents\github\--untitledgame--\ug\guielement.cpp
+	"GUIElement.hpp"
+
+1409149366 source:c:\users\luca\documents\github\--untitledgame--\ug\guimanager.cpp
+>>>>>>> origin/indie-only
 	"GUIManager.hpp"
 
 1409141163 source:c:\users\luca\documents\github\--untitledgame--\ug\guimenu.cpp
@@ -1476,13 +1498,21 @@
 	<lualib.h>
 	<lauxlib.h>
 
+<<<<<<< HEAD
 1409321447 c:\users\luca\documents\github\--untitledgame--\ug\util.hpp
+=======
+1409242805 c:\users\luca\documents\github\--untitledgame--\ug\util.hpp
+>>>>>>> origin/indie-only
 	<iostream>
 	<sstream>
 	<list>
 	<Windows.h>
 
+<<<<<<< HEAD
 1409321447 source:c:\users\luca\documents\github\--untitledgame--\ug\modmodule.cpp
+=======
+1409149366 source:c:\users\luca\documents\github\--untitledgame--\ug\modmodule.cpp
+>>>>>>> origin/indie-only
 	"ModModule.hpp"
 
 1409141163 source:c:\users\luca\documents\github\--untitledgame--\ug\physicsengine.cpp
@@ -1503,7 +1533,7 @@
 1409141163 source:c:\users\luca\documents\github\--untitledgame--\ug\spaceobject.cpp
 	"SpaceObject.hpp"
 
-1407618709 source:c:\users\luca\documents\github\--untitledgame--\ug\textbox.cpp
+1409149892 source:c:\users\luca\documents\github\--untitledgame--\ug\textbox.cpp
 	"TextBox.hpp"
 
 1409141163 source:c:\users\luca\documents\github\--untitledgame--\ug\texture.cpp
@@ -1512,7 +1542,11 @@
 1409141163 source:c:\users\luca\documents\github\--untitledgame--\ug\track.cpp
 	"Track.hpp"
 
+<<<<<<< HEAD
 1409150953 source:c:\users\luca\documents\github\--untitledgame--\ug\util.cpp
+=======
+1409149366 source:c:\users\luca\documents\github\--untitledgame--\ug\util.cpp
+>>>>>>> origin/indie-only
 	"util.hpp"
 
 1409141163 source:c:\users\luca\documents\github\--untitledgame--\ug\vector.cpp
@@ -1523,7 +1557,7 @@
 
 1408826851 c:\users\aysha heuer\documents\github\--untitledgame--\ug\actor.hpp
 
-1409046228 source:c:\users\aysha heuer\documents\github\--untitledgame--\ug\button.cpp
+1409058190 source:c:\users\aysha heuer\documents\github\--untitledgame--\ug\button.cpp
 	"Button.hpp"
 
 1409046024 c:\users\aysha heuer\documents\github\--untitledgame--\ug\button.hpp
@@ -2050,7 +2084,7 @@
 1409049305 source:c:\users\aysha heuer\documents\github\--untitledgame--\ug\databank.cpp
 	"DataBank.hpp"
 
-1409049055 source:c:\users\aysha heuer\documents\github\--untitledgame--\ug\eventmanager.cpp
+1409224821 source:c:\users\aysha heuer\documents\github\--untitledgame--\ug\eventmanager.cpp
 	"EventManager.hpp"
 
 1409045920 c:\users\aysha heuer\documents\github\--untitledgame--\ug\eventmanager.hpp
@@ -2112,7 +2146,7 @@
 	<string.h>
 	"DataBank.hpp"
 
-1409046062 c:\users\aysha heuer\documents\github\--untitledgame--\ug\textbox.hpp
+1409230145 c:\users\aysha heuer\documents\github\--untitledgame--\ug\textbox.hpp
 	<string.h>
 	"DataBank.hpp"
 
@@ -2148,10 +2182,10 @@
 1408706861 source:c:\users\aysha heuer\documents\github\--untitledgame--\ug\guidockitem.cpp
 	"GUIDockItem.hpp"
 
-1409045902 source:c:\users\aysha heuer\documents\github\--untitledgame--\ug\guielement.cpp
+1409224821 source:c:\users\aysha heuer\documents\github\--untitledgame--\ug\guielement.cpp
 	"GUIElement.hpp"
 
-1409045682 source:c:\users\aysha heuer\documents\github\--untitledgame--\ug\guimanager.cpp
+1409224821 source:c:\users\aysha heuer\documents\github\--untitledgame--\ug\guimanager.cpp
 	"GUIManager.hpp"
 
 1409051722 source:c:\users\aysha heuer\documents\github\--untitledgame--\ug\guimenu.cpp
@@ -2193,13 +2227,13 @@
 	<lualib.h>
 	<lauxlib.h>
 
-1408826851 c:\users\aysha heuer\documents\github\--untitledgame--\ug\util.hpp
+1409224821 c:\users\aysha heuer\documents\github\--untitledgame--\ug\util.hpp
 	<iostream>
 	<sstream>
 	<list>
 	<Windows.h>
 
-1409043473 source:c:\users\aysha heuer\documents\github\--untitledgame--\ug\modmodule.cpp
+1409224821 source:c:\users\aysha heuer\documents\github\--untitledgame--\ug\modmodule.cpp
 	"ModModule.hpp"
 
 1409043473 source:c:\users\aysha heuer\documents\github\--untitledgame--\ug\physicsengine.cpp
@@ -2220,7 +2254,7 @@
 1408706861 source:c:\users\aysha heuer\documents\github\--untitledgame--\ug\spaceobject.cpp
 	"SpaceObject.hpp"
 
-1409046228 source:c:\users\aysha heuer\documents\github\--untitledgame--\ug\textbox.cpp
+1409232924 source:c:\users\aysha heuer\documents\github\--untitledgame--\ug\textbox.cpp
 	"TextBox.hpp"
 
 1408706861 source:c:\users\aysha heuer\documents\github\--untitledgame--\ug\texture.cpp
@@ -2229,7 +2263,7 @@
 1408706861 source:c:\users\aysha heuer\documents\github\--untitledgame--\ug\track.cpp
 	"Track.hpp"
 
-1408706863 source:c:\users\aysha heuer\documents\github\--untitledgame--\ug\util.cpp
+1409224821 source:c:\users\aysha heuer\documents\github\--untitledgame--\ug\util.cpp
 	"util.hpp"
 
 1408706861 source:c:\users\aysha heuer\documents\github\--untitledgame--\ug\vector.cpp
@@ -2239,3 +2273,8 @@
 
 1409141163 c:\users\luca\documents\github\--untitledgame--\ug\settings.hpp
 
+<<<<<<< HEAD
+=======
+1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\settings.hpp
+
+>>>>>>> origin/indie-only
