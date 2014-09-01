@@ -11,6 +11,7 @@ class TextBox
     //MEMBERS
 private:
     sf::RectangleShape rect;
+<<<<<<< HEAD
     std::string tmp;
     bool clear;
     sf::RectangleShape c;
@@ -18,22 +19,31 @@ private:
     int line;
     int a;
 
+=======
+    sf::RectangleShape curs;
+>>>>>>> origin/indie-only
 public:
-    std::list<std::string> text;
-    std::list<sf::Text> text1;
     int X;
     int Y;
     int Height;
     int Width;
     std::string ID;
     bool isActive;
+    std::string content;
+    sf::Text text;
+    std::string::iterator cursor;
+    int position;
     bool multiline;
+    bool clicked;
 
     //CONSTRUCTORS
 
     //DESTRUCTORS
 
     //METHODS
+private:
+    void calibrateCursor();
+public:
     void Show();
     void Hide();
 

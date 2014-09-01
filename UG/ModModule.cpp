@@ -32,6 +32,7 @@ void ModModule::Run()
     limiter.restart();
 
     std::list< std::list<std::string> > events;
+    std::list< std::list<std::string> > tasks;
     while(dLink->runModules)
     {
         if(limiter.getElapsedTime().asSeconds() < 1.0/mLimit)
@@ -54,7 +55,9 @@ void ModModule::Run()
                 lua_call(script->state, event->size(), 0);
             }
         }
-        for(std::list< std::list<std::string> >::iterator task = taskBuffer.begin(); task != taskBuffer.end(); task++)
+        tasks = taskBuffer;
+        taskBuffer.clear();
+        for(std::list< std::list<std::string> >::iterator task = tasks.begin(); task != tasks.end(); task++)
         {
             for(std::list<Script>::iterator script = scripts->begin(); script != scripts->end(); script++)
             {
@@ -66,7 +69,6 @@ void ModModule::Run()
                 lua_call(script->state, task->size(), 0);
             }
         }
-        taskBuffer.clear();
 
         GMutex.unlock();
     }
@@ -104,7 +106,8 @@ int ModModule::lPushEvent(lua_State *L) // api.print("mein text hat ", 5, "Wörte
     {
         event.push_back(lua_tostring(L,i));
     }
-    eventBuffer.push_back(event);
+    //eventBuffer.push_back(event);
+    dLink->pushEvent(event);
     return 0;
 }
 int ModModule::lPushTask(lua_State *L) // api.print("mein text hat ", 5, "Wörter")
@@ -118,7 +121,8 @@ int ModModule::lPushTask(lua_State *L) // api.print("mein text hat ", 5, "Wörter
     {
         task.push_back(lua_tostring(L,i));
     }
-    taskBuffer.push_back(task);
+    //taskBuffer.push_back(task);
+    dLink->pushTask(task);
     return 0;
 }
 
