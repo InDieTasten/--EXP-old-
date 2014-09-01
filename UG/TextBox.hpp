@@ -11,17 +11,7 @@ class TextBox
     //MEMBERS
 private:
     sf::RectangleShape rect;
-<<<<<<< HEAD
-    std::string tmp;
-    bool clear;
-    sf::RectangleShape c;
-    int cursor;
-    int line;
-    int a;
-
-=======
     sf::RectangleShape curs;
->>>>>>> origin/indie-only
 public:
     int X;
     int Y;

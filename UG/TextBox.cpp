@@ -15,20 +15,11 @@ void TextBox::calibrateCursor()
 }
 void TextBox::Setup()
 {
-<<<<<<< HEAD
-    multiline = false;
-    cursor = 0;
-    line = 0;
-    std::list<std::string>::iterator it=text.begin();
-    text.push_back("");
-
-=======
     position = 0;
     content = "";
     isActive = true;
     multiline = true;
     clicked = false;
->>>>>>> origin/indie-only
 }
 void TextBox::Update(int _x, int _y,std::string _id)
 {
@@ -53,19 +44,10 @@ void TextBox::Update(int _x, int _y,std::string _id)
 }
 void TextBox::Render(int _x, int _y, std::string _id)
 {
-<<<<<<< HEAD
-    for(std::list<sf::Text>::iterator it1 = text1.begin(); it1 != text1.end(); ++it1)
-    {
-        dLink->renderWindow->draw(rect);
-        dLink->renderWindow->draw(c);
-        dLink->renderWindow->draw(*it1);
-    }
-=======
     dLink->renderWindow->draw(rect);
     dLink->renderWindow->draw(text);
     if(clicked)
         dLink->renderWindow->draw(curs);
->>>>>>> origin/indie-only
 }
 void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
 {
@@ -87,64 +69,26 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
     } else
     if(isActive && clicked)
     {
-<<<<<<< HEAD
-        //häääääääääässlich
-        a = line;
-        for(std::list<std::string>::iterator it = text.begin();a != -1; it++){a--;}
-        if(_event->type == sf::Event::KeyPressed)
-=======
         if(multiline)
->>>>>>> origin/indie-only
         {
             if(_event->type == sf::Event::KeyPressed)
             {
                 if(_event->key.code == sf::Keyboard::Left)
                 {
-<<<<<<< HEAD
-                    std::list<std::string>::iterator itt =text.begin();
-                    std::list<std::string> x;
-                    x.push_back("textbox_submit");
-                    x.push_back(_id);
-                    x.push_back(*itt);
-                    dLink->pushEvent(x);
-                    *itt="";
-                    cursor = 0;
-=======
                     if(position > 0)
                     {
                         position--;
                     }
->>>>>>> origin/indie-only
                 }
                 if(_event->key.code == sf::Keyboard::Right)
                 {
-<<<<<<< HEAD
-                    line++;
-                    cursor = 0;
-=======
                     if(position < content.size())
                     {
                         position++;
                     }
->>>>>>> origin/indie-only
                 }
                 if(_event->key.code == sf::Keyboard::Delete)
                 {
-<<<<<<< HEAD
-                    it->erase(cursor--);//
-                }
-            }
-            else if(_event->key.code == sf::Keyboard::Right)
-            {
-                if(cursor < it->size())//
-                {
-                    cursor++;
-                }
-            }
-            else if(_event->key.code == sf::Keyboard::Left)
-            {
-                if(cursor >= 1)
-=======
                     if(position < content.size())
                     {
                         position++;
@@ -172,7 +116,6 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
                     return;
                 }
                 if (static_cast<char>(_event->text.unicode) == '\b')
->>>>>>> origin/indie-only
                 {
                     if(position > 0)
                     {
@@ -187,14 +130,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
                     }
                     return;
                 }
-<<<<<<< HEAD
-            }
-            else if(_event->key.code == sf::Keyboard::Down)
-            {
-                if(line >= 1)
-=======
                 if (_event->text.unicode < 128)
->>>>>>> origin/indie-only
                 {
                     calibrateCursor();
                     if(content.size() == 0)
@@ -214,14 +150,10 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
                     position++;
                 }
             }
-<<<<<<< HEAD
-            else if(_event->key.code == sf::Keyboard::Up)
-=======
         }
         else
         {
             if(_event->type == sf::Event::KeyPressed)
->>>>>>> origin/indie-only
             {
                 if(_event->key.code == sf::Keyboard::Left)
                 {
@@ -230,19 +162,6 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
                         position--;
                     }
                 }
-<<<<<<< HEAD
-            }
-            else if(_event->key.code == sf::Keyboard::Delete)
-            {
-                if(cursor < it->size())//
-                {
-                    it->erase(cursor);//
-                }
-            }
-            else if(_event->key.code == sf::Keyboard::End)
-            {
-                cursor = it->size();//
-=======
                 if(_event->key.code == sf::Keyboard::Right)
                 {
                     if(position < content.size())
@@ -268,7 +187,6 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
                         }
                     }
                 }
->>>>>>> origin/indie-only
             }
             else if(_event->type == sf::Event::TextEntered)
             {
@@ -320,18 +238,6 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
                 }
             }
         }
-<<<<<<< HEAD
-        else if(_event->type == sf::Event::TextEntered && clear == 0)
-        {
-            if (_event->text.unicode < 128)
-            {
-                it->insert(cursor,_event->it->unicode);//?????????????????
-                cursor++;
-            }
-        }
-        clear = 0;
-=======
->>>>>>> origin/indie-only
     }
 }
 void TextBox::handleSoftEvent(std::list<std::string> _args, int _x, int _y, std::string _id)
