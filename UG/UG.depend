@@ -1340,11 +1340,7 @@
 1409141163 source:c:\users\luca\documents\github\--untitledgame--\ug\databank.cpp
 	"DataBank.hpp"
 
-<<<<<<< HEAD
-1409321447 source:c:\users\luca\documents\github\--untitledgame--\ug\eventmanager.cpp
-=======
 1409149366 source:c:\users\luca\documents\github\--untitledgame--\ug\eventmanager.cpp
->>>>>>> origin/indie-only
 	"EventManager.hpp"
 
 1409141163 c:\users\luca\documents\github\--untitledgame--\ug\eventmanager.hpp
@@ -1406,11 +1402,7 @@
 	<string.h>
 	"DataBank.hpp"
 
-<<<<<<< HEAD
-1409343651 c:\users\luca\documents\github\--untitledgame--\ug\textbox.hpp
-=======
 1409242810 c:\users\luca\documents\github\--untitledgame--\ug\textbox.hpp
->>>>>>> origin/indie-only
 	<string.h>
 	"DataBank.hpp"
 
@@ -1446,17 +1438,10 @@
 1409141163 source:c:\users\luca\documents\github\--untitledgame--\ug\guidockitem.cpp
 	"GUIDockItem.hpp"
 
-<<<<<<< HEAD
-1409321447 source:c:\users\luca\documents\github\--untitledgame--\ug\guielement.cpp
-	"GUIElement.hpp"
-
-1409321447 source:c:\users\luca\documents\github\--untitledgame--\ug\guimanager.cpp
-=======
 1409149366 source:c:\users\luca\documents\github\--untitledgame--\ug\guielement.cpp
 	"GUIElement.hpp"
 
 1409149366 source:c:\users\luca\documents\github\--untitledgame--\ug\guimanager.cpp
->>>>>>> origin/indie-only
 	"GUIManager.hpp"
 
 1409141163 source:c:\users\luca\documents\github\--untitledgame--\ug\guimenu.cpp
@@ -1498,21 +1483,13 @@
 	<lualib.h>
 	<lauxlib.h>
 
-<<<<<<< HEAD
-1409321447 c:\users\luca\documents\github\--untitledgame--\ug\util.hpp
-=======
 1409242805 c:\users\luca\documents\github\--untitledgame--\ug\util.hpp
->>>>>>> origin/indie-only
 	<iostream>
 	<sstream>
 	<list>
 	<Windows.h>
 
-<<<<<<< HEAD
-1409321447 source:c:\users\luca\documents\github\--untitledgame--\ug\modmodule.cpp
-=======
 1409149366 source:c:\users\luca\documents\github\--untitledgame--\ug\modmodule.cpp
->>>>>>> origin/indie-only
 	"ModModule.hpp"
 
 1409141163 source:c:\users\luca\documents\github\--untitledgame--\ug\physicsengine.cpp
@@ -1542,11 +1519,7 @@
 1409141163 source:c:\users\luca\documents\github\--untitledgame--\ug\track.cpp
 	"Track.hpp"
 
-<<<<<<< HEAD
-1409150953 source:c:\users\luca\documents\github\--untitledgame--\ug\util.cpp
-=======
 1409149366 source:c:\users\luca\documents\github\--untitledgame--\ug\util.cpp
->>>>>>> origin/indie-only
 	"util.hpp"
 
 1409141163 source:c:\users\luca\documents\github\--untitledgame--\ug\vector.cpp
@@ -2273,8 +2246,5 @@
 
 1409141163 c:\users\luca\documents\github\--untitledgame--\ug\settings.hpp
 
-<<<<<<< HEAD
-=======
 1409543562 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\settings.hpp
 
->>>>>>> origin/indie-only
