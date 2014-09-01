@@ -41,11 +41,23 @@ void TextBox::Update(int _x, int _y,std::string _id)
     text.setFont(*dLink->FontGet("$_menuTitle"));
     text.setCharacterSize(12);
     text.setString(content);
+    view = dLink->guiView;
+    view.reset(sf::FloatRect(_x, _y, Width, Height));
+
+    float posx = _x/(float)dLink->renderWindow->getSize().x;
+    float posy = _y/(float)dLink->renderWindow->getSize().y;
+
+    float sizex = Width/(float)dLink->renderWindow->getSize().x;
+    float sizey = Height/(float)dLink->renderWindow->getSize().y;
+
+    view.setViewport(sf::FloatRect(posx, posy, sizex, sizey));
 }
 void TextBox::Render(int _x, int _y, std::string _id)
 {
     dLink->renderWindow->draw(rect);
+    dLink->renderWindow->setView(view);
     dLink->renderWindow->draw(text);
+    dLink->renderWindow->setView(dLink->guiView);
     if(clicked)
         dLink->renderWindow->draw(curs);
 }

@@ -26,6 +26,8 @@ public:
     bool multiline;
     bool clicked;
 
+    sf::View view;
+
     //CONSTRUCTORS
 
     //DESTRUCTORS
