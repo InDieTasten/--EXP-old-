@@ -129,6 +129,9 @@
 		<Unit filename="HorSlider.hpp">
 			<Option virtualFolder="GUI/Elements/" />
 		</Unit>
+		<Unit filename="KeyBind.cpp">
+			<Option virtualFolder="MemoryBank/Entites/" />
+		</Unit>
 		<Unit filename="KeyBind.hpp">
 			<Option virtualFolder="MemoryBank/Entites/" />
 		</Unit>
