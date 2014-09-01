@@ -72,14 +72,18 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
             if(y >= _y && y <= _y+Height)
             {
                 clicked = true;
-            }else{
+            }
+            else
+            {
                 clicked = false;
             }
-        } else {
+        }
+        else
+        {
             clicked = false;
         }
-    } else
-    if(isActive && clicked)
+    }
+    else if(isActive && clicked)
     {
         if(multiline)
         {

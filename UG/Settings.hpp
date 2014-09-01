@@ -6,10 +6,17 @@ struct Settings
     int guiOpacity1;
     int guiOpacity2;
     int guiOpacity3;
-    sf::Color guiColor1;
-    sf::Color guiColor2;
-    sf::Color guiColor3;
-    sf::Color guiColor4;
+    sf::Color guiActiveMenuBorder;
+    sf::Color guiInactiveMenuBorder;
+    sf::Color guiActiveMenuBackground;
+    sf::Color guiInactiveMenuBackground;
+    sf::Color guiActiveMenuTitleBackground;
+    sf::Color guiInactiveMenuTitleBackground;
+    sf::Color guiActiveMenuTitleText;
+    sf::Color guiInactiveMenuTitleText;
+
+    string guiTitleFont;
+
     int dockWidth;
 };
 
