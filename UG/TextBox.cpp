@@ -19,6 +19,7 @@ void TextBox::Setup()
     content = "";
     isActive = true;
     multiline = true;
+    clicked = false;
 }
 void TextBox::Update(int _x, int _y,std::string _id)
 {
@@ -45,11 +46,28 @@ void TextBox::Render(int _x, int _y, std::string _id)
 {
     dLink->renderWindow->draw(rect);
     dLink->renderWindow->draw(text);
-    dLink->renderWindow->draw(curs);
+    if(clicked)
+        dLink->renderWindow->draw(curs);
 }
 void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
 {
-    if(isActive)
+    if(isActive && _event->type == sf::Event::MouseButtonPressed)
+    {
+        int x = _event->mouseButton.x;
+        int y = _event->mouseButton.y;
+        if(x >= _x && x <= _x+Width)
+        {
+            if(y >= _y && y <= _y+Height)
+            {
+                clicked = true;
+            }else{
+                clicked = false;
+            }
+        } else {
+            clicked = false;
+        }
+    } else
+    if(isActive && clicked)
     {
         if(multiline)
         {
