@@ -169,4 +169,7 @@ void StockRegister()
     dLink->TextureLoad("$_dockMain");
     dLink->TextureLoad("$_dockOptions");
     dLink->TextureLoad("$_missing");
+
+    //Settings
+    dLink->settings.dockWidth = 68;
 }
