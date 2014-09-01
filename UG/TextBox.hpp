@@ -24,6 +24,7 @@ public:
     std::string::iterator cursor;
     int position;
     bool multiline;
+    bool clicked;
 
     //CONSTRUCTORS
 
