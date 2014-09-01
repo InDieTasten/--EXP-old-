@@ -424,7 +424,7 @@ void GUIManager::add_ConsoleMenu()
     console.SetHeight(200);
     console.SetMenuTitle("--[[ Console ]]--");
 
-    /*GUIElement elem1;
+    GUIElement elem1;
     elem1.ID = "$_consoleMenu.output";
     elem1.Type = "textbox";
     elem1.X = 10;
@@ -433,7 +433,17 @@ void GUIManager::add_ConsoleMenu()
     elem1.textBox.Height = 160;
     elem1.textBox.multiline = true;
 
-    console.GuiElements.push_back(elem1);*/
+    GUIElement elem2;
+    elem2.ID = "$_consoleMenu.input";
+    elem2.Type = "textbox";
+    elem2.X = 10;
+    elem2.Y = 170;
+    elem2.textBox.Width = 280;
+    elem2.textBox.Height = 20;
+    elem2.textBox.multiline = false;
+
+    console.GuiElements.push_back(elem1);
+    console.GuiElements.push_back(elem2);
 
     console.update();
     guiMenus.push_back(console);
@@ -477,7 +487,7 @@ void GUIManager::add_CodeIDE()
     menu.SetMenuTitle("--[[ Lua-IDE ]]--");
 
     GUIElement elem1;
-    elem1.ID = "textbox";
+    elem1.ID = "$_codeIDE.main";
     elem1.Type = "textbox";
     elem1.X = 10;
     elem1.Y = 10;
