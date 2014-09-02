@@ -119,7 +119,7 @@ int main ( int argc, char *argv[] )
 
     sf::Music music;
     music.openFromFile("content/stock/music/background.wav");
-    music.setVolume(30);
+    music.setVolume(60);
     music.play();
 
 
