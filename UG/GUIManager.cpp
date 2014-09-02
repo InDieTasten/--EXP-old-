@@ -12,162 +12,6 @@ GUIManager::GUIManager()
 //DESTRUCTORS
 
 //METHODS
-void GUIManager::AddMenu(std::string _id)
-{
-    for(std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
-    {
-        if(it->ID == _id)
-        {
-            //Fehler: Menu ID bereits vorhanden
-            return;
-        }
-        GUIMenu tmp;
-        tmp.ID = _id;
-        guiMenus.push_back(tmp);
-    }
-}
-void GUIManager::EditMenuPosition(std::string _id, int _x, int _y)
-{
-    for(std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
-    {
-        if(it->ID == _id)
-        {
-            it->SetX(_x);
-            it->SetY(_y);
-            return;
-        }
-    }
-}
-void GUIManager::EditMenuSize(std::string _id, int _width, int _height)
-{
-    for(std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
-    {
-        if(it->ID == _id)
-        {
-            it->SetWidth(_width);
-            it->SetHeight(_height);
-            return;
-        }
-    }
-}
-void GUIManager::EnableMenu(std::string _id)
-{
-    for(std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
-    {
-        if(it->ID == _id)
-        {
-            it->Enable();
-            return;
-        }
-    }
-}
-void GUIManager::DisableMenu(std::string _id)
-{
-    for(std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
-    {
-        if(it->ID == _id)
-        {
-            it->Disable();
-            return;
-        }
-    }
-}
-void GUIManager::ShowMenu(std::string _id)
-{
-    for(std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
-    {
-        if(it->ID == _id)
-        {
-            it->Show();
-            return;
-        }
-    }
-}
-void GUIManager::HideMenu(std::string _id)
-{
-    for(std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
-    {
-        if(it->ID == _id)
-        {
-            it->Hide();
-            return;
-        }
-    }
-}
-
-void GUIManager::AddGuiElement(std::string _menuid, std::string _elemid)
-{
-    for(std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
-    {
-        if(it->ID == _menuid)
-        {
-            for(std::list<GUIElement>::iterator it2 = it->GuiElements.begin(); it2 != it->GuiElements.end(); it2++)
-            {
-                if (it2->ID == _elemid)
-                {
-                    //error
-                    return;
-                }
-            }
-            GUIElement tmp;
-            tmp.ID = _elemid;
-            it->GuiElements.push_back(tmp);
-        }
-    }
-}
-void GUIManager::EditElemPosition(std::string _menuid, std::string _elemid, int _x, int _y)
-{
-    for(std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
-    {
-        if(it->ID == _menuid)
-        {
-            for(std::list<GUIElement>::iterator it2 = it->GuiElements.begin(); it2 != it->GuiElements.end(); it2++)
-            {
-                if (it2->ID == _elemid)
-                {
-                    it2->X = _x;
-                    it2->Y = _y;
-                    return;
-                }
-            }
-        }
-    }
-}
-void GUIManager::EditElemSize(std::string _menuid, std::string _elemid, int _width, int _height)
-{
-    for(std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
-    {
-        if(it->ID == _menuid)
-        {
-            for(std::list<GUIElement>::iterator it2 = it->GuiElements.begin(); it2 != it->GuiElements.end(); it2++)
-            {
-                if (it2->ID == _elemid)
-                {
-                    it2->Width = _width;
-                    it2->Height = _height;
-                    return;
-                }
-            }
-        }
-    }
-}
-void GUIManager::EditElemType(std::string _menuid, std::string _elemid, std::string _type)
-{
-    for(std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
-    {
-        if(it->ID == _menuid)
-        {
-            for(std::list<GUIElement>::iterator it2 = it->GuiElements.begin(); it2 != it->GuiElements.end(); it2++)
-            {
-                if (it2->ID == _elemid)
-                {
-                    //*(it2->Properties.begin()) = _type;
-                    return;
-                }
-            }
-        }
-    }
-}
 
 void GUIManager::AddDockItem(std::string _itemid)
 {
@@ -295,6 +139,60 @@ void GUIManager::handleTask(std::list<std::string> _args)
     {
         it->handleTask(_args);
     }
+    if(*_args.begin() == "gui")
+    {
+        _args.pop_front();
+        if(*_args.begin() == "addMenu")
+        {
+            _args.pop_front();
+            GUIMenu newMenu;
+            newMenu.ID = *_args.begin();
+            guiMenus.push_back(newMenu);
+        }
+        else if (*_args.begin() == "removeMenu")
+        {
+            _args.pop_front();
+            for(std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
+            {
+                if(it->ID == *_args.begin())
+                {
+                    guiMenus.erase(it);
+                    break;
+                }
+            }
+        }else if (*_args.begin() == "modifyMenu")
+        {
+            _args.pop_front();
+            for(std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
+            {
+                if(it->ID == *_args.begin())
+                {
+                    _args.pop_front();
+                    if(*_args.begin() == "x")
+                    {
+                        _args.pop_front();
+                        it->X = util::toInt(*_args.begin());
+                    } else if (*_args.begin() == "y") {
+                        _args.pop_front();
+                        it->Y = util::toInt(*_args.begin());
+                    } else if (*_args.begin() == "width") {
+                        _args.pop_front();
+                        it->Width = util::toInt(*_args.begin());
+                    } else if (*_args.begin() == "height") {
+                        _args.pop_front();
+                        it->Height = util::toInt(*_args.begin());
+                    } else if (*_args.begin() == "title") {
+                        _args.pop_front();
+                        it->SetMenuTitle(*_args.begin());
+                    } else if (*_args.begin() == "visible") {
+                        _args.pop_front();
+                        it->isHidden = util::toBool(*_args.begin());
+                    }
+                    break;
+                }
+            }
+        }
+    }
 }
 
 void GUIManager::update()
@@ -346,18 +244,6 @@ void GUIManager::render()
         it->update();
         it->render();
     }
-}
-
-void GUIManager::addMenu(GUIMenu _menu)
-{
-    for(std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
-    {
-        if (it->ID == _menu.ID)
-        {
-            return; //FEHLER
-        }
-    }
-    guiMenus.push_back(_menu);
 }
 
 void GUIManager::add_MainMenu()
