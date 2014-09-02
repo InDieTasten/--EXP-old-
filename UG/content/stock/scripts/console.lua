@@ -39,8 +39,8 @@ function onSoftEvent(...)
 	print("+---------")
 	e = {...}
 	if e[1] == "textbox_submit" then
-		if(e[2] == "$_codeIDE.main") then
-			pushTask("textbox_clear","$_codeIDE.main")
+		if(e[2] == "$_consoleMenu.input") then
+			pushTask("textbox_clear","$_consoleMenu.input")
 			status, err = pcall(runCommand, e[3])
 			if(not status) then
 				print("[Error] "..tostring(err))
