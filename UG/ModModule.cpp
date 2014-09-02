@@ -125,21 +125,3 @@ int ModModule::lPushTask(lua_State *L) // api.print("mein text hat ", 5, "Wörter
     dLink->pushTask(task);
     return 0;
 }
-
-int ModModule::lAddMenu(lua_State *L) // api.addMenu(_id)
-{
-    //number of arguments
-    int n = lua_gettop(L);
-    if(n != 1)
-    {
-        lua_pushboolean(L,1);
-        return 1;
-    }
-
-    //get id as string
-    std::string id = lua_tostring(L,1);
-
-    guiLink->AddMenu(id);
-    lua_pushboolean(L,0);
-    return 1;
-}
