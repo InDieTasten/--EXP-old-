@@ -7,7 +7,7 @@
 class GUIMenu
 {
     //MEMBERS
-private:
+public:
     sf::Sprite closeButton;
     sf::RectangleShape mainBackground;
     sf::RectangleShape titleBar;
@@ -23,7 +23,6 @@ private:
     sf::Vector2<int> movingD;
     bool closeButtonHover;
     bool closeButtonPushed;
-public:
     std::string ID;
     std::list<GUIElement> GuiElements;
     bool isActive;
