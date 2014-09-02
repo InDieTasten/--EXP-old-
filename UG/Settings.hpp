@@ -15,7 +15,7 @@ struct Settings
     sf::Color guiActiveMenuTitleText;
     sf::Color guiInactiveMenuTitleText;
 
-    string guiTitleFont;
+    std::string guiTitleFont;
 
     int dockWidth;
 };
