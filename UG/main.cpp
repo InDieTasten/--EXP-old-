@@ -116,6 +116,13 @@ int main ( int argc, char *argv[] )
     gThread->launch();
     pThread->launch();
 
+
+    sf::Music music;
+    music.openFromFile("content/stock/music/background.wav");
+    music.setVolume(30);
+    music.play();
+
+
     sf::Clock limit;
     limit.restart();
     while(App.isOpen())
@@ -169,6 +176,8 @@ void StockRegister()
     dLink->TextureLoad("$_dockMain");
     dLink->TextureLoad("$_dockOptions");
     dLink->TextureLoad("$_missing");
+
+
 
     //Settings
     dLink->settings.dockWidth = 68;
