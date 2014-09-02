@@ -203,6 +203,18 @@ void GUIManager::handleTask(std::list<std::string> _args)
                 }
             }
         }
+        else if (*_args.begin() == "addElement")
+        {
+            //WORK
+        }
+        else if (*_args.begin() == "removeElement")
+        {
+            //WORK
+        }
+        else if (*_args.begin() == "modifyElement")
+        {
+            //WORK
+        }
     }
 }
 
