@@ -34,14 +34,25 @@ function loadPlugin(name)
 	end
 	if(plugins[name]) then
 		if(plugins[name].status == "unloaded") then
-			--load it
 			_G[name]=setmetatable({},{__index=_G})
 		    local pl, err = loadfile(plugins[name].path,"bt",_G[name])
 		    if(pl) then
 		    	pl()
 		    	plugins[name].status = "loaded"
+		    	if(type(_G[name] == "table")) then
+					if(type(_G[name]["onLoad"]) == "function") then
+						status, err = pcall(_G[name]["onLoad"], ...)
+						if(not status) then
+							print("[Error] "..tostring(err))
+						end
+					else
+						print("[Warning] Plugin '"..name.."': onLoad should be a function")
+					end
+				end
 		    	print("[Info] Plugin '"..name.."' successfully loaded")
-		    else print(err) end
+		    else
+		    	print("[Error] ", tostring(err))
+		    end
 		else
 			print("[Error] Plugin '"..name.."' already loaded!")
 		end
@@ -56,8 +67,17 @@ function unloadPlugin(name)
 	end
 	if(plugins[name]) then
 		if(plugins[name].status == "loaded") then
-			--unload it
-			_G[name] = false
+			if(type(_G[name] == "table")) then
+				if(type(_G[name]["onUnload"]) == "function") then
+					status, err = pcall(_G[name]["onUnload"], ...)
+					if(not status) then
+						print("[Error] "..tostring(err))
+					end
+				else
+					print("[Warning] Plugin '"..name.."': onUnload should be a function")
+				end
+			end
+			_G[name] = nil
 			plugins[name].status = "unloaded"
 			print("[Info] Plugin '"..name.."' unloaded")
 		else
