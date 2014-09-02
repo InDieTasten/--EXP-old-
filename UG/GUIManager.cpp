@@ -160,7 +160,8 @@ void GUIManager::handleTask(std::list<std::string> _args)
                     break;
                 }
             }
-        }else if (*_args.begin() == "modifyMenu")
+        }
+        else if (*_args.begin() == "modifyMenu")
         {
             _args.pop_front();
             for(std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
@@ -172,19 +173,29 @@ void GUIManager::handleTask(std::list<std::string> _args)
                     {
                         _args.pop_front();
                         it->X = util::toInt(*_args.begin());
-                    } else if (*_args.begin() == "y") {
+                    }
+                    else if (*_args.begin() == "y")
+                    {
                         _args.pop_front();
                         it->Y = util::toInt(*_args.begin());
-                    } else if (*_args.begin() == "width") {
+                    }
+                    else if (*_args.begin() == "width")
+                    {
                         _args.pop_front();
                         it->Width = util::toInt(*_args.begin());
-                    } else if (*_args.begin() == "height") {
+                    }
+                    else if (*_args.begin() == "height")
+                    {
                         _args.pop_front();
                         it->Height = util::toInt(*_args.begin());
-                    } else if (*_args.begin() == "title") {
+                    }
+                    else if (*_args.begin() == "title")
+                    {
                         _args.pop_front();
                         it->SetMenuTitle(*_args.begin());
-                    } else if (*_args.begin() == "visible") {
+                    }
+                    else if (*_args.begin() == "visible")
+                    {
                         _args.pop_front();
                         it->isHidden = util::toBool(*_args.begin());
                     }
