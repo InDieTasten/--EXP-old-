@@ -54,4 +54,15 @@ function onHardTask(...)
 		print("I "..type(v).." "..tostring(k)..": "..tostring(v))
 	end
 	print("+---------")
+	cmd = {...}
+	if(cmd[1] == "lua") then
+		if(cmd[2] == "memory") then
+			if(cmd[3] == "show") then
+				print("Memory of console: ", collectgarbage("count")," KB")
+			end
+			if(cmd[3] == "free") then
+				collectgarbage("collect")
+			end
+		end
+	end
 end
