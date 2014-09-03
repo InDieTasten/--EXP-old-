@@ -11,7 +11,9 @@ std::string util::toString(bool _x)
     if(_x)
     {
         return "true";
-    } else {
+    }
+    else
+    {
         return "false";
     }
 }
