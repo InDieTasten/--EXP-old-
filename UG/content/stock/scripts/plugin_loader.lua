@@ -39,7 +39,7 @@ function onHardLoad()
 	end
 end
 function onHardUnload()
-	print("plugin_loader.lua unloaded")
+	
 end
 function onHardEvent(...)
 	for name, detail in pairs(plugins) do
