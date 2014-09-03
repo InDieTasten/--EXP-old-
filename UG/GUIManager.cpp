@@ -234,23 +234,48 @@ void GUIManager::handleTask(std::list<std::string> _args)
                     }
                     else if (*_args.begin() == "y")
                     {
-
+                        std::list<std::string> x;
+                        x.push_back("guiRequest");
+                        x.push_back(it->ID);
+                        x.push_back("y");
+                        x.push_back(util::toString(it->Y));
+                        dLink->pushEvent(x);
                     }
                     else if (*_args.begin() == "width")
                     {
-
+                        std::list<std::string> x;
+                        x.push_back("guiRequest");
+                        x.push_back(it->ID);
+                        x.push_back("width");
+                        x.push_back(util::toString(it->Width));
+                        dLink->pushEvent(x);
                     }
                     else if (*_args.begin() == "height")
                     {
-
+                        std::list<std::string> x;
+                        x.push_back("guiRequest");
+                        x.push_back(it->ID);
+                        x.push_back("height");
+                        x.push_back(util::toString(it->Height));
+                        dLink->pushEvent(x);
                     }
                     else if (*_args.begin() == "title")
                     {
-
+                        std::list<std::string> x;
+                        x.push_back("guiRequest");
+                        x.push_back(it->ID);
+                        x.push_back("title");
+                        x.push_back(it->menuTitle.getString());
+                        dLink->pushEvent(x);
                     }
                     else if (*_args.begin() == "visible")
                     {
-
+                        std::list<std::string> x;
+                        x.push_back("guiRequest");
+                        x.push_back(it->ID);
+                        x.push_back("visible");
+                        x.push_back(util::toString(!it->isHidden));
+                        dLink->pushEvent(x);
                     }
                     break;
                 }
