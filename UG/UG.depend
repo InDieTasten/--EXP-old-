@@ -552,7 +552,7 @@
 	"SpaceObject.hpp"
 	<list>
 
-1409780715 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\spaceobject.hpp
+1409781959 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\spaceobject.hpp
 	"Actor.hpp"
 	<SFML\Graphics.hpp>
 	"Vector.hpp"
@@ -597,7 +597,7 @@
 	<stdio.h>
 	"lua.h"
 
-1409780873 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\logger.hpp
+1409782461 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\logger.hpp
 	<iostream>
 	<time.h>
 	<string>
