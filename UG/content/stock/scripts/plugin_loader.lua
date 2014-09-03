@@ -8,34 +8,28 @@ io = nil
 
 local plugins = {}
 
-local function registerPlugin(path, name)
-	if(type(name) ~= "string") then
-		print("[Error] Plugin to be registered must name a string!")
-		return
-	end
-	if(plugins[name]) then
-		print("[Error] Plugin '"..name.."' already exists!")
-		return
-	end
-	file, err = open(path)
-	if(file) then
-		file:close()
-	else
-		print("[Error] File '"..path.."' can not be accessed!")
-		print("[Error] -> "..tostring(err))
-	end
-	plugins[name] = {["path"]=path, ["status"]="unloaded"}
-	print("[Info] Plugin '"..name.."' successfully registered")
-end
---loading
---_G[name]=setmetatable({},{__index=_G})
---local pl, err = loadfile(plugins[name].path,"bt",_G[name])
---if(pl) then st, err = pcall(pl) else print(err) end
-
 
 function onHardLoad()
 	for dir in popen([[dir "content/plugins" /b]]):lines() do
-		registerPlugin("content/plugins/"..dir, string.sub(dir, 1, #dir-4))
+		path = "content/plugins/"..dir
+		name = string.sub(dir, 1, #dir-4)
+		if(type(name) ~= "string") then
+			print("[Error] Plugin to be registered must name a string!")
+			return
+		end
+		if(plugins[name]) then
+			print("[Error] Plugin '"..name.."' already exists!")
+			return
+		end
+		file, err = open(path)
+		if(file) then
+			file:close()
+		else
+			print("[Error] File '"..path.."' can not be accessed!")
+			print("[Error] -> "..tostring(err))
+		end
+		plugins[name] = {["path"]=path, ["status"]="unloaded"}
+		print("[Info] Plugin '"..name.."' successfully registered")
 	end
 end
 function onHardUnload()
@@ -53,6 +47,16 @@ function onHardEvent(...)
 end
 function onHardTask(...)
 	cmd = {...}
+	if(cmd[1] == "lua") then
+		if(cmd[2] == "memory") then
+			if(cmd[3] == "show") then
+				print("Memory of plugin_loader: ",collectgarbage("count")," KB")
+			end
+			if(cmd[3] == "free") then
+				collectgarbage("collect")
+			end
+		end
+	end
 	if(cmd[1] == "plugin") then
 		if(cmd[2] == "call") then
 			st, err = pcall(_G[ cmd[3] ][ cmd[4] ])
