@@ -197,7 +197,7 @@ void GUIManager::handleTask(std::list<std::string> _args)
                     else if (*_args.begin() == "visible")
                     {
                         _args.pop_front();
-                        it->isHidden = util::toBool(*_args.begin());
+                        it->isHidden = util::toBool(*_args.begin())==false;
                     }
                     break;
                 }
