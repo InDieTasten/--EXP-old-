@@ -7,15 +7,13 @@ void log(std::string name, std::string msg)
     time_t rawtime;
     struct tm * timeinfo;
 
-    char T[10]; //Stunden
-    char D[10]; //Tag
+    char T[14];
 
     time (&rawtime);
     timeinfo = localtime (&rawtime);
 
-    strftime (T,20,"%T",timeinfo);
-    strftime (D,20,"%j",timeinfo);
+    strftime (T,14,"%j|%H:%M:%S",timeinfo);
 
 
-    std::cout << T << "|" << D << "[" << name << "] " << msg << std::endl;
+    std::cout <<  T << " [" << name << "] " << msg << std::endl;
 }
