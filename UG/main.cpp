@@ -91,16 +91,19 @@ int main ( int argc, char *argv[] )
 
     //Physics Engine
     log("Main      ", "Create Physics Thread...");
+    sf::sleep(sf::seconds(0.05));
     PhysicsEngine physicsThread;
     pLink = &physicsThread;
 
     //Modding Module
     log("Main      ", "Create Plugin Handler...");
+    sf::sleep(sf::seconds(0.05));
     ModModule mModule;
     mLink = &mModule;
 
     //Event Manager
     log("Main      ", "Create Event Manager...");
+    sf::sleep(sf::seconds(0.05));
     EventManager EventMan;
 
     ////Create threads
@@ -113,13 +116,16 @@ int main ( int argc, char *argv[] )
     pThread = &phTHREAD;
 
     mThread->launch();
+    sf::sleep(sf::seconds(0.05));
     gThread->launch();
+    sf::sleep(sf::seconds(0.05));
     pThread->launch();
 
 
     sf::Music music;
     music.openFromFile("content/stock/music/background.wav");
     music.setVolume(60);
+    music.setLoop(true);
     music.play();
 
 
