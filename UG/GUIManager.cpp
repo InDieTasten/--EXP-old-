@@ -215,6 +215,52 @@ void GUIManager::handleTask(std::list<std::string> _args)
         {
             //WORK
         }
+        else if (*_args.begin() == "getMenuDef")
+        {
+            _args.pop_front();
+            for(std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
+            {
+                if(it->ID == *_args.begin())
+                {
+                    _args.pop_front();
+                    if(*_args.begin() == "x")
+                    {
+                        std::list<std::string> x;
+                        x.push_back("guiRequest");
+                        x.push_back(it->ID);
+                        x.push_back("x");
+                        x.push_back(util::toString(it->X));
+                        dLink->pushEvent(x);
+                    }
+                    else if (*_args.begin() == "y")
+                    {
+
+                    }
+                    else if (*_args.begin() == "width")
+                    {
+
+                    }
+                    else if (*_args.begin() == "height")
+                    {
+
+                    }
+                    else if (*_args.begin() == "title")
+                    {
+
+                    }
+                    else if (*_args.begin() == "visible")
+                    {
+
+                    }
+                    break;
+                }
+            }
+
+        }
+        else if (*_args.begin() == "getElementDef")
+        {
+            //WORK
+        }
     }
 }
 
