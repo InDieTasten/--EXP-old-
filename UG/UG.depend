@@ -1304,7 +1304,7 @@
 	<stdio.h>
 	"lua.h"
 
-1409580754 c:\users\luca\documents\github\--untitledgame--\ug\logger.hpp
+1409774500 c:\users\luca\documents\github\--untitledgame--\ug\logger.hpp
 	<iostream>
 	<time.h>
 	<string>
@@ -1360,13 +1360,14 @@
 	"DataBank.hpp"
 	"GUIManager.hpp"
 
-1409580754 c:\users\luca\documents\github\--untitledgame--\ug\guimanager.hpp
+1409753256 c:\users\luca\documents\github\--untitledgame--\ug\guimanager.hpp
 	<list>
+	"util.hpp"
 	"GUIMenu.hpp"
 	"DataBank.hpp"
 	"GUIDockItem.hpp"
 
-1409580754 c:\users\luca\documents\github\--untitledgame--\ug\guimenu.hpp
+1409753256 c:\users\luca\documents\github\--untitledgame--\ug\guimenu.hpp
 	<list>
 	"GUIElement.hpp"
 
@@ -2245,7 +2246,7 @@
 
 1409057031 c:\users\aysha heuer\documents\github\--untitledgame--\ug\settings.hpp
 
-1409580763 c:\users\luca\documents\github\--untitledgame--\ug\settings.hpp
+1409753256 c:\users\luca\documents\github\--untitledgame--\ug\settings.hpp
 
 1409625037 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\settings.hpp
 

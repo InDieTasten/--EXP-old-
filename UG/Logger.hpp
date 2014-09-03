@@ -8,7 +8,17 @@
 #include <stdio.h>
 #include <sstream>
 
-void log(std::string name,std::string msg);
+class Logger
+{
+private:
+    time_t rawtime;
+    struct tm * timeinfo;
+
+public:
+    std::string T; //Stunden
+    std::string D; //Tag
 
 
+    void log(std::string name,std::string msg);
+};
 #endif
