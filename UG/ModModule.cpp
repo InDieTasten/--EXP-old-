@@ -23,7 +23,7 @@ void ModModule::Run()
 
         luaL_dofile(it->state, it->path.c_str());
 
-        lua_getglobal(it->state, "onLoad");
+        lua_getglobal(it->state, "onHardLoad");
 
         lua_call(it->state, 0, 0);
     }
@@ -47,7 +47,7 @@ void ModModule::Run()
         {
             for(std::list<Script>::iterator script = scripts->begin(); script != scripts->end(); script++)
             {
-                lua_getglobal(script->state, "onSoftEvent");
+                lua_getglobal(script->state, "onHardEvent");
                 for(std::list<std::string>::iterator parameter = event->begin(); parameter != event->end(); parameter++)
                 {
                     lua_pushstring(script->state, parameter->c_str());
@@ -61,7 +61,7 @@ void ModModule::Run()
         {
             for(std::list<Script>::iterator script = scripts->begin(); script != scripts->end(); script++)
             {
-                lua_getglobal(script->state, "onTask");
+                lua_getglobal(script->state, "onHardTask");
                 for(std::list<std::string>::iterator parameter = task->begin(); parameter != task->end(); parameter++)
                 {
                     lua_pushstring(script->state, parameter->c_str());
@@ -74,7 +74,7 @@ void ModModule::Run()
     }
     for(std::list<Script>::iterator it = scripts->begin(); it != scripts->end(); it++)
     {
-        lua_getglobal(it->state, "onUnload");
+        lua_getglobal(it->state, "onHardUnload");
         lua_call(it->state, 0, 0);
         lua_close(it->state);
     }

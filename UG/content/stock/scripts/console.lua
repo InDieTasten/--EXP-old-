@@ -1,10 +1,10 @@
-function onLoad()
+function onHardLoad()
 
 end
-function onUnload()
+function onHardUnload()
 
 end
-function runCommand(cmd)
+local function runCommand(cmd)
 	print("Command issued: ", cmd)
 	parts = {}
 	for w in cmd:gmatch("%S+") do table.insert(parts,w) end
@@ -31,7 +31,7 @@ function runCommand(cmd)
 
 
 end
-function onSoftEvent(...)
+function onHardEvent(...)
 	print("+--event--")
 	for k,v in pairs({...}) do
 		print("I "..type(v).." "..tostring(k)..": "..tostring(v))
@@ -48,7 +48,7 @@ function onSoftEvent(...)
 		end
 	end
 end
-function onTask(...)
+function onHardTask(...)
 	print("+--task---")
 	for k,v in pairs({...}) do
 		print("I "..type(v).." "..tostring(k)..": "..tostring(v))
