@@ -21,10 +21,6 @@ public:
     Vector Velocity; //units in m/s
     double Mass; //unit in tons
     std::string TextureID;
-    int ShieldSpheart[100]; //unit of shield density in Sit/Spheart (Shield Units)
-    int shieldDespensationRate; //unit in Sit/s
-    int shieldSpreadingRate; //unit in Sit/s
-    int maxShieldUnits; //unit in Sit
 
     //CONSTRUCTORS
 
