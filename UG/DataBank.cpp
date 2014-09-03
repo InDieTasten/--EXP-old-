@@ -18,7 +18,7 @@ void DataBank::loadPlugins(void)
     std::list<std::string> folder = pLoader.getFolderContent("./content/stock/scripts");
     for (std::list<std::string>::iterator it = folder.begin(); it != folder.end(); it++)
     {
-        std::cout << "Found script: ./content/stock/scripts/" << *it << std::endl;
+        log("MemBank   ", "Found script: ./content/stock/scripts/" + *it);
         scripts.push_back(Script("./content/stock/scripts/"+ *it));
     }
 }
