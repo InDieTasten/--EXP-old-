@@ -24,10 +24,10 @@ extern "C" {
 
 
 // Thread Throttleling
-float mLimit =  40.0; //Cycles per second
+float mLimit =  100.0; //Cycles per second
 float gLimit =  60.0; //Cycles per second
-float pLimit =  100.0; //Cycles per second
-float mainLimit =  40.0; //Cycles per second
+float pLimit =  500.0; //Cycles per second
+float mainLimit =  100.0; //Cycles per second
 
 // Global accessors
 std::list< std::list<std::string> > eventBuffer;
@@ -116,15 +116,15 @@ int main ( int argc, char *argv[] )
     pThread = &phTHREAD;
 
     mThread->launch();
-    sf::sleep(sf::seconds(0.05));
+    sf::sleep(sf::seconds(0.3));
     gThread->launch();
-    sf::sleep(sf::seconds(0.05));
+    sf::sleep(sf::seconds(0.1));
     pThread->launch();
 
 
     sf::Music music;
     music.openFromFile("content/stock/music/background.wav");
-    music.setVolume(60);
+    music.setVolume(20);
     music.setLoop(true);
     music.play();
 
@@ -186,5 +186,5 @@ void StockRegister()
 
 
     //Settings
-    dLink->settings.dockWidth = 68;
+    dLink->settings.dockWidth = 67;
 }
