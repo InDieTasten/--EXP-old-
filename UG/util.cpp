@@ -8,9 +8,12 @@ std::string util::toString(int _x)
 }
 std::string util::toString(bool _x)
 {
-    std::ostringstream buff;
-    buff << _x;
-    return buff.str();
+    if(_x)
+    {
+        return "true";
+    } else {
+        return "false";
+    }
 }
 std::string util::toString(float _x)
 {
@@ -58,9 +61,3 @@ double util::toDouble(std::string _value)
     return result;
 }
 
-std::list<std::string> util::getFolderContent(std::string _path)
-{
-    std::list<std::string> result;
-    //add folder content to result
-    return result;
-}
