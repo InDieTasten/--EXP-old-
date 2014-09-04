@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1409700795 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\main.cpp
+1409789718 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\main.cpp
 	<iostream>
 	"DataBank.hpp"
 	"Vector.hpp"
@@ -301,7 +301,7 @@
 1409584177 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\actor.cpp
 	"Actor.hpp"
 
-1409584177 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\actor.hpp
+1409793553 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\actor.hpp
 
 1409584177 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\button.cpp
 	"Button.hpp"
