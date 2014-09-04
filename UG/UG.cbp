@@ -69,12 +69,6 @@
 		<Unit filename="CodeBox.hpp">
 			<Option virtualFolder="GUI/Elements/" />
 		</Unit>
-		<Unit filename="CollisionIndice.cpp">
-			<Option virtualFolder="MemoryBank/Level/" />
-		</Unit>
-		<Unit filename="CollisionIndice.hpp">
-			<Option virtualFolder="MemoryBank/Level/" />
-		</Unit>
 		<Unit filename="DataBank.cpp">
 			<Option virtualFolder="MemoryBank/" />
 		</Unit>
