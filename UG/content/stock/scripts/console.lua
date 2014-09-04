@@ -61,7 +61,26 @@ function onHardTask(...)
 				print("Memory of console: ", collectgarbage("count")," KB")
 			end
 			if(cmd[3] == "free") then
+				tmp = collectgarbage("count")
 				collectgarbage("collect")
+				print("Free'd ",tmp-collectgarbage("count")," KB of Mem in console")
+			end
+		end
+	end
+	if(cmd[1] == "console") then
+		if(cmd[2] == "run") then
+			script = ""
+			for i = 3, #cmd do
+				script = script.." "..cmd[i]
+			end
+			print("Running following chunk:")
+			print(script)
+			ch, err = load(script)
+			if(ch) then
+				st, err = pcall(ch)
+				if(not st) then print("[Error] ", err) end
+			else
+				print("[Error] ", err)
 			end
 		end
 	end
