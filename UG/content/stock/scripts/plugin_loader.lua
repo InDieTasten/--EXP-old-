@@ -53,7 +53,9 @@ function onHardTask(...)
 				print("Memory of plugin_loader: ",collectgarbage("count")," KB")
 			end
 			if(cmd[3] == "free") then
+				tmp = collectgarbage("count")
 				collectgarbage("collect")
+				print("Free'd ",tmp-collectgarbage("count")," KB of Mem in plugin_loader")
 			end
 		end
 	end
