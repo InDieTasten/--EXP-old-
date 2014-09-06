@@ -3,17 +3,23 @@
 
 struct Settings
 {
-    int guiOpacity1;
-    int guiOpacity2;
-    int guiOpacity3;
-    sf::Color guiActiveMenuBorder;
-    sf::Color guiInactiveMenuBorder;
-    sf::Color guiActiveMenuBackground;
-    sf::Color guiInactiveMenuBackground;
-    sf::Color guiActiveMenuTitleBackground;
-    sf::Color guiInactiveMenuTitleBackground;
-    sf::Color guiActiveMenuTitleText;
-    sf::Color guiInactiveMenuTitleText;
+    sf::Color guiMenuBorderInactive;
+    sf::Color guiMenuBorderActive;
+    sf::Color guiMenuBackgroundInactive;
+    sf::Color guiMenuBackgroundActive;
+    sf::Color guiMenuTitleBackgroundInactive;
+    sf::Color guiMenuTitleBackgroundActive;
+    sf::Color guiMenuTitleTextInactive;
+    sf::Color guiMenuTitleTextActive;
+    sf::Color guiButtonBackgroundInactive;
+    sf::Color guiButtonBackgroundActive;
+    sf::Color guiButtonBackgroundHover;
+    sf::Color guiButtonBorderInactive;
+    sf::Color guiButtonBorderActive;
+    sf::Color guiButtonBorderHover;
+    sf::Color guiButtonTextColorInactive;
+    sf::Color guiButtonTextColorActive;
+    sf::Color guiButtonTextColorHover;
 
     std::string guiTitleFont;
 
