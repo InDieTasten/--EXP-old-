@@ -3,6 +3,8 @@
 
 struct Settings
 {
+    int dockWidth;
+
     sf::Color   guiMenuBorderInactive;
     sf::Color   guiMenuBorderActive;
     sf::Color   guiMenuBackgroundInactive;
@@ -33,9 +35,14 @@ struct Settings
     int         guiLabelTextScale;
     std::string guiLabelFontID;
 
-
-
-    int dockWidth;
+    sf::Color   guiTextboxBackgroundInactive;
+    sf::Color   guiTextboxBackgroundActive;
+    sf::Color   guiTextboxBackgroundHover;
+    sf::Color   guiTextboxBorderInactive;
+    sf::Color   guiTextboxguiTextboxBorderActive;
+    sf::Color   guiTextboxBorderHover;
+    int         guiTextboxTextScale;
+    std::string guiTextboxFontID;
 };
 
 #endif
