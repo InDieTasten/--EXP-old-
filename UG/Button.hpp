@@ -20,6 +20,18 @@ public:
     int Height;
     int Width;
 
+    sf::Color BackgroundColorInactive;
+    sf::Color BackgroundColorActive;
+    sf::Color BackgroundColorHover;
+
+    sf::Color OutlineColorInactive;
+    sf::Color OutlineColorActive;
+    sf::Color OutlineColorHover;
+
+    sf::Color TextColorInactive;
+    sf::Color TextColorActive;
+    sf::Color TextColorHover;
+
     std::string Text;
     bool isActive;
 
