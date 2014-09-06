@@ -28,6 +28,15 @@ public:
 
     sf::View view;
 
+    sf::Color BackgroundInactive;
+    sf::Color BackgroundActive;
+    sf::Color BackgroundHover;
+    sf::Color BorderInactive;
+    sf::Color BorderActive;
+    sf::Color BorderHover;
+    int TextScale;
+    std::string FontID;
+
     //CONSTRUCTORS
 
     //DESTRUCTORS
