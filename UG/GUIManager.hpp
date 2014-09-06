@@ -19,6 +19,16 @@ private:
     int dockWidth;
 public:
 
+    sf::Color Background;
+    sf::Color BackgroundHover;
+    sf::Color Border;
+    sf::Color BorderHover;
+
+    sf::Color ItemBackground;
+    sf::Color ItemBackgroundHover;
+    sf::Color ItemBorder;
+    sf::Color ItemBorderHover;
+
     //CONSTRUCTORS
     GUIManager();
     //DESTRUCTORS
