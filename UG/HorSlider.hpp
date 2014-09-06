@@ -33,6 +33,21 @@ public:
     std::string Text;
     bool isActive;
 
+
+    sf::Color ButtonBackgroundInactive;
+    sf::Color ButtonBackgroundActive;
+    sf::Color ButtonBackgroundHover;
+    sf::Color ButtonBorderInactive;
+    sf::Color ButtonBorderActive;
+    sf::Color ButtonBorderHover;
+    sf::Color SliderBackgroundInactive;
+    sf::Color SliderBackgroundActive;
+    sf::color SliderBackgroundHover;
+    sf::Color SliderBackgroundMoving;
+    int TextScale;
+    std::string FontID
+
+
     //CONSTRUCTORS
 
     //DESTRUCTORS
