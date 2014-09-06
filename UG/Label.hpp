@@ -19,6 +19,12 @@ public:
     std::string DisplayText;
     bool isActive;
 
+    sf::Color TextColorInactive;
+    sf::Color TextColorActive;
+    sf::Color TextColorHover
+    int TextScale;
+    std::string FontID;
+
     //CONSTRUCTORS
 
     //DESTRUCTORS
