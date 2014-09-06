@@ -4,6 +4,14 @@
 struct Settings
 {
     int dockWidth;
+    sf::Color   guiDockBackground;
+    sf::Color   guiDockBackgroundHover;
+    sf::Color   guiDockBorder;
+    sf::Color   guiDockBorderHover;
+    sf::Color   guiDockItemBackground;
+    sf::Color   guiDockItemBackgroundHover;
+    sf::Color   guiDockItemBorder;
+    sf::Color   guiDockItemBorderHover;
 
     sf::Color   guiMenuBorderInactive;
     sf::Color   guiMenuBorderActive;
