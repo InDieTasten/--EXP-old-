@@ -29,6 +29,19 @@ struct Settings
     int         guiButtonTextScale;
     std::string guiButtonFontID;
 
+    sf::Color   guiHorsliderButtonBackgroundInactive;
+    sf::Color   guiHorsliderButtonBackgroundActive;
+    sf::Color   guiHorsliderButtonBackgroundHover;
+    sf::Color   guiHorsliderguiHorsliderButtonBorderInactive;
+    sf::Color   guiHorsliderButtonBorderActive;
+    sf::Color   guiHorsliderButtonBorderHover;
+    sf::Color   guiHorsliderSliderBackgroundInactive;
+    sf::Color   guiHorsliderSliderBackgroundActive;
+    sf::color   guiHorsliderSliderBackgroundHover;
+    sf::Color   guiHorsliderSliderBackgroundMoving;
+    int         guiHorsliderTextScale;
+    std::string guiHorsliderFontID
+
     sf::Color   guiLabelTextInactive;
     sf::Color   guiLabelTextActive;
     sf::Color   guiLabelTextHover;
