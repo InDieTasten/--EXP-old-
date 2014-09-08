@@ -45,10 +45,10 @@ struct Settings
     sf::Color   guiHorsliderButtonBorderHover;
     sf::Color   guiHorsliderSliderBackgroundInactive;
     sf::Color   guiHorsliderSliderBackgroundActive;
-    sf::color   guiHorsliderSliderBackgroundHover;
+    sf::Color   guiHorsliderSliderBackgroundHover;
     sf::Color   guiHorsliderSliderBackgroundMoving;
     int         guiHorsliderTextScale;
-    std::string guiHorsliderFontID
+    std::string guiHorsliderFontID;
 
     sf::Color   guiLabelTextInactive;
     sf::Color   guiLabelTextActive;
