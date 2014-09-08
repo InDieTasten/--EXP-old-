@@ -4,6 +4,56 @@
 //DESTRUCTORS
 
 //METHODS
+void SpaceObject::handleSoftEvent(std::list<std::string> _args)
+{
+
+}
+void SpaceObject::handleTask(std::list<std::string> _args)
+{
+    if(*_args.begin() == "id")
+    {
+        _args.pop_front();
+
+
+    }
+    else if (*_args.begin() == "x")
+    {
+        _args.pop_front();
+
+
+    }
+    else if (*_args.begin() == "y")
+    {
+        _args.pop_front();
+
+
+    }
+    else if (*_args.begin() == "deltaX")
+    {
+        _args.pop_front();
+
+
+    }
+    else if (*_args.begin() == "deltaY")
+    {
+        _args.pop_front();
+
+
+    }
+    else if (*_args.begin() == "mass")
+    {
+        _args.pop_front();
+
+
+    }
+    else if (*_args.begin() == "textureID")
+    {
+        _args.pop_front();
+
+
+    }
+}
+
 void SpaceObject::loadme(std::ifstream* filehandle)
 {
     /*filehandle->read((char*) &Controller,sizeof(Actor));
