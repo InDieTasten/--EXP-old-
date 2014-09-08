@@ -275,9 +275,9 @@ void DataBank::saveDataBank(std::string _path) //confusion
 {
     std::ofstream filehandle("SAVE.USG");
     //level objects
-    int x = Level.SpaceObjectList.size();
+    int x = level.activeSystem.SpaceObjectList.size();
     filehandle.write((char*) &x,sizeof(int));
-    for (std::list<SpaceObject>::iterator it = Level.SpaceObjectList.begin(); it != Level.SpaceObjectList.end(); it++)
+    for (std::list<SpaceObject>::iterator it = level.activeSystem.SpaceObjectList.begin(); it != level.activeSystem.SpaceObjectList.end(); it++)
     {
         it->saveme(&filehandle);
     }
@@ -306,6 +306,7 @@ std::list<std::string> DataBank::pullEvent()
 {
     std::list<std::string> result = *softEvents.begin();
     softEvents.pop_front();
+    handleSoftEvent(result);
     return result;
 }
 
@@ -317,5 +318,129 @@ std::list<std::string> DataBank::pullTask()
 {
     std::list<std::string> result = *softTasks.begin();
     softTasks.pop_front();
+    handleTask(result);
     return result;
 }
+void DataBank::handleSoftEvent(std::list<std::string> _args)
+{
+
+}
+void DataBank::handleTask(std::list<std::string> _args)
+{
+    if(*_args.begin() == "level")
+    {
+        _args.pop_front();
+        level.handleTask(_args);
+    }
+    else if (*_args.begin() == "resource")
+    {
+        _args.pop_front();
+        if(*_args.begin() == "texture")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "register")
+            {
+                _args.pop_front();
+                std::string id = *_args.begin();
+                _args.pop_front();
+                TextureRegister(id, *_args.begin());
+            }
+            else if(*_args.begin() == "erase")
+            {
+                _args.pop_front();
+                TextureErase(*_args.begin());
+            }
+            else if(*_args.begin() == "load")
+            {
+                _args.pop_front();
+                TextureLoad(*_args.begin());
+            }
+            else if(*_args.begin() == "unload")
+            {
+                _args.pop_front();
+                TextureUnload(*_args.begin());
+            }
+        }
+        else if (*_args.begin() == "font")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "register")
+            {
+                _args.pop_front();
+                std::string id = *_args.begin();
+                _args.pop_front();
+                FontRegister(id, *_args.begin());
+            }
+            else if(*_args.begin() == "erase")
+            {
+                _args.pop_front();
+                FontErase(*_args.begin());
+            }
+            else if(*_args.begin() == "load")
+            {
+                _args.pop_front();
+                FontLoad(*_args.begin());
+            }
+            else if(*_args.begin() == "unload")
+            {
+                _args.pop_front();
+                FontUnload(*_args.begin());
+            }
+        }
+        else if(*_args.begin() == "sound")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "register")
+            {
+                _args.pop_front();
+                std::string id = *_args.begin();
+                _args.pop_front();
+                SoundRegister(id, *_args.begin());
+            }
+            else if(*_args.begin() == "erase")
+            {
+                _args.pop_front();
+                SoundErase(*_args.begin());
+            }
+            else if(*_args.begin() == "load")
+            {
+                _args.pop_front();
+                SoundLoad(*_args.begin());
+            }
+            else if(*_args.begin() == "unload")
+            {
+                _args.pop_front();
+                SoundUnload(*_args.begin());
+            }
+        }
+        else if(*_args.begin() == "track")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "register")
+            {
+                _args.pop_front();
+                std::string id = *_args.begin();
+                _args.pop_front();
+                TrackRegister(id, *_args.begin());
+            }
+            else if(*_args.begin() == "erase")
+            {
+                _args.pop_front();
+                TrackErase(*_args.begin());
+            }
+            else if(*_args.begin() == "load")
+            {
+                _args.pop_front();
+                TrackLoad(*_args.begin());
+            }
+            else if(*_args.begin() == "unload")
+            {
+                _args.pop_front();
+                TrackUnload(*_args.begin());
+            }
+        }
+    }
+}
+
+
+
