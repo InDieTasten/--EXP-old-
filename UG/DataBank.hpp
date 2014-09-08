@@ -17,6 +17,7 @@
 #include "KeyBind.hpp"
 #include "Loader.hpp"
 #include "Settings.hpp"
+#include "Level.hpp"
 
 class DataBank
 {
@@ -28,10 +29,9 @@ private:
     std::list<Font> fonts;
     std::list<Sound> sounds;
     std::list<Track> tracks;
-    std::string activeCameraID;
 public:
     sf::RenderWindow *renderWindow;
-    SolarSystem Level;
+    Level level;
     bool guiMode;
     bool runGraphics;
     bool runPhysics;
@@ -57,27 +57,32 @@ public:
     void TextureLoad(std::string _id);
     void TextureUnload(std::string _id);
     sf::Texture* TextureGet(std::string _id);
+
     //Font Management
     void FontRegister(std::string _id, std::string _path);
     void FontErase(std::string _id);
     void FontLoad(std::string _id);
     void FontUnload(std::string _id);
     sf::Font* FontGet(std::string _id);
+
     //Sound Management
     void SoundRegister(std::string _id, std::string _path);
     void SoundErase(std::string _id);
     void SoundLoad(std::string _id);
     void SoundUnload(std::string _id);
     sf::SoundBuffer* SoundGet(std::string _id);
+
     //Track Management
     void TrackRegister(std::string _id, std::string _path);
     void TrackErase(std::string _id);
     void TrackLoad(std::string _id);
     void TrackUnload(std::string _id);
     sf::SoundBuffer* TrackGet(std::string _id);
+
     //Views
     sf::View gameView;
     sf::View guiView;
+
     //Files
     void saveDataBank(std::string _path);
     void loadDataBank(std::string _path);
@@ -87,6 +92,8 @@ public:
     std::list<std::string> pullEvent();
     void pushTask(std::list<std::string> _args);
     std::list<std::string> pullTask();
+    void handleSoftEvent(std::list<std::string> _args);
+    void handleTask     (std::list<std::string> _args);
 };
 
 #endif
