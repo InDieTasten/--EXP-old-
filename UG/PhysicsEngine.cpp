@@ -53,7 +53,7 @@ void PhysicsEngine::Run()
         }
         limit.restart();
         GMutex.lock();
-        for (std::list<SpaceObject>::iterator sObject = dLink->Level.SpaceObjectList.begin(); sObject != dLink->Level.SpaceObjectList.end(); sObject++)
+        for (std::list<SpaceObject>::iterator sObject = dLink->level.activeSystem.SpaceObjectList.begin(); sObject != dLink->level.activeSystem.SpaceObjectList.end(); sObject++)
         {
 
             ////PlayerInput
@@ -64,7 +64,7 @@ void PhysicsEngine::Run()
 
 
             ////GRAVITY
-            for (std::list<SpaceObject>::iterator sObject2 = dLink->Level.SpaceObjectList.begin(); sObject2 != dLink->Level.SpaceObjectList.end(); sObject2++)
+            for (std::list<SpaceObject>::iterator sObject2 = dLink->level.activeSystem.SpaceObjectList.begin(); sObject2 != dLink->level.activeSystem.SpaceObjectList.end(); sObject2++)
             {
                 //calc gravity force
                 if (sObject->ID != sObject2->ID)
