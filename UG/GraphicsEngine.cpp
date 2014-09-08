@@ -25,7 +25,7 @@ void GraphicsEngine::Run()
 
         GMutex.lock();
         dLink->renderWindow->setView(dLink->gameView);
-        for (std::list<SpaceObject>::iterator it = dLink->Level.SpaceObjectList.begin(); it != dLink->Level.SpaceObjectList.end(); it++)
+        for (std::list<SpaceObject>::iterator it = dLink->level.activeSystem.SpaceObjectList.begin(); it != dLink->level.activeSystem.SpaceObjectList.end(); it++)
         {
             renderSprite.setTexture(*dLink->TextureGet(it->TextureID));
             renderSprite.setOrigin(renderSprite.getLocalBounds().width/2.0f, renderSprite.getLocalBounds().height/2.0f);
