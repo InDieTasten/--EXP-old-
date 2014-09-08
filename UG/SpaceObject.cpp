@@ -13,43 +13,43 @@ void SpaceObject::handleTask(std::list<std::string> _args)
     if(*_args.begin() == "id")
     {
         _args.pop_front();
-
+        //WORK
 
     }
     else if (*_args.begin() == "x")
     {
         _args.pop_front();
-
+//WORK
 
     }
     else if (*_args.begin() == "y")
     {
         _args.pop_front();
-
+//WORK
 
     }
     else if (*_args.begin() == "deltaX")
     {
         _args.pop_front();
-
+//WORK
 
     }
     else if (*_args.begin() == "deltaY")
     {
         _args.pop_front();
-
+//WORK
 
     }
     else if (*_args.begin() == "mass")
     {
         _args.pop_front();
-
+//WORK
 
     }
     else if (*_args.begin() == "textureID")
     {
         _args.pop_front();
-
+//WORK
 
     }
 }
