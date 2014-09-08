@@ -42,10 +42,10 @@ public:
     sf::Color ButtonBorderHover;
     sf::Color SliderBackgroundInactive;
     sf::Color SliderBackgroundActive;
-    sf::color SliderBackgroundHover;
+    sf::Color SliderBackgroundHover;
     sf::Color SliderBackgroundMoving;
     int TextScale;
-    std::string FontID
+    std::string FontID;
 
 
     //CONSTRUCTORS
