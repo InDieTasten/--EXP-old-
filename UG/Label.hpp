@@ -21,7 +21,7 @@ public:
 
     sf::Color TextColorInactive;
     sf::Color TextColorActive;
-    sf::Color TextColorHover
+    sf::Color TextColorHover;
     int TextScale;
     std::string FontID;
 
