@@ -71,5 +71,9 @@ void EventManager::processSoftEvent(std::list<std::string> _args)
 void EventManager::processTask(std::list<std::string> _args)
 {
     handleTask(_args);
-    guiLink->handleTask(_args);
+    if(*_args.begin() == "gui")
+    {
+        _args.pop_front();
+        guiLink->handleTask(_args);
+    }
 }

@@ -139,154 +139,152 @@ void GUIManager::handleTask(std::list<std::string> _args)
     {
         it->handleTask(_args);
     }
-    if(*_args.begin() == "gui")
+    _args.pop_front();
+    if(*_args.begin() == "addMenu")
     {
         _args.pop_front();
-        if(*_args.begin() == "addMenu")
+        GUIMenu newMenu;
+        newMenu.ID = *_args.begin();
+        guiMenus.push_back(newMenu);
+    }
+    else if (*_args.begin() == "removeMenu")
+    {
+        _args.pop_front();
+        for(std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
         {
-            _args.pop_front();
-            GUIMenu newMenu;
-            newMenu.ID = *_args.begin();
-            guiMenus.push_back(newMenu);
-        }
-        else if (*_args.begin() == "removeMenu")
-        {
-            _args.pop_front();
-            for(std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
+            if(it->ID == *_args.begin())
             {
-                if(it->ID == *_args.begin())
-                {
-                    guiMenus.erase(it);
-                    break;
-                }
+                guiMenus.erase(it);
+                break;
             }
-        }
-        else if (*_args.begin() == "modifyMenu")
-        {
-            _args.pop_front();
-            for(std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
-            {
-                if(it->ID == *_args.begin())
-                {
-                    _args.pop_front();
-                    if(*_args.begin() == "x")
-                    {
-                        _args.pop_front();
-                        it->X = util::toInt(*_args.begin());
-                    }
-                    else if (*_args.begin() == "y")
-                    {
-                        _args.pop_front();
-                        it->Y = util::toInt(*_args.begin());
-                    }
-                    else if (*_args.begin() == "width")
-                    {
-                        _args.pop_front();
-                        it->Width = util::toInt(*_args.begin());
-                    }
-                    else if (*_args.begin() == "height")
-                    {
-                        _args.pop_front();
-                        it->Height = util::toInt(*_args.begin());
-                    }
-                    else if (*_args.begin() == "title")
-                    {
-                        _args.pop_front();
-                        it->SetMenuTitle(*_args.begin());
-                    }
-                    else if (*_args.begin() == "visible")
-                    {
-                        _args.pop_front();
-                        it->isHidden = util::toBool(*_args.begin())==false;
-                    }
-                    break;
-                }
-            }
-        }
-        else if (*_args.begin() == "addElement")
-        {
-            //WORK
-        }
-        else if (*_args.begin() == "removeElement")
-        {
-            //WORK
-        }
-        else if (*_args.begin() == "modifyElement")
-        {
-            //WORK
-        }
-        else if (*_args.begin() == "getMenuDef")
-        {
-            _args.pop_front();
-            for(std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
-            {
-                if(it->ID == *_args.begin())
-                {
-                    _args.pop_front();
-                    if(*_args.begin() == "x")
-                    {
-                        std::list<std::string> x;
-                        x.push_back("guiRequest");
-                        x.push_back(it->ID);
-                        x.push_back("x");
-                        x.push_back(util::toString(it->X));
-                        dLink->pushEvent(x);
-                    }
-                    else if (*_args.begin() == "y")
-                    {
-                        std::list<std::string> x;
-                        x.push_back("guiRequest");
-                        x.push_back(it->ID);
-                        x.push_back("y");
-                        x.push_back(util::toString(it->Y));
-                        dLink->pushEvent(x);
-                    }
-                    else if (*_args.begin() == "width")
-                    {
-                        std::list<std::string> x;
-                        x.push_back("guiRequest");
-                        x.push_back(it->ID);
-                        x.push_back("width");
-                        x.push_back(util::toString(it->Width));
-                        dLink->pushEvent(x);
-                    }
-                    else if (*_args.begin() == "height")
-                    {
-                        std::list<std::string> x;
-                        x.push_back("guiRequest");
-                        x.push_back(it->ID);
-                        x.push_back("height");
-                        x.push_back(util::toString(it->Height));
-                        dLink->pushEvent(x);
-                    }
-                    else if (*_args.begin() == "title")
-                    {
-                        std::list<std::string> x;
-                        x.push_back("guiRequest");
-                        x.push_back(it->ID);
-                        x.push_back("title");
-                        x.push_back(it->menuTitle.getString());
-                        dLink->pushEvent(x);
-                    }
-                    else if (*_args.begin() == "visible")
-                    {
-                        std::list<std::string> x;
-                        x.push_back("guiRequest");
-                        x.push_back(it->ID);
-                        x.push_back("visible");
-                        x.push_back(util::toString(!it->isHidden));
-                        dLink->pushEvent(x);
-                    }
-                    break;
-                }
-            }
-
-        }
-        else if (*_args.begin() == "getElementDef")
-        {
-            //WORK
         }
     }
+    else if (*_args.begin() == "modifyMenu")
+    {
+        _args.pop_front();
+        for(std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
+        {
+            if(it->ID == *_args.begin())
+            {
+                _args.pop_front();
+                if(*_args.begin() == "x")
+                {
+                    _args.pop_front();
+                    it->X = util::toInt(*_args.begin());
+                }
+                else if (*_args.begin() == "y")
+                {
+                    _args.pop_front();
+                    it->Y = util::toInt(*_args.begin());
+                }
+                else if (*_args.begin() == "width")
+                {
+                    _args.pop_front();
+                    it->Width = util::toInt(*_args.begin());
+                }
+                else if (*_args.begin() == "height")
+                {
+                    _args.pop_front();
+                    it->Height = util::toInt(*_args.begin());
+                }
+                else if (*_args.begin() == "title")
+                {
+                    _args.pop_front();
+                    it->SetMenuTitle(*_args.begin());
+                }
+                else if (*_args.begin() == "visible")
+                {
+                    _args.pop_front();
+                    it->isHidden = util::toBool(*_args.begin())==false;
+                }
+                break;
+            }
+        }
+    }
+    else if (*_args.begin() == "addElement")
+    {
+        //WORK
+    }
+    else if (*_args.begin() == "removeElement")
+    {
+        //WORK
+    }
+    else if (*_args.begin() == "modifyElement")
+    {
+        //WORK
+    }
+    else if (*_args.begin() == "getMenuDef")
+    {
+        _args.pop_front();
+        for(std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
+        {
+            if(it->ID == *_args.begin())
+            {
+                _args.pop_front();
+                if(*_args.begin() == "x")
+                {
+                    std::list<std::string> x;
+                    x.push_back("guiRequest");
+                    x.push_back(it->ID);
+                    x.push_back("x");
+                    x.push_back(util::toString(it->X));
+                    dLink->pushEvent(x);
+                }
+                else if (*_args.begin() == "y")
+                {
+                    std::list<std::string> x;
+                    x.push_back("guiRequest");
+                    x.push_back(it->ID);
+                    x.push_back("y");
+                    x.push_back(util::toString(it->Y));
+                    dLink->pushEvent(x);
+                }
+                else if (*_args.begin() == "width")
+                {
+                    std::list<std::string> x;
+                    x.push_back("guiRequest");
+                    x.push_back(it->ID);
+                    x.push_back("width");
+                    x.push_back(util::toString(it->Width));
+                    dLink->pushEvent(x);
+                }
+                else if (*_args.begin() == "height")
+                {
+                    std::list<std::string> x;
+                    x.push_back("guiRequest");
+                    x.push_back(it->ID);
+                    x.push_back("height");
+                    x.push_back(util::toString(it->Height));
+                    dLink->pushEvent(x);
+                }
+                else if (*_args.begin() == "title")
+                {
+                    std::list<std::string> x;
+                    x.push_back("guiRequest");
+                    x.push_back(it->ID);
+                    x.push_back("title");
+                    x.push_back(it->menuTitle.getString());
+                    dLink->pushEvent(x);
+                }
+                else if (*_args.begin() == "visible")
+                {
+                    std::list<std::string> x;
+                    x.push_back("guiRequest");
+                    x.push_back(it->ID);
+                    x.push_back("visible");
+                    x.push_back(util::toString(!it->isHidden));
+                    dLink->pushEvent(x);
+                }
+                break;
+            }
+        }
+
+    }
+    else if (*_args.begin() == "getElementDef")
+    {
+        //WORK
+    }
+
 }
 
 void GUIManager::update()
