@@ -46,6 +46,8 @@ sf::Thread*     mThread;
 sf::Mutex GMutex;
 
 void StockRegister();
+void StockSettings();
+void StockKeybinds();
 
 using namespace std;
 
@@ -75,6 +77,7 @@ int main ( int argc, char *argv[] )
     dLink->renderWindow = &App;
 
     StockRegister();
+    StockSettings();
 
     // 2. GUIManager
     log("Main      ", "Create GUI Instance...");
@@ -105,6 +108,8 @@ int main ( int argc, char *argv[] )
     log("Main      ", "Create Event Manager...");
     sf::sleep(sf::seconds(0.05));
     EventManager EventMan;
+
+    StockKeybinds();
 
     ////Create threads
     sf::Thread plTHREAD(&ModModule::Run, &mModule);
@@ -173,18 +178,36 @@ void StockRegister()
     dLink->TextureRegister("$_dockOptions"        , "content/stock/texture/gui/dock/options.png"                      );
     dLink->TextureRegister("$_missing"            , "content/stock/texture/missing.png"                               );
 
+}
+void StockSettings()
+{
 
-    dLink->FontLoad   ("$_menuTitle");
-
-    dLink->TextureLoad("$_closeButtonNormal");
-    dLink->TextureLoad("$_closeButtonHover");
-    dLink->TextureLoad("$_closeButtonPushed");
-    dLink->TextureLoad("$_dockMain");
-    dLink->TextureLoad("$_dockOptions");
-    dLink->TextureLoad("$_missing");
-
-
-
-    //Settings
     dLink->settings.dockWidth = 67;
+
+
+    dLink->settings.guiDockBackground          = sf::Color::Black;
+    dLink->settings.guiDockBackgroundHover     = sf::Color::Green;
+    dLink->settings.guiDockBorder              = sf::Color::Green;
+    dLink->settings.guiDockBorderHover         = sf::Color::White;
+    dLink->settings.guiDockItemBackground      = sf::Color::Red;
+    dLink->settings.guiDockItemBackgroundHover = sf::Color::Red;
+    dLink->settings.guiDockItemBorder          = sf::Color::Red;
+    dLink->settings.guiDockItemBorderHover     = sf::Color::Red;
+
+
+    dLink->settings.guiMenuTitleTextScale = 12;
+    dLink->settings.guiButtonTextScale = 12;
+    dLink->settings.guiHorsliderTextScale = 12;
+    dLink->settings.guiLabelTextScale = 12;
+    dLink->settings.guiTextboxTextScale = 12;
+
+    dLink->settings.guiMenuTitleFont   = "$_menuTitle";
+    dLink->settings.guiButtonFontID    = "$_menuTitle";
+    dLink->settings.guiHorsliderFontID = "$_menuTitle";
+    dLink->settings.guiLabelFontID     = "$_menuTitle";
+    dLink->settings.guiTextboxFontID   = "$_menuTitle";
+}
+void StockKeybinds()
+{
+
 }
