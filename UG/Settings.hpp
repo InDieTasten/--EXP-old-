@@ -68,7 +68,7 @@ struct Settings
     sf::Color   guiTextboxBackgroundActive;
     sf::Color   guiTextboxBackgroundHover;
     sf::Color   guiTextboxBorderInactive;
-    sf::Color   guiTextboxguiTextboxBorderActive;
+    sf::Color   guiTextboxBorderActive;
     sf::Color   guiTextboxBorderHover;
     int         guiTextboxTextScale;
     std::string guiTextboxFontID;
