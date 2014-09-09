@@ -17,6 +17,7 @@ public:
     int Height;
     int Width;
     std::string DisplayText;
+    bool isHover;
     bool isActive;
 
     sf::Color TextColorInactive;
