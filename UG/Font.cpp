@@ -24,5 +24,7 @@ void Font::unload()
 }
 sf::Font* Font::getFont()
 {
+    if(font.size() == 0)
+        load();
     return &(*font.begin());
 }
