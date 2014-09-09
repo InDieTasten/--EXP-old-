@@ -16,7 +16,8 @@ void SolarSystem::handleTask(std::list<std::string> _args)
         SpaceObject tmp;
         tmp.ID = *_args.begin();
         SpaceObjectList.push_back(tmp);
-    } else if (*_args.begin() == "removeObject")
+    }
+    else if (*_args.begin() == "removeObject")
     {
         _args.pop_front();
         for(std::list<SpaceObject>::iterator it = SpaceObjectList.begin(); it != SpaceObjectList.end(); it++)
@@ -27,14 +28,26 @@ void SolarSystem::handleTask(std::list<std::string> _args)
                 break;
             }
         }
-    } else if (*_args.begin() == "modifyObject")
+    }
+    else if (*_args.begin() == "modifyObject")
     {
         _args.pop_front();
         for(std::list<SpaceObject>::iterator it = SpaceObjectList.begin(); it != SpaceObjectList.end(); it++)
         {
             if(it->ID == *_args.begin())
             {
-                _args.pop_front();
+                it->handleTask(_args);
+                break;
+            }
+        }
+    }
+    else if (*_args.begin() == "getObjectDef")
+    {
+        _args.pop_front();
+        for(std::list<SpaceObject>::iterator it = SpaceObjectList.begin(); it != SpaceObjectList.end(); it++)
+        {
+            if(it->ID == *_args.begin())
+            {
                 it->handleTask(_args);
                 break;
             }
