@@ -23,7 +23,7 @@ struct Settings
     sf::Color   guiMenuTitleTextActive;
     int         guiMenuTitleHeight;
     int         guiMenuTitleTextScale;
-    std::string guiTitleFont;
+    std::string guiMenuTitleFont;
 
     sf::Color   guiButtonBackgroundInactive;
     sf::Color   guiButtonBackgroundActive;
@@ -40,13 +40,21 @@ struct Settings
     sf::Color   guiHorsliderButtonBackgroundInactive;
     sf::Color   guiHorsliderButtonBackgroundActive;
     sf::Color   guiHorsliderButtonBackgroundHover;
-    sf::Color   guiHorsliderguiHorsliderButtonBorderInactive;
+    sf::Color   guiHorsliderButtonBorderInactive;
     sf::Color   guiHorsliderButtonBorderActive;
     sf::Color   guiHorsliderButtonBorderHover;
+    sf::Color   guiHorsliderBarBackgroundInactive;
+    sf::Color   guiHorsliderBarBackgroundActive;
+    sf::Color   guiHorsliderBarBorderInactive;
+    sf::Color   guiHorsliderBarBorderActive;
     sf::Color   guiHorsliderSliderBackgroundInactive;
     sf::Color   guiHorsliderSliderBackgroundActive;
     sf::Color   guiHorsliderSliderBackgroundHover;
     sf::Color   guiHorsliderSliderBackgroundMoving;
+    sf::Color   guiHorsliderSliderBorderInactive;
+    sf::Color   guiHorsliderSliderBorderActive;
+    sf::Color   guiHorsliderSliderBorderHover;
+    sf::Color   guiHorsliderSliderBorderMoving;
     int         guiHorsliderTextScale;
     std::string guiHorsliderFontID;
 
