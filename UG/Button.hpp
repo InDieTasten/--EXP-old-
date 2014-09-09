@@ -24,13 +24,15 @@ public:
     sf::Color BackgroundColorActive;
     sf::Color BackgroundColorHover;
 
-    sf::Color OutlineColorInactive;
-    sf::Color OutlineColorActive;
-    sf::Color OutlineColorHover;
+    sf::Color BorderColorInactive;
+    sf::Color BorderColorActive;
+    sf::Color BorderColorHover;
 
     sf::Color TextColorInactive;
     sf::Color TextColorActive;
     sf::Color TextColorHover;
+    int TextScale;
+    std::string FontID;
 
     std::string Text;
     bool isActive;
