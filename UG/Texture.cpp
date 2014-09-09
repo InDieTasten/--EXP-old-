@@ -25,5 +25,7 @@ void Texture::unload()
 }
 sf::Texture* Texture::getImage()
 {
+    if(image.size() == 0)
+        load();
     return &(*image.begin());
 }
