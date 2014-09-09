@@ -8,45 +8,62 @@
 void Button::Setup()
 {
     mouseHover = false;
+
+    BackgroundColorInactive = dLink->settings.guiButtonBackgroundInactive;
+    BackgroundColorActive   = dLink->settings.guiButtonBackgroundActive;
+    BackgroundColorHover    = dLink->settings.guiButtonBackgroundHover;
+    BorderColorInactive = dLink->settings.guiButtonBorderInactive;
+    BorderColorActive   = dLink->settings.guiButtonBorderActive;
+    BorderColorHover    = dLink->settings.guiButtonBorderHover;
+    TextColorInactive = dLink->settings.guiButtonTextInactive;
+    TextColorActive   = dLink->settings.guiButtonTextActive;
+    TextColorHover    = dLink->settings.guiButtonTextHover;
+    TextScale = dLink->settings.guiButtonTextScale;
+    FontID = dLink->settings.guiButtonFontID;
 }
 void Button::Update(int _x, int _y, std::string _id)
 {
-    if(!mouseHover)
+    if(isActive)
     {
-        rect.setPosition((float)_x,(float)_y);
-        rect.setSize(sf::Vector2f((float)Width,(float)Height));
-        rect.setFillColor(sf::Color(10,80,10,140));
-        rect.setOutlineThickness(1.0f);
-        rect.setOutlineColor(sf::Color(160,160,160,200));
-
-        displayText.setColor(sf::Color(120,120,120,200));
-    }
-    else
-    {
-        if(isActive)
+        if(mouseHover)
         {
             rect.setPosition((float)_x,(float)_y);
             rect.setSize(sf::Vector2f((float)Width,(float)Height));
-            rect.setFillColor(sf::Color(50,50,50,200));
+            rect.setFillColor(BackgroundColorHover);
             rect.setOutlineThickness(1.0f);
-            rect.setOutlineColor(sf::Color(0,255,0,255));
+            rect.setOutlineColor(BorderColorHover);
+
+            displayText.setColor(TextColorHover);
         }
         else
         {
             rect.setPosition((float)_x,(float)_y);
             rect.setSize(sf::Vector2f((float)Width,(float)Height));
-            rect.setFillColor(sf::Color(50,50,50,200));
+            rect.setFillColor(BackgroundColorActive);
             rect.setOutlineThickness(1.0f);
-            rect.setOutlineColor(sf::Color(200,200,200,255));
+            rect.setOutlineColor(BorderColorActive);
+
+            displayText.setColor(TextColorActive);
         }
-        displayText.setColor(sf::Color(200,200,200,200));
+    }
+    else
+    {
+        rect.setPosition((float)_x,(float)_y);
+        rect.setSize(sf::Vector2f((float)Width,(float)Height));
+        rect.setFillColor(BackgroundColorInactive);
+        rect.setOutlineThickness(1.0f);
+        rect.setOutlineColor(BorderColorInactive);
+
+        displayText.setColor(TextColorInactive);
     }
     displayText.setString(Text);
-    displayText.setFont(*dLink->FontGet("$_menuTitle"));
-    displayText.setScale(1.0,1.0);
+
+    log("Debug", "FontID = " + FontID);
+
+    displayText.setFont(*dLink->FontGet(FontID));
     displayText.setOrigin(floorf(displayText.getLocalBounds().width/2), floorf(displayText.getLocalBounds().height/2));
     displayText.setPosition(floorf(_x+(Width/2.0)),floorf(_y+(Height/2.0)));
-    displayText.setCharacterSize(12);
+    displayText.setCharacterSize(TextScale);
 }
 void Button::Render(int _x, int _y, std::string _id)
 {
