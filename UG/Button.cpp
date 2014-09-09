@@ -57,9 +57,6 @@ void Button::Update(int _x, int _y, std::string _id)
         displayText.setColor(TextColorInactive);
     }
     displayText.setString(Text);
-
-    log("Debug", "FontID = " + FontID);
-
     displayText.setFont(*dLink->FontGet(FontID));
     displayText.setOrigin(floorf(displayText.getLocalBounds().width/2), floorf(displayText.getLocalBounds().height/2));
     displayText.setPosition(floorf(_x+(Width/2.0)),floorf(_y+(Height/2.0)));
