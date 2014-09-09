@@ -17,6 +17,8 @@ private:
     sf::RectangleShape incBox;
     sf::RectangleShape slider;
     bool hoverSlide;
+    bool hoverDec;
+    bool hoverInc;
     bool moveSlide;
     int oldMouseX;
 public:
@@ -40,10 +42,18 @@ public:
     sf::Color ButtonBorderInactive;
     sf::Color ButtonBorderActive;
     sf::Color ButtonBorderHover;
+    sf::Color BarBackgroundInactive;
+    sf::Color BarBackgroundActive;
+    sf::Color BarBorderInactive;
+    sf::Color BarBorderActive;
     sf::Color SliderBackgroundInactive;
     sf::Color SliderBackgroundActive;
     sf::Color SliderBackgroundHover;
     sf::Color SliderBackgroundMoving;
+    sf::Color SliderBorderInactive;
+    sf::Color SliderBorderActive;
+    sf::Color SliderBorderHover;
+    sf::Color SliderBorderMoving;
     int TextScale;
     std::string FontID;
 
