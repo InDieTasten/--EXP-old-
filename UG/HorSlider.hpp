@@ -1,6 +1,7 @@
 #ifndef _HorSlider_hpp_
 #define _HorSlider_hpp_
 
+#include "util.hpp"
 #include <string.h>
 #include <math.h>
 #include "DataBank.hpp"
@@ -21,6 +22,7 @@ private:
     bool hoverInc;
     bool moveSlide;
     int oldMouseX;
+    sf::Text displayText;
 public:
     int X;
     int Y;

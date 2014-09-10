@@ -31,24 +31,26 @@ void SolarSystem::handleTask(std::list<std::string> _args)
     }
     else if (*_args.begin() == "modifyObject")
     {
+        std::list<std::string> tmp = _args;
         _args.pop_front();
         for(std::list<SpaceObject>::iterator it = SpaceObjectList.begin(); it != SpaceObjectList.end(); it++)
         {
             if(it->ID == *_args.begin())
             {
-                it->handleTask(_args);
+                it->handleTask(tmp);
                 break;
             }
         }
     }
     else if (*_args.begin() == "getObjectDef")
     {
+        std::list<std::string> tmp = _args;
         _args.pop_front();
         for(std::list<SpaceObject>::iterator it = SpaceObjectList.begin(); it != SpaceObjectList.end(); it++)
         {
             if(it->ID == *_args.begin())
             {
-                it->handleTask(_args);
+                it->handleTask(tmp);
                 break;
             }
         }
