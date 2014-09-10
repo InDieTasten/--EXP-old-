@@ -1,3 +1,4 @@
  - Kopie.gitignore
 *.exe
 *.o
+*.layout
