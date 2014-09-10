@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1410219442 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\main.cpp
+1410288345 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\main.cpp
 	<iostream>
 	"DataBank.hpp"
 	"Vector.hpp"
@@ -553,7 +553,8 @@
 	"SpaceObject.hpp"
 	<list>
 
-1410196225 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\spaceobject.hpp
+1410321694 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\spaceobject.hpp
+	"util.hpp"
 	"Actor.hpp"
 	<SFML\Graphics.hpp>
 	"Vector.hpp"
@@ -687,7 +688,7 @@
 	<math.h>
 	"DataBank.hpp"
 
-1410215662 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\label.hpp
+1410317948 c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\label.hpp
 	<string.h>
 	"DataBank.hpp"
 
@@ -748,7 +749,7 @@
 1409584177 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\guielement.cpp
 	"GUIElement.hpp"
 
-1410195187 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\guimanager.cpp
+1410319527 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\guimanager.cpp
 	"GUIManager.hpp"
 
 1409584177 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\guimenu.cpp
@@ -760,7 +761,7 @@
 1409584177 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\keybind.cpp
 	"KeyBind.hpp"
 
-1410217828 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\label.cpp
+1410318431 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\label.cpp
 	"Label.hpp"
 
 1409584177 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\loader.cpp
@@ -787,14 +788,15 @@
 	<lualib.h>
 	<lauxlib.h>
 
-1410202550 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\solarsystem.cpp
+1410322251 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\solarsystem.cpp
 	"SolarSystem.hpp"
 
 1409584177 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\sound.cpp
 	"Sound.hpp"
 
-1410217767 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\spaceobject.cpp
+1410322408 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\spaceobject.cpp
 	"SpaceObject.hpp"
+	"DataBank.hpp"
 
 1409587471 source:c:\users\indie\bibliotheken\documents\github\--untitledgame--\ug\textbox.cpp
 	"TextBox.hpp"
