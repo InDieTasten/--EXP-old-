@@ -1,6 +1,7 @@
 #ifndef _SpaceObject_hpp_
 #define _SpaceObject_hpp_
 
+#include "util.hpp"
 #include "Actor.hpp"
 #include <SFML\Graphics.hpp>
 #include "Vector.hpp"
@@ -8,6 +9,9 @@
 #include "CollisionIndice.hpp"
 #include "Camera.hpp"
 #include <fstream>
+
+class DataBank;
+extern DataBank* dLink;
 
 class SpaceObject
 {
@@ -23,6 +27,7 @@ public:
     std::string TextureID;
 
     //CONSTRUCTORS
+    SpaceObject();
 
     //DESTRUCTORS
 
