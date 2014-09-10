@@ -14,8 +14,6 @@ private:
 public:
     int X;
     int Y;
-    int Height;
-    int Width;
     std::string DisplayText;
     bool isHover;
     bool isActive;

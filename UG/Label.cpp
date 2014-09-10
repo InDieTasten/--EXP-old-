@@ -49,8 +49,8 @@ void Label::handleEvent(sf::Event* _event, int _x, int _y, std::string _id)
         {
             int mouseX = _event->mouseMove.x;
             int mouseY = _event->mouseMove.y;
-            isHover = (mouseX >= _x && mouseX <= _x+Width);
-            isHover = isHover && (mouseY >= _y && mouseY <= _y+Height);
+            isHover = false;//(mouseX >= _x && mouseX <= _x+Width);
+            isHover = false;//isHover && (mouseY >= _y && mouseY <= _y+Height);
         }
     }
 }

@@ -1,5 +1,5 @@
 function onLoad() -- called right after the plugin has been loaded
-	print("MEEEH was loaded :3")
+	print("Katze")
 end
 function onUnload() -- called right before your plugin gets overriden with nil
 	print("noooooh :(")

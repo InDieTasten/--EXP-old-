@@ -128,6 +128,11 @@ void HorSlider::Update(int _x, int _y, std::string _id)
         slider.setOutlineThickness(1.0f);
         slider.setOutlineColor(SliderBorderInactive);
     }
+    displayText.setString(util::toString(value));
+    displayText.setFont(*dLink->FontGet(FontID));
+    displayText.setOrigin(floorf(displayText.getLocalBounds().width/2), floorf(displayText.getLocalBounds().height/2));
+    displayText.setPosition(floorf(_x+(Width/2.0)),floorf(_y+(Height/2.0)));
+    displayText.setCharacterSize(TextScale);
 }
 void HorSlider::Render(int _x, int _y, std::string _id)
 {
@@ -135,6 +140,7 @@ void HorSlider::Render(int _x, int _y, std::string _id)
     dLink->renderWindow->draw(decBox);
     dLink->renderWindow->draw(incBox);
     dLink->renderWindow->draw(slider);
+    dLink->renderWindow->draw(displayText);
 }
 void HorSlider::handleEvent(sf::Event* _event, int _x, int _y, std::string _id)
 {
