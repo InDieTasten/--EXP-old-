@@ -1,5 +1,11 @@
 #include "SpaceObject.hpp"
+#include "DataBank.hpp"
+
 //CONSTRUCTORS
+SpaceObject::SpaceObject()
+{
+    TextureID = "$_missing";
+}
 
 //DESTRUCTORS
 
@@ -17,44 +23,37 @@ void SpaceObject::handleTask(std::list<std::string> _args)
         if(*_args.begin() == "id")
         {
             _args.pop_front();
-            //WORK
-
+            ID = *_args.begin();
         }
         else if (*_args.begin() == "x")
         {
             _args.pop_front();
-            //WORK
-
+            Position.x = util::toDouble(*_args.begin());
         }
         else if (*_args.begin() == "y")
         {
             _args.pop_front();
-            //WORK
-
+            Position.y = util::toDouble(*_args.begin());
         }
         else if (*_args.begin() == "deltaX")
         {
             _args.pop_front();
-            //WORK
-
+            Velocity.x = util::toDouble(*_args.begin());
         }
         else if (*_args.begin() == "deltaY")
         {
             _args.pop_front();
-            //WORK
-
+            Velocity.y = util::toDouble(*_args.begin());
         }
         else if (*_args.begin() == "mass")
         {
             _args.pop_front();
-            //WORK
-
+            Mass = util::toDouble(*_args.begin());
         }
         else if (*_args.begin() == "textureID")
         {
             _args.pop_front();
-            //WORK
-
+            TextureID = *_args.begin();
         }
     }
     else if(*_args.begin() == "getObjectDef")
@@ -63,45 +62,66 @@ void SpaceObject::handleTask(std::list<std::string> _args)
         _args.pop_front();
         if(*_args.begin() == "id")
         {
-            _args.pop_front();
-            //WORK
-
+            std::list<std::string> x;
+            x.push_back("levelRequest");
+            x.push_back(ID);
+            x.push_back("id");
+            x.push_back(ID);
+            dLink->pushEvent(x);
         }
         else if (*_args.begin() == "x")
         {
-            _args.pop_front();
-            //WORK
-
+            std::list<std::string> x;
+            x.push_back("levelRequest");
+            x.push_back(ID);
+            x.push_back("x");
+            x.push_back(util::toString(Position.x));
+            dLink->pushEvent(x);
         }
         else if (*_args.begin() == "y")
         {
-            _args.pop_front();
-            //WORK
-
+            std::list<std::string> x;
+            x.push_back("levelRequest");
+            x.push_back(ID);
+            x.push_back("y");
+            x.push_back(util::toString(Position.y));
+            dLink->pushEvent(x);
         }
         else if (*_args.begin() == "deltaX")
         {
-            _args.pop_front();
-            //WORK
-
+            std::list<std::string> x;
+            x.push_back("levelRequest");
+            x.push_back(ID);
+            x.push_back("deltaX");
+            x.push_back(util::toString(Velocity.x));
+            dLink->pushEvent(x);
         }
         else if (*_args.begin() == "deltaY")
         {
-            _args.pop_front();
-            //WORK
-
+            std::list<std::string> x;
+            x.push_back("levelRequest");
+            x.push_back(ID);
+            x.push_back("deltaY");
+            x.push_back(util::toString(Velocity.y));
+            dLink->pushEvent(x);
         }
         else if (*_args.begin() == "mass")
         {
-            _args.pop_front();
-            //WORK
-
+            std::list<std::string> x;
+            x.push_back("levelRequest");
+            x.push_back(ID);
+            x.push_back("mass");
+            x.push_back(util::toString(Mass));
+            dLink->pushEvent(x);
         }
         else if (*_args.begin() == "textureID")
         {
-            _args.pop_front();
-            //WORK
-
+            std::list<std::string> x;
+            x.push_back("levelRequest");
+            x.push_back(ID);
+            x.push_back("textureID");
+            x.push_back(TextureID);
+            dLink->pushEvent(x);
         }
     }
 }
