@@ -58,6 +58,27 @@ struct Settings
     int         guiHorsliderTextScale;
     std::string guiHorsliderFontID;
 
+    sf::Color   guiVertsliderButtonBackgroundInactive;
+    sf::Color   guiVertsliderButtonBackgroundActive;
+    sf::Color   guiVertsliderButtonBackgroundHover;
+    sf::Color   guiVertsliderButtonBorderInactive;
+    sf::Color   guiVertsliderButtonBorderActive;
+    sf::Color   guiVertsliderButtonBorderHover;
+    sf::Color   guiVertsliderBarBackgroundInactive;
+    sf::Color   guiVertsliderBarBackgroundActive;
+    sf::Color   guiVertsliderBarBorderInactive;
+    sf::Color   guiVertsliderBarBorderActive;
+    sf::Color   guiVertsliderSliderBackgroundInactive;
+    sf::Color   guiVertsliderSliderBackgroundActive;
+    sf::Color   guiVertsliderSliderBackgroundHover;
+    sf::Color   guiVertsliderSliderBackgroundMoving;
+    sf::Color   guiVertsliderSliderBorderInactive;
+    sf::Color   guiVertsliderSliderBorderActive;
+    sf::Color   guiVertsliderSliderBorderHover;
+    sf::Color   guiVertsliderSliderBorderMoving;
+    int         guiVertsliderTextScale;
+    std::string guiVertsliderFontID;
+
     sf::Color   guiLabelTextInactive;
     sf::Color   guiLabelTextActive;
     sf::Color   guiLabelTextHover;
