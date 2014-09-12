@@ -657,14 +657,17 @@ void GUIManager::add_ConsoleMenu()
 }
 void GUIManager::add_OptionMenu()
 {
-    GUIMenu main;
-    main.ID = "$_optionMenu";
-    main.Enable();
-    main.SetX(dockWidth+20);
-    main.SetY(60);
-    main.SetWidth(220);
-    main.SetHeight(220);
-    main.SetMenuTitle("--[[ SETTINGS ]]--");
+    GUIMenu option;
+    option.ID = "$_optionMenu";
+    option.Enable();
+    option.SetX(dockWidth+20);
+    option.SetY(60);
+    option.SetWidth(220);
+    option.SetHeight(220);
+    option.SetMenuTitle("--[[ SETTINGS ]]--");
+    option.scrollable = true;
+    option.totalWidth = 440;
+    option.totalHeight = 440;
 
     GUIElement elem1;
     elem1.ID = "$_optionMenu.test";
@@ -689,11 +692,11 @@ void GUIManager::add_OptionMenu()
     elem2.vertSlider.ratio = 0.5;
     elem2.vertSlider.value = 10;
 
-    main.GuiElements.push_back(elem1);
-    main.GuiElements.push_back(elem2);
+    option.GuiElements.push_back(elem1);
+    option.GuiElements.push_back(elem2);
 
-    main.update();
-    guiMenus.push_back(main);
+    option.update();
+    guiMenus.push_back(option);
 }
 void GUIManager::add_CodeIDE()
 {
