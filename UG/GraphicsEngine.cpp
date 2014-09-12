@@ -21,7 +21,7 @@ void GraphicsEngine::Run()
             sf::sleep(sf::seconds(1.0/gLimit - limit.getElapsedTime().asSeconds()));
         }
         limit.restart();
-        dLink->renderWindow->clear(); //clear renderBuffer with black
+        dLink->renderWindow->clear(sf::Color(10,10,10,255)); //clear renderBuffer with black
 
         GMutex.lock();
         dLink->renderWindow->setView(dLink->gameView);
