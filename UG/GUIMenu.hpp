@@ -17,6 +17,10 @@ public:
     int Height; // Unit = pixel
     int Width;  // Unit = pixel
     bool isHidden;
+    sf::View view;
+    int scrollX;
+    int scrollY;
+    bool scrollable;
 
     //interaction assist
     bool moving;
