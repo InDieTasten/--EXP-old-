@@ -3,6 +3,8 @@
 
 #include <list>
 #include "GUIElement.hpp"
+#include "VertSlider.hpp"
+#include "HorSlider.hpp"
 
 class GUIMenu
 {
@@ -14,13 +16,18 @@ public:
     sf::Text menuTitle;
     int X;      // Unit = pixel
     int Y;      // Unit = pixel
-    int Height; // Unit = pixel
-    int Width;  // Unit = pixel
+    int Height; // visible
+    int Width;  // visible
     bool isHidden;
+
     sf::View view;
     int scrollX;
     int scrollY;
+    int totalHeight;
+    int totalWidth;
     bool scrollable;
+    VertSlider rightSlider;
+    HorSlider bottomSlider;
 
     //interaction assist
     bool moving;
