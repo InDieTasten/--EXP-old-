@@ -209,6 +209,7 @@ void StockSettings()
     dLink->settings.guiButtonTextActive                  = sf::Color(255,255,255,160);
     dLink->settings.guiButtonTextHover                   = sf::Color(255,255,255,255);
 
+
     dLink->settings.guiHorsliderButtonBackgroundInactive = sf::Color( 40, 40, 40, 64);
     dLink->settings.guiHorsliderButtonBackgroundActive   = sf::Color( 40, 40, 40,128);
     dLink->settings.guiHorsliderButtonBackgroundHover    = sf::Color( 40, 40, 40,255);
@@ -227,6 +228,26 @@ void StockSettings()
     dLink->settings.guiHorsliderSliderBorderActive       = sf::Color(  0,255,  0,128);
     dLink->settings.guiHorsliderSliderBorderHover        = sf::Color(  0,255,  0,255);
     dLink->settings.guiHorsliderSliderBorderMoving       = sf::Color(255,255,255,255);
+
+    dLink->settings.guiVertsliderButtonBackgroundInactive = sf::Color( 40, 40, 40, 64);
+    dLink->settings.guiVertsliderButtonBackgroundActive   = sf::Color( 40, 40, 40,128);
+    dLink->settings.guiVertsliderButtonBackgroundHover    = sf::Color( 40, 40, 40,255);
+    dLink->settings.guiVertsliderButtonBorderInactive     = sf::Color( 80, 80, 80,128);
+    dLink->settings.guiVertsliderButtonBorderActive       = sf::Color(  0,255,  0,128);
+    dLink->settings.guiVertsliderButtonBorderHover        = sf::Color(  0,255,  0,255);
+    dLink->settings.guiVertsliderBarBackgroundInactive    = sf::Color( 40, 40, 40, 64);
+    dLink->settings.guiVertsliderBarBackgroundActive      = sf::Color( 40, 40, 40,128);
+    dLink->settings.guiVertsliderBarBorderInactive        = sf::Color( 80, 80, 80,128);
+    dLink->settings.guiVertsliderBarBorderActive          = sf::Color(  0,255,  0,128);
+    dLink->settings.guiVertsliderSliderBackgroundInactive = sf::Color( 40, 40, 40, 64);
+    dLink->settings.guiVertsliderSliderBackgroundActive   = sf::Color( 40, 40, 40,128);
+    dLink->settings.guiVertsliderSliderBackgroundHover    = sf::Color( 40, 40, 40,255);
+    dLink->settings.guiVertsliderSliderBackgroundMoving   = sf::Color(  0,255,  0,255);
+    dLink->settings.guiVertsliderSliderBorderInactive     = sf::Color( 80, 80, 80,128);
+    dLink->settings.guiVertsliderSliderBorderActive       = sf::Color(  0,255,  0,128);
+    dLink->settings.guiVertsliderSliderBorderHover        = sf::Color(  0,255,  0,255);
+    dLink->settings.guiVertsliderSliderBorderMoving       = sf::Color(255,255,255,255);
+
 
     dLink->settings.guiLabelTextInactive                 = sf::Color::Red;
     dLink->settings.guiLabelTextActive                   = sf::Color::Red;
