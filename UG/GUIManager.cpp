@@ -663,7 +663,7 @@ void GUIManager::add_OptionMenu()
     main.SetX(dockWidth+20);
     main.SetY(60);
     main.SetWidth(220);
-    main.SetHeight(116);
+    main.SetHeight(220);
     main.SetMenuTitle("--[[ SETTINGS ]]--");
 
     GUIElement elem1;
@@ -677,8 +677,20 @@ void GUIManager::add_OptionMenu()
     elem1.horSlider.Height = 16;
     elem1.horSlider.ratio = 0.5;
     elem1.horSlider.value = 10;
+    GUIElement elem2;
+    elem2.ID = "$_optionMenu.test2";
+    elem2.Type = "vertslider";
+    elem2.X = 10;
+    elem2.Y = 10;
+    elem2.vertSlider.max = 200;
+    elem2.vertSlider.min = 1;
+    elem2.vertSlider.Width = 16;
+    elem2.vertSlider.Height = 200;
+    elem2.vertSlider.ratio = 0.5;
+    elem2.vertSlider.value = 10;
 
     main.GuiElements.push_back(elem1);
+    main.GuiElements.push_back(elem2);
 
     main.update();
     guiMenus.push_back(main);
