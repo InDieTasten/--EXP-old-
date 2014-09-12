@@ -9,7 +9,7 @@ GUIMenu::GUIMenu()
     isHidden = false;
 
     scrollX = 0;
-    scrolly = 0;
+    scrollY = 0;
     scrollable = true;
 }
 //DESTRUCTORS
