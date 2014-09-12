@@ -22,6 +22,7 @@ public:
     TextBox textBox;
     Label label;
     HorSlider horSlider;
+    VertSlider vertSlider;
 
     std::string Type;
     std::string ID;
