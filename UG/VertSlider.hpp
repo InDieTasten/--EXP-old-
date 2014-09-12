@@ -21,7 +21,7 @@ private:
     bool hoverDec;
     bool hoverInc;
     bool moveSlide;
-    int oldMouseX;
+    int oldMouseY;
     sf::Text displayText;
 public:
     int X;
