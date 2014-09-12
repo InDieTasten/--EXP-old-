@@ -6,6 +6,7 @@ GUIElement::GUIElement()
     button.Setup();
     label.Setup();
     horSlider.Setup();
+    vertSlider.Setup();
     textBox.Setup();
 }
 //DESTRUCTORS
@@ -42,6 +43,11 @@ void GUIElement::update(int _x, int _y)
         horSlider.isActive = isActive;
         horSlider.Update(_x+X, _y+Y, ID);
     }
+    else if (Type == "vertslider")
+    {
+        vertSlider.isActive = isActive;
+        vertSlider.Update(_x+X, _y+Y, ID);
+    }
     else if (Type == "textbox")
     {
         textBox.isActive = true;
@@ -66,6 +72,10 @@ void GUIElement::render(int _x, int _y)
     {
         horSlider.Render(_x+X, _y+Y, ID);
     }
+    else if (Type == "vertslider")
+    {
+        vertSlider.Render(_x+X, _y+Y, ID);
+    }
     else if (Type == "textbox")
     {
         textBox.Render(_x+X, _y+Y, ID);
@@ -84,6 +94,10 @@ void GUIElement::handleEvent(sf::Event* _event, int _x, int _y)
     else if (Type == "horslider")
     {
         horSlider.handleEvent(_event, _x+X, _y+Y, ID);
+    }
+    else if (Type == "vertslider")
+    {
+        vertSlider.handleEvent(_event, _x+X, _y+Y, ID);
     }
     else if (Type == "label")
     {
@@ -108,6 +122,10 @@ void GUIElement::handleSoftEvent(std::list<std::string> _args, int _x, int _y)
     {
         horSlider.handleSoftEvent(_args, _x+X, _y+Y, ID);
     }
+    else if (Type == "vertslider")
+    {
+        vertSlider.handleSoftEvent(_args, _x+X, _y+Y, ID);
+    }
     else if (Type == "label")
     {
         label.handleSoftEvent(_args, _x+X, _y+Y, ID);
@@ -130,6 +148,10 @@ void GUIElement::handleTask(std::list<std::string> _args, int _x, int _y)
     else if (Type == "horslider")
     {
         horSlider.handleTask(_args, _x+X, _y+Y, ID);
+    }
+    else if (Type == "vertslider")
+    {
+        vertSlider.handleTask(_args, _x+X, _y+Y, ID);
     }
     else if (Type == "label")
     {
