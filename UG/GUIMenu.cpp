@@ -10,7 +10,13 @@ GUIMenu::GUIMenu()
 
     scrollX = 0;
     scrollY = 0;
-    scrollable = true;
+    scrollable = false;
+
+    bottomSlider.Setup();
+    rightSlider.Setup();
+
+    bottomSlider.value = 0;
+    rightSlider.value = 0;
 }
 //DESTRUCTORS
 
@@ -40,7 +46,7 @@ void GUIMenu::update()
         if(isActive)
         {
             mainBackground.setPosition((float)X,(float)Y);
-            mainBackground.setSize(sf::Vector2f((float)Width,(float)Height+16));
+            mainBackground.setSize(sf::Vector2f((float)Width+scrollable*10,(float)Height+16+scrollable*10));
             mainBackground.setFillColor(sf::Color(0,0,0,opacity));
             mainBackground.setOutlineThickness(1.0f);
             mainBackground.setOutlineColor(sf::Color::Green);
@@ -48,7 +54,7 @@ void GUIMenu::update()
         else
         {
             mainBackground.setPosition((float)X,(float)Y);
-            mainBackground.setSize(sf::Vector2f((float)Width,(float)Height+16));
+            mainBackground.setSize(sf::Vector2f((float)Width+scrollable*10,(float)Height+16+scrollable*10));
             mainBackground.setFillColor(sf::Color(0,0,0,opacity));
             mainBackground.setOutlineThickness(1.0f);
             mainBackground.setOutlineColor(sf::Color::White);
@@ -56,7 +62,7 @@ void GUIMenu::update()
         if(isActive)
         {
             titleBar.setPosition((float)X,(float)Y);
-            titleBar.setSize(sf::Vector2f((float)Width,(float)16));
+            titleBar.setSize(sf::Vector2f((float)Width+scrollable*10,(float)16));
             titleBar.setFillColor(sf::Color(10,10,10,opacity));
             titleBar.setOutlineThickness(1.0f);
             titleBar.setOutlineColor(sf::Color::Green);
@@ -64,7 +70,7 @@ void GUIMenu::update()
         else
         {
             titleBar.setPosition((float)X,(float)Y);
-            titleBar.setSize(sf::Vector2f((float)Width,(float)16));
+            titleBar.setSize(sf::Vector2f((float)Width+scrollable*10,(float)16));
             titleBar.setFillColor(sf::Color(10,10,10,opacity));
             titleBar.setOutlineThickness(1.0f);
             titleBar.setOutlineColor(sf::Color::White);
@@ -79,7 +85,19 @@ void GUIMenu::update()
             closeButton.setTexture(*dLink->TextureGet("$_closeButtonHover"));
         else
             closeButton.setTexture(*dLink->TextureGet("$_closeButtonNormal"));
-        closeButton.setPosition((float)(X+Width-15),(float)(Y+1));
+        closeButton.setPosition((float)(X+Width-15+scrollable*10),(float)(Y+1));
+
+        if(scrollable)
+        {
+            bottomSlider.min = 0;
+            bottomSlider.max = totalWidth-Width;
+            bottomSlider.Height = 16;
+            bottomSlider.Width = Width;
+            bottomSlider.isActive = isActive;
+            bottomSlider.ratio = (float)Width/(float)totalWidth;
+            bottomSlider.Update(X, Y+Height+16-10,"noname");
+        }
+
     }
 }
 void GUIMenu::SetHeight(int _height)
@@ -112,6 +130,7 @@ void GUIMenu::render()
         dLink->renderWindow->draw(titleBar);
         dLink->renderWindow->draw(menuTitle);
         dLink->renderWindow->draw(closeButton);
+        bottomSlider.Render(X, Y+Height+16-10,"noname");
         //RenderElements:
         for (std::list<GUIElement>::iterator it = GuiElements.begin(); it != GuiElements.end(); it++)
         {
@@ -122,6 +141,8 @@ void GUIMenu::render()
 }
 void GUIMenu::handleEvent(sf::Event* _event)
 {
+    bottomSlider.handleEvent(_event, X, Y+Height+16-10,"noname");
+
     //moving menu
     int x,y;
     //start?
