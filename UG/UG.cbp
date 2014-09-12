@@ -220,6 +220,9 @@
 		<Unit filename="Vector.hpp">
 			<Option virtualFolder="MemoryBank/Level/" />
 		</Unit>
+		<Unit filename="VertSlider.cpp">
+			<Option virtualFolder="GUI/Elements/" />
+		</Unit>
 		<Unit filename="VertSlider.hpp">
 			<Option virtualFolder="GUI/Elements/" />
 		</Unit>
