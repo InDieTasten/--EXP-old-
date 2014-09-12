@@ -7,6 +7,10 @@ GUIMenu::GUIMenu()
     closeButtonPushed = false;
     isActive = false;
     isHidden = false;
+
+    scrollX = 0;
+    scrolly = 0;
+    scrollable = true;
 }
 //DESTRUCTORS
 
@@ -15,10 +19,21 @@ void GUIMenu::update()
 {
     if(isHidden == false)
     {
+        view = dLink->guiView;
+        view.reset(sf::FloatRect(X+scrollX, Y+scrollY, Width, Height+16));
+        float posx = (X)/(float)dLink->renderWindow->getSize().x;
+        float posy = (Y)/(float)dLink->renderWindow->getSize().y;
+        float sizex = Width/(float)dLink->renderWindow->getSize().x;
+        float sizey = (Height+16)/(float)dLink->renderWindow->getSize().y;
+        view.setViewport(sf::FloatRect(posx, posy, sizex, sizey));
+
         int opacity = 190;
         for(std::list<GUIElement>::iterator it = GuiElements.begin(); it != GuiElements.end(); it++)
         {
             it->isActive = isActive;
+
+            dLink->renderWindow->setView(view);
+
             it->update(X, Y+16);
         }
         //recalcualte the renderShapes
@@ -92,6 +107,7 @@ void GUIMenu::render()
     if(isHidden == false)
     {
         //Rendermyself
+        dLink->renderWindow->setView(dLink->guiView);
         dLink->renderWindow->draw(mainBackground);
         dLink->renderWindow->draw(titleBar);
         dLink->renderWindow->draw(menuTitle);
@@ -99,6 +115,7 @@ void GUIMenu::render()
         //RenderElements:
         for (std::list<GUIElement>::iterator it = GuiElements.begin(); it != GuiElements.end(); it++)
         {
+            dLink->renderWindow->setView(view);
             it->render(X, Y+16);
         }
     }
