@@ -263,12 +263,14 @@ void StockSettings()
     dLink->settings.guiMenuTitleTextScale = 12;
     dLink->settings.guiButtonTextScale = 12;
     dLink->settings.guiHorsliderTextScale = 12;
+    dLink->settings.guiVertsliderTextScale = 12;
     dLink->settings.guiLabelTextScale = 12;
     dLink->settings.guiTextboxTextScale = 12;
 
     dLink->settings.guiMenuTitleFont   = "$_menuTitle";
     dLink->settings.guiButtonFontID    = "$_menuTitle";
     dLink->settings.guiHorsliderFontID = "$_menuTitle";
+    dLink->settings.guiVertsliderFontID = "$_menuTitle";
     dLink->settings.guiLabelFontID     = "$_menuTitle";
     dLink->settings.guiTextboxFontID   = "$_menuTitle";
 }
