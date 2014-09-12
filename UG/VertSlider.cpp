@@ -131,8 +131,9 @@ void VertSlider::Update(int _x, int _y, std::string _id)
     }
     displayText.setString(util::toString(value));
     displayText.setFont(*dLink->FontGet(FontID));
-    displayText.setOrigin(floorf(displayText.getLocalBounds().height/2), floorf(displayText.getLocalBounds().width/2));
+    displayText.setOrigin(floorf(displayText.getLocalBounds().width/2), floorf(displayText.getLocalBounds().height/2));
     displayText.setPosition(floorf(_x+(Width/2.0)),floorf(_y+(Height/2.0)));
+    displayText.setRotation(90.0);
     displayText.setCharacterSize(TextScale);
 }
 void VertSlider::Render(int _x, int _y, std::string _id)
@@ -145,7 +146,51 @@ void VertSlider::Render(int _x, int _y, std::string _id)
 }
 void VertSlider::handleEvent(sf::Event* _event, int _x, int _y, std::string _id)
 {
-
+    int mousey;
+    if(_event->type == sf::Event::MouseMoved && isActive)
+    {
+        mousey = _event->mouseMove.y;
+        int mousex = _event->mouseMove.x;
+        hoverSlide = false;
+        if(mousey >= _x && mousex <= _x+Width)
+        {
+            if(mousey >= _y + Width+((ratio*(Height-2*Width))/2) + ((value-min)/(max-min))*(Height-2*Width-(ratio*(Height-2*Width))) - (ratio*(Height-2*Width))/2 && mousey <= _y + Width+((ratio*(Height-2*Width))/2) + ((value-min)/(max-min))*(Height-2*Width-(ratio*(Height-2*Width))) + (ratio*(Height-2*Width))/2 - 2)
+            {
+                hoverSlide = true;
+            }
+        }
+        if(moveSlide)
+        {
+            int delta = mousey-oldMouseY;
+            //translate
+            value += (max-min) / ((ratio*(Height-2*Width))/2)*ratio * delta;
+            if (value>max)
+            {
+                value = max;
+            }
+            if (value<min)
+            {
+                value = min;
+            }
+        }
+    }
+    if(_event->type == sf::Event::MouseButtonReleased && isActive)
+    {
+        mousey = _event->mouseButton.y;
+        if(moveSlide)
+        {
+            moveSlide = false;
+        }
+    }
+    if(_event->type == sf::Event::MouseButtonPressed && isActive)
+    {
+        mousey = _event->mouseButton.y;
+        if(hoverSlide)
+        {
+            moveSlide = true;
+        }
+    }
+    oldMouseY = mousey;
 }
 void VertSlider::handleSoftEvent(std::list<std::string> _args, int _x, int _y, std::string _id)
 {
