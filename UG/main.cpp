@@ -112,23 +112,32 @@ int main ( int argc, char *argv[] )
     StockKeybinds();
 
     ////Create threads
+    log("Main      ", "Create Mod- Thread");
     sf::Thread plTHREAD(&ModModule::Run, &mModule);
+    log("Main      ", "Create Graphics- Thread");
     sf::Thread grTHREAD(&GraphicsEngine::Run, &graphicsThread);
+    log("Main      ", "Create Physics- Thread");
     sf::Thread phTHREAD(&PhysicsEngine::Run, &physicsThread);
 
+    log("Main      ", "Link Mod- Thread");
     mThread = &plTHREAD;
+    log("Main      ", "Link Graphics- Thread");
     gThread = &grTHREAD;
+    log("Main      ", "Link Physics- Thread");
     pThread = &phTHREAD;
 
+    log("Main      ", "Launch Mod- Thread");
     mThread->launch();
     sf::sleep(sf::seconds(0.3));
+    log("Main      ", "Launch Graphics- Thread");
     gThread->launch();
     sf::sleep(sf::seconds(0.1));
+    log("Main      ", "Launch Physics- Thread");
     pThread->launch();
 
 
 
-
+    log("Main      ", "Entering Event-Loop");
 
     sf::Clock limit;
     limit.restart();
