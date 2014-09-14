@@ -23,9 +23,6 @@ class ModModule
 private:
     Loader loader;
 public:
-    //static std::list< std::list<std::string> > eventBuffer;
-    //static std::list< std::list<std::string> > taskBuffer;
-
     //CONSTRUCTORS
 
     //DESTRUCTORS
@@ -37,15 +34,8 @@ private:
     static int lPushEvent(lua_State *L);
     static int lPushTask(lua_State *L);
 
-    int lAddMenu(lua_State *L); //menu_id
-    int lEditMenuPosition(lua_State *L); //menu_id
-    int lEditMenuSize(lua_State *L); //menu_id
-    int lEnableMenu(lua_State *L); //menu_id
-    int lDisableMenu(lua_State *L); //menu_id
-    int lShowMenu(lua_State *L); //menu_id
-    int lHideMenu(lua_State *L); //menu_id
+    void processTask(std::list<std::string> _args);
 
-    int lAddGuiElement(lua_State *L); //menu_id, elem_id
 public:
     void Run();
     void Stop();

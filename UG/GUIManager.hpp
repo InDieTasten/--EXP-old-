@@ -14,11 +14,11 @@ class GUIManager
     //MEMBERS
 private:
     sf::RectangleShape dock;
-    std::list<GUIMenu> guiMenus;
+
     std::list<GUIDockItem> dockButtons;
     int dockWidth;
 public:
-
+    std::list<GUIMenu> guiMenus;
     sf::Color Background;
     sf::Color BackgroundHover;
     sf::Color Border;
