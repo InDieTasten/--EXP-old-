@@ -134,7 +134,7 @@ int main ( int argc, char *argv[] )
     sf::sleep(sf::seconds(0.1));
     log("Main      ", "Launch Physics- Thread");
     pThread->launch();
-
+    sf::sleep(sf::seconds(0.1));
 
 
     log("Main      ", "Entering Event-Loop");
