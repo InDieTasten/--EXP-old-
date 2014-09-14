@@ -166,7 +166,187 @@ void ModModule::processTask(std::list<std::string> _args)
         }
         else if(*_args.begin() == "access")
         {
+            _args.pop_front()
+            for(std::list<GUIMenu>::iterator it = guiLink->guiMenus.begin(); it != guiLink->guiMenus.end(); it++)
+            {
+                if(it->ID == *_args.begin())
+                {
+                    _args.pop_front();
+                    if(*_args.begin() == "property")
+                    {
+                        _args.pop_front();
+                        if(*_args.begin() == "list")
+                        {
+                            std::list<std::string> x;
+                            x.push_back("gui");
+                            x.push_back("access");
+                            x.push_back(it->ID);
+                            x.push_back("property");
+                            x.push_back("list")
+                            x.push_back("1"));
+                            x.push_back("x");
+                            dLink->pushEvent(x);
+                            x.clear();
+                            x.push_back("gui");
+                            x.push_back("access");
+                            x.push_back(it->ID);
+                            x.push_back("property");
+                            x.push_back("list")
+                            x.push_back("2"));
+                            x.push_back("y");
+                            dLink->pushEvent(x);
+                            x.clear();
+                            x.push_back("gui");
+                            x.push_back("access");
+                            x.push_back(it->ID);
+                            x.push_back("property");
+                            x.push_back("list")
+                            x.push_back("3"));
+                            x.push_back("width");
+                            dLink->pushEvent(x);
+                            x.clear();
+                            x.push_back("gui");
+                            x.push_back("access");
+                            x.push_back(it->ID);
+                            x.push_back("property");
+                            x.push_back("list")
+                            x.push_back("4"));
+                            x.push_back("height");
+                            dLink->pushEvent(x);
+                            x.clear();
+                            x.push_back("gui");
+                            x.push_back("access");
+                            x.push_back(it->ID);
+                            x.push_back("property");
+                            x.push_back("list")
+                            x.push_back("5"));
+                            x.push_back("title");
+                            dLink->pushEvent(x);
+                            x.clear();
+                            x.push_back("gui");
+                            x.push_back("access");
+                            x.push_back(it->ID);
+                            x.push_back("property");
+                            x.push_back("list")
+                            x.push_back("6"));
+                            x.push_back("visible");
+                            dLink->pushEvent(x);
+                            x.clear();
+                            x.push_back("gui");
+                            x.push_back("access");
+                            x.push_back(it->ID);
+                            x.push_back("property");
+                            x.push_back("list")
+                            x.push_back("7"));
+                            x.push_back("scrollable");
+                            dLink->pushEvent(x);
+                            x.clear();
+                            x.push_back("gui");
+                            x.push_back("access");
+                            x.push_back(it->ID);
+                            x.push_back("property");
+                            x.push_back("list")
+                            x.push_back("8"));
+                            x.push_back("widthT");
+                            dLink->pushEvent(x);
+                            x.clear();
+                            x.push_back("gui");
+                            x.push_back("access");
+                            x.push_back(it->ID);
+                            x.push_back("property");
+                            x.push_back("list")
+                            x.push_back("9"));
+                            x.push_back("heightT");
+                            dLink->pushEvent(x);
+                            x.clear();
+                            x.push_back("gui");
+                            x.push_back("access");
+                            x.push_back(it->ID);
+                            x.push_back("property");
+                            x.push_back("list")
+                            x.push_back("10"));
+                            x.push_back("scrollX");
+                            dLink->pushEvent(x);
+                            x.clear();
+                            x.push_back("gui");
+                            x.push_back("access");
+                            x.push_back(it->ID);
+                            x.push_back("property");
+                            x.push_back("list")
+                            x.push_back("11"));
+                            x.push_back("scrollY");
+                            dLink->pushEvent(x);
+                            x.clear();
+                            x.push_back("gui");
+                            x.push_back("access");
+                            x.push_back(it->ID);
+                            x.push_back("property");
+                            x.push_back("list")
+                            x.push_back("12"));
+                            x.push_back("active");
+                            dLink->pushEvent(x);
+                            x.clear();
+                        }
+                        else if(*_args.begin() == "x")
+                        {
 
+                        }
+                        else if(*_args.begin() == "y")
+                        {
+
+                        }
+                        else if(*_args.begin() == "width")
+                        {
+
+                        }
+                        else if(*_args.begin() == "height")
+                        {
+
+                        }
+                        else if(*_args.begin() == "widthT")
+                        {
+
+                        }
+                        else if(*_args.begin() == "heightT")
+                        {
+
+                        }
+                        else if(*_args.begin() == "scrollX")
+                        {
+
+                        }
+                        else if(*_args.begin() == "scrollY")
+                        {
+
+                        }
+                        else if(*_args.begin() == "visible")
+                        {
+
+                        }
+                        else if(*_args.begin() == "active")
+                        {
+
+                        }
+                        else if(*_args.begin() == "scrollable")
+                        {
+
+                        }
+                        else if(*_args.begin() == "title")
+                        {
+
+                        }
+                    }
+                    else if(*_args.begin() == "action")
+                    {
+
+                    }
+                    else if(*_args.begin() == "element")
+                    {
+
+                    }
+                    return;
+                }
+            }
         }
     }
     else if (*_args.begin() == "level")
