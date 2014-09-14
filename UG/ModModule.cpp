@@ -147,7 +147,10 @@ void ModModule::processTask(std::list<std::string> _args)
         }
         else if(*_args.begin() == "add")
         {
-
+            _args.pop_front();
+            GUIMenu x;
+            x.ID = *_args.begin();
+            guiLink->guiMenus.push_back(x);
         }
         else if(*_args.begin() == "remove")
         {
