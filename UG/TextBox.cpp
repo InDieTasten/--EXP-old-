@@ -20,6 +20,8 @@ void TextBox::Setup()
     isActive = true;
     multiline = true;
     clicked = false;
+    slideY = 5;
+    slideX = 0;
 }
 void TextBox::Update(int _x, int _y,std::string _id)
 {
@@ -43,6 +45,8 @@ void TextBox::Update(int _x, int _y,std::string _id)
     text.setString(content);
     view = dLink->guiView;
     view.reset(sf::FloatRect(_x, _y, Width, Height));
+
+    view.move(slideX,slideY);
 
     float posx = _x/(float)dLink->renderWindow->getSize().x;
     float posy = _y/(float)dLink->renderWindow->getSize().y;
