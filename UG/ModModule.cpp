@@ -154,7 +154,15 @@ void ModModule::processTask(std::list<std::string> _args)
         }
         else if(*_args.begin() == "remove")
         {
-
+            _args.pop_front();
+            for(std::list<GUIMenu>::iterator it = guiLink->guiMenus.begin(); it != guiLink->guiMenus.end(); it++)
+            {
+                if(it->ID == *_args.begin())
+                {
+                    guiLink->guiMenus.erase(it);
+                    return;
+                }
+            }
         }
         else if(*_args.begin() == "access")
         {
