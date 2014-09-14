@@ -59,6 +59,7 @@ void ModModule::Run()
         taskBuffer.clear();
         for(std::list< std::list<std::string> >::iterator task = tasks.begin(); task != tasks.end(); task++)
         {
+            processTask(*task);
             for(std::list<Script>::iterator script = scripts->begin(); script != scripts->end(); script++)
             {
                 lua_getglobal(script->state, "onHardTask");
@@ -124,4 +125,45 @@ int ModModule::lPushTask(lua_State *L) // api.print("mein text hat ", 5, "Wörter
     //taskBuffer.push_back(task);
     dLink->pushTask(task);
     return 0;
+}
+void ModModule::processTask(std::list<std::string> _args)
+{
+    if(*_args.begin() == "gui")
+    {
+        _args.pop_front();
+        if(*_args.begin() == "list")
+        {
+            int counter = 1;
+            for(std::list<GUIMenu>::iterator it = guiLink->guiMenus.begin(); it != guiLink->guiMenus.end(); it++)
+            {
+                std::list<std::string> x;
+                x.push_back("gui");
+                x.push_back("list");
+                x.push_back(util::toString(counter));
+                x.push_back(it->ID);
+                dLink->pushEvent(x);
+                counter++;
+            }
+        }
+        else if(*_args.begin() == "add")
+        {
+
+        }
+        else if(*_args.begin() == "remove")
+        {
+
+        }
+        else if(*_args.begin() == "access")
+        {
+
+        }
+    }
+    else if (*_args.begin() == "level")
+    {
+        _args.pop_front();
+    }
+    else if(*_args.begin() == "resource")
+    {
+        _args.pop_front();
+    }
 }
