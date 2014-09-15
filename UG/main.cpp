@@ -198,14 +198,14 @@ void StockSettings()
     dLink->settings.guiDockItemBackgroundHover           = sf::Color::Red;
     dLink->settings.guiDockItemBorder                    = sf::Color::Red;
     dLink->settings.guiDockItemBorderHover               = sf::Color::Red;
-    dLink->settings.guiMenuBorderInactive                = sf::Color::Red;
-    dLink->settings.guiMenuBorderActive                  = sf::Color::Red;
-    dLink->settings.guiMenuBackgroundInactive            = sf::Color::Red;
-    dLink->settings.guiMenuBackgroundActive              = sf::Color::Red;
-    dLink->settings.guiMenuTitleBackgroundInactive       = sf::Color::Red;
-    dLink->settings.guiMenuTitleBackgroundActive         = sf::Color::Red;
-    dLink->settings.guiMenuTitleTextInactive             = sf::Color::Red;
-    dLink->settings.guiMenuTitleTextActive               = sf::Color::Red;
+    dLink->settings.guiMenuBorderInactive                = sf::Color(128,128,128,128);
+    dLink->settings.guiMenuBorderActive                  = sf::Color(  0,255,  0,255);
+    dLink->settings.guiMenuBackgroundInactive            = sf::Color(  0,  0,  0, 64);
+    dLink->settings.guiMenuBackgroundActive              = sf::Color(  0,  0,  0,128);
+    dLink->settings.guiMenuTitleBackgroundInactive       = sf::Color(  0,  0,  0, 64);
+    dLink->settings.guiMenuTitleBackgroundActive         = sf::Color(  0,  0,  0,128);
+    dLink->settings.guiMenuTitleTextInactive             = sf::Color(255,255,255,128);
+    dLink->settings.guiMenuTitleTextActive               = sf::Color(255,255,255,255);
 
     dLink->settings.guiButtonBackgroundInactive          = sf::Color( 40, 40, 40, 64);
     dLink->settings.guiButtonBackgroundActive            = sf::Color( 40, 40, 40,128);
