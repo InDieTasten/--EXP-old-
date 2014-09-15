@@ -2,6 +2,15 @@
 //CONSTRUCTORS
 GUIMenu::GUIMenu()
 {
+    BorderInactive = dLink->settings.guiMenuBorderInactive;
+    BorderActive = dLink->settings.guiMenuBorderActive;
+    BackgroundInactive = dLink->settings.guiMenuBackgroundInactive;
+    BackgroundActive = dLink->settings.guiMenuBackgroundActive;
+    TitleBackgroundInactive = dLink->settings.guiMenuTitleBackgroundInactive;
+    TitleBackgroundActive = dLink->settings.guiMenuTitleBackgroundActive;
+    TitleTextInactive = dLink->settings.guiMenuTitleTextInactive;
+    TitleTextActive = dLink->settings.guiMenuTitleTextActive;
+
     moving = false;
     closeButtonHover = false;
     closeButtonPushed = false;
@@ -47,39 +56,40 @@ void GUIMenu::update()
         {
             mainBackground.setPosition((float)X,(float)Y);
             mainBackground.setSize(sf::Vector2f((float)Width+scrollable*16,(float)Height+16+scrollable*16));
-            mainBackground.setFillColor(sf::Color(0,0,0,opacity));
+            mainBackground.setFillColor(BackgroundActive);
             mainBackground.setOutlineThickness(1.0f);
-            mainBackground.setOutlineColor(sf::Color::Green);
+            mainBackground.setOutlineColor(BorderActive);
+
+            titleBar.setPosition((float)X,(float)Y);
+            titleBar.setSize(sf::Vector2f((float)Width+scrollable*16,(float)16));
+            titleBar.setFillColor(TitleBackgroundActive);
+            titleBar.setOutlineThickness(1.0f);
+            titleBar.setOutlineColor(BorderActive);
+
+            menuTitle.setFont(*dLink->FontGet("$_menuTitle"));
+            menuTitle.setCharacterSize(12.0f);
+            menuTitle.setPosition((float)(X+4),(float)(Y));
+            menuTitle.setColor(TitleTextActive);
         }
         else
         {
             mainBackground.setPosition((float)X,(float)Y);
             mainBackground.setSize(sf::Vector2f((float)Width+scrollable*16,(float)Height+16+scrollable*16));
-            mainBackground.setFillColor(sf::Color(0,0,0,opacity));
+            mainBackground.setFillColor(BackgroundInactive);
             mainBackground.setOutlineThickness(1.0f);
-            mainBackground.setOutlineColor(sf::Color::White);
-        }
-        if(isActive)
-        {
-            titleBar.setPosition((float)X,(float)Y);
-            titleBar.setSize(sf::Vector2f((float)Width+scrollable*16,(float)16));
-            titleBar.setFillColor(sf::Color(10,10,10,opacity));
-            titleBar.setOutlineThickness(1.0f);
-            titleBar.setOutlineColor(sf::Color::Green);
-        }
-        else
-        {
-            titleBar.setPosition((float)X,(float)Y);
-            titleBar.setSize(sf::Vector2f((float)Width+scrollable*16,(float)16));
-            titleBar.setFillColor(sf::Color(10,10,10,opacity));
-            titleBar.setOutlineThickness(1.0f);
-            titleBar.setOutlineColor(sf::Color::White);
-        }
+            mainBackground.setOutlineColor(BorderInactive);
 
-        menuTitle.setFont(*dLink->FontGet("$_menuTitle"));
-        menuTitle.setCharacterSize(12.0f);
-        menuTitle.setPosition((float)(X+4),(float)(Y));
-        menuTitle.setColor(sf::Color(200,200,200,255));
+            titleBar.setPosition((float)X,(float)Y);
+            titleBar.setSize(sf::Vector2f((float)Width+scrollable*16,(float)16));
+            titleBar.setFillColor(TitleBackgroundInactive);
+            titleBar.setOutlineThickness(1.0f);
+            titleBar.setOutlineColor(BorderInactive);
+
+            menuTitle.setFont(*dLink->FontGet("$_menuTitle"));
+            menuTitle.setCharacterSize(12.0f);
+            menuTitle.setPosition((float)(X+4),(float)(Y));
+            menuTitle.setColor(TitleTextInactive);
+        }
 
         if (closeButtonHover)
             closeButton.setTexture(*dLink->TextureGet("$_closeButtonHover"));
