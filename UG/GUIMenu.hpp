@@ -38,6 +38,17 @@ public:
     std::list<GUIElement> GuiElements;
     bool isActive;
 
+
+    sf::Color BorderInactive;
+    sf::Color BorderActive;
+    sf::Color BackgroundInactive;
+    sf::Color BackgroundActive;
+    sf::Color TitleBackgroundInactive;
+    sf::Color TitleBackgroundActive;
+    sf::Color TitleTextInactive;
+    sf::Color TitleTextActive;
+
+
     //CONSTRUCTORS
     GUIMenu();
     //DESTRUCTORS
