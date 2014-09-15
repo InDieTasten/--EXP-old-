@@ -647,6 +647,146 @@ void ModModule::processTask(std::list<std::string> _args)
                                 dLink->pushEvent(x);
                             }
                         }
+                        else if(*_args.begin() == "backgroundColorA")
+                        {
+                            _args.pop_front();
+                            if(*_args.begin() == "set")
+                            {
+                                _args.pop_front();
+                                it->BackgroundActive = util::toColor(*_args.begin());
+                            }
+                            else if(*_args.begin() == "get")
+                            {
+                                std::list<std::string> x;
+                                x.push_back("gui");
+                                x.push_back("access");
+                                x.push_back(it->ID);
+                                x.push_back("property");
+                                x.push_back("backgroundColorA");
+                                x.push_back(util::toString(it->BackgroundActive));
+                                dLink->pushEvent(x);
+                            }
+                        }
+                        else if(*_args.begin() == "titleBackgroundColorA")
+                        {
+                            _args.pop_front();
+                            if(*_args.begin() == "set")
+                            {
+                                _args.pop_front();
+                                it->TitleBackgroundActive = util::toColor(*_args.begin());
+                            }
+                            else if(*_args.begin() == "get")
+                            {
+                                std::list<std::string> x;
+                                x.push_back("gui");
+                                x.push_back("access");
+                                x.push_back(it->ID);
+                                x.push_back("property");
+                                x.push_back("titleBackgroundColorA");
+                                x.push_back(util::toString(it->TitleBackgroundActive));
+                                dLink->pushEvent(x);
+                            }
+                        }
+                        else if(*_args.begin() == "titleTextColorA")
+                        {
+                            _args.pop_front();
+                            if(*_args.begin() == "set")
+                            {
+                                _args.pop_front();
+                                it->TitleTextActive = util::toColor(*_args.begin());
+                            }
+                            else if(*_args.begin() == "get")
+                            {
+                                std::list<std::string> x;
+                                x.push_back("gui");
+                                x.push_back("access");
+                                x.push_back(it->ID);
+                                x.push_back("property");
+                                x.push_back("titleTextColorA");
+                                x.push_back(util::toString(it->TitleTextActive));
+                                dLink->pushEvent(x);
+                            }
+                        }
+                        else if(*_args.begin() == "borderColorB")
+                        {
+                            _args.pop_front();
+                            if(*_args.begin() == "set")
+                            {
+                                _args.pop_front();
+                                it->BorderInactive = util::toColor(*_args.begin());
+                            }
+                            else if(*_args.begin() == "get")
+                            {
+                                std::list<std::string> x;
+                                x.push_back("gui");
+                                x.push_back("access");
+                                x.push_back(it->ID);
+                                x.push_back("property");
+                                x.push_back("borderColorB");
+                                x.push_back(util::toString(it->BorderInactive));
+                                dLink->pushEvent(x);
+                            }
+                        }
+                        else if(*_args.begin() == "backgroundColorB")
+                        {
+                            _args.pop_front();
+                            if(*_args.begin() == "set")
+                            {
+                                _args.pop_front();
+                                it->BackgroundInactive = util::toColor(*_args.begin());
+                            }
+                            else if(*_args.begin() == "get")
+                            {
+                                std::list<std::string> x;
+                                x.push_back("gui");
+                                x.push_back("access");
+                                x.push_back(it->ID);
+                                x.push_back("property");
+                                x.push_back("backgroundColorB");
+                                x.push_back(util::toString(it->BackgroundInactive));
+                                dLink->pushEvent(x);
+                            }
+                        }
+                        else if(*_args.begin() == "titleBackgroundColorB")
+                        {
+                            _args.pop_front();
+                            if(*_args.begin() == "set")
+                            {
+                                _args.pop_front();
+                                it->TitleBackgroundInactive = util::toColor(*_args.begin());
+                            }
+                            else if(*_args.begin() == "get")
+                            {
+                                std::list<std::string> x;
+                                x.push_back("gui");
+                                x.push_back("access");
+                                x.push_back(it->ID);
+                                x.push_back("property");
+                                x.push_back("titleBackgroundColorB");
+                                x.push_back(util::toString(it->TitleBackgroundInactive));
+                                dLink->pushEvent(x);
+                            }
+                        }
+                        else if(*_args.begin() == "titleTextColorB")
+                        {
+                            _args.pop_front();
+                            if(*_args.begin() == "set")
+                            {
+                                _args.pop_front();
+                                it->TitleTextInactive = util::toColor(*_args.begin());
+                            }
+                            else if(*_args.begin() == "get")
+                            {
+                                std::list<std::string> x;
+                                x.push_back("gui");
+                                x.push_back("access");
+                                x.push_back(it->ID);
+                                x.push_back("property");
+                                x.push_back("titleTextColorB");
+                                x.push_back(util::toString(it->TitleTextInactive));
+                                dLink->pushEvent(x);
+                            }
+                        }
                     }
                     else if(*_args.begin() == "action")
                     {
