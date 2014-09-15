@@ -5,6 +5,7 @@
 #include <sstream>
 #include <list>
 #include <Windows.h>
+#include <SFML/Graphics.hpp>
 
 namespace util
 {
