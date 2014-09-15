@@ -35,6 +35,12 @@ std::string util::toString(char* _x)
     buff << _x;
     return buff.str();
 }
+std::string util::toString(sf::Color _x)
+{
+    std::ostringstream buff;
+    buff << "#" << std::hex << std::uppercase << _x.r << _x.g << _x.b << _x.a;
+    return buff.str();
+}
 char util::getCharAt(std::string _string, int _pos)
 {
     return _string.c_str()[_pos];
@@ -62,4 +68,7 @@ double util::toDouble(std::string _value)
     std::stringstream(_value) >> result;
     return result;
 }
+sf::Color util.toColor(std::string _value)
+{
 
+}
