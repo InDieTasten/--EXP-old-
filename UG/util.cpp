@@ -70,19 +70,22 @@ double util::toDouble(std::string _value)
 }
 sf::Color util::toColor(std::string _value)
 {
-    sf::Color result;
-    std::stringstream buffR;
-    buffR << std::hex << _value.substr(1,2);
-    buffR >> result.r;
-    std::stringstream buffG;
-    buffG << std::hex << _value.substr(3,2);
-    buffG >> result.g;
-    std::stringstream buffB;
-    buffB << std::hex << _value.substr(5,2);
-    buffB >> result.b;
-    std::stringstream buffA;
-    buffA << std::hex << _value.substr(5,2);
-    buffA >> result.a;
 
+    sf::Color result = sf::Color(255,0,0,255);
+    if(_value.substr(0,1) == "#")
+    {
+        std::stringstream buffR;
+        buffR << std::hex << _value.substr(1,2);
+        buffR >> result.r;
+        std::stringstream buffG;
+        buffG << std::hex << _value.substr(3,2);
+        buffG >> result.g;
+        std::stringstream buffB;
+        buffB << std::hex << _value.substr(5,2);
+        buffB >> result.b;
+        std::stringstream buffA;
+        buffA << std::hex << _value.substr(7,2);
+        buffA >> result.a;
+    }
     return result;
 }
