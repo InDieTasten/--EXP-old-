@@ -25,8 +25,6 @@ public:
     int position;
     bool multiline;
     bool clicked;
-    int slideX;
-    int slideY;
 
     sf::View view;
 
