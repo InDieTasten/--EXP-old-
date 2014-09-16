@@ -794,7 +794,48 @@ void ModModule::processTask(std::list<std::string> _args)
                     }
                     else if(*_args.begin() == "element")
                     {
+                        _args.pop_front();
+                        if(*_args.begin() == "list")
+                        {
+                            int counter = 1;
+                            for(std::list<GUIElement>::iterator elem = it->GuiElements.begin(); elem != it->GuiElements.end(); elem++)
+                            {
+                                std::list<std::string> x;
+                                x.push_back("gui");
+                                x.push_back("access");
+                                x.push_back(it->ID);
+                                x.push_back("element");
+                                x.push_back("list");
+                                x.push_back(util::toString(counter));
+                                x.push_back(elem->ID);
+                                dLink->pushEvent(x);
 
+                                counter++;
+                            }
+                        }
+                        else if(*_args.begin() == "add")
+                        {
+                            GUIElement e;
+                            _args.pop_front();
+                            e.ID = *_args.begin();
+                            it->GuiElements.push_back(e);
+                        }
+                        else if(*_args.begin() == "remove")
+                        {
+                            _args.pop_front();
+                            for(std::list<GUIElement>::iterator elem = it->GuiElements.begin(); elem != it->GuiElements.end(); elem++)
+                            {
+                                if(elem->ID == *_args.begin())
+                                {
+                                    it->GuiElements.erase(elem);
+                                    return;
+                                }
+                            }
+                        }
+                        else if(*_args.begin() == "access")
+                        {
+
+                        }
                     }
                     return;
                 }

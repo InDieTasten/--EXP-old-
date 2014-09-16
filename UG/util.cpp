@@ -37,9 +37,9 @@ std::string util::toString(char* _x)
 }
 std::string util::toString(sf::Color _x)
 {
-    std::ostringstream buff;
-    buff << "#" << std::hex << std::uppercase << _x.r << _x.g << _x.b << _x.a;
-    return buff.str();
+    std::stringstream buff;
+    buff << std::hex << std::uppercase << _x.r << _x.g << _x.b << _x.a;
+    return "#" + buff.str();
 }
 char util::getCharAt(std::string _string, int _pos)
 {
