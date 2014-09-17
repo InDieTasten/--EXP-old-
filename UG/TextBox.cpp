@@ -20,7 +20,7 @@ void TextBox::Setup()
     isActive = true;
     multiline = true;
     clicked = false;
-    slideY = 5;
+    slideY = 0;
     slideX = 0;
 }
 void TextBox::Update(int _x, int _y,std::string _id)
@@ -61,9 +61,9 @@ void TextBox::Render(int _x, int _y, std::string _id)
     dLink->renderWindow->draw(rect);
     dLink->renderWindow->setView(view);
     dLink->renderWindow->draw(text);
-    dLink->renderWindow->setView(dLink->guiView);
     if(clicked)
         dLink->renderWindow->draw(curs);
+    dLink->renderWindow->setView(dLink->guiView);
 }
 void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
 {
