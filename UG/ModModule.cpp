@@ -367,6 +367,46 @@ void ModModule::processTask(std::list<std::string> _args)
                             x.push_back("titleTextColorB");
                             dLink->pushEvent(x);
                         }
+                        else if(*_args.begin() == "id")
+                        {
+                            _args.pop_front();
+                            if(*_args.begin() == "set")
+                            {
+                                _args.pop_front();
+                                it->ID = *_args.begin();
+                            }
+                            else if(*_args.begin() == "get")
+                            {
+                                std::list<std::string> x;
+                                x.push_back("gui");
+                                x.push_back("access");
+                                x.push_back(it->ID);
+                                x.push_back("property");
+                                x.push_back("id");
+                                x.push_back(it->ID);
+                                dLink->pushEvent(x);
+                            }
+                        }
+                        else if(*_args.begin() == "title")
+                        {
+                            _args.pop_front();
+                            if(*_args.begin() == "set")
+                            {
+                                _args.pop_front();
+                                it->menuTitle.setString(*_args.begin());
+                            }
+                            else if(*_args.begin() == "get")
+                            {
+                                std::list<std::string> x;
+                                x.push_back("gui");
+                                x.push_back("access");
+                                x.push_back(it->ID);
+                                x.push_back("property");
+                                x.push_back("title");
+                                x.push_back(it->menuTitle.getString());
+                                dLink->pushEvent(x);
+                            }
+                        }
                         else if(*_args.begin() == "x")
                         {
                             _args.pop_front();
@@ -527,13 +567,13 @@ void ModModule::processTask(std::list<std::string> _args)
                                 dLink->pushEvent(x);
                             }
                         }
-                        else if(*_args.begin() == "visible")
+                        else if(*_args.begin() == "scrollable")
                         {
                             _args.pop_front();
                             if(*_args.begin() == "set")
                             {
                                 _args.pop_front();
-                                it->isHidden = !util::toBool(*_args.begin());
+                                it->scrollable = util::toBool(*_args.begin());
                             }
                             else if(*_args.begin() == "get")
                             {
@@ -542,8 +582,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                 x.push_back("access");
                                 x.push_back(it->ID);
                                 x.push_back("property");
-                                x.push_back("visible");
-                                x.push_back(util::toString(!it->isHidden));
+                                x.push_back("scrollable");
+                                x.push_back(util::toString(it->scrollable));
                                 dLink->pushEvent(x);
                             }
                         }
@@ -567,13 +607,13 @@ void ModModule::processTask(std::list<std::string> _args)
                                 dLink->pushEvent(x);
                             }
                         }
-                        else if(*_args.begin() == "scrollable")
+                        else if(*_args.begin() == "visible")
                         {
                             _args.pop_front();
                             if(*_args.begin() == "set")
                             {
                                 _args.pop_front();
-                                it->scrollable = util::toBool(*_args.begin());
+                                it->isHidden = !util::toBool(*_args.begin());
                             }
                             else if(*_args.begin() == "get")
                             {
@@ -582,18 +622,18 @@ void ModModule::processTask(std::list<std::string> _args)
                                 x.push_back("access");
                                 x.push_back(it->ID);
                                 x.push_back("property");
-                                x.push_back("scrollable");
-                                x.push_back(util::toString(it->scrollable));
+                                x.push_back("visible");
+                                x.push_back(util::toString(!it->isHidden));
                                 dLink->pushEvent(x);
                             }
                         }
-                        else if(*_args.begin() == "title")
+                        else if(*_args.begin() == "borderColorA")
                         {
                             _args.pop_front();
                             if(*_args.begin() == "set")
                             {
                                 _args.pop_front();
-                                it->menuTitle.setString(*_args.begin());
+                                it->BorderActive = util::toColor(*_args.begin());
                             }
                             else if(*_args.begin() == "get")
                             {
@@ -602,18 +642,18 @@ void ModModule::processTask(std::list<std::string> _args)
                                 x.push_back("access");
                                 x.push_back(it->ID);
                                 x.push_back("property");
-                                x.push_back("title");
-                                x.push_back(it->menuTitle.getString());
+                                x.push_back("borderColorA");
+                                x.push_back(util::toString(it->BorderActive));
                                 dLink->pushEvent(x);
                             }
                         }
-                        else if(*_args.begin() == "id")
+                        else if(*_args.begin() == "backgroundColorA")
                         {
                             _args.pop_front();
                             if(*_args.begin() == "set")
                             {
                                 _args.pop_front();
-                                it->ID = *_args.begin();
+                                it->BackgroundActive = util::toColor(*_args.begin());
                             }
                             else if(*_args.begin() == "get")
                             {
@@ -622,8 +662,128 @@ void ModModule::processTask(std::list<std::string> _args)
                                 x.push_back("access");
                                 x.push_back(it->ID);
                                 x.push_back("property");
-                                x.push_back("id");
+                                x.push_back("backgroundColorA");
+                                x.push_back(util::toString(it->BackgroundActive));
+                                dLink->pushEvent(x);
+                            }
+                        }
+                        else if(*_args.begin() == "titleBackgroundColorA")
+                        {
+                            _args.pop_front();
+                            if(*_args.begin() == "set")
+                            {
+                                _args.pop_front();
+                                it->TitleBackgroundActive = util::toColor(*_args.begin());
+                            }
+                            else if(*_args.begin() == "get")
+                            {
+                                std::list<std::string> x;
+                                x.push_back("gui");
+                                x.push_back("access");
                                 x.push_back(it->ID);
+                                x.push_back("property");
+                                x.push_back("titleBackgroundColorA");
+                                x.push_back(util::toString(it->TitleBackgroundActive));
+                                dLink->pushEvent(x);
+                            }
+                        }
+                        else if(*_args.begin() == "titleTextColorA")
+                        {
+                            _args.pop_front();
+                            if(*_args.begin() == "set")
+                            {
+                                _args.pop_front();
+                                it->TitleTextActive = util::toColor(*_args.begin());
+                            }
+                            else if(*_args.begin() == "get")
+                            {
+                                std::list<std::string> x;
+                                x.push_back("gui");
+                                x.push_back("access");
+                                x.push_back(it->ID);
+                                x.push_back("property");
+                                x.push_back("titleTextColorA");
+                                x.push_back(util::toString(it->TitleTextActive));
+                                dLink->pushEvent(x);
+                            }
+                        }
+                        else if(*_args.begin() == "borderColorB")
+                        {
+                            _args.pop_front();
+                            if(*_args.begin() == "set")
+                            {
+                                _args.pop_front();
+                                it->BorderInactive = util::toColor(*_args.begin());
+                            }
+                            else if(*_args.begin() == "get")
+                            {
+                                std::list<std::string> x;
+                                x.push_back("gui");
+                                x.push_back("access");
+                                x.push_back(it->ID);
+                                x.push_back("property");
+                                x.push_back("borderColorB");
+                                x.push_back(util::toString(it->BorderInactive));
+                                dLink->pushEvent(x);
+                            }
+                        }
+                        else if(*_args.begin() == "backgroundColorB")
+                        {
+                            _args.pop_front();
+                            if(*_args.begin() == "set")
+                            {
+                                _args.pop_front();
+                                it->BackgroundInactive = util::toColor(*_args.begin());
+                            }
+                            else if(*_args.begin() == "get")
+                            {
+                                std::list<std::string> x;
+                                x.push_back("gui");
+                                x.push_back("access");
+                                x.push_back(it->ID);
+                                x.push_back("property");
+                                x.push_back("backgroundColorB");
+                                x.push_back(util::toString(it->BackgroundInactive));
+                                dLink->pushEvent(x);
+                            }
+                        }
+                        else if(*_args.begin() == "titleBackgroundColorB")
+                        {
+                            _args.pop_front();
+                            if(*_args.begin() == "set")
+                            {
+                                _args.pop_front();
+                                it->TitleBackgroundInactive = util::toColor(*_args.begin());
+                            }
+                            else if(*_args.begin() == "get")
+                            {
+                                std::list<std::string> x;
+                                x.push_back("gui");
+                                x.push_back("access");
+                                x.push_back(it->ID);
+                                x.push_back("property");
+                                x.push_back("titleBackgroundColorB");
+                                x.push_back(util::toString(it->TitleBackgroundInactive));
+                                dLink->pushEvent(x);
+                            }
+                        }
+                        else if(*_args.begin() == "titleTextColorB")
+                        {
+                            _args.pop_front();
+                            if(*_args.begin() == "set")
+                            {
+                                _args.pop_front();
+                                it->TitleTextInactive = util::toColor(*_args.begin());
+                            }
+                            else if(*_args.begin() == "get")
+                            {
+                                std::list<std::string> x;
+                                x.push_back("gui");
+                                x.push_back("access");
+                                x.push_back(it->ID);
+                                x.push_back("property");
+                                x.push_back("titleTextColorB");
+                                x.push_back(util::toString(it->TitleTextInactive));
                                 dLink->pushEvent(x);
                             }
                         }
@@ -634,7 +794,48 @@ void ModModule::processTask(std::list<std::string> _args)
                     }
                     else if(*_args.begin() == "element")
                     {
+                        _args.pop_front();
+                        if(*_args.begin() == "list")
+                        {
+                            int counter = 1;
+                            for(std::list<GUIElement>::iterator elem = it->GuiElements.begin(); elem != it->GuiElements.end(); elem++)
+                            {
+                                std::list<std::string> x;
+                                x.push_back("gui");
+                                x.push_back("access");
+                                x.push_back(it->ID);
+                                x.push_back("element");
+                                x.push_back("list");
+                                x.push_back(util::toString(counter));
+                                x.push_back(elem->ID);
+                                dLink->pushEvent(x);
 
+                                counter++;
+                            }
+                        }
+                        else if(*_args.begin() == "add")
+                        {
+                            GUIElement e;
+                            _args.pop_front();
+                            e.ID = *_args.begin();
+                            it->GuiElements.push_back(e);
+                        }
+                        else if(*_args.begin() == "remove")
+                        {
+                            _args.pop_front();
+                            for(std::list<GUIElement>::iterator elem = it->GuiElements.begin(); elem != it->GuiElements.end(); elem++)
+                            {
+                                if(elem->ID == *_args.begin())
+                                {
+                                    it->GuiElements.erase(elem);
+                                    return;
+                                }
+                            }
+                        }
+                        else if(*_args.begin() == "access")
+                        {
+
+                        }
                     }
                     return;
                 }
