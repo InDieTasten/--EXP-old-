@@ -16,18 +16,9 @@ private:
     sf::RectangleShape dock;
 
     std::list<GUIDockItem> dockButtons;
-    int dockWidth;
+    bool dockHover;
 public:
     std::list<GUIMenu> guiMenus;
-    sf::Color Background;
-    sf::Color BackgroundHover;
-    sf::Color Border;
-    sf::Color BorderHover;
-
-    sf::Color ItemBackground;
-    sf::Color ItemBackgroundHover;
-    sf::Color ItemBorder;
-    sf::Color ItemBorderHover;
 
     //CONSTRUCTORS
     GUIManager();
