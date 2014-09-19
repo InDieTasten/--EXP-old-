@@ -152,7 +152,7 @@ void VertSlider::handleEvent(sf::Event* _event, int _x, int _y, std::string _id)
         mousey = _event->mouseMove.y;
         int mousex = _event->mouseMove.x;
         hoverSlide = false;
-        if(mousey >= _x && mousex <= _x+Width)
+        if(mousex >= _x && mousex <= _x+Width)
         {
             if(mousey >= _y + Width+((ratio*(Height-2*Width))/2) + ((value-min)/(max-min))*(Height-2*Width-(ratio*(Height-2*Width))) - (ratio*(Height-2*Width))/2 && mousey <= _y + Width+((ratio*(Height-2*Width))/2) + ((value-min)/(max-min))*(Height-2*Width-(ratio*(Height-2*Width))) + (ratio*(Height-2*Width))/2 - 2)
             {
