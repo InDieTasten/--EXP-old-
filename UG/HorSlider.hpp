@@ -34,7 +34,6 @@ public:
     float max;
     float value;
 
-    std::string Text;
     bool isActive;
 
 
