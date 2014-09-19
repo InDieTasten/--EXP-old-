@@ -86,22 +86,24 @@ double util::toDouble(std::string _value)
 }
 sf::Color util::toColor(std::string _value)
 {
-
-    sf::Color result = sf::Color(255,0,0,255);
+    int r = 255;
+    int g = 0;
+    int b = 0;
+    int a = 255;
     if(_value.substr(0,1) == "#")
     {
         std::stringstream buffR;
         buffR << std::hex << _value.substr(1,2);
-        buffR >> result.r;
+        buffR >> r;
         std::stringstream buffG;
         buffG << std::hex << _value.substr(3,2);
-        buffG >> result.g;
+        buffG >> g;
         std::stringstream buffB;
         buffB << std::hex << _value.substr(5,2);
-        buffB >> result.b;
+        buffB >> b;
         std::stringstream buffA;
         buffA << std::hex << _value.substr(7,2);
-        buffA >> result.a;
+        buffA >> a;
     }
-    return result;
+    return sf::Color(r,g,b,a);
 }
