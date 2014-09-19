@@ -326,7 +326,7 @@ void GUIManager::add_OptionMenu()
     elem2.vertSlider.max = 200;
     elem2.vertSlider.min = 1;
     elem2.vertSlider.Width = 16;
-    elem2.vertSlider.Height = 200;
+    elem2.vertSlider.Height = 300;
     elem2.vertSlider.ratio = 0.5;
     elem2.vertSlider.value = 10;
 
