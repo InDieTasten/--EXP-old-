@@ -884,7 +884,57 @@ void ModModule::processTask(std::list<std::string> _args)
                             }
                             else if(*_args.begin() == "access") // gui menu access {ID} element access
                             {
-                                // ACCESSING ELEMENTS
+                                _args.pop_front();
+                                for(std::list<GUIElement>::iterator elem = it->GuiElements.begin(); elem != it->GuiElements.end(); elem++)
+                                {
+                                    if(elem->ID == *_args.begin())
+                                    {
+                                        _args.pop_front();
+                                        if(*_args.begin() == "list") // gui menu access {ID} element access {ID} list
+                                        {
+                                            std::list<std::string> x;
+                                            x.push_back("gui");
+                                            x.push_back("menu");
+                                            x.push_back("access");
+                                            x.push_back(it->ID);
+                                            x.push_back("element");
+                                            x.push_back("access");
+                                            x.push_back(elem->ID);
+                                            x.push_back("list");
+                                            x.push_back("1");
+                                            x.push_back("property");
+                                            dLink->pushEvent(x);
+                                            x.clear();
+                                            x.push_back("gui");
+                                            x.push_back("menu");
+                                            x.push_back("access");
+                                            x.push_back(it->ID);
+                                            x.push_back("element");
+                                            x.push_back("access");
+                                            x.push_back(elem->ID);
+                                            x.push_back("list");
+                                            x.push_back("2");
+                                            x.push_back("action");
+                                            dLink->pushEvent(x);
+                                        }
+                                        else if(*_args.begin() == "property") // gui menu access {ID} element access {ID} property
+                                        {
+                                            _args.pop_front();
+                                            if(*_args.begin() == "list") // gui menu access {ID} element access {ID} property list
+                                            {
+
+                                            }
+                                            else if(*_args.begin() == "id") // gui menu access {ID} element access {ID} property id
+                                            {
+
+                                            }
+                                        }
+                                        else if(*_args.begin() == "action") // gui menu access {ID} element access {ID} action
+                                        {
+
+                                        }
+                                    }
+                                }
                             }
                         }
                         return;
