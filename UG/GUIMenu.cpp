@@ -188,7 +188,7 @@ void GUIMenu::handleEvent(sf::Event* _event)
             movingD.x = x;
             movingD.y = y;
         }
-        closeButtonHover = (x >= (X+Width-15) && y >= (Y+1) && x <= (X+Width-1) && y <= (Y+15));
+        closeButtonHover = (x >= (X+Width+scrollable*16-15) && y >= (Y+1) && x <= (X+Width+scrollable*16-1) && y <= (Y+15));
     }
     if(_event->type == sf::Event::MouseButtonReleased)
     {
