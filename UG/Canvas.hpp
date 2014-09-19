@@ -15,6 +15,11 @@ public:
     int Width;
     std::string ID;
 
+    std::list<sf::ConvexShape> shapes;
+    sf::Color fillColor;
+    sf::Color outlineColor;
+
+
     //CONSTRUCTORS
 
     //DESTRUCTORS
