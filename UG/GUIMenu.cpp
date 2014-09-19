@@ -35,11 +35,11 @@ void GUIMenu::update()
     if(isHidden == false)
     {
         view = dLink->guiView;
-        view.reset(sf::FloatRect(X+scrollable*bottomSlider.value, Y+scrollable*rightSlider.value+16+1, Width, Height+16));
+        view.reset(sf::FloatRect(X+scrollable*bottomSlider.value, Y+scrollable*(rightSlider.value+16+1), Width, Height+16));
         float posx = (X)/(float)dLink->renderWindow->getSize().x;
-        float posy = (Y+16+1)/(float)dLink->renderWindow->getSize().y;
+        float posy = (Y+scrollable*(16+1))/(float)dLink->renderWindow->getSize().y;
         float sizex = Width/(float)dLink->renderWindow->getSize().x;
-        float sizey = (Height)/(float)dLink->renderWindow->getSize().y;
+        float sizey = (Height+ !scrollable*16)/(float)dLink->renderWindow->getSize().y;
         view.setViewport(sf::FloatRect(posx, posy, sizex, sizey));
 
         int opacity = 190;
