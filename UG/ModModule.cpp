@@ -1558,16 +1558,151 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.clear();
                                                 }
                                             }
-                                            else if(*_args.begin() == "id") // gui menu access {ID} element access {ID} property id
+                                            else if(*_args.begin() == "id")
                                             {
                                                 _args.pop_front();
-                                                if(*_args.begin() == "set") // gui menu access {ID} element access {ID} property list
+                                                if(*_args.begin() == "set")
                                                 {
-
+                                                    _args.pop_front();
+                                                    elem->ID = *_args.begin();
                                                 }
                                                 else if(*_args.begin() == "get")
                                                 {
-
+                                                    std::list<std::string> x;
+                                                    x.push_back("gui");
+                                                    x.push_back("menu");
+                                                    x.push_back("access");
+                                                    x.push_back(it->ID);
+                                                    x.push_back("element");
+                                                    x.push_back("access");
+                                                    x.push_back(elem->ID);
+                                                    x.push_back("property");
+                                                    x.push_back("id");
+                                                    x.push_back(elem->ID);
+                                                    dLink->pushEvent(x);
+                                                }
+                                            }
+                                            else if(*_args.begin() == "type")
+                                            {
+                                                _args.pop_front();
+                                                if(*_args.begin() == "set")
+                                                {
+                                                    _args.pop_front();
+                                                    elem->Type = *_args.begin();
+                                                }
+                                                else if(*_args.begin() == "get")
+                                                {
+                                                    std::list<std::string> x;
+                                                    x.push_back("gui");
+                                                    x.push_back("menu");
+                                                    x.push_back("access");
+                                                    x.push_back(it->ID);
+                                                    x.push_back("element");
+                                                    x.push_back("access");
+                                                    x.push_back(elem->ID);
+                                                    x.push_back("property");
+                                                    x.push_back("type");
+                                                    x.push_back(elem->Type);
+                                                    dLink->pushEvent(x);
+                                                }
+                                            }
+                                            else if(*_args.begin() == "x")
+                                            {
+                                                _args.pop_front();
+                                                if(*_args.begin() == "set")
+                                                {
+                                                    _args.pop_front();
+                                                    elem->X = util::toInt(*_args.begin());
+                                                }
+                                                else if(*_args.begin() == "get")
+                                                {
+                                                    std::list<std::string> x;
+                                                    x.push_back("gui");
+                                                    x.push_back("menu");
+                                                    x.push_back("access");
+                                                    x.push_back(it->ID);
+                                                    x.push_back("element");
+                                                    x.push_back("access");
+                                                    x.push_back(elem->ID);
+                                                    x.push_back("property");
+                                                    x.push_back("x");
+                                                    x.push_back(util::toString(elem->X));
+                                                    dLink->pushEvent(x);
+                                                }
+                                            }
+                                            else if(*_args.begin() == "y")
+                                            {
+                                                _args.pop_front();
+                                                if(*_args.begin() == "set")
+                                                {
+                                                    _args.pop_front();
+                                                    elem->Y = util::toInt(*_args.begin());
+                                                }
+                                                else if(*_args.begin() == "get")
+                                                {
+                                                    std::list<std::string> x;
+                                                    x.push_back("gui");
+                                                    x.push_back("menu");
+                                                    x.push_back("access");
+                                                    x.push_back(it->ID);
+                                                    x.push_back("element");
+                                                    x.push_back("access");
+                                                    x.push_back(elem->ID);
+                                                    x.push_back("property");
+                                                    x.push_back("y");
+                                                    x.push_back(util::toString(elem->Y));
+                                                    dLink->pushEvent(x);
+                                                }
+                                            }
+                                            if(elem->Type == "button")
+                                            {
+                                                if(*_args.begin() == "width")
+                                                {
+                                                    _args.pop_front();
+                                                    if(*_args.begin() == "set")
+                                                    {
+                                                        _args.pop_front();
+                                                        elem->button.Width = util::toInt(*_args.begin());
+                                                    }
+                                                    else if(*_args.begin() == "get")
+                                                    {
+                                                        std::list<std::string> x;
+                                                        x.push_back("gui");
+                                                        x.push_back("menu");
+                                                        x.push_back("access");
+                                                        x.push_back(it->ID);
+                                                        x.push_back("element");
+                                                        x.push_back("access");
+                                                        x.push_back(elem->ID);
+                                                        x.push_back("property");
+                                                        x.push_back("width");
+                                                        x.push_back(util::toString(elem->button.Width));
+                                                        dLink->pushEvent(x);
+                                                    }
+                                                }
+                                                else if(*_args.begin() == "height")
+                                                {
+                                                    _args.pop_front();
+                                                    if(*_args.begin() == "set")
+                                                    {
+                                                        _args.pop_front();
+                                                        elem->button.Height = util::toInt(*_args.begin());
+                                                    }
+                                                    else if(*_args.begin() == "get")
+                                                    {
+                                                        std::list<std::string> x;
+                                                        x.push_back("gui");
+                                                        x.push_back("menu");
+                                                        x.push_back("access");
+                                                        x.push_back(it->ID);
+                                                        x.push_back("element");
+                                                        x.push_back("access");
+                                                        x.push_back(elem->ID);
+                                                        x.push_back("property");
+                                                        x.push_back("height");
+                                                        x.push_back(util::toString(elem->button.Height));
+                                                        dLink->pushEvent(x);
+                                                    }
                                                 }
                                             }
                                         }
