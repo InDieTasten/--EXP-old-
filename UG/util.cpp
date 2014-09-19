@@ -37,8 +37,24 @@ std::string util::toString(char* _x)
 }
 std::string util::toString(sf::Color _x)
 {
+    int r = _x.r;
+    int g = _x.g;
+    int b = _x.b;
+    int a = _x.a;
     std::stringstream buff;
-    buff << std::hex << std::uppercase << _x.r << _x.g << _x.b << _x.a;
+    buff << std::hex << std::uppercase;
+    if(r < 16)
+        buff << 0;
+    buff << r;
+    if(g < 16)
+        buff << 0;
+    buff << g;
+    if(b < 16)
+        buff << 0;
+    buff << b;
+    if(a < 16)
+        buff << 0;
+    buff << a;
     return "#" + buff.str();
 }
 char util::getCharAt(std::string _string, int _pos)
