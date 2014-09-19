@@ -2,7 +2,6 @@
 //CONSTRUCTORS
 GUIManager::GUIManager()
 {
-    dockWidth = 68;
     add_StockButton();
     add_MainMenu();
     add_OptionMenu();
@@ -44,10 +43,13 @@ void GUIManager::handleEvent(sf::Event *_event)
         int x,y;
         x = _event->mouseMove.x;
         y = _event->mouseMove.y;
+
+        dockHover = (x <= dLink->settings.dockWidth +2);
+
         int i = 0;
         for(std::list<GUIDockItem>::iterator it = dockButtons.begin(); it != dockButtons.end(); it++)
         {
-            if (x >= 1 && x <= dockWidth && y >= (i*(dockWidth+1)+2) && y <= ((i+1)*dockWidth+i))
+            if (x >= 1 && x <= dLink->settings.dockWidth && y >= (i*(dLink->settings.dockWidth+1)+2) && y <= ((i+1)*dLink->settings.dockWidth+i))
             {
                 if(!it->mouseHover)
                 {
@@ -143,11 +145,22 @@ void GUIManager::handleTask(std::list<std::string> _args)
 
 void GUIManager::update()
 {
-    dock.setPosition((float)-1,(float)-1);
-    dock.setSize(sf::Vector2f((float)dockWidth+4,(float)dLink->renderWindow->getSize().y+3.0f));
-    dock.setFillColor(sf::Color::Black);
-    dock.setOutlineThickness(1.0f);
-    dock.setOutlineColor(sf::Color::Green);
+    if(dockHover)
+    {
+        dock.setPosition((float)-1,(float)-1);
+        dock.setSize(sf::Vector2f((float)dLink->settings.dockWidth+3,(float)dLink->renderWindow->getSize().y+3.0f));
+        dock.setFillColor(dLink->settings.guiDockBackgroundHover);
+        dock.setOutlineThickness(1.0f);
+        dock.setOutlineColor(dLink->settings.guiDockBorderHover);
+    }
+    else
+    {
+        dock.setPosition((float)-1,(float)-1);
+        dock.setSize(sf::Vector2f((float)dLink->settings.dockWidth+3,(float)dLink->renderWindow->getSize().y+3.0f));
+        dock.setFillColor(dLink->settings.guiDockBackground);
+        dock.setOutlineThickness(1.0f);
+        dock.setOutlineColor(dLink->settings.guiDockBorder);
+    }
 }
 void GUIManager::render()
 {
@@ -159,27 +172,27 @@ void GUIManager::render()
         sf::RectangleShape temp;
         if(it->mouseHover)
         {
-            temp.setPosition(2.0f,(float)(i*(dockWidth+1)+2));
-            temp.setSize(sf::Vector2f((float)dockWidth-2.0,(float)(i+1)*dockWidth+i-(i*(dockWidth+1)+2)));
-            temp.setFillColor(sf::Color::Black);
+            temp.setPosition(2.0f,(float)(i*(dLink->settings.dockWidth+1)+2));
+            temp.setSize(sf::Vector2f((float)dLink->settings.dockWidth-2.0,(float)(i+1)*dLink->settings.dockWidth+i-(i*(dLink->settings.dockWidth+1)+2)));
+            temp.setFillColor(dLink->settings.guiDockItemBackgroundHover);
             temp.setOutlineThickness(1.0f);
-            temp.setOutlineColor(sf::Color::White);
+            temp.setOutlineColor(dLink->settings.guiDockItemBorderHover);
         }
         else
         {
-            temp.setPosition(2.0f,(float)(i*(dockWidth+1)+2));
-            temp.setSize(sf::Vector2f((float)dockWidth-2.0,(float)(i+1)*dockWidth+i-(i*(dockWidth+1)+2)));
-            temp.setFillColor(sf::Color::Black);
+            temp.setPosition(2.0f,(float)(i*(dLink->settings.dockWidth+1)+2));
+            temp.setSize(sf::Vector2f((float)dLink->settings.dockWidth-2.0,(float)(i+1)*dLink->settings.dockWidth+i-(i*(dLink->settings.dockWidth+1)+2)));
+            temp.setFillColor(dLink->settings.guiDockItemBackground);
             temp.setOutlineThickness(1.0f);
-            temp.setOutlineColor(sf::Color::Green);
+            temp.setOutlineColor(dLink->settings.guiDockItemBorder);
         }
         dLink->renderWindow->draw(temp);
         sf::Sprite temp2;
         temp2.setTexture(*(dLink->TextureGet(it->ImageID)));
-        temp2.setPosition(3.0f, (float)(i*(dockWidth+1)+3));
+        temp2.setPosition(3.0f, (float)(i*(dLink->settings.dockWidth+1)+3));
 
-        temp2.setScale(((float)dockWidth)/((float)dLink->TextureGet(it->ImageID)->getSize().x+4.0f),
-                       (((float)dockWidth)/((float)dLink->TextureGet(it->ImageID)->getSize().y+4.0f)));
+        temp2.setScale(((float)dLink->settings.dockWidth)/((float)dLink->TextureGet(it->ImageID)->getSize().x+4.0f),
+                       (((float)dLink->settings.dockWidth)/((float)dLink->TextureGet(it->ImageID)->getSize().y+4.0f)));
 
         dLink->renderWindow->draw(temp2);
         i++;
@@ -196,7 +209,7 @@ void GUIManager::add_MainMenu()
 {
     GUIMenu main;
     main.ID = "$_mainMenu";
-    main.SetX(dockWidth+10);
+    main.SetX(dLink->settings.dockWidth+10);
     main.SetY(10);
     main.SetWidth(200);
     main.SetHeight(116);
@@ -250,7 +263,7 @@ void GUIManager::add_ConsoleMenu()
 {
     GUIMenu console;
     console.ID = "$_consoleMenu";
-    console.SetX(dockWidth+10);
+    console.SetX(dLink->settings.dockWidth+10);
     console.SetY(100);
     console.SetWidth(300);
     console.SetHeight(200);
@@ -285,7 +298,7 @@ void GUIManager::add_OptionMenu()
     GUIMenu option;
     option.ID = "$_optionMenu";
     option.Enable();
-    option.SetX(dockWidth+20);
+    option.SetX(dLink->settings.dockWidth+20);
     option.SetY(60);
     option.SetWidth(220);
     option.SetHeight(220);
@@ -327,7 +340,7 @@ void GUIManager::add_CodeIDE()
 {
     GUIMenu menu;
     menu.ID = "$_codeIDE";
-    menu.SetX(dockWidth+500);
+    menu.SetX(dLink->settings.dockWidth+500);
     menu.SetY(10);
     menu.SetWidth(300);
     menu.SetHeight(280);
