@@ -33,6 +33,7 @@ void ModModule::Run()
 
     std::list< std::list<std::string> > events;
     std::list< std::list<std::string> > tasks;
+
     while(dLink->runModules)
     {
         if(limiter.getElapsedTime().asSeconds() < 1.0/mLimit)
@@ -41,6 +42,17 @@ void ModModule::Run()
         }
         limiter.restart();
         GMutex.lock();
+
+        //async tasks
+        for(std::list<ASync>::iterator aTask = waitingTasks.begin();aTask != waitingTasks.end(); aTask++)
+        {
+            if(aTask->time.getElapsedTime().asMilliseconds() >= aTask->target)
+            {
+                dLink->pushTask(aTask->task);
+                waitingTasks.erase(aTask);
+            }
+        }
+
         events = eventBuffer;
         eventBuffer.clear();
         for(std::list< std::list<std::string> >::iterator event = events.begin(); event != events.end(); event++)
@@ -1759,5 +1771,15 @@ void ModModule::processTask(std::list<std::string> _args)
     else if(*_args.begin() == "resource") //resource
     {
         _args.pop_front();
+    }
+    else if(*_args.begin() == "delay")
+    {
+        _args.pop_front();
+        ASync x;
+        x.target = util::toInt(*_args.begin());
+        _args.pop_front();
+        x.time.restart();
+        x.task = _args;
+        waitingTasks.push_back(x);
     }
 }
