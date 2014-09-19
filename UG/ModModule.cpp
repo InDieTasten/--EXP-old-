@@ -183,10 +183,11 @@ void ModModule::processTask(std::list<std::string> _args)
                         if(*_args.begin() == "property") // gui menu access {ID} property
                         {
                             _args.pop_front();
-                            if(*_args.begin() == "list")
+                            if(*_args.begin() == "list") // gui menu access {ID} property list
                             {
                                 std::list<std::string> x;
                                 x.push_back("gui");
+                                x.push_back("menu");
                                 x.push_back("access");
                                 x.push_back(it->ID);
                                 x.push_back("property");
@@ -196,6 +197,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                 dLink->pushEvent(x);
                                 x.clear();
                                 x.push_back("gui");
+                                x.push_back("menu");
                                 x.push_back("access");
                                 x.push_back(it->ID);
                                 x.push_back("property");
@@ -205,6 +207,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                 dLink->pushEvent(x);
                                 x.clear();
                                 x.push_back("gui");
+                                x.push_back("menu");
                                 x.push_back("access");
                                 x.push_back(it->ID);
                                 x.push_back("property");
@@ -214,6 +217,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                 dLink->pushEvent(x);
                                 x.clear();
                                 x.push_back("gui");
+                                x.push_back("menu");
                                 x.push_back("access");
                                 x.push_back(it->ID);
                                 x.push_back("property");
@@ -223,6 +227,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                 dLink->pushEvent(x);
                                 x.clear();
                                 x.push_back("gui");
+                                x.push_back("menu");
                                 x.push_back("access");
                                 x.push_back(it->ID);
                                 x.push_back("property");
@@ -232,6 +237,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                 dLink->pushEvent(x);
                                 x.clear();
                                 x.push_back("gui");
+                                x.push_back("menu");
                                 x.push_back("access");
                                 x.push_back(it->ID);
                                 x.push_back("property");
@@ -241,6 +247,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                 dLink->pushEvent(x);
                                 x.clear();
                                 x.push_back("gui");
+                                x.push_back("menu");
                                 x.push_back("access");
                                 x.push_back(it->ID);
                                 x.push_back("property");
@@ -250,6 +257,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                 dLink->pushEvent(x);
                                 x.clear();
                                 x.push_back("gui");
+                                x.push_back("menu");
                                 x.push_back("access");
                                 x.push_back(it->ID);
                                 x.push_back("property");
@@ -259,6 +267,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                 dLink->pushEvent(x);
                                 x.clear();
                                 x.push_back("gui");
+                                x.push_back("menu");
                                 x.push_back("access");
                                 x.push_back(it->ID);
                                 x.push_back("property");
@@ -268,6 +277,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                 dLink->pushEvent(x);
                                 x.clear();
                                 x.push_back("gui");
+                                x.push_back("menu");
                                 x.push_back("access");
                                 x.push_back(it->ID);
                                 x.push_back("property");
@@ -277,6 +287,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                 dLink->pushEvent(x);
                                 x.clear();
                                 x.push_back("gui");
+                                x.push_back("menu");
                                 x.push_back("access");
                                 x.push_back(it->ID);
                                 x.push_back("property");
@@ -286,6 +297,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                 dLink->pushEvent(x);
                                 x.clear();
                                 x.push_back("gui");
+                                x.push_back("menu");
                                 x.push_back("access");
                                 x.push_back(it->ID);
                                 x.push_back("property");
@@ -295,6 +307,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                 dLink->pushEvent(x);
                                 x.clear();
                                 x.push_back("gui");
+                                x.push_back("menu");
                                 x.push_back("access");
                                 x.push_back(it->ID);
                                 x.push_back("property");
@@ -304,6 +317,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                 dLink->pushEvent(x);
                                 x.clear();
                                 x.push_back("gui");
+                                x.push_back("menu");
                                 x.push_back("access");
                                 x.push_back(it->ID);
                                 x.push_back("property");
@@ -313,6 +327,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                 dLink->pushEvent(x);
                                 x.clear();
                                 x.push_back("gui");
+                                x.push_back("menu");
                                 x.push_back("access");
                                 x.push_back(it->ID);
                                 x.push_back("property");
@@ -322,6 +337,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                 dLink->pushEvent(x);
                                 x.clear();
                                 x.push_back("gui");
+                                x.push_back("menu");
                                 x.push_back("access");
                                 x.push_back(it->ID);
                                 x.push_back("property");
@@ -331,6 +347,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                 dLink->pushEvent(x);
                                 x.clear();
                                 x.push_back("gui");
+                                x.push_back("menu");
                                 x.push_back("access");
                                 x.push_back(it->ID);
                                 x.push_back("property");
@@ -340,6 +357,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                 dLink->pushEvent(x);
                                 x.clear();
                                 x.push_back("gui");
+                                x.push_back("menu");
                                 x.push_back("access");
                                 x.push_back(it->ID);
                                 x.push_back("property");
@@ -349,6 +367,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                 dLink->pushEvent(x);
                                 x.clear();
                                 x.push_back("gui");
+                                x.push_back("menu");
                                 x.push_back("access");
                                 x.push_back(it->ID);
                                 x.push_back("property");
@@ -358,6 +377,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                 dLink->pushEvent(x);
                                 x.clear();
                                 x.push_back("gui");
+                                x.push_back("menu");
                                 x.push_back("access");
                                 x.push_back(it->ID);
                                 x.push_back("property");
@@ -367,6 +387,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                 dLink->pushEvent(x);
                                 x.clear();
                                 x.push_back("gui");
+                                x.push_back("menu");
                                 x.push_back("access");
                                 x.push_back(it->ID);
                                 x.push_back("property");
@@ -375,18 +396,19 @@ void ModModule::processTask(std::list<std::string> _args)
                                 x.push_back("titleTextColorB");
                                 dLink->pushEvent(x);
                             }
-                            else if(*_args.begin() == "id")
+                            else if(*_args.begin() == "id") // gui menu access {ID} property id
                             {
                                 _args.pop_front();
-                                if(*_args.begin() == "set")
+                                if(*_args.begin() == "set") // gui menu access {ID} property id set
                                 {
                                     _args.pop_front();
                                     it->ID = *_args.begin();
                                 }
-                                else if(*_args.begin() == "get")
+                                else if(*_args.begin() == "get") // gui menu access {ID} property id get
                                 {
                                     std::list<std::string> x;
                                     x.push_back("gui");
+                                    x.push_back("menu");
                                     x.push_back("access");
                                     x.push_back(it->ID);
                                     x.push_back("property");
@@ -395,18 +417,19 @@ void ModModule::processTask(std::list<std::string> _args)
                                     dLink->pushEvent(x);
                                 }
                             }
-                            else if(*_args.begin() == "title")
+                            else if(*_args.begin() == "title") // gui menu access {ID} property title
                             {
                                 _args.pop_front();
-                                if(*_args.begin() == "set")
+                                if(*_args.begin() == "set") // gui menu access {ID} property title set
                                 {
                                     _args.pop_front();
                                     it->menuTitle.setString(*_args.begin());
                                 }
-                                else if(*_args.begin() == "get")
+                                else if(*_args.begin() == "get") // gui menu access {ID} property title get
                                 {
                                     std::list<std::string> x;
                                     x.push_back("gui");
+                                    x.push_back("menu");
                                     x.push_back("access");
                                     x.push_back(it->ID);
                                     x.push_back("property");
@@ -415,18 +438,19 @@ void ModModule::processTask(std::list<std::string> _args)
                                     dLink->pushEvent(x);
                                 }
                             }
-                            else if(*_args.begin() == "x")
+                            else if(*_args.begin() == "x") // gui menu access {ID} property x
                             {
                                 _args.pop_front();
-                                if(*_args.begin() == "set")
+                                if(*_args.begin() == "set") // gui menu access {ID} property x set
                                 {
                                     _args.pop_front();
                                     it->X = util::toInt(*_args.begin());
                                 }
-                                else if(*_args.begin() == "get")
+                                else if(*_args.begin() == "get") // gui menu access {ID} property x get
                                 {
                                     std::list<std::string> x;
                                     x.push_back("gui");
+                                    x.push_back("menu");
                                     x.push_back("access");
                                     x.push_back(it->ID);
                                     x.push_back("property");
@@ -435,18 +459,19 @@ void ModModule::processTask(std::list<std::string> _args)
                                     dLink->pushEvent(x);
                                 }
                             }
-                            else if(*_args.begin() == "y")
+                            else if(*_args.begin() == "y") // gui menu access {ID} property y
                             {
                                 _args.pop_front();
-                                if(*_args.begin() == "set")
+                                if(*_args.begin() == "set") // gui menu access {ID} property y set
                                 {
                                     _args.pop_front();
                                     it->Y = util::toInt(*_args.begin());
                                 }
-                                else if(*_args.begin() == "get")
+                                else if(*_args.begin() == "get") // gui menu access {ID} property y get
                                 {
                                     std::list<std::string> x;
                                     x.push_back("gui");
+                                    x.push_back("menu");
                                     x.push_back("access");
                                     x.push_back(it->ID);
                                     x.push_back("property");
@@ -455,18 +480,19 @@ void ModModule::processTask(std::list<std::string> _args)
                                     dLink->pushEvent(x);
                                 }
                             }
-                            else if(*_args.begin() == "width")
+                            else if(*_args.begin() == "width") // gui menu access {ID} property width
                             {
                                 _args.pop_front();
-                                if(*_args.begin() == "set")
+                                if(*_args.begin() == "set") // gui menu access {ID} property width set
                                 {
                                     _args.pop_front();
                                     it->Width = util::toInt(*_args.begin());
                                 }
-                                else if(*_args.begin() == "get")
+                                else if(*_args.begin() == "get") // gui menu access {ID} property width get
                                 {
                                     std::list<std::string> x;
                                     x.push_back("gui");
+                                    x.push_back("menu");
                                     x.push_back("access");
                                     x.push_back(it->ID);
                                     x.push_back("property");
@@ -475,18 +501,19 @@ void ModModule::processTask(std::list<std::string> _args)
                                     dLink->pushEvent(x);
                                 }
                             }
-                            else if(*_args.begin() == "height")
+                            else if(*_args.begin() == "height") // gui menu access {ID} property height
                             {
                                 _args.pop_front();
-                                if(*_args.begin() == "set")
+                                if(*_args.begin() == "set") // gui menu access {ID} property height set
                                 {
                                     _args.pop_front();
                                     it->Height = util::toInt(*_args.begin());
                                 }
-                                else if(*_args.begin() == "get")
+                                else if(*_args.begin() == "get") // gui menu access {ID} property height get
                                 {
                                     std::list<std::string> x;
                                     x.push_back("gui");
+                                    x.push_back("menu");
                                     x.push_back("access");
                                     x.push_back(it->ID);
                                     x.push_back("property");
@@ -495,18 +522,19 @@ void ModModule::processTask(std::list<std::string> _args)
                                     dLink->pushEvent(x);
                                 }
                             }
-                            else if(*_args.begin() == "widthT")
+                            else if(*_args.begin() == "widthT") // gui menu access {ID} property widthT
                             {
                                 _args.pop_front();
-                                if(*_args.begin() == "set")
+                                if(*_args.begin() == "set") // gui menu access {ID} property widthT set
                                 {
                                     _args.pop_front();
                                     it->totalWidth = util::toInt(*_args.begin());
                                 }
-                                else if(*_args.begin() == "get")
+                                else if(*_args.begin() == "get") // gui menu access {ID} property widthT get
                                 {
                                     std::list<std::string> x;
                                     x.push_back("gui");
+                                    x.push_back("menu");
                                     x.push_back("access");
                                     x.push_back(it->ID);
                                     x.push_back("property");
@@ -515,18 +543,19 @@ void ModModule::processTask(std::list<std::string> _args)
                                     dLink->pushEvent(x);
                                 }
                             }
-                            else if(*_args.begin() == "heightT")
+                            else if(*_args.begin() == "heightT") // gui menu access {ID} property heightT
                             {
                                 _args.pop_front();
-                                if(*_args.begin() == "set")
+                                if(*_args.begin() == "set") // gui menu access {ID} property heightT set
                                 {
                                     _args.pop_front();
                                     it->totalHeight = util::toInt(*_args.begin());
                                 }
-                                else if(*_args.begin() == "get")
+                                else if(*_args.begin() == "get") // gui menu access {ID} property heightT get
                                 {
                                     std::list<std::string> x;
                                     x.push_back("gui");
+                                    x.push_back("menu");
                                     x.push_back("access");
                                     x.push_back(it->ID);
                                     x.push_back("property");
@@ -535,18 +564,19 @@ void ModModule::processTask(std::list<std::string> _args)
                                     dLink->pushEvent(x);
                                 }
                             }
-                            else if(*_args.begin() == "scrollX")
+                            else if(*_args.begin() == "scrollX") // gui menu access {ID} property scrollX
                             {
                                 _args.pop_front();
-                                if(*_args.begin() == "set")
+                                if(*_args.begin() == "set") // gui menu access {ID} property scrollX set
                                 {
                                     _args.pop_front();
                                     it->scrollX = util::toInt(*_args.begin());
                                 }
-                                else if(*_args.begin() == "get")
+                                else if(*_args.begin() == "get") // gui menu access {ID} property scrollX get
                                 {
                                     std::list<std::string> x;
                                     x.push_back("gui");
+                                    x.push_back("menu");
                                     x.push_back("access");
                                     x.push_back(it->ID);
                                     x.push_back("property");
@@ -555,18 +585,19 @@ void ModModule::processTask(std::list<std::string> _args)
                                     dLink->pushEvent(x);
                                 }
                             }
-                            else if(*_args.begin() == "scrollY")
+                            else if(*_args.begin() == "scrollY") // gui menu access {ID} property scrollY
                             {
                                 _args.pop_front();
-                                if(*_args.begin() == "set")
+                                if(*_args.begin() == "set") // gui menu access {ID} property scrollY set
                                 {
                                     _args.pop_front();
                                     it->scrollY = util::toInt(*_args.begin());
                                 }
-                                else if(*_args.begin() == "get")
+                                else if(*_args.begin() == "get") // gui menu access {ID} property scrollY get
                                 {
                                     std::list<std::string> x;
                                     x.push_back("gui");
+                                    x.push_back("menu");
                                     x.push_back("access");
                                     x.push_back(it->ID);
                                     x.push_back("property");
@@ -575,18 +606,19 @@ void ModModule::processTask(std::list<std::string> _args)
                                     dLink->pushEvent(x);
                                 }
                             }
-                            else if(*_args.begin() == "scrollable")
+                            else if(*_args.begin() == "scrollable") // gui menu access {ID} property scrollable
                             {
                                 _args.pop_front();
-                                if(*_args.begin() == "set")
+                                if(*_args.begin() == "set") // gui menu access {ID} property scrollable set
                                 {
                                     _args.pop_front();
                                     it->scrollable = util::toBool(*_args.begin());
                                 }
-                                else if(*_args.begin() == "get")
+                                else if(*_args.begin() == "get") // gui menu access {ID} property scrollable get
                                 {
                                     std::list<std::string> x;
                                     x.push_back("gui");
+                                    x.push_back("menu");
                                     x.push_back("access");
                                     x.push_back(it->ID);
                                     x.push_back("property");
@@ -595,18 +627,19 @@ void ModModule::processTask(std::list<std::string> _args)
                                     dLink->pushEvent(x);
                                 }
                             }
-                            else if(*_args.begin() == "active")
+                            else if(*_args.begin() == "active") // gui menu access {ID} property active
                             {
                                 _args.pop_front();
-                                if(*_args.begin() == "set")
+                                if(*_args.begin() == "set") // gui menu access {ID} property active set
                                 {
                                     _args.pop_front();
                                     it->isActive = util::toBool(*_args.begin());
                                 }
-                                else if(*_args.begin() == "get")
+                                else if(*_args.begin() == "get") // gui menu access {ID} property active get
                                 {
                                     std::list<std::string> x;
                                     x.push_back("gui");
+                                    x.push_back("menu");
                                     x.push_back("access");
                                     x.push_back(it->ID);
                                     x.push_back("property");
@@ -615,18 +648,19 @@ void ModModule::processTask(std::list<std::string> _args)
                                     dLink->pushEvent(x);
                                 }
                             }
-                            else if(*_args.begin() == "visible")
+                            else if(*_args.begin() == "visible") // gui menu access {ID} property visible
                             {
                                 _args.pop_front();
-                                if(*_args.begin() == "set")
+                                if(*_args.begin() == "set") // gui menu access {ID} property visible set
                                 {
                                     _args.pop_front();
                                     it->isHidden = !util::toBool(*_args.begin());
                                 }
-                                else if(*_args.begin() == "get")
+                                else if(*_args.begin() == "get") // gui menu access {ID} property visible get
                                 {
                                     std::list<std::string> x;
                                     x.push_back("gui");
+                                    x.push_back("menu");
                                     x.push_back("access");
                                     x.push_back(it->ID);
                                     x.push_back("property");
@@ -635,18 +669,19 @@ void ModModule::processTask(std::list<std::string> _args)
                                     dLink->pushEvent(x);
                                 }
                             }
-                            else if(*_args.begin() == "borderColorA")
+                            else if(*_args.begin() == "borderColorA") // gui menu access {ID} property borderColorA
                             {
                                 _args.pop_front();
-                                if(*_args.begin() == "set")
+                                if(*_args.begin() == "set") // gui menu access {ID} property borderColorA set
                                 {
                                     _args.pop_front();
                                     it->BorderActive = util::toColor(*_args.begin());
                                 }
-                                else if(*_args.begin() == "get")
+                                else if(*_args.begin() == "get") // gui menu access {ID} property borderColorA get
                                 {
                                     std::list<std::string> x;
                                     x.push_back("gui");
+                                    x.push_back("menu");
                                     x.push_back("access");
                                     x.push_back(it->ID);
                                     x.push_back("property");
@@ -655,18 +690,19 @@ void ModModule::processTask(std::list<std::string> _args)
                                     dLink->pushEvent(x);
                                 }
                             }
-                            else if(*_args.begin() == "backgroundColorA")
+                            else if(*_args.begin() == "backgroundColorA") // gui menu access {ID} property backgroundColorA
                             {
                                 _args.pop_front();
-                                if(*_args.begin() == "set")
+                                if(*_args.begin() == "set") // gui menu access {ID} property backgroundColorA set
                                 {
                                     _args.pop_front();
                                     it->BackgroundActive = util::toColor(*_args.begin());
                                 }
-                                else if(*_args.begin() == "get")
+                                else if(*_args.begin() == "get") // gui menu access {ID} property backgroundColorA get
                                 {
                                     std::list<std::string> x;
                                     x.push_back("gui");
+                                    x.push_back("menu");
                                     x.push_back("access");
                                     x.push_back(it->ID);
                                     x.push_back("property");
@@ -675,18 +711,19 @@ void ModModule::processTask(std::list<std::string> _args)
                                     dLink->pushEvent(x);
                                 }
                             }
-                            else if(*_args.begin() == "titleBackgroundColorA")
+                            else if(*_args.begin() == "titleBackgroundColorA") // gui menu access {ID} property titleBackgroundColorA
                             {
                                 _args.pop_front();
-                                if(*_args.begin() == "set")
+                                if(*_args.begin() == "set") // gui menu access {ID} property titleBackgroundColorA set
                                 {
                                     _args.pop_front();
                                     it->TitleBackgroundActive = util::toColor(*_args.begin());
                                 }
-                                else if(*_args.begin() == "get")
+                                else if(*_args.begin() == "get") // gui menu access {ID} propertyt titleBackgroundColorA get
                                 {
                                     std::list<std::string> x;
                                     x.push_back("gui");
+                                    x.push_back("menu");
                                     x.push_back("access");
                                     x.push_back(it->ID);
                                     x.push_back("property");
@@ -695,18 +732,19 @@ void ModModule::processTask(std::list<std::string> _args)
                                     dLink->pushEvent(x);
                                 }
                             }
-                            else if(*_args.begin() == "titleTextColorA")
+                            else if(*_args.begin() == "titleTextColorA") // gui menu access {ID} property titleTextColorA
                             {
                                 _args.pop_front();
-                                if(*_args.begin() == "set")
+                                if(*_args.begin() == "set") // gui menu access {ID} property titleTextColorA set
                                 {
                                     _args.pop_front();
                                     it->TitleTextActive = util::toColor(*_args.begin());
                                 }
-                                else if(*_args.begin() == "get")
+                                else if(*_args.begin() == "get") // gui menu access {ID} property titleTextColorA get
                                 {
                                     std::list<std::string> x;
                                     x.push_back("gui");
+                                    x.push_back("menu");
                                     x.push_back("access");
                                     x.push_back(it->ID);
                                     x.push_back("property");
@@ -715,18 +753,19 @@ void ModModule::processTask(std::list<std::string> _args)
                                     dLink->pushEvent(x);
                                 }
                             }
-                            else if(*_args.begin() == "borderColorB")
+                            else if(*_args.begin() == "borderColorB") // gui menu access {ID} property borderColorB
                             {
                                 _args.pop_front();
-                                if(*_args.begin() == "set")
+                                if(*_args.begin() == "set") // gui menu access {ID} property borderColorB set
                                 {
                                     _args.pop_front();
                                     it->BorderInactive = util::toColor(*_args.begin());
                                 }
-                                else if(*_args.begin() == "get")
+                                else if(*_args.begin() == "get") // gui menu access {ID} property borderColorB get
                                 {
                                     std::list<std::string> x;
                                     x.push_back("gui");
+                                    x.push_back("menu");
                                     x.push_back("access");
                                     x.push_back(it->ID);
                                     x.push_back("property");
@@ -735,18 +774,19 @@ void ModModule::processTask(std::list<std::string> _args)
                                     dLink->pushEvent(x);
                                 }
                             }
-                            else if(*_args.begin() == "backgroundColorB")
+                            else if(*_args.begin() == "backgroundColorB") // gui menu access {ID} property backgroundColorB
                             {
                                 _args.pop_front();
-                                if(*_args.begin() == "set")
+                                if(*_args.begin() == "set") // gui menu access {ID} property backgroundColorB set
                                 {
                                     _args.pop_front();
                                     it->BackgroundInactive = util::toColor(*_args.begin());
                                 }
-                                else if(*_args.begin() == "get")
+                                else if(*_args.begin() == "get") // gui menu access {ID} property backgroundColorB get
                                 {
                                     std::list<std::string> x;
                                     x.push_back("gui");
+                                    x.push_back("menu");
                                     x.push_back("access");
                                     x.push_back(it->ID);
                                     x.push_back("property");
@@ -755,18 +795,19 @@ void ModModule::processTask(std::list<std::string> _args)
                                     dLink->pushEvent(x);
                                 }
                             }
-                            else if(*_args.begin() == "titleBackgroundColorB")
+                            else if(*_args.begin() == "titleBackgroundColorB") // gui menu access {ID} property titleBackgroundColorB
                             {
                                 _args.pop_front();
-                                if(*_args.begin() == "set")
+                                if(*_args.begin() == "set") // gui menu access {ID} property titleBackgroundColorB set
                                 {
                                     _args.pop_front();
                                     it->TitleBackgroundInactive = util::toColor(*_args.begin());
                                 }
-                                else if(*_args.begin() == "get")
+                                else if(*_args.begin() == "get") // gui menu access {ID} property titleBackgroundColorB get
                                 {
                                     std::list<std::string> x;
                                     x.push_back("gui");
+                                    x.push_back("menu");
                                     x.push_back("access");
                                     x.push_back(it->ID);
                                     x.push_back("property");
@@ -775,18 +816,19 @@ void ModModule::processTask(std::list<std::string> _args)
                                     dLink->pushEvent(x);
                                 }
                             }
-                            else if(*_args.begin() == "titleTextColorB")
+                            else if(*_args.begin() == "titleTextColorB") // gui menu access {ID} property titleTextColorB
                             {
                                 _args.pop_front();
-                                if(*_args.begin() == "set")
+                                if(*_args.begin() == "set") // gui menu access {ID} property titleTextColorB set
                                 {
                                     _args.pop_front();
                                     it->TitleTextInactive = util::toColor(*_args.begin());
                                 }
-                                else if(*_args.begin() == "get")
+                                else if(*_args.begin() == "get") // gui menu access {ID} property titleTextColorB get
                                 {
                                     std::list<std::string> x;
                                     x.push_back("gui");
+                                    x.push_back("menu");
                                     x.push_back("access");
                                     x.push_back(it->ID);
                                     x.push_back("property");
@@ -803,7 +845,7 @@ void ModModule::processTask(std::list<std::string> _args)
                         else if(*_args.begin() == "element") // gui menu access {ID} element
                         {
                             _args.pop_front();
-                            if(*_args.begin() == "list")
+                            if(*_args.begin() == "list") // gui menu access {ID} element list
                             {
                                 int counter = 1;
                                 for(std::list<GUIElement>::iterator elem = it->GuiElements.begin(); elem != it->GuiElements.end(); elem++)
@@ -821,14 +863,14 @@ void ModModule::processTask(std::list<std::string> _args)
                                     counter++;
                                 }
                             }
-                            else if(*_args.begin() == "add")
+                            else if(*_args.begin() == "add") // gui menu access {ID} element add
                             {
                                 GUIElement e;
                                 _args.pop_front();
                                 e.ID = *_args.begin();
                                 it->GuiElements.push_back(e);
                             }
-                            else if(*_args.begin() == "remove")
+                            else if(*_args.begin() == "remove") // gui menu access {ID} element remove
                             {
                                 _args.pop_front();
                                 for(std::list<GUIElement>::iterator elem = it->GuiElements.begin(); elem != it->GuiElements.end(); elem++)
@@ -840,15 +882,19 @@ void ModModule::processTask(std::list<std::string> _args)
                                     }
                                 }
                             }
-                            else if(*_args.begin() == "access")
+                            else if(*_args.begin() == "access") // gui menu access {ID} element access
                             {
-                                // Got me
+                                // ACCESSING ELEMENTS
                             }
                         }
                         return;
                     }
                 }
             }
+        }
+        else if(*_args.begin() == "dock") // gui dock
+        {
+
         }
     }
     else if (*_args.begin() == "level") //level
