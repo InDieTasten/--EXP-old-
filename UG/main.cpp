@@ -190,14 +190,15 @@ void StockSettings()
     dLink->settings.dockWidth = 67;
 
 
-    dLink->settings.guiDockBackground                    = sf::Color::Black;
-    dLink->settings.guiDockBackgroundHover               = sf::Color::Green;
-    dLink->settings.guiDockBorder                        = sf::Color::Green;
-    dLink->settings.guiDockBorderHover                   = sf::Color::White;
-    dLink->settings.guiDockItemBackground                = sf::Color::Red;
-    dLink->settings.guiDockItemBackgroundHover           = sf::Color::Red;
-    dLink->settings.guiDockItemBorder                    = sf::Color::Red;
-    dLink->settings.guiDockItemBorderHover               = sf::Color::Red;
+    dLink->settings.guiDockBackground                    = sf::Color(  0,  0,  0,255);
+    dLink->settings.guiDockBackgroundHover               = sf::Color(  0,255,  0,255);
+    dLink->settings.guiDockBorder                        = sf::Color(  0,255,  0,255);
+    dLink->settings.guiDockBorderHover                   = sf::Color(255,255,255,255);
+    dLink->settings.guiDockItemBackground                = sf::Color(  0,  0,  0,255);
+    dLink->settings.guiDockItemBackgroundHover           = sf::Color( 32, 32, 32,255);
+    dLink->settings.guiDockItemBorder                    = sf::Color(  0,255,  0,255);
+    dLink->settings.guiDockItemBorderHover               = sf::Color(255,255,255,255);
+
     dLink->settings.guiMenuBorderInactive                = sf::Color(128,128,128,128);
     dLink->settings.guiMenuBorderActive                  = sf::Color(  0,255,  0,255);
     dLink->settings.guiMenuBackgroundInactive            = sf::Color(  0,  0,  0, 64);
