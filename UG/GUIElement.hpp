@@ -30,8 +30,7 @@ public:
     int X;
     int Y;
     bool isHidden;
-    int Width;
-    int Height;
+
 
     //CONSTRUCTORS
     GUIElement();
