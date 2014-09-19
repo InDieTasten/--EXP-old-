@@ -1161,7 +1161,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     dLink->pushEvent(x);
                                                     x.clear();
                                                 }
-                                                else if(elem->Type == "horSlider")
+                                                else if(elem->Type == "horSlider" || elem->Type == "vertSlider")
                                                 {
                                                     x.push_back("gui");
                                                     x.push_back("menu");
@@ -1473,6 +1473,87 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back("list");
                                                     x.push_back(util::toString(counter)); counter++;
                                                     x.push_back("sliderBorderD");
+                                                    dLink->pushEvent(x);
+                                                    x.clear();
+                                                }
+                                                else if(elem->Type == "label")
+                                                {
+                                                    x.push_back("gui");
+                                                    x.push_back("menu");
+                                                    x.push_back("access");
+                                                    x.push_back(it->ID);
+                                                    x.push_back("element");
+                                                    x.push_back("access");
+                                                    x.push_back(elem->ID);
+                                                    x.push_back("property");
+                                                    x.push_back("list");
+                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back("displayText");
+                                                    dLink->pushEvent(x);
+                                                    x.clear();
+                                                    x.push_back("gui");
+                                                    x.push_back("menu");
+                                                    x.push_back("access");
+                                                    x.push_back(it->ID);
+                                                    x.push_back("element");
+                                                    x.push_back("access");
+                                                    x.push_back(elem->ID);
+                                                    x.push_back("property");
+                                                    x.push_back("list");
+                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back("textColorA");
+                                                    dLink->pushEvent(x);
+                                                    x.clear();
+                                                    x.push_back("gui");
+                                                    x.push_back("menu");
+                                                    x.push_back("access");
+                                                    x.push_back(it->ID);
+                                                    x.push_back("element");
+                                                    x.push_back("access");
+                                                    x.push_back(elem->ID);
+                                                    x.push_back("property");
+                                                    x.push_back("list");
+                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back("textColorB");
+                                                    dLink->pushEvent(x);
+                                                    x.clear();
+                                                    x.push_back("gui");
+                                                    x.push_back("menu");
+                                                    x.push_back("access");
+                                                    x.push_back(it->ID);
+                                                    x.push_back("element");
+                                                    x.push_back("access");
+                                                    x.push_back(elem->ID);
+                                                    x.push_back("property");
+                                                    x.push_back("list");
+                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back("textColorC");
+                                                    dLink->pushEvent(x);
+                                                    x.clear();
+                                                    x.push_back("gui");
+                                                    x.push_back("menu");
+                                                    x.push_back("access");
+                                                    x.push_back(it->ID);
+                                                    x.push_back("element");
+                                                    x.push_back("access");
+                                                    x.push_back(elem->ID);
+                                                    x.push_back("property");
+                                                    x.push_back("list");
+                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back("fontID");
+                                                    dLink->pushEvent(x);
+                                                    x.clear();
+                                                    x.push_back("gui");
+                                                    x.push_back("menu");
+                                                    x.push_back("access");
+                                                    x.push_back(it->ID);
+                                                    x.push_back("element");
+                                                    x.push_back("access");
+                                                    x.push_back(elem->ID);
+                                                    x.push_back("property");
+                                                    x.push_back("list");
+                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back("textScale");
                                                     dLink->pushEvent(x);
                                                     x.clear();
                                                 }
