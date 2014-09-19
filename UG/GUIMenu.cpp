@@ -206,7 +206,7 @@ void GUIMenu::handleEvent(sf::Event* _event)
     }
     for(std::list<GUIElement>::iterator it = GuiElements.begin(); it != GuiElements.end(); it++)
     {
-        it->handleEvent(_event, X, Y+16);
+        it->handleEvent(_event, X-scrollable*bottomSlider.value, Y+16);
     }
 }
 void GUIMenu::handleSoftEvent(std::list<std::string> _args)
