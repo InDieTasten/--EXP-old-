@@ -15,7 +15,7 @@
 #include <time.h>
 #include "util.hpp"
 #include <SFML\System.hpp>
-#include "FileLogger.hpp"
+
 
 extern "C" {
 #include <lua.h>
@@ -39,7 +39,7 @@ GUIManager*     guiLink;
 GraphicsEngine* gLink;
 PhysicsEngine*  pLink;
 ModModule*      mLink;
-extern FileLogger      logger;
+
 //threads
 sf::Thread*     gThread;
 sf::Thread*     pThread;
