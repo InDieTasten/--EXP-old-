@@ -22,11 +22,12 @@ void TextBox::moveview(int _x, int _y)
     {
         sliderX =  sliderX - 16;
     }
+
 }
 void TextBox::Setup()
 {
     position = 0;
-    content = "     ";
+    content = "";
     isActive = true;
     multiline = true;
     clicked = false;
