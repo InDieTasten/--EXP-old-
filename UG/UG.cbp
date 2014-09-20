@@ -79,6 +79,9 @@
 		<Unit filename="DataBank.hpp">
 			<Option virtualFolder="MemoryBank/" />
 		</Unit>
+		<Unit filename="Debug.hpp">
+			<Option virtualFolder="MemoryBank/" />
+		</Unit>
 		<Unit filename="EventManager.cpp">
 			<Option virtualFolder="Processing/" />
 		</Unit>
@@ -222,6 +225,9 @@
 		</Unit>
 		<Unit filename="Track.hpp">
 			<Option virtualFolder="MemoryBank/Entites/" />
+		</Unit>
+		<Unit filename="VERSION.hpp">
+			<Option virtualFolder="Utilities/" />
 		</Unit>
 		<Unit filename="Vector.cpp">
 			<Option virtualFolder="MemoryBank/Level/" />
