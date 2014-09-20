@@ -4,6 +4,7 @@
 #include <string.h>
 #include "DataBank.hpp"
 
+
 class Canvas
 {
     //MEMBERS
@@ -15,8 +16,13 @@ public:
     int Width;
     std::string ID;
 
+    bool isActive;
+
     std::list<sf::ConvexShape> shapes;
-    std::list<sf::ConvexShape> buffer;
+    std::list<sf::ConvexShape> shapebuffer;
+
+    std::list<sf::Vertex[2]> vertex;
+    std::list<sf::Vertex[2]> vertexbuffer;
     sf::Color fillColor;
     sf::Color outlineColor;
 
@@ -30,9 +36,11 @@ public:
     void Hide();
 
     void Setup();
-    void Update(DataBank* _dataLink);
-    void Render(DataBank* _dataLink);
-    void handleEvent(sf::Event* _event);
+    void Update(int _x, int _y, std::string _id);
+    void Render(int _x, int _y, std::string _id);
+    void handleEvent(sf::Event* _event, int _x, int _y, std::string _id);
+    void handleSoftEvent(std::list<std::string> _args, int _x, int _y, std::string _id);
+    void handleTask(std::list<std::string> _args, int _x, int _y, std::string _id);
 };
 
 #endif
