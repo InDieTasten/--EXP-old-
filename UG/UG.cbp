@@ -82,6 +82,12 @@
 		<Unit filename="EventManager.hpp">
 			<Option virtualFolder="Processing/" />
 		</Unit>
+		<Unit filename="FileLogger.cpp">
+			<Option virtualFolder="Utilities/" />
+		</Unit>
+		<Unit filename="FileLogger.hpp">
+			<Option virtualFolder="Utilities/" />
+		</Unit>
 		<Unit filename="Font.cpp">
 			<Option virtualFolder="MemoryBank/Entites/" />
 		</Unit>
