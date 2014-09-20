@@ -16,11 +16,11 @@ private:
     std::ofstream logfile;
 
 public:
-	FileLogger();
-	~FileLogger();
+    FileLogger();
+    ~FileLogger();
 
 
-	void log(std::string);
+    void log(std::string);
 
 
 };
