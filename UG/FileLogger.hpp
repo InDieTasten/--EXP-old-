@@ -6,12 +6,15 @@
 #include <fstream>
 #include <time.h>
 #include <stdio.h>
+#include <direct.h>
+#include <stdlib.h>
 
 extern sf::Mutex GMutex;
 class FileLogger
 {
 private:
     std::ofstream logfile;
+
 public:
 	FileLogger();
 	~FileLogger();
