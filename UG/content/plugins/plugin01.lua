@@ -13,6 +13,10 @@ function onLoad() -- called right after the plugin has been loaded
 	pushTask("gui","menu", "access", "can", "element", "access", "canvas", "property", "y", "set", "10")
 	pushTask("gui","menu", "access", "can", "element", "access", "canvas", "property", "width", "set", "180")
 	pushTask("gui","menu", "access", "can", "element", "access", "canvas", "property", "height", "set", "180")
+	pushTask("gui","menu", "access", "can", "element", "access", "canvas", "action", "setFillColor", "#0000FFFF")
+	pushTask("gui","menu", "access", "can", "element", "access", "canvas", "action", "draw", "line", "0","0","800","600")
+	pushTask("gui","menu", "access", "can", "element", "access", "canvas", "action", "draw", "line", "0","600","800","0")
+	pushTask("gui","menu", "access", "can", "element", "access", "canvas", "action", "display")
 end
 function onUnload() -- called right before your plugin gets overriden with nil
 	pushTask("gui","menu","remove","can")
