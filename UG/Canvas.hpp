@@ -16,6 +16,7 @@ public:
     std::string ID;
 
     std::list<sf::ConvexShape> shapes;
+    std::list<sf::ConvexShape> buffer;
     sf::Color fillColor;
     sf::Color outlineColor;
 
