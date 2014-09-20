@@ -4,6 +4,9 @@
 
 #include <iostream>
 #include <fstream>
+#include <time.h>
+#include <stdio.h>
+
 extern sf::Mutex GMutex;
 class FileLogger
 {
