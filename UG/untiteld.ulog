@@ -1,1 +1,40 @@
-<START><log>262|16:35:16 [Main      ] Logger enabled</log><log>262|16:35:16 [Main      ] Create Memory Mangager Instance...</log><log>262|16:35:16 [MemBank   ] Found script: ./content/stock/scripts/console.lua</log><log>262|16:35:16 [MemBank   ] Found script: ./content/stock/scripts/plugin_loader.lua</log><log>262|16:35:16 [Main      ] Generate RenderDevice(Window)...</log><log>262|16:35:16 [Main      ] Re-Apply view...</log><log>262|16:35:16 [Main      ] Launch RenderLink...</log><log>262|16:35:16 [Main      ] Create GUI Instance...</log><log>262|16:35:16 [Main      ] Create Graphics Thread...</log><log>262|16:35:16 [Main      ] Relocate Render Thread...</log><log>262|16:35:16 [Main      ] Create Physics Thread...</log><log>262|16:35:16 [Main      ] Create Plugin Handler...</log><log>262|16:35:16 [Main      ] Create Event Manager...</log><log>262|16:35:16 [Main      ] Create Mod- Thread</log><log>262|16:35:16 [Main      ] Create Graphics- Thread</log><log>262|16:35:16 [Main      ] Create Physics- Thread</log><log>262|16:35:16 [Main      ] Link Mod- Thread</log><log>262|16:35:16 [Main      ] Link Graphics- Thread</log><log>262|16:35:16 [Main      ] Link Physics- Thread</log><log>262|16:35:16 [Main      ] Launch Mod- Thread</log><log>262|16:35:16 [Mod-Module] Thread started</log><log>262|16:35:16 [Plugin    ] [Info] Plugin 'plugin01' successfully registered</log><log>262|16:35:16 [Plugin    ] [Info] Plugin 'plugin02' successfully registered</log><log>262|16:35:16 [Main      ] Launch Graphics- Thread</log><log>262|16:35:16 [G-Engine  ] Thread launched</log><log>262|16:35:17 [Main      ] Launch Physics- Thread</log><log>262|16:35:17 [P-Engine  ] Thread launched</log><log>262|16:35:17 [Main      ] Entering Event-Loop</log><log>262|16:35:17 [Plugin    ] +--event--</log><log>262|16:35:17 [Plugin    ] I string 1: dock_leave</log><log>262|16:35:17 [Plugin    ] I string 2: $_mainmenu</log><log>262|16:35:17 [Plugin    ] +---------</log><log>262|16:35:17 [Plugin    ] +--event--</log><log>262|16:35:17 [Plugin    ] I string 1: dock_leave</log><log>262|16:35:17 [Plugin    ] I string 2: $_optionsmenu</log><log>262|16:35:17 [Plugin    ] +---------</log><log>262|16:35:20 [P-Engine  ] Thread stopped</log><log>262|16:35:20 [Mod-Module] Thread stopped</log><log>262|16:35:20 [G-Engine  ] Thread stopped</log><END>
+<START>263|11:34:00 [Main      ] Logger enabled
+263|11:34:00 [Main      ] Create Memory Mangager Instance...
+263|11:34:00 [MemBank   ] Found script: ./content/stock/scripts/console.lua
+263|11:34:00 [MemBank   ] Found script: ./content/stock/scripts/plugin_loader.lua
+263|11:34:00 [Main      ] Generate RenderDevice(Window)...
+263|11:34:01 [Main      ] Re-Apply view...
+263|11:34:01 [Main      ] Launch RenderLink...
+263|11:34:01 [Main      ] Create GUI Instance...
+263|11:34:01 [Main      ] Create Graphics Thread...
+263|11:34:01 [Main      ] Relocate Render Thread...
+263|11:34:01 [Main      ] Create Physics Thread...
+263|11:34:01 [Main      ] Create Plugin Handler...
+263|11:34:01 [Main      ] Create Event Manager...
+263|11:34:01 [Main      ] Create Mod- Thread
+263|11:34:01 [Main      ] Create Graphics- Thread
+263|11:34:01 [Main      ] Create Physics- Thread
+263|11:34:01 [Main      ] Link Mod- Thread
+263|11:34:01 [Main      ] Link Graphics- Thread
+263|11:34:01 [Main      ] Link Physics- Thread
+263|11:34:01 [Main      ] Launch Mod- Thread
+263|11:34:01 [Mod-Module] Thread started
+263|11:34:01 [Plugin    ] [Info] Plugin 'plugin01' successfully registered
+263|11:34:01 [Plugin    ] [Info] Plugin 'plugin02' successfully registered
+263|11:34:01 [Main      ] Launch Graphics- Thread
+263|11:34:01 [G-Engine  ] Thread launched
+263|11:34:02 [Main      ] Launch Physics- Thread
+263|11:34:02 [P-Engine  ] Thread launched
+263|11:34:02 [Main      ] Entering Event-Loop
+263|11:34:02 [Plugin    ] +--event--
+263|11:34:02 [Plugin    ] I string 1: dock_leave
+263|11:34:02 [Plugin    ] I string 2: $_mainmenu
+263|11:34:02 [Plugin    ] +---------
+263|11:34:02 [Plugin    ] +--event--
+263|11:34:02 [Plugin    ] I string 1: dock_leave
+263|11:34:02 [Plugin    ] I string 2: $_optionsmenu
+263|11:34:02 [Plugin    ] +---------
+263|11:34:04 [P-Engine  ] Thread stopped
+263|11:34:04 [G-Engine  ] Thread stopped
+263|11:34:04 [Mod-Module] Thread stopped
+<END>
