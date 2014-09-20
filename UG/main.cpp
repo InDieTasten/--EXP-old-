@@ -16,6 +16,7 @@
 #include "util.hpp"
 #include <SFML\System.hpp>
 
+
 extern "C" {
 #include <lua.h>
 #include <lualib.h>
@@ -38,6 +39,7 @@ GUIManager*     guiLink;
 GraphicsEngine* gLink;
 PhysicsEngine*  pLink;
 ModModule*      mLink;
+
 //threads
 sf::Thread*     gThread;
 sf::Thread*     pThread;
@@ -48,6 +50,9 @@ sf::Mutex GMutex;
 void StockRegister();
 void StockSettings();
 void StockKeybinds();
+
+
+
 
 using namespace std;
 
