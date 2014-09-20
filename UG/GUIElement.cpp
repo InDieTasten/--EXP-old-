@@ -8,6 +8,7 @@ GUIElement::GUIElement()
     horSlider.Setup();
     vertSlider.Setup();
     textBox.Setup();
+    canvas.Setup();
 }
 //DESTRUCTORS
 
@@ -53,6 +54,11 @@ void GUIElement::update(int _x, int _y)
         textBox.isActive = true;
         textBox.Update(_x+X, _y+Y, ID);
     }
+    else if (Type == "canvas")
+    {
+        canvas.isActive = true;
+        canvas.Update(_x+X, _y+Y, ID);
+    }
 }
 void GUIElement::render(int _x, int _y)
 {
@@ -79,6 +85,10 @@ void GUIElement::render(int _x, int _y)
     else if (Type == "textbox")
     {
         textBox.Render(_x+X, _y+Y, ID);
+    }
+    else if (Type == "canvas")
+    {
+        canvas.Render(_x+X, _y+Y, ID);
     }
 }
 void GUIElement::handleEvent(sf::Event* _event, int _x, int _y)
@@ -107,6 +117,10 @@ void GUIElement::handleEvent(sf::Event* _event, int _x, int _y)
     {
         textBox.handleEvent(_event, _x+X, _y+Y, ID);
     }
+    else if (Type == "canvas")
+    {
+        canvas.handleEvent(_event, _x+X, _y+Y, ID);
+    }
 }
 void GUIElement::handleSoftEvent(std::list<std::string> _args, int _x, int _y)
 {
@@ -134,6 +148,10 @@ void GUIElement::handleSoftEvent(std::list<std::string> _args, int _x, int _y)
     {
         textBox.handleSoftEvent(_args, _x+X, _y+Y, ID);
     }
+    else if (Type == "canvas")
+    {
+        canvas.handleSoftEvent(_args, _x+X, _y+Y, ID);
+    }
 }
 void GUIElement::handleTask(std::list<std::string> _args, int _x, int _y)
 {
@@ -160,5 +178,9 @@ void GUIElement::handleTask(std::list<std::string> _args, int _x, int _y)
     else if (Type == "textbox")
     {
         textBox.handleTask(_args, _x+X, _y+Y, ID);
+    }
+    else if (Type == "canvas")
+    {
+        canvas.handleTask(_args, _x+X, _y+Y, ID);
     }
 }
