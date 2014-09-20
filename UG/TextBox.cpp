@@ -1,5 +1,4 @@
 #include "TextBox.hpp"
-
 //CONSTRUCTORS
 
 //DESTRUCTORS
@@ -13,10 +12,21 @@ void TextBox::calibrateCursor()
         cursor++;
     }
 }
+void TextBox::moveview(int _x, int _y)
+{
+    for(;(float)_x + (float)Width + (float)sliderX < text.findCharacterPos(position).x;)
+    {
+        sliderX =  sliderX + 16;
+    }
+    for(;(float)_x + (float)sliderX > text.findCharacterPos(position).x;)
+    {
+        sliderX =  sliderX - 16;
+    }
+}
 void TextBox::Setup()
 {
     position = 0;
-    content = "";
+    content = "     ";
     isActive = true;
     multiline = true;
     clicked = false;
@@ -51,8 +61,9 @@ void TextBox::Update(int _x, int _y,std::string _id)
 
     float sizex = Width/(float)dLink->renderWindow->getSize().x;
     float sizey = Height/(float)dLink->renderWindow->getSize().y;
-    view.move(sliderX,sliderY);
+
     view.setViewport(sf::FloatRect(posx, posy, sizex, sizey));
+    view.move(sliderX,sliderY);
 }
 void TextBox::Render(int _x, int _y, std::string _id)
 {
@@ -62,6 +73,7 @@ void TextBox::Render(int _x, int _y, std::string _id)
     if(clicked)
         dLink->renderWindow->draw(curs);
     dLink->renderWindow->setView(dLink->guiView);
+
 }
 void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
 {
@@ -162,7 +174,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
                     }
                     std::list<std::string> x;
                     x.push_back("textbox_update");
-                    x.push_back(_id);
+                    x.push_back(_id);text.findCharacterPos(position);
                     x.push_back(content);
                     dLink->pushEvent(x);
                     position++;
@@ -256,6 +268,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
                 }
             }
         }
+    moveview(_x,_y);
     }
 }
 void TextBox::handleSoftEvent(std::list<std::string> _args, int _x, int _y, std::string _id)
