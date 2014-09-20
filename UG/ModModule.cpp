@@ -1748,7 +1748,108 @@ void ModModule::processTask(std::list<std::string> _args)
                                         }
                                         else if(*_args.begin() == "action") // gui menu access {ID} element access {ID} action
                                         {
+                                            _args.pop_front();
+                                            if(*_args.begin() == "list")
+                                            {
+                                                int counter = 1;
+                                                std::list<std::string> x;
 
+                                                if(elem->Type == "canvas")
+                                                {
+                                                    x.clear();
+                                                    x.push_back("gui");
+                                                    x.push_back("menu");
+                                                    x.push_back("access");
+                                                    x.push_back(it->ID);
+                                                    x.push_back("element");
+                                                    x.push_back("access");
+                                                    x.push_back(elem->ID);
+                                                    x.push_back("action");
+                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back("clear");
+                                                    dLink->pushEvent(x);
+                                                    x.clear();
+                                                    x.push_back("gui");
+                                                    x.push_back("menu");
+                                                    x.push_back("access");
+                                                    x.push_back(it->ID);
+                                                    x.push_back("element");
+                                                    x.push_back("access");
+                                                    x.push_back(elem->ID);
+                                                    x.push_back("action");
+                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back("setFillColor");
+                                                    dLink->pushEvent(x);
+                                                    x.clear();
+                                                    x.push_back("gui");
+                                                    x.push_back("menu");
+                                                    x.push_back("access");
+                                                    x.push_back(it->ID);
+                                                    x.push_back("element");
+                                                    x.push_back("access");
+                                                    x.push_back(elem->ID);
+                                                    x.push_back("action");
+                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back("setOutlineColor");
+                                                    dLink->pushEvent(x);
+                                                    x.clear();
+                                                    x.push_back("gui");
+                                                    x.push_back("menu");
+                                                    x.push_back("access");
+                                                    x.push_back(it->ID);
+                                                    x.push_back("element");
+                                                    x.push_back("access");
+                                                    x.push_back(elem->ID);
+                                                    x.push_back("action");
+                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back("draw");
+                                                    dLink->pushEvent(x);
+                                                }
+                                            }
+                                            if(elem->Type == "canvas")
+                                            {
+                                                if(*_args.begin() == "clear")
+                                                {
+                                                    elem->canvas.vertexbuffer.clear();
+                                                    elem->canvas.shapebuffer.clear();
+                                                }
+                                                else if(*_args.begin() == "display")
+                                                {
+                                                    elem->canvas.vertex = elem->canvas.vertexbuffer;
+                                                    elem->canvas.shapes  = elem->canvas.shapebuffer;
+                                                }
+                                                else if(*_args.begin() == "setFillColor")
+                                                {
+                                                    _args.pop_front();
+                                                    elem->canvas.fillColor = util::toColor(*_args.begin());
+                                                }
+                                                else if(*_args.begin() == "setOutlineColor")
+                                                {
+                                                    _args.pop_front();
+                                                    elem->canvas.outlineColor = util::toColor(*_args.begin());
+                                                }
+                                                else if(*_args.begin() == "draw")
+                                                {
+                                                    _args.pop_front();
+                                                    if(*_args.begin() == "line")
+                                                    {
+                                                        _args.pop_front();
+                                                        line x;
+                                                        x.line[0].position.x = util::toFloat(*_args.begin());
+                                                        _args.pop_front();
+                                                        x.line[0].position.y = util::toFloat(*_args.begin());
+                                                        _args.pop_front();
+                                                        x.line[1].position.x = util::toFloat(*_args.begin());
+                                                        _args.pop_front();
+                                                        x.line[1].position.y = util::toFloat(*_args.begin());
+
+                                                        x.line[0].color = elem->canvas.fillColor;
+                                                        x.line[1].color = elem->canvas.fillColor;
+
+                                                        elem->canvas.vertexbuffer.push_back(x);
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
                                 }
