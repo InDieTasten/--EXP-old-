@@ -7,7 +7,7 @@ FileLogger::FileLogger()
 {
 
     logfile.open("untiteld.ulog", std::ios::out | std::ios::trunc );
-    logfile << "<!DOCTYPE html><head><meta charset=\"UTF-8\"><title>Document</title></head><body>";
+    logfile << "<START>";
 
 
 }
@@ -15,7 +15,7 @@ FileLogger::FileLogger()
 
 FileLogger::~FileLogger()
 {
-    logfile << "</body></html>";
+    logfile << "<END>";
     logfile.close();
 }
 std::string FileLogger::breakline(){
@@ -23,7 +23,10 @@ std::string FileLogger::breakline(){
 }
 
 void FileLogger::log(std::string temp){
-    logfile << temp << breakline();
+    GMutex.lock();
+
+    logfile << "<log>" << temp << "</log>";
+    GMutex.unlock();
 }
 
 void FileLogger::log(std::string temp, std::string color){
