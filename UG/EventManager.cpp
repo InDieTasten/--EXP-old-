@@ -57,6 +57,34 @@ void EventManager::handleTask(std::list<std::string> _args)
 {
     // to the plugins
     taskBuffer.push_back(_args);
+
+    if(*_args.begin() == "debug")
+    {
+        _args.pop_front();
+        if(*_args.begin() == "countReset")
+        {
+            while(dLink->debug.eventCounts.size() > dLink->settings.eventtaskMeanAmount)
+            {
+                dLink->debug.eventCounts.pop_front();
+            }
+            while(dLink->debug.taskCounts.size() > dLink->settings.eventtaskMeanAmount)
+            {
+                dLink->debug.taskCounts.pop_front();
+            }
+            dLink->debug.eventCounts.push_back(dLink->debug.eventCount);
+            dLink->debug.taskCounts.push_back(dLink->debug.taskCount);
+
+            dLink->debug.eventCount = 0;
+            dLink->debug.taskCount = 0;
+
+            std::list<std::string> x;
+            x.push_back("delay");
+            x.push_back(util::toString(dLink->settings.countResetInterval*1000));
+            x.push_back("debug");
+            x.push_back("countReset");
+            dLink->pushTask(x);
+        }
+    }
 }
 void EventManager::processEvent(sf::Event *_event)
 {

@@ -25,10 +25,10 @@ extern "C" {
 
 
 // Thread Throttleling
-float mLimit =  100.0; //Cycles per second
-float gLimit =  60.0; //Cycles per second
-float pLimit =  500.0; //Cycles per second
-float mainLimit =  100.0; //Cycles per second
+float mLimit =  30.0; //Cycles per second
+float gLimit =  30.0; //Cycles per second
+float pLimit =  30.0; //Cycles per second
+float mainLimit =  30.0; //Cycles per second
 
 // Global accessors
 std::list< std::list<std::string> > eventBuffer;
@@ -154,17 +154,36 @@ int main ( int argc, char *argv[] )
     x.push_back("plugin01");
     dLink->pushTask(x);
 
+    x.clear();
+    x.push_back("delay");
+    x.push_back(util::toString(dLink->settings.countResetInterval*1000));
+    x.push_back("debug");
+    x.push_back("countReset");
+    dLink->pushTask(x);
+
+
 
     sf::Clock limit;
     limit.restart();
     while(App.isOpen())
     {
         GMutex.unlock();
+        while(dLink->debug.tMainSleep.size() > dLink->settings.threadMeanAmount)
+        {
+            dLink->debug.tMainSleep.pop_front();
+        }
         if(limit.getElapsedTime().asSeconds() < 1.0/mainLimit)
         {
+            dLink->debug.tMainSleep.push_back((1.0/mainLimit - limit.getElapsedTime().asSeconds())*1000);
             sf::sleep(sf::seconds(1.0/mainLimit - limit.getElapsedTime().asSeconds()));
         }
+        else
+        {
+            dLink->debug.tMainSleep.push_back(0.0);
+        }
+
         limit.restart();
+
         GMutex.lock();
         sf::Event Event;
         while(App.pollEvent(Event))
@@ -202,8 +221,11 @@ void StockRegister()
 }
 void StockSettings()
 {
+    dLink->settings.threadMeanAmount = 40;
+    dLink->settings.eventtaskMeanAmount = 5;
+    dLink->settings.countResetInterval = 1.0f;
 
-    dLink->settings.dockWidth = 67;
+    dLink->settings.dockWidth = 40;
 
 
     dLink->settings.guiDockBackground                    = sf::Color(  0,  0,  0,255);

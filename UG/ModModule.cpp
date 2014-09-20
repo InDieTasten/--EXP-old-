@@ -36,9 +36,18 @@ void ModModule::Run()
 
     while(dLink->runModules)
     {
+        while(dLink->debug.tModSleep.size() > dLink->settings.threadMeanAmount)
+        {
+            dLink->debug.tModSleep.pop_front();
+        }
         if(limiter.getElapsedTime().asSeconds() < 1.0/mLimit)
         {
+            dLink->debug.tModSleep.push_back((1.0/mLimit - limiter.getElapsedTime().asSeconds())*1000);
             sf::sleep(sf::seconds(1.0/mLimit - limiter.getElapsedTime().asSeconds()));
+        }
+        else
+        {
+            dLink->debug.tModSleep.push_back(0.0);
         }
         limiter.restart();
         GMutex.lock();

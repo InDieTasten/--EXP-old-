@@ -2,6 +2,8 @@
 //CONSTRUCTORS
 DataBank::DataBank()
 {
+    debug.eventCount = 0;
+    debug.taskCount = 0;
     runGraphics = true;
     runPhysics = true;
     runModules = true;
@@ -300,6 +302,7 @@ void DataBank::loadDataBank(std::string _path) //confusion
 
 void DataBank::pushEvent(std::list<std::string> _args)
 {
+    debug.eventCount++;
     softEvents.push_back(_args);
 }
 std::list<std::string> DataBank::pullEvent()
@@ -311,6 +314,7 @@ std::list<std::string> DataBank::pullEvent()
 
 void DataBank::pushTask(std::list<std::string> _args)
 {
+    debug.taskCount++;
     softTasks.push_back(_args);
 }
 std::list<std::string> DataBank::pullTask()
