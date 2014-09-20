@@ -4,6 +4,10 @@
 #include <string.h>
 #include "DataBank.hpp"
 
+struct line
+{
+    sf::Vertex line[2];
+};
 
 class Canvas
 {
@@ -21,8 +25,8 @@ public:
     std::list<sf::ConvexShape> shapes;
     std::list<sf::ConvexShape> shapebuffer;
 
-    std::list<sf::Vertex[2]> vertex;
-    std::list<sf::Vertex[2]> vertexbuffer;
+    std::list<line> vertex;
+    std::list<line> vertexbuffer;
     sf::Color fillColor;
     sf::Color outlineColor;
 
