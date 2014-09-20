@@ -16,9 +16,18 @@ void GraphicsEngine::Run()
     limit.restart();
     while (dLink->runGraphics)
     {
+        while(dLink->debug.tGraphSleep.size() > dLink->settings.threadMeanAmount)
+        {
+            dLink->debug.tGraphSleep.pop_front();
+        }
         if(limit.getElapsedTime().asSeconds() < 1.0/gLimit)
         {
+            dLink->debug.tGraphSleep.push_back((1.0/gLimit - limit.getElapsedTime().asSeconds())*1000);
             sf::sleep(sf::seconds(1.0/gLimit - limit.getElapsedTime().asSeconds()));
+        }
+        else
+        {
+            dLink->debug.tGraphSleep.push_back(0.0);
         }
         limit.restart();
         dLink->renderWindow->clear(sf::Color(10,10,10,255)); //clear renderBuffer with black

@@ -119,3 +119,14 @@ float util::getMean(std::list<float> _x)
     }
     return (r/_x.size());
 }
+float util::getMean(std::list<int> _x)
+{
+    if(_x.size() == 0)
+        return 0.0;
+    float r = 0;
+    for(std::list<int>::iterator it = _x.begin(); it != _x.end(); it++)
+    {
+        r += *it;
+    }
+    return (r/_x.size());
+}

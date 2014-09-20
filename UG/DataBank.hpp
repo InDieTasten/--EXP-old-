@@ -18,6 +18,7 @@
 #include "Loader.hpp"
 #include "Settings.hpp"
 #include "Level.hpp"
+#include "Debug.hpp"
 
 class DataBank
 {
@@ -38,6 +39,7 @@ public:
     bool runModules;
 
     Settings settings;
+    Debug debug;
 
     std::list<std::list<std::string> > softEvents;
     std::list<std::list<std::string> > softTasks;
