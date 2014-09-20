@@ -19,9 +19,18 @@ void PhysicsEngine::Run()
     limit.restart();
     while (dLink->runPhysics)
     {
+        while(dLink->debug.tPhysSleep.size() > dLink->settings.threadMeanAmount)
+        {
+            dLink->debug.tPhysSleep.pop_front();
+        }
         if(limit.getElapsedTime().asSeconds() < 1.0/pLimit)
         {
+            dLink->debug.tPhysSleep.push_back((1.0/pLimit - limit.getElapsedTime().asSeconds())*1000);
             sf::sleep(sf::seconds(1.0/pLimit - limit.getElapsedTime().asSeconds()));
+        }
+        else
+        {
+            dLink->debug.tPhysSleep.push_back(0.0);
         }
         limit.restart();
         GMutex.lock();
