@@ -1,4 +1,5 @@
 //includes
+#include "VERSION.hpp"
 #include <iostream>
 #include "DataBank.hpp"
 #include "Vector.hpp"
@@ -74,7 +75,7 @@ int main ( int argc, char *argv[] )
 
     //App Instance
     log("Main      ", "Generate RenderDevice(Window)...");
-    sf::RenderWindow App(sf::VideoMode(800, 600, 32), "[[UntitledGame]]", sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
+    sf::RenderWindow App(sf::VideoMode(800, 600, 32), VERSION::name + " " + VERSION::version, sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
     log("Main      ", "Re-Apply view...");
     dLink->gameView = App.getDefaultView();
     dLink->guiView = App.getDefaultView();
