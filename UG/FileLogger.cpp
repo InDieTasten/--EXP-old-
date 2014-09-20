@@ -7,7 +7,7 @@ FileLogger::FileLogger()
 {
 
     logfile.open("untiteld.ulog", std::ios::out | std::ios::trunc );
-    logfile << "<START>";
+
 
 
 }
@@ -15,7 +15,7 @@ FileLogger::FileLogger()
 
 FileLogger::~FileLogger()
 {
-    logfile << "<END>";
+
     logfile.close();
 }
 std::string FileLogger::breakline(){
@@ -25,7 +25,7 @@ std::string FileLogger::breakline(){
 void FileLogger::log(std::string temp){
     GMutex.lock();
 
-    logfile << "<log>" << temp << "</log>";
+    logfile << temp << "\n";
     GMutex.unlock();
 }
 
