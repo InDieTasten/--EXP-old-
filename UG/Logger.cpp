@@ -1,7 +1,11 @@
 #include "Logger.hpp"
+#include "FileLogger.hpp"
+#include <sstream>
 //CONSTRUCTORS
 //DESTRUCTORS
 //METHODS
+FileLogger logger;
+
 void log(std::string name, std::string msg)
 {
     time_t rawtime;
@@ -16,4 +20,7 @@ void log(std::string name, std::string msg)
 
 
     std::cout <<  T << " [" << name << "] " << msg << std::endl;
+    std::stringstream ss;
+    ss << T << " [" << name << "] " << msg;
+    logger.log(ss.str());
 }
