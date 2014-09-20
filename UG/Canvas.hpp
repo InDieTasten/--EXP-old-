@@ -22,6 +22,7 @@ public:
     std::string ID;
 
     bool isActive;
+    sf::View view;
 
     std::list<sf::ConvexShape> shapes;
     std::list<sf::ConvexShape> shapebuffer;
