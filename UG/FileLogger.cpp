@@ -40,9 +40,6 @@ FileLogger::~FileLogger()
 
     logfile.close();
 }
-std::string FileLogger::breakline(){
-    return "<br>";
-}
 
 
 
@@ -61,10 +58,3 @@ void FileLogger::log(std::string temp){
 
 }
 
-void FileLogger::log(std::string temp, std::string color){
-    logfile << "<span color=\"" + color + "\">" << temp << "</span>" << breakline();
-}
-
-void FileLogger::clean(){
-
-}
