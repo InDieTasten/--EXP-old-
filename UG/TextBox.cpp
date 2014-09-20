@@ -20,6 +20,8 @@ void TextBox::Setup()
     isActive = true;
     multiline = true;
     clicked = false;
+    sliderX = 0;
+    sliderY = 0;
 }
 void TextBox::Update(int _x, int _y,std::string _id)
 {
@@ -49,7 +51,7 @@ void TextBox::Update(int _x, int _y,std::string _id)
 
     float sizex = Width/(float)dLink->renderWindow->getSize().x;
     float sizey = Height/(float)dLink->renderWindow->getSize().y;
-
+    view.move(sliderX,sliderY);
     view.setViewport(sf::FloatRect(posx, posy, sizex, sizey));
 }
 void TextBox::Render(int _x, int _y, std::string _id)
