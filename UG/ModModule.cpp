@@ -53,7 +53,7 @@ void ModModule::Run()
         GMutex.lock();
 
         //async tasks
-        for(std::list<ASync>::iterator aTask = waitingTasks.begin();aTask != waitingTasks.end(); aTask++)
+        for(std::list<ASync>::iterator aTask = waitingTasks.begin(); aTask != waitingTasks.end(); aTask++)
         {
             if(aTask->time.getElapsedTime().asMilliseconds() >= aTask->target)
             {
@@ -955,7 +955,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                 x.push_back(elem->ID);
                                                 x.push_back("property");
                                                 x.push_back("list");
-                                                x.push_back(util::toString(counter)); counter++;
+                                                x.push_back(util::toString(counter));
+                                                counter++;
                                                 x.push_back("id");
                                                 dLink->pushEvent(x);
                                                 x.clear();
@@ -968,7 +969,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                 x.push_back(elem->ID);
                                                 x.push_back("property");
                                                 x.push_back("list");
-                                                x.push_back(util::toString(counter)); counter++;
+                                                x.push_back(util::toString(counter));
+                                                counter++;
                                                 x.push_back("type");
                                                 dLink->pushEvent(x);
                                                 x.clear();
@@ -981,7 +983,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                 x.push_back(elem->ID);
                                                 x.push_back("property");
                                                 x.push_back("list");
-                                                x.push_back(util::toString(counter)); counter++;
+                                                x.push_back(util::toString(counter));
+                                                counter++;
                                                 x.push_back("x");
                                                 dLink->pushEvent(x);
                                                 x.clear();
@@ -994,7 +997,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                 x.push_back(elem->ID);
                                                 x.push_back("property");
                                                 x.push_back("list");
-                                                x.push_back(util::toString(counter)); counter++;
+                                                x.push_back(util::toString(counter));
+                                                counter++;
                                                 x.push_back("y");
                                                 dLink->pushEvent(x);
                                                 x.clear();
@@ -1009,7 +1013,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("width");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1022,7 +1027,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("height");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1035,7 +1041,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("displayText");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1048,7 +1055,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("backgroundColorA");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1061,7 +1069,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("borderColorA");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1074,7 +1083,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("textColorA");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1087,7 +1097,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("backgroundColorB");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1100,7 +1111,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("borderColorB");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1113,7 +1125,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("textColorB");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1126,7 +1139,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("backgroundColorC");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1139,7 +1153,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("borderColorC");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1152,7 +1167,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("textColorC");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1165,7 +1181,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("fontID");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1178,7 +1195,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("textScale");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1194,7 +1212,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("width");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1207,7 +1226,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("height");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1220,7 +1240,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("max");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1233,7 +1254,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("min");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1246,7 +1268,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("ratio");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1259,7 +1282,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("value");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1272,7 +1296,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("barBackgroundA");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1285,7 +1310,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("barBorderA");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1298,7 +1324,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("barBackgroundB");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1311,7 +1338,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("barBorderB");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1324,7 +1352,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("buttonBackgroundA");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1337,7 +1366,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("buttonBorderA");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1350,7 +1380,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("buttonBackgroundB");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1363,7 +1394,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("buttonBorderB");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1376,7 +1408,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("buttonBackgroundC");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1389,7 +1422,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("buttonBorderC");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1402,7 +1436,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("sliderBackgroundA");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1415,7 +1450,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("sliderBorderA");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1428,7 +1464,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("sliderBackgroundB");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1441,7 +1478,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("sliderBorderB");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1454,7 +1492,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("sliderBackgroundC");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1467,7 +1506,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("sliderBorderC");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1480,7 +1520,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("sliderBackgroundD");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1493,7 +1534,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("sliderBorderD");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1509,7 +1551,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("displayText");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1522,7 +1565,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("textColorA");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1535,7 +1579,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("textColorB");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1548,7 +1593,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("textColorC");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1561,7 +1607,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("fontID");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1574,7 +1621,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back(elem->ID);
                                                     x.push_back("property");
                                                     x.push_back("list");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("textScale");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1826,7 +1874,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back("access");
                                                     x.push_back(elem->ID);
                                                     x.push_back("action");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("clear");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1838,7 +1887,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back("access");
                                                     x.push_back(elem->ID);
                                                     x.push_back("action");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("setFillColor");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1850,7 +1900,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back("access");
                                                     x.push_back(elem->ID);
                                                     x.push_back("action");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("setOutlineColor");
                                                     dLink->pushEvent(x);
                                                     x.clear();
@@ -1862,7 +1913,8 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     x.push_back("access");
                                                     x.push_back(elem->ID);
                                                     x.push_back("action");
-                                                    x.push_back(util::toString(counter)); counter++;
+                                                    x.push_back(util::toString(counter));
+                                                    counter++;
                                                     x.push_back("draw");
                                                     dLink->pushEvent(x);
                                                 }

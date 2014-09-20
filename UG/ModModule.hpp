@@ -16,7 +16,8 @@ extern sf::Mutex GMutex;
 extern std::list< std::list<std::string> > eventBuffer;
 extern std::list< std::list<std::string> > taskBuffer;
 
-struct ASync{
+struct ASync
+{
     sf::Clock time;
     int target;
     std::list<std::string> task;
