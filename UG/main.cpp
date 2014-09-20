@@ -139,6 +139,17 @@ int main ( int argc, char *argv[] )
 
     log("Main      ", "Entering Event-Loop");
 
+
+    //LOAD PLUGIN01 !!!
+    std::list<std::string> x;
+    x.push_back("delay");
+    x.push_back("2000");
+    x.push_back("plugin");
+    x.push_back("load");
+    x.push_back("plugin01");
+    dLink->pushTask(x);
+
+
     sf::Clock limit;
     limit.restart();
     while(App.isOpen())
@@ -191,7 +202,7 @@ void StockSettings()
 
 
     dLink->settings.guiDockBackground                    = sf::Color(  0,  0,  0,255);
-    dLink->settings.guiDockBackgroundHover               = sf::Color(  0,255,  0,255);
+    dLink->settings.guiDockBackgroundHover               = sf::Color(  0, 64,  0,128);
     dLink->settings.guiDockBorder                        = sf::Color(  0,255,  0,255);
     dLink->settings.guiDockBorderHover                   = sf::Color(255,255,255,255);
     dLink->settings.guiDockItemBackground                = sf::Color(  0,  0,  0,255);
