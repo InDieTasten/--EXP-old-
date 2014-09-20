@@ -19,10 +19,9 @@ public:
 	FileLogger();
 	~FileLogger();
 
-	std::string breakline();
+
 	void log(std::string);
-	void log(std::string, std::string);
-	void clean();
+
 
 };
 
