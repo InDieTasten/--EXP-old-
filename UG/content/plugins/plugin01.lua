@@ -1,8 +1,21 @@
 function onLoad() -- called right after the plugin has been loaded
 	print("Katze")
+	pushTask("gui","menu","add","can")
+	pushTask("gui","menu", "access", "can", "property", "x", "set", "50")
+	pushTask("gui","menu", "access", "can", "property", "y", "set", "50")
+	pushTask("gui","menu", "access", "can", "property", "width", "set", "200")
+	pushTask("gui","menu", "access", "can", "property", "height", "set", "200")
+	pushTask("gui","menu", "access", "can", "property", "visible", "set", "true")
+	pushTask("gui","menu", "access", "can", "property", "title", "set", ".canvas-.test-")
+	pushTask("gui","menu", "access", "can", "element", "add", "canvas")
+	pushTask("gui","menu", "access", "can", "element", "access", "canvas", "property", "type", "set", "canvas")
+	pushTask("gui","menu", "access", "can", "element", "access", "canvas", "property", "x", "set", "10")
+	pushTask("gui","menu", "access", "can", "element", "access", "canvas", "property", "y", "set", "10")
+	pushTask("gui","menu", "access", "can", "element", "access", "canvas", "property", "width", "set", "180")
+	pushTask("gui","menu", "access", "can", "element", "access", "canvas", "property", "height", "set", "180")
 end
 function onUnload() -- called right before your plugin gets overriden with nil
-	print("noooooh :(")
+	pushTask("gui","menu","remove","can")
 end
 
 function onEvent(...) -- gets called when something happens
