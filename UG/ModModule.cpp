@@ -1745,6 +1745,57 @@ void ModModule::processTask(std::list<std::string> _args)
                                             {
 
                                             }
+                                            else if(elem->Type == "canvas")
+                                            {
+                                                if(*_args.begin() == "width")
+                                                {
+                                                    _args.pop_front();
+                                                    if(*_args.begin() == "set")
+                                                    {
+                                                        _args.pop_front();
+                                                        elem->canvas.Width = util::toInt(*_args.begin());
+                                                    }
+                                                    else if(*_args.begin() == "get")
+                                                    {
+                                                        std::list<std::string> x;
+                                                        x.push_back("gui");
+                                                        x.push_back("menu");
+                                                        x.push_back("access");
+                                                        x.push_back(it->ID);
+                                                        x.push_back("element");
+                                                        x.push_back("access");
+                                                        x.push_back(elem->ID);
+                                                        x.push_back("property");
+                                                        x.push_back("width");
+                                                        x.push_back(util::toString(elem->canvas.Width));
+                                                        dLink->pushEvent(x);
+                                                    }
+                                                }
+                                                else if(*_args.begin() == "height")
+                                                {
+                                                    _args.pop_front();
+                                                    if(*_args.begin() == "set")
+                                                    {
+                                                        _args.pop_front();
+                                                        elem->canvas.Height = util::toInt(*_args.begin());
+                                                    }
+                                                    else if(*_args.begin() == "get")
+                                                    {
+                                                        std::list<std::string> x;
+                                                        x.push_back("gui");
+                                                        x.push_back("menu");
+                                                        x.push_back("access");
+                                                        x.push_back(it->ID);
+                                                        x.push_back("element");
+                                                        x.push_back("access");
+                                                        x.push_back(elem->ID);
+                                                        x.push_back("property");
+                                                        x.push_back("height");
+                                                        x.push_back(util::toString(elem->canvas.Height));
+                                                        dLink->pushEvent(x);
+                                                    }
+                                                }
+                                            }
                                         }
                                         else if(*_args.begin() == "action") // gui menu access {ID} element access {ID} action
                                         {
