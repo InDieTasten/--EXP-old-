@@ -23,6 +23,14 @@ void TextBox::moveview(int _x, int _y)
         sliderX =  sliderX - 16;
     }
 
+    for(;(float)_y + (float)Height + (float)sliderY < text.findCharacterPos(position).y + 10.0f;)
+    {
+        sliderY =  sliderY + 16;
+    }
+    for(;(float)_y + (float)sliderY > text.findCharacterPos(position).y + 10.0f;)
+    {
+        sliderY =  sliderY - 16;
+    }
 }
 void TextBox::Setup()
 {
