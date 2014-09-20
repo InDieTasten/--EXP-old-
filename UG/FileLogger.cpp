@@ -5,8 +5,10 @@
 
 FileLogger::FileLogger()
 {
-    try{
-        if(_mkdir("logs")==0){
+    try
+    {
+        if(_mkdir("logs")==0)
+        {
 
         }
 
@@ -27,7 +29,9 @@ FileLogger::FileLogger()
         logfile.open(t.c_str(), std::ios::out | std::ios::trunc );
 
 
-    }catch(...){
+    }
+    catch(...)
+    {
         log("Log could not be created");
     }
 
@@ -43,13 +47,17 @@ FileLogger::~FileLogger()
 
 
 
-void FileLogger::log(std::string temp){
+void FileLogger::log(std::string temp)
+{
 
-    try{
+    try
+    {
         GMutex.lock();
         logfile << temp << "\n";
         GMutex.unlock();
-    }catch(...){
+    }
+    catch(...)
+    {
 
     }
 
