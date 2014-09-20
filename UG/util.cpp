@@ -107,3 +107,15 @@ sf::Color util::toColor(std::string _value)
     }
     return sf::Color(r,g,b,a);
 }
+
+float util::getMean(std::list<float> _x)
+{
+    if(_x.size() == 0)
+        return 0.0;
+    float r = 0;
+    for(std::list<float>::iterator it = _x.begin(); it != _x.end(); it++)
+    {
+        r += *it;
+    }
+    return (r/_x.size());
+}
