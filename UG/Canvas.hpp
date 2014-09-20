@@ -13,6 +13,7 @@ class Canvas
 {
     //MEMBERS
 private:
+    sf::RectangleShape rect;
 public:
     int X;
     int Y;
