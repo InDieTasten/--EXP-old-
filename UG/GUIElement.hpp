@@ -23,6 +23,7 @@ public:
     Label label;
     HorSlider horSlider;
     VertSlider vertSlider;
+    Canvas canvas;
 
     std::string Type;
     std::string ID;
