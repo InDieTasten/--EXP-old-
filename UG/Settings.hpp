@@ -3,6 +3,11 @@
 
 struct Settings
 {
+    //Debug
+    int threadMeanAmount;
+    int eventtaskMeanAmount;
+    float countResetInterval;
+
     int dockWidth;
     sf::Color   guiDockBackground;
     sf::Color   guiDockBackgroundHover;
