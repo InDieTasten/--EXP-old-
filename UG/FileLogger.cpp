@@ -5,23 +5,31 @@
 
 FileLogger::FileLogger()
 {
-    /*
-    time_t rawtime;
-    struct tm * timeinfo;
+    try{
+        if(_mkdir("logs")==0){
 
-    char T[14];
+        }
 
-    time (&rawtime);
-    timeinfo = localtime (&rawtime);
+        time_t rawtime;
+        struct tm * timeinfo;
 
-    strftime (T,14,"%j|%H:%M:%S",timeinfo); */
+        char T[14];
 
-    //std::string t = "logs/";
-       // t += T;
-    //t += "untiteld.ulog";
+        time (&rawtime);
+        timeinfo = localtime (&rawtime);
 
-    logfile.open("logs/untiteld.ulog", std::ios::out | std::ios::trunc );
+        strftime (T,14,"%j_%H-%M-%S",timeinfo);
 
+        std::string t = "logs/";
+        t += T;
+        t += "_untiteld.ulog";
+
+        logfile.open(t.c_str(), std::ios::out | std::ios::trunc );
+
+
+    }catch(...){
+        log("Log could not be created");
+    }
 
 
 }
@@ -36,11 +44,21 @@ std::string FileLogger::breakline(){
     return "<br>";
 }
 
-void FileLogger::log(std::string temp){
-    GMutex.lock();
 
-    logfile << temp << "\n";
-    GMutex.unlock();
+
+void FileLogger::log(std::string temp){
+
+    try{
+        GMutex.lock();
+        logfile << temp << "\n";
+        GMutex.unlock();
+    }catch(...){
+
+    }
+
+
+
+
 }
 
 void FileLogger::log(std::string temp, std::string color){
