@@ -50,6 +50,7 @@ void ModModule::Run()
             {
                 dLink->pushTask(aTask->task);
                 waitingTasks.erase(aTask);
+                break;
             }
         }
 
