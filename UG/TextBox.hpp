@@ -46,6 +46,7 @@ public:
     //METHODS
 private:
     void calibrateCursor();
+    void moveview(int _x, int _y);
 public:
     void Show();
     void Hide();
