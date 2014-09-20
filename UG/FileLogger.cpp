@@ -5,8 +5,22 @@
 
 FileLogger::FileLogger()
 {
+    /*
+    time_t rawtime;
+    struct tm * timeinfo;
 
-    logfile.open("untiteld.ulog", std::ios::out | std::ios::trunc );
+    char T[14];
+
+    time (&rawtime);
+    timeinfo = localtime (&rawtime);
+
+    strftime (T,14,"%j|%H:%M:%S",timeinfo); */
+
+    //std::string t = "logs/";
+       // t += T;
+    //t += "untiteld.ulog";
+
+    logfile.open("logs/untiteld.ulog", std::ios::out | std::ios::trunc );
 
 
 
