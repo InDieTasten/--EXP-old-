@@ -146,16 +146,9 @@ int main ( int argc, char *argv[] )
     log("Main      ", "Entering Event-Loop");
 
 
-    //LOAD PLUGIN01 !!!
-    std::list<std::string> x;
-    x.push_back("delay");
-    x.push_back("2000");
-    x.push_back("plugin");
-    x.push_back("load");
-    x.push_back("plugin01");
-    dLink->pushTask(x);
 
-    x.clear();
+    // Init Debugging
+    std::list<std::string> x;
     x.push_back("delay");
     x.push_back(util::toString(dLink->settings.countResetInterval*1000));
     x.push_back("debug");
