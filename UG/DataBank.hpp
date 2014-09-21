@@ -50,9 +50,7 @@ public:
     //DESTRUCTORS
 
     //METHODS
-    //Script Management
-    void loadPlugins();
-    std::list<Script>* GetScripts();
+
     //Texture Management
     void TextureRegister(std::string _id, std::string _path);
     void TextureErase(std::string _id);
