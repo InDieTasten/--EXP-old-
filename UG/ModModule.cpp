@@ -7,10 +7,11 @@
 void ModModule::Run()
 {
     log(std::string("Mod-Module"), std::string("Thread started"));
-    std::list<Script> *scripts;
-    scripts = dLink->GetScripts();
+    std::list<Script> scripts;
+    Script pluginLoader("./content/stock/scripts/plugin_loader.lua");
+    scripts.push_back(pluginLoader);
 
-    for(std::list<Script>::iterator it = scripts->begin(); it != scripts->end(); it++)
+    for(std::list<Script>::iterator it = scripts.begin(); it != scripts.end(); it++)
     {
         luaL_openlibs(it->state);
 
@@ -67,7 +68,7 @@ void ModModule::Run()
         eventBuffer.clear();
         for(std::list< std::list<std::string> >::iterator event = events.begin(); event != events.end(); event++)
         {
-            for(std::list<Script>::iterator script = scripts->begin(); script != scripts->end(); script++)
+            for(std::list<Script>::iterator script = scripts.begin(); script != scripts.end(); script++)
             {
                 lua_getglobal(script->state, "onHardEvent");
                 for(std::list<std::string>::iterator parameter = event->begin(); parameter != event->end(); parameter++)
@@ -82,7 +83,7 @@ void ModModule::Run()
         for(std::list< std::list<std::string> >::iterator task = tasks.begin(); task != tasks.end(); task++)
         {
             processTask(*task);
-            for(std::list<Script>::iterator script = scripts->begin(); script != scripts->end(); script++)
+            for(std::list<Script>::iterator script = scripts.begin(); script != scripts.end(); script++)
             {
                 lua_getglobal(script->state, "onHardTask");
                 for(std::list<std::string>::iterator parameter = task->begin(); parameter != task->end(); parameter++)
@@ -95,7 +96,7 @@ void ModModule::Run()
 
         GMutex.unlock();
     }
-    for(std::list<Script>::iterator it = scripts->begin(); it != scripts->end(); it++)
+    for(std::list<Script>::iterator it = scripts.begin(); it != scripts.end(); it++)
     {
         lua_getglobal(it->state, "onHardUnload");
         lua_call(it->state, 0, 0);
