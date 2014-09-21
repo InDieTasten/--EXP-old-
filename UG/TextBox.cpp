@@ -95,14 +95,8 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
                 clicked = true;
                 if(sf::Event::MouseLeft)
                 {
-<<<<<<< HEAD
                     tmp = 0;
                     do
-=======
-
-                    //WTF WHY!?
-                    for(;false;)
->>>>>>> origin/master
                     {
                         tmpY = text.findCharacterPos(tmp).y;
                         position = tmp;
