@@ -1,4 +1,3 @@
-local menu = ""
 local function genMenu()
 	menu = "settings"
 	pushTask("gui","menu","add", menu)
@@ -31,28 +30,21 @@ local function slider(id,y,min,max,val)
 	pushTask("gui","menu", "access", menu, "element", "access", id, "property", "min", "set", tostring(min))
 	pushTask("gui","menu", "access", menu, "element", "access", id, "property", "max", "set", tostring(max))
 	pushTask("gui","menu", "access", menu, "element", "access", id, "property", "val", "set", tostring(val))
+	pushTask("gui","menu", "access", menu, "element", "access", id, "property", "val", "set", tostring(1/2))
 end
 function onLoad() -- called right after the plugin has been loaded
 	genMenu()
 	label("label1", 1*18, "Dock width:") slider("dockWidth", 1*18, 10, 200, 64)
+
+	pushTask("gui","menu", "access", "settings", "element", "list")
 end
 function onUnload() -- called right before your plugin gets overriden with nil
 	pushTask("gui","menu","remove", "settings")
 end
 
 function onEvent(...) -- gets called when something happens
-	e = {...} -- contains the event parts
-	if(e[1] == "Hello") then
-		if(e[2] == "World") then
-			-- more on these can be read in our documentation
-		end
-	end
+	
 end
 function onTask(...) -- gets called when something should happen
-	t = {...}
-	if(t[1] == "Hello") then
-		if(t[2] == "World") then
-			-- more on these can be read in our documentation
-		end
-	end
+	
 end
