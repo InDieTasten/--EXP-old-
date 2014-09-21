@@ -27,7 +27,7 @@ void TextBox::moveview(int _x, int _y)
     {
         sliderY =  sliderY + 16;
     }
-    while((float)_y + (float)sliderY > text.findCharacterPos(position).y + 14.0f)
+    while((float)_y + (float)sliderY > text.findCharacterPos(position).y)
     {
         sliderY =  sliderY - 16;
     }
@@ -103,13 +103,13 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
                             tmpY = text.findCharacterPos(tmp).y;
                             position = tmp;
                             tmp++;
-                        }while(tmp < content.size()+1 && tmpY < (float)y);
+                        }while(tmp < content.size()+1 && tmpY < (float)y + sliderY);
                         tmp-=2;
                         do
                         {
                             tmpX = text.findCharacterPos(tmp).x;
                             tmp--;
-                        }while(tmpX > (float)x && tmp < content.size()+1);
+                        }while(tmpX > (float)x + sliderX && tmp < content.size()+1);
                         tmp++;
                         position = tmp;
                     }
@@ -145,6 +145,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
                         position++;
                     }
                 }
+
                 if(_event->key.code == sf::Keyboard::Delete)
                 {
                     if(position < content.size())
