@@ -23,11 +23,11 @@ void TextBox::moveview(int _x, int _y)
         sliderX =  sliderX - 16;
     }
 
-    while((float)_y + (float)Height + (float)sliderY < text.findCharacterPos(position).y + 10.0f)
+    while((float)_y + (float)Height + (float)sliderY < text.findCharacterPos(position).y + 14.0f)
     {
         sliderY =  sliderY + 16;
     }
-    while((float)_y + (float)sliderY > text.findCharacterPos(position).y + 10.0f)
+    while((float)_y + (float)sliderY > text.findCharacterPos(position).y + 14.0f)
     {
         sliderY =  sliderY - 16;
     }
@@ -95,7 +95,15 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
                 clicked = true;
                 if(sf::Event::MouseLeft)
                 {
+                    for(;false;)
+                    {
 
+                    }
+                    for(;false;)
+                    {
+
+                    }
+                    curs.setPosition(x,y);
                 }
             }
             else
