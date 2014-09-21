@@ -95,14 +95,21 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
                 clicked = true;
                 if(sf::Event::MouseLeft)
                 {
+                    /* WTF SERIOUSLY?
                     for(;false;)
                     {
 
                     }
-                    for(;false;)
-                    {
+                    */
+                    while(false){
 
                     }
+
+                    while (false){
+
+                    }
+
+
                     curs.setPosition(x,y);
                 }
             }
