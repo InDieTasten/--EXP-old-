@@ -27,7 +27,6 @@ sf::Color toColor(std::string);
 float getMean(std::list<float> _x);
 float getMean(std::list<int> _x);
 
-std::list<std::string> getFolderContent(std::string);
 }
 
 #endif
