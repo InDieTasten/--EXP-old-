@@ -95,6 +95,8 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
                 clicked = true;
                 if(sf::Event::MouseLeft)
                 {
+
+                    //WTF WHY!?
                     for(;false;)
                     {
 
