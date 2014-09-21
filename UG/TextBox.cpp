@@ -95,21 +95,17 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
                 clicked = true;
                 if(sf::Event::MouseLeft)
                 {
-                    tmp = 0;
-                    do
+                    if(content.size() >= 2)
                     {
-                        tmpY = text.findCharacterPos(tmp).y;
-                        position = tmp;
-                        tmp++;
-                    }while(tmpY < (float)y && tmp < content.size());
-
-                    do
-                    {
-                        tmpX = text.findCharacterPos(tmp).x;
-                        position = tmp;
-                        tmp--;
-                    }while(tmpX > (float)x && tmp < content.size());
-
+                        tmp = 0;
+                        do
+                        {
+                            tmpX = text.findCharacterPos(tmp).x;
+                            tmpY = text.findCharacterPos(tmp).y;
+                            position = tmp;
+                            tmp++;
+                        }while(tmpX < (float)x && tmp < content.size() && tmpY < (float)y);
+                    }
                 }
             }
             else
