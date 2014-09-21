@@ -15,7 +15,6 @@
 #include <sstream>
 #include "Logger.hpp"
 #include "KeyBind.hpp"
-#include "Loader.hpp"
 #include "Settings.hpp"
 #include "Level.hpp"
 #include "Debug.hpp"
