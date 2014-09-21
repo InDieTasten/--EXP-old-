@@ -72,14 +72,18 @@ function onHardTask(...)
 			end
 			_G[ cmd[3] ] = nil
 		elseif(cmd[2] == "load") then
-			_G[ cmd[3] ] = setmetatable({},{__index=_G})
-			local pl, err = loadfile(plugins[ cmd[3] ].path,"bt",_G[ cmd[3] ])
-			if(pl) then st, err = pcall(pl) if(not st) then print(err) end else print(err) end
-			if(type(_G[ cmd[3] ]) == "table") then
-				if(type(_G[ cmd[3] ][ "onLoad" ])=="function") then
-					st, err = pcall(_G[ cmd[3] ][ "onLoad" ], ...)
-					if(not st) then print(err) end
+			if(plugins[ cmd[3] ] ~= nil) then
+				_G[ cmd[3] ] = setmetatable({},{__index=_G})
+				local pl, err = loadfile(plugins[ cmd[3] ].path,"bt",_G[ cmd[3] ])
+				if(pl) then st, err = pcall(pl) if(not st) then print(err) end else print(err) end
+				if(type(_G[ cmd[3] ]) == "table") then
+					if(type(_G[ cmd[3] ][ "onLoad" ])=="function") then
+						st, err = pcall(_G[ cmd[3] ][ "onLoad" ], ...)
+						if(not st) then print(err) end
+					end
 				end
+			else
+				print("&e[WARNING] Tried loading non-existing module: '"..cmd[3].."'")
 			end
 		elseif(cmd[2] == "reload") then
 			if(type(_G[ cmd[3] ]) == "table") then
@@ -90,13 +94,17 @@ function onHardTask(...)
 			end
 			_G[ cmd[3] ] = nil
 			_G[ cmd[3] ] = setmetatable({},{__index=_G})
-			local pl, err = loadfile(plugins[ cmd[3] ].path,"bt",_G[ cmd[3] ])
-			if(pl) then st, err = pcall(pl) if(not st) then print(err) end else print(err) end
-			if(type(_G[ cmd[3] ]) == "table") then
-				if(type(_G[ cmd[3] ][ "onLoad" ])=="function") then
-					st, err = pcall(_G[ cmd[3] ][ "onLoad" ], ...)
-					if(not st) then print(err) end
+			if(plugins[ cmd[3] ] ~= nil) then
+				local pl, err = loadfile(plugins[ cmd[3] ].path,"bt",_G[ cmd[3] ])
+				if(pl) then st, err = pcall(pl) if(not st) then print(err) end else print(err) end
+				if(type(_G[ cmd[3] ]) == "table") then
+					if(type(_G[ cmd[3] ][ "onLoad" ])=="function") then
+						st, err = pcall(_G[ cmd[3] ][ "onLoad" ], ...)
+						if(not st) then print(err) end
+					end
 				end
+			else
+				print("&e[WARNING] Tried loading non-existing module: '"..cmd[3].."'")
 			end
 		end
 	end
