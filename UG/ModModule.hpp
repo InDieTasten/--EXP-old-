@@ -27,7 +27,6 @@ class ModModule
 {
     //MEMBERS
 private:
-    Loader loader;
     std::list<ASync> waitingTasks;
 public:
     //CONSTRUCTORS
