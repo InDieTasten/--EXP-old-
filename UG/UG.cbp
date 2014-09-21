@@ -151,12 +151,6 @@
 		<Unit filename="Level.hpp">
 			<Option virtualFolder="MemoryBank/Level/" />
 		</Unit>
-		<Unit filename="Loader.cpp">
-			<Option virtualFolder="Utilities/" />
-		</Unit>
-		<Unit filename="Loader.hpp">
-			<Option virtualFolder="Utilities/" />
-		</Unit>
 		<Unit filename="Logger.cpp">
 			<Option virtualFolder="Utilities/" />
 		</Unit>
@@ -241,13 +235,13 @@
 		<Unit filename="VertSlider.hpp">
 			<Option virtualFolder="GUI/Elements/" />
 		</Unit>
-		<Unit filename="content/plugins/plugin01.lua">
+		<Unit filename="content/plugins/mConsole.lua">
 			<Option virtualFolder="Lua/" />
 		</Unit>
-		<Unit filename="content/plugins/plugin02.lua">
+		<Unit filename="content/plugins/mDebug.lua">
 			<Option virtualFolder="Lua/" />
 		</Unit>
-		<Unit filename="content/stock/scripts/console.lua">
+		<Unit filename="content/plugins/mSettings.lua">
 			<Option virtualFolder="Lua/" />
 		</Unit>
 		<Unit filename="content/stock/scripts/plugin_loader.lua">
