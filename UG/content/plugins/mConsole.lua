@@ -5,33 +5,28 @@ function onHardUnload()
 
 end
 local function runCommand(cmd)
-	print("Command issued: ", cmd)
 	parts = {}
 	for w in cmd:gmatch("%S+") do table.insert(parts,w) end
 	for k,v in pairs(parts) do
 		print("p",k,": ",v)
 	end
 	--- Interpretation
-	if(parts[1] == "create") then
-		if(parts[2] == "task") then
-			task = {}
-			for i = 3, #parts do
-				table.insert(task, parts[i])
-			end
-			pushTask(table.unpack(task))
-		end
-		if(parts[2] == "event") then
-			event = {}
-			for i = 3, #parts do
-				table.insert(event, parts[i])
-			end
-			pushEvent(table.unpack(event))
-		end
-	end
-
-
+    if(parts[1] == "t:") then
+        task = {}
+        for i = 2, #parts do
+            table.insert(task, parts[i])
+        end
+        pushTask(table.unpack(task))
+    end
+    if(parts[1] == "e:") then
+        event = {}
+        for i = 2, #parts do
+            table.insert(event, parts[i])
+        end
+        pushEvent(table.unpack(event))
+    end
 end
-function onHardEvent(...)
+function onEvent(...)
 	print("+--event--")
 	for k,v in pairs({...}) do
 		print("I "..type(v).." "..tostring(k)..": "..tostring(v))
@@ -48,7 +43,7 @@ function onHardEvent(...)
 		end
 	end
 end
-function onHardTask(...)
+function onTask(...)
 	print("+--task---")
 	for k,v in pairs({...}) do
 		print("I "..type(v).." "..tostring(k)..": "..tostring(v))
