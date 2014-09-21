@@ -24,7 +24,7 @@ FileLogger::FileLogger()
 
         std::string t = "logs/";
         t += T;
-        t += "_untiteld.ulog";
+        t += "_untitled.ulog";
 
         logfile.open(t.c_str(), std::ios::out | std::ios::trunc );
 
