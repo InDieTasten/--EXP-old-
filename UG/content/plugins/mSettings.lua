@@ -6,9 +6,9 @@ local function genMenu()
 	pushTask("gui","menu", "access", menu, "property", "width", "set", "300")
 	pushTask("gui","menu", "access", menu, "property", "height", "set", "400")
 	pushTask("gui","menu", "access", menu, "property", "widthT", "set", "300")
-	pushTask("gui","menu", "access", menu, "property", "heightT", "set", "400")
+	pushTask("gui","menu", "access", menu, "property", "heightT", "set", tostring(21*30+10))
 	pushTask("gui","menu", "access", menu, "property", "visible", "set", "true")
-	pushTask("gui","menu", "access", menu, "property", "scrollable", "set", "false")
+	pushTask("gui","menu", "access", menu, "property", "scrollable", "set", "true")
 	pushTask("gui","menu", "access", menu, "property", "title", "set", "--[[ SETTINGS ]]--")
 end
 local function label(id,y,text)
@@ -36,21 +36,9 @@ local function slider(id,y,min,max,val)
 end
 function onLoad() -- called right after the plugin has been loaded
 	genMenu()
-	label("label1" , 1*18,  "Label 1:" ) slider("slider1" , 1*18 , 10, 200, 64)
-	label("label2" , 2*18,  "Label 2:" ) slider("slider2" , 2*18 , 10, 200, 64)
-	label("label3" , 3*18,  "Label 3:" ) slider("slider3" , 3*18 , 10, 200, 64)
-	label("label4" , 4*18,  "Label 4:" ) slider("slider4" , 4*18 , 10, 200, 64)
-	label("label5" , 5*18,  "Label 5:" ) slider("slider5" , 5*18 , 10, 200, 64)
-	label("label6" , 6*18,  "Label 6:" ) slider("slider6" , 6*18 , 10, 200, 64)
-	label("label7" , 7*18,  "Label 7:" ) slider("slider7" , 7*18 , 10, 200, 64)
-	label("label8" , 8*18,  "Label 8:" ) slider("slider8" , 8*18 , 10, 200, 64)
-	label("label9" , 9*18,  "Label 9:" ) slider("slider9" , 9*18 , 10, 200, 64)
-	label("label10", 10*18, "Label 10:") slider("slider10", 10*18, 10, 200, 64)
-	label("label11", 11*18, "Label 11:") slider("slider11", 11*18, 10, 200, 64)
-	label("label12", 12*18, "Label 12:") slider("slider12", 12*18, 10, 200, 64)
-	label("label13", 13*18, "Label 13:") slider("slider13", 13*18, 10, 200, 64)
-	label("label14", 14*18, "Label 14:") slider("slider14", 14*18, 10, 200, 64)
-	label("label15", 15*18, "Label 15:") slider("slider15", 15*18, 10, 200, 64)
+	for i = 1, 30, 1 do
+		label("label"..tostring(i) , i*21,  "Label "..tostring(i)..":" ) slider("slider"..tostring(i) , i*21 , 10, 200, 64)
+	end
 
 	pushTask("gui","menu", "access", "settings", "element", "list")
 
