@@ -1983,6 +1983,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     {
                                                         _args.pop_front();
                                                         elem->canvas.Width = util::toInt(*_args.begin());
+                                                        log("&c[API][Info] Set complete");
                                                     }
                                                     else if(*_args.begin() == "get")
                                                     {
