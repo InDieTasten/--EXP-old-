@@ -12,6 +12,8 @@ class TextBox
 private:
     sf::RectangleShape rect;
     sf::RectangleShape curs;
+    int tmp;
+
 public:
     int X;
     int Y;
