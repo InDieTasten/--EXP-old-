@@ -14,20 +14,20 @@ void TextBox::calibrateCursor()
 }
 void TextBox::moveview(int _x, int _y)
 {
-    for(;(float)_x + (float)Width + (float)sliderX < text.findCharacterPos(position).x;)
+    while((float)_x + (float)Width + (float)sliderX < text.findCharacterPos(position).x)
     {
         sliderX =  sliderX + 16;
     }
-    for(;(float)_x + (float)sliderX > text.findCharacterPos(position).x;)
+    while((float)_x + (float)sliderX > text.findCharacterPos(position).x)
     {
         sliderX =  sliderX - 16;
     }
 
-    for(;(float)_y + (float)Height + (float)sliderY < text.findCharacterPos(position).y + 10.0f;)
+    while((float)_y + (float)Height + (float)sliderY < text.findCharacterPos(position).y + 10.0f)
     {
         sliderY =  sliderY + 16;
     }
-    for(;(float)_y + (float)sliderY > text.findCharacterPos(position).y + 10.0f;)
+    while((float)_y + (float)sliderY > text.findCharacterPos(position).y + 10.0f)
     {
         sliderY =  sliderY - 16;
     }
@@ -50,8 +50,7 @@ void TextBox::Update(int _x, int _y,std::string _id)
     rect.setOutlineThickness(1.0f);
     rect.setOutlineColor(sf::Color(255,255,255,50));
 
-    sf::Vector2f temp = text.findCharacterPos(position);
-    curs.setPosition(temp);
+    curs.setPosition(text.findCharacterPos(position));
     curs.setSize(sf::Vector2f((float)0,(float)12));
     curs.setFillColor(sf::Color(0,0,0,128));
     curs.setOutlineThickness(1.0f);
@@ -82,7 +81,6 @@ void TextBox::Render(int _x, int _y, std::string _id)
     if(clicked)
         dLink->renderWindow->draw(curs);
     dLink->renderWindow->setView(dLink->guiView);
-
 }
 void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
 {
@@ -95,6 +93,10 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
             if(y >= _y && y <= _y+Height)
             {
                 clicked = true;
+                if(sf::Event::MouseLeft)
+                {
+
+                }
             }
             else
             {
