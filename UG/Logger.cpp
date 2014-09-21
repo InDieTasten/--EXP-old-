@@ -6,7 +6,8 @@
 //METHODS
 FileLogger logger;
 
-void log(std::string name, std::string msg)
+
+void log(std::string msg)
 {
     time_t rawtime;
     struct tm * timeinfo;
@@ -19,8 +20,8 @@ void log(std::string name, std::string msg)
     strftime (T,14,"%j|%H:%M:%S",timeinfo);
 
 
-    std::cout <<  T << "[" << name << "]" << msg << std::endl;
+    std::cout <<  T << msg << std::endl;
     std::stringstream ss;
-    ss << T << "[" << name << "]" << msg;
+    ss << T << msg;
     logger.log(ss.str());
 }
