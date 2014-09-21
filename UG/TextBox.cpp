@@ -38,7 +38,7 @@ void TextBox::Setup()
     content = "";
     isActive = true;
     multiline = true;
-    clicked = false;
+    clicked = true;
     sliderX = 0;
     sliderY = 0;
 }
@@ -95,15 +95,21 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
                 clicked = true;
                 if(sf::Event::MouseLeft)
                 {
-                    for(;false;)
+                    tmp = 0;
+                    do
                     {
+                        tmpY = text.findCharacterPos(tmp).y;
+                        position = tmp;
+                        tmp++;
+                    }while(tmpY < (float)y && tmp < content.size());
 
-                    }
-                    for(;false;)
+                    do
                     {
+                        tmpX = text.findCharacterPos(tmp).x;
+                        position = tmp;
+                        tmp--;
+                    }while(tmpX > (float)x && tmp < content.size());
 
-                    }
-                    curs.setPosition(x,y);
                 }
             }
             else
