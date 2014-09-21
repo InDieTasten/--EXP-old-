@@ -1,4 +1,5 @@
 //includes
+#include "Logger.hpp"
 #include "VERSION.hpp"
 #include <iostream>
 #include "DataBank.hpp"
@@ -10,8 +11,6 @@
 #include "ModModule.hpp"
 #include "EventManager.hpp"
 #include <conio.h>
-#include "Logger.hpp"
-#include "Loader.hpp"
 #include <list>
 #include <time.h>
 #include "util.hpp"
@@ -59,7 +58,7 @@ using namespace std;
 
 int main ( int argc, char *argv[] )
 {
-    log("Main      ", "Logger enabled");
+    log("&f[Main][Info] Logger enabled");
     ////////////////////
     // 1. DataBank    //
     //                //
@@ -69,81 +68,81 @@ int main ( int argc, char *argv[] )
     ////////////////////
 
     ///// 1. DataBank
-    log("Main      ", "Create Memory Mangager Instance...");
+    log("&f[Main][Info] Create Memory Mangager Instance...");
     DataBank dBank;
     dLink = &dBank;
 
     //App Instance
-    log("Main      ", "Generate RenderDevice(Window)...");
+    log("&f[Main][Info] Generate RenderDevice(Window)...");
     sf::RenderWindow App(sf::VideoMode(800, 600, 32), VERSION::name + " " + VERSION::version, sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
-    log("Main      ", "Re-Apply view...");
+    log("&f[Main][Info] Re-Apply view...");
     dLink->gameView = App.getDefaultView();
     dLink->guiView = App.getDefaultView();
-    log("Main      ", "Launch RenderLink...");
+    log("&f[Main][Info] Launch RenderLink...");
     dLink->renderWindow = &App;
 
     StockRegister();
     StockSettings();
 
     // 2. GUIManager
-    log("Main      ", "Create GUI Instance...");
+    log("&f[Main][Info] Create GUI Instance...");
     GUIManager gManager;
     guiLink = &gManager;
 
     // 3. Processing
     //Graphics Engine
-    log("Main      ", "Create Graphics Thread...");
+    log("&f[Main][Info] Create Graphics Thread...");
     GraphicsEngine graphicsThread;
     gLink = &graphicsThread;
-    log("Main      ", "Relocate Render Thread...");
+    log("&f[Main][Info] Relocate Render Thread...");
     App.setActive(false);
 
     //Physics Engine
-    log("Main      ", "Create Physics Thread...");
+    log("&f[Main][Info] Create Physics Thread...");
     sf::sleep(sf::seconds(0.05));
     PhysicsEngine physicsThread;
     pLink = &physicsThread;
 
     //Modding Module
-    log("Main      ", "Create Plugin Handler...");
+    log("&f[Main][Info] Create Plugin Handler...");
     sf::sleep(sf::seconds(0.05));
     ModModule mModule;
     mLink = &mModule;
 
     //Event Manager
-    log("Main      ", "Create Event Manager...");
+    log("&f[Main][Info] Create Event Manager...");
     sf::sleep(sf::seconds(0.05));
     EventManager EventMan;
 
     StockKeybinds();
 
     ////Create threads
-    log("Main      ", "Create Mod- Thread");
+    log("&f[Main][Info] Create Mod- Thread");
     sf::Thread plTHREAD(&ModModule::Run, &mModule);
-    log("Main      ", "Create Graphics- Thread");
+    log("&f[Main][Info] Create Graphics- Thread");
     sf::Thread grTHREAD(&GraphicsEngine::Run, &graphicsThread);
-    log("Main      ", "Create Physics- Thread");
+    log("&f[Main][Info] Create Physics- Thread");
     sf::Thread phTHREAD(&PhysicsEngine::Run, &physicsThread);
 
-    log("Main      ", "Link Mod- Thread");
+    log("&f[Main][Info] Link Mod- Thread");
     mThread = &plTHREAD;
-    log("Main      ", "Link Graphics- Thread");
+    log("&f[Main][Info] Link Graphics- Thread");
     gThread = &grTHREAD;
-    log("Main      ", "Link Physics- Thread");
+    log("&f[Main][Info] Link Physics- Thread");
     pThread = &phTHREAD;
 
-    log("Main      ", "Launch Mod- Thread");
+    log("&f[Main][Info] Launch Mod- Thread");
     mThread->launch();
     sf::sleep(sf::seconds(0.3));
-    log("Main      ", "Launch Graphics- Thread");
+    log("&f[Main][Info] Launch Graphics- Thread");
     gThread->launch();
     sf::sleep(sf::seconds(0.1));
-    log("Main      ", "Launch Physics- Thread");
+    log("&f[Main][Info] Launch Physics- Thread");
     pThread->launch();
     sf::sleep(sf::seconds(0.1));
 
 
-    log("Main      ", "Entering Event-Loop");
+    log("&f[Main][Info] Entering Event-Loop");
 
 
 
