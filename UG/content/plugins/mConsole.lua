@@ -1,15 +1,13 @@
-function onHardLoad()
+function onLoad()
 
 end
-function onHardUnload()
+function onUnload()
 
 end
 local function runCommand(cmd)
 	parts = {}
 	for w in cmd:gmatch("%S+") do table.insert(parts,w) end
-	for k,v in pairs(parts) do
-		print("p",k,": ",v)
-	end
+
 	--- Interpretation
     if(parts[1] == "t:") then
         task = {}
@@ -27,11 +25,11 @@ local function runCommand(cmd)
     end
 end
 function onEvent(...)
-	print("+--event--")
+	ev = ""
 	for k,v in pairs({...}) do
-		print("I "..type(v).." "..tostring(k)..": "..tostring(v))
+		ev = ev.."  "..v
 	end
-	print("+---------")
+	print("[Info] E: "..ev)
 	e = {...}
 	if e[1] == "textbox_submit" then
 		if(e[2] == "$_consoleMenu.input") then
@@ -44,11 +42,11 @@ function onEvent(...)
 	end
 end
 function onTask(...)
-	print("+--task---")
+	ta = ""
 	for k,v in pairs({...}) do
-		print("I "..type(v).." "..tostring(k)..": "..tostring(v))
+		ta = ta.."  "..v
 	end
-	print("+---------")
+	print("[Info] T: "..ta)
 	cmd = {...}
 	if(cmd[1] == "lua") then
 		if(cmd[2] == "memory") then
