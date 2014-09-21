@@ -30,13 +30,22 @@ local function slider(id,y,min,max,val)
 	pushTask("gui","menu", "access", menu, "element", "access", id, "property", "min", "set", tostring(min))
 	pushTask("gui","menu", "access", menu, "element", "access", id, "property", "max", "set", tostring(max))
 	pushTask("gui","menu", "access", menu, "element", "access", id, "property", "val", "set", tostring(val))
-	pushTask("gui","menu", "access", menu, "element", "access", id, "property", "ratio", "set", tostring(1))
+	pushTask("gui","menu", "access", menu, "element", "access", id, "property", "ratio", "set", "0.5")
 end
 function onLoad() -- called right after the plugin has been loaded
 	genMenu()
 	label("label1", 1*18, "Dock width:") slider("dockWidth", 1*18, 10, 200, 64)
 
 	pushTask("gui","menu", "access", "settings", "element", "list")
+	print(tostring(1/2))
+	print(tostring(1/2))
+	print(tostring(1/2))
+	print(tostring(1/2))
+	print(tostring(1/2))
+	print(tostring(1/2))
+	print(tostring(1/2))
+	print(tostring(1/2))
+	print(tostring(1/2))
 end
 function onUnload() -- called right before your plugin gets overriden with nil
 	pushTask("gui","menu","remove", "settings")

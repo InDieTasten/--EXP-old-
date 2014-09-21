@@ -1827,7 +1827,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     }
                                                 }
                                             }
-                                            else if(elem->Type == "horSlider")
+                                            else if(elem->Type == "horslider")
                                             {
                                                 if(*_args.begin() == "width")
                                                 {
