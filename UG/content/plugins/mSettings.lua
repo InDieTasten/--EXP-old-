@@ -22,7 +22,7 @@ end
 local function slider(id,y,min,max,val)
 	menu = "settings"
 	pushTask("gui","menu", "access", menu, "element", "add", id)
-	pushTask("gui","menu", "access", menu, "element", "access", id, "property", "type", "set", "horSlider")
+	pushTask("gui","menu", "access", menu, "element", "access", id, "property", "type", "set", "horslider")
 	pushTask("gui","menu", "access", menu, "element", "access", id, "property", "x", "set", "150")
 	pushTask("gui","menu", "access", menu, "element", "access", id, "property", "y", "set", tostring(y))
 	pushTask("gui","menu", "access", menu, "element", "access", id, "property", "width", "set", "130")
@@ -30,7 +30,7 @@ local function slider(id,y,min,max,val)
 	pushTask("gui","menu", "access", menu, "element", "access", id, "property", "min", "set", tostring(min))
 	pushTask("gui","menu", "access", menu, "element", "access", id, "property", "max", "set", tostring(max))
 	pushTask("gui","menu", "access", menu, "element", "access", id, "property", "val", "set", tostring(val))
-	pushTask("gui","menu", "access", menu, "element", "access", id, "property", "val", "set", tostring(1/2))
+	pushTask("gui","menu", "access", menu, "element", "access", id, "property", "ratio", "set", tostring(1/2))
 end
 function onLoad() -- called right after the plugin has been loaded
 	genMenu()
