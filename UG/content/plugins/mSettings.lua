@@ -19,7 +19,7 @@ local function label(id,y,text)
 	pushTask("gui","menu", "access", menu, "element", "access", id, "property", "y", "set", tostring(y))
 	pushTask("gui","menu", "access", menu, "element", "access", id, "property", "displayText", "set", tostring(text))
 	pushTask("gui","menu", "access", menu, "element", "access", id, "property", "textColorA", "set", "#00FF00FF")
-	pushTask("gui","menu", "access", menu, "element", "access", id, "property", "textColorB", "set", "#202020F0")
+	pushTask("gui","menu", "access", menu, "element", "access", id, "property", "textColorB", "set", "#404040F4")
 end
 local function slider(id,y,min,max,val)
 	menu = "settings"
@@ -37,7 +37,7 @@ end
 function onLoad() -- called right after the plugin has been loaded
 	genMenu()
 	for i = 1, 30, 1 do
-		label("label"..tostring(i) , i*21,  "Label "..tostring(i)..":" ) slider("slider"..tostring(i) , i*21 , 10, 200, 64)
+		label("label"..tostring(i) , (i-1)*21+10,  "Label "..tostring(i)..":" ) slider("slider"..tostring(i) , (i-1)*21+10 , 1, 30, i)
 	end
 
 	pushTask("gui","menu", "access", "settings", "element", "list")
