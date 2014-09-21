@@ -1826,6 +1826,48 @@ void ModModule::processTask(std::list<std::string> _args)
                                                         dLink->pushEvent(x);
                                                     }
                                                 }
+                                                else if(*_args.begin() == "textColorA")
+                                                {
+                                                    _args.pop_front();
+                                                    if(*_args.begin() == "set")
+                                                    {
+                                                        _args.pop_front();
+                                                        elem->label.TextColorActive = util::toColor(*_args.begin());
+                                                    }
+                                                    else if(*_args.begin() == "get")
+                                                    {
+                                                        std::list<std::string> x;
+                                                        x.push_back("gui");
+                                                        x.push_back("menu");
+                                                        x.push_back("access");
+                                                        x.push_back(it->ID);
+                                                        x.push_back("property");
+                                                        x.push_back("backgroundColorA");
+                                                        x.push_back(util::toString(elem->label.TextColorActive));
+                                                        dLink->pushEvent(x);
+                                                    }
+                                                }
+                                                else if(*_args.begin() == "textColorB")
+                                                {
+                                                    _args.pop_front();
+                                                    if(*_args.begin() == "set")
+                                                    {
+                                                        _args.pop_front();
+                                                        elem->label.TextColorInactive = util::toColor(*_args.begin());
+                                                    }
+                                                    else if(*_args.begin() == "get")
+                                                    {
+                                                        std::list<std::string> x;
+                                                        x.push_back("gui");
+                                                        x.push_back("menu");
+                                                        x.push_back("access");
+                                                        x.push_back(it->ID);
+                                                        x.push_back("property");
+                                                        x.push_back("backgroundColorA");
+                                                        x.push_back(util::toString(elem->label.TextColorInactive));
+                                                        dLink->pushEvent(x);
+                                                    }
+                                                }
                                             }
                                             else if(elem->Type == "horslider")
                                             {
@@ -1883,7 +1925,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     if(*_args.begin() == "set")
                                                     {
                                                         _args.pop_front();
-                                                        elem->horSlider.min = util::toInt(*_args.begin());
+                                                        elem->horSlider.min = util::toFloat(*_args.begin());
                                                     }
                                                     else if(*_args.begin() == "get")
                                                     {
@@ -1907,7 +1949,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     if(*_args.begin() == "set")
                                                     {
                                                         _args.pop_front();
-                                                        elem->horSlider.max = util::toInt(*_args.begin());
+                                                        elem->horSlider.max = util::toFloat(*_args.begin());
                                                     }
                                                     else if(*_args.begin() == "get")
                                                     {
@@ -1931,7 +1973,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     if(*_args.begin() == "set")
                                                     {
                                                         _args.pop_front();
-                                                        elem->horSlider.value = util::toInt(*_args.begin());
+                                                        elem->horSlider.value = util::toFloat(*_args.begin());
                                                     }
                                                     else if(*_args.begin() == "get")
                                                     {
@@ -1955,7 +1997,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     if(*_args.begin() == "set")
                                                     {
                                                         _args.pop_front();
-                                                        elem->horSlider.ratio = util::toInt(*_args.begin());
+                                                        elem->horSlider.ratio = util::toFloat(*_args.begin());
                                                     }
                                                     else if(*_args.begin() == "get")
                                                     {
