@@ -10,7 +10,7 @@ GraphicsEngine::GraphicsEngine()
 //METHODS
 void GraphicsEngine::Run()
 {
-    log("G-Engine  ", "Thread launched");
+    log("&f[Graphics][Info] Thread launched");
     dLink->renderWindow->setActive(true);
     sf::Clock limit;
     limit.restart();
@@ -49,7 +49,7 @@ void GraphicsEngine::Run()
         dLink->renderWindow->display();
         GMutex.unlock();
     }
-    log("G-Engine  ", "Thread stopped");
+    log("&f[Graphics][Info] Thread stopped");
     dLink->renderWindow->setActive(false);
 }
 void GraphicsEngine::Stop()
