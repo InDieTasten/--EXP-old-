@@ -14,7 +14,6 @@
 				<Option compiler="gcc" />
 				<Option use_console_runner="0" />
 				<Compiler>
-					<Add option="-std=c++11" />
 					<Add option="-g" />
 				</Compiler>
 			</Target>
@@ -26,12 +25,10 @@
 				<Option use_console_runner="0" />
 				<Compiler>
 					<Add option="-O3" />
-					<Add option="-std=c++11" />
 				</Compiler>
 			</Target>
 		</Build>
 		<Compiler>
-			<Add option="-std=c++11" />
 			<Add option="-fexceptions" />
 			<Add directory="../libraries/Lua/include" />
 			<Add directory="../libraries/SFML-Framework/include" />
