@@ -104,7 +104,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
                             tmpY = text.findCharacterPos(tmp).y;
                             position = tmp;
                             tmp++;
-                        }while(tmpX < (float)x && tmp < content.size() && tmpY < (float)y);
+                        }while(tmpX < (float)x && tmp < content.size()+1 && tmpY < (float)y);
                     }
                 }
             }
