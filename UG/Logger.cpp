@@ -6,6 +6,9 @@
 //METHODS
 FileLogger logger;
 
+#include <thread>
+#include <chrono>
+#include <mutex>
 
 void log(std::string msg)
 {
@@ -19,8 +22,9 @@ void log(std::string msg)
 
     strftime (T,14,"%j|%H:%M:%S",timeinfo);
 
+    std::thread::id this_id = std::this_thread::get_id();
 
-    std::cout <<  T << msg << std::endl;
+    std::cout << "T" << ":" <<  T << msg << std::endl;
     std::stringstream ss;
     ss << T << msg;
     logger.log(ss.str());
