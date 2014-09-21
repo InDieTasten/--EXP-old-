@@ -13,6 +13,8 @@ private:
     sf::RectangleShape rect;
     sf::RectangleShape curs;
     int tmp;
+    float tmpX;
+    float tmpY;
 
 public:
     int X;
