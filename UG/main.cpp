@@ -17,12 +17,6 @@
 #include <SFML\System.hpp>
 
 
-#include <iostream>
-#include <thread>
-#include <chrono>
-#include <mutex>
-
-
 extern "C" {
 #include <lua.h>
 #include <lualib.h>
@@ -58,13 +52,14 @@ void StockSettings();
 void StockKeybinds();
 
 
-
-
 using namespace std;
 
 int main ( int argc, char *argv[] )
 {
     log("&f[Main][Info] Logger enabled");
+
+
+
     ////////////////////
     // 1. DataBank    //
     //                //
