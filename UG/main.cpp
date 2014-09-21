@@ -17,6 +17,12 @@
 #include <SFML\System.hpp>
 
 
+#include <iostream>
+#include <thread>
+#include <chrono>
+#include <mutex>
+
+
 extern "C" {
 #include <lua.h>
 #include <lualib.h>
