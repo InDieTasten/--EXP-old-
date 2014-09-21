@@ -7,6 +7,17 @@ GUIManager::GUIManager()
     add_OptionMenu();
     add_ConsoleMenu();
     add_CodeIDE();
+
+    std::list<std::string> x;
+    x.push_back("plugin");
+    x.push_back("load");
+    x.push_back("mSettings");
+    dLink->pushTask(x);
+    x.clear();
+    x.push_back("plugin");
+    x.push_back("load");
+    x.push_back("mDebug");
+    dLink->pushTask(x);
 }
 //DESTRUCTORS
 
