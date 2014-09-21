@@ -19,8 +19,8 @@ void log(std::string name, std::string msg)
     strftime (T,14,"%j|%H:%M:%S",timeinfo);
 
 
-    std::cout <<  T << " [" << name << "] " << msg << std::endl;
+    std::cout <<  T << "[" << name << "]" << msg << std::endl;
     std::stringstream ss;
-    ss << T << " [" << name << "] " << msg;
+    ss << T << "[" << name << "]" << msg;
     logger.log(ss.str());
 }
