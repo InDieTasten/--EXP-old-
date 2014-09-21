@@ -202,3 +202,22 @@ canvas action setOutlineColor {color}
 canvas action draw line {pos1.x} {pos1.y} {pos2.x} {pos2.y}
 canvas action draw rect {pos1.x} {pos1.y} {pos2.x} {pos2.y}
 canvas action draw ellipse {pos.x} {pos.y} {width} {height}
+
+
+Color codes
+0 dark black
+1 dark blue
+2 dark green
+3 dark cyan
+4 dark red
+5 dark magenta
+6 dark yellow
+7 dark white
+8 black
+9 blue
+a green
+b cyan
+c red
+d magenta
+e yellow
+f white
