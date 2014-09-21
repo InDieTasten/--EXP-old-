@@ -13,7 +13,7 @@ PhysicsEngine::PhysicsEngine()
 
 void PhysicsEngine::Run()
 {
-    log("P-Engine  ", "Thread launched");
+    log("&f[Physics][Info] Thread launched");
 
     sf::Clock limit;
     limit.restart();
@@ -45,7 +45,7 @@ void PhysicsEngine::Run()
 
         GMutex.unlock();
     }
-    log("P-Engine  ", "Thread stopped");
+    log("&f[Physics][Info] Thread stopped");
 }
 void PhysicsEngine::Stop()
 {

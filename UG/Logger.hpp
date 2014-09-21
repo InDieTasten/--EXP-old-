@@ -8,6 +8,6 @@
 #include <stdio.h>
 #include <sstream>
 
-void log(std::string name,std::string msg);
+void log(std::string name);
 
 #endif

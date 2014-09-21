@@ -6,7 +6,7 @@
 //METHODS
 void ModModule::Run()
 {
-    log(std::string("Mod-Module"), std::string("Thread started"));
+    log("&f[ModModule][Info] Thread started");
     std::list<Script> scripts;
     Script pluginLoader("./content/stock/scripts/plugin_loader.lua");
     scripts.push_back(pluginLoader);
@@ -102,7 +102,7 @@ void ModModule::Run()
         lua_call(it->state, 0, 0);
         lua_close(it->state);
     }
-    log(std::string("Mod-Module"), std::string("Thread stopped"));
+    log("&f[ModModule][Info] Thread stopped");
 }
 int ModModule::lPrint(lua_State *L)
 {
@@ -116,7 +116,7 @@ int ModModule::lPrint(lua_State *L)
         message.append(lua_tostring(L,i));
     }
     int x = 999;
-    log("Plugin    ",message);
+    log("&f[ModModule]"+message);
     return 0;
 }
 int ModModule::lPushEvent(lua_State *L) // api.print("mein text hat ", 5, "Wörter")
@@ -1983,6 +1983,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     {
                                                         _args.pop_front();
                                                         elem->canvas.Width = util::toInt(*_args.begin());
+                                                        log("&c[API][Info] Set complete");
                                                     }
                                                     else if(*_args.begin() == "get")
                                                     {
