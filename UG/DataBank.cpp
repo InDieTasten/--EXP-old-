@@ -8,27 +8,11 @@ DataBank::DataBank()
     runPhysics = true;
     runModules = true;
     guiMode = true;
-    loadPlugins();
 }
 
 //DESTRUCTORS
 
 //METHODS
-void DataBank::loadPlugins(void)
-{
-    Loader pLoader;
-    std::list<std::string> folder = pLoader.getFolderContent("./content/stock/scripts");
-    for (std::list<std::string>::iterator it = folder.begin(); it != folder.end(); it++)
-    {
-        log("MemBank   ", "Found script: ./content/stock/scripts/" + *it);
-        scripts.push_back(Script("./content/stock/scripts/"+ *it));
-    }
-}
-std::list<Script>* DataBank::GetScripts()
-{
-    return &scripts;
-}
-
 void DataBank::TextureRegister(std::string _id, std::string _path)
 {
     for(std::list<Texture>::iterator it = textures.begin(); it != textures.end(); it++)
