@@ -12,6 +12,15 @@ void HorSlider::Setup()
     hoverInc = false;
     hoverDec = false;
 
+    mouseHover = false;
+    Width = 100;
+    Height = 16;
+
+    ratio = 0.5;
+    min = 1;
+    max = 10;
+    value = 5;
+
     ButtonBackgroundInactive = dLink->settings.guiHorsliderButtonBackgroundInactive;
     ButtonBackgroundActive   = dLink->settings.guiHorsliderButtonBackgroundActive;
     ButtonBackgroundHover    = dLink->settings.guiHorsliderButtonBackgroundHover;
