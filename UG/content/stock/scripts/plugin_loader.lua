@@ -31,6 +31,7 @@ function onHardLoad()
 		plugins[name] = {["path"]=path, ["status"]="unloaded"}
 		print("[Info] Plugin '"..name.."' successfully registered")
 	end
+	pushTask("plugin", "load", "mConsole")
 end
 function onHardUnload()
 	

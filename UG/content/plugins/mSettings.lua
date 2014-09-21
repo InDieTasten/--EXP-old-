@@ -1,5 +1,4 @@
 function onLoad() -- called right after the plugin has been loaded
-	print("Katze")
 	pushTask("gui","menu","add","can")
 	pushTask("gui","menu", "access", "can", "property", "x", "set", "50")
 	pushTask("gui","menu", "access", "can", "property", "y", "set", "50")
