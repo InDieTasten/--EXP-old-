@@ -9,6 +9,7 @@
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/UG" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../UG_content" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -18,7 +19,8 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/UG" prefix_auto="1" extension_auto="1" />
+				<Option output="../UG_content/bin/Release/UG" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../UG_content" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -30,8 +32,8 @@
 		</Build>
 		<Compiler>
 			<Add option="-fexceptions" />
-			<Add directory="../libraries/Lua/include" />
-			<Add directory="../libraries/SFML-Framework/include" />
+			<Add directory="../UG_lua/include" />
+			<Add directory="../UG_sfml/include" />
 		</Compiler>
 		<Linker>
 			<Add library="sfml-audio" />
@@ -39,9 +41,9 @@
 			<Add library="sfml-graphics" />
 			<Add library="sfml-window" />
 			<Add library="sfml-system" />
-			<Add library="..\libraries\Lua\src\Lua5.2.3\bin\Release\libLua5.2.3.a" />
-			<Add directory="../libraries/Lua/src/Lua5.2.3/bin/Release" />
-			<Add directory="../libraries/SFML-Framework/lib" />
+			<Add library="..\UG_lua\src\Lua5.2.3\bin\Release\libLua5.2.3.a" />
+			<Add directory="../UG_lua/src/Lua5.2.3/bin/Release" />
+			<Add directory="../UG_sfml/lib" />
 		</Linker>
 		<Unit filename="Actor.cpp">
 			<Option virtualFolder="MemoryBank/Level/" />
