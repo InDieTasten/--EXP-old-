@@ -13,8 +13,9 @@ PhysicsEngine::PhysicsEngine()
 
 void PhysicsEngine::Run()
 {
+    GMutex.lock();
     log("&f[Physics][Info] Thread launched");
-
+    GMutex.unlock();
     sf::Clock limit;
     limit.restart();
     while (dLink->runPhysics)

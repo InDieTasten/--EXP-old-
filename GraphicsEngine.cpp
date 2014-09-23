@@ -10,8 +10,10 @@ GraphicsEngine::GraphicsEngine()
 //METHODS
 void GraphicsEngine::Run()
 {
+    GMutex.lock();
     log("&f[Graphics][Info] Thread launched");
     dLink->renderWindow->setActive(true);
+    GMutex.unlock();
     sf::Clock limit;
     limit.restart();
     while (dLink->runGraphics)

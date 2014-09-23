@@ -133,17 +133,14 @@ int main ( int argc, char *argv[] )
 
     log("&f[Main][Info] Launch Mod- Thread");
     mThread->launch();
-    sf::sleep(sf::seconds(0.3));
     log("&f[Main][Info] Launch Graphics- Thread");
     gThread->launch();
-    sf::sleep(sf::seconds(0.1));
     log("&f[Main][Info] Launch Physics- Thread");
     pThread->launch();
-    sf::sleep(sf::seconds(0.1));
 
-
+    GMutex.lock();
     log("&f[Main][Info] Entering Event-Loop");
-
+    GMutex.unlock();
 
 
     // Init Debugging
