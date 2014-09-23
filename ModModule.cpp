@@ -6,6 +6,7 @@
 //METHODS
 void ModModule::Run()
 {
+    GMutex.lock();
     log("&f[ModModule][Info] Thread started");
     std::list<Script> scripts;
     Script pluginLoader("./content/stock/scripts/plugin_loader.lua");
@@ -34,6 +35,8 @@ void ModModule::Run()
 
     std::list< std::list<std::string> > events;
     std::list< std::list<std::string> > tasks;
+
+    GMutex.unlock();
 
     while(dLink->runModules)
     {
