@@ -8,7 +8,7 @@
 		<Option virtualFolders="Processing\;Utilities\;Processing\;Utilities\;GUI\Elements\;MemoryBank\Entites\;MemoryBank\Level\;GUI\;MemoryBank\;Lua\;" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/UG" prefix_auto="1" extension_auto="1" />
+				<Option output="../UG_content/UG" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="../UG_content" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
@@ -19,7 +19,7 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="../UG_content/bin/Release/UG" prefix_auto="1" extension_auto="1" />
+				<Option output="../UG_content/UG" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="../UG_content" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
