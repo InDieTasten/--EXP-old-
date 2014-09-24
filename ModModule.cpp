@@ -2199,6 +2199,10 @@ void ModModule::processTask(std::list<std::string> _args)
     {
         _args.pop_front();
     }
+    else if(*_args.begin() == "settings") //settings
+    {
+        _args.pop_front();
+    }
     else if(*_args.begin() == "resource") //resource
     {
         _args.pop_front();
