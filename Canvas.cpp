@@ -10,7 +10,7 @@ void Canvas::Setup()
 {
 
 }
-void Canvas::Update(int _x, int _y, std::string _id)
+void Canvas::Update(int _x, int _y, std::string _id, std::string _mID)
 {
     rect.setPosition((float)_x,(float)_y);
     rect.setSize(sf::Vector2f((float)Width,(float)Height));
@@ -29,7 +29,7 @@ void Canvas::Update(int _x, int _y, std::string _id)
 
     view.setViewport(sf::FloatRect(posx, posy, sizex, sizey));
 }
-void Canvas::Render(int _x, int _y, std::string _id)
+void Canvas::Render(int _x, int _y, std::string _id, std::string _mID)
 {
     dLink->renderWindow->draw(rect);
     std::list<line> temp = vertex;
@@ -44,15 +44,15 @@ void Canvas::Render(int _x, int _y, std::string _id)
     }
     dLink->renderWindow->setView(dLink->guiView);
 }
-void Canvas::handleEvent(sf::Event* _event, int _x, int _y, std::string _id)
+void Canvas::handleEvent(sf::Event* _event, int _x, int _y, std::string _id, std::string _mID)
 {
 
 }
-void Canvas::handleSoftEvent(std::list<std::string> _args, int _x, int _y, std::string _id)
+void Canvas::handleSoftEvent(std::list<std::string> _args, int _x, int _y, std::string _id, std::string _mID)
 {
 
 }
-void Canvas::handleTask(std::list<std::string> _args, int _x, int _y, std::string _id)
+void Canvas::handleTask(std::list<std::string> _args, int _x, int _y, std::string _id, std::string _mID)
 {
 
 }
