@@ -24,9 +24,6 @@ public:
     void Hide();
 
     void Setup();
-    void Update(DataBank* _dataLink);
-    void Render(DataBank* _dataLink);
-    void handleEvent(sf::Event* _event);
 };
 
 #endif
