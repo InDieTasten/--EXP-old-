@@ -42,7 +42,7 @@ void HorSlider::Setup()
     TextScale                = dLink->settings.guiHorsliderTextScale;
     FontID                   = dLink->settings.guiHorsliderFontID;
 }
-void HorSlider::Update(int _x, int _y, std::string _id)
+void HorSlider::Update(int _x, int _y, std::string _id, std::string _mID)
 {
     if(isActive)
     {
@@ -143,7 +143,7 @@ void HorSlider::Update(int _x, int _y, std::string _id)
     displayText.setPosition(floorf(_x+(Width/2.0)),floorf(_y+(Height/2.0)));
     displayText.setCharacterSize(TextScale);
 }
-void HorSlider::Render(int _x, int _y, std::string _id)
+void HorSlider::Render(int _x, int _y, std::string _id, std::string _mID)
 {
     dLink->renderWindow->draw(bar);
     dLink->renderWindow->draw(decBox);
@@ -151,7 +151,7 @@ void HorSlider::Render(int _x, int _y, std::string _id)
     dLink->renderWindow->draw(slider);
     dLink->renderWindow->draw(displayText);
 }
-void HorSlider::handleEvent(sf::Event* _event, int _x, int _y, std::string _id)
+void HorSlider::handleEvent(sf::Event* _event, int _x, int _y, std::string _id, std::string _mID)
 {
     int mousex;
     if(_event->type == sf::Event::MouseMoved && isActive)
@@ -199,11 +199,11 @@ void HorSlider::handleEvent(sf::Event* _event, int _x, int _y, std::string _id)
     }
     oldMouseX = mousex;
 }
-void HorSlider::handleSoftEvent(std::list<std::string> _args, int _x, int _y, std::string _id)
+void HorSlider::handleSoftEvent(std::list<std::string> _args, int _x, int _y, std::string _id, std::string _mID)
 {
 
 }
-void HorSlider::handleTask(std::list<std::string> _args, int _x, int _y, std::string _id)
+void HorSlider::handleTask(std::list<std::string> _args, int _x, int _y, std::string _id, std::string _mID)
 {
 
 }
