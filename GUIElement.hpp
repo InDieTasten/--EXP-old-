@@ -41,11 +41,11 @@ public:
     void Show();
     void Hide();
 
-    void update(int, int);
-    void render(int, int);
-    void handleEvent(sf::Event *_event, int _x, int _y);
-    void handleSoftEvent(std::list<std::string> _args, int _x, int _y);
-    void handleTask(std::list<std::string> _args, int _x, int _y);
+    void update(int, int, std::string _mID);
+    void render(int, int, std::string _mID);
+    void handleEvent(sf::Event *_event, int _x, int _y, std::string _mID);
+    void handleSoftEvent(std::list<std::string> _args, int _x, int _y, std::string _mID);
+    void handleTask(std::list<std::string> _args, int _x, int _y, std::string _mID);
 };
 
 #endif
