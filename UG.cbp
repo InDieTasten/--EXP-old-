@@ -5,7 +5,7 @@
 		<Option title="UG" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="Processing\;Utilities\;Processing\;Utilities\;GUI\Elements\;MemoryBank\Entites\;MemoryBank\Level\;GUI\;MemoryBank\;Lua\;" />
+		<Option virtualFolders="Processing\;Utilities\;Processing\;Utilities\;GUI\Elements\;MemoryBank\Entites\;MemoryBank\Level\;GUI\;MemoryBank\;" />
 		<Build>
 			<Target title="Debug">
 				<Option output="../UG_content/UG" prefix_auto="1" extension_auto="1" />
@@ -236,18 +236,6 @@
 		</Unit>
 		<Unit filename="VertSlider.hpp">
 			<Option virtualFolder="GUI/Elements/" />
-		</Unit>
-		<Unit filename="content/plugins/mConsole.lua">
-			<Option virtualFolder="Lua/" />
-		</Unit>
-		<Unit filename="content/plugins/mDebug.lua">
-			<Option virtualFolder="Lua/" />
-		</Unit>
-		<Unit filename="content/plugins/mSettings.lua">
-			<Option virtualFolder="Lua/" />
-		</Unit>
-		<Unit filename="content/stock/scripts/plugin_loader.lua">
-			<Option virtualFolder="Lua/" />
 		</Unit>
 		<Unit filename="main.cpp">
 			<Option virtualFolder="Processing/" />
