@@ -49,7 +49,7 @@ void GUIMenu::update()
 
             dLink->renderWindow->setView(view);
 
-            it->update(X, Y+16);
+            it->update(X, Y+16, ID);
         }
         //recalcualte the renderShapes
         if(isActive)
@@ -105,7 +105,7 @@ void GUIMenu::update()
             bottomSlider.Width = Width-1;
             bottomSlider.isActive = isActive;
             bottomSlider.ratio = (float)Width/(float)totalWidth;
-            bottomSlider.Update(X, Y+Height+16,"horMenuSlider");
+            bottomSlider.Update(X, Y+Height+16,"horMenuSlider", ID);
 
             rightSlider.min = 0;
             rightSlider.max = totalHeight-Height;
@@ -113,7 +113,7 @@ void GUIMenu::update()
             rightSlider.Width = 16;
             rightSlider.isActive = isActive;
             rightSlider.ratio = (float)Height/(float)totalHeight;
-            rightSlider.Update(X+Width, Y+16+1,"vertMenuSlider");
+            rightSlider.Update(X+Width, Y+16+1,"vertMenuSlider", ID);
         }
 
     }
@@ -148,20 +148,20 @@ void GUIMenu::render()
         dLink->renderWindow->draw(titleBar);
         dLink->renderWindow->draw(menuTitle);
         dLink->renderWindow->draw(closeButton);
-        bottomSlider.Render(X, Y+Height+16-10,"horMenuSlider");
-        rightSlider.Render(X+Width, Y+16+1,"vertMenuSlider");
+        bottomSlider.Render(X, Y+Height+16-10,"horMenuSlider", ID);
+        rightSlider.Render(X+Width, Y+16+1,"vertMenuSlider", ID);
         //RenderElements:
         for (std::list<GUIElement>::iterator it = GuiElements.begin(); it != GuiElements.end(); it++)
         {
             dLink->renderWindow->setView(view);
-            it->render(X, Y+16);
+            it->render(X, Y+16, ID);
         }
     }
 }
 void GUIMenu::handleEvent(sf::Event* _event)
 {
-    bottomSlider.handleEvent(_event, X, Y+Height+16-10,"horMenuSlider");
-    rightSlider.handleEvent(_event, X+Width, Y+16+1,"vertMenuSlider");
+    bottomSlider.handleEvent(_event, X, Y+Height+16-10,"horMenuSlider", ID);
+    rightSlider.handleEvent(_event, X+Width, Y+16+1,"vertMenuSlider", ID);
 
     //moving menu
     int x,y;
@@ -216,21 +216,21 @@ void GUIMenu::handleEvent(sf::Event* _event)
     }
     for(std::list<GUIElement>::iterator it = GuiElements.begin(); it != GuiElements.end(); it++)
     {
-        it->handleEvent(_event, X-scrollable*bottomSlider.value, Y+16-scrollable*rightSlider.value);
+        it->handleEvent(_event, X-scrollable*bottomSlider.value, Y+16-scrollable*rightSlider.value, ID);
     }
 }
 void GUIMenu::handleSoftEvent(std::list<std::string> _args)
 {
     for(std::list<GUIElement>::iterator it = GuiElements.begin(); it != GuiElements.end(); it++)
     {
-        it->handleSoftEvent(_args, X, Y+16);
+        it->handleSoftEvent(_args, X, Y+16, ID);
     }
 }
 void GUIMenu::handleTask(std::list<std::string> _args)
 {
     for(std::list<GUIElement>::iterator it = GuiElements.begin(); it != GuiElements.end(); it++)
     {
-        it->handleTask(_args, X, Y+16);
+        it->handleTask(_args, X, Y+16, ID);
     }
 }
 void GUIMenu::Enable()
