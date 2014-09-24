@@ -42,7 +42,7 @@ void TextBox::Setup()
     sliderX = 0;
     sliderY = 0;
 }
-void TextBox::Update(int _x, int _y,std::string _id)
+void TextBox::Update(int _x, int _y,std::string _id, std::string _mID)
 {
     rect.setPosition((float)_x,(float)_y);
     rect.setSize(sf::Vector2f((float)Width,(float)Height));
@@ -73,7 +73,7 @@ void TextBox::Update(int _x, int _y,std::string _id)
     view.setViewport(sf::FloatRect(posx, posy, sizex, sizey));
     view.move(sliderX,sliderY);
 }
-void TextBox::Render(int _x, int _y, std::string _id)
+void TextBox::Render(int _x, int _y, std::string _id, std::string _mID)
 {
     dLink->renderWindow->draw(rect);
     dLink->renderWindow->setView(view);
@@ -82,7 +82,7 @@ void TextBox::Render(int _x, int _y, std::string _id)
         dLink->renderWindow->draw(curs);
     dLink->renderWindow->setView(dLink->guiView);
 }
-void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
+void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std::string _mID)
 {
     if(isActive && _event->type == sf::Event::MouseButtonPressed)
     {
@@ -305,11 +305,11 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id)
     moveview(_x,_y);
     }
 }
-void TextBox::handleSoftEvent(std::list<std::string> _args, int _x, int _y, std::string _id)
+void TextBox::handleSoftEvent(std::list<std::string> _args, int _x, int _y, std::string _id, std::string _mID)
 {
 
 }
-void TextBox::handleTask(std::list<std::string> _args, int _x, int _y, std::string _id)
+void TextBox::handleTask(std::list<std::string> _args, int _x, int _y, std::string _id, std::string _mID)
 {
     if(!multiline)
     {
