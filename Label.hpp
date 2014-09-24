@@ -30,11 +30,11 @@ public:
 
     //METHODS
     void Setup();
-    void Update(int _x, int _y, std::string _id);
-    void Render(int _x, int _y, std::string _id);
-    void handleEvent(sf::Event* _event, int _x, int _y, std::string _id);
-    void handleSoftEvent(std::list<std::string> _args, int _x, int _y, std::string _id);
-    void handleTask(std::list<std::string> _args, int _x, int _y, std::string _id);
+    void Update(int _x, int _y, std::string _id, std::string _mID);
+    void Render(int _x, int _y, std::string _id, std::string _mID);
+    void handleEvent(sf::Event* _event, int _x, int _y, std::string _id, std::string _mID);
+    void handleSoftEvent(std::list<std::string> _args, int _x, int _y, std::string _id, std::string _mID);
+    void handleTask(std::list<std::string> _args, int _x, int _y, std::string _id, std::string _mID);
 };
 
 #endif
