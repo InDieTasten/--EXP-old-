@@ -33,7 +33,7 @@ void VertSlider::Setup()
     TextScale                = dLink->settings.guiVertsliderTextScale;
     FontID                   = dLink->settings.guiVertsliderFontID;
 }
-void VertSlider::Update(int _x, int _y, std::string _id)
+void VertSlider::Update(int _x, int _y, std::string _id, std::string _mID)
 {
     if(isActive)
     {
@@ -136,7 +136,7 @@ void VertSlider::Update(int _x, int _y, std::string _id)
     displayText.setRotation(90.0);
     displayText.setCharacterSize(TextScale);
 }
-void VertSlider::Render(int _x, int _y, std::string _id)
+void VertSlider::Render(int _x, int _y, std::string _id, std::string _mID)
 {
     dLink->renderWindow->draw(bar);
     dLink->renderWindow->draw(decBox);
@@ -144,7 +144,7 @@ void VertSlider::Render(int _x, int _y, std::string _id)
     dLink->renderWindow->draw(slider);
     dLink->renderWindow->draw(displayText);
 }
-void VertSlider::handleEvent(sf::Event* _event, int _x, int _y, std::string _id)
+void VertSlider::handleEvent(sf::Event* _event, int _x, int _y, std::string _id, std::string _mID)
 {
     int mousey;
     if(_event->type == sf::Event::MouseMoved && isActive)
@@ -192,11 +192,11 @@ void VertSlider::handleEvent(sf::Event* _event, int _x, int _y, std::string _id)
     }
     oldMouseY = mousey;
 }
-void VertSlider::handleSoftEvent(std::list<std::string> _args, int _x, int _y, std::string _id)
+void VertSlider::handleSoftEvent(std::list<std::string> _args, int _x, int _y, std::string _id, std::string _mID)
 {
 
 }
-void VertSlider::handleTask(std::list<std::string> _args, int _x, int _y, std::string _id)
+void VertSlider::handleTask(std::list<std::string> _args, int _x, int _y, std::string _id, std::string _mID)
 {
 
 }
