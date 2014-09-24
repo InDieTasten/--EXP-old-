@@ -11,7 +11,7 @@ void CodeBox::Setup()
     cursor_line = 1;
     cursor_char = 1;
 }
-void CodeBox::Update(int _x, int _y, std::string _id)
+void CodeBox::Update(int _x, int _y, std::string _id, std::string _mID)
 {
     for(std::list<std::string>::iterator it=text.begin(); it != text.end(); ++it)
     {
@@ -41,14 +41,14 @@ void CodeBox::Update(int _x, int _y, std::string _id)
     c.setOutlineThickness(1.0f);
     c.setOutlineColor(sf::Color(50,255,50,50));
 }
-void CodeBox::Render(int _x, int _y, std::string _id)
+void CodeBox::Render(int _x, int _y, std::string _id, std::string _mID)
 {
     dLink->renderWindow->draw(rect);
     dLink->renderWindow->draw(c);
     dLink->renderWindow->draw(text1);
 
 }
-void CodeBox::handleEvent(sf::Event* _event, int _x, int _y, std::string _id)
+void CodeBox::handleEvent(sf::Event* _event, int _x, int _y, std::string _id, std::string _mID)
 {
     std::list<std::string>::iterator it = text.begin();
     for(int i = cursor_line; i > 0; i--)
@@ -61,11 +61,11 @@ void CodeBox::handleEvent(sf::Event* _event, int _x, int _y, std::string _id)
 
     }
 }
-void CodeBox::handleSoftEvent(std::list<std::string> _args, int _x, int _y, std::string _id)
+void CodeBox::handleSoftEvent(std::list<std::string> _args, int _x, int _y, std::string _id, std::string _mID)
 {
 
 }
-void CodeBox::handleTask(std::list<std::string> _args, int _x, int _y, std::string _id)
+void CodeBox::handleTask(std::list<std::string> _args, int _x, int _y, std::string _id, std::string _mID)
 {
 
 }
