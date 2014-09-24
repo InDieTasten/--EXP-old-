@@ -21,7 +21,7 @@ void Button::Setup()
     TextScale = dLink->settings.guiButtonTextScale;
     FontID = dLink->settings.guiButtonFontID;
 }
-void Button::Update(int _x, int _y, std::string _id)
+void Button::Update(int _x, int _y, std::string _id, std::string _mID)
 {
     if(isActive)
     {
@@ -62,12 +62,12 @@ void Button::Update(int _x, int _y, std::string _id)
     displayText.setPosition(floorf(_x+(Width/2.0)),floorf(_y+(Height/2.0)));
     displayText.setCharacterSize(TextScale);
 }
-void Button::Render(int _x, int _y, std::string _id)
+void Button::Render(int _x, int _y, std::string _id, std::string _mID)
 {
     dLink->renderWindow->draw(rect);
     dLink->renderWindow->draw(displayText);
 }
-void Button::handleEvent(sf::Event* _event, int _x, int _y, std::string _id)
+void Button::handleEvent(sf::Event* _event, int _x, int _y, std::string _id, std::string _mID)
 {
     if(isActive)
     {
@@ -134,11 +134,11 @@ void Button::handleEvent(sf::Event* _event, int _x, int _y, std::string _id)
         }
     }
 }
-void Button::handleSoftEvent(std::list<std::string> _args, int _x, int _y, std::string _id)
+void Button::handleSoftEvent(std::list<std::string> _args, int _x, int _y, std::string _id, std::string _mID)
 {
 
 }
-void Button::handleTask(std::list<std::string> _args, int _x, int _y, std::string _id)
+void Button::handleTask(std::list<std::string> _args, int _x, int _y, std::string _id, std::string _mID)
 {
 
 }
