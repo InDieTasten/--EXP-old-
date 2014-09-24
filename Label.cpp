@@ -14,7 +14,7 @@ void Label::Setup()
     TextScale = dLink->settings.guiLabelTextScale;
     FontID = dLink->settings.guiLabelFontID;
 }
-void Label::Update(int _x, int _y, std::string _id)
+void Label::Update(int _x, int _y, std::string _id, std::string _mID)
 {
     if(isActive)
     {
@@ -37,11 +37,11 @@ void Label::Update(int _x, int _y, std::string _id)
     displayText.setFont(*dLink->FontGet(FontID));
     displayText.setCharacterSize(TextScale);
 }
-void Label::Render(int _x, int _y, std::string _id)
+void Label::Render(int _x, int _y, std::string _id, std::string _mID)
 {
     dLink->renderWindow->draw(displayText);
 }
-void Label::handleEvent(sf::Event* _event, int _x, int _y, std::string _id)
+void Label::handleEvent(sf::Event* _event, int _x, int _y, std::string _id, std::string _mID)
 {
     if(isActive)
     {
@@ -54,11 +54,11 @@ void Label::handleEvent(sf::Event* _event, int _x, int _y, std::string _id)
         }
     }
 }
-void Label::handleSoftEvent(std::list<std::string> _args, int _x, int _y, std::string _id)
+void Label::handleSoftEvent(std::list<std::string> _args, int _x, int _y, std::string _id, std::string _mID)
 {
 
 }
-void Label::handleTask(std::list<std::string> _args, int _x, int _y, std::string _id)
+void Label::handleTask(std::list<std::string> _args, int _x, int _y, std::string _id, std::string _mID)
 {
 
 }
