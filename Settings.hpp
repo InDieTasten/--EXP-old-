@@ -4,41 +4,41 @@
 struct Settings
 {
     //Debug
-    int threadMeanAmount;
-    int eventtaskMeanAmount;
-    float countResetInterval;
+    int threadMeanAmount; //
+    int eventtaskMeanAmount; //
+    float countResetInterval; //
 
-    int dockWidth;
-    sf::Color   guiDockBackground;
-    sf::Color   guiDockBackgroundHover;
-    sf::Color   guiDockBorder;
-    sf::Color   guiDockBorderHover;
-    sf::Color   guiDockItemBackground;
-    sf::Color   guiDockItemBackgroundHover;
-    sf::Color   guiDockItemBorder;
-    sf::Color   guiDockItemBorderHover;
+    int dockWidth; //
+    sf::Color   guiDockBackground; //
+    sf::Color   guiDockBackgroundHover; //
+    sf::Color   guiDockBorder; //
+    sf::Color   guiDockBorderHover; //
+    sf::Color   guiDockItemBackground; //
+    sf::Color   guiDockItemBackgroundHover; //
+    sf::Color   guiDockItemBorder; //
+    sf::Color   guiDockItemBorderHover; //
 
-    sf::Color   guiMenuBorderInactive;
-    sf::Color   guiMenuBorderActive;
-    sf::Color   guiMenuBackgroundInactive;
-    sf::Color   guiMenuBackgroundActive;
-    sf::Color   guiMenuTitleBackgroundInactive;
-    sf::Color   guiMenuTitleBackgroundActive;
-    sf::Color   guiMenuTitleTextInactive;
-    sf::Color   guiMenuTitleTextActive;
+    sf::Color   guiMenuBorderInactive; //
+    sf::Color   guiMenuBorderActive; //
+    sf::Color   guiMenuBackgroundInactive; //
+    sf::Color   guiMenuBackgroundActive; //
+    sf::Color   guiMenuTitleBackgroundInactive; //
+    sf::Color   guiMenuTitleBackgroundActive; //
+    sf::Color   guiMenuTitleTextInactive; //
+    sf::Color   guiMenuTitleTextActive; //
     int         guiMenuTitleHeight;
     int         guiMenuTitleTextScale;
     std::string guiMenuTitleFont;
 
-    sf::Color   guiButtonBackgroundInactive;
-    sf::Color   guiButtonBackgroundActive;
-    sf::Color   guiButtonBackgroundHover;
-    sf::Color   guiButtonBorderInactive;
-    sf::Color   guiButtonBorderActive;
-    sf::Color   guiButtonBorderHover;
-    sf::Color   guiButtonTextInactive;
-    sf::Color   guiButtonTextActive;
-    sf::Color   guiButtonTextHover;
+    sf::Color   guiButtonBackgroundInactive; //
+    sf::Color   guiButtonBackgroundActive; //
+    sf::Color   guiButtonBackgroundHover; //
+    sf::Color   guiButtonBorderInactive; //
+    sf::Color   guiButtonBorderActive; //
+    sf::Color   guiButtonBorderHover; //
+    sf::Color   guiButtonTextInactive; //
+    sf::Color   guiButtonTextActive; //
+    sf::Color   guiButtonTextHover; //
     int         guiButtonTextScale;
     std::string guiButtonFontID;
 
