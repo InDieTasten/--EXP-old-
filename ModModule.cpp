@@ -3534,6 +3534,222 @@ void ModModule::processTask(std::list<std::string> _args)
                 dLink->pushEvent(x);
             }
         }
+        else if(*_args.begin() == "guiMenuTitleTextScale")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiMenuTitleTextScale = util::toInt(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiMenuTitleTextScale");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiMenuTitleTextScale));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiButtonTextScale")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiButtonTextScale = util::toInt(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiButtonTextScale");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiButtonTextScale));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiHorsliderTextScale")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiHorsliderTextScale = util::toInt(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiHorsliderTextScale");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiHorsliderTextScale));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiVertsliderTextScale")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiVertsliderTextScale = util::toInt(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiVertsliderTextScale");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiVertsliderTextScale));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiLabelTextScale")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiLabelTextScale = util::toInt(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiLabelTextScale");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiLabelTextScale));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiTextboxTextScale")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiTextboxTextScale = util::toInt(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiTextboxTextScale");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiTextboxTextScale));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiMenuTitleFontID")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiMenuTitleFontID = *_args.begin();
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiMenuTitleFontID");
+                x.push_back("get");
+                x.push_back(dLink->settings.guiMenuTitleFontID);
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiButtonFontID")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiButtonFontID = *_args.begin();
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiButtonFontID");
+                x.push_back("get");
+                x.push_back(dLink->settings.guiButtonFontID);
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiHorsliderFontID")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiHorsliderFontID = *_args.begin();
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiHorsliderFontID");
+                x.push_back("get");
+                x.push_back(dLink->settings.guiHorsliderFontID);
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiVertsliderFontID")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiVertsliderFontID = *_args.begin();
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiVertsliderFontID");
+                x.push_back("get");
+                x.push_back(dLink->settings.guiVertsliderFontID);
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiLabelFontID")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiLabelFontID = *_args.begin();
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiLabelFontID");
+                x.push_back("get");
+                x.push_back(dLink->settings.guiLabelFontID);
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiTextboxFontID")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiTextboxFontID = *_args.begin();
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiTextboxFontID");
+                x.push_back("get");
+                x.push_back(dLink->settings.guiTextboxFontID);
+                dLink->pushEvent(x);
+            }
+        }
     }
     else if(*_args.begin() == "resource") //resource
     {
