@@ -84,18 +84,18 @@ struct Settings
     int         guiVertsliderTextScale;
     std::string guiVertsliderFontID;
 
-    sf::Color   guiLabelTextInactive;
-    sf::Color   guiLabelTextActive;
-    sf::Color   guiLabelTextHover;
+    sf::Color   guiLabelTextInactive; //
+    sf::Color   guiLabelTextActive; //
+    sf::Color   guiLabelTextHover; //
     int         guiLabelTextScale;
     std::string guiLabelFontID;
 
-    sf::Color   guiTextboxBackgroundInactive;
-    sf::Color   guiTextboxBackgroundActive;
-    sf::Color   guiTextboxBackgroundHover;
-    sf::Color   guiTextboxBorderInactive;
-    sf::Color   guiTextboxBorderActive;
-    sf::Color   guiTextboxBorderHover;
+    sf::Color   guiTextboxBackgroundInactive; //
+    sf::Color   guiTextboxBackgroundActive; //
+    sf::Color   guiTextboxBackgroundHover; //
+    sf::Color   guiTextboxBorderInactive; //
+    sf::Color   guiTextboxBorderActive; //
+    sf::Color   guiTextboxBorderHover; //
     int         guiTextboxTextScale;
     std::string guiTextboxFontID;
 };
