@@ -7,7 +7,6 @@
 #include "Vector.hpp"
 #include <list>
 #include "CollisionIndice.hpp"
-#include "Camera.hpp"
 #include <fstream>
 
 class DataBank;
