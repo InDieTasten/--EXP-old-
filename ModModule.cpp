@@ -3759,19 +3759,25 @@ void ModModule::processTask(std::list<std::string> _args)
             _args.pop_front();
             if(*_args.begin() == "register")
             {
-
+                _args.pop_front();
+                std::string id = *_args.begin();
+                _args.pop_front();
+                dLink->TextureRegister(id, *_args.begin());
             }
             else if(*_args.begin() == "erase")
             {
-
+                _args.pop_front();
+                dLink->TextureErase(*_args.begin());
             }
             else if(*_args.begin() == "load")
             {
-
+                _args.pop_front();
+                dLink->TextureLoad(*_args.begin());
             }
             else if(*_args.begin() == "unload")
             {
-
+                _args.pop_front();
+                dLink->TextureUnload(*_args.begin());
             }
         }
         else if(*_args.begin() == "sound")
@@ -3779,19 +3785,25 @@ void ModModule::processTask(std::list<std::string> _args)
             _args.pop_front();
             if(*_args.begin() == "register")
             {
-
+                _args.pop_front();
+                std::string id = *_args.begin();
+                _args.pop_front();
+                dLink->SoundRegister(id, *_args.begin());
             }
             else if(*_args.begin() == "erase")
             {
-
+                _args.pop_front();
+                dLink->SoundErase(*_args.begin());
             }
             else if(*_args.begin() == "load")
             {
-
+                _args.pop_front();
+                dLink->SoundLoad(*_args.begin());
             }
             else if(*_args.begin() == "unload")
             {
-
+                _args.pop_front();
+                dLink->SoundUnload(*_args.begin());
             }
         }
         else if(*_args.begin() == "font")
@@ -3799,19 +3811,25 @@ void ModModule::processTask(std::list<std::string> _args)
             _args.pop_front();
             if(*_args.begin() == "register")
             {
-
+                _args.pop_front();
+                std::string id = *_args.begin();
+                _args.pop_front();
+                dLink->FontRegister(id, *_args.begin());
             }
             else if(*_args.begin() == "erase")
             {
-
+                _args.pop_front();
+                dLink->FontErase(*_args.begin());
             }
             else if(*_args.begin() == "load")
             {
-
+                _args.pop_front();
+                dLink->FontLoad(*_args.begin());
             }
             else if(*_args.begin() == "unload")
             {
-
+                _args.pop_front();
+                dLink->FontUnload(*_args.begin());
             }
         }
         else if(*_args.begin() == "track")
@@ -3819,19 +3837,25 @@ void ModModule::processTask(std::list<std::string> _args)
             _args.pop_front();
             if(*_args.begin() == "register")
             {
-
+                _args.pop_front();
+                std::string id = *_args.begin();
+                _args.pop_front();
+                dLink->TrackRegister(id, *_args.begin());
             }
             else if(*_args.begin() == "erase")
             {
-
+                _args.pop_front();
+                dLink->TrackErase(*_args.begin());
             }
             else if(*_args.begin() == "load")
             {
-
+                _args.pop_front();
+                dLink->TrackLoad(*_args.begin());
             }
             else if(*_args.begin() == "unload")
             {
-
+                _args.pop_front();
+                dLink->TrackUnload(*_args.begin());
             }
         }
     }
