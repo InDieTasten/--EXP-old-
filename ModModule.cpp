@@ -3372,6 +3372,60 @@ void ModModule::processTask(std::list<std::string> _args)
                 dLink->pushEvent(x);
             }
         }
+        else if(*_args.begin() == "guiLabelTextColorC")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiLabelTextHover = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiLabelTextColorC");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiLabelTextHover));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiLabelTextColorB")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiLabelTextInactive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiLabelTextColorB");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiLabelTextInactive));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiLabelTextColorA")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiLabelTextActive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiLabelTextColorA");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiLabelTextActive));
+                dLink->pushEvent(x);
+            }
+        }
     }
     else if(*_args.begin() == "resource") //resource
     {
