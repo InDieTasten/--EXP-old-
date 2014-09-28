@@ -2202,6 +2202,853 @@ void ModModule::processTask(std::list<std::string> _args)
     else if(*_args.begin() == "settings") //settings
     {
         _args.pop_front();
+        if(*_args.begin() == "threadMeanAmount")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.threadMeanAmount = util::toInt(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("threadMeanAmount");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.threadMeanAmount));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "eventtaskMeanAmount")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.eventtaskMeanAmount = util::toInt(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("eventtaskMeanAmount");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.eventtaskMeanAmount));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "countResetInterval")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.countResetInterval = util::toFloat(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("countResetInterval");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.countResetInterval));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "dockWidth")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.dockWidth = util::toInt(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("dockWidth");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.dockWidth));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiDockBackgroundColorB")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiDockBackground = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiDockBackgroundColorB");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiDockBackground));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiDockBackgroundColorA")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiDockBackgroundHover = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiDockBackgroundColorA");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiDockBackgroundHover));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiDockBorderColorB")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiDockBorder = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiDockBorderColorB");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiDockBorder));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiDockBorderColorA")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiDockBorderHover = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiDockBorderColorA");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiDockBorderHover));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiDockItemBackgroundColorB")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiDockItemBackground = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiDockItemBackgroundColorB");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiDockItemBackground));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiDockItemBackgroundColorA")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiDockItemBackgroundHover = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiDockItemBackgroundColorA");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiDockItemBackgroundHover));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiDockItemBorderColorB")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiDockItemBorder = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiDockItemBorderColorB");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiDockItemBorder));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiDockItemBorderColorA")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiDockItemBorderHover = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiDockItemBorderColorA");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiDockItemBorderHover));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiMenuBorderColorB")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiMenuBorderInactive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiMenuBorderColorB");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiMenuBorderInactive));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiMenuBorderColorA")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiMenuBorderActive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiMenuBorderColorA");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiMenuBorderActive));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiMenuBackgroundColorB")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiMenuBackgroundInactive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiMenuBackgroundColorB");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiMenuBackgroundInactive));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiMenuBackgroundColorA")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiMenuBackgroundActive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiMenuBackgroundColorA");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiMenuBackgroundActive));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiMenuTitleBackgroundColorB")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiMenuTitleBackgroundInactive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiMenuTitleBackgroundColorB");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiMenuTitleBackgroundInactive));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiMenuTitleBackgroundColorA")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiMenuTitleBackgroundActive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiMenuTitleBackgroundColorA");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiMenuTitleBackgroundActive));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiMenuTitleTextColorB")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiMenuTitleTextInactive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiMenuTitleTextColorB");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiMenuTitleTextInactive));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiMenuTitleTextColorA")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiMenuTitleTextActive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiMenuTitleTextColorA");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiMenuTitleTextActive));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiButtonBackgroundColorC")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiButtonBackgroundHover = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiButtonBackgroundColorC");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiButtonBackgroundHover));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiButtonBackgroundColorB")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiButtonBackgroundInactive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiButtonBackgroundColorB");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiButtonBackgroundInactive));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiButtonBackgroundColorA")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiButtonBackgroundActive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiButtonBackgroundColorA");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiButtonBackgroundActive));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiButtonBorderColorC")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiButtonBorderHover = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiButtonBorderColorC");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiButtonBorderHover));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiButtonBorderColorB")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiButtonBorderInactive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiButtonBorderColorB");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiButtonBorderInactive));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiButtonBorderColorA")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiButtonBorderActive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiButtonBorderColorA");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiButtonBorderActive));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiButtonTextColorC")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiButtonTextHover = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiButtonTextColorC");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiButtonTextHover));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiButtonTextColorB")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiButtonTextInactive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiButtonTextColorB");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiButtonTextInactive));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiButtonTextColorA")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiButtonTextActive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiButtonTextColorA");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiButtonTextActive));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiHorsliderButtonBackgroundColorC")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiHorsliderButtonBackgroundHover = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiHorsliderButtonBackgroundColorC");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiHorsliderButtonBackgroundHover));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiHorsliderButtonBackgroundColorB")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiHorsliderButtonBackgroundInactive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiHorsliderButtonBackgroundColorB");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiHorsliderButtonBackgroundInactive));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiHorsliderButtonBackgroundColorA")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiHorsliderButtonBackgroundActive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiHorsliderButtonBackgroundColorA");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiHorsliderButtonBackgroundActive));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiHorsliderButtonBorderColorC")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiHorsliderButtonBorderHover = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiHorsliderButtonBorderColorC");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiHorsliderButtonBorderHover));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiHorsliderButtonBorderColorB")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiHorsliderButtonBorderInactive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiHorsliderButtonBorderColorB");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiHorsliderButtonBorderInactive));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiHorsliderButtonBorderColorA")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiHorsliderButtonBorderActive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiHorsliderButtonBorderColorA");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiHorsliderButtonBorderActive));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiHorsliderBarBackgroundColorB")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiHorsliderBarBackgroundInactive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiHorsliderBarBackgroundColorB");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiHorsliderBarBackgroundInactive));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiHorsliderBarBackgroundColorA")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiHorsliderBarBackgroundActive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiHorsliderBarBackgroundColorA");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiHorsliderBarBackgroundActive));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiHorsliderBarBorderColorB")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiHorsliderBarBorderInactive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiHorsliderBarBorderColorB");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiHorsliderBarBorderInactive));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiHorsliderBarBorderColorA")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiHorsliderBarBorderActive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiHorsliderBarBorderColorA");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiHorsliderBarBorderActive));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiHorsliderSliderBackgroundColorD")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiHorsliderSliderBackgroundMoving = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiHorsliderSliderBackgroundColorD");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiHorsliderSliderBackgroundMoving));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiHorsliderSliderBackgroundColorC")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiHorsliderSliderBackgroundHover = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiHorsliderSliderBackgroundColorC");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiHorsliderSliderBackgroundHover));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiHorsliderSliderBackgroundColorB")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiHorsliderSliderBackgroundInactive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiHorsliderSliderBackgroundColorB");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiHorsliderSliderBackgroundInactive));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiHorsliderSliderBackgroundColorA")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiHorsliderSliderBackgroundActive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiHorsliderSliderBackgroundColorA");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiHorsliderSliderBackgroundActive));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiHorsliderSliderBorderColorD")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiHorsliderSliderBorderMoving = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiHorsliderSliderBorderColorD");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiHorsliderSliderBorderMoving));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiHorsliderSliderBorderColorC")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiHorsliderSliderBorderHover = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiHorsliderSliderBorderColorC");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiHorsliderSliderBorderHover));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiHorsliderSliderBorderColorB")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiHorsliderSliderBorderInactive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiHorsliderSliderBorderColorB");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiHorsliderSliderBorderInactive));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiHorsliderSliderBorderColorA")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiHorsliderSliderBorderActive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiHorsliderSliderBorderColorA");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiHorsliderSliderBorderActive));
+                dLink->pushEvent(x);
+            }
+        }
+
     }
     else if(*_args.begin() == "resource") //resource
     {
