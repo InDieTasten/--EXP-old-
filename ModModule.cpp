@@ -3426,6 +3426,114 @@ void ModModule::processTask(std::list<std::string> _args)
                 dLink->pushEvent(x);
             }
         }
+        else if(*_args.begin() == "guiTextboxBackgroundColorC")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiTextboxBackgroundHover = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiTextboxBackgroundColorC");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiTextboxBackgroundHover));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiTextboxBackgroundColorB")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiTextboxBackgroundInactive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiTextboxBackgroundColorB");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiTextboxBackgroundInactive));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiTextboxBackgroundColorA")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiTextboxBackgroundActive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiTextboxBackgroundColorA");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiTextboxBackgroundActive));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiTextboxBorderColorC")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiTextboxBorderHover = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiTextboxBorderColorC");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiTextboxBorderHover));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiTextboxBorderColorB")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiTextboxBorderInactive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiTextboxBorderColorB");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiTextboxBorderInactive));
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "guiTextboxBorderColorA")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "set")
+            {
+                _args.pop_front();
+                dLink->settings.guiTextboxBorderActive = util::toColor(*_args.begin());
+            }
+            else if (*_args.begin() == "get")
+            {
+                std::list<std::string> x;
+                x.push_back("settings");
+                x.push_back("guiTextboxBorderColorA");
+                x.push_back("get");
+                x.push_back(util::toString(dLink->settings.guiTextboxBorderActive));
+                dLink->pushEvent(x);
+            }
+        }
     }
     else if(*_args.begin() == "resource") //resource
     {
