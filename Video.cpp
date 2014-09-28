@@ -5,14 +5,14 @@ Video::Video(std::string _id, std::string _path)
 {
     id = _id;
     path = _path;
-    *videofile_format_context = NULL;
-    *videofile_codec_context_video = NULL;
-    *videofile_codec_video = NULL;
-    *options_dict = NULL;
+    videofile_format_context = NULL;
+    videofile_codec_context_video = NULL;
+    videofile_codec_video = NULL;
+    options_dict = NULL;
     video_stream = -1;
-    *videofile_video_frame = NULL;
-    *videofile_video_frame_rgb = NULL;
-    *sws_ctx = NULL;
+    videofile_video_frame = NULL;
+    videofile_video_frame_rgb = NULL;
+    sws_ctx = NULL;
 }
 
 //DESTRUCTORS
@@ -27,7 +27,6 @@ void Video::load()
     if (avformat_open_input(&videofile_format_context, "test.avi", NULL, NULL) !=0)
     {
         std::cerr << "Error: avformat_open_input() failed! Maybe the file doesn't exist?" << std::endl;
-        return 1;
     };
     /*
     * Get stream information:
@@ -35,12 +34,12 @@ void Video::load()
     if (av_find_stream_info(videofile_format_context) < 0)
     {
         std::cerr << "Error: avformat_find_stream_info() failed!" << std::endl;
-        return 2;
+
     };
     /*
     * Dump file information:
     */
-    av_dump_format(videofile_format_context, 0, argv[1], 0);
+    av_dump_format(videofile_format_context, 0, path.c_str(), 0);
     /*
     * Find first video stream:
     */
@@ -55,7 +54,7 @@ void Video::load()
     if (video_stream == -1)
     {
         std::cerr << "Error: Couldn't find a video stream!" << std::endl;
-        return 3;
+
     };
     videofile_codec_context_video = videofile_format_context->streams[video_stream]->codec;
     /*
@@ -65,7 +64,7 @@ void Video::load()
     if (videofile_codec_video == NULL)
     {
         std::cerr << "Error: Unsupported video codec!" << std::endl;
-        return 4;
+
     };
     /*
     * Open codec:
@@ -74,11 +73,8 @@ void Video::load()
     if (avcodec_open(videofile_codec_context_video, videofile_codec_video) < 0)
     {
         std::cerr << "Error: Couldn't open video codec!" << std::endl;
-        return 5;
+
     };
 }
-void Video::unload()
-{
 
-}
 
