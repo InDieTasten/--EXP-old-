@@ -57,12 +57,6 @@
 		<Unit filename="Button.hpp">
 			<Option virtualFolder="GUI/Elements/" />
 		</Unit>
-		<Unit filename="Camera.cpp">
-			<Option virtualFolder="MemoryBank/Entites/" />
-		</Unit>
-		<Unit filename="Camera.hpp">
-			<Option virtualFolder="MemoryBank/Entites/" />
-		</Unit>
 		<Unit filename="Canvas.cpp">
 			<Option virtualFolder="GUI/Elements/" />
 		</Unit>
