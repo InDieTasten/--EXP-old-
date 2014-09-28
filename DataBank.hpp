@@ -17,6 +17,7 @@
 #include "Settings.hpp"
 #include "Level.hpp"
 #include "Debug.hpp"
+#include "Video.hpp"
 
 class DataBank
 {
@@ -28,6 +29,7 @@ private:
     std::list<Font>    fonts;
     std::list<Sound>   sounds;
     std::list<Track>   tracks;
+    std::list<Video>   videos;
 public:
     sf::RenderWindow *renderWindow;
     Level level;
