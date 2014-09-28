@@ -8,7 +8,6 @@
 #include "Sound.hpp"
 #include "Track.hpp"
 #include "SolarSystem.hpp"
-#include "Camera.hpp"
 #include "Script.hpp"
 #include <direct.h>
 #include <fstream>
@@ -24,11 +23,11 @@ class DataBank
     //MEMBERS
 private:
     std::list<KeyBind> keybindings;
-    std::list<Script> scripts;
+    std::list<Script>  scripts;
     std::list<Texture> textures;
-    std::list<Font> fonts;
-    std::list<Sound> sounds;
-    std::list<Track> tracks;
+    std::list<Font>    fonts;
+    std::list<Sound>   sounds;
+    std::list<Track>   tracks;
 public:
     sf::RenderWindow *renderWindow;
     Level level;
