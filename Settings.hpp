@@ -42,24 +42,24 @@ struct Settings
     int         guiButtonTextScale;
     std::string guiButtonFontID;
 
-    sf::Color   guiHorsliderButtonBackgroundInactive;
-    sf::Color   guiHorsliderButtonBackgroundActive;
-    sf::Color   guiHorsliderButtonBackgroundHover;
-    sf::Color   guiHorsliderButtonBorderInactive;
-    sf::Color   guiHorsliderButtonBorderActive;
-    sf::Color   guiHorsliderButtonBorderHover;
-    sf::Color   guiHorsliderBarBackgroundInactive;
-    sf::Color   guiHorsliderBarBackgroundActive;
-    sf::Color   guiHorsliderBarBorderInactive;
-    sf::Color   guiHorsliderBarBorderActive;
-    sf::Color   guiHorsliderSliderBackgroundInactive;
-    sf::Color   guiHorsliderSliderBackgroundActive;
-    sf::Color   guiHorsliderSliderBackgroundHover;
-    sf::Color   guiHorsliderSliderBackgroundMoving;
-    sf::Color   guiHorsliderSliderBorderInactive;
-    sf::Color   guiHorsliderSliderBorderActive;
-    sf::Color   guiHorsliderSliderBorderHover;
-    sf::Color   guiHorsliderSliderBorderMoving;
+    sf::Color   guiHorsliderButtonBackgroundInactive; //
+    sf::Color   guiHorsliderButtonBackgroundActive; //
+    sf::Color   guiHorsliderButtonBackgroundHover; //
+    sf::Color   guiHorsliderButtonBorderInactive; //
+    sf::Color   guiHorsliderButtonBorderActive; //
+    sf::Color   guiHorsliderButtonBorderHover; //
+    sf::Color   guiHorsliderBarBackgroundInactive; //
+    sf::Color   guiHorsliderBarBackgroundActive; //
+    sf::Color   guiHorsliderBarBorderInactive; //
+    sf::Color   guiHorsliderBarBorderActive; //
+    sf::Color   guiHorsliderSliderBackgroundInactive; //
+    sf::Color   guiHorsliderSliderBackgroundActive; //
+    sf::Color   guiHorsliderSliderBackgroundHover; //
+    sf::Color   guiHorsliderSliderBackgroundMoving; //
+    sf::Color   guiHorsliderSliderBorderInactive; //
+    sf::Color   guiHorsliderSliderBorderActive; //
+    sf::Color   guiHorsliderSliderBorderHover; //
+    sf::Color   guiHorsliderSliderBorderMoving; //
     int         guiHorsliderTextScale;
     std::string guiHorsliderFontID;
 
