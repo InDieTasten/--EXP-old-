@@ -102,13 +102,15 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                         {
                             tmpY = text.findCharacterPos(tmp).y;
                             tmp++;
-                        }while(tmp < content.size()+1 && tmpY < (float)y + sliderY);
+                        }
+                        while(tmp < content.size()+1 && tmpY < (float)y + sliderY);
                         tmp-=2;
                         do
                         {
                             tmpX = text.findCharacterPos(tmp).x;
                             tmp--;
-                        }while(tmpX > (float)x + sliderX && tmp < content.size()+1);
+                        }
+                        while(tmpX > (float)x + sliderX && tmp < content.size()+1);
                         tmp++;
                         position = tmp;
                     }
@@ -208,7 +210,8 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                     }
                     std::list<std::string> x;
                     x.push_back("textbox_update");
-                    x.push_back(_id);text.findCharacterPos(position);
+                    x.push_back(_id);
+                    text.findCharacterPos(position);
                     x.push_back(content);
                     dLink->pushEvent(x);
                     position++;
@@ -302,7 +305,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                 }
             }
         }
-    moveview(_x,_y);
+        moveview(_x,_y);
     }
 }
 void TextBox::handleSoftEvent(std::list<std::string> _args, int _x, int _y, std::string _id, std::string _mID)
