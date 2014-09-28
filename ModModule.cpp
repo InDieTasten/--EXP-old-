@@ -3754,6 +3754,86 @@ void ModModule::processTask(std::list<std::string> _args)
     else if(*_args.begin() == "resource") //resource
     {
         _args.pop_front();
+        if(*_args.begin() == "texture")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "register")
+            {
+
+            }
+            else if(*_args.begin() == "erase")
+            {
+
+            }
+            else if(*_args.begin() == "load")
+            {
+
+            }
+            else if(*_args.begin() == "unload")
+            {
+
+            }
+        }
+        else if(*_args.begin() == "sound")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "register")
+            {
+
+            }
+            else if(*_args.begin() == "erase")
+            {
+
+            }
+            else if(*_args.begin() == "load")
+            {
+
+            }
+            else if(*_args.begin() == "unload")
+            {
+
+            }
+        }
+        else if(*_args.begin() == "font")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "register")
+            {
+
+            }
+            else if(*_args.begin() == "erase")
+            {
+
+            }
+            else if(*_args.begin() == "load")
+            {
+
+            }
+            else if(*_args.begin() == "unload")
+            {
+
+            }
+        }
+        else if(*_args.begin() == "track")
+        {
+            _args.pop_front();
+            if(*_args.begin() == "register")
+            {
+
+            }
+            else if(*_args.begin() == "erase")
+            {
+
+            }
+            else if(*_args.begin() == "load")
+            {
+
+            }
+            else if(*_args.begin() == "unload")
+            {
+
+            }
+        }
     }
     else if(*_args.begin() == "delay")
     {
