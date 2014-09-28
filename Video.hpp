@@ -47,7 +47,7 @@ public:
     //DESTRUCTORS
 
     //METHODS
-
+    void load();
 
 };
 
