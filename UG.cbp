@@ -31,9 +31,14 @@
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-Wredundant-decls" />
+			<Add option="-Wunreachable-code" />
+			<Add option="-Wextra" />
+			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 			<Add directory="../UG_lua/include" />
 			<Add directory="../UG_sfml/include" />
+			<Add directory="../UG_libavc/include" />
 		</Compiler>
 		<Linker>
 			<Add library="sfml-audio" />
@@ -42,8 +47,13 @@
 			<Add library="sfml-window" />
 			<Add library="sfml-system" />
 			<Add library="..\UG_lua\src\Lua5.2.3\bin\Release\libLua5.2.3.a" />
+			<Add library="avcodec" />
+			<Add library="avformat" />
+			<Add library="avutil" />
+			<Add library="swscale" />
 			<Add directory="../UG_lua/src/Lua5.2.3/bin/Release" />
 			<Add directory="../UG_sfml/lib" />
+			<Add directory="../UG_libavc/lib" />
 		</Linker>
 		<Unit filename="Actor.cpp">
 			<Option virtualFolder="MemoryBank/Level/" />
@@ -230,6 +240,12 @@
 		</Unit>
 		<Unit filename="VertSlider.hpp">
 			<Option virtualFolder="GUI/Elements/" />
+		</Unit>
+		<Unit filename="Video.cpp">
+			<Option virtualFolder="MemoryBank/Entites/" />
+		</Unit>
+		<Unit filename="Video.hpp">
+			<Option virtualFolder="MemoryBank/Entites/" />
 		</Unit>
 		<Unit filename="main.cpp">
 			<Option virtualFolder="Processing/" />
