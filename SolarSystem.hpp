@@ -9,6 +9,9 @@ class SolarSystem
     //MEMBERS
 private:
 public:
+    std::string ID;
+    std::string Name;
+    std::string Description;
     std::list<SpaceObject> SpaceObjectList;
 
     //CONSTRUCTORS
