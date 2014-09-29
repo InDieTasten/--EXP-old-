@@ -19,7 +19,7 @@ void DataBank::TextureRegister(std::string _id, std::string _path)
     {
         if(it->id == _id)
         {
-            log("&f[MemBank]&e[Warning] Texture ID conflict. Recovery routine aborts registration");
+            log("[MemBank]&e[Warning] Texture ID conflict. Recovery routine aborts registration");
             return;
         }
     }
@@ -36,7 +36,7 @@ void DataBank::TextureErase(std::string _id)
             return;
         }
     }
-    log("&f[MemBank]&e[Warning] Tried erasing non-registered texture");
+    log("[MemBank]&e[Warning] Tried erasing non-registered texture");
 }
 void DataBank::TextureLoad(std::string _id)
 {
@@ -48,7 +48,7 @@ void DataBank::TextureLoad(std::string _id)
             return;
         }
     }
-    log("&f[MemBank]&e[Warning] Tried loading non-registered texture");
+    log("[MemBank]&e[Warning] Tried loading non-registered texture");
 }
 void DataBank::TextureUnload(std::string _id)
 {
@@ -60,7 +60,7 @@ void DataBank::TextureUnload(std::string _id)
             return;
         }
     }
-    log("&f[MemBank]&e[Warning] Tried unloading non-registered texture");
+    log("[MemBank]&e[Warning] Tried unloading non-registered texture");
 }
 sf::Texture* DataBank::TextureGet(std::string _id)
 {
@@ -71,7 +71,7 @@ sf::Texture* DataBank::TextureGet(std::string _id)
             return it->getImage();
         }
     }
-    log("&f[MemBank]&c[Error] Trying to load non-registered texture. In this case no recovery routine is available and the game might crash right after this message");
+    log("[MemBank]&c[Error] Trying to load non-registered texture. In this case no recovery routine is available and the game might crash right after this message");
 }
 
 void DataBank::FontRegister(std::string _id, std::string _path)
@@ -80,7 +80,7 @@ void DataBank::FontRegister(std::string _id, std::string _path)
     {
         if(it->id == _id)
         {
-            log("&f[MemBank]&e[Warning] Font ID conflict. Recovery routine aborts registration");
+            log("[MemBank]&e[Warning] Font ID conflict. Recovery routine aborts registration");
             return;
         }
     }
@@ -97,7 +97,7 @@ void DataBank::FontErase(std::string _id)
             return;
         }
     }
-    log("&f[MemBank]&e[Warning] Tried erasing non-registered font");
+    log("[MemBank]&e[Warning] Tried erasing non-registered font");
 }
 void DataBank::FontLoad(std::string _id)
 {
@@ -109,7 +109,7 @@ void DataBank::FontLoad(std::string _id)
             return;
         }
     }
-    log("&f[MemBank]&e[Warning] Tried loading non-registered font");
+    log("[MemBank]&e[Warning] Tried loading non-registered font");
 }
 void DataBank::FontUnload(std::string _id)
 {
@@ -121,7 +121,7 @@ void DataBank::FontUnload(std::string _id)
             return;
         }
     }
-    log("&f[MemBank]&e[Warning] Tried unloading non-registered font");
+    log("[MemBank]&e[Warning] Tried unloading non-registered font");
 }
 sf::Font* DataBank::FontGet(std::string _id)
 {
@@ -132,7 +132,7 @@ sf::Font* DataBank::FontGet(std::string _id)
             return it->getFont();
         }
     }
-    log("&f[MemBank]&c[Error] Trying to load non-registered font. In this case no recovery routine is available and the game might crash right after this message");
+    log("[MemBank]&c[Error] Trying to load non-registered font. In this case no recovery routine is available and the game might crash right after this message");
 }
 
 void DataBank::SoundRegister(std::string _id, std::string _path)
@@ -141,7 +141,7 @@ void DataBank::SoundRegister(std::string _id, std::string _path)
     {
         if(it->id == _id)
         {
-            log("&f[MemBank]&e[Warning] Sound ID conflict. Recovery routine aborts registration");
+            log("[MemBank]&e[Warning] Sound ID conflict. Recovery routine aborts registration");
             return;
         }
     }
@@ -158,7 +158,7 @@ void DataBank::SoundErase(std::string _id)
             return;
         }
     }
-    log("&f[MemBank]&e[Warning] Tried erasing non-registered sound");
+    log("[MemBank]&e[Warning] Tried erasing non-registered sound");
 }
 void DataBank::SoundLoad(std::string _id)
 {
@@ -170,7 +170,7 @@ void DataBank::SoundLoad(std::string _id)
             return;
         }
     }
-    log("&f[MemBank]&e[Warning] Tried loading non-registered sound");
+    log("[MemBank]&e[Warning] Tried loading non-registered sound");
 }
 void DataBank::SoundUnload(std::string _id)
 {
@@ -182,7 +182,7 @@ void DataBank::SoundUnload(std::string _id)
             return;
         }
     }
-    log("&f[MemBank]&e[Warning] Tried unloading non-registered sound");
+    log("[MemBank]&e[Warning] Tried unloading non-registered sound");
 }
 sf::SoundBuffer* DataBank::SoundGet(std::string _id)
 {
@@ -193,7 +193,7 @@ sf::SoundBuffer* DataBank::SoundGet(std::string _id)
             return it->getSound();
         }
     }
-    log("&f[MemBank]&c[Error] Trying to load non-registered sound. In this case no recovery routine is available and the game might crash right after this message");
+    log("[MemBank]&c[Error] Trying to load non-registered sound. In this case no recovery routine is available and the game might crash right after this message");
 }
 
 void DataBank::TrackRegister(std::string _id, std::string _path)
@@ -202,7 +202,7 @@ void DataBank::TrackRegister(std::string _id, std::string _path)
     {
         if(it->id == _id)
         {
-            log("&f[MemBank]&e[Warning] Track ID conflict. Recovery routine aborts registration");
+            log("[MemBank]&e[Warning] Track ID conflict. Recovery routine aborts registration");
             return;
         }
 
@@ -220,7 +220,7 @@ void DataBank::TrackErase(std::string _id)
             return;
         }
     }
-    log("&f[MemBank]&e[Warning] Tried erasing non-registered track");
+    log("[MemBank]&e[Warning] Tried erasing non-registered track");
 }
 void DataBank::TrackLoad(std::string _id)
 {
@@ -232,7 +232,7 @@ void DataBank::TrackLoad(std::string _id)
             return;
         }
     }
-    log("&f[MemBank]&e[Warning] Tried loading non-registered track");
+    log("[MemBank]&e[Warning] Tried loading non-registered track");
 }
 void DataBank::TrackUnload(std::string _id)
 {
@@ -244,7 +244,7 @@ void DataBank::TrackUnload(std::string _id)
             return;
         }
     }
-    log("&f[MemBank]&e[Warning] Tried unloading non-registered track");
+    log("[MemBank]&e[Warning] Tried unloading non-registered track");
 }
 sf::SoundBuffer* DataBank::TrackGet(std::string _id)
 {
@@ -255,7 +255,7 @@ sf::SoundBuffer* DataBank::TrackGet(std::string _id)
             return it->getTrack();
         }
     }
-    log("&f[MemBank]&c[Error] Trying to load non-registered track. In this case no recovery routine is available and the game might crash right after this message");
+    log("[MemBank]&c[Error] Trying to load non-registered track. In this case no recovery routine is available and the game might crash right after this message");
 }
 void DataBank::saveDataBank(std::string _path) //confusion
 {

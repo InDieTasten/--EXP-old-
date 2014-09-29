@@ -7,7 +7,7 @@
 void ModModule::Run()
 {
     GMutex.lock();
-    log("&f[ModModule][Info] Thread started");
+    log("[ModModule][Info] Thread started");
     std::list<Script> scripts;
     Script pluginLoader("./content/stock/scripts/plugin_loader.lua");
     scripts.push_back(pluginLoader);
@@ -105,7 +105,7 @@ void ModModule::Run()
         lua_call(it->state, 0, 0);
         lua_close(it->state);
     }
-    log("&f[ModModule][Info] Thread stopped");
+    log("[ModModule][Info] Thread stopped");
 }
 int ModModule::lPrint(lua_State *L)
 {
@@ -119,7 +119,7 @@ int ModModule::lPrint(lua_State *L)
         message.append(lua_tostring(L,i));
     }
     int x = 999;
-    log("&f[ModModule]"+message);
+    log("[ModModule]"+message);
     return 0;
 }
 int ModModule::lPushEvent(lua_State *L) // api.print("mein text hat ", 5, "Wörter")
