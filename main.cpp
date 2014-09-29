@@ -55,7 +55,7 @@ void StockKeybinds();
 
 int main ( int argc, char *argv[] )
 {
-    log("&f[Main][Info] Logger enabled");
+    log("[Main][Info] Logger enabled");
 
 
 
@@ -68,78 +68,78 @@ int main ( int argc, char *argv[] )
     ////////////////////
 
     ///// 1. DataBank
-    log("&f[Main][Info] Create Memory Mangager Instance...");
+    log("[Main][Info] Create Memory Mangager Instance...");
     DataBank dBank;
     dLink = &dBank;
 
     //App Instance
-    log("&f[Main][Info] Generate RenderDevice(Window)...");
+    log("[Main][Info] Generate RenderDevice(Window)...");
     sf::RenderWindow App(sf::VideoMode(1280, 720, 32), VERSION::name + " " + VERSION::version, sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
-    log("&f[Main][Info] Re-Apply view...");
+    log("[Main][Info] Re-Apply view...");
     dLink->gameView = App.getDefaultView();
     dLink->guiView = App.getDefaultView();
-    log("&f[Main][Info] Launch RenderLink...");
+    log("[Main][Info] Launch RenderLink...");
     dLink->renderWindow = &App;
 
     StockRegister();
     StockSettings();
 
     // 2. GUIManager
-    log("&f[Main][Info] Create GUI Instance...");
+    log("[Main][Info] Create GUI Instance...");
     GUIManager gManager;
     guiLink = &gManager;
 
     // 3. Processing
     //Graphics Engine
-    log("&f[Main][Info] Create Graphics Thread...");
+    log("[Main][Info] Create Graphics Thread...");
     GraphicsEngine graphicsThread;
     gLink = &graphicsThread;
-    log("&f[Main][Info] Relocate Render Thread...");
+    log("[Main][Info] Relocate Render Thread...");
     App.setActive(false);
 
     //Physics Engine
-    log("&f[Main][Info] Create Physics Thread...");
+    log("[Main][Info] Create Physics Thread...");
     sf::sleep(sf::seconds(0.05));
     PhysicsEngine physicsThread;
     pLink = &physicsThread;
 
     //Modding Module
-    log("&f[Main][Info] Create Plugin Handler...");
+    log("[Main][Info] Create Plugin Handler...");
     sf::sleep(sf::seconds(0.05));
     ModModule mModule;
     mLink = &mModule;
 
     //Event Manager
-    log("&f[Main][Info] Create Event Manager...");
+    log("[Main][Info] Create Event Manager...");
     sf::sleep(sf::seconds(0.05));
     EventManager EventMan;
 
     StockKeybinds();
 
     ////Create threads
-    log("&f[Main][Info] Create Mod- Thread");
+    log("[Main][Info] Create Mod- Thread");
     sf::Thread plTHREAD(&ModModule::Run, &mModule);
-    log("&f[Main][Info] Create Graphics- Thread");
+    log("[Main][Info] Create Graphics- Thread");
     sf::Thread grTHREAD(&GraphicsEngine::Run, &graphicsThread);
-    log("&f[Main][Info] Create Physics- Thread");
+    log("[Main][Info] Create Physics- Thread");
     sf::Thread phTHREAD(&PhysicsEngine::Run, &physicsThread);
 
-    log("&f[Main][Info] Link Mod- Thread");
+    log("[Main][Info] Link Mod- Thread");
     mThread = &plTHREAD;
-    log("&f[Main][Info] Link Graphics- Thread");
+    log("[Main][Info] Link Graphics- Thread");
     gThread = &grTHREAD;
-    log("&f[Main][Info] Link Physics- Thread");
+    log("[Main][Info] Link Physics- Thread");
     pThread = &phTHREAD;
 
-    log("&f[Main][Info] Launch Mod- Thread");
+    log("[Main][Info] Launch Mod- Thread");
     mThread->launch();
-    log("&f[Main][Info] Launch Graphics- Thread");
+    log("[Main][Info] Launch Graphics- Thread");
     gThread->launch();
-    log("&f[Main][Info] Launch Physics- Thread");
+    log("[Main][Info] Launch Physics- Thread");
     pThread->launch();
 
     GMutex.lock();
-    log("&f[Main][Info] Entering Event-Loop");
+    log("[Main][Info] Entering Event-Loop");
     GMutex.unlock();
 
 
@@ -229,10 +229,10 @@ void StockSettings()
 
     dLink->settings.guiMenuBorderInactive                = sf::Color(128,128,128,128);
     dLink->settings.guiMenuBorderActive                  = sf::Color(  0,255,  0,255);
-    dLink->settings.guiMenuBackgroundInactive            = sf::Color(  0,  0,  0, 64);
-    dLink->settings.guiMenuBackgroundActive              = sf::Color(  0,  0,  0,128);
-    dLink->settings.guiMenuTitleBackgroundInactive       = sf::Color(  0,  0,  0, 64);
-    dLink->settings.guiMenuTitleBackgroundActive         = sf::Color(  0,  0,  0,128);
+    dLink->settings.guiMenuBackgroundInactive            = sf::Color(  0,  0,  0,200);
+    dLink->settings.guiMenuBackgroundActive              = sf::Color(  0,  0,  0,230);
+    dLink->settings.guiMenuTitleBackgroundInactive       = sf::Color(  0,  0,  0,128);
+    dLink->settings.guiMenuTitleBackgroundActive         = sf::Color(  0,  0,  0,200);
     dLink->settings.guiMenuTitleTextInactive             = sf::Color(255,255,255,128);
     dLink->settings.guiMenuTitleTextActive               = sf::Color(255,255,255,255);
 
