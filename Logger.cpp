@@ -20,8 +20,8 @@ void log(std::string msg)
     strftime (T,14,"%j|%H:%M:%S",timeinfo);
 
 
-    std::cout <<  T << msg << std::endl;
+    std::cout << "&f" <<  T << msg << std::endl;
     std::stringstream ss;
-    ss << T << msg;
+    ss << "&f" << T << msg;
     logger.log(ss.str());
 }
