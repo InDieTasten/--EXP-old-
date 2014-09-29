@@ -2198,6 +2198,119 @@ void ModModule::processTask(std::list<std::string> _args)
     else if (*_args.begin() == "level") //level
     {
         _args.pop_front();
+        if(*_args.begin() == "list")
+        {
+            int counter = 1;
+            std::list<std::string> x;
+            x.push_back("level");
+            x.push_back("list");
+            x.push_back(util::toString(counter)); counter++;
+            x.push_back(dLink->level.activeSystem.ID);
+            dLink->pushEvent(x);
+            for(std::list<SolarSystem>::iterator it = dLink->level.inactiveSystems.begin(); it != dLink->level.inactiveSystems.end(); it++)
+            {
+                x.clear();
+                x.push_back("level");
+                x.push_back("list");
+                x.push_back(util::toString(counter)); counter++;
+                x.push_back(dLink->level.activeSystem.ID);
+                dLink->pushEvent(x);
+            }
+        }
+        else if(*_args.begin() == "add")
+        {
+            _args.pop_front();
+            SolarSystem tmp;
+            tmp.ID = *_args.begin();
+            dLink->level.inactiveSystems.push_back(tmp);
+        }
+        else if(*_args.begin() == "remove")
+        {
+            _args.pop_front();
+            if(dLink->level.activeSystem.ID == *_args.begin())
+            {
+                SolarSystem tmp;
+                tmp.ID = "NULL";
+                dLink->level.activeSystem = tmp;
+            }
+            for(std::list<SolarSystem>::iterator it = dLink->level.inactiveSystems.begin(); it != dLink->level.inactiveSystems.end(); it++)
+            {
+                if(it->ID == *_args.begin())
+                {
+                    dLink->level.inactiveSystems.erase(it);
+                    return;
+                }
+            }
+        }
+        else if(*_args.begin() == "access")
+        {
+            _args.pop_front();
+            SolarSystem* sys = NULL;
+            if(dLink->level.activeSystem.ID == *_args.begin())
+            {
+                sys = &dLink->level.activeSystem;
+            }
+            for(std::list<SolarSystem>::iterator it = dLink->level.inactiveSystems.begin(); it != dLink->level.inactiveSystems.end(); it++)
+            {
+                if(it->ID == *_args.begin())
+                {
+                    sys = &(*it);
+                    break;
+                }
+            }
+            if(sys)
+            {
+                _args.pop_front();
+                if(*_args.begin() == "property")
+                {
+                    _args.pop_front();
+                    if(*_args.begin() == "list")
+                    {
+
+                    }
+                    else if(*_args.begin() == "ID")
+                    {
+
+                    }
+                    else if(*_args.begin() == "name")
+                    {
+
+                    }
+                    else if(*_args.begin() == "description")
+                    {
+
+                    }
+                }
+                else if(*_args.begin() == "action")
+                {
+
+                }
+                else if(*_args.begin() == "object")
+                {
+                    _args.pop_front();
+                    if(*_args.begin() == "list")
+                    {
+
+                    }
+                    else if(*_args.begin() == "add")
+                    {
+
+                    }
+                    else if(*_args.begin() == "remove")
+                    {
+
+                    }
+                    else if(*_args.begin() == "access")
+                    {
+
+                    }
+                }
+            }
+            else
+            {
+                //failure
+            }
+        }
     }
     else if(*_args.begin() == "settings") //settings
     {
