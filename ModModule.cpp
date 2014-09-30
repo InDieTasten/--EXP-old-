@@ -2418,10 +2418,203 @@ void ModModule::processTask(std::list<std::string> _args)
                             if(*_args.begin() == "property")
                             {
                                 _args.pop_front();
-                                //WORK
+                                if(*_args.begin() == "ID")
+                                {
+                                    _args.pop_front();
+                                    if(*_args.begin() == "set")
+                                    {
+                                        _args.pop_front();
+                                        obj->ID = *_args.begin();
+                                    }
+                                    else if(*_args.begin() == "get")
+                                    {
+                                        std::list<std::string> x;
+                                        x.push_back("level");
+                                        x.push_back("access");
+                                        x.push_back(sys->ID);
+                                        x.push_back("object");
+                                        x.push_back("access");
+                                        x.push_back(obj->ID);
+                                        x.push_back("property");
+                                        x.push_back("ID");
+                                        x.push_back("get");
+                                        x.push_back(obj->ID);
+                                        dLink->pushEvent(x);
+                                    }
+                                }
+                                else if(*_args.begin() == "x")
+                                {
+                                    _args.pop_front();
+                                    if(*_args.begin() == "set")
+                                    {
+                                        _args.pop_front();
+                                        obj->Position.x = util::toDouble(*_args.begin());
+                                    }
+                                    else if(*_args.begin() == "get")
+                                    {
+                                        std::list<std::string> x;
+                                        x.push_back("level");
+                                        x.push_back("access");
+                                        x.push_back(sys->ID);
+                                        x.push_back("object");
+                                        x.push_back("access");
+                                        x.push_back(obj->ID);
+                                        x.push_back("property");
+                                        x.push_back("x");
+                                        x.push_back("get");
+                                        x.push_back(util::toString(obj->Position.x));
+                                        dLink->pushEvent(x);
+                                    }
+                                }
+                                else if(*_args.begin() == "y")
+                                {
+                                    _args.pop_front();
+                                    if(*_args.begin() == "set")
+                                    {
+                                        _args.pop_front();
+                                        obj->Position.y = util::toDouble(*_args.begin());
+                                    }
+                                    else if(*_args.begin() == "get")
+                                    {
+                                        std::list<std::string> x;
+                                        x.push_back("level");
+                                        x.push_back("access");
+                                        x.push_back(sys->ID);
+                                        x.push_back("object");
+                                        x.push_back("access");
+                                        x.push_back(obj->ID);
+                                        x.push_back("property");
+                                        x.push_back("y");
+                                        x.push_back("get");
+                                        x.push_back(util::toString(obj->Position.y));
+                                        dLink->pushEvent(x);
+                                    }
+                                }
+                                else if(*_args.begin() == "rotation")
+                                {
+                                    _args.pop_front();
+                                    if(*_args.begin() == "set")
+                                    {
+                                        _args.pop_front();
+                                        obj->Rotation = util::toFloat(*_args.begin());
+                                    }
+                                    else if(*_args.begin() == "get")
+                                    {
+                                        std::list<std::string> x;
+                                        x.push_back("level");
+                                        x.push_back("access");
+                                        x.push_back(sys->ID);
+                                        x.push_back("object");
+                                        x.push_back("access");
+                                        x.push_back(obj->ID);
+                                        x.push_back("property");
+                                        x.push_back("rotation");
+                                        x.push_back("get");
+                                        x.push_back(util::toString(obj->Rotation));
+                                        dLink->pushEvent(x);
+                                    }
+                                }
+                                else if(*_args.begin() == "dX")
+                                {
+                                    _args.pop_front();
+                                    if(*_args.begin() == "set")
+                                    {
+                                        _args.pop_front();
+                                        obj->Velocity.x = util::toDouble(*_args.begin());
+                                    }
+                                    else if(*_args.begin() == "get")
+                                    {
+                                        std::list<std::string> x;
+                                        x.push_back("level");
+                                        x.push_back("access");
+                                        x.push_back(sys->ID);
+                                        x.push_back("object");
+                                        x.push_back("access");
+                                        x.push_back(obj->ID);
+                                        x.push_back("property");
+                                        x.push_back("dX");
+                                        x.push_back("get");
+                                        x.push_back(util::toString(obj->Velocity.x));
+                                        dLink->pushEvent(x);
+                                    }
+                                }
+                                else if(*_args.begin() == "dY")
+                                {
+                                    _args.pop_front();
+                                    if(*_args.begin() == "set")
+                                    {
+                                        _args.pop_front();
+                                        obj->Velocity.y = util::toDouble(*_args.begin());
+                                    }
+                                    else if(*_args.begin() == "get")
+                                    {
+                                        std::list<std::string> x;
+                                        x.push_back("level");
+                                        x.push_back("access");
+                                        x.push_back(sys->ID);
+                                        x.push_back("object");
+                                        x.push_back("access");
+                                        x.push_back(obj->ID);
+                                        x.push_back("property");
+                                        x.push_back("dY");
+                                        x.push_back("get");
+                                        x.push_back(util::toString(obj->Velocity.y));
+                                        dLink->pushEvent(x);
+                                    }
+                                }
+                                else if(*_args.begin() == "mass")
+                                {
+                                    _args.pop_front();
+                                    if(*_args.begin() == "set")
+                                    {
+                                        _args.pop_front();
+                                        obj->Mass = util::toDouble(*_args.begin());
+                                    }
+                                    else if(*_args.begin() == "get")
+                                    {
+                                        std::list<std::string> x;
+                                        x.push_back("level");
+                                        x.push_back("access");
+                                        x.push_back(sys->ID);
+                                        x.push_back("object");
+                                        x.push_back("access");
+                                        x.push_back(obj->ID);
+                                        x.push_back("property");
+                                        x.push_back("mass");
+                                        x.push_back("get");
+                                        x.push_back(util::toString(obj->Mass));
+                                        dLink->pushEvent(x);
+                                    }
+                                }
+                                else if(*_args.begin() == "textureID")
+                                {
+                                    _args.pop_front();
+                                    if(*_args.begin() == "set")
+                                    {
+                                        _args.pop_front();
+                                        obj->TextureID = *_args.begin();
+                                    }
+                                    else if(*_args.begin() == "get")
+                                    {
+                                        std::list<std::string> x;
+                                        x.push_back("level");
+                                        x.push_back("access");
+                                        x.push_back(sys->ID);
+                                        x.push_back("object");
+                                        x.push_back("access");
+                                        x.push_back(obj->ID);
+                                        x.push_back("property");
+                                        x.push_back("textureID");
+                                        x.push_back("get");
+                                        x.push_back(obj->TextureID);
+                                        dLink->pushEvent(x);
+                                    }
+                                }
                             }
-                        } else {
-                            log("no object matching filter");
+                        }
+                        else
+                        {
+                            //failure
                         }
                     }
                 }
