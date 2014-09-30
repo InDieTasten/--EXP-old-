@@ -179,6 +179,12 @@ void HorSlider::handleEvent(sf::Event* _event, int _x, int _y, std::string _id, 
             {
                 value = min;
             }
+            std::list<std::string> x;
+            x.push_back("horslider_move");
+            x.push_back(_mID);
+            x.push_back(_id);
+            x.push_back(util::toString(value));
+            dLink->pushEvent(x);
         }
     }
     if(_event->type == sf::Event::MouseButtonReleased && isActive)
