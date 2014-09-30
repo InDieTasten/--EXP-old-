@@ -4,7 +4,6 @@ GUIManager::GUIManager()
 {
     add_StockButton();
     add_MainMenu();
-    add_OptionMenu();
     add_ConsoleMenu();
     add_CodeIDE();
 
@@ -304,49 +303,7 @@ void GUIManager::add_ConsoleMenu()
     console.update();
     guiMenus.push_back(console);
 }
-void GUIManager::add_OptionMenu()
-{
-    GUIMenu option;
-    option.ID = "$_optionMenu";
-    option.Enable();
-    option.SetX(dLink->settings.dockWidth+20);
-    option.SetY(60);
-    option.SetWidth(220);
-    option.SetHeight(220);
-    option.SetMenuTitle("--[[ SETTINGS ]]--");
-    option.scrollable = true;
-    option.totalWidth = 440;
-    option.totalHeight = 440;
 
-    GUIElement elem1;
-    elem1.ID = "$_optionMenu.test";
-    elem1.Type = "horslider";
-    elem1.X = 10;
-    elem1.Y = 10;
-    elem1.horSlider.max = 200;
-    elem1.horSlider.min = 1;
-    elem1.horSlider.Width = 200;
-    elem1.horSlider.Height = 16;
-    elem1.horSlider.ratio = 0.5;
-    elem1.horSlider.value = 10;
-    GUIElement elem2;
-    elem2.ID = "$_optionMenu.test2";
-    elem2.Type = "vertslider";
-    elem2.X = 10;
-    elem2.Y = 10;
-    elem2.vertSlider.max = 200;
-    elem2.vertSlider.min = 1;
-    elem2.vertSlider.Width = 16;
-    elem2.vertSlider.Height = 300;
-    elem2.vertSlider.ratio = 0.5;
-    elem2.vertSlider.value = 10;
-
-    option.GuiElements.push_back(elem1);
-    option.GuiElements.push_back(elem2);
-
-    option.update();
-    guiMenus.push_back(option);
-}
 void GUIManager::add_CodeIDE()
 {
     GUIMenu menu;
