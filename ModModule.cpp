@@ -2628,6 +2628,26 @@ void ModModule::processTask(std::list<std::string> _args)
             }
         }
     }
+    else if(*_args.begin() == "debug")
+    {
+        _args.pop_front();
+        if(*_args.begin() == "eventCounts")
+        {
+            std::list<std::string> x;
+            x.push_back("debug");
+            x.push_back("eventCounts");
+            x.push_back(util::toString(util::getMean(dLink->debug.eventCounts)));
+            dLink->pushEvent(x);
+        }
+        else if(*_args.begin() == "taskCounts")
+        {
+            std::list<std::string> x;
+            x.push_back("debug");
+            x.push_back("taskCounts");
+            x.push_back(util::toString(util::getMean(dLink->debug.taskCounts)));
+            dLink->pushEvent(x);
+        }
+    }
     else if(*_args.begin() == "settings") //settings
     {
         _args.pop_front();
