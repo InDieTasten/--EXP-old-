@@ -212,7 +212,7 @@ void StockRegister()
 void StockSettings()
 {
     dLink->settings.threadMeanAmount = 40;
-    dLink->settings.eventtaskMeanAmount = 5;
+    dLink->settings.eventtaskMeanAmount = 3;
     dLink->settings.countResetInterval = 1.0f;
 
     dLink->settings.dockWidth = 40;
