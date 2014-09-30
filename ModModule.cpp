@@ -2266,19 +2266,96 @@ void ModModule::processTask(std::list<std::string> _args)
                     _args.pop_front();
                     if(*_args.begin() == "list")
                     {
-                        //WORK
+                        std::list<std::string> x;
+                        x.push_back("level");
+                        x.push_back("access");
+                        x.push_back(sys->ID);
+                        x.push_back("property");
+                        x.push_back("list");
+                        x.push_back("1");
+                        x.push_back("ID");
+                        dLink->pushEvent(x);
+                        x.clear();
+                        x.push_back("level");
+                        x.push_back("access");
+                        x.push_back(sys->ID);
+                        x.push_back("property");
+                        x.push_back("list");
+                        x.push_back("2");
+                        x.push_back("name");
+                        dLink->pushEvent(x);
+                        x.clear();
+                        x.push_back("level");
+                        x.push_back("access");
+                        x.push_back(sys->ID);
+                        x.push_back("property");
+                        x.push_back("list");
+                        x.push_back("3");
+                        x.push_back("description");
+                        dLink->pushEvent(x);
                     }
                     else if(*_args.begin() == "ID")
                     {
-                        //WORK
+                        _args.pop_front();
+                        if(*_args.begin() == "set")
+                        {
+                            _args.pop_front();
+                            sys->ID = *_args.begin();
+                        }
+                        else if(*_args.begin() == "get")
+                        {
+                            std::list<std::string> x;
+                            x.push_back("level");
+                            x.push_back("access");
+                            x.push_back(sys->ID);
+                            x.push_back("property");
+                            x.push_back("ID");
+                            x.push_back("get");
+                            x.push_back(sys->ID);
+                            dLink->pushEvent(x);
+                        }
                     }
                     else if(*_args.begin() == "name")
                     {
-                        //WORK
+                        _args.pop_front();
+                        if(*_args.begin() == "set")
+                        {
+                            _args.pop_front();
+                            sys->Name = *_args.begin();
+                        }
+                        else if(*_args.begin() == "get")
+                        {
+                            std::list<std::string> x;
+                            x.push_back("level");
+                            x.push_back("access");
+                            x.push_back(sys->ID);
+                            x.push_back("property");
+                            x.push_back("name");
+                            x.push_back("get");
+                            x.push_back(sys->Name);
+                            dLink->pushEvent(x);
+                        }
                     }
                     else if(*_args.begin() == "description")
                     {
-                        //WORK
+                        _args.pop_front();
+                        if(*_args.begin() == "set")
+                        {
+                            _args.pop_front();
+                            sys->Description = *_args.begin();
+                        }
+                        else if(*_args.begin() == "get")
+                        {
+                            std::list<std::string> x;
+                            x.push_back("level");
+                            x.push_back("access");
+                            x.push_back(sys->ID);
+                            x.push_back("property");
+                            x.push_back("description");
+                            x.push_back("get");
+                            x.push_back(sys->Description);
+                            dLink->pushEvent(x);
+                        }
                     }
                 }
                 else if(*_args.begin() == "action")
