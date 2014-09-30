@@ -2360,26 +2360,69 @@ void ModModule::processTask(std::list<std::string> _args)
                 }
                 else if(*_args.begin() == "action")
                 {
-                    //WORK
+                    //ACTION
                 }
                 else if(*_args.begin() == "object")
                 {
                     _args.pop_front();
                     if(*_args.begin() == "list")
                     {
-                        //WORK
+                        std::list<std::string> x;
+                        int counter = 1;
+                        for(std::list<SpaceObject>::iterator obj = sys->SpaceObjectList.begin(); obj != sys->SpaceObjectList.end(); obj++)
+                        {
+                            x.clear();
+                            x.push_back("level");
+                            x.push_back("access");
+                            x.push_back(sys->ID);
+                            x.push_back("object");
+                            x.push_back("list");
+                            x.push_back(util::toString(counter)); counter++;
+                            x.push_back(obj->ID);
+                        }
                     }
                     else if(*_args.begin() == "add")
                     {
-                        //WORK
+                        _args.pop_front();
+                        SpaceObject obj;
+                        obj.ID = *_args.begin();
+                        sys->SpaceObjectList.push_back(obj);
                     }
                     else if(*_args.begin() == "remove")
                     {
-                        //WORK
+                        _args.pop_front();
+                        for(std::list<SpaceObject>::iterator obj = sys->SpaceObjectList.begin(); obj != sys->SpaceObjectList.end(); obj++)
+                        {
+                            if(obj->ID == *_args.begin())
+                            {
+                                sys->SpaceObjectList.erase(obj);
+                                return;
+                            }
+                        }
                     }
                     else if(*_args.begin() == "access")
                     {
-                        //WORK
+                        _args.pop_front();
+                        SpaceObject* obj = NULL;
+                        for(std::list<SpaceObject>::iterator it = sys->SpaceObjectList.begin(); it != sys->SpaceObjectList.end(); it++)
+                        {
+                            if(it->ID == *_args.begin())
+                            {
+                                obj = &(*it);
+                                return;
+                            }
+                        }
+                        if(obj)
+                        {
+                            _args.pop_front();
+                            if(*_args.begin() == "property")
+                            {
+                                _args.pop_front();
+                                //WORK
+                            }
+                        } else {
+                            log("no object matching filter");
+                        }
                     }
                 }
             }
