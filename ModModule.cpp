@@ -2204,7 +2204,8 @@ void ModModule::processTask(std::list<std::string> _args)
             std::list<std::string> x;
             x.push_back("level");
             x.push_back("list");
-            x.push_back(util::toString(counter)); counter++;
+            x.push_back(util::toString(counter));
+            counter++;
             x.push_back(dLink->level.activeSystem.ID);
             dLink->pushEvent(x);
             for(std::list<SolarSystem>::iterator it = dLink->level.inactiveSystems.begin(); it != dLink->level.inactiveSystems.end(); it++)
@@ -2212,7 +2213,8 @@ void ModModule::processTask(std::list<std::string> _args)
                 x.clear();
                 x.push_back("level");
                 x.push_back("list");
-                x.push_back(util::toString(counter)); counter++;
+                x.push_back(util::toString(counter));
+                counter++;
                 x.push_back(dLink->level.activeSystem.ID);
                 dLink->pushEvent(x);
             }
@@ -2377,7 +2379,8 @@ void ModModule::processTask(std::list<std::string> _args)
                             x.push_back(sys->ID);
                             x.push_back("object");
                             x.push_back("list");
-                            x.push_back(util::toString(counter)); counter++;
+                            x.push_back(util::toString(counter));
+                            counter++;
                             x.push_back(obj->ID);
                         }
                     }
