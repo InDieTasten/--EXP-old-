@@ -6,7 +6,7 @@
 namespace VERSION
 {
 std::string name = "[[Untitled Game]]";
-std::string version = "v0.9.4-pre-alpha";
+std::string version = "v0.9.5-pre-alpha (DEVELOPMENT VERSION)";
 }
 
 #endif // _VERSION_hpp_
