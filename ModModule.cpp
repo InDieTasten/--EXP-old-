@@ -7,7 +7,7 @@
 void ModModule::Run()
 {
     GMutex.lock();
-    console("[ModModule][Info] Thread started");
+    LOG::console("[ModModule][Info] Thread started");
     std::list<Script> scripts;
     Script pluginLoader("./content/stock/scripts/plugin_loader.lua");
     scripts.push_back(pluginLoader);
@@ -105,7 +105,7 @@ void ModModule::Run()
         lua_call(it->state, 0, 0);
         lua_close(it->state);
     }
-    console("[ModModule][Info] Thread stopped");
+    LOG::console("[ModModule][Info] Thread stopped");
 }
 int ModModule::lPrint(lua_State *L)
 {
@@ -119,7 +119,7 @@ int ModModule::lPrint(lua_State *L)
         message.append(lua_tostring(L,i));
     }
     int x = 999;
-    console("[ModModule]"+message);
+    LOG::console("[ModModule]"+message);
     return 0;
 }
 int ModModule::lPushEvent(lua_State *L) // api.print("mein text hat ", 5, "Wörter")
@@ -2028,7 +2028,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     {
                                                         _args.pop_front();
                                                         elem->canvas.Width = util::toInt(*_args.begin());
-                                                        console("&c[API][Info] Set complete");
+                                                        LOG::console("&c[API][Info] Set complete");
                                                     }
                                                     else if(*_args.begin() == "get")
                                                     {
@@ -2193,6 +2193,10 @@ void ModModule::processTask(std::list<std::string> _args)
         else if(*_args.begin() == "dock") // gui dock
         {
 
+        }
+        else
+        {
+            LOG::console("[ModModule]&e[Warning] No accessor called '" + *_args.begin() + "' !");
         }
     }
     else if (*_args.begin() == "level") //level
@@ -2626,6 +2630,10 @@ void ModModule::processTask(std::list<std::string> _args)
             {
                 //failure
             }
+        }
+        else
+        {
+            LOG::console("[ModModule]&e[Warning] No accessor called '" + *_args.begin() + "' !");
         }
     }
     else if(*_args.begin() == "debug")
@@ -4309,7 +4317,7 @@ void ModModule::processTask(std::list<std::string> _args)
         }
         else
         {
-            console("[ModModule]&e[Warning] No resource type labeled '" + *_args.begin() + "' !");
+            LOG::console("[ModModule]&e[Warning] No resource type labeled '" + *_args.begin() + "' !");
         }
     }
     else if(*_args.begin() == "delay")

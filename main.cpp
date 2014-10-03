@@ -55,7 +55,7 @@ void StockKeybinds();
 
 int main ( int argc, char *argv[] )
 {
-    console("[Main][Info] Logger enabled");
+    LOG::console("[Main][Info] Logger enabled");
 
 
 
@@ -68,78 +68,78 @@ int main ( int argc, char *argv[] )
     ////////////////////
 
     ///// 1. DataBank
-    console("[Main][Info] Create Memory Mangager Instance...");
+    LOG::console("[Main][Info] Create Memory Mangager Instance...");
     DataBank dBank;
     dLink = &dBank;
 
     //App Instance
-    console("[Main][Info] Generate RenderDevice(Window)...");
+    LOG::console("[Main][Info] Generate RenderDevice(Window)...");
     sf::RenderWindow App(sf::VideoMode(1280, 720, 32), VERSION::name + " " + VERSION::version, sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
-    console("[Main][Info] Re-Apply view...");
+    LOG::console("[Main][Info] Re-Apply view...");
     dLink->gameView = App.getDefaultView();
     dLink->guiView = App.getDefaultView();
-    console("[Main][Info] Launch RenderLink...");
+    LOG::console("[Main][Info] Launch RenderLink...");
     dLink->renderWindow = &App;
 
     StockRegister();
     StockSettings();
 
     // 2. GUIManager
-    console("[Main][Info] Create GUI Instance...");
+    LOG::console("[Main][Info] Create GUI Instance...");
     GUIManager gManager;
     guiLink = &gManager;
 
     // 3. Processing
     //Graphics Engine
-    console("[Main][Info] Create Graphics Thread...");
+    LOG::console("[Main][Info] Create Graphics Thread...");
     GraphicsEngine graphicsThread;
     gLink = &graphicsThread;
-    console("[Main][Info] Relocate Render Thread...");
+    LOG::console("[Main][Info] Relocate Render Thread...");
     App.setActive(false);
 
     //Physics Engine
-    console("[Main][Info] Create Physics Thread...");
+    LOG::console("[Main][Info] Create Physics Thread...");
     sf::sleep(sf::seconds(0.05));
     PhysicsEngine physicsThread;
     pLink = &physicsThread;
 
     //Modding Module
-    console("[Main][Info] Create Plugin Handler...");
+    LOG::console("[Main][Info] Create Plugin Handler...");
     sf::sleep(sf::seconds(0.05));
     ModModule mModule;
     mLink = &mModule;
 
     //Event Manager
-    console("[Main][Info] Create Event Manager...");
+    LOG::console("[Main][Info] Create Event Manager...");
     sf::sleep(sf::seconds(0.05));
     EventManager EventMan;
 
     StockKeybinds();
 
     ////Create threads
-    console("[Main][Info] Create Mod- Thread");
+    LOG::console("[Main][Info] Create Mod- Thread");
     sf::Thread plTHREAD(&ModModule::Run, &mModule);
-    console("[Main][Info] Create Graphics- Thread");
+    LOG::console("[Main][Info] Create Graphics- Thread");
     sf::Thread grTHREAD(&GraphicsEngine::Run, &graphicsThread);
-    console("[Main][Info] Create Physics- Thread");
+    LOG::console("[Main][Info] Create Physics- Thread");
     sf::Thread phTHREAD(&PhysicsEngine::Run, &physicsThread);
 
-    console("[Main][Info] Link Mod- Thread");
+    LOG::console("[Main][Info] Link Mod- Thread");
     mThread = &plTHREAD;
-    console("[Main][Info] Link Graphics- Thread");
+    LOG::console("[Main][Info] Link Graphics- Thread");
     gThread = &grTHREAD;
-    console("[Main][Info] Link Physics- Thread");
+    LOG::console("[Main][Info] Link Physics- Thread");
     pThread = &phTHREAD;
 
-    console("[Main][Info] Launch Mod- Thread");
+    LOG::console("[Main][Info] Launch Mod- Thread");
     mThread->launch();
-    console("[Main][Info] Launch Graphics- Thread");
+    LOG::console("[Main][Info] Launch Graphics- Thread");
     gThread->launch();
-    console("[Main][Info] Launch Physics- Thread");
+    LOG::console("[Main][Info] Launch Physics- Thread");
     pThread->launch();
 
     GMutex.lock();
-    console("[Main][Info] Entering Event-Loop");
+    LOG::console("[Main][Info] Entering Event-Loop");
     GMutex.unlock();
 
 
@@ -211,6 +211,8 @@ void StockRegister()
 }
 void StockSettings()
 {
+    dLink->settings.safemode                              =  true;
+
     dLink->settings.threadMeanAmount                      =   40;
     dLink->settings.eventtaskMeanAmount                   =    3;
     dLink->settings.countResetInterval                    = 1.0f;
