@@ -211,61 +211,61 @@ void StockRegister()
 }
 void StockSettings()
 {
-    dLink->settings.threadMeanAmount = 40;
-    dLink->settings.eventtaskMeanAmount = 3;
-    dLink->settings.countResetInterval = 1.0f;
+    dLink->settings.threadMeanAmount                      =   40;
+    dLink->settings.eventtaskMeanAmount                   =    3;
+    dLink->settings.countResetInterval                    = 1.0f;
 
-    dLink->settings.dockWidth = 40;
-
-
-    dLink->settings.guiDockBackground                    = sf::Color(  0,  0,  0,255);
-    dLink->settings.guiDockBackgroundHover               = sf::Color(  0, 64,  0,128);
-    dLink->settings.guiDockBorder                        = sf::Color(  0,255,  0,255);
-    dLink->settings.guiDockBorderHover                   = sf::Color(255,255,255,255);
-    dLink->settings.guiDockItemBackground                = sf::Color(  0,  0,  0,255);
-    dLink->settings.guiDockItemBackgroundHover           = sf::Color( 32, 32, 32,255);
-    dLink->settings.guiDockItemBorder                    = sf::Color(  0,255,  0,255);
-    dLink->settings.guiDockItemBorderHover               = sf::Color(255,255,255,255);
-
-    dLink->settings.guiMenuBorderInactive                = sf::Color(128,128,128,128);
-    dLink->settings.guiMenuBorderActive                  = sf::Color(  0,255,  0,255);
-    dLink->settings.guiMenuBackgroundInactive            = sf::Color(  0,  0,  0,200);
-    dLink->settings.guiMenuBackgroundActive              = sf::Color(  0,  0,  0,230);
-    dLink->settings.guiMenuTitleBackgroundInactive       = sf::Color(  0,  0,  0,128);
-    dLink->settings.guiMenuTitleBackgroundActive         = sf::Color(  0,  0,  0,200);
-    dLink->settings.guiMenuTitleTextInactive             = sf::Color(255,255,255,128);
-    dLink->settings.guiMenuTitleTextActive               = sf::Color(255,255,255,255);
-
-    dLink->settings.guiButtonBackgroundInactive          = sf::Color( 40, 40, 40, 64);
-    dLink->settings.guiButtonBackgroundActive            = sf::Color( 40, 40, 40,128);
-    dLink->settings.guiButtonBackgroundHover             = sf::Color( 40, 40, 40,255);
-    dLink->settings.guiButtonBorderInactive              = sf::Color( 80, 80, 80,128);
-    dLink->settings.guiButtonBorderActive                = sf::Color(  0,255,  0,128);
-    dLink->settings.guiButtonBorderHover                 = sf::Color(  0,255,  0,255);
-
-    dLink->settings.guiButtonTextInactive                = sf::Color(255,255,255, 80);
-    dLink->settings.guiButtonTextActive                  = sf::Color(255,255,255,160);
-    dLink->settings.guiButtonTextHover                   = sf::Color(255,255,255,255);
+    dLink->settings.dockWidth                             =   40;
 
 
-    dLink->settings.guiHorsliderButtonBackgroundInactive = sf::Color( 40, 40, 40, 64);
-    dLink->settings.guiHorsliderButtonBackgroundActive   = sf::Color( 40, 40, 40,128);
-    dLink->settings.guiHorsliderButtonBackgroundHover    = sf::Color( 40, 40, 40,255);
-    dLink->settings.guiHorsliderButtonBorderInactive     = sf::Color( 80, 80, 80,128);
-    dLink->settings.guiHorsliderButtonBorderActive       = sf::Color(  0,255,  0,128);
-    dLink->settings.guiHorsliderButtonBorderHover        = sf::Color(  0,255,  0,255);
-    dLink->settings.guiHorsliderBarBackgroundInactive    = sf::Color( 40, 40, 40, 64);
-    dLink->settings.guiHorsliderBarBackgroundActive      = sf::Color( 40, 40, 40,128);
-    dLink->settings.guiHorsliderBarBorderInactive        = sf::Color( 80, 80, 80,128);
-    dLink->settings.guiHorsliderBarBorderActive          = sf::Color(  0,255,  0,128);
-    dLink->settings.guiHorsliderSliderBackgroundInactive = sf::Color( 40, 40, 40, 64);
-    dLink->settings.guiHorsliderSliderBackgroundActive   = sf::Color( 40, 40, 40,128);
-    dLink->settings.guiHorsliderSliderBackgroundHover    = sf::Color( 40, 40, 40,255);
-    dLink->settings.guiHorsliderSliderBackgroundMoving   = sf::Color(  0,255,  0,255);
-    dLink->settings.guiHorsliderSliderBorderInactive     = sf::Color( 80, 80, 80,128);
-    dLink->settings.guiHorsliderSliderBorderActive       = sf::Color(  0,255,  0,128);
-    dLink->settings.guiHorsliderSliderBorderHover        = sf::Color(  0,255,  0,255);
-    dLink->settings.guiHorsliderSliderBorderMoving       = sf::Color(255,255,255,255);
+    dLink->settings.guiDockBackground                     = sf::Color(  0,  0,  0,255);
+    dLink->settings.guiDockBackgroundHover                = sf::Color(  0, 64,  0,128);
+    dLink->settings.guiDockBorder                         = sf::Color(  0,255,  0,255);
+    dLink->settings.guiDockBorderHover                    = sf::Color(255,255,255,255);
+    dLink->settings.guiDockItemBackground                 = sf::Color(  0,  0,  0,255);
+    dLink->settings.guiDockItemBackgroundHover            = sf::Color( 32, 32, 32,255);
+    dLink->settings.guiDockItemBorder                     = sf::Color(  0,255,  0,255);
+    dLink->settings.guiDockItemBorderHover                = sf::Color(255,255,255,255);
+
+    dLink->settings.guiMenuBorderInactive                 = sf::Color(128,128,128,128);
+    dLink->settings.guiMenuBorderActive                   = sf::Color(  0,255,  0,255);
+    dLink->settings.guiMenuBackgroundInactive             = sf::Color(  0,  0,  0,200);
+    dLink->settings.guiMenuBackgroundActive               = sf::Color(  0,  0,  0,230);
+    dLink->settings.guiMenuTitleBackgroundInactive        = sf::Color(  0,  0,  0,128);
+    dLink->settings.guiMenuTitleBackgroundActive          = sf::Color(  0,  0,  0,200);
+    dLink->settings.guiMenuTitleTextInactive              = sf::Color(255,255,255,128);
+    dLink->settings.guiMenuTitleTextActive                = sf::Color(255,255,255,255);
+
+    dLink->settings.guiButtonBackgroundInactive           = sf::Color( 40, 40, 40, 64);
+    dLink->settings.guiButtonBackgroundActive             = sf::Color( 40, 40, 40,128);
+    dLink->settings.guiButtonBackgroundHover              = sf::Color( 40, 40, 40,255);
+    dLink->settings.guiButtonBorderInactive               = sf::Color( 80, 80, 80,128);
+    dLink->settings.guiButtonBorderActive                 = sf::Color(  0,255,  0,128);
+    dLink->settings.guiButtonBorderHover                  = sf::Color(  0,255,  0,255);
+
+    dLink->settings.guiButtonTextInactive                 = sf::Color(255,255,255, 80);
+    dLink->settings.guiButtonTextActive                   = sf::Color(255,255,255,160);
+    dLink->settings.guiButtonTextHover                    = sf::Color(255,255,255,255);
+
+
+    dLink->settings.guiHorsliderButtonBackgroundInactive  = sf::Color( 40, 40, 40, 64);
+    dLink->settings.guiHorsliderButtonBackgroundActive    = sf::Color( 40, 40, 40,128);
+    dLink->settings.guiHorsliderButtonBackgroundHover     = sf::Color( 40, 40, 40,255);
+    dLink->settings.guiHorsliderButtonBorderInactive      = sf::Color( 80, 80, 80,128);
+    dLink->settings.guiHorsliderButtonBorderActive        = sf::Color(  0,255,  0,128);
+    dLink->settings.guiHorsliderButtonBorderHover         = sf::Color(  0,255,  0,255);
+    dLink->settings.guiHorsliderBarBackgroundInactive     = sf::Color( 40, 40, 40, 64);
+    dLink->settings.guiHorsliderBarBackgroundActive       = sf::Color( 40, 40, 40,128);
+    dLink->settings.guiHorsliderBarBorderInactive         = sf::Color( 80, 80, 80,128);
+    dLink->settings.guiHorsliderBarBorderActive           = sf::Color(  0,255,  0,128);
+    dLink->settings.guiHorsliderSliderBackgroundInactive  = sf::Color( 40, 40, 40, 64);
+    dLink->settings.guiHorsliderSliderBackgroundActive    = sf::Color( 40, 40, 40,128);
+    dLink->settings.guiHorsliderSliderBackgroundHover     = sf::Color( 40, 40, 40,255);
+    dLink->settings.guiHorsliderSliderBackgroundMoving    = sf::Color(  0,255,  0,255);
+    dLink->settings.guiHorsliderSliderBorderInactive      = sf::Color( 80, 80, 80,128);
+    dLink->settings.guiHorsliderSliderBorderActive        = sf::Color(  0,255,  0,128);
+    dLink->settings.guiHorsliderSliderBorderHover         = sf::Color(  0,255,  0,255);
+    dLink->settings.guiHorsliderSliderBorderMoving        = sf::Color(255,255,255,255);
 
     dLink->settings.guiVertsliderButtonBackgroundInactive = sf::Color( 40, 40, 40, 64);
     dLink->settings.guiVertsliderButtonBackgroundActive   = sf::Color( 40, 40, 40,128);
@@ -287,30 +287,30 @@ void StockSettings()
     dLink->settings.guiVertsliderSliderBorderMoving       = sf::Color(255,255,255,255);
 
 
-    dLink->settings.guiLabelTextInactive                 = sf::Color::Red;
-    dLink->settings.guiLabelTextActive                   = sf::Color::Red;
-    dLink->settings.guiLabelTextHover                    = sf::Color::Red;
+    dLink->settings.guiLabelTextInactive                  = sf::Color::Red;
+    dLink->settings.guiLabelTextActive                    = sf::Color::Red;
+    dLink->settings.guiLabelTextHover                     = sf::Color::Red;
 
-    dLink->settings.guiTextboxBackgroundInactive         = sf::Color::Red;
-    dLink->settings.guiTextboxBackgroundActive           = sf::Color::Red;
-    dLink->settings.guiTextboxBackgroundHover            = sf::Color::Red;
-    dLink->settings.guiTextboxBorderInactive             = sf::Color::Red;
-    dLink->settings.guiTextboxBorderActive               = sf::Color::Red;
-    dLink->settings.guiTextboxBorderHover                = sf::Color::Red;
+    dLink->settings.guiTextboxBackgroundInactive          = sf::Color::Red;
+    dLink->settings.guiTextboxBackgroundActive            = sf::Color::Red;
+    dLink->settings.guiTextboxBackgroundHover             = sf::Color::Red;
+    dLink->settings.guiTextboxBorderInactive              = sf::Color::Red;
+    dLink->settings.guiTextboxBorderActive                = sf::Color::Red;
+    dLink->settings.guiTextboxBorderHover                 = sf::Color::Red;
 
-    dLink->settings.guiMenuTitleTextScale = 12;
-    dLink->settings.guiButtonTextScale = 12;
-    dLink->settings.guiHorsliderTextScale = 12;
-    dLink->settings.guiVertsliderTextScale = 12;
-    dLink->settings.guiLabelTextScale = 12;
-    dLink->settings.guiTextboxTextScale = 12;
+    dLink->settings.guiMenuTitleTextScale                 = 12;
+    dLink->settings.guiButtonTextScale                    = 12;
+    dLink->settings.guiHorsliderTextScale                 = 12;
+    dLink->settings.guiVertsliderTextScale                = 12;
+    dLink->settings.guiLabelTextScale                     = 12;
+    dLink->settings.guiTextboxTextScale                   = 12;
 
-    dLink->settings.guiMenuTitleFontID  = "$_menuTitle";
-    dLink->settings.guiButtonFontID     = "$_menuTitle";
-    dLink->settings.guiHorsliderFontID  = "$_menuTitle";
-    dLink->settings.guiVertsliderFontID = "$_menuTitle";
-    dLink->settings.guiLabelFontID      = "$_menuTitle";
-    dLink->settings.guiTextboxFontID    = "$_menuTitle";
+    dLink->settings.guiMenuTitleFontID                    = "$_menuTitle";
+    dLink->settings.guiButtonFontID                       = "$_menuTitle";
+    dLink->settings.guiHorsliderFontID                    = "$_menuTitle";
+    dLink->settings.guiVertsliderFontID                   = "$_menuTitle";
+    dLink->settings.guiLabelFontID                        = "$_menuTitle";
+    dLink->settings.guiTextboxFontID                      = "$_menuTitle";
 }
 void StockKeybinds()
 {
