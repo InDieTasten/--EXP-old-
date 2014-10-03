@@ -7,7 +7,7 @@
 FileLogger logger;
 
 
-void log(std::string msg)
+void console(std::string msg)
 {
     time_t rawtime;
     struct tm * timeinfo;
