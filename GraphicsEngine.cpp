@@ -11,7 +11,7 @@ GraphicsEngine::GraphicsEngine()
 void GraphicsEngine::Run()
 {
     GMutex.lock();
-    log("[Graphics][Info] Thread launched");
+    console("[Graphics][Info] Thread launched");
     dLink->renderWindow->setActive(true);
     GMutex.unlock();
     sf::Clock limit;
@@ -51,7 +51,7 @@ void GraphicsEngine::Run()
         dLink->renderWindow->display();
         GMutex.unlock();
     }
-    log("[Graphics][Info] Thread stopped");
+    console("[Graphics][Info] Thread stopped");
     dLink->renderWindow->setActive(false);
 }
 void GraphicsEngine::Stop()
