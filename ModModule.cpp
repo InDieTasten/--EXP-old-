@@ -430,6 +430,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                     LOG::file("[ModModule][Info] Task end node reached...");
                                     _args.pop_front();
                                     it->ID = *_args.begin();
+                                    LOG::file("[ModModule][Info] Task instructions performed");
                                 }
                                 else if(*_args.begin() == "get") // gui menu access {ID} property id get
                                 {
@@ -452,6 +453,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                     LOG::file("[ModModule][Info] Task end node reached...");
                                     _args.pop_front();
                                     it->menuTitle.setString(*_args.begin());
+                                    LOG::file("[ModModule][Info] Task instructions performed");
                                 }
                                 else if(*_args.begin() == "get") // gui menu access {ID} property title get
                                 {
@@ -474,6 +476,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                     LOG::file("[ModModule][Info] Task end node reached...");
                                     _args.pop_front();
                                     it->X = util::toInt(*_args.begin());
+                                    LOG::file("[ModModule][Info] Task instructions performed");
                                 }
                                 else if(*_args.begin() == "get") // gui menu access {ID} property x get
                                 {
@@ -496,6 +499,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                     LOG::file("[ModModule][Info] Task end node reached...");
                                     _args.pop_front();
                                     it->Y = util::toInt(*_args.begin());
+                                    LOG::file("[ModModule][Info] Task instructions performed");
                                 }
                                 else if(*_args.begin() == "get") // gui menu access {ID} property y get
                                 {
@@ -518,6 +522,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                     LOG::file("[ModModule][Info] Task end node reached...");
                                     _args.pop_front();
                                     it->Width = util::toInt(*_args.begin());
+                                    LOG::file("[ModModule][Info] Task instructions performed");
                                 }
                                 else if(*_args.begin() == "get") // gui menu access {ID} property width get
                                 {
@@ -540,6 +545,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                     LOG::file("[ModModule][Info] Task end node reached...");
                                     _args.pop_front();
                                     it->Height = util::toInt(*_args.begin());
+                                    LOG::file("[ModModule][Info] Task instructions performed");
                                 }
                                 else if(*_args.begin() == "get") // gui menu access {ID} property height get
                                 {
@@ -562,6 +568,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                     LOG::file("[ModModule][Info] Task end node reached...");
                                     _args.pop_front();
                                     it->totalWidth = util::toInt(*_args.begin());
+                                    LOG::file("[ModModule][Info] Task instructions performed");
                                 }
                                 else if(*_args.begin() == "get") // gui menu access {ID} property widthT get
                                 {
@@ -584,6 +591,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                     LOG::file("[ModModule][Info] Task end node reached...");
                                     _args.pop_front();
                                     it->totalHeight = util::toInt(*_args.begin());
+                                    LOG::file("[ModModule][Info] Task instructions performed");
                                 }
                                 else if(*_args.begin() == "get") // gui menu access {ID} property heightT get
                                 {
@@ -606,6 +614,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                     LOG::file("[ModModule][Info] Task end node reached...");
                                     _args.pop_front();
                                     it->scrollX = util::toInt(*_args.begin());
+                                    LOG::file("[ModModule][Info] Task instructions performed");
                                 }
                                 else if(*_args.begin() == "get") // gui menu access {ID} property scrollX get
                                 {
@@ -628,6 +637,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                     LOG::file("[ModModule][Info] Task end node reached...");
                                     _args.pop_front();
                                     it->scrollY = util::toInt(*_args.begin());
+                                    LOG::file("[ModModule][Info] Task instructions performed");
                                 }
                                 else if(*_args.begin() == "get") // gui menu access {ID} property scrollY get
                                 {
@@ -650,6 +660,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                     LOG::file("[ModModule][Info] Task end node reached...");
                                     _args.pop_front();
                                     it->scrollable = util::toBool(*_args.begin());
+                                    LOG::file("[ModModule][Info] Task instructions performed");
                                 }
                                 else if(*_args.begin() == "get") // gui menu access {ID} property scrollable get
                                 {
@@ -672,6 +683,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                     LOG::file("[ModModule][Info] Task end node reached...");
                                     _args.pop_front();
                                     it->isActive = util::toBool(*_args.begin());
+                                    LOG::file("[ModModule][Info] Task instructions performed");
                                 }
                                 else if(*_args.begin() == "get") // gui menu access {ID} property active get
                                 {
@@ -694,6 +706,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                     LOG::file("[ModModule][Info] Task end node reached...");
                                     _args.pop_front();
                                     it->isHidden = !util::toBool(*_args.begin());
+                                    LOG::file("[ModModule][Info] Task instructions performed");
                                 }
                                 else if(*_args.begin() == "get") // gui menu access {ID} property visible get
                                 {
@@ -716,6 +729,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                     LOG::file("[ModModule][Info] Task end node reached...");
                                     _args.pop_front();
                                     it->BorderActive = util::toColor(*_args.begin());
+                                    LOG::file("[ModModule][Info] Task instructions performed");
                                 }
                                 else if(*_args.begin() == "get") // gui menu access {ID} property borderColorA get
                                 {
@@ -738,6 +752,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                     LOG::file("[ModModule][Info] Task end node reached...");
                                     _args.pop_front();
                                     it->BackgroundActive = util::toColor(*_args.begin());
+                                    LOG::file("[ModModule][Info] Task instructions performed");
                                 }
                                 else if(*_args.begin() == "get") // gui menu access {ID} property backgroundColorA get
                                 {
@@ -760,6 +775,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                     LOG::file("[ModModule][Info] Task end node reached...");
                                     _args.pop_front();
                                     it->TitleBackgroundActive = util::toColor(*_args.begin());
+                                    LOG::file("[ModModule][Info] Task instructions performed");
                                 }
                                 else if(*_args.begin() == "get") // gui menu access {ID} propertyt titleBackgroundColorA get
                                 {
@@ -782,6 +798,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                     LOG::file("[ModModule][Info] Task end node reached...");
                                     _args.pop_front();
                                     it->TitleTextActive = util::toColor(*_args.begin());
+                                    LOG::file("[ModModule][Info] Task instructions performed");
                                 }
                                 else if(*_args.begin() == "get") // gui menu access {ID} property titleTextColorA get
                                 {
@@ -804,6 +821,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                     LOG::file("[ModModule][Info] Task end node reached...");
                                     _args.pop_front();
                                     it->BorderInactive = util::toColor(*_args.begin());
+                                    LOG::file("[ModModule][Info] Task instructions performed");
                                 }
                                 else if(*_args.begin() == "get") // gui menu access {ID} property borderColorB get
                                 {
@@ -826,6 +844,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                     LOG::file("[ModModule][Info] Task end node reached...");
                                     _args.pop_front();
                                     it->BackgroundInactive = util::toColor(*_args.begin());
+                                    LOG::file("[ModModule][Info] Task instructions performed");
                                 }
                                 else if(*_args.begin() == "get") // gui menu access {ID} property backgroundColorB get
                                 {
@@ -848,6 +867,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                     LOG::file("[ModModule][Info] Task end node reached...");
                                     _args.pop_front();
                                     it->TitleBackgroundInactive = util::toColor(*_args.begin());
+                                    LOG::file("[ModModule][Info] Task instructions performed");
                                 }
                                 else if(*_args.begin() == "get") // gui menu access {ID} property titleBackgroundColorB get
                                 {
@@ -870,6 +890,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                     LOG::file("[ModModule][Info] Task end node reached...");
                                     _args.pop_front();
                                     it->TitleTextInactive = util::toColor(*_args.begin());
+                                    LOG::file("[ModModule][Info] Task instructions performed");
                                 }
                                 else if(*_args.begin() == "get") // gui menu access {ID} property titleTextColorB get
                                 {
@@ -917,6 +938,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                 _args.pop_front();
                                 e.ID = *_args.begin();
                                 it->GuiElements.push_back(e);
+                                LOG::file("[ModModule][Info] Task instructions performed");
                             }
                             else if(*_args.begin() == "remove") // gui menu access {ID} element remove
                             {
@@ -930,6 +952,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                         return;
                                     }
                                 }
+                                LOG::file("[ModModule][Info] Task instructions performed");
                             }
                             else if(*_args.begin() == "access") // gui menu access {ID} element access
                             {
@@ -1663,6 +1686,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     LOG::file("[ModModule][Info] Task end node reached...");
                                                     _args.pop_front();
                                                     elem->ID = *_args.begin();
+                                                    LOG::file("[ModModule][Info] Task instructions performed");
                                                 }
                                                 else if(*_args.begin() == "get")
                                                 {
@@ -1688,6 +1712,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     LOG::file("[ModModule][Info] Task end node reached...");
                                                     _args.pop_front();
                                                     elem->Type = *_args.begin();
+                                                    LOG::file("[ModModule][Info] Task instructions performed");
                                                 }
                                                 else if(*_args.begin() == "get")
                                                 {
@@ -1713,6 +1738,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     LOG::file("[ModModule][Info] Task end node reached...");
                                                     _args.pop_front();
                                                     elem->X = util::toInt(*_args.begin());
+                                                    LOG::file("[ModModule][Info] Task instructions performed");
                                                 }
                                                 else if(*_args.begin() == "get")
                                                 {
@@ -1738,6 +1764,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     LOG::file("[ModModule][Info] Task end node reached...");
                                                     _args.pop_front();
                                                     elem->Y = util::toInt(*_args.begin());
+                                                    LOG::file("[ModModule][Info] Task instructions performed");
                                                 }
                                                 else if(*_args.begin() == "get")
                                                 {
@@ -1765,6 +1792,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                                         LOG::file("[ModModule][Info] Task end node reached...");
                                                         _args.pop_front();
                                                         elem->button.Width = util::toInt(*_args.begin());
+                                                        LOG::file("[ModModule][Info] Task instructions performed");
                                                     }
                                                     else if(*_args.begin() == "get")
                                                     {
@@ -1790,6 +1818,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                                         LOG::file("[ModModule][Info] Task end node reached...");
                                                         _args.pop_front();
                                                         elem->button.Height = util::toInt(*_args.begin());
+                                                        LOG::file("[ModModule][Info] Task instructions performed");
                                                     }
                                                     else if(*_args.begin() == "get")
                                                     {
@@ -1815,6 +1844,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                                         LOG::file("[ModModule][Info] Task end node reached...");
                                                         _args.pop_front();
                                                         elem->button.Text = *_args.begin();
+                                                        LOG::file("[ModModule][Info] Task instructions performed");
                                                     }
                                                     else if(*_args.begin() == "get")
                                                     {
@@ -1843,6 +1873,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                                         LOG::file("[ModModule][Info] Task end node reached...");
                                                         _args.pop_front();
                                                         elem->label.DisplayText = *_args.begin();
+                                                        LOG::file("[ModModule][Info] Task instructions performed");
                                                     }
                                                     else if(*_args.begin() == "get")
                                                     {
@@ -1868,6 +1899,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                                         LOG::file("[ModModule][Info] Task end node reached...");
                                                         _args.pop_front();
                                                         elem->label.TextColorActive = util::toColor(*_args.begin());
+                                                        LOG::file("[ModModule][Info] Task instructions performed");
                                                     }
                                                     else if(*_args.begin() == "get")
                                                     {
@@ -1890,6 +1922,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                                         LOG::file("[ModModule][Info] Task end node reached...");
                                                         _args.pop_front();
                                                         elem->label.TextColorInactive = util::toColor(*_args.begin());
+                                                        LOG::file("[ModModule][Info] Task instructions performed");
                                                     }
                                                     else if(*_args.begin() == "get")
                                                     {
@@ -1915,6 +1948,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                                         LOG::file("[ModModule][Info] Task end node reached...");
                                                         _args.pop_front();
                                                         elem->horSlider.Width = util::toInt(*_args.begin());
+                                                        LOG::file("[ModModule][Info] Task instructions performed");
                                                     }
                                                     else if(*_args.begin() == "get")
                                                     {
@@ -1940,6 +1974,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                                         LOG::file("[ModModule][Info] Task end node reached...");
                                                         _args.pop_front();
                                                         elem->horSlider.Height = util::toInt(*_args.begin());
+                                                        LOG::file("[ModModule][Info] Task instructions performed");
                                                     }
                                                     else if(*_args.begin() == "get")
                                                     {
@@ -1965,6 +2000,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                                         LOG::file("[ModModule][Info] Task end node reached...");
                                                         _args.pop_front();
                                                         elem->horSlider.min = util::toFloat(*_args.begin());
+                                                        LOG::file("[ModModule][Info] Task instructions performed");
                                                     }
                                                     else if(*_args.begin() == "get")
                                                     {
@@ -1990,6 +2026,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                                         LOG::file("[ModModule][Info] Task end node reached...");
                                                         _args.pop_front();
                                                         elem->horSlider.max = util::toFloat(*_args.begin());
+                                                        LOG::file("[ModModule][Info] Task instructions performed");
                                                     }
                                                     else if(*_args.begin() == "get")
                                                     {
@@ -2015,6 +2052,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                                         LOG::file("[ModModule][Info] Task end node reached...");
                                                         _args.pop_front();
                                                         elem->horSlider.value = util::toFloat(*_args.begin());
+                                                        LOG::file("[ModModule][Info] Task instructions performed");
                                                     }
                                                     else if(*_args.begin() == "get")
                                                     {
@@ -2040,6 +2078,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                                         LOG::file("[ModModule][Info] Task end node reached...");
                                                         _args.pop_front();
                                                         elem->horSlider.ratio = util::toFloat(*_args.begin());
+                                                        LOG::file("[ModModule][Info] Task instructions performed");
                                                     }
                                                     else if(*_args.begin() == "get")
                                                     {
@@ -2068,7 +2107,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                                         LOG::file("[ModModule][Info] Task end node reached...");
                                                         _args.pop_front();
                                                         elem->canvas.Width = util::toInt(*_args.begin());
-                                                        LOG::console("&c[API][Info] Set complete");
+                                                        LOG::file("[ModModule][Info] Task instructions performed");
                                                     }
                                                     else if(*_args.begin() == "get")
                                                     {
@@ -2094,6 +2133,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                                         LOG::file("[ModModule][Info] Task end node reached...");
                                                         _args.pop_front();
                                                         elem->canvas.Height = util::toInt(*_args.begin());
+                                                        LOG::file("[ModModule][Info] Task instructions performed");
                                                     }
                                                     else if(*_args.begin() == "get")
                                                     {
@@ -2184,24 +2224,28 @@ void ModModule::processTask(std::list<std::string> _args)
                                                     LOG::file("[ModModule][Info] Task end node reached...");
                                                     elem->canvas.vertexbuffer.clear();
                                                     elem->canvas.shapebuffer.clear();
+                                                    LOG::file("[ModModule][Info] Task instructions performed");
                                                 }
                                                 else if(*_args.begin() == "display")
                                                 {
                                                     LOG::file("[ModModule][Info] Task end node reached...");
                                                     elem->canvas.vertex = elem->canvas.vertexbuffer;
                                                     elem->canvas.shapes  = elem->canvas.shapebuffer;
+                                                    LOG::file("[ModModule][Info] Task instructions performed");
                                                 }
                                                 else if(*_args.begin() == "setFillColor")
                                                 {
                                                     LOG::file("[ModModule][Info] Task end node reached...");
                                                     _args.pop_front();
                                                     elem->canvas.fillColor = util::toColor(*_args.begin());
+                                                    LOG::file("[ModModule][Info] Task instructions performed");
                                                 }
                                                 else if(*_args.begin() == "setOutlineColor")
                                                 {
                                                     LOG::file("[ModModule][Info] Task end node reached...");
                                                     _args.pop_front();
                                                     elem->canvas.outlineColor = util::toColor(*_args.begin());
+                                                    LOG::file("[ModModule][Info] Task instructions performed");
                                                 }
                                                 else if(*_args.begin() == "draw")
                                                 {
@@ -2223,6 +2267,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                                         x.line[1].color = elem->canvas.fillColor;
 
                                                         elem->canvas.vertexbuffer.push_back(x);
+                                                        LOG::file("[ModModule][Info] Task instructions performed");
                                                     }
                                                 }
                                             }
@@ -2276,6 +2321,7 @@ void ModModule::processTask(std::list<std::string> _args)
             SolarSystem tmp;
             tmp.ID = *_args.begin();
             dLink->level.inactiveSystems.push_back(tmp);
+            LOG::file("[ModModule][Info] Task instructions performed");
         }
         else if(*_args.begin() == "remove")
         {
@@ -2295,6 +2341,7 @@ void ModModule::processTask(std::list<std::string> _args)
                     return;
                 }
             }
+            LOG::file("[ModModule][Info] Task instructions performed");
         }
         else if(*_args.begin() == "access")
         {
@@ -2356,6 +2403,7 @@ void ModModule::processTask(std::list<std::string> _args)
                             LOG::file("[ModModule][Info] Task end node reached...");
                             _args.pop_front();
                             sys->ID = *_args.begin();
+                            LOG::file("[ModModule][Info] Task instructions performed");
                         }
                         else if(*_args.begin() == "get")
                         {
@@ -2378,6 +2426,7 @@ void ModModule::processTask(std::list<std::string> _args)
                             LOG::file("[ModModule][Info] Task end node reached...");
                             _args.pop_front();
                             sys->Name = *_args.begin();
+                            LOG::file("[ModModule][Info] Task instructions performed");
                         }
                         else if(*_args.begin() == "get")
                         {
@@ -2394,12 +2443,13 @@ void ModModule::processTask(std::list<std::string> _args)
                     }
                     else if(*_args.begin() == "description")
                     {
-                        LOG::file("[ModModule][Info] Task end node reached...");
                         _args.pop_front();
                         if(*_args.begin() == "set")
                         {
+                            LOG::file("[ModModule][Info] Task end node reached...");
                             _args.pop_front();
                             sys->Description = *_args.begin();
+                            LOG::file("[ModModule][Info] Task instructions performed");
                         }
                         else if(*_args.begin() == "get")
                         {
@@ -2446,6 +2496,7 @@ void ModModule::processTask(std::list<std::string> _args)
                         SpaceObject obj;
                         obj.ID = *_args.begin();
                         sys->SpaceObjectList.push_back(obj);
+                        LOG::file("[ModModule][Info] Task instructions performed");
                     }
                     else if(*_args.begin() == "remove")
                     {
@@ -2459,6 +2510,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                 return;
                             }
                         }
+                        LOG::file("[ModModule][Info] Task instructions performed");
                     }
                     else if(*_args.begin() == "access")
                     {
@@ -2486,6 +2538,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                         LOG::file("[ModModule][Info] Task end node reached...");
                                         _args.pop_front();
                                         obj->ID = *_args.begin();
+                                        LOG::file("[ModModule][Info] Task instructions performed");
                                     }
                                     else if(*_args.begin() == "get")
                                     {
@@ -2505,12 +2558,13 @@ void ModModule::processTask(std::list<std::string> _args)
                                 }
                                 else if(*_args.begin() == "x")
                                 {
-                                    LOG::file("[ModModule][Info] Task end node reached...");
                                     _args.pop_front();
                                     if(*_args.begin() == "set")
                                     {
+                                        LOG::file("[ModModule][Info] Task end node reached...");
                                         _args.pop_front();
                                         obj->Position.x = util::toDouble(*_args.begin());
+                                        LOG::file("[ModModule][Info] Task instructions performed");
                                     }
                                     else if(*_args.begin() == "get")
                                     {
@@ -2537,6 +2591,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                         LOG::file("[ModModule][Info] Task end node reached...");
                                         _args.pop_front();
                                         obj->Position.y = util::toDouble(*_args.begin());
+                                        LOG::file("[ModModule][Info] Task instructions performed");
                                     }
                                     else if(*_args.begin() == "get")
                                     {
@@ -2556,12 +2611,13 @@ void ModModule::processTask(std::list<std::string> _args)
                                 }
                                 else if(*_args.begin() == "rotation")
                                 {
-                                    LOG::file("[ModModule][Info] Task end node reached...");
                                     _args.pop_front();
                                     if(*_args.begin() == "set")
                                     {
+                                        LOG::file("[ModModule][Info] Task end node reached...");
                                         _args.pop_front();
                                         obj->Rotation = util::toFloat(*_args.begin());
+                                        LOG::file("[ModModule][Info] Task instructions performed");
                                     }
                                     else if(*_args.begin() == "get")
                                     {
@@ -2581,12 +2637,13 @@ void ModModule::processTask(std::list<std::string> _args)
                                 }
                                 else if(*_args.begin() == "dX")
                                 {
-                                    LOG::file("[ModModule][Info] Task end node reached...");
                                     _args.pop_front();
                                     if(*_args.begin() == "set")
                                     {
+                                        LOG::file("[ModModule][Info] Task end node reached...");
                                         _args.pop_front();
                                         obj->Velocity.x = util::toDouble(*_args.begin());
+                                        LOG::file("[ModModule][Info] Task instructions performed");
                                     }
                                     else if(*_args.begin() == "get")
                                     {
@@ -2606,12 +2663,13 @@ void ModModule::processTask(std::list<std::string> _args)
                                 }
                                 else if(*_args.begin() == "dY")
                                 {
-                                    LOG::file("[ModModule][Info] Task end node reached...");
                                     _args.pop_front();
                                     if(*_args.begin() == "set")
                                     {
+                                        LOG::file("[ModModule][Info] Task end node reached...");
                                         _args.pop_front();
                                         obj->Velocity.y = util::toDouble(*_args.begin());
+                                        LOG::file("[ModModule][Info] Task instructions performed");
                                     }
                                     else if(*_args.begin() == "get")
                                     {
@@ -2637,6 +2695,7 @@ void ModModule::processTask(std::list<std::string> _args)
                                         LOG::file("[ModModule][Info] Task end node reached...");
                                         _args.pop_front();
                                         obj->Mass = util::toDouble(*_args.begin());
+                                        LOG::file("[ModModule][Info] Task instructions performed");
                                     }
                                     else if(*_args.begin() == "get")
                                     {
@@ -2730,6 +2789,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.threadMeanAmount = util::toInt(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -2749,6 +2809,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.eventtaskMeanAmount = util::toInt(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -2768,6 +2829,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.countResetInterval = util::toFloat(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -2787,6 +2849,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.dockWidth = util::toInt(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -2806,6 +2869,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiDockBackground = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -2825,6 +2889,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiDockBackgroundHover = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -2844,6 +2909,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiDockBorder = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -2863,6 +2929,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiDockBorderHover = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -2882,6 +2949,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiDockItemBackground = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -2901,6 +2969,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiDockItemBackgroundHover = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -2920,6 +2989,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiDockItemBorder = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -2939,6 +3009,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiDockItemBorderHover = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -2958,6 +3029,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiMenuBorderInactive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -2977,6 +3049,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiMenuBorderActive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -2996,6 +3069,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiMenuBackgroundInactive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3015,6 +3089,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiMenuBackgroundActive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3034,6 +3109,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiMenuTitleBackgroundInactive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3053,6 +3129,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiMenuTitleBackgroundActive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3072,6 +3149,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiMenuTitleTextInactive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3091,6 +3169,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiMenuTitleTextActive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3110,6 +3189,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiButtonBackgroundHover = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3129,6 +3209,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiButtonBackgroundInactive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3148,6 +3229,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiButtonBackgroundActive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3167,6 +3249,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiButtonBorderHover = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3186,6 +3269,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiButtonBorderInactive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3205,6 +3289,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiButtonBorderActive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3224,6 +3309,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiButtonTextHover = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3243,6 +3329,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiButtonTextInactive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3262,6 +3349,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiButtonTextActive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3281,6 +3369,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiHorsliderButtonBackgroundHover = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3300,6 +3389,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiHorsliderButtonBackgroundInactive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3319,6 +3409,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiHorsliderButtonBackgroundActive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3338,6 +3429,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiHorsliderButtonBorderHover = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3357,6 +3449,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiHorsliderButtonBorderInactive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3376,6 +3469,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiHorsliderButtonBorderActive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3395,6 +3489,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiHorsliderBarBackgroundInactive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3414,6 +3509,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiHorsliderBarBackgroundActive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3433,6 +3529,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiHorsliderBarBorderInactive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3452,6 +3549,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiHorsliderBarBorderActive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3471,6 +3569,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiHorsliderSliderBackgroundMoving = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3490,6 +3589,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiHorsliderSliderBackgroundHover = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3509,6 +3609,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiHorsliderSliderBackgroundInactive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3528,6 +3629,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiHorsliderSliderBackgroundActive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3547,6 +3649,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiHorsliderSliderBorderMoving = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3566,6 +3669,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiHorsliderSliderBorderHover = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3585,6 +3689,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiHorsliderSliderBorderInactive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3604,6 +3709,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiHorsliderSliderBorderActive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3623,6 +3729,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiVertsliderButtonBackgroundHover = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3642,6 +3749,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiVertsliderButtonBackgroundInactive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3661,6 +3769,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiVertsliderButtonBackgroundActive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3680,6 +3789,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiVertsliderButtonBorderHover = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3699,6 +3809,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiVertsliderButtonBorderInactive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3718,6 +3829,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiVertsliderButtonBorderActive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3737,6 +3849,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiVertsliderBarBackgroundInactive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3756,6 +3869,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiVertsliderBarBackgroundActive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3775,6 +3889,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiVertsliderBarBorderInactive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3794,6 +3909,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiVertsliderBarBorderActive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3813,6 +3929,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiVertsliderSliderBackgroundMoving = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3832,6 +3949,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiVertsliderSliderBackgroundHover = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3851,6 +3969,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiVertsliderSliderBackgroundInactive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3870,6 +3989,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiVertsliderSliderBackgroundActive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3889,6 +4009,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiVertsliderSliderBorderMoving = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3908,6 +4029,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiVertsliderSliderBorderHover = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3927,6 +4049,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiVertsliderSliderBorderInactive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3946,6 +4069,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiVertsliderSliderBorderActive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3965,6 +4089,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiLabelTextHover = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -3984,6 +4109,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiLabelTextInactive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -4003,6 +4129,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiLabelTextActive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -4022,6 +4149,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiTextboxBackgroundHover = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -4041,6 +4169,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiTextboxBackgroundInactive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -4060,6 +4189,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiTextboxBackgroundActive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -4079,6 +4209,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiTextboxBorderHover = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -4098,6 +4229,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiTextboxBorderInactive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -4117,6 +4249,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiTextboxBorderActive = util::toColor(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -4136,6 +4269,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiMenuTitleTextScale = util::toInt(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -4155,6 +4289,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiButtonTextScale = util::toInt(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -4174,6 +4309,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiHorsliderTextScale = util::toInt(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -4193,6 +4329,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiVertsliderTextScale = util::toInt(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -4212,6 +4349,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiLabelTextScale = util::toInt(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -4231,6 +4369,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiTextboxTextScale = util::toInt(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -4250,6 +4389,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiMenuTitleFontID = *_args.begin();
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -4269,6 +4409,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiButtonFontID = *_args.begin();
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -4288,6 +4429,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiHorsliderFontID = *_args.begin();
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -4307,6 +4449,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiVertsliderFontID = *_args.begin();
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -4326,6 +4469,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiLabelFontID = *_args.begin();
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -4345,6 +4489,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->settings.guiTextboxFontID = *_args.begin();
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if (*_args.begin() == "get")
             {
@@ -4370,24 +4515,28 @@ void ModModule::processTask(std::list<std::string> _args)
                 std::string id = *_args.begin();
                 _args.pop_front();
                 dLink->TextureRegister(id, *_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if(*_args.begin() == "erase")
             {
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->TextureErase(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if(*_args.begin() == "load")
             {
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->TextureLoad(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if(*_args.begin() == "unload")
             {
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->TextureUnload(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
         }
         else if(*_args.begin() == "sound")
@@ -4400,24 +4549,28 @@ void ModModule::processTask(std::list<std::string> _args)
                 std::string id = *_args.begin();
                 _args.pop_front();
                 dLink->SoundRegister(id, *_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if(*_args.begin() == "erase")
             {
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->SoundErase(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if(*_args.begin() == "load")
             {
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->SoundLoad(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if(*_args.begin() == "unload")
             {
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->SoundUnload(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
         }
         else if(*_args.begin() == "font")
@@ -4430,24 +4583,28 @@ void ModModule::processTask(std::list<std::string> _args)
                 std::string id = *_args.begin();
                 _args.pop_front();
                 dLink->FontRegister(id, *_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if(*_args.begin() == "erase")
             {
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->FontErase(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if(*_args.begin() == "load")
             {
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->FontLoad(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if(*_args.begin() == "unload")
             {
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->FontUnload(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
         }
         else if(*_args.begin() == "track")
@@ -4460,24 +4617,28 @@ void ModModule::processTask(std::list<std::string> _args)
                 std::string id = *_args.begin();
                 _args.pop_front();
                 dLink->TrackRegister(id, *_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if(*_args.begin() == "erase")
             {
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->TrackErase(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if(*_args.begin() == "load")
             {
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->TrackLoad(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
             else if(*_args.begin() == "unload")
             {
                 LOG::file("[ModModule][Info] Task end node reached...");
                 _args.pop_front();
                 dLink->TrackUnload(*_args.begin());
+                LOG::file("[ModModule][Info] Task instructions performed");
             }
         }
         else
