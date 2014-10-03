@@ -55,7 +55,7 @@ void StockKeybinds();
 
 int main ( int argc, char *argv[] )
 {
-    log("[Main][Info] Logger enabled");
+    console("[Main][Info] Logger enabled");
 
 
 
@@ -68,78 +68,78 @@ int main ( int argc, char *argv[] )
     ////////////////////
 
     ///// 1. DataBank
-    log("[Main][Info] Create Memory Mangager Instance...");
+    console("[Main][Info] Create Memory Mangager Instance...");
     DataBank dBank;
     dLink = &dBank;
 
     //App Instance
-    log("[Main][Info] Generate RenderDevice(Window)...");
+    console("[Main][Info] Generate RenderDevice(Window)...");
     sf::RenderWindow App(sf::VideoMode(1280, 720, 32), VERSION::name + " " + VERSION::version, sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
-    log("[Main][Info] Re-Apply view...");
+    console("[Main][Info] Re-Apply view...");
     dLink->gameView = App.getDefaultView();
     dLink->guiView = App.getDefaultView();
-    log("[Main][Info] Launch RenderLink...");
+    console("[Main][Info] Launch RenderLink...");
     dLink->renderWindow = &App;
 
     StockRegister();
     StockSettings();
 
     // 2. GUIManager
-    log("[Main][Info] Create GUI Instance...");
+    console("[Main][Info] Create GUI Instance...");
     GUIManager gManager;
     guiLink = &gManager;
 
     // 3. Processing
     //Graphics Engine
-    log("[Main][Info] Create Graphics Thread...");
+    console("[Main][Info] Create Graphics Thread...");
     GraphicsEngine graphicsThread;
     gLink = &graphicsThread;
-    log("[Main][Info] Relocate Render Thread...");
+    console("[Main][Info] Relocate Render Thread...");
     App.setActive(false);
 
     //Physics Engine
-    log("[Main][Info] Create Physics Thread...");
+    console("[Main][Info] Create Physics Thread...");
     sf::sleep(sf::seconds(0.05));
     PhysicsEngine physicsThread;
     pLink = &physicsThread;
 
     //Modding Module
-    log("[Main][Info] Create Plugin Handler...");
+    console("[Main][Info] Create Plugin Handler...");
     sf::sleep(sf::seconds(0.05));
     ModModule mModule;
     mLink = &mModule;
 
     //Event Manager
-    log("[Main][Info] Create Event Manager...");
+    console("[Main][Info] Create Event Manager...");
     sf::sleep(sf::seconds(0.05));
     EventManager EventMan;
 
     StockKeybinds();
 
     ////Create threads
-    log("[Main][Info] Create Mod- Thread");
+    console("[Main][Info] Create Mod- Thread");
     sf::Thread plTHREAD(&ModModule::Run, &mModule);
-    log("[Main][Info] Create Graphics- Thread");
+    console("[Main][Info] Create Graphics- Thread");
     sf::Thread grTHREAD(&GraphicsEngine::Run, &graphicsThread);
-    log("[Main][Info] Create Physics- Thread");
+    console("[Main][Info] Create Physics- Thread");
     sf::Thread phTHREAD(&PhysicsEngine::Run, &physicsThread);
 
-    log("[Main][Info] Link Mod- Thread");
+    console("[Main][Info] Link Mod- Thread");
     mThread = &plTHREAD;
-    log("[Main][Info] Link Graphics- Thread");
+    console("[Main][Info] Link Graphics- Thread");
     gThread = &grTHREAD;
-    log("[Main][Info] Link Physics- Thread");
+    console("[Main][Info] Link Physics- Thread");
     pThread = &phTHREAD;
 
-    log("[Main][Info] Launch Mod- Thread");
+    console("[Main][Info] Launch Mod- Thread");
     mThread->launch();
-    log("[Main][Info] Launch Graphics- Thread");
+    console("[Main][Info] Launch Graphics- Thread");
     gThread->launch();
-    log("[Main][Info] Launch Physics- Thread");
+    console("[Main][Info] Launch Physics- Thread");
     pThread->launch();
 
     GMutex.lock();
-    log("[Main][Info] Entering Event-Loop");
+    console("[Main][Info] Entering Event-Loop");
     GMutex.unlock();
 
 
