@@ -1,6 +1,7 @@
 #ifndef _Logger_hpp_
 #define _Logger_hpp_
 
+#include "DataBank.hpp"
 #include <iostream>
 #include <time.h>
 #include <string>
@@ -8,6 +9,13 @@
 #include <stdio.h>
 #include <sstream>
 
-void console(std::string name);
+extern DataBank* dLink;
+
+namespace LOG
+{
+void console(std::string msg);
+void file(std::string msg);
+void safe(std::string msg);
+}
 
 #endif

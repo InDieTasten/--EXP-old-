@@ -4,6 +4,8 @@
 struct Settings
 {
     //Debug
+    bool safemode;
+
     int threadMeanAmount; //
     int eventtaskMeanAmount; //
     float countResetInterval; //

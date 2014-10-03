@@ -7,7 +7,7 @@
 FileLogger logger;
 
 
-void console(std::string msg)
+void LOG::console(std::string msg)
 {
     time_t rawtime;
     struct tm * timeinfo;
@@ -21,6 +21,40 @@ void console(std::string msg)
 
 
     std::cout << "&f" <<  T << msg << std::endl;
+    std::stringstream ss;
+    ss << "&f" << T << msg;
+    logger.log(ss.str());
+}
+void LOG::file(std::string msg)
+{
+    time_t rawtime;
+    struct tm * timeinfo;
+
+    char T[14];
+
+    time (&rawtime);
+    timeinfo = localtime (&rawtime);
+
+    strftime (T,14,"%j|%H:%M:%S",timeinfo);
+
+    std::stringstream ss;
+    ss << "&f" << T << msg;
+    logger.log(ss.str());
+}
+void LOG::safe(std::string msg)
+{
+    if(!dLink->settings.safemode)
+        return;
+    time_t rawtime;
+    struct tm * timeinfo;
+
+    char T[14];
+
+    time (&rawtime);
+    timeinfo = localtime (&rawtime);
+
+    strftime (T,14,"%j|%H:%M:%S",timeinfo);
+
     std::stringstream ss;
     ss << "&f" << T << msg;
     logger.log(ss.str());
