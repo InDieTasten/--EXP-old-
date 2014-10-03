@@ -25,10 +25,10 @@ extern "C" {
 
 
 // Thread Throttleling
-float mLimit =  30.0; //Cycles per second
-float gLimit =  30.0; //Cycles per second
-float pLimit =  30.0; //Cycles per second
-float mainLimit =  30.0; //Cycles per second
+float mLimit =  50.0; //Cycles per second
+float gLimit =  50.0; //Cycles per second
+float pLimit =  50.0; //Cycles per second
+float mainLimit =  50.0; //Cycles per second
 
 // Global accessors
 std::list< std::list<std::string> > eventBuffer;
