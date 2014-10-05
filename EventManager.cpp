@@ -7,6 +7,7 @@
 void EventManager::handleEvent(sf::Event *_event)
 {
     //Self-Management
+    mLink->handleEvent(_event);
     if (_event->type == sf::Event::KeyPressed && _event->key.code == sf::Keyboard::Escape || _event->type == sf::Event::Closed)
     {
         dLink->runGraphics = false;
