@@ -23,7 +23,7 @@ class DataBank
 {
     //MEMBERS
 private:
-    std::list<KeyBind> keybindings;
+
     std::list<Script>  scripts;
     std::list<Texture> textures;
     std::list<Font>    fonts;
@@ -31,6 +31,8 @@ private:
     std::list<Track>   tracks;
     std::list<Video>   videos;
 public:
+    std::list<KeyBind> keybindings; //WORK
+
     sf::RenderWindow *renderWindow;
     Level level;
     bool guiMode;
