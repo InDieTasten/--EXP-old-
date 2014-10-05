@@ -7,7 +7,7 @@ DataBank::DataBank()
     runGraphics = true;
     runPhysics = true;
     runModules = true;
-    guiMode = true;
+    guiMode = false;
 }
 
 //DESTRUCTORS

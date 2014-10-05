@@ -13,11 +13,11 @@
 #include <fstream>
 #include <sstream>
 #include "Logger.hpp"
-#include "KeyBind.hpp"
 #include "Settings.hpp"
 #include "Level.hpp"
 #include "Debug.hpp"
 #include "Video.hpp"
+#include "Action.hpp"
 
 class DataBank
 {
@@ -31,7 +31,7 @@ private:
     std::list<Track>   tracks;
     std::list<Video>   videos;
 public:
-    std::list<KeyBind> keybindings; //WORK
+    std::list<Action>  actions; //WORK
 
     sf::RenderWindow *renderWindow;
     Level level;
