@@ -48,6 +48,16 @@ void GUIManager::EditDockItemImage(std::string _itemid, std::string _imageid)
 
 void GUIManager::handleEvent(sf::Event *_event)
 {
+    if(!dLink->guiMode)
+    {
+        for(std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
+        {
+            it->isActive = false;
+            it->update();
+        }
+        return;
+    }
+
     if(_event->type == sf::Event::MouseMoved)
     {
         int x,y;
@@ -175,42 +185,46 @@ void GUIManager::update()
 void GUIManager::render()
 {
     //render the dock
-    dLink->renderWindow->draw(dock);
-    int i = 0;
-    for (std::list<GUIDockItem>::iterator it = dockButtons.begin(); it != dockButtons.end(); it++)
+    if(dLink->guiMode)
     {
-        sf::RectangleShape temp;
-        if(it->mouseHover)
+        dLink->renderWindow->draw(dock);
+        int i = 0;
+        for (std::list<GUIDockItem>::iterator it = dockButtons.begin(); it != dockButtons.end(); it++)
         {
-            temp.setPosition(2.0f,(float)(i*(dLink->settings.dockWidth+1)+2));
-            temp.setSize(sf::Vector2f((float)dLink->settings.dockWidth-2.0,(float)(i+1)*dLink->settings.dockWidth+i-(i*(dLink->settings.dockWidth+1)+2)));
-            temp.setFillColor(dLink->settings.guiDockItemBackgroundHover);
-            temp.setOutlineThickness(1.0f);
-            temp.setOutlineColor(dLink->settings.guiDockItemBorderHover);
-        }
-        else
-        {
-            temp.setPosition(2.0f,(float)(i*(dLink->settings.dockWidth+1)+2));
-            temp.setSize(sf::Vector2f((float)dLink->settings.dockWidth-2.0,(float)(i+1)*dLink->settings.dockWidth+i-(i*(dLink->settings.dockWidth+1)+2)));
-            temp.setFillColor(dLink->settings.guiDockItemBackground);
-            temp.setOutlineThickness(1.0f);
-            temp.setOutlineColor(dLink->settings.guiDockItemBorder);
-        }
-        dLink->renderWindow->draw(temp);
-        sf::Sprite temp2;
-        temp2.setTexture(*(dLink->TextureGet(it->ImageID)));
-        temp2.setPosition(3.0f, (float)(i*(dLink->settings.dockWidth+1)+3));
+            sf::RectangleShape temp;
+            if(it->mouseHover)
+            {
+                temp.setPosition(2.0f,(float)(i*(dLink->settings.dockWidth+1)+2));
+                temp.setSize(sf::Vector2f((float)dLink->settings.dockWidth-2.0,(float)(i+1)*dLink->settings.dockWidth+i-(i*(dLink->settings.dockWidth+1)+2)));
+                temp.setFillColor(dLink->settings.guiDockItemBackgroundHover);
+                temp.setOutlineThickness(1.0f);
+                temp.setOutlineColor(dLink->settings.guiDockItemBorderHover);
+            }
+            else
+            {
+                temp.setPosition(2.0f,(float)(i*(dLink->settings.dockWidth+1)+2));
+                temp.setSize(sf::Vector2f((float)dLink->settings.dockWidth-2.0,(float)(i+1)*dLink->settings.dockWidth+i-(i*(dLink->settings.dockWidth+1)+2)));
+                temp.setFillColor(dLink->settings.guiDockItemBackground);
+                temp.setOutlineThickness(1.0f);
+                temp.setOutlineColor(dLink->settings.guiDockItemBorder);
+            }
+            dLink->renderWindow->draw(temp);
+            sf::Sprite temp2;
+            temp2.setTexture(*(dLink->TextureGet(it->ImageID)));
+            temp2.setPosition(3.0f, (float)(i*(dLink->settings.dockWidth+1)+3));
 
-        temp2.setScale(((float)dLink->settings.dockWidth)/((float)dLink->TextureGet(it->ImageID)->getSize().x+4.0f),
-                       (((float)dLink->settings.dockWidth)/((float)dLink->TextureGet(it->ImageID)->getSize().y+4.0f)));
+            temp2.setScale(((float)dLink->settings.dockWidth)/((float)dLink->TextureGet(it->ImageID)->getSize().x+4.0f),
+                           (((float)dLink->settings.dockWidth)/((float)dLink->TextureGet(it->ImageID)->getSize().y+4.0f)));
 
-        dLink->renderWindow->draw(temp2);
-        i++;
+            dLink->renderWindow->draw(temp2);
+            i++;
+        }
     }
     //render the menus
     for (std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
     {
-        it->update();
+        if(dLink->guiMode)
+            it->update();
         it->render();
     }
 }
