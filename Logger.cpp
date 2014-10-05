@@ -40,6 +40,8 @@ void LOG::file(std::string msg)
     std::stringstream ss;
     ss << "&f" << T << msg;
     logger.log(ss.str());
+    if(dLink->settings.safemode)
+        std::cout << "&f" <<  T << msg << std::endl;
 }
 void LOG::safe(std::string msg)
 {
