@@ -223,8 +223,7 @@ void GUIManager::render()
     //render the menus
     for (std::list<GUIMenu>::iterator it = guiMenus.begin(); it != guiMenus.end(); it++)
     {
-        if(dLink->guiMode)
-            it->update();
+        it->update();
         it->render();
     }
 }
