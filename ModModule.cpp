@@ -4669,6 +4669,19 @@ void ModModule::handleEvent(sf::Event* _event)
     }
     else if(_event->type == sf::Event::KeyPressed)
     {
+        for(std::list<Action>::iterator act = dLink->actions.begin(); act != dLink->actions.end(); act++)
+        {
+            if(_event->type == act->ignitionDescriptor.type)
+            {
+                if(_event->key.code == act->ignitionDescriptor.key.code)
+                {
+                    std::list<std::string> x;
+                    x.push_back("action");
+                    x.push_back(act->name);
+                    dLink->pushEvent(x);
+                }
+            }
+        }
         std::list<std::string> x;
         x.push_back("keyPress");
         x.push_back(util::toString(_event->key.code));
