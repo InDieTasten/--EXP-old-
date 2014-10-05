@@ -12,6 +12,7 @@ extern std::list< std::list<std::string> > eventBuffer;
 
 extern DataBank* dLink;
 extern GUIManager* guiLink;
+extern ModModule* mLink;
 
 extern sf::Thread* gThread;
 extern sf::Thread* pThread;

@@ -4657,3 +4657,10 @@ void ModModule::processTask(std::list<std::string> _args)
         waitingTasks.push_back(x);
     }
 }
+void ModModule::handleEvent(sf::Event* _event)
+{
+    if(_event->type == sf::Event::MouseMoved)
+    {
+
+    }
+}
