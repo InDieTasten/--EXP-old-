@@ -4661,6 +4661,24 @@ void ModModule::handleEvent(sf::Event* _event)
 {
     if(_event->type == sf::Event::MouseMoved)
     {
-
+        std::list<std::string> x;
+        x.push_back("mouseMove");
+        x.push_back(util::toString(_event->mouseMove.x));
+        x.push_back(util::toString(_event->mouseMove.y));
+        dLink->pushEvent(x);
+    }
+    else if(_event->type == sf::Event::KeyPressed)
+    {
+        std::list<std::string> x;
+        x.push_back("keyPress");
+        x.push_back(util::toString(_event->key.code));
+        dLink->pushEvent(x);
+    }
+    else if(_event->type == sf::Event::KeyReleased)
+    {
+        std::list<std::string> x;
+        x.push_back("keyRelease");
+        x.push_back(util::toString(_event->key.code));
+        dLink->pushEvent(x);
     }
 }
