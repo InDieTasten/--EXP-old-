@@ -316,5 +316,13 @@ void StockSettings()
 }
 void StockKeybinds()
 {
-
+    KeyBind modeSwitch;
+    modeSwitch.action = "modeSwitch";
+    modeSwitch.alt = false;
+    modeSwitch.lControl = false;
+    modeSwitch.rControl = false;
+    modeSwitch.lShift = false;
+    modeSwitch.rShift = false;
+    modeSwitch.keyCode = sf::Keyboard::Tab;
+    dLink->keybindings.push_back(modeSwitch);
 }
