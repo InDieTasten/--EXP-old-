@@ -53,6 +53,14 @@ void EventManager::handleSoftEvent(std::list<std::string> _args)
             return;
         }
     }
+    if(*_args.begin() == "action")
+    {
+        _args.pop_front();
+        if(*_args.begin() == "modeSwitch")
+        {
+            dLink->guiMode = !dLink->guiMode;
+        }
+    }
 }
 void EventManager::handleTask(std::list<std::string> _args)
 {
