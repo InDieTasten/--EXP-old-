@@ -8,8 +8,8 @@ struct Debug
     std::list<float> tPhysSleep;
     std::list<float> tModSleep;
 
-    std::list<int> eventCounts;
-    std::list<int> taskCounts;
+    std::list<int> eventCounts; //
+    std::list<int> taskCounts; //
 
     int eventCount;
     int taskCount;
