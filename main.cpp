@@ -28,7 +28,7 @@ extern "C" {
 float mLimit =  60.0; //Cycles per second
 float gLimit =  60.0; //Cycles per second
 float pLimit =  60.0; //Cycles per second
-float mainLimit =  60.0; //Cycles per second
+float mainLimit =  100.0; //Cycles per second
 
 // Global accessors
 std::list< std::list<std::string> > eventBuffer;
@@ -316,13 +316,9 @@ void StockSettings()
 }
 void StockKeybinds()
 {
-    KeyBind modeSwitch;
-    modeSwitch.action = "modeSwitch";
-    modeSwitch.alt = false;
-    modeSwitch.lControl = false;
-    modeSwitch.rControl = false;
-    modeSwitch.lShift = false;
-    modeSwitch.rShift = false;
-    modeSwitch.keyCode = sf::Keyboard::Tab;
-    dLink->keybindings.push_back(modeSwitch);
+    Action modeSwitch;
+    modeSwitch.name = "modeSwitch";
+    modeSwitch.ignitionDescriptor.type = sf::Event::KeyPressed;
+    modeSwitch.ignitionDescriptor.key.code = sf::Keyboard::Tab;
+    dLink->actions.push_back(modeSwitch);
 }
