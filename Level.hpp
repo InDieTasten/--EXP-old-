@@ -8,6 +8,9 @@ class Level
 private:
 public:
     //MEMBERS
+    std::string name;
+    std::string description;
+
     SolarSystem activeSystem;
 
     std::list<SolarSystem> inactiveSystems;
