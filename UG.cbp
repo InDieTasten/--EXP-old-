@@ -55,6 +55,9 @@
 			<Add directory="../UG_sfml/lib" />
 			<Add directory="../UG_libavc/lib" />
 		</Linker>
+		<Unit filename="Action.hpp">
+			<Option virtualFolder="MemoryBank/Entites/" />
+		</Unit>
 		<Unit filename="Actor.cpp">
 			<Option virtualFolder="MemoryBank/Level/" />
 		</Unit>
@@ -141,9 +144,6 @@
 		</Unit>
 		<Unit filename="HorSlider.hpp">
 			<Option virtualFolder="GUI/Elements/" />
-		</Unit>
-		<Unit filename="KeyBind.hpp">
-			<Option virtualFolder="MemoryBank/Entites/" />
 		</Unit>
 		<Unit filename="Label.cpp">
 			<Option virtualFolder="GUI/Elements/" />
