@@ -7,7 +7,7 @@ class Level
 {
 private:
 public:
-    //MEMBERS
+    // MEMBERS
     std::string name;
     std::string description;
 
