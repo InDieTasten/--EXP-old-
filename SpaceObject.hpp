@@ -2,7 +2,6 @@
 #define _SpaceObject_hpp_
 
 #include "util.hpp"
-#include "Actor.hpp"
 #include <SFML\Graphics.hpp>
 #include "Vector.hpp"
 #include <list>
@@ -17,7 +16,6 @@ class SpaceObject
     //MEMBERS
 private:
 public:
-    Actor Controller;
     std::string ID;
     Vector Position; //units in kilometers
     float Rotation; //unit in radians
