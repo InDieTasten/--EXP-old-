@@ -1,6 +1,9 @@
 #ifndef _LocalControl_hpp_
 #define _LocalControl_hpp_
 
+#include <iostream>
+#include "Vector.hpp"
+#include <list>
 
 class LocalControl
 {
