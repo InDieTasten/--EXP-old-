@@ -77,6 +77,7 @@ int main ( int argc, char *argv[] )
     sf::RenderWindow App(sf::VideoMode(1280, 720, 32), VERSION::name + " " + VERSION::version, sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
     LOG::console("[Main][Info] Re-Apply view...");
     dLink->gameView = App.getDefaultView();
+    dLink->gameView.move(-640.0,-360.0);
     dLink->guiView = App.getDefaultView();
     LOG::console("[Main][Info] Launch RenderLink...");
     dLink->renderWindow = &App;
