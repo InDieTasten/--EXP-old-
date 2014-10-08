@@ -58,12 +58,6 @@
 		<Unit filename="Action.hpp">
 			<Option virtualFolder="MemoryBank/Entites/" />
 		</Unit>
-		<Unit filename="Actor.cpp">
-			<Option virtualFolder="MemoryBank/Level/" />
-		</Unit>
-		<Unit filename="Actor.hpp">
-			<Option virtualFolder="MemoryBank/Level/" />
-		</Unit>
 		<Unit filename="Button.cpp">
 			<Option virtualFolder="GUI/Elements/" />
 		</Unit>
@@ -156,6 +150,12 @@
 		</Unit>
 		<Unit filename="Level.hpp">
 			<Option virtualFolder="MemoryBank/Level/" />
+		</Unit>
+		<Unit filename="LocalControl.cpp">
+			<Option virtualFolder="MemoryBank/" />
+		</Unit>
+		<Unit filename="LocalControl.hpp">
+			<Option virtualFolder="MemoryBank/" />
 		</Unit>
 		<Unit filename="Logger.cpp">
 			<Option virtualFolder="Utilities/" />
