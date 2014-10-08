@@ -1,17 +1,18 @@
 #ifndef _LocalControl_hpp_
 #define _LocalControl_hpp_
 
+
 class LocalControl
 {
 public:
     LocalControl();
-    analyzeAction(std::list<std::string> _action);
+    void analyzeAction(std::list<std::string> _action);
 
-    float rotateTarget;
-    float translateForward;
-    float translateBack;
-    float translateLeft;
-    float translateRight;
+    Vector targetPoint; // 0 -> 359
+    float translateForward; // 0 -> 100
+    float translateBack; // 0 -> 100
+    float translateLeft; // 0 -> 100
+    float translateRight; // 0 -> 100
 };
 
 #endif // _LocalControl_hpp_
