@@ -4,7 +4,6 @@
 #include <iostream>
 #include "DataBank.hpp"
 #include "Vector.hpp"
-#include "Actor.hpp"
 #include "GUIManager.hpp"
 #include "GraphicsEngine.hpp"
 #include "PhysicsEngine.hpp"
