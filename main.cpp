@@ -322,4 +322,15 @@ void StockKeybinds()
     modeSwitch.ignitionDescriptor.type = sf::Event::KeyPressed;
     modeSwitch.ignitionDescriptor.key.code = sf::Keyboard::Tab;
     dLink->actions.push_back(modeSwitch);
+
+    Action startTranslateForward;
+    startTranslateForward.name = "startTranslateForward";
+    startTranslateForward.ignitionDescriptor.type = sf::Event::KeyPressed;
+    startTranslateForward.ignitionDescriptor.key.code = sf::Keyboard::W;
+    dLink->actions.push_back(startTranslateForward);
+    Action endTranslateForward;
+    endTranslateForward.name = "endTranslateForward";
+    endTranslateForward.ignitionDescriptor.type = sf::Event::KeyReleased;
+    endTranslateForward.ignitionDescriptor.key.code = sf::Keyboard::W;
+    dLink->actions.push_back(endTranslateForward);
 }
