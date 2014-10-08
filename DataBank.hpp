@@ -18,6 +18,7 @@
 #include "Debug.hpp"
 #include "Video.hpp"
 #include "Action.hpp"
+#include "LocalControl.hpp"
 
 class DataBank
 {
@@ -42,6 +43,7 @@ public:
 
     Settings settings;
     Debug debug;
+    LocalControl localCtrl;
 
     std::list<std::list<std::string> > softEvents;
     std::list<std::list<std::string> > softTasks;
