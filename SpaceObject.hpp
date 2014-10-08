@@ -22,6 +22,7 @@ public:
     Vector Velocity; //units in m/s
     double Mass; //unit in tons
     std::string TextureID;
+    bool flyByLocal;
 
     //CONSTRUCTORS
     SpaceObject();
