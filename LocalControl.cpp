@@ -2,7 +2,6 @@
 
 LocalControl::LocalControl()
 {
-    rotateTarget     = 0.0;
     translateForward = 0.0;
     translateBack    = 0.0;
     translateLeft    = 0.0;
@@ -13,10 +12,10 @@ void LocalControl::analyzeAction(std::list<std::string> _action)
     //assume "action" already cut away
     if(*_action.begin() == "targetPoint")
     {
-        _action.pop_front();
-        targetPoint.x = *_action.begin();
-        _action.pop_front();
-        targetPoint.y = *_action.begin();
+        ////WORK
+        //get mouse position
+        //translate to world coords
+        //set targetPoint
     }
     else if(*_action.begin() == "startTranslateForward")
     {
