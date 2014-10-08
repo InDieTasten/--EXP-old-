@@ -2,6 +2,7 @@
 #define _Level_hpp_
 
 #include "SolarSystem.hpp"
+#include "SpaceObject.hpp"
 
 class Level
 {
@@ -16,6 +17,7 @@ public:
     std::list<SolarSystem> inactiveSystems;
 
     //CONSTRUCTORS
+    Level();
     //DESTRUCTORS
     //METHODS
     void handleSoftEvent(std::list<std::string> _args);
