@@ -2310,7 +2310,7 @@ void ModModule::processTask(std::list<std::string> _args)
                 x.push_back("list");
                 x.push_back(util::toString(counter));
                 counter++;
-                x.push_back(dLink->level.activeSystem.ID);
+                x.push_back(it->ID);
                 dLink->pushEvent(x);
             }
         }
