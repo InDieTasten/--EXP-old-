@@ -42,6 +42,7 @@ void GraphicsEngine::Run()
             renderSprite.setOrigin(renderSprite.getLocalBounds().width/2.0f, renderSprite.getLocalBounds().height/2.0f);
             renderSprite.setRotation(it->Rotation);
             renderSprite.setPosition(it->Position.x, it->Position.y);
+            dLink->renderWindow->draw(renderSprite);
         }
         guiLink->update();
         dLink->renderWindow->setView(dLink->guiView);
