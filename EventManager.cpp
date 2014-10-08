@@ -36,6 +36,15 @@ void EventManager::handleSoftEvent(std::list<std::string> _args)
     // to the plugins
     eventBuffer.push_back(_args);
     //Handling events for the game
+    if(*_args.begin() == "action")
+    {
+        _args.pop_front();
+        dLink->localCtrl.analyzeAction(_args);
+        if(*_args.begin() == "modeSwitch")
+        {
+            dLink->guiMode = !dLink->guiMode;
+        }
+    }
     if(*_args.begin() == "button_released")
     {
         _args.pop_front();
@@ -51,14 +60,6 @@ void EventManager::handleSoftEvent(std::list<std::string> _args)
             GMutex.lock();
             dLink->renderWindow->close();
             return;
-        }
-    }
-    if(*_args.begin() == "action")
-    {
-        _args.pop_front();
-        if(*_args.begin() == "modeSwitch")
-        {
-            dLink->guiMode = !dLink->guiMode;
         }
     }
 }
