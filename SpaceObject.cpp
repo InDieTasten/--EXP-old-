@@ -5,7 +5,7 @@
 SpaceObject::SpaceObject()
 {
     TextureID = "$_missing";
-    flyByLocal = true;
+    flyByLocal = false;
 }
 
 //DESTRUCTORS
