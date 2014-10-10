@@ -8,7 +8,13 @@ void EventManager::handleEvent(sf::Event *_event)
 {
     //Self-Management
     mLink->handleEvent(_event);
-    if (_event->type == sf::Event::KeyPressed && _event->key.code == sf::Keyboard::Escape || _event->type == sf::Event::Closed)
+    if(_event->type == sf::Event::MouseMoved)
+    {
+        if(dLink->guiMode)
+            return;
+        dLink->localCtrl.targetPoint = Vector(dLink->renderWindow->mapPixelToCoords(sf::Mouse::getPosition(*dLink->renderWindow), dLink->gameView));
+    }
+    else if (_event->type == sf::Event::KeyPressed && _event->key.code == sf::Keyboard::Escape || _event->type == sf::Event::Closed)
     {
         dLink->runGraphics = false;
         dLink->runPhysics = false;
@@ -21,7 +27,7 @@ void EventManager::handleEvent(sf::Event *_event)
         dLink->renderWindow->close();
         return;
     }
-    if(_event->type == sf::Event::Resized)
+    else if(_event->type == sf::Event::Resized)
     {
         dLink->gameView = sf::View(sf::FloatRect(0.f, 0.f, static_cast<float>(dLink->renderWindow->getSize().x), static_cast<float>(dLink->renderWindow->getSize().y)));
         dLink->renderWindow->setView(dLink->gameView);
