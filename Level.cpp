@@ -12,7 +12,7 @@ Level::Level()
     SpaceObject obj;
     obj.ID = "default";
     obj.Position = Vector(0.0, 0.0);
-    obj.Velocity = Vector(0.0, 0.0);
+    obj.Velocity = Vector(100.0, 0.0);
     obj.Mass = 15.0;
     obj.TextureID = "$_missing";
     obj.flyByLocal = true;
