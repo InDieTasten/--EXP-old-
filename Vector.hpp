@@ -14,12 +14,14 @@ public:
     //CONSTRUCTORS
     Vector();
     Vector(double _x, double _y);
+    Vector(float _x, float _y);
     Vector(sf::Vector2f);
 
     //DESTRUCTORS
 
     //METHODS
     Vector operator+(const Vector&  other);
+    Vector operator+=(const Vector&  other);
     Vector operator-(const Vector&  other);
     Vector operator*(const Vector&  other);
     Vector operator/(const Vector&  other);
