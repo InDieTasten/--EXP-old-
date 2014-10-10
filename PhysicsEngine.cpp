@@ -46,7 +46,11 @@ void PhysicsEngine::Run()
                 {
                     it->Rotation += PI;
                 }
+
             }
+
+            // Calculate movement
+            it->Position += (it->Velocity*Vector(frametime, frametime));
         }
 
         GMutex.unlock();
