@@ -15,6 +15,7 @@ Level::Level()
     obj.Velocity = Vector(0.0, 0.0);
     obj.Mass = 15.0;
     obj.TextureID = "$_missing";
+    obj.flyByLocal = true;
 
     x.SpaceObjectList.push_back(obj);
     activeSystem = x;
