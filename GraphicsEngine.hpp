@@ -17,6 +17,7 @@ class GraphicsEngine
 {
     //MEMBERS
 private:
+    double PI;
     sf::Sprite renderSprite;
 public:
     //CONSTRUCTORS
