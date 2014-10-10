@@ -76,7 +76,7 @@ int main ( int argc, char *argv[] )
     sf::RenderWindow App(sf::VideoMode(1280, 720, 32), VERSION::name + " " + VERSION::version, sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
     LOG::console("[Main][Info] Re-Apply view...");
     dLink->gameView = App.getDefaultView();
-    dLink->gameView.move(-640.0,-360.0);
+    dLink->gameView.move(- (App.getSize().x / 2.0),- (App.getSize().y / 2.0));
     dLink->guiView = App.getDefaultView();
     LOG::console("[Main][Info] Launch RenderLink...");
     dLink->renderWindow = &App;
@@ -332,4 +332,37 @@ void StockKeybinds()
     endTranslateForward.ignitionDescriptor.type = sf::Event::KeyReleased;
     endTranslateForward.ignitionDescriptor.key.code = sf::Keyboard::W;
     dLink->actions.push_back(endTranslateForward);
+
+    Action startTranslateBack;
+    startTranslateBack.name = "startTranslateBack";
+    startTranslateBack.ignitionDescriptor.type = sf::Event::KeyPressed;
+    startTranslateBack.ignitionDescriptor.key.code = sf::Keyboard::S;
+    dLink->actions.push_back(startTranslateBack);
+    Action endTranslateBack;
+    endTranslateBack.name = "endTranslateBack";
+    endTranslateBack.ignitionDescriptor.type = sf::Event::KeyReleased;
+    endTranslateBack.ignitionDescriptor.key.code = sf::Keyboard::S;
+    dLink->actions.push_back(endTranslateBack);
+
+    Action startTranslateLeft;
+    startTranslateLeft.name = "startTranslateLeft";
+    startTranslateLeft.ignitionDescriptor.type = sf::Event::KeyPressed;
+    startTranslateLeft.ignitionDescriptor.key.code = sf::Keyboard::A;
+    dLink->actions.push_back(startTranslateLeft);
+    Action endTranslateLeft;
+    endTranslateLeft.name = "endTranslateLeft";
+    endTranslateLeft.ignitionDescriptor.type = sf::Event::KeyReleased;
+    endTranslateLeft.ignitionDescriptor.key.code = sf::Keyboard::A;
+    dLink->actions.push_back(endTranslateLeft);
+
+    Action startTranslateRight;
+    startTranslateRight.name = "startTranslateRight";
+    startTranslateRight.ignitionDescriptor.type = sf::Event::KeyPressed;
+    startTranslateRight.ignitionDescriptor.key.code = sf::Keyboard::D;
+    dLink->actions.push_back(startTranslateRight);
+    Action endTranslateRight;
+    endTranslateRight.name = "endTranslateRight";
+    endTranslateRight.ignitionDescriptor.type = sf::Event::KeyReleased;
+    endTranslateRight.ignitionDescriptor.key.code = sf::Keyboard::D;
+    dLink->actions.push_back(endTranslateRight);
 }
