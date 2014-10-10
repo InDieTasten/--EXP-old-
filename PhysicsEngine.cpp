@@ -33,7 +33,7 @@ void PhysicsEngine::Run()
         {
             dLink->debug.tPhysSleep.push_back(0.0);
         }
-        limit.restart();
+        frametime = limit.restart().asSeconds();
         GMutex.lock();
 
         for (std::list<SpaceObject>::iterator it = dLink->level.activeSystem.SpaceObjectList.begin(); it != dLink->level.activeSystem.SpaceObjectList.end(); it++)
@@ -42,15 +42,18 @@ void PhysicsEngine::Run()
             {
                 Vector seperation = dLink->localCtrl.targetPoint - it->Position;
                 it->Rotation = atan(seperation.y/seperation.x) + PI/2.0;
-                if(dLink->localCtrl.targetPoint.x <= 0)
+                if(dLink->localCtrl.targetPoint.x < 0)
                 {
                     it->Rotation += PI;
                 }
 
+                Vector forw(cos(it->Rotation),sin(it->Rotation));
+                forw *= Vector(dLink->localCtrl.translateForward,dLink->localCtrl.translateForward);
+                it->Velocity += forw;
             }
 
             // Calculate movement
-            it->Position += (it->Velocity*Vector(frametime, frametime));
+            it->Position = ( it->Position + it->Velocity);
         }
 
         GMutex.unlock();
