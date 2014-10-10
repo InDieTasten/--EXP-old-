@@ -3,6 +3,7 @@
 GraphicsEngine::GraphicsEngine()
 {
     dLink->runGraphics = true;
+    PI = 3.1415926535897932384626433832795028841971693993751f;
 }
 
 //DESTRUCTORS
@@ -40,7 +41,7 @@ void GraphicsEngine::Run()
         {
             renderSprite.setTexture(*dLink->TextureGet(it->TextureID));
             renderSprite.setOrigin(renderSprite.getLocalBounds().width/2.0f, renderSprite.getLocalBounds().height/2.0f);
-            renderSprite.setRotation(it->Rotation);
+            renderSprite.setRotation(it->Rotation *180 / PI);
             renderSprite.setPosition(it->Position.x, it->Position.y);
             dLink->renderWindow->draw(renderSprite);
         }
