@@ -36,13 +36,18 @@ void PhysicsEngine::Run()
         limit.restart();
         GMutex.lock();
 
-        //Set active actor to input when not in guiMode
-
-        //
-
-        //
-
-        //
+        for (std::list<SpaceObject>::iterator it = dLink->level.activeSystem.SpaceObjectList.begin(); it != dLink->level.activeSystem.SpaceObjectList.end(); it++)
+        {
+            if(it->flyByLocal) // input forces
+            {
+                Vector seperation = dLink->localCtrl.targetPoint - it->Position;
+                it->Rotation = atan(seperation.y/seperation.x) + PI/2.0;
+                if(dLink->localCtrl.targetPoint.x <= 0)
+                {
+                    it->Rotation += PI;
+                }
+            }
+        }
 
         GMutex.unlock();
     }
