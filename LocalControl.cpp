@@ -10,14 +10,7 @@ LocalControl::LocalControl()
 void LocalControl::analyzeAction(std::list<std::string> _action)
 {
     //assume "action" already cut away
-    if(*_action.begin() == "targetPoint")
-    {
-        ////WORK
-        //get mouse position
-        //translate to world coords
-        //set targetPoint
-    }
-    else if(*_action.begin() == "startTranslateForward")
+    if(*_action.begin() == "startTranslateForward")
     {
         translateForward = 100.0;
     }
