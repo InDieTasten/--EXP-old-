@@ -24,6 +24,7 @@ public:
     Vector operator+=(const Vector&  other);
     Vector operator-(const Vector&  other);
     Vector operator*(const Vector&  other);
+    Vector operator*=(const Vector&  other);
     Vector operator/(const Vector&  other);
 };
 
