@@ -159,14 +159,11 @@ void HorSlider::handleEvent(sf::Event* _event, int _x, int _y, std::string _id, 
     {
         mousex = _event->mouseMove.x;
         int mousey = _event->mouseMove.y;
-        hoverSlide = false;
-        if(mousey >= _y && mousey <= _y+Height)
-        {
-            if(mousex >= _x + Height+((ratio*(Width-2*Height))/2) + ((value-min)/(max-min))*(Width-2*Height-(ratio*(Width-2*Height))) - (ratio*(Width-2*Height))/2 && mousex <= _x + Height+((ratio*(Width-2*Height))/2) + ((value-min)/(max-min))*(Width-2*Height-(ratio*(Width-2*Height))) + (ratio*(Width-2*Height))/2 - 2)
-            {
-                hoverSlide = true;
-            }
-        }
+
+        hoverSlide = (mousey >= _y && mousey <= _y+Height && mousex >= _x + Height+((ratio*(Width-2*Height))/2) + ((value-min)/(max-min))*(Width-2*Height-(ratio*(Width-2*Height))) - (ratio*(Width-2*Height))/2 && mousex <= _x + Height+((ratio*(Width-2*Height))/2) + ((value-min)/(max-min))*(Width-2*Height-(ratio*(Width-2*Height))) + (ratio*(Width-2*Height))/2 - 2);
+        hoverDec = (mousex >= _x && mousex <= _x+Height && mousey >= _y && mousey <= _y+Height);
+        hoverInc = (mousex >= _x+Width-Height && mousex <= _x+Width && mousey >= _y && mousey <= _y+Height);
+
         if(moveSlide)
         {
             int depr = value;
@@ -196,10 +193,7 @@ void HorSlider::handleEvent(sf::Event* _event, int _x, int _y, std::string _id, 
     if(_event->type == sf::Event::MouseButtonReleased && isActive)
     {
         mousex = _event->mouseButton.x;
-        if(moveSlide)
-        {
-            moveSlide = false;
-        }
+        moveSlide = false;
     }
     if(_event->type == sf::Event::MouseButtonPressed && isActive)
     {
@@ -207,6 +201,16 @@ void HorSlider::handleEvent(sf::Event* _event, int _x, int _y, std::string _id, 
         if(hoverSlide)
         {
             moveSlide = true;
+        }
+        value += hoverInc*0.1f*(max-min);
+        value -= hoverDec*0.1f*(max-min);
+        if (value>max)
+        {
+            value = max;
+        }
+        if (value<min)
+        {
+            value = min;
         }
     }
     oldMouseX = mousex;
