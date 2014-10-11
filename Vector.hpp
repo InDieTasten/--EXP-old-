@@ -20,11 +20,13 @@ public:
     //DESTRUCTORS
 
     //METHODS
+
     Vector operator+(const Vector&  other);
-    Vector operator+=(const Vector&  other);
+    //Vector operator+=(const Vector&  other);
     Vector operator-(const Vector&  other);
     Vector operator*(const Vector&  other);
-    Vector operator*=(const Vector&  other);
+    Vector operator*(const float&  multiplier);
+    //Vector operator*=(const Vector&  other);
     Vector operator/(const Vector&  other);
 };
 
