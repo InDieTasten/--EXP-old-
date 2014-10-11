@@ -78,17 +78,17 @@ void HorSlider::Update(int _x, int _y, std::string _id, std::string _mID)
             incBox.setOutlineThickness(1.0f);
             incBox.setOutlineColor(ButtonBorderActive);
         }
-        if(hoverSlide)
+        if(moveSlide)
         {
-            if(moveSlide)
-            {
-                slider.setPosition((float) 2 + _x + Height+((ratio*(Width-2*Height))/2) + ((value-min)/(max-min))*(Width-2*Height-(ratio*(Width-2*Height))) - (ratio*(Width-2*Height))/2, (float)_y);
-                slider.setSize(sf::Vector2f((float) (-2) + _x + Height+((ratio*(Width-2*Height))/2) + ((value-min)/(max-min))*(Width-2*Height-(ratio*(Width-2*Height))) + (ratio*(Width-2*Height))/2 - (2 + _x + Height+((ratio*(Width-2*Height))/2) + ((value-min)/(max-min))*(Width-2*Height-(ratio*(Width-2*Height))) - (ratio*(Width-2*Height))/2), (float)_y+Height - (_y)));
-                slider.setFillColor(SliderBackgroundMoving);
-                slider.setOutlineThickness(1.0f);
-                slider.setOutlineColor(SliderBorderMoving);
-            }
-            else
+            slider.setPosition((float) 2 + _x + Height+((ratio*(Width-2*Height))/2) + ((value-min)/(max-min))*(Width-2*Height-(ratio*(Width-2*Height))) - (ratio*(Width-2*Height))/2, (float)_y);
+            slider.setSize(sf::Vector2f((float) (-2) + _x + Height+((ratio*(Width-2*Height))/2) + ((value-min)/(max-min))*(Width-2*Height-(ratio*(Width-2*Height))) + (ratio*(Width-2*Height))/2 - (2 + _x + Height+((ratio*(Width-2*Height))/2) + ((value-min)/(max-min))*(Width-2*Height-(ratio*(Width-2*Height))) - (ratio*(Width-2*Height))/2), (float)_y+Height - (_y)));
+            slider.setFillColor(SliderBackgroundMoving);
+            slider.setOutlineThickness(1.0f);
+            slider.setOutlineColor(SliderBorderMoving);
+        }
+        else
+        {
+            if(hoverSlide)
             {
                 slider.setPosition((float) 2 + _x + Height+((ratio*(Width-2*Height))/2) + ((value-min)/(max-min))*(Width-2*Height-(ratio*(Width-2*Height))) - (ratio*(Width-2*Height))/2, (float)_y);
                 slider.setSize(sf::Vector2f((float) (-2) + _x + Height+((ratio*(Width-2*Height))/2) + ((value-min)/(max-min))*(Width-2*Height-(ratio*(Width-2*Height))) + (ratio*(Width-2*Height))/2 - (2 + _x + Height+((ratio*(Width-2*Height))/2) + ((value-min)/(max-min))*(Width-2*Height-(ratio*(Width-2*Height))) - (ratio*(Width-2*Height))/2), (float)_y+Height - (_y)));
@@ -96,14 +96,15 @@ void HorSlider::Update(int _x, int _y, std::string _id, std::string _mID)
                 slider.setOutlineThickness(1.0f);
                 slider.setOutlineColor(SliderBorderHover);
             }
-        }
-        else
-        {
-            slider.setPosition((float) 2 + _x + Height+((ratio*(Width-2*Height))/2) + ((value-min)/(max-min))*(Width-2*Height-(ratio*(Width-2*Height))) - (ratio*(Width-2*Height))/2, (float)_y);
-            slider.setSize(sf::Vector2f((float) (-2) + _x + Height+((ratio*(Width-2*Height))/2) + ((value-min)/(max-min))*(Width-2*Height-(ratio*(Width-2*Height))) + (ratio*(Width-2*Height))/2 - (2 + _x + Height+((ratio*(Width-2*Height))/2) + ((value-min)/(max-min))*(Width-2*Height-(ratio*(Width-2*Height))) - (ratio*(Width-2*Height))/2), (float)_y+Height - (_y)));
-            slider.setFillColor(SliderBackgroundActive);
-            slider.setOutlineThickness(1.0f);
-            slider.setOutlineColor(SliderBorderActive);
+            else
+            {
+                slider.setPosition((float) 2 + _x + Height+((ratio*(Width-2*Height))/2) + ((value-min)/(max-min))*(Width-2*Height-(ratio*(Width-2*Height))) - (ratio*(Width-2*Height))/2, (float)_y);
+                slider.setSize(sf::Vector2f((float) (-2) + _x + Height+((ratio*(Width-2*Height))/2) + ((value-min)/(max-min))*(Width-2*Height-(ratio*(Width-2*Height))) + (ratio*(Width-2*Height))/2 - (2 + _x + Height+((ratio*(Width-2*Height))/2) + ((value-min)/(max-min))*(Width-2*Height-(ratio*(Width-2*Height))) - (ratio*(Width-2*Height))/2), (float)_y+Height - (_y)));
+                slider.setFillColor(SliderBackgroundActive);
+                slider.setOutlineThickness(1.0f);
+                slider.setOutlineColor(SliderBorderActive);
+            }
+
         }
         bar.setPosition((float)_x+7, (float)_y+Height/2-2);
         bar.setSize(sf::Vector2f((float)_x + Width-7-(_x+7), (float)_y+Height/2+2-(_y+Height/2-2)));
