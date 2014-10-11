@@ -105,12 +105,16 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                         }
                         while(tmp < content.size()+1 && tmpY < (float)y + sliderY);
                         tmp-=2;
-                        do
+                        if(!((float)x + sliderX > text.findCharacterPos(tmp).x))
                         {
-                            tmpX = text.findCharacterPos(tmp).x;
-                            tmp--;
+                            do
+                            {
+                                tmpX = text.findCharacterPos(tmp).x;
+                                tmp--;
+                            }
+                            while(tmpX > ((float)x+2.0f) + sliderX && tmp < content.size()+1);
                         }
-                        while(tmpX > (float)x + sliderX && tmp < content.size()+1);
+
                         tmp++;
                         position = tmp;
                     }
@@ -148,9 +152,9 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                 }
                 if(_event->key.code == sf::Keyboard::Up)
                 {
-                    if(text.findCharacterPos(position).y > 16.0f /*+  Fensterpostion*/)
+                    if(text.findCharacterPos(position).y > 8.0f + _y)
                     {
-                        std::cout << "Work\n";
+                        curs.setPosition(sf::Vector2f(text.findCharacterPos(position).y + 8.0f,text.findCharacterPos(position).x));////////////////////////////////////
                     }
                 }
                 if(_event->key.code == sf::Keyboard::Delete)
