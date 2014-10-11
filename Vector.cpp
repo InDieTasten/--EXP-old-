@@ -28,35 +28,35 @@ Vector Vector::operator+(const Vector&  other)
 {
     double result_x = x + other.x;
     double result_y = y + other.y;
-    return Vector( x, y);
+    return Vector( result_x, result_y);
 }
 Vector Vector::operator+=(const Vector&  other)
 {
     double result_x = x + other.x;
     double result_y = y + other.y;
-    return Vector( x, y);
+    return Vector( result_x, result_y);
 }
 Vector Vector::operator-(const Vector&  other)
 {
     double result_x = x - other.x;
     double result_y = y - other.y;
-    return Vector( x, y);
+    return Vector( result_x, result_y);
 }
 Vector Vector::operator*(const Vector&  other)
 {
     double result_x = x * other.x;
     double result_y = y * other.y;
-    return Vector( x, y);
+    return Vector( result_x, result_y);
 }
 Vector Vector::operator*=(const Vector&  other)
 {
     double result_x = x * other.x;
     double result_y = y * other.y;
-    return Vector( x, y);
+    return Vector( result_x, result_y);
 }
 Vector Vector::operator/(const Vector&  other)
 {
     double result_x = x / other.x;
     double result_y = y / other.y;
-    return Vector( x, y);
+    return Vector( result_x, result_y);
 }
