@@ -30,12 +30,12 @@ Vector Vector::operator+(const Vector&  other)
     double result_y = y + other.y;
     return Vector( result_x, result_y);
 }
-Vector Vector::operator+=(const Vector&  other)
+/*Vector Vector::operator+=(const Vector& right)
 {
-    double result_x = x + other.x;
-    double result_y = y + other.y;
-    return Vector( result_x, result_y);
-}
+    this->x += right.x;
+    this->y += right.y;
+    return *this;
+}*/
 Vector Vector::operator-(const Vector&  other)
 {
     double result_x = x - other.x;
@@ -48,12 +48,16 @@ Vector Vector::operator*(const Vector&  other)
     double result_y = y * other.y;
     return Vector( result_x, result_y);
 }
-Vector Vector::operator*=(const Vector&  other)
+Vector Vector::operator*(const float&  multiplier)
+{
+    return Vector(x*multiplier, y*multiplier);
+}
+/*Vector Vector::operator*=(const Vector&  other)
 {
     double result_x = x * other.x;
     double result_y = y * other.y;
     return Vector( result_x, result_y);
-}
+}*/
 Vector Vector::operator/(const Vector&  other)
 {
     double result_x = x / other.x;
