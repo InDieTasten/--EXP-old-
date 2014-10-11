@@ -30,6 +30,7 @@ void EventManager::handleEvent(sf::Event *_event)
     else if(_event->type == sf::Event::Resized)
     {
         dLink->gameView = sf::View(sf::FloatRect(0.f, 0.f, static_cast<float>(dLink->renderWindow->getSize().x), static_cast<float>(dLink->renderWindow->getSize().y)));
+        dLink->gameView.move(- (dLink->renderWindow->getSize().x / 2.0),- (dLink->renderWindow->getSize().y / 2.0));
         dLink->renderWindow->setView(dLink->gameView);
         dLink->guiView = sf::View(sf::FloatRect(0.f, 0.f, static_cast<float>(dLink->renderWindow->getSize().x), static_cast<float>(dLink->renderWindow->getSize().y)));
         dLink->renderWindow->setView(dLink->guiView);
