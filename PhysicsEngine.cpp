@@ -35,25 +35,24 @@ void PhysicsEngine::Run()
         }
         frametime = limit.restart().asSeconds();
         GMutex.lock();
-
         for (std::list<SpaceObject>::iterator it = dLink->level.activeSystem.SpaceObjectList.begin(); it != dLink->level.activeSystem.SpaceObjectList.end(); it++)
         {
             if(it->flyByLocal) // input forces
             {
                 Vector seperation = dLink->localCtrl.targetPoint - it->Position;
-                it->Rotation = atan(seperation.y/seperation.x) + PI/2.0;
-                if(dLink->localCtrl.targetPoint.x < 0)
+                if(seperation.x != 0)
+                    it->Rotation = atan(seperation.y/seperation.x) + PI/2.0;
+                if(seperation.x < 0)
                 {
                     it->Rotation += PI;
                 }
 
-                Vector forw(cos(it->Rotation),sin(it->Rotation));
-                forw *= Vector(dLink->localCtrl.translateForward,dLink->localCtrl.translateForward);
-                it->Velocity += forw;
+                Vector forw(cos(it->Rotation - PI/2.0),sin(it->Rotation - PI/2.0));
+                forw = forw * dLink->localCtrl.translateForward;
+                forw = forw * frametime;
+                it->Velocity = it->Velocity + forw;
             }
-
-            // Calculate movement
-            it->Position = ( it->Position + it->Velocity);
+            it->Position = it->Position + (it->Velocity * frametime);
         }
 
         GMutex.unlock();
