@@ -6,6 +6,8 @@ LocalControl::LocalControl()
     translateBack    = 0.0;
     translateLeft    = 0.0;
     translateRight   = 0.0;
+
+    targetPoint = Vector(0.0,-20.0);
 }
 void LocalControl::analyzeAction(std::list<std::string> _action)
 {
