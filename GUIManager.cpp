@@ -110,6 +110,8 @@ void GUIManager::handleEvent(sf::Event *_event)
         {
             if(it->isHit(_event->mouseButton.x, _event->mouseButton.y))
             {
+                if(it->isHidden)
+                    continue;
                 if(!it->isActive)
                 {
                     for(std::list<GUIMenu>::iterator it2 = guiMenus.begin(); it2 != guiMenus.end(); it2++)
