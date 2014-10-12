@@ -202,6 +202,7 @@ void HorSlider::handleEvent(sf::Event* _event, int _x, int _y, std::string _id, 
         {
             moveSlide = true;
         }
+        int depr = value;
         value += hoverInc*0.1f*(max-min);
         value -= hoverDec*0.1f*(max-min);
         if (value>max)
@@ -211,6 +212,15 @@ void HorSlider::handleEvent(sf::Event* _event, int _x, int _y, std::string _id, 
         if (value<min)
         {
             value = min;
+        }
+        if(value != depr)
+        {
+            std::list<std::string> x;
+            x.push_back("horslider_move");
+            x.push_back(_mID);
+            x.push_back(_id);
+            x.push_back(util::toString(value));
+            dLink->pushEvent(x);
         }
     }
     oldMouseX = mousex;
