@@ -3,6 +3,7 @@
 
 #include "SolarSystem.hpp"
 #include "SpaceObject.hpp"
+#include <fstream>
 
 class Level
 {
@@ -22,6 +23,8 @@ public:
     //METHODS
     void handleSoftEvent(std::list<std::string> _args);
     void handleTask(std::list<std::string> _args);
+
+    friend std::ofstream &operator<<( std::ofstream &output, const Level &l );
 };
 
 #endif // _Level_hpp_
