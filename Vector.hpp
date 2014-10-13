@@ -2,6 +2,7 @@
 #define _Vector_hpp_
 
 #include <SFML/Graphics.hpp>
+#include <fstream>
 
 class Vector
 {
@@ -28,6 +29,8 @@ public:
     Vector operator*(const float&  multiplier);
     //Vector operator*=(const Vector&  other);
     Vector operator/(const Vector&  other);
+
+    void saveToStream(std::ofstream* output);
 };
 
 #endif
