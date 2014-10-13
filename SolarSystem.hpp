@@ -19,8 +19,7 @@ public:
     //DESTRUCTORS
 
     //METHODS
-    void handleSoftEvent(std::list<std::string> _args);
-    void handleTask(std::list<std::string> _args);
+    void saveToStream(std::ofstream* output);
 };
 
 #endif
