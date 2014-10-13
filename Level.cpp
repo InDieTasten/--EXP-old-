@@ -24,19 +24,15 @@ Level::Level()
 //DESTRUCTORS
 
 //METHODS
-void Level::handleSoftEvent(std::list<std::string> _args)
-{
 
-}
-void Level::handleTask(std::list<std::string> _args)
+void Level::saveToStream(std::ofstream* output)
 {
-
-}
-std::ofstream &operator<<( std::ofstream &output, const Level &l )
-{
-    output
-        << l.name
-        << l.description;
-        //<< l.activeSystem;
-    return output;
+    output->write((char*) &name, sizeof(name));
+    output->write((char*) &description, sizeof(description));
+    activeSystem.saveToStream(output);
+    output->write((char*) inactiveSystems.size(), sizeof(inactiveSystems.size()));
+    for(std::list<SolarSystem>::iterator it = inactiveSystems.begin(); it != inactiveSystems.end(); it++)
+    {
+        it->saveToStream(output);
+    }
 }
