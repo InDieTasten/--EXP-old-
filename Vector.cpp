@@ -64,3 +64,9 @@ Vector Vector::operator/(const Vector&  other)
     double result_y = y / other.y;
     return Vector( result_x, result_y);
 }
+
+void Vector::saveToStream(std::ofstream* output)
+{
+    output->write((char*) &x, sizeof(x));
+    output->write((char*) &y, sizeof(y));
+}
