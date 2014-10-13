@@ -21,10 +21,8 @@ public:
     Level();
     //DESTRUCTORS
     //METHODS
-    void handleSoftEvent(std::list<std::string> _args);
-    void handleTask(std::list<std::string> _args);
 
-    friend std::ofstream &operator<<( std::ofstream &output, const Level &l );
+    void saveToStream(std::ofstream* output);
 };
 
 #endif // _Level_hpp_
