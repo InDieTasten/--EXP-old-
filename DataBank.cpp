@@ -259,29 +259,13 @@ sf::SoundBuffer* DataBank::TrackGet(std::string _id)
 }
 void DataBank::saveDataBank(std::string _path) //confusion
 {
-    std::ofstream filehandle("SAVE.USG");
-    //level objects
-    int x = level.activeSystem.SpaceObjectList.size();
-    filehandle.write((char*) &x,sizeof(int));
-    for (std::list<SpaceObject>::iterator it = level.activeSystem.SpaceObjectList.begin(); it != level.activeSystem.SpaceObjectList.end(); it++)
-    {
-        it->saveme(&filehandle);
-    }
-    filehandle.close();
+    std::ofstream stream(_path.c_str(), std::ios::binary);
+    level.saveToStream(&stream);
+    stream.close();
 }
 void DataBank::loadDataBank(std::string _path) //confusion
 {
-    std::list<SpaceObject> save;
-    std::ifstream filehandle("SAVE.USG");
-    int y;
-    filehandle.read((char*) &y,sizeof(int));
-    for (int z = 0; z < y; z++)
-    {
-        SpaceObject obj;
-        obj.loadme(&filehandle);
-        save.push_back(obj);
-    }
-    filehandle.close();
+
 }
 
 void DataBank::pushEvent(std::list<std::string> _args)
