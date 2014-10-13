@@ -32,3 +32,11 @@ void Level::handleTask(std::list<std::string> _args)
 {
 
 }
+std::ofstream &operator<<( std::ofstream &output, const Level &l )
+{
+    output
+        << l.name
+        << l.description;
+        //<< l.activeSystem;
+    return output;
+}
