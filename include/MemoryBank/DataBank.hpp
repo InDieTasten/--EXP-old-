@@ -3,22 +3,22 @@
 
 #include <SFML\Graphics.hpp>
 #include <list>
-#include "Texture.hpp"
-#include "Font.hpp"
-#include "Sound.hpp"
-#include "Track.hpp"
-#include "SolarSystem.hpp"
-#include "Script.hpp"
+#include "MemoryBank/Entities/Texture.hpp"
+#include "MemoryBank/Entities/Font.hpp"
+#include "MemoryBank/Entities/Sound.hpp"
+#include "MemoryBank/Entities/Track.hpp"
+#include "MemoryBank/Level/SolarSystem.hpp"
+#include "MemoryBank/Entities/Script.hpp"
 #include <direct.h>
 #include <fstream>
 #include <sstream>
-#include "Logger.hpp"
+#include "Utilities/Logger.hpp"
 #include "Settings.hpp"
-#include "Level.hpp"
+#include "MemoryBank/Level/Level.hpp"
 #include "Debug.hpp"
-#include "Video.hpp"
-#include "Action.hpp"
-#include "LocalControl.hpp"
+#include "MemoryBank/Entities/Video.hpp"
+#include "MemoryBank/Entities/Action.hpp"
+#include "MemoryBank/LocalControl.hpp"
 
 class DataBank
 {

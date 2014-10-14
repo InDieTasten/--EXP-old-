@@ -1,4 +1,4 @@
-#include "TextBox.hpp"
+#include "GUI/Elements/TextBox.hpp"
 //CONSTRUCTORS
 
 //DESTRUCTORS

@@ -1,18 +1,18 @@
 //includes
-#include "Logger.hpp"
-#include "VERSION.hpp"
+#include "Utilities/VERSION.hpp"
+#include "Utilities/Logger.hpp"
 #include <iostream>
-#include "DataBank.hpp"
-#include "Vector.hpp"
-#include "GUIManager.hpp"
-#include "GraphicsEngine.hpp"
-#include "PhysicsEngine.hpp"
-#include "ModModule.hpp"
-#include "EventManager.hpp"
+#include "MemoryBank/DataBank.hpp"
+#include "MemoryBank/Level/Vector.hpp"
+#include "GUI/GUIManager.hpp"
+#include "Processing/GraphicsEngine.hpp"
+#include "Processing/PhysicsEngine.hpp"
+#include "Processing/ModModule.hpp"
+#include "Processing/EventManager.hpp"
 #include <conio.h>
 #include <list>
 #include <time.h>
-#include "util.hpp"
+#include "Utilities/util.hpp"
 #include <SFML\System.hpp>
 
 

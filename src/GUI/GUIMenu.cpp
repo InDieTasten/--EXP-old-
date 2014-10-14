@@ -1,4 +1,4 @@
-#include "GUIMenu.hpp"
+#include "GUI/GUIMenu.hpp"
 //CONSTRUCTORS
 GUIMenu::GUIMenu()
 {

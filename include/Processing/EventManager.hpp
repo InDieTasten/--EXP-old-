@@ -2,11 +2,11 @@
 #define _EventManager_hpp_
 
 #include <SFML\Graphics.hpp>
-#include "DataBank.hpp"
-#include "GraphicsEngine.hpp"
-#include "PhysicsEngine.hpp"
-#include "GUIManager.hpp"
-#include "ModModule.hpp"
+#include "MemoryBank/DataBank.hpp"
+#include "Processing/GraphicsEngine.hpp"
+#include "Processing/PhysicsEngine.hpp"
+#include "GUI/GUIManager.hpp"
+#include "Processing/ModModule.hpp"
 
 extern std::list< std::list<std::string> > eventBuffer;
 
