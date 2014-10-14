@@ -157,7 +157,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                     {
 
 
-                        for(tmp = 0;text.findCharacterPos(tmp) == sf::Vector2f(text.findCharacterPos(position).y - 8.0f,text.findCharacterPos(position).x);tmp++){}
+                        for(tmp = 0; text.findCharacterPos(tmp) == sf::Vector2f(text.findCharacterPos(position).y - 8.0f,text.findCharacterPos(position).x); tmp++) {}
                         position = tmp;
                     }
                 }
@@ -165,7 +165,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                 {
                     if(text.findCharacterPos(position).y > 8.0f + _y)
                     {
-                        for(tmp = 0;text.findCharacterPos(tmp) == sf::Vector2f(text.findCharacterPos(position).y + 8.0f,text.findCharacterPos(position).x);tmp++){}
+                        for(tmp = 0; text.findCharacterPos(tmp) == sf::Vector2f(text.findCharacterPos(position).y + 8.0f,text.findCharacterPos(position).x); tmp++) {}
                         position = tmp;
                     }
                 }
