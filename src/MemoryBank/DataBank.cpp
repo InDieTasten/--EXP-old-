@@ -257,13 +257,18 @@ sf::SoundBuffer* DataBank::TrackGet(std::string _id)
     }
     LOG::console("[MemBank]&c[Error] Trying to load non-registered track. In this case no recovery routine is available and the game might crash right after this message");
 }
-void DataBank::saveDataBank(std::string _path) //confusion
+void DataBank::saveDataBank(std::string _path)
 {
-    std::ofstream stream(_path.c_str(), std::ios::binary);
-    level.saveToStream(&stream);
+    LOG::console("[MemBank][Info] Started saving...");
+    std::ofstream stream;
+    stream.open(_path.c_str(), std::ios::binary);
+    LOG::console("[MemBank][Info] Handle opened");
+    level.saveToStream(stream);
+    LOG::console("[MemBank][Info] Level saved");
     stream.close();
+    LOG::console("[MemBank][Info] Handle closed");
 }
-void DataBank::loadDataBank(std::string _path) //confusion
+void DataBank::loadDataBank(std::string _path)
 {
 
 }

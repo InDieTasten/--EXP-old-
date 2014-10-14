@@ -25,14 +25,20 @@ Level::Level()
 
 //METHODS
 
-void Level::saveToStream(std::ofstream* output)
+void Level::saveToStream(std::ofstream& output)
 {
-    output->write((char*) &name, sizeof(name));
-    output->write((char*) &description, sizeof(description));
+    LOG::safe("[Level][Info] Saving started...");
+    output.write((char*) &name, sizeof(name));
+    LOG::safe("[Level][Info] name saved");
+    output.write((char*) &description, sizeof(description));
+    LOG::safe("[Level][Info] description saved");
     activeSystem.saveToStream(output);
-    output->write((char*) inactiveSystems.size(), sizeof(inactiveSystems.size()));
+    LOG::safe("[Level][Info] activeSystem saved");
+    output.write((char*) inactiveSystems.size(), sizeof(inactiveSystems.size()));
     for(std::list<SolarSystem>::iterator it = inactiveSystems.begin(); it != inactiveSystems.end(); it++)
     {
         it->saveToStream(output);
     }
+    LOG::safe("[Level][Info] inactiveSystems saved");
+    LOG::safe("[Level][Info] Saving completed!");
 }
