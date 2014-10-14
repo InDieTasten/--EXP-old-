@@ -30,7 +30,7 @@ public:
     //Vector operator*=(const Vector&  other);
     Vector operator/(const Vector&  other);
 
-    void saveToStream(std::ofstream* output);
+    void saveToStream(std::ofstream& output);
 };
 
 #endif

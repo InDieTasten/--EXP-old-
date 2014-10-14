@@ -40,12 +40,12 @@ void LOG::file(std::string msg)
     std::stringstream ss;
     ss << "&f" << T << msg;
     logger.log(ss.str());
-    if(dLink->settings.safemode)
+    if(true) // SAFEMODE
         std::cout << "&f" <<  T << msg << std::endl;
 }
 void LOG::safe(std::string msg)
 {
-    if(!dLink->settings.safemode)
+    if(!true) //SAFEMODE
         return;
     time_t rawtime;
     struct tm * timeinfo;
