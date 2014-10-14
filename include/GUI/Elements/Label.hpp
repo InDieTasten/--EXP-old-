@@ -2,7 +2,7 @@
 #define _Label_hpp_
 
 #include <string.h>
-#include "DataBank.hpp"
+#include "MemoryBank/DataBank.hpp"
 
 extern DataBank* dLink;
 

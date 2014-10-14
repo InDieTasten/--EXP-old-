@@ -1,4 +1,4 @@
-#include "HorSlider.hpp"
+#include "GUI/Elements/HorSlider.hpp"
 
 //CONSTRUCTORS
 

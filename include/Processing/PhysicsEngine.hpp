@@ -3,8 +3,8 @@
 
 #include <SFML\Graphics.hpp>
 #include <math.h>
-#include "DataBank.hpp"
-#include "Vector.hpp"
+#include "MemoryBank/DataBank.hpp"
+#include "MemoryBank/Level/Vector.hpp"
 #include <list>
 
 extern float pLimit;

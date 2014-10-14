@@ -1,4 +1,4 @@
-#include "VertSlider.hpp"
+#include "GUI/Elements/VertSlider.hpp"
 
 //CONSTRUCTORS
 

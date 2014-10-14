@@ -1,7 +1,7 @@
 #ifndef _Logger_hpp_
 #define _Logger_hpp_
 
-#include "DataBank.hpp"
+#include "MemoryBank/DataBank.hpp"
 #include <iostream>
 #include <time.h>
 #include <string>

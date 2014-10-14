@@ -1,4 +1,4 @@
-#include "GUIElement.hpp"
+#include "GUI/GUIElement.hpp"
 //CONSTRUCTORS
 GUIElement::GUIElement()
 {
