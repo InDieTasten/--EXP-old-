@@ -3,7 +3,7 @@
 
 #include <string.h>
 #include <math.h>
-#include "DataBank.hpp"
+#include "MemoryBank/DataBank.hpp"
 
 extern DataBank* dLink;
 

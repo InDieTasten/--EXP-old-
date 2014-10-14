@@ -2,11 +2,11 @@
 #define _GraphicsEngine_hpp_
 
 #include <SFML\Graphics.hpp>
-#include "Vector.hpp"
+#include "MemoryBank/Level/Vector.hpp"
 #include <list>
-#include "SpaceObject.hpp"
-#include "DataBank.hpp"
-#include "GUIManager.hpp"
+#include "MemoryBank/Level/SpaceObject.hpp"
+#include "MemoryBank/DataBank.hpp"
+#include "GUI/GUIManager.hpp"
 
 extern float gLimit;
 extern DataBank* dLink;

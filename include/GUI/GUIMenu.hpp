@@ -3,8 +3,8 @@
 
 #include <list>
 #include "GUIElement.hpp"
-#include "VertSlider.hpp"
-#include "HorSlider.hpp"
+#include "GUI/Elements/VertSlider.hpp"
+#include "GUI/Elements/HorSlider.hpp"
 
 class GUIMenu
 {

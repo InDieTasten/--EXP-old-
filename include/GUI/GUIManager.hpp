@@ -2,10 +2,10 @@
 #define _GUIManager_hpp_
 
 #include <list>
-#include "util.hpp"
-#include "GUIMenu.hpp"
-#include "DataBank.hpp"
-#include "GUIDockItem.hpp"
+#include "Utilities/util.hpp"
+#include "GUI/GUIMenu.hpp"
+#include "MemoryBank/DataBank.hpp"
+#include "GUI/GUIDockItem.hpp"
 
 extern DataBank* dLink;
 
