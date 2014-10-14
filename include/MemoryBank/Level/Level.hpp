@@ -4,6 +4,7 @@
 #include "SolarSystem.hpp"
 #include "SpaceObject.hpp"
 #include <fstream>
+#include "Utilities/Logger.hpp"
 
 class Level
 {
@@ -22,7 +23,7 @@ public:
     //DESTRUCTORS
     //METHODS
 
-    void saveToStream(std::ofstream* output);
+    void saveToStream(std::ofstream& output);
 };
 
 #endif // _Level_hpp_
