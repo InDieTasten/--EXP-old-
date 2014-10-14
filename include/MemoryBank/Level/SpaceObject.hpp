@@ -29,7 +29,7 @@ public:
     //DESTRUCTORS
 
     //METHODS
-    void saveToStream(std::ofstream* output);
+    void saveToStream(std::ofstream& output);
 };
 
 #endif

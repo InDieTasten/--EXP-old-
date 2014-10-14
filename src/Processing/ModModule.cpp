@@ -2753,6 +2753,13 @@ void ModModule::processTask(std::list<std::string> _args)
                 //failure
             }
         }
+        else if(*_args.begin() == "save")
+        {
+            LOG::file("[ModModule][Info] Task end node reached...");
+            _args.pop_front();
+            dLink->saveDataBank(*_args.begin());
+            LOG::file("[ModModule][Info] Task instructions performed");
+        }
         else
         {
             LOG::console("[ModModule]&e[Warning] No accessor called '" + *_args.begin() + "' !");
