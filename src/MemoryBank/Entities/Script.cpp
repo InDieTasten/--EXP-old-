@@ -1,4 +1,4 @@
-#include "Script.hpp"
+#include "MemoryBank/Entities/Script.hpp"
 extern "C" {
 #include <lua.h>
 #include <lualib.h>

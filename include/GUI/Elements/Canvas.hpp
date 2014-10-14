@@ -2,7 +2,7 @@
 #define _Canvas_hpp_
 
 #include <string.h>
-#include "DataBank.hpp"
+#include "MemoryBank/DataBank.hpp"
 
 struct line
 {

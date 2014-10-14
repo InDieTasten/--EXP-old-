@@ -1,16 +1,16 @@
 #ifndef _GUIElement_hpp_
 #define _GUIElement_hpp_
 
-#include "DataBank.hpp"
-#include "Button.hpp"
-#include "Canvas.hpp"
-#include "CodeBox.hpp"
-#include "HorSlider.hpp"
-#include "Label.hpp"
-#include "Picture.hpp"
-#include "ProgBar.hpp"
-#include "TextBox.hpp"
-#include "VertSlider.hpp"
+#include "MemoryBank/DataBank.hpp"
+#include "GUI/Elements/Button.hpp"
+#include "GUI/Elements/Canvas.hpp"
+#include "GUI/Elements/CodeBox.hpp"
+#include "GUI/Elements/HorSlider.hpp"
+#include "GUI/Elements/Label.hpp"
+#include "GUI/Elements/Picture.hpp"
+#include "GUI/Elements/ProgBar.hpp"
+#include "GUI/Elements/TextBox.hpp"
+#include "GUI/Elements/VertSlider.hpp"
 
 class GUIElement
 {

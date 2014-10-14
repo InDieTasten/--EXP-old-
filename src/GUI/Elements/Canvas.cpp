@@ -1,5 +1,5 @@
 
-#include "Canvas.hpp"
+#include "GUI/Elements/Canvas.hpp"
 
 //CONSTRUCTORS
 
