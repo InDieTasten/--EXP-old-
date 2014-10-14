@@ -31,10 +31,6 @@
 			</Target>
 		</Build>
 		<Compiler>
-			<Add option="-Wredundant-decls" />
-			<Add option="-Wunreachable-code" />
-			<Add option="-Wextra" />
-			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 			<Add directory="../UG_lua/include" />
 			<Add directory="../UG_sfml/include" />
