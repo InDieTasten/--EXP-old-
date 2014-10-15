@@ -252,9 +252,11 @@ void StockSettings()
     dLink->settings.guiHorsliderButtonBackgroundInactive  = sf::Color( 40, 40, 40, 64);
     dLink->settings.guiHorsliderButtonBackgroundActive    = sf::Color( 40, 40, 40,128);
     dLink->settings.guiHorsliderButtonBackgroundHover     = sf::Color( 40, 40, 40,255);
+    dLink->settings.guiHorsliderButtonBackgroundClicked   = sf::Color(  0,255,  0,255);
     dLink->settings.guiHorsliderButtonBorderInactive      = sf::Color( 80, 80, 80,128);
     dLink->settings.guiHorsliderButtonBorderActive        = sf::Color(  0,255,  0,128);
     dLink->settings.guiHorsliderButtonBorderHover         = sf::Color(  0,255,  0,255);
+    dLink->settings.guiHorsliderButtonBorderClicked       = sf::Color(255,255,255,255);
     dLink->settings.guiHorsliderBarBackgroundInactive     = sf::Color( 40, 40, 40, 64);
     dLink->settings.guiHorsliderBarBackgroundActive       = sf::Color( 40, 40, 40,128);
     dLink->settings.guiHorsliderBarBorderInactive         = sf::Color( 80, 80, 80,128);

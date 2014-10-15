@@ -50,9 +50,11 @@ struct Settings
     sf::Color   guiHorsliderButtonBackgroundInactive; //
     sf::Color   guiHorsliderButtonBackgroundActive; //
     sf::Color   guiHorsliderButtonBackgroundHover; //
+    sf::Color   guiHorsliderButtonBackgroundClicked;
     sf::Color   guiHorsliderButtonBorderInactive; //
     sf::Color   guiHorsliderButtonBorderActive; //
     sf::Color   guiHorsliderButtonBorderHover; //
+    sf::Color   guiHorsliderButtonBorderClicked;
     sf::Color   guiHorsliderBarBackgroundInactive; //
     sf::Color   guiHorsliderBarBackgroundActive; //
     sf::Color   guiHorsliderBarBorderInactive; //
