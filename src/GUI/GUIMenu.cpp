@@ -12,14 +12,20 @@ GUIMenu::GUIMenu()
     TitleTextActive = dLink->settings.guiMenuTitleTextActive;
 
     moving = false;
-    closeButtonHover = false;
-    closeButtonPushed = false;
     isActive = false;
     isHidden = false;
 
     scrollX = 0;
     scrollY = 0;
     scrollable = false;
+
+    closeButton.Setup();
+    closeButton.X = 0;
+    closeButton.Y = 0;
+    closeButton.Height = 12;
+    closeButton.Width = 12;
+    closeButton.Text = "X";
+    closeButton.isActive = true;
 
     bottomSlider.Setup();
     rightSlider.Setup();
@@ -91,11 +97,7 @@ void GUIMenu::update()
             menuTitle.setColor(TitleTextInactive);
         }
 
-        if (closeButtonHover)
-            closeButton.setTexture(*dLink->TextureGet("$_closeButtonHover"));
-        else
-            closeButton.setTexture(*dLink->TextureGet("$_closeButtonNormal"));
-        closeButton.setPosition((float)(X+Width-15+scrollable*16),(float)(Y+1));
+        closeButton.Update(X + Width -14, Y+2, "$_closeButton", ID);
 
         if(scrollable)
         {
@@ -147,7 +149,7 @@ void GUIMenu::render()
         dLink->renderWindow->draw(mainBackground);
         dLink->renderWindow->draw(titleBar);
         dLink->renderWindow->draw(menuTitle);
-        dLink->renderWindow->draw(closeButton);
+        closeButton.Render(X + Width -14, Y+2, "$_closeButton", ID);
         bottomSlider.Render(X, Y+Height+16-10,"horMenuSlider", ID);
         rightSlider.Render(X+Width, Y+16+1,"vertMenuSlider", ID);
         //RenderElements:
@@ -160,6 +162,7 @@ void GUIMenu::render()
 }
 void GUIMenu::handleEvent(sf::Event* _event)
 {
+    closeButton.handleEvent(_event, X + Width -14, Y+2, "$_closeButton", ID);
     bottomSlider.handleEvent(_event, X, Y+Height+16-10,"horMenuSlider", ID);
     rightSlider.handleEvent(_event, X+Width, Y+16+1,"vertMenuSlider", ID);
 
@@ -198,21 +201,6 @@ void GUIMenu::handleEvent(sf::Event* _event)
             movingD.x = x;
             movingD.y = y;
         }
-        closeButtonHover = (x >= (X+Width+scrollable*16-15) && y >= (Y+1) && x <= (X+Width+scrollable*16-1) && y <= (Y+15));
-    }
-    if(_event->type == sf::Event::MouseButtonReleased)
-    {
-        if(_event->mouseButton.button == sf::Mouse::Left)
-        {
-            if(closeButtonHover)
-            {
-                std::list<std::string> x;
-                x.push_back("menu_close");
-                x.push_back(ID);
-                dLink->pushEvent(x);
-                Hide();
-            }
-        }
     }
     for(std::list<GUIElement>::iterator it = GuiElements.begin(); it != GuiElements.end(); it++)
     {
@@ -224,6 +212,18 @@ void GUIMenu::handleSoftEvent(std::list<std::string> _args)
     for(std::list<GUIElement>::iterator it = GuiElements.begin(); it != GuiElements.end(); it++)
     {
         it->handleSoftEvent(_args, X, Y+16, ID);
+    }
+    if(*_args.begin() == "button_released")
+    {
+        _args.pop_front();
+        if(*_args.begin() == ID)
+        {
+            _args.pop_front();
+            if(*_args.begin() == "$_closeButton")
+            {
+                isHidden = true;
+            }
+        }
     }
 }
 void GUIMenu::handleTask(std::list<std::string> _args)
