@@ -8,16 +8,20 @@
 void Button::Setup()
 {
     mouseHover = false;
+    clicked = false;
 
     BackgroundColorInactive = dLink->settings.guiButtonBackgroundInactive;
     BackgroundColorActive   = dLink->settings.guiButtonBackgroundActive;
     BackgroundColorHover    = dLink->settings.guiButtonBackgroundHover;
+    BackgroundColorClicked  = dLink->settings.guiButtonBackgroundClicked;
     BorderColorInactive = dLink->settings.guiButtonBorderInactive;
     BorderColorActive   = dLink->settings.guiButtonBorderActive;
     BorderColorHover    = dLink->settings.guiButtonBorderHover;
+    BorderColorClicked  = dLink->settings.guiButtonBorderClicked;
     TextColorInactive = dLink->settings.guiButtonTextInactive;
     TextColorActive   = dLink->settings.guiButtonTextActive;
     TextColorHover    = dLink->settings.guiButtonTextHover;
+    TextColorClicked  = dLink->settings.guiButtonTextClicked;
     TextScale = dLink->settings.guiButtonTextScale;
     FontID = dLink->settings.guiButtonFontID;
 }
@@ -25,7 +29,17 @@ void Button::Update(int _x, int _y, std::string _id, std::string _mID)
 {
     if(isActive)
     {
-        if(mouseHover)
+        if(clicked)
+        {
+            rect.setPosition((float)_x,(float)_y);
+            rect.setSize(sf::Vector2f((float)Width,(float)Height));
+            rect.setFillColor(BackgroundColorClicked);
+            rect.setOutlineThickness(1.0f);
+            rect.setOutlineColor(BorderColorClicked);
+
+            displayText.setColor(TextColorClicked);
+        }
+        else if(mouseHover)
         {
             rect.setPosition((float)_x,(float)_y);
             rect.setSize(sf::Vector2f((float)Width,(float)Height));
@@ -59,7 +73,7 @@ void Button::Update(int _x, int _y, std::string _id, std::string _mID)
     displayText.setString(Text);
     displayText.setFont(*dLink->FontGet(FontID));
     displayText.setOrigin(floorf(displayText.getLocalBounds().width/2), floorf(displayText.getLocalBounds().height/2));
-    displayText.setPosition(floorf(_x+(Width/2.0)),floorf(_y+(Height/2.0)));
+    displayText.setPosition(floorf(_x+(Width/2.0))+1,floorf(_y+(Height/2.0)-3));
     displayText.setCharacterSize(TextScale);
 }
 void Button::Render(int _x, int _y, std::string _id, std::string _mID)
@@ -116,6 +130,7 @@ void Button::handleEvent(sf::Event* _event, int _x, int _y, std::string _id, std
         }
         if(_event->type == sf::Event::MouseButtonReleased && isActive)
         {
+            clicked = false;
             if(mouseHover)
             {
                 std::list<std::string> x;
@@ -129,6 +144,7 @@ void Button::handleEvent(sf::Event* _event, int _x, int _y, std::string _id, std
         {
             if(mouseHover)
             {
+                clicked = true;
                 std::list<std::string> x;
                 x.push_back("button_pressed");
                 x.push_back(_mID);
