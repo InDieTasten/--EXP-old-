@@ -17,6 +17,11 @@ GUIManager::GUIManager()
     x.push_back("load");
     x.push_back("mDebug");
     dLink->pushTask(x);
+    x.clear();
+    x.push_back("plugin");
+    x.push_back("load");
+    x.push_back("mMenu");
+    dLink->pushTask(x);
 }
 //DESTRUCTORS
 
@@ -241,7 +246,7 @@ void GUIManager::add_MainMenu()
     main.SetMenuTitle("--[[ MAIN ]]--");
 
     GUIElement elem1;
-    elem1.ID = "$_mainMenu.new";
+    elem1.ID = "new";
     elem1.Type = "button";
     elem1.X = 10;
     elem1.Y = 10;
@@ -250,7 +255,7 @@ void GUIManager::add_MainMenu()
     elem1.button.Text = "Start new...";
 
     GUIElement elem2;
-    elem2.ID = "$_mainMenu.save";
+    elem2.ID = "save";
     elem2.Type = "button";
     elem2.X = 10;
     elem2.Y = 36;
@@ -259,7 +264,7 @@ void GUIManager::add_MainMenu()
     elem2.button.Text = "Save current...";
 
     GUIElement elem3;
-    elem3.ID = "$_mainMenu.load";
+    elem3.ID = "load";
     elem3.Type = "button";
     elem3.X = 10;
     elem3.Y = 62;
@@ -268,7 +273,7 @@ void GUIManager::add_MainMenu()
     elem3.button.Text = "Load other...";
 
     GUIElement elem4;
-    elem4.ID = "$_mainMenu.close";
+    elem4.ID = "close";
     elem4.Type = "button";
     elem4.X = 10;
     elem4.Y = 88;
