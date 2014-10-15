@@ -201,9 +201,6 @@ void StockRegister()
     //stock resources
     dLink->FontRegister   ("$_menuTitle"          , "content/stock/font/lucon.ttf");
 
-    dLink->TextureRegister("$_closeButtonNormal"  , "content/stock/texture/gui/window/titleBar/closeButton/normal.png");
-    dLink->TextureRegister("$_closeButtonHover"   , "content/stock/texture/gui/window/titleBar/closeButton/hover.png" );
-    dLink->TextureRegister("$_closeButtonPushed"  , "content/stock/texture/gui/window/titleBar/closeButton/pushed.png");
     dLink->TextureRegister("$_dockMain"           , "content/stock/texture/gui/dock/main.png"                         );
     dLink->TextureRegister("$_dockOptions"        , "content/stock/texture/gui/dock/options.png"                      );
     dLink->TextureRegister("$_missing"            , "content/stock/texture/missing.png"                               );
@@ -241,9 +238,11 @@ void StockSettings()
     dLink->settings.guiButtonBackgroundInactive           = sf::Color( 40, 40, 40, 64);
     dLink->settings.guiButtonBackgroundActive             = sf::Color( 40, 40, 40,128);
     dLink->settings.guiButtonBackgroundHover              = sf::Color( 40, 40, 40,255);
+    dLink->settings.guiButtonBackgroundClicked            = sf::Color(  0,255,  0,255);
     dLink->settings.guiButtonBorderInactive               = sf::Color( 80, 80, 80,128);
     dLink->settings.guiButtonBorderActive                 = sf::Color(  0,255,  0,128);
     dLink->settings.guiButtonBorderHover                  = sf::Color(  0,255,  0,255);
+    dLink->settings.guiButtonBorderClicked                = sf::Color(255,255,255,255);
 
     dLink->settings.guiButtonTextInactive                 = sf::Color(255,255,255, 80);
     dLink->settings.guiButtonTextActive                   = sf::Color(255,255,255,160);
