@@ -4,6 +4,18 @@
 //DESTRUCTORS
 
 //METHODS
+void EventManager::closeGame()
+{
+    dLink->runGraphics = false;
+    dLink->runPhysics = false;
+    dLink->runModules = false;
+    GMutex.unlock();
+    gThread->wait();
+    pThread->wait();
+    mThread->wait();
+    GMutex.lock();
+    dLink->renderWindow->close();
+}
 void EventManager::handleEvent(sf::Event *_event)
 {
     //Self-Management
@@ -16,15 +28,7 @@ void EventManager::handleEvent(sf::Event *_event)
     }
     else if (_event->type == sf::Event::KeyPressed && _event->key.code == sf::Keyboard::Escape || _event->type == sf::Event::Closed)
     {
-        dLink->runGraphics = false;
-        dLink->runPhysics = false;
-        dLink->runModules = false;
-        GMutex.unlock();
-        gThread->wait();
-        pThread->wait();
-        mThread->wait();
-        GMutex.lock();
-        dLink->renderWindow->close();
+        closeGame();
         return;
     }
     else if(_event->type == sf::Event::Resized)
@@ -50,23 +54,6 @@ void EventManager::handleSoftEvent(std::list<std::string> _args)
         if(*_args.begin() == "modeSwitch")
         {
             dLink->guiMode = !dLink->guiMode;
-        }
-    }
-    if(*_args.begin() == "button_released")
-    {
-        _args.pop_front();
-        if(*_args.begin() == "$_mainMenu.close")
-        {
-            dLink->runGraphics = false;
-            dLink->runPhysics = false;
-            dLink->runModules = false;
-            GMutex.unlock();
-            gThread->wait();
-            pThread->wait();
-            mThread->wait();
-            GMutex.lock();
-            dLink->renderWindow->close();
-            return;
         }
     }
 }
@@ -100,6 +87,15 @@ void EventManager::handleTask(std::list<std::string> _args)
             x.push_back("debug");
             x.push_back("countReset");
             dLink->pushTask(x);
+        }
+    }
+    else if(*_args.begin() == "_CORE")
+    {
+        _args.pop_front();
+        if(*_args.begin() == "quitGame")
+        {
+            closeGame();
+            return;
         }
     }
 }
