@@ -14,23 +14,27 @@ private:
     sf::RectangleShape rect;
     sf::Text displayText;
     bool mouseHover;
+    bool clicked;
 public:
     int X;
     int Y;
     int Height;
     int Width;
 
-    sf::Color BackgroundColorInactive;
-    sf::Color BackgroundColorActive;
-    sf::Color BackgroundColorHover;
+    sf::Color BackgroundColorInactive; //
+    sf::Color BackgroundColorActive; //
+    sf::Color BackgroundColorHover; //
+    sf::Color BackgroundColorClicked;
 
-    sf::Color BorderColorInactive;
-    sf::Color BorderColorActive;
-    sf::Color BorderColorHover;
+    sf::Color BorderColorInactive; //
+    sf::Color BorderColorActive; //
+    sf::Color BorderColorHover; //
+    sf::Color BorderColorClicked;
 
-    sf::Color TextColorInactive;
-    sf::Color TextColorActive;
-    sf::Color TextColorHover;
+    sf::Color TextColorInactive; //
+    sf::Color TextColorActive; //
+    sf::Color TextColorHover; //
+    sf::Color TextColorClicked;
     int TextScale;
     std::string FontID;
 
