@@ -11,6 +11,8 @@ void HorSlider::Setup()
     moveSlide = false;
     hoverInc = false;
     hoverDec = false;
+    clickInc = false;
+    clickDec = false;
 
     mouseHover = false;
     Width = 100;
@@ -24,9 +26,11 @@ void HorSlider::Setup()
     ButtonBackgroundInactive = dLink->settings.guiHorsliderButtonBackgroundInactive;
     ButtonBackgroundActive   = dLink->settings.guiHorsliderButtonBackgroundActive;
     ButtonBackgroundHover    = dLink->settings.guiHorsliderButtonBackgroundHover;
+    ButtonBackgroundClicked  = dLink->settings.guiHorsliderButtonBackgroundClicked;
     ButtonBorderInactive     = dLink->settings.guiHorsliderButtonBorderInactive;
     ButtonBorderActive       = dLink->settings.guiHorsliderButtonBorderActive;
     ButtonBorderHover        = dLink->settings.guiHorsliderButtonBorderHover;
+    ButtonBorderClicked      = dLink->settings.guiHorsliderButtonBorderClicked;
     BarBackgroundInactive    = dLink->settings.guiHorsliderBarBackgroundInactive;
     BarBackgroundActive      = dLink->settings.guiHorsliderBarBackgroundActive;
     BarBorderInactive        = dLink->settings.guiHorsliderBarBorderInactive;
@@ -46,7 +50,15 @@ void HorSlider::Update(int _x, int _y, std::string _id, std::string _mID)
 {
     if(isActive)
     {
-        if(hoverDec)
+        if(clickDec)
+        {
+            decBox.setPosition((float)_x, (float)_y);
+            decBox.setSize(sf::Vector2f((float)Height, (float)Height));
+            decBox.setFillColor(ButtonBackgroundClicked);
+            decBox.setOutlineThickness(1.0f);
+            decBox.setOutlineColor(ButtonBorderClicked);
+        }
+        else if(hoverDec)
         {
             decBox.setPosition((float)_x, (float)_y);
             decBox.setSize(sf::Vector2f((float)Height, (float)Height));
@@ -62,7 +74,15 @@ void HorSlider::Update(int _x, int _y, std::string _id, std::string _mID)
             decBox.setOutlineThickness(1.0f);
             decBox.setOutlineColor(ButtonBorderActive);
         }
-        if(hoverInc)
+        if(clickInc)
+        {
+            incBox.setPosition((float)_x + Width-Height, (float)_y);
+            incBox.setSize(sf::Vector2f((float)_x + Width - (_x + Width-Height), (float)Height));
+            incBox.setFillColor(ButtonBackgroundClicked);
+            incBox.setOutlineThickness(1.0f);
+            incBox.setOutlineColor(ButtonBorderClicked);
+        }
+        else if(hoverInc)
         {
             incBox.setPosition((float)_x + Width-Height, (float)_y);
             incBox.setSize(sf::Vector2f((float)_x + Width - (_x + Width-Height), (float)Height));
@@ -194,9 +214,13 @@ void HorSlider::handleEvent(sf::Event* _event, int _x, int _y, std::string _id, 
     {
         mousex = _event->mouseButton.x;
         moveSlide = false;
+        clickInc = false;
+        clickDec = false;
     }
     if(_event->type == sf::Event::MouseButtonPressed && isActive)
     {
+        clickDec = hoverDec;
+        clickInc = hoverInc;
         mousex = _event->mouseButton.x;
         if(hoverSlide)
         {

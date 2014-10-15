@@ -19,7 +19,9 @@ private:
     sf::RectangleShape slider;
     bool hoverSlide;
     bool hoverDec;
+    bool clickDec;
     bool hoverInc;
+    bool clickInc;
     bool moveSlide;
     int oldMouseX;
     sf::Text displayText;
@@ -40,9 +42,11 @@ public:
     sf::Color ButtonBackgroundInactive;
     sf::Color ButtonBackgroundActive;
     sf::Color ButtonBackgroundHover;
+    sf::Color ButtonBackgroundClicked;
     sf::Color ButtonBorderInactive;
     sf::Color ButtonBorderActive;
     sf::Color ButtonBorderHover;
+    sf::Color ButtonBorderClicked;
     sf::Color BarBackgroundInactive;
     sf::Color BarBackgroundActive;
     sf::Color BarBorderInactive;
