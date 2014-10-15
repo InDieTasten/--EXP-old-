@@ -37,11 +37,11 @@ Level::Level()
     x.SpaceObjectList.push_back(obj2);
     x.SpaceObjectList.push_back(obj3);
 
-    for(int i = -20; i <= 20; i++)
+    for(int i = -100; i <= 100; i++)
     {
         SpaceObject obji;
         obji.ID = "default";
-        obji.Position = Vector(0.0, i*10.0);
+        obji.Position = Vector(0.0, i*1.0);
         obji.Velocity = Vector(0.0, 0.0);
         obji.Mass = 15.0;
         obji.TextureID = "$_missing";

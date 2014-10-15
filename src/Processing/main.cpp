@@ -24,9 +24,9 @@ extern "C" {
 
 
 // Thread Throttleling
-float mLimit =  60.0; //Cycles per second
-float gLimit =  60.0; //Cycles per second
-float pLimit =  60.0; //Cycles per second
+float mLimit =  100.0; //Cycles per second
+float gLimit =  100.0; //Cycles per second
+float pLimit =  100.0; //Cycles per second
 float mainLimit =  100.0; //Cycles per second
 
 // Global accessors
