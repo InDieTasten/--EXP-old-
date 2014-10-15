@@ -33,7 +33,7 @@ void GraphicsEngine::Run()
             dLink->debug.tGraphSleep.push_back(0.0);
         }
         limit.restart();
-        dLink->renderWindow->clear(sf::Color(10,10,10,255)); //clear renderBuffer with black
+        dLink->renderWindow->clear(sf::Color(3,3,3,255)); //clear renderBuffer with black
 
         GMutex.lock();
         dLink->renderWindow->setView(dLink->gameView);
