@@ -35,12 +35,15 @@ struct Settings
     sf::Color   guiButtonBackgroundInactive; //
     sf::Color   guiButtonBackgroundActive; //
     sf::Color   guiButtonBackgroundHover; //
+    sf::Color   guiButtonBackgroundClicked;
     sf::Color   guiButtonBorderInactive; //
     sf::Color   guiButtonBorderActive; //
     sf::Color   guiButtonBorderHover; //
+    sf::Color   guiButtonBorderClicked;
     sf::Color   guiButtonTextInactive; //
     sf::Color   guiButtonTextActive; //
     sf::Color   guiButtonTextHover; //
+    sf::Color   guiButtonTextClicked;
     int         guiButtonTextScale; //
     std::string guiButtonFontID; //
 
