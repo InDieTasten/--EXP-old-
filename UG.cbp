@@ -58,6 +58,9 @@
 		<Unit filename="include/GUI/Elements/Canvas.hpp">
 			<Option virtualFolder="GUI/Elements/" />
 		</Unit>
+		<Unit filename="include/GUI/Elements/CheckBox.hpp">
+			<Option virtualFolder="GUI/Elements/" />
+		</Unit>
 		<Unit filename="include/GUI/Elements/CodeBox.hpp">
 			<Option virtualFolder="GUI/Elements/" />
 		</Unit>
