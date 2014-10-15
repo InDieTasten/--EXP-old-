@@ -5,6 +5,7 @@
 		<Option title="UG" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
+		<Option virtualFolders="GUI\;MemoryBank\;Processing\;Utilities\;GUI\Elements\;MemoryBank\Entities\;MemoryBank\Level\;" />
 		<Build>
 			<Target title="Debug">
 				<Option output="../UG_content/UG" prefix_auto="1" extension_auto="1" />
@@ -51,73 +52,207 @@
 			<Add directory="../UG_sfml/lib" />
 			<Add directory="../UG_libavc/lib" />
 		</Linker>
-		<Unit filename="include/GUI/Elements/Button.hpp" />
-		<Unit filename="include/GUI/Elements/Canvas.hpp" />
-		<Unit filename="include/GUI/Elements/CodeBox.hpp" />
-		<Unit filename="include/GUI/Elements/HorSlider.hpp" />
-		<Unit filename="include/GUI/Elements/Label.hpp" />
-		<Unit filename="include/GUI/Elements/Picture.hpp" />
-		<Unit filename="include/GUI/Elements/ProgBar.hpp" />
-		<Unit filename="include/GUI/Elements/TextBox.hpp" />
-		<Unit filename="include/GUI/Elements/VertSlider.hpp" />
-		<Unit filename="include/GUI/GUIDockItem.hpp" />
-		<Unit filename="include/GUI/GUIElement.hpp" />
-		<Unit filename="include/GUI/GUIManager.hpp" />
-		<Unit filename="include/GUI/GUIMenu.hpp" />
-		<Unit filename="include/MemoryBank/DataBank.hpp" />
-		<Unit filename="include/MemoryBank/Debug.hpp" />
-		<Unit filename="include/MemoryBank/Entities/Action.hpp" />
-		<Unit filename="include/MemoryBank/Entities/Font.hpp" />
-		<Unit filename="include/MemoryBank/Entities/Script.hpp" />
-		<Unit filename="include/MemoryBank/Entities/Sound.hpp" />
-		<Unit filename="include/MemoryBank/Entities/Texture.hpp" />
-		<Unit filename="include/MemoryBank/Entities/Track.hpp" />
-		<Unit filename="include/MemoryBank/Entities/Video.hpp" />
-		<Unit filename="include/MemoryBank/Level/Level.hpp" />
-		<Unit filename="include/MemoryBank/Level/SolarSystem.hpp" />
-		<Unit filename="include/MemoryBank/Level/SpaceObject.hpp" />
-		<Unit filename="include/MemoryBank/Level/Vector.hpp" />
-		<Unit filename="include/MemoryBank/LocalControl.hpp" />
-		<Unit filename="include/MemoryBank/Settings.hpp" />
-		<Unit filename="include/Processing/EventManager.hpp" />
-		<Unit filename="include/Processing/GraphicsEngine.hpp" />
-		<Unit filename="include/Processing/ModModule.hpp" />
-		<Unit filename="include/Processing/PhysicsEngine.hpp" />
-		<Unit filename="include/Utilities/FileLogger.hpp" />
-		<Unit filename="include/Utilities/Logger.hpp" />
-		<Unit filename="include/Utilities/VERSION.hpp" />
-		<Unit filename="include/Utilities/util.hpp" />
-		<Unit filename="src/GUI/Elements/Button.cpp" />
-		<Unit filename="src/GUI/Elements/Canvas.cpp" />
-		<Unit filename="src/GUI/Elements/CodeBox.cpp" />
-		<Unit filename="src/GUI/Elements/HorSlider.cpp" />
-		<Unit filename="src/GUI/Elements/Label.cpp" />
-		<Unit filename="src/GUI/Elements/TextBox.cpp" />
-		<Unit filename="src/GUI/Elements/VertSlider.cpp" />
-		<Unit filename="src/GUI/GUIDockItem.cpp" />
-		<Unit filename="src/GUI/GUIElement.cpp" />
-		<Unit filename="src/GUI/GUIManager.cpp" />
-		<Unit filename="src/GUI/GUIMenu.cpp" />
-		<Unit filename="src/MemoryBank/DataBank.cpp" />
-		<Unit filename="src/MemoryBank/Entities/Font.cpp" />
-		<Unit filename="src/MemoryBank/Entities/Script.cpp" />
-		<Unit filename="src/MemoryBank/Entities/Sound.cpp" />
-		<Unit filename="src/MemoryBank/Entities/Texture.cpp" />
-		<Unit filename="src/MemoryBank/Entities/Track.cpp" />
-		<Unit filename="src/MemoryBank/Entities/Video.cpp" />
-		<Unit filename="src/MemoryBank/Level/Level.cpp" />
-		<Unit filename="src/MemoryBank/Level/LocalControl.cpp" />
-		<Unit filename="src/MemoryBank/Level/SolarSystem.cpp" />
-		<Unit filename="src/MemoryBank/Level/SpaceObject.cpp" />
-		<Unit filename="src/MemoryBank/Level/Vector.cpp" />
-		<Unit filename="src/Processing/EventManager.cpp" />
-		<Unit filename="src/Processing/GraphicsEngine.cpp" />
-		<Unit filename="src/Processing/ModModule.cpp" />
-		<Unit filename="src/Processing/PhysicsEngine.cpp" />
-		<Unit filename="src/Processing/main.cpp" />
-		<Unit filename="src/Utilities/FileLogger.cpp" />
-		<Unit filename="src/Utilities/Logger.cpp" />
-		<Unit filename="src/Utilities/util.cpp" />
+		<Unit filename="include/GUI/Elements/Button.hpp">
+			<Option virtualFolder="GUI/Elements/" />
+		</Unit>
+		<Unit filename="include/GUI/Elements/Canvas.hpp">
+			<Option virtualFolder="GUI/Elements/" />
+		</Unit>
+		<Unit filename="include/GUI/Elements/CodeBox.hpp">
+			<Option virtualFolder="GUI/Elements/" />
+		</Unit>
+		<Unit filename="include/GUI/Elements/HorSlider.hpp">
+			<Option virtualFolder="GUI/Elements/" />
+		</Unit>
+		<Unit filename="include/GUI/Elements/Label.hpp">
+			<Option virtualFolder="GUI/Elements/" />
+		</Unit>
+		<Unit filename="include/GUI/Elements/Picture.hpp">
+			<Option virtualFolder="GUI/Elements/" />
+		</Unit>
+		<Unit filename="include/GUI/Elements/ProgBar.hpp">
+			<Option virtualFolder="GUI/Elements/" />
+		</Unit>
+		<Unit filename="include/GUI/Elements/TextBox.hpp">
+			<Option virtualFolder="GUI/Elements/" />
+		</Unit>
+		<Unit filename="include/GUI/Elements/VertSlider.hpp">
+			<Option virtualFolder="GUI/Elements/" />
+		</Unit>
+		<Unit filename="include/GUI/GUIDockItem.hpp">
+			<Option virtualFolder="GUI/" />
+		</Unit>
+		<Unit filename="include/GUI/GUIElement.hpp">
+			<Option virtualFolder="GUI/" />
+		</Unit>
+		<Unit filename="include/GUI/GUIManager.hpp">
+			<Option virtualFolder="GUI/" />
+		</Unit>
+		<Unit filename="include/GUI/GUIMenu.hpp">
+			<Option virtualFolder="GUI/" />
+		</Unit>
+		<Unit filename="include/MemoryBank/DataBank.hpp">
+			<Option virtualFolder="MemoryBank/" />
+		</Unit>
+		<Unit filename="include/MemoryBank/Debug.hpp">
+			<Option virtualFolder="MemoryBank/" />
+		</Unit>
+		<Unit filename="include/MemoryBank/Entities/Action.hpp">
+			<Option virtualFolder="MemoryBank/Entities/" />
+		</Unit>
+		<Unit filename="include/MemoryBank/Entities/Font.hpp">
+			<Option virtualFolder="MemoryBank/Entities/" />
+		</Unit>
+		<Unit filename="include/MemoryBank/Entities/Script.hpp">
+			<Option virtualFolder="MemoryBank/Entities/" />
+		</Unit>
+		<Unit filename="include/MemoryBank/Entities/Sound.hpp">
+			<Option virtualFolder="MemoryBank/Entities/" />
+		</Unit>
+		<Unit filename="include/MemoryBank/Entities/Texture.hpp">
+			<Option virtualFolder="MemoryBank/Entities/" />
+		</Unit>
+		<Unit filename="include/MemoryBank/Entities/Track.hpp">
+			<Option virtualFolder="MemoryBank/Entities/" />
+		</Unit>
+		<Unit filename="include/MemoryBank/Entities/Video.hpp">
+			<Option virtualFolder="MemoryBank/Entities/" />
+		</Unit>
+		<Unit filename="include/MemoryBank/Level/Level.hpp">
+			<Option virtualFolder="MemoryBank/Level/" />
+		</Unit>
+		<Unit filename="include/MemoryBank/Level/SolarSystem.hpp">
+			<Option virtualFolder="MemoryBank/Level/" />
+		</Unit>
+		<Unit filename="include/MemoryBank/Level/SpaceObject.hpp">
+			<Option virtualFolder="MemoryBank/Level/" />
+		</Unit>
+		<Unit filename="include/MemoryBank/Level/Vector.hpp">
+			<Option virtualFolder="MemoryBank/Level/" />
+		</Unit>
+		<Unit filename="include/MemoryBank/LocalControl.hpp">
+			<Option virtualFolder="MemoryBank/" />
+		</Unit>
+		<Unit filename="include/MemoryBank/Settings.hpp">
+			<Option virtualFolder="MemoryBank/Entities/" />
+		</Unit>
+		<Unit filename="include/Processing/EventManager.hpp">
+			<Option virtualFolder="Processing/" />
+		</Unit>
+		<Unit filename="include/Processing/GraphicsEngine.hpp">
+			<Option virtualFolder="Processing/" />
+		</Unit>
+		<Unit filename="include/Processing/ModModule.hpp">
+			<Option virtualFolder="Processing/" />
+		</Unit>
+		<Unit filename="include/Processing/PhysicsEngine.hpp">
+			<Option virtualFolder="Processing/" />
+		</Unit>
+		<Unit filename="include/Utilities/FileLogger.hpp">
+			<Option virtualFolder="Utilities/" />
+		</Unit>
+		<Unit filename="include/Utilities/Logger.hpp">
+			<Option virtualFolder="Utilities/" />
+		</Unit>
+		<Unit filename="include/Utilities/VERSION.hpp">
+			<Option virtualFolder="Utilities/" />
+		</Unit>
+		<Unit filename="include/Utilities/util.hpp">
+			<Option virtualFolder="Utilities/" />
+		</Unit>
+		<Unit filename="src/GUI/Elements/Button.cpp">
+			<Option virtualFolder="GUI/Elements/" />
+		</Unit>
+		<Unit filename="src/GUI/Elements/Canvas.cpp">
+			<Option virtualFolder="GUI/Elements/" />
+		</Unit>
+		<Unit filename="src/GUI/Elements/CodeBox.cpp">
+			<Option virtualFolder="GUI/Elements/" />
+		</Unit>
+		<Unit filename="src/GUI/Elements/HorSlider.cpp">
+			<Option virtualFolder="GUI/Elements/" />
+		</Unit>
+		<Unit filename="src/GUI/Elements/Label.cpp">
+			<Option virtualFolder="GUI/Elements/" />
+		</Unit>
+		<Unit filename="src/GUI/Elements/TextBox.cpp">
+			<Option virtualFolder="GUI/Elements/" />
+		</Unit>
+		<Unit filename="src/GUI/Elements/VertSlider.cpp">
+			<Option virtualFolder="GUI/Elements/" />
+		</Unit>
+		<Unit filename="src/GUI/GUIDockItem.cpp">
+			<Option virtualFolder="GUI/" />
+		</Unit>
+		<Unit filename="src/GUI/GUIElement.cpp">
+			<Option virtualFolder="GUI/" />
+		</Unit>
+		<Unit filename="src/GUI/GUIManager.cpp">
+			<Option virtualFolder="GUI/" />
+		</Unit>
+		<Unit filename="src/GUI/GUIMenu.cpp">
+			<Option virtualFolder="GUI/" />
+		</Unit>
+		<Unit filename="src/MemoryBank/DataBank.cpp">
+			<Option virtualFolder="MemoryBank/" />
+		</Unit>
+		<Unit filename="src/MemoryBank/Entities/Font.cpp">
+			<Option virtualFolder="MemoryBank/Entities/" />
+		</Unit>
+		<Unit filename="src/MemoryBank/Entities/Script.cpp">
+			<Option virtualFolder="MemoryBank/Entities/" />
+		</Unit>
+		<Unit filename="src/MemoryBank/Entities/Sound.cpp">
+			<Option virtualFolder="MemoryBank/Entities/" />
+		</Unit>
+		<Unit filename="src/MemoryBank/Entities/Texture.cpp">
+			<Option virtualFolder="MemoryBank/Entities/" />
+		</Unit>
+		<Unit filename="src/MemoryBank/Entities/Track.cpp">
+			<Option virtualFolder="MemoryBank/Entities/" />
+		</Unit>
+		<Unit filename="src/MemoryBank/Entities/Video.cpp">
+			<Option virtualFolder="MemoryBank/Entities/" />
+		</Unit>
+		<Unit filename="src/MemoryBank/Level/Level.cpp">
+			<Option virtualFolder="MemoryBank/Level/" />
+		</Unit>
+		<Unit filename="src/MemoryBank/Level/LocalControl.cpp">
+			<Option virtualFolder="MemoryBank/Level/" />
+		</Unit>
+		<Unit filename="src/MemoryBank/Level/SolarSystem.cpp">
+			<Option virtualFolder="MemoryBank/Level/" />
+		</Unit>
+		<Unit filename="src/MemoryBank/Level/SpaceObject.cpp">
+			<Option virtualFolder="MemoryBank/Level/" />
+		</Unit>
+		<Unit filename="src/MemoryBank/Level/Vector.cpp">
+			<Option virtualFolder="MemoryBank/Level/" />
+		</Unit>
+		<Unit filename="src/Processing/EventManager.cpp">
+			<Option virtualFolder="Processing/" />
+		</Unit>
+		<Unit filename="src/Processing/GraphicsEngine.cpp">
+			<Option virtualFolder="Processing/" />
+		</Unit>
+		<Unit filename="src/Processing/ModModule.cpp">
+			<Option virtualFolder="Processing/" />
+		</Unit>
+		<Unit filename="src/Processing/PhysicsEngine.cpp">
+			<Option virtualFolder="Processing/" />
+		</Unit>
+		<Unit filename="src/Processing/main.cpp">
+			<Option virtualFolder="Processing/" />
+		</Unit>
+		<Unit filename="src/Utilities/FileLogger.cpp">
+			<Option virtualFolder="Utilities/" />
+		</Unit>
+		<Unit filename="src/Utilities/Logger.cpp">
+			<Option virtualFolder="Utilities/" />
+		</Unit>
+		<Unit filename="src/Utilities/util.cpp">
+			<Option virtualFolder="Utilities/" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<debugger />
