@@ -5,12 +5,13 @@
 #include "GUIElement.hpp"
 #include "GUI/Elements/VertSlider.hpp"
 #include "GUI/Elements/HorSlider.hpp"
+#include "GUI/Elements/Button.hpp"
 
 class GUIMenu
 {
     //MEMBERS
 public:
-    sf::Sprite closeButton;
+    Button closeButton;
     sf::RectangleShape mainBackground;
     sf::RectangleShape titleBar;
     sf::Text menuTitle;
@@ -32,8 +33,6 @@ public:
     //interaction assist
     bool moving;
     sf::Vector2<int> movingD;
-    bool closeButtonHover;
-    bool closeButtonPushed;
     std::string ID;
     std::list<GUIElement> GuiElements;
     bool isActive;
