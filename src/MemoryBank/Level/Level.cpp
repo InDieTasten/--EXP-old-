@@ -9,15 +9,46 @@ Level::Level()
     x.ID = "default";
     x.Name = "default";
 
-    SpaceObject obj;
-    obj.ID = "default";
-    obj.Position = Vector(0.0, 0.0);
-    obj.Velocity = Vector(0.0, 0.0);
-    obj.Mass = 15.0;
-    obj.TextureID = "$_missing";
-    obj.flyByLocal = true;
+    SpaceObject obj1;
+    obj1.ID = "default";
+    obj1.Position = Vector(0.0, 0.0);
+    obj1.Velocity = Vector(0.0, 0.0);
+    obj1.Mass = 15.0;
+    obj1.TextureID = "$_missing";
+    obj1.flyByLocal = true;
 
-    x.SpaceObjectList.push_back(obj);
+    SpaceObject obj2;
+    obj2.ID = "default";
+    obj2.Position = Vector(-200.0, 0.0);
+    obj2.Velocity = Vector(0.0, 0.0);
+    obj2.Mass = 15.0;
+    obj2.TextureID = "$_missing";
+    obj2.flyByLocal = true;
+
+    SpaceObject obj3;
+    obj3.ID = "default";
+    obj3.Position = Vector(200.0, 0.0);
+    obj3.Velocity = Vector(0.0, 0.0);
+    obj3.Mass = 15.0;
+    obj3.TextureID = "$_missing";
+    obj3.flyByLocal = true;
+
+    x.SpaceObjectList.push_back(obj1);
+    x.SpaceObjectList.push_back(obj2);
+    x.SpaceObjectList.push_back(obj3);
+
+    for(int i = -20; i <= 20; i++)
+    {
+        SpaceObject obji;
+        obji.ID = "default";
+        obji.Position = Vector(0.0, i*10.0);
+        obji.Velocity = Vector(0.0, 0.0);
+        obji.Mass = 15.0;
+        obji.TextureID = "$_missing";
+        obji.flyByLocal = true;
+        x.SpaceObjectList.push_back(obji);
+    }
+
     activeSystem = x;
 }
 
