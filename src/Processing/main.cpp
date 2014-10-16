@@ -204,7 +204,7 @@ void StockRegister()
     dLink->TextureRegister("$_dockMain"           , "content/stock/texture/gui/dock/main.png"                         );
     dLink->TextureRegister("$_dockOptions"        , "content/stock/texture/gui/dock/options.png"                      );
     dLink->TextureRegister("$_missing"            , "content/stock/texture/missing.png"                               );
-
+    dLink->TextureRegister("$_stars"              , "content/stock/texture/stars.png"                                 );
 }
 void StockSettings()
 {
@@ -243,10 +243,18 @@ void StockSettings()
     dLink->settings.guiButtonBorderActive                 = sf::Color(  0,255,  0,128);
     dLink->settings.guiButtonBorderHover                  = sf::Color(  0,255,  0,255);
     dLink->settings.guiButtonBorderClicked                = sf::Color(255,255,255,255);
-
     dLink->settings.guiButtonTextInactive                 = sf::Color(255,255,255, 80);
     dLink->settings.guiButtonTextActive                   = sf::Color(255,255,255,160);
     dLink->settings.guiButtonTextHover                    = sf::Color(255,255,255,255);
+
+    dLink->settings.guiCheckboxBackgroundInactive           = sf::Color( 40, 40, 40, 64);
+    dLink->settings.guiCheckboxBackgroundActive             = sf::Color( 40, 40, 40,128);
+    dLink->settings.guiCheckboxBackgroundHover              = sf::Color( 40, 40, 40,255);
+    dLink->settings.guiCheckboxBackgroundChecked            = sf::Color(  0,255,  0,255);
+    dLink->settings.guiCheckboxBorderInactive               = sf::Color( 80, 80, 80,128);
+    dLink->settings.guiCheckboxBorderActive                 = sf::Color(  0,255,  0,128);
+    dLink->settings.guiCheckboxBorderHover                  = sf::Color(  0,255,  0,255);
+    dLink->settings.guiCheckboxBorderChecked                = sf::Color(255,255,255,255);
 
 
     dLink->settings.guiHorsliderButtonBackgroundInactive  = sf::Color( 40, 40, 40, 64);
@@ -290,9 +298,9 @@ void StockSettings()
     dLink->settings.guiVertsliderSliderBorderMoving       = sf::Color(255,255,255,255);
 
 
-    dLink->settings.guiLabelTextInactive                  = sf::Color::Red;
-    dLink->settings.guiLabelTextActive                    = sf::Color::Red;
-    dLink->settings.guiLabelTextHover                     = sf::Color::Red;
+    dLink->settings.guiLabelTextInactive                  = sf::Color( 80, 80, 80,128);
+    dLink->settings.guiLabelTextActive                    = sf::Color(  0,255,  0,255);
+    dLink->settings.guiLabelTextHover                     = sf::Color(  0,255,  0,255);
 
     dLink->settings.guiTextboxBackgroundInactive          = sf::Color::Red;
     dLink->settings.guiTextboxBackgroundActive            = sf::Color::Red;

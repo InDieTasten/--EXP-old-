@@ -36,11 +36,44 @@ void GraphicsEngine::Run()
         dLink->renderWindow->clear(sf::Color(3,3,3,255)); //clear renderBuffer with black
 
         GMutex.lock();
+
+
+        /*for(std::list<SpaceObject>::iterator it = dLink->level.activeSystem.SpaceObjectList.begin(); it != dLink->level.activeSystem.SpaceObjectList.end(); it++)
+        {
+            if(it->ID == "default")
+            {
+                dLink->gameView.setCenter(it->Position.x, it->Position.y);
+            }
+        }*/
+
         dLink->renderWindow->setView(dLink->gameView);
+
+        float Xc = dLink->gameView.getCenter().x - dLink->gameView.getSize().x/2.0;
+        float Xs = dLink->TextureGet("$_stars")->getSize().x;
+        float Wc = dLink->gameView.getSize().x;
+
+        float Yc = dLink->gameView.getCenter().y - dLink->gameView.getSize().y/2.0;
+        float Ys = dLink->TextureGet("$_stars")->getSize().y;
+        float Hc = dLink->gameView.getSize().y;
+
+        for(long x = floorf(Xc/Xs)-1; x <= Xc/Xs + Wc/Xs +2; x++)
+        {
+            for(long y = floorf(Yc/Ys)-1; y <= Yc/Ys + Hc/Ys +2; y++)
+            {
+                starSprite.setTexture(*dLink->TextureGet("$_stars"));
+                starSprite.setOrigin(0.0, 0.0);
+                starSprite.setScale(1.0,1.0);
+                starSprite.setRotation(0.0);
+                starSprite.setPosition(x*Xs, y*Ys);
+                dLink->renderWindow->draw(starSprite);
+            }
+        }
+
         for (std::list<SpaceObject>::iterator it = dLink->level.activeSystem.SpaceObjectList.begin(); it != dLink->level.activeSystem.SpaceObjectList.end(); it++)
         {
             renderSprite.setTexture(*dLink->TextureGet(it->TextureID));
             renderSprite.setOrigin(renderSprite.getLocalBounds().width/2.0f, renderSprite.getLocalBounds().height/2.0f);
+            renderSprite.setScale(1.0,1.0);
             renderSprite.setRotation(it->Rotation *180 / PI);
             renderSprite.setPosition(it->Position.x, it->Position.y);
             dLink->renderWindow->draw(renderSprite);
