@@ -9,6 +9,7 @@ GUIElement::GUIElement()
     vertSlider.Setup();
     textBox.Setup();
     canvas.Setup();
+    checkBox.Setup();
 }
 //DESTRUCTORS
 
@@ -59,6 +60,11 @@ void GUIElement::update(int _x, int _y, std::string _mID)
         canvas.isActive = true;
         canvas.Update(_x+X, _y+Y, ID, _mID);
     }
+    else if (Type == "checkbox")
+    {
+        checkBox.isActive = true;
+        checkBox.Update(_x+X, _y+Y, ID, _mID);
+    }
 }
 void GUIElement::render(int _x, int _y, std::string _mID)
 {
@@ -89,6 +95,10 @@ void GUIElement::render(int _x, int _y, std::string _mID)
     else if (Type == "canvas")
     {
         canvas.Render(_x+X, _y+Y, ID, _mID);
+    }
+    else if (Type == "checkbox")
+    {
+        checkBox.Render(_x+X, _y+Y, ID, _mID);
     }
 }
 void GUIElement::handleEvent(sf::Event* _event, int _x, int _y, std::string _mID)
@@ -121,6 +131,10 @@ void GUIElement::handleEvent(sf::Event* _event, int _x, int _y, std::string _mID
     {
         canvas.handleEvent(_event, _x+X, _y+Y, ID, _mID);
     }
+    else if (Type == "checkbox")
+    {
+        checkBox.handleEvent(_event, _x+X, _y+Y, ID, _mID);
+    }
 }
 void GUIElement::handleSoftEvent(std::list<std::string> _args, int _x, int _y, std::string _mID)
 {
@@ -152,6 +166,10 @@ void GUIElement::handleSoftEvent(std::list<std::string> _args, int _x, int _y, s
     {
         canvas.handleSoftEvent(_args, _x+X, _y+Y, ID, _mID);
     }
+    else if (Type == "checkbox")
+    {
+        checkBox.handleSoftEvent(_args, _x+X, _y+Y, ID, _mID);
+    }
 }
 void GUIElement::handleTask(std::list<std::string> _args, int _x, int _y, std::string _mID)
 {
@@ -182,5 +200,9 @@ void GUIElement::handleTask(std::list<std::string> _args, int _x, int _y, std::s
     else if (Type == "canvas")
     {
         canvas.handleTask(_args, _x+X, _y+Y, ID, _mID);
+    }
+    else if (Type == "checkbox")
+    {
+        checkBox.handleTask(_args, _x+X, _y+Y, ID, _mID);
     }
 }
