@@ -47,6 +47,15 @@ struct Settings
     int         guiButtonTextScale; //
     std::string guiButtonFontID; //
 
+    sf::Color   guiCheckboxBackgroundInactive;
+    sf::Color   guiCheckboxBackgroundActive;
+    sf::Color   guiCheckboxBackgroundHover;
+    sf::Color   guiCheckboxBackgroundChecked;
+    sf::Color   guiCheckboxBorderInactive;
+    sf::Color   guiCheckboxBorderActive;
+    sf::Color   guiCheckboxBorderHover;
+    sf::Color   guiCheckboxBorderChecked;
+
     sf::Color   guiHorsliderButtonBackgroundInactive; //
     sf::Color   guiHorsliderButtonBackgroundActive; //
     sf::Color   guiHorsliderButtonBackgroundHover; //

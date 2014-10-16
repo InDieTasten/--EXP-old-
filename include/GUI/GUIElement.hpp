@@ -11,6 +11,7 @@
 #include "GUI/Elements/ProgBar.hpp"
 #include "GUI/Elements/TextBox.hpp"
 #include "GUI/Elements/VertSlider.hpp"
+#include "GUI/Elements/CheckBox.hpp"
 
 class GUIElement
 {
@@ -24,6 +25,7 @@ public:
     HorSlider horSlider;
     VertSlider vertSlider;
     Canvas canvas;
+    CheckBox checkBox;
 
     std::string Type;
     std::string ID;
