@@ -19,6 +19,7 @@ class GraphicsEngine
 private:
     double PI;
     sf::Sprite renderSprite;
+    sf::Sprite starSprite;
 public:
     //CONSTRUCTORS
     GraphicsEngine();
