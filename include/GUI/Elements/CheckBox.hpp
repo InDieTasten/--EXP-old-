@@ -1,12 +1,20 @@
 #ifndef _CheckBox_hpp_
 #define _CheckBox_hpp_
 
+#include <SFML/Graphics.hpp>
+#include <list>
+#include <string>
+#include "MemoryBank/DataBank.hpp"
+
+extern DataBank* dLink;
+
 class CheckBox
 {
     //MEMBERS
 private:
     sf::RectangleShape rect;
-    bool clicked;
+    bool mouseHover;
+    bool checked;
 public:
     int X;
     int Y;
@@ -16,15 +24,13 @@ public:
     sf::Color BackgroundColorInactive;
     sf::Color BackgroundColorActive;
     sf::Color BackgroundColorHover;
+    sf::Color BackgroundColorChecked;
 
     sf::Color BorderColorInactive;
     sf::Color BorderColorActive;
     sf::Color BorderColorHover;
+    sf::Color BorderColorChecked;
 
-    sf::Color CheckedColorInactive;
-    sf::Color CheckedColorActive;
-    sf::Color UncheckedColorInactive;
-    sf::Color UncheckedColorActive;
 
     bool isActive;
 
