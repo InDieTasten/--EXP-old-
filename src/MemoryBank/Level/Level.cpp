@@ -17,30 +17,30 @@ Level::Level()
     obj1.TextureID = "$_missing";
     obj1.flyByLocal = true;
 
-    SpaceObject obj2;
-    obj2.ID = "default";
+    /*SpaceObject obj2;
+    obj2.ID = "default2";
     obj2.Position = Vector(-200.0, 0.0);
     obj2.Velocity = Vector(0.0, 0.0);
     obj2.Mass = 15.0;
     obj2.TextureID = "$_missing";
-    obj2.flyByLocal = true;
+    obj2.flyByLocal = true;*/
 
-    SpaceObject obj3;
-    obj3.ID = "default";
+    /*SpaceObject obj3;
+    obj3.ID = "default3";
     obj3.Position = Vector(200.0, 0.0);
     obj3.Velocity = Vector(0.0, 0.0);
     obj3.Mass = 15.0;
     obj3.TextureID = "$_missing";
-    obj3.flyByLocal = true;
+    obj3.flyByLocal = true;*/
 
     x.SpaceObjectList.push_back(obj1);
-    x.SpaceObjectList.push_back(obj2);
-    x.SpaceObjectList.push_back(obj3);
+    //x.SpaceObjectList.push_back(obj2);
+    //x.SpaceObjectList.push_back(obj3);
 
     for(int i = -100; i <= 100; i++)
     {
         SpaceObject obji;
-        obji.ID = "default";
+        obji.ID = "default-" + util::toString(i);
         obji.Position = Vector(0.0, i*1.0);
         obji.Velocity = Vector(0.0, 0.0);
         obji.Mass = 15.0;
