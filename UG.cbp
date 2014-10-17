@@ -169,6 +169,9 @@
 		<Unit filename="src/GUI/Elements/Canvas.cpp">
 			<Option virtualFolder="GUI/Elements/" />
 		</Unit>
+		<Unit filename="src/GUI/Elements/CheckBox.cpp">
+			<Option virtualFolder="GUI/Elements/" />
+		</Unit>
 		<Unit filename="src/GUI/Elements/CodeBox.cpp">
 			<Option virtualFolder="GUI/Elements/" />
 		</Unit>
