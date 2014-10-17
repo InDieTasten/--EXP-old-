@@ -188,6 +188,10 @@ int main ( int argc, char *argv[] )
         {
             EventMan.processTask(dLink->pullTask());
         }
+        if(!dLink->guiMode)
+        {
+            dLink->localCtrl.targetPoint = Vector(dLink->renderWindow->mapPixelToCoords(sf::Mouse::getPosition(*dLink->renderWindow), dLink->gameView));
+        }
     }
     GMutex.unlock();
 
