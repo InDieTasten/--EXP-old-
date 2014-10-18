@@ -12,6 +12,16 @@ void TextBox::calibrateCursor()
         cursor++;
     }
 }
+void TextBox::Setup()
+{
+    position = 0;
+    content = "";
+    isActive = true;
+    multiline = true;
+    clicked = false;
+    sliderX = 0;
+    sliderY = 0;
+}
 void TextBox::moveview(int _x, int _y)
 {
     while((float)_x + (float)Width + (float)sliderX < text.findCharacterPos(position).x)
@@ -52,16 +62,7 @@ void TextBox::movecursor(float x,float y)
     position = tmp;
     }
 }
-void TextBox::Setup()
-{
-    position = 0;
-    content = "";
-    isActive = true;
-    multiline = true;
-    clicked = false;
-    sliderX = 0;
-    sliderY = 0;
-}
+
 void TextBox::Update(int _x, int _y,std::string _id, std::string _mID)
 {
     rect.setPosition((float)_x,(float)_y);
