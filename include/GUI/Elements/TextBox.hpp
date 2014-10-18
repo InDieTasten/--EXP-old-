@@ -51,6 +51,7 @@ public:
 private:
     void calibrateCursor();
     void moveview(int _x, int _y);
+    void movecursor(float x,float y);
 public:
     void Show();
     void Hide();
