@@ -32,13 +32,33 @@ void TextBox::moveview(int _x, int _y)
         sliderY =  sliderY - 16;
     }
 }
+void TextBox::movecursor(float x,float y)
+{
+    if(content.size() >= 1)
+    {
+        tmp = 0;
+        do
+        {
+            tmp++;
+            tmpY = text.findCharacterPos(tmp).y;
+        }
+        while(tmp < content.size()+1 && tmpY < y + sliderY);
+        do
+        {
+            tmp--;
+            tmpX = text.findCharacterPos(tmp).x;
+        }
+        while(tmpX > (x+2.0f) + sliderX && tmp < content.size()+1);
+    position = tmp;
+    }
+}
 void TextBox::Setup()
 {
     position = 0;
     content = "";
     isActive = true;
     multiline = true;
-    clicked = true;
+    clicked = false;
     sliderX = 0;
     sliderY = 0;
 }
@@ -95,29 +115,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                 clicked = true;
                 if(sf::Event::MouseLeft)
                 {
-                    if(content.size() >= 1)
-                    {
-                        tmp = 0;
-                        do
-                        {
-                            tmpY = text.findCharacterPos(tmp).y;
-                            tmp++;
-                        }
-                        while(tmp < content.size()+1 && tmpY < (float)y + sliderY);
-                        tmp-=2;
-                        if(!((float)x + sliderX > text.findCharacterPos(tmp).x && text.findCharacterPos(tmp++).y == text.findCharacterPos(tmp).y))
-                        {
-                            do
-                            {
-                                tmpX = text.findCharacterPos(tmp).x;
-                                tmp--;
-                            }
-                            while(tmpX > ((float)x+2.0f) + sliderX && tmp < content.size()+1);
-                        }
-
-                        tmp++;
-                        position = tmp;
-                    }
+                    movecursor((float)x,(float)y);
                 }
             }
             else
@@ -155,19 +153,12 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                 {
                     if(text.findCharacterPos(position).y > 8.0f + _y)
                     {
-
-
-                        for(tmp = 0; text.findCharacterPos(tmp) == sf::Vector2f(text.findCharacterPos(position).y - 8.0f,text.findCharacterPos(position).x); tmp++) {}
-                        position = tmp;
+                        movecursor(text.findCharacterPos(position).x,text.findCharacterPos(position).y - 8.0f);
                     }
                 }
                 if(_event->key.code == sf::Keyboard::Down)
                 {
-                    if(text.findCharacterPos(position).y > 8.0f + _y)
-                    {
-                        for(tmp = 0; text.findCharacterPos(tmp) == sf::Vector2f(text.findCharacterPos(position).y + 8.0f,text.findCharacterPos(position).x); tmp++) {}
-                        position = tmp;
-                    }
+                    movecursor(text.findCharacterPos(position).x,text.findCharacterPos(position).y + 16.0f);
                 }
 
                 if(_event->key.code == sf::Keyboard::Delete)
