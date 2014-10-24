@@ -23,6 +23,8 @@ public:
     std::string TextureID;
     bool flyByLocal;
     bool AI;
+    bool physics;
+    bool graphics;
     std::string Target;
     float RotationSpeed;
 
