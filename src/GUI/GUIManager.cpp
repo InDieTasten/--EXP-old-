@@ -281,19 +281,10 @@ void GUIManager::add_MainMenu()
     elem4.button.Height = 16;
     elem4.button.Text = "Close without saving!";
 
-    GUIElement elem5;
-    elem5.ID = "test";
-    elem5.Type = "checkbox";
-    elem5.X = 1;
-    elem5.Y = 1;
-    elem5.checkBox.Width = 16;
-    elem5.checkBox.Height = 16;
-
     main.GuiElements.push_back(elem1);
     main.GuiElements.push_back(elem2);
     main.GuiElements.push_back(elem3);
     main.GuiElements.push_back(elem4);
-    main.GuiElements.push_back(elem5);
 
     main.update();
     guiMenus.push_back(main);
@@ -301,6 +292,7 @@ void GUIManager::add_MainMenu()
 void GUIManager::add_ConsoleMenu()
 {
     GUIMenu console;
+    console.isHidden = true;
     console.ID = "$_consoleMenu";
     console.SetX(dLink->settings.dockWidth+10);
     console.SetY(100);
