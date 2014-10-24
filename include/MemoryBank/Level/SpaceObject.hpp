@@ -22,6 +22,9 @@ public:
     double Mass; //unit in tons
     std::string TextureID;
     bool flyByLocal;
+    bool AI;
+    std::string Target;
+    float RotationSpeed
 
     //CONSTRUCTORS
     SpaceObject();
