@@ -130,3 +130,14 @@ float util::getMean(std::list<int> _x)
     }
     return (r/_x.size());
 }
+void toStream(std::string str, std::ofstream& stream)
+{
+    size_t len = str.length();
+    output.write((char*) &x, sizeof(x));
+    for(size_t i = 0; i < len; i++)
+    {
+        char tmp = str.at(i);
+        output.write((char*) &tmp, sizeof(tmp));
+    }
+}
+std::string fromStream(std::ofstream&);
