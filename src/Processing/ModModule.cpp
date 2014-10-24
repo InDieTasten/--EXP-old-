@@ -2760,6 +2760,13 @@ void ModModule::processTask(std::list<std::string> _args)
             dLink->saveDataBank(*_args.begin());
             LOG::file("[ModModule][Info] Task instructions performed");
         }
+        else if(*_args.begin() == "load")
+        {
+            LOG::file("[ModModule][Info] Task end node reached...");
+            _args.pop_front();
+            dLink->loadDataBank(*_args.begin());
+            LOG::file("[ModModule][Info] Task instructions performed");
+        }
         else
         {
             LOG::console("[ModModule]&e[Warning] No accessor called '" + *_args.begin() + "' !");
