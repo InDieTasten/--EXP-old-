@@ -63,13 +63,13 @@ void Level::saveToStream(std::ofstream& output)
     LOG::safe("[Level][Info] name saved");
     output.write((char*) &description, sizeof(description));
     LOG::safe("[Level][Info] description saved");
-    activeSystem.saveToStream(output);
-    LOG::safe("[Level][Info] activeSystem saved");
-    output.write((char*) inactiveSystems.size(), sizeof(inactiveSystems.size()));
-    for(std::list<SolarSystem>::iterator it = inactiveSystems.begin(); it != inactiveSystems.end(); it++)
-    {
-        it->saveToStream(output);
-    }
-    LOG::safe("[Level][Info] inactiveSystems saved");
+    //activeSystem.saveToStream(output);
+    //LOG::safe("[Level][Info] activeSystem saved");
+    //output.write((char*) inactiveSystems.size(), sizeof(inactiveSystems.size()));
+    //for(std::list<SolarSystem>::iterator it = inactiveSystems.begin(); it != inactiveSystems.end(); it++)
+    //{
+    //    it->saveToStream(output);
+    //}
+    //LOG::safe("[Level][Info] inactiveSystems saved");
     LOG::safe("[Level][Info] Saving completed!");
 }
