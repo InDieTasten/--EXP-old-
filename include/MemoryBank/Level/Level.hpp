@@ -24,6 +24,7 @@ public:
     //METHODS
 
     void saveToStream(std::ofstream& output);
+    void loadFromStream(std::ifstream& input);
 };
 
 #endif // _Level_hpp_

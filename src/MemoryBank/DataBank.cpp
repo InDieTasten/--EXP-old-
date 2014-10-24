@@ -270,7 +270,14 @@ void DataBank::saveDataBank(std::string _path)
 }
 void DataBank::loadDataBank(std::string _path)
 {
-
+    LOG::console("[MemBank][Info] Started loading...");
+    std::ifstream stream;
+    stream.open(_path.c_str(), std::ios::binary);
+    LOG::console("[MemBank][Info] Handle opened");
+    level.loadFromStream(stream);
+    LOG::console("[MemBank][Info] Level loaded");
+    stream.close();
+    LOG::console("[MemBank][Info] Handle closed");
 }
 
 void DataBank::pushEvent(std::list<std::string> _args)
