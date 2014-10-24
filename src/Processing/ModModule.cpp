@@ -23,6 +23,7 @@ void ModModule::Run()
         lua_register(it->state, "pushEvent", ModModule::lPushEvent);
         lua_register(it->state, "pushTask", ModModule::lPushTask);
         lua_register(it->state, "getLevel", ModModule::lGetLevel);
+        lua_register(it->state, "getSystems", ModModule::lGetSystems);
 
         luaL_dofile(it->state, it->path.c_str());
 
@@ -123,6 +124,27 @@ int ModModule::lGetLevel(lua_State *L)
     lua_pushstring(L, dLink->level.description.c_str());
     lua_settable(L, -3);
 
+    return 1;
+}
+int ModModule::lGetSystems(lua_State *L)
+{
+    int n = lua_gettop(L);
+    if(n != 0)
+    {
+        // Error
+    }
+    lua_newtable(L);
+    lua_pushstring(L, "active");
+    lua_pushstring(L, dLink->level.activeSystem.ID.c_str());
+    lua_settable(L, -3);
+    int i = 2;
+    for(std::list<SolarSystem>::iterator it = dLink->level.inactiveSystems.begin(); it != dLink->level.inactiveSystems.end(); it++)
+    {
+        lua_pushnumber(L, i);
+        lua_pushstring(L, it->ID.c_str());
+        lua_settable(L, -3);
+        i++;
+    }
     return 1;
 }
 int ModModule::lPrint(lua_State *L)
