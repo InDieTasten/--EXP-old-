@@ -73,7 +73,7 @@ void Level::loadFromStream(std::ifstream& input)
     name = util::fromStream(input);
     description = util::fromStream(input);
     activeSystem.loadFromStream(input);
-    unsigned int x;
+    /*unsigned int x;
     input.read((char*) &x, sizeof(x));
     inactiveSystems.clear();
     for(unsigned int i = 0; i < x; i++)
@@ -81,5 +81,5 @@ void Level::loadFromStream(std::ifstream& input)
         SolarSystem tmp;
         tmp.loadFromStream(input);
         inactiveSystems.push_back(tmp);
-    }
+    }*/
 }
