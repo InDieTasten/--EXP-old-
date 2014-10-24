@@ -24,7 +24,7 @@ public:
     bool flyByLocal;
     bool AI;
     std::string Target;
-    float RotationSpeed
+    float RotationSpeed;
 
     //CONSTRUCTORS
     SpaceObject();
