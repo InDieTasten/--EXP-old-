@@ -70,3 +70,8 @@ void Vector::saveToStream(std::ofstream& output)
     output.write((char*) &x, sizeof(x));
     output.write((char*) &y, sizeof(y));
 }
+void Vector::loadFromStream(std::ifstream& input)
+{
+    input.read((char*) &x, sizeof(x));
+    input.read((char*) &y, sizeof(y));
+}

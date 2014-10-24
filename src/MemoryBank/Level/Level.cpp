@@ -58,41 +58,28 @@ Level::Level()
 
 void Level::saveToStream(std::ofstream& output)
 {
-    LOG::safe("[Level][Info] Saving started...");
-
-
-    LOG::safe("[Level][Info] name saved");
-    output.write((char*) &description, sizeof(description));
-    LOG::safe("[Level][Info] description saved");
+    util::toStream(name, output);
+    util::toStream(description, output);
     activeSystem.saveToStream(output);
-    LOG::safe("[Level][Info] activeSystem saved");
     unsigned int x = inactiveSystems.size();
     output.write((char*) &x, sizeof(x));
     for(std::list<SolarSystem>::iterator it = inactiveSystems.begin(); it != inactiveSystems.end(); it++)
     {
         it->saveToStream(output);
     }
-    LOG::safe("[Level][Info] inactiveSystems saved");
-    LOG::safe("[Level][Info] Saving completed!");
 }
 void Level::loadFromStream(std::ifstream& input)
 {
-    LOG::safe("[Level][Info] Loading started...");
-    //input.write((char*) &name, sizeof(name));
-
-    input.read((char*) &name, sizeof(name));
-
-    LOG::safe("[Level][Info] name loaded");
-    input.read((char*) &description, sizeof(description));
-    LOG::safe("[Level][Info] description loaded");
-    //activeSystem.loadFromStream(input);
-    //LOG::safe("[Level][Info] activeSystem loaded");
-    //unsigned int x = inactiveSystems.size();
-    //input.write((char*) &x, sizeof(x));
-    //for(std::list<SolarSystem>::iterator it = inactiveSystems.begin(); it != inactiveSystems.end(); it++)
-    //{
-    //    it->saveToStream(input);
-    //}
-    LOG::safe("[Level][Info] inactiveSystems saved");
-    LOG::safe("[Level][Info] Saving completed!");
+    name = util::fromStream(input);
+    description = util::fromStream(input);
+    activeSystem.loadFromStream(input);
+    unsigned int x;
+    input.read((char*) &x, sizeof(x));
+    inactiveSystems.clear();
+    for(unsigned int i = 0; i < x; i++)
+    {
+        SolarSystem tmp;
+        tmp.loadFromStream(input);
+        inactiveSystems.push_back(tmp);
+    }
 }
