@@ -38,13 +38,13 @@ void GraphicsEngine::Run()
         GMutex.lock();
 
 
-        /*for(std::list<SpaceObject>::iterator it = dLink->level.activeSystem.SpaceObjectList.begin(); it != dLink->level.activeSystem.SpaceObjectList.end(); it++)
+        for(std::list<SpaceObject>::iterator it = dLink->level.activeSystem.SpaceObjectList.begin(); it != dLink->level.activeSystem.SpaceObjectList.end(); it++)
         {
             if(it->ID == "default")
             {
                 dLink->gameView.setCenter(it->Position.x, it->Position.y);
             }
-        }*/
+        }
 
         dLink->renderWindow->setView(dLink->gameView);
 
@@ -60,18 +60,18 @@ void GraphicsEngine::Run()
         {
             for(long y = floorf(Yc/Ys)-1; y <= Yc/Ys + Hc/Ys +2; y++)
             {
-                starSprite.setTexture(*dLink->TextureGet("$_stars"));
-                starSprite.setOrigin(0.0, 0.0);
-                starSprite.setScale(1.0,1.0);
-                starSprite.setRotation(0.0);
-                starSprite.setPosition(x*Xs, y*Ys);
-                dLink->renderWindow->draw(starSprite);
+                renderSprite.setTexture(*dLink->TextureGet("$_stars"), true);
+                renderSprite.setOrigin(0.0, 0.0);
+                renderSprite.setScale(1.0,1.0);
+                renderSprite.setRotation(0.0);
+                renderSprite.setPosition(x*Xs, y*Ys);
+                dLink->renderWindow->draw(renderSprite);
             }
         }
 
         for (std::list<SpaceObject>::iterator it = dLink->level.activeSystem.SpaceObjectList.begin(); it != dLink->level.activeSystem.SpaceObjectList.end(); it++)
         {
-            renderSprite.setTexture(*dLink->TextureGet(it->TextureID));
+            renderSprite.setTexture(*dLink->TextureGet(it->TextureID), true);
             renderSprite.setOrigin(renderSprite.getLocalBounds().width/2.0f, renderSprite.getLocalBounds().height/2.0f);
             renderSprite.setScale(1.0,1.0);
             renderSprite.setRotation(it->Rotation *180 / PI);
