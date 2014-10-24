@@ -22,3 +22,13 @@ void SpaceObject::saveToStream(std::ofstream& output)
     Position.saveToStream(output);
     Velocity.saveToStream(output);
 }
+void SpaceObject::loadFromStream(std::ifstream& input)
+{
+    input.read((char*) &ID, sizeof(ID));
+    input.read((char*) &Rotation, sizeof(Rotation));
+    input.read((char*) &Mass, sizeof(Mass));
+    input.read((char*) &TextureID, sizeof(TextureID));
+    input.read((char*) &flyByLocal, sizeof(flyByLocal));
+    Position.loadFromStream(input);
+    Velocity.loadFromStream(input);
+}
