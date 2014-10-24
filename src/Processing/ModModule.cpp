@@ -22,6 +22,7 @@ void ModModule::Run()
         lua_register(it->state, "print", ModModule::lPrint);
         lua_register(it->state, "pushEvent", ModModule::lPushEvent);
         lua_register(it->state, "pushTask", ModModule::lPushTask);
+        lua_register(it->state, "getLevel", ModModule::lGetLevel);
 
         luaL_dofile(it->state, it->path.c_str());
 
@@ -107,6 +108,23 @@ void ModModule::Run()
     }
     LOG::console("[ModModule][Info] Thread stopped");
 }
+int ModModule::lGetLevel(lua_State *L)
+{
+    int n = lua_gettop(L);
+    if(n != 0)
+    {
+        // Error
+    }
+    lua_newtable(L);
+    lua_pushstring(L, "name");
+    lua_pushstring(L, dLink->level.name.c_str());
+    lua_settable(L, -3);
+    lua_pushstring(L, "description");
+    lua_pushstring(L, dLink->level.description.c_str());
+    lua_settable(L, -3);
+
+    return 1;
+}
 int ModModule::lPrint(lua_State *L)
 {
     //number of arguments
@@ -118,7 +136,6 @@ int ModModule::lPrint(lua_State *L)
     {
         message.append(lua_tostring(L,i));
     }
-    int x = 999;
     LOG::console("[ModModule]"+message);
     return 0;
 }
