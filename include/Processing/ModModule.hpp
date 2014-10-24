@@ -36,6 +36,7 @@ public:
     //METHODS
 private:
     static int lGetLevel(lua_State *L);
+    static int lGetSystems(lua_State *L);
     static int lPrint(lua_State *L); //message
     static int lPushEvent(lua_State *L);
     static int lPushTask(lua_State *L);
