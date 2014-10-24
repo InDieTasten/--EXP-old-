@@ -22,6 +22,8 @@ void SpaceObject::saveToStream(std::ofstream& output)
     util::toStream(TextureID, output);
     output.write((char*) &flyByLocal, sizeof(flyByLocal));
     output.write((char*) &AI, sizeof(AI));
+    output.write((char*) &physics, sizeof(physics));
+    output.write((char*) &graphics, sizeof(graphics));
     Position.saveToStream(output);
     Velocity.saveToStream(output);
 }
@@ -35,6 +37,8 @@ void SpaceObject::loadFromStream(std::ifstream& input)
     TextureID = util::fromStream(input);
     input.read((char*) &flyByLocal, sizeof(flyByLocal));
     input.read((char*) &AI, sizeof(AI));
+    input.read((char*) &physics, sizeof(physics));
+    input.read((char*) &graphics, sizeof(graphics));
     Position.loadFromStream(input);
     Velocity.loadFromStream(input);
 }
