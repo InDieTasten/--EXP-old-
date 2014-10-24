@@ -27,6 +27,9 @@ sf::Color toColor(std::string);
 float getMean(std::list<float> _x);
 float getMean(std::list<int> _x);
 
+void toStream(std::string, std::ofstream&);
+std::string fromStream(std::ofstream&);
+
 }
 
 #endif
