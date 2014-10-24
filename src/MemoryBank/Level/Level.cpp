@@ -3,6 +3,8 @@
 //CONSTRUCTORS
 Level::Level()
 {
+    name = "default";
+    description = "description of level 'default'";
 
     SolarSystem x;
     x.Description = "default";
