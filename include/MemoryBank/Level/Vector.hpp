@@ -31,6 +31,7 @@ public:
     Vector operator/(const Vector&  other);
 
     void saveToStream(std::ofstream& output);
+    void loadFromStream(std::ifstream& input);
 };
 
 #endif

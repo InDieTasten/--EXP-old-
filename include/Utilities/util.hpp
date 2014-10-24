@@ -6,6 +6,7 @@
 #include <list>
 #include <Windows.h>
 #include <SFML/Graphics.hpp>
+#include <fstream>
 
 namespace util
 {
@@ -28,7 +29,7 @@ float getMean(std::list<float> _x);
 float getMean(std::list<int> _x);
 
 void toStream(std::string, std::ofstream&);
-std::string fromStream(std::ofstream&);
+std::string fromStream(std::ifstream&);
 
 }
 
