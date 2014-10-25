@@ -25,7 +25,8 @@ public:
     bool AI;
     bool physics;
     bool graphics;
-    std::string Target;
+    std::string PositionTarget;
+    std::string ShootdownTarget;
     float RotationSpeed;
 
     //CONSTRUCTORS
