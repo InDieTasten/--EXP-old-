@@ -15,7 +15,8 @@ SpaceObject::SpaceObject()
 void SpaceObject::saveToStream(std::ofstream& output)
 {
     util::toStream(ID, output);
-    util::toStream(Target, output);
+    util::toStream(PositionTarget, output);
+    util::toStream(ShootdownTarget, output);
     output.write((char*) &Rotation, sizeof(Rotation));
     output.write((char*) &RotationSpeed, sizeof(RotationSpeed));
     output.write((char*) &Mass, sizeof(Mass));
@@ -30,7 +31,8 @@ void SpaceObject::saveToStream(std::ofstream& output)
 void SpaceObject::loadFromStream(std::ifstream& input)
 {
     ID = util::fromStream(input);
-    Target = util::fromStream(input);
+    PositionTarget = util::fromStream(input);
+    ShootdownTarget = util::fromStream(input);
     input.read((char*) &Rotation, sizeof(Rotation));
     input.read((char*) &RotationSpeed, sizeof(RotationSpeed));
     input.read((char*) &Mass, sizeof(Mass));
