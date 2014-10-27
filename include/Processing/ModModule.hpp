@@ -23,12 +23,18 @@ struct ASync
     std::list<std::string> task;
 };
 
+namespace ModdingAPI
+{
+    std::string selectedSystem;
+}
 class ModModule
 {
     //MEMBERS
 private:
     std::list<ASync> waitingTasks;
 public:
+
+
     //CONSTRUCTORS
 
     //DESTRUCTORS
@@ -37,6 +43,8 @@ public:
 private:
     static int lGetLevel(lua_State *L);
     static int lGetSystems(lua_State *L);
+    static int lSelectSystem(lua_State *L);
+
     static int lPrint(lua_State *L); //message
     static int lPushEvent(lua_State *L);
     static int lPushTask(lua_State *L);
