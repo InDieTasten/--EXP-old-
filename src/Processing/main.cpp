@@ -32,6 +32,7 @@ float mainLimit =  100.0; //Cycles per second
 // Global accessors
 std::list< std::list<std::string> > eventBuffer;
 std::list< std::list<std::string> > taskBuffer;
+std::string selectedSystem;
 // pointer
 DataBank*       dLink;
 GUIManager*     guiLink;
