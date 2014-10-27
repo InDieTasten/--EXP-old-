@@ -13,6 +13,7 @@ public:
     // MEMBERS
     std::string name;
     std::string description;
+    unsigned long long timestamp;
 
     SolarSystem activeSystem;
 
