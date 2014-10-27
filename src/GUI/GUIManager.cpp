@@ -292,7 +292,7 @@ void GUIManager::add_MainMenu()
 void GUIManager::add_ConsoleMenu()
 {
     GUIMenu console;
-    console.isHidden = true;
+    console.isHidden = false;
     console.ID = "$_consoleMenu";
     console.SetX(dLink->settings.dockWidth+10);
     console.SetY(100);
