@@ -26,6 +26,7 @@ void ModModule::Run()
         lua_register(it->state, "getSystems", ModModule::lGetSystems);
         lua_register(it->state, "selectSystem", ModModule::lSelectSystem);
         lua_register(it->state, "getSystem", ModModule::lGetSystem);
+        lua_register(it->state, "getObjects", ModModule::lGetObjects);
 
         luaL_dofile(it->state, it->path.c_str());
 
@@ -216,6 +217,46 @@ int ModModule::lGetSystem(lua_State *L)
     lua_pushstring(L, "description");
     lua_pushstring(L, sys->Description.c_str());
     lua_settable(L, -3);
+    return 1;
+}
+int ModModule::lGetObjects(lua_State *L)
+{
+    int n = lua_gettop(L);
+    std::string index;
+    if(n == 1)
+    {
+        index = "";
+        index += lua_tostring(L,1);
+        return 0;
+    }
+    else
+    {
+        index = selectedSystem;
+    }
+    SolarSystem* sys;
+    if(dLink->level.activeSystem.ID == index)
+    {
+        sys = &dLink->level.activeSystem;
+    }
+    else
+    {
+        for(std::list<SolarSystem>::iterator it = dLink->level.inactiveSystems.begin(); it != dLink->level.inactiveSystems.end(); it++)
+        {
+            if(it->ID == index)
+            {
+                sys = &(*it);
+                break;
+            }
+        }
+    }
+    lua_newtable(L);
+    unsigned int i = 1;
+    for(std::list<SpaceObject>::iterator it = sys->SpaceObjectList.begin(); it != sys->SpaceObjectList.end(); it++)
+    {
+        lua_pushnumber(L, i);
+        lua_pushstring(L, it->ID.c_str());
+        lua_settable(L, -3);
+    }
     return 1;
 }
 int ModModule::lPrint(lua_State *L)
