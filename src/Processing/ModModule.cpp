@@ -24,6 +24,8 @@ void ModModule::Run()
         lua_register(it->state, "pushTask", ModModule::lPushTask);
         lua_register(it->state, "getLevel", ModModule::lGetLevel);
         lua_register(it->state, "getSystems", ModModule::lGetSystems);
+        lua_register(it->state, "selectSystem", ModModule::lSelectSystem);
+        lua_register(it->state, "getSystem", ModModule::lGetSystem);
 
         luaL_dofile(it->state, it->path.c_str());
 
@@ -160,19 +162,61 @@ int ModModule::lSelectSystem(lua_State *L)
     index += lua_tostring(L,1);
     if(dLink->level.activeSystem.ID == index)
     {
-        ModdingAPI::selectedSystem = index;
+        selectedSystem = index;
         return 0;
     }
     for(std::list<SolarSystem>::iterator it = dLink->level.inactiveSystems.begin(); it != dLink->level.inactiveSystems.end(); it++)
     {
         if(it->ID == index)
         {
-            ModdingAPI::selectedSystem = index;
+            selectedSystem = index;
             return 0;
         }
     }
     //Error
     return 0;
+}
+int ModModule::lGetSystem(lua_State *L)
+{
+    int n = lua_gettop(L);
+    std::string index;
+    if(n == 1)
+    {
+        index = "";
+        index += lua_tostring(L,1);
+        return 0;
+    }
+    else
+    {
+        index = selectedSystem;
+    }
+    SolarSystem* sys;
+    if(dLink->level.activeSystem.ID == index)
+    {
+        sys = &dLink->level.activeSystem;
+    }
+    else
+    {
+        for(std::list<SolarSystem>::iterator it = dLink->level.inactiveSystems.begin(); it != dLink->level.inactiveSystems.end(); it++)
+        {
+            if(it->ID == index)
+            {
+                sys = &(*it);
+                break;
+            }
+        }
+    }
+    lua_newtable(L);
+    lua_pushstring(L, "id");
+    lua_pushstring(L, sys->ID.c_str());
+    lua_settable(L, -3);
+    lua_pushstring(L, "name");
+    lua_pushstring(L, sys->Name.c_str());
+    lua_settable(L, -3);
+    lua_pushstring(L, "description");
+    lua_pushstring(L, sys->Description.c_str());
+    lua_settable(L, -3);
+    return 1;
 }
 int ModModule::lPrint(lua_State *L)
 {
