@@ -255,6 +255,7 @@ int ModModule::lGetObjects(lua_State *L)
         lua_pushnumber(L, i);
         lua_pushstring(L, it->ID.c_str());
         lua_settable(L, -3);
+        i++;
     }
     return 1;
 }
