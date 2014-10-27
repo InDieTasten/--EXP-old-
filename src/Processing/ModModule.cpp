@@ -132,6 +132,7 @@ int ModModule::lGetSystems(lua_State *L)
     if(n != 0)
     {
         // Error
+        return 0;
     }
     lua_newtable(L);
     lua_pushstring(L, "active");
@@ -146,6 +147,32 @@ int ModModule::lGetSystems(lua_State *L)
         i++;
     }
     return 1;
+}
+int ModModule::lSelectSystem(lua_State *L)
+{
+    int n = lua_gettop(L);
+    if(n != 1)
+    {
+        // Error
+        return 0;
+    }
+    std::string index = "";
+    index += lua_tostring(L,1);
+    if(dLink->level.activeSystem.ID == index)
+    {
+        ModdingAPI::selectedSystem = index;
+        return 0;
+    }
+    for(std::list<SolarSystem>::iterator it = dLink->level.inactiveSystems.begin(); it != dLink->level.inactiveSystems.end(); it++)
+    {
+        if(it->ID == index)
+        {
+            ModdingAPI::selectedSystem = index;
+            return 0;
+        }
+    }
+    //Error
+    return 0;
 }
 int ModModule::lPrint(lua_State *L)
 {
