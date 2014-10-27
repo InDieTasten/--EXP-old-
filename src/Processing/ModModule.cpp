@@ -227,7 +227,6 @@ int ModModule::lGetObjects(lua_State *L)
     {
         index = "";
         index += lua_tostring(L,1);
-        return 0;
     }
     else
     {
