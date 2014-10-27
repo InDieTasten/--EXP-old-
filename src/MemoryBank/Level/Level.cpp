@@ -3,13 +3,13 @@
 //CONSTRUCTORS
 Level::Level()
 {
-    name = "default";
+    name = "Default";
     description = "description of level 'default'";
 
     SolarSystem x;
-    x.Description = "default";
+    x.Description = "description of system 'default'";
     x.ID = "default";
-    x.Name = "default";
+    x.Name = "Default";
 
     SpaceObject obj1;
     obj1.ID = "default";
