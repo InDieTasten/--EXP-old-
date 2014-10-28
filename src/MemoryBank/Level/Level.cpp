@@ -39,7 +39,7 @@ Level::Level()
     //x.SpaceObjectList.push_back(obj2);
     //x.SpaceObjectList.push_back(obj3);
 
-    for(int i = -100; i <= 100; i++)
+    for(int i = -1000; i <= 1000; i++)
     {
         SpaceObject obji;
         obji.ID = "default-" + util::toString(i);
