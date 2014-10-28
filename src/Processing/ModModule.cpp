@@ -4872,4 +4872,24 @@ void ModModule::handleEvent(sf::Event* _event)
         x.push_back(util::toString(_event->key.code));
         dLink->pushEvent(x);
     }
+    else if(_event->type == sf::Event::MouseWheelMoved)
+    {
+        for(std::list<Action>::iterator act = dLink->actions.begin(); act != dLink->actions.end(); act++)
+        {
+            if(_event->type == act->ignitionDescriptor.type)
+            {
+                if(_event->mouseWheel.delta == act->ignitionDescriptor.mouseWheel.delta)
+                {
+                    std::list<std::string> x;
+                    x.push_back("action");
+                    x.push_back(act->name);
+                    dLink->pushEvent(x);
+                }
+            }
+        }
+        std::list<std::string> x;
+        x.push_back("mouseWheelMove");
+        x.push_back(util::toString(_event->mouseWheel.delta));
+        dLink->pushEvent(x);
+    }
 }
