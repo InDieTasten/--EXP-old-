@@ -35,6 +35,10 @@ void PhysicsEngine::Run()
         }
         frametime = limit.restart().asSeconds();
         GMutex.lock();
+        if(!dLink->guiMode)
+        {
+            dLink->localCtrl.targetPoint = Vector(dLink->renderWindow->mapPixelToCoords(sf::Mouse::getPosition(*dLink->renderWindow), dLink->gameView));
+        }
         for (std::list<SpaceObject>::iterator it = dLink->level.activeSystem.SpaceObjectList.begin(); it != dLink->level.activeSystem.SpaceObjectList.end(); it++)
         {
             if(it->flyByLocal) // input forces
