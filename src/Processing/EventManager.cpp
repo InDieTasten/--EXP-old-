@@ -55,6 +55,47 @@ void EventManager::handleSoftEvent(std::list<std::string> _args)
         {
             dLink->guiMode = !dLink->guiMode;
         }
+        if(!dLink->guiMode)
+        {
+            if(*_args.begin() == "zoomOut")
+            {
+                float _time = 0.3f;
+                float _zoomFactor = 1.3f;
+                float _updateRate = 30.0f;
+
+                int _jumps = _time*_updateRate;
+                float _jumpStep = pow(_zoomFactor,1.0f/_jumps);
+
+                for(float i = 0.0f; i <= _time; i += 1.0/_updateRate)
+                {
+                    std::list< std::string > x;
+                    x.push_back("delay");
+                    x.push_back(util::toString(i*1000.0));
+                    x.push_back("zoom");
+                    x.push_back(util::toString(_jumpStep));
+                    dLink->pushTask(x);
+                }
+            }
+            else if(*_args.begin() == "zoomIn")
+            {
+                float _time = 0.3f;
+                float _zoomFactor = 0.7f;
+                float _updateRate = 30.0f;
+
+                int _jumps = _time*_updateRate;
+                float _jumpStep = pow(_zoomFactor,1.0f/_jumps);
+
+                for(float i = 0.0f; i <= _time; i += 1.0/_updateRate)
+                {
+                    std::list< std::string > x;
+                    x.push_back("delay");
+                    x.push_back(util::toString(i*1000.0));
+                    x.push_back("zoom");
+                    x.push_back(util::toString(_jumpStep));
+                    dLink->pushTask(x);
+                }
+            }
+        }
     }
 }
 void EventManager::handleTask(std::list<std::string> _args)
@@ -97,6 +138,12 @@ void EventManager::handleTask(std::list<std::string> _args)
             closeGame();
             return;
         }
+    }
+    else if(*_args.begin() == "zoom")
+    {
+        _args.pop_front();
+        float factor = util::toFloat(*_args.begin());
+        dLink->gameView.zoom(factor);
     }
 }
 void EventManager::processEvent(sf::Event *_event)
