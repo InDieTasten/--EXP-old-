@@ -7,6 +7,7 @@
 #include "Processing/PhysicsEngine.hpp"
 #include "GUI/GUIManager.hpp"
 #include "Processing/ModModule.hpp"
+#include <math.h>
 
 extern std::list< std::list<std::string> > eventBuffer;
 
