@@ -189,10 +189,6 @@ int main ( int argc, char *argv[] )
         {
             EventMan.processTask(dLink->pullTask());
         }
-        if(!dLink->guiMode)
-        {
-            dLink->localCtrl.targetPoint = Vector(dLink->renderWindow->mapPixelToCoords(sf::Mouse::getPosition(*dLink->renderWindow), dLink->gameView));
-        }
     }
     GMutex.unlock();
 
@@ -379,4 +375,15 @@ void StockKeybinds()
     endTranslateRight.ignitionDescriptor.type = sf::Event::KeyReleased;
     endTranslateRight.ignitionDescriptor.key.code = sf::Keyboard::D;
     dLink->actions.push_back(endTranslateRight);
+
+    Action zoomOut;
+    zoomOut.name = "zoomOut";
+    zoomOut.ignitionDescriptor.type = sf::Event::MouseWheelMoved;
+    zoomOut.ignitionDescriptor.mouseWheel.delta = -1;
+    dLink->actions.push_back(zoomOut);
+    Action zoomIn;
+    zoomIn.name = "zoomIn";
+    zoomIn.ignitionDescriptor.type = sf::Event::MouseWheelMoved;
+    zoomIn.ignitionDescriptor.mouseWheel.delta = 1;
+    dLink->actions.push_back(zoomIn);
 }
