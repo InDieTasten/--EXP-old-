@@ -45,7 +45,6 @@ void GraphicsEngine::Run()
                 dLink->gameView.setCenter(it->Position.x, it->Position.y);
             }
         }
-
         dLink->renderWindow->setView(dLink->gameView);
 
         float Xc = dLink->gameView.getCenter().x - dLink->gameView.getSize().x/2.0;
