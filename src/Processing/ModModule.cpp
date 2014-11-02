@@ -27,6 +27,7 @@ void ModModule::Run()
         lua_register(it->state, "selectSystem", ModModule::lSelectSystem);
         lua_register(it->state, "getSystem", ModModule::lGetSystem);
         lua_register(it->state, "getObjects", ModModule::lGetObjects);
+        lua_register(it->state, "getGameMouse", ModModule::lGetGameMouse);
 
         luaL_dofile(it->state, it->path.c_str());
 
@@ -258,6 +259,25 @@ int ModModule::lGetObjects(lua_State *L)
         i++;
     }
     return 1;
+}
+int ModModule::lGetGameMouse(lua_State *L)
+{
+    int n = lua_gettop(L);
+    std::string index;
+    if(n == 1)
+    {
+        index = "";
+        index += lua_tostring(L,1);
+    }
+    float x, y;
+
+    x = dLink->renderWindow->mapPixelToCoords(sf::Mouse::getPosition(*dLink->renderWindow), dLink->gameView).x;
+    y = dLink->renderWindow->mapPixelToCoords(sf::Mouse::getPosition(*dLink->renderWindow), dLink->gameView).y;
+
+    lua_pushnumber(L, x);
+    lua_pushnumber(L, y);
+
+    return 2;
 }
 int ModModule::lPrint(lua_State *L)
 {
