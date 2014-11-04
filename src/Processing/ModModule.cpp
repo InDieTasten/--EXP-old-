@@ -266,12 +266,6 @@ int ModModule::lGetObjects(lua_State *L)
 int ModModule::lGetGameMouse(lua_State *L)
 {
     int n = lua_gettop(L);
-    std::string index;
-    if(n == 1)
-    {
-        index = "";
-        index += lua_tostring(L,1);
-    }
     float x, y;
 
     x = dLink->renderWindow->mapPixelToCoords(sf::Mouse::getPosition(*dLink->renderWindow), dLink->gameView).x;
@@ -285,7 +279,7 @@ int ModModule::lGetGameMouse(lua_State *L)
 int ModModule::lGetObject(lua_State *L)
 {
     int n = lua_gettop(L);
-    std::string index;
+    std::string index = selectedSystem;
     if(n != 1)
     {
         //Error
@@ -340,27 +334,70 @@ int ModModule::lGetObject(lua_State *L)
             lua_pushstring(L, "mass");
             lua_pushnumber(L, it->Mass);
             lua_settable(L, -3);
+            lua_pushstring(L, "player");
+            lua_pushboolean(L, it->flyByLocal);
+            lua_settable(L, -3);
             break;
         }
     }
-
-    return 0;
+    return 1;
 }
 int ModModule::lSetObject(lua_State *L)
 {
     int n = lua_gettop(L);
-    std::string index;
+    std::string index = selectedSystem;
     if(n != 1)
     {
         //Error
         return 0;
     }
+    SolarSystem* sys;
+    if(dLink->level.activeSystem.ID == index)
+    {
+        sys = &dLink->level.activeSystem;
+    }
+    else
+    {
+        for(std::list<SolarSystem>::iterator it = dLink->level.inactiveSystems.begin(); it != dLink->level.inactiveSystems.end(); it++)
+        {
+            if(it->ID == index)
+            {
+                sys = &(*it);
+                break;
+            }
+        }
+    }
+
     SpaceObject obj;
 
-    lua_getfield(L, 1, "id");
-    lua_tostring(L, -1);
+    lua_getfield(L, 1, "name");
+    obj.ID = lua_tostring(L, -1);
+    lua_getfield(L, 1, "description");
+    obj.Description = lua_tostring(L, -1);
+    lua_getfield(L, 1, "rotation");
+    obj.Rotation = lua_tonumber(L, -1);
+    lua_getfield(L, 1, "x");
+    obj.Position.x = lua_tonumber(L, -1);
     lua_getfield(L, 1, "y");
-    lua_tonumber(L, -1);
+    obj.Position.y = lua_tonumber(L, -1);
+    lua_getfield(L, 1, "dx");
+    obj.Velocity.x = lua_tonumber(L, -1);
+    lua_getfield(L, 1, "dy");
+    obj.Velocity.y = lua_tonumber(L, -1);
+    lua_getfield(L, 1, "textureID");
+    obj.TextureID = lua_tostring(L, -1);
+    lua_getfield(L, 1, "mass");
+    obj.Velocity.y = lua_tonumber(L, -1);
+
+    for(std::list<SpaceObject>::iterator it = sys->SpaceObjectList.begin(); it != sys->SpaceObjectList.end(); it++)
+    {
+        if(it->ID == obj.ID)
+        {
+            *it = obj;
+            return 0;
+        }
+    }
+    sys->SpaceObjectList.push_back(obj);
 
     return 0;
 }
