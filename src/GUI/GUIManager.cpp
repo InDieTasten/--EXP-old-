@@ -22,6 +22,11 @@ GUIManager::GUIManager()
     x.push_back("load");
     x.push_back("mMenu");
     dLink->pushTask(x);
+    x.clear();
+    x.push_back("plugin");
+    x.push_back("load");
+    x.push_back("mEditor");
+    dLink->pushTask(x);
 }
 //DESTRUCTORS
 
