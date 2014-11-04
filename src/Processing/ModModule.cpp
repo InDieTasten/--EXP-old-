@@ -387,7 +387,7 @@ int ModModule::lSetObject(lua_State *L)
     lua_getfield(L, 1, "textureID");
     obj.TextureID = lua_tostring(L, -1);
     lua_getfield(L, 1, "mass");
-    obj.Velocity.y = lua_tonumber(L, -1);
+    obj.Mass = lua_tonumber(L, -1);
     lua_getfield(L, 1, "player");
     obj.flyByLocal = lua_tonumber(L, -1);
 
