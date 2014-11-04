@@ -15,7 +15,8 @@ class SpaceObject
     //MEMBERS
 private:
 public:
-    std::string ID;
+    std::string ID; //
+    std::string Description;
     Vector Position; //units in meters
     float Rotation; //unit in radians
     Vector Velocity; //units in m/s
@@ -23,11 +24,11 @@ public:
     std::string TextureID; //
     bool flyByLocal; //
     bool AI; //
-    short difficulty;
-    bool movable;
-    bool collidable;
-    bool gravity;
-    bool visible;
+    short difficulty; //
+    bool movable; //
+    bool collidable; //
+    bool gravity; //
+    bool visible; //
     std::string PositionTarget; //
     std::string ShootdownTarget; //
     float RotationSpeed; //
