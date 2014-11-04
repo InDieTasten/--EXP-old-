@@ -28,6 +28,7 @@ void ModModule::Run()
         lua_register(it->state, "getSystem", ModModule::lGetSystem);
         lua_register(it->state, "getObjects", ModModule::lGetObjects);
         lua_register(it->state, "getGameMouse", ModModule::lGetGameMouse);
+        lua_register(it->state, "getObject", ModModule::lGetObject);
         lua_register(it->state, "setObject", ModModule::lSetObject);
         lua_register(it->state, "removeObject", ModModule::lRemoveObject);
 
@@ -281,7 +282,7 @@ int ModModule::lGetGameMouse(lua_State *L)
 
     return 2;
 }
-int ModModule::lgetObject(lua_State *L)
+int ModModule::lGetObject(lua_State *L)
 {
     int n = lua_gettop(L);
     std::string index;
@@ -291,18 +292,61 @@ int ModModule::lgetObject(lua_State *L)
         return 0;
     }
     std::string searched = lua_tostring(L, 1);
+    SolarSystem* sys;
+    if(dLink->level.activeSystem.ID == index)
+    {
+        sys = &dLink->level.activeSystem;
+    }
+    else
+    {
+        for(std::list<SolarSystem>::iterator it = dLink->level.inactiveSystems.begin(); it != dLink->level.inactiveSystems.end(); it++)
+        {
+            if(it->ID == index)
+            {
+                sys = &(*it);
+                break;
+            }
+        }
+    }
     for(std::list<SpaceObject>::iterator it = sys->SpaceObjectList.begin(); it != sys->SpaceObjectList.end(); it++)
     {
         if(it->ID == searched)
         {
-
+            lua_newtable(L);
+            lua_pushstring(L, "name");
+            lua_pushstring(L, it->ID.c_str());
+            lua_settable(L, -3);
+            lua_pushstring(L, "description");
+            lua_pushstring(L, it->Description.c_str());
+            lua_settable(L, -3);
+            lua_pushstring(L, "rotation");
+            lua_pushnumber(L, it->Rotation);
+            lua_settable(L, -3);
+            lua_pushstring(L, "x");
+            lua_pushnumber(L, it->Position.x);
+            lua_settable(L, -3);
+            lua_pushstring(L, "y");
+            lua_pushnumber(L, it->Position.y);
+            lua_settable(L, -3);
+            lua_pushstring(L, "dx");
+            lua_pushnumber(L, it->Velocity.x);
+            lua_settable(L, -3);
+            lua_pushstring(L, "dy");
+            lua_pushnumber(L, it->Velocity.y);
+            lua_settable(L, -3);
+            lua_pushstring(L, "textureID");
+            lua_pushstring(L, it->TextureID.c_str());
+            lua_settable(L, -3);
+            lua_pushstring(L, "mass");
+            lua_pushnumber(L, it->Mass);
+            lua_settable(L, -3);
             break;
         }
     }
 
     return 0;
 }
-int ModModule::lsetObject(lua_State *L)
+int ModModule::lSetObject(lua_State *L)
 {
     int n = lua_gettop(L);
     std::string index;
@@ -313,10 +357,28 @@ int ModModule::lsetObject(lua_State *L)
     }
     SpaceObject obj;
 
-    lua_getfield(L, 1, "id")
-    lua_tostring(L, -1)
-    lua_getfield(L, 1, "y")
-    lua_tonumber(L, -1)
+    lua_getfield(L, 1, "id");
+    lua_tostring(L, -1);
+    lua_getfield(L, 1, "y");
+    lua_tonumber(L, -1);
+
+    return 0;
+}
+int ModModule::lRemoveObject(lua_State *L)
+{
+    int n = lua_gettop(L);
+    std::string index;
+    if(n != 1)
+    {
+        //Error
+        return 0;
+    }
+    SpaceObject obj;
+
+    lua_getfield(L, 1, "id");
+    lua_tostring(L, -1);
+    lua_getfield(L, 1, "y");
+    lua_tonumber(L, -1);
 
     return 0;
 }
