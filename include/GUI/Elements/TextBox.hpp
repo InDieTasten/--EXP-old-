@@ -11,7 +11,8 @@ class TextBox
     //MEMBERS
 private:
     sf::RectangleShape rect;
-    sf::RectangleShape curs;
+    sf::RectangleShape cursB;
+    sf::RectangleShape cursE;
     int tmp;
     float tmpX;
     float tmpY;
@@ -26,6 +27,7 @@ public:
     std::string content;
     sf::Text text;
     std::string::iterator cursor;
+    //std::list<int> postion;
     int position;
     bool multiline;
     bool clicked;
