@@ -71,11 +71,11 @@ void TextBox::Update(int _x, int _y,std::string _id, std::string _mID)
     rect.setOutlineThickness(1.0f);
     rect.setOutlineColor(sf::Color(255,255,255,50));
 
-    curs.setPosition(text.findCharacterPos(position));
-    curs.setSize(sf::Vector2f((float)0,(float)12));
-    curs.setFillColor(sf::Color(0,0,0,128));
-    curs.setOutlineThickness(1.0f);
-    curs.setOutlineColor(sf::Color(0,255,0,255));
+    cursB.setPosition(text.findCharacterPos(position));
+    cursB.setSize(sf::Vector2f((float)0,(float)12));
+    cursB.setFillColor(sf::Color(0,0,0,128));
+    cursB.setOutlineThickness(1.0f);
+    cursB.setOutlineColor(sf::Color(0,255,0,255));
 
     text.setColor(sf::Color::White);
     text.setPosition(_x+1, _y+1);
@@ -100,12 +100,12 @@ void TextBox::Render(int _x, int _y, std::string _id, std::string _mID)
     dLink->renderWindow->setView(view);
     dLink->renderWindow->draw(text);
     if(clicked)
-        dLink->renderWindow->draw(curs);
+        dLink->renderWindow->draw(cursB);
     dLink->renderWindow->setView(dLink->guiView);
 }
 void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std::string _mID)
 {
-    if(isActive && _event->type == sf::Event::MouseButtonPressed)
+    if(isActive && _event->type == sf::Event::MouseButtonPressed ||isActive && _event->type == sf::Event::MouseButtonReleased)
     {
         int x = _event->mouseButton.x;
         int y = _event->mouseButton.y;
@@ -114,9 +114,16 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
             if(y >= _y && y <= _y+Height)
             {
                 clicked = true;
-                if(sf::Event::MouseLeft)
+                if(_event->mouseButton.button == sf::Mouse::Left)
                 {
-                    movecursor((float)x,(float)y);
+                   movecursor((float)x,(float)y);
+                }
+                if(_event->type == sf::Event::MouseButtonReleased)
+                {
+                    if(_event->mouseButton.button == sf::Mouse::Left)
+                    {
+                        movecursor((float)x,(float)y);
+                    }
                 }
             }
             else
