@@ -28,6 +28,8 @@ void ModModule::Run()
         lua_register(it->state, "getSystem", ModModule::lGetSystem);
         lua_register(it->state, "getObjects", ModModule::lGetObjects);
         lua_register(it->state, "getGameMouse", ModModule::lGetGameMouse);
+        lua_register(it->state, "setObject", ModModule::lSetObject);
+        lua_register(it->state, "removeObject", ModModule::lRemoveObject);
 
         luaL_dofile(it->state, it->path.c_str());
 
@@ -279,6 +281,46 @@ int ModModule::lGetGameMouse(lua_State *L)
 
     return 2;
 }
+int ModModule::lgetObject(lua_State *L)
+{
+    int n = lua_gettop(L);
+    std::string index;
+    if(n != 1)
+    {
+        //Error
+        return 0;
+    }
+    std::string searched = lua_tostring(L, 1);
+    for(std::list<SpaceObject>::iterator it = sys->SpaceObjectList.begin(); it != sys->SpaceObjectList.end(); it++)
+    {
+        if(it->ID == searched)
+        {
+
+            break;
+        }
+    }
+
+    return 0;
+}
+int ModModule::lsetObject(lua_State *L)
+{
+    int n = lua_gettop(L);
+    std::string index;
+    if(n != 1)
+    {
+        //Error
+        return 0;
+    }
+    SpaceObject obj;
+
+    lua_getfield(L, 1, "id")
+    lua_tostring(L, -1)
+    lua_getfield(L, 1, "y")
+    lua_tonumber(L, -1)
+
+    return 0;
+}
+
 int ModModule::lPrint(lua_State *L)
 {
     //number of arguments
