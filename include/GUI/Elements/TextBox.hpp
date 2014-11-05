@@ -16,6 +16,7 @@ private:
     int tmp;
     float tmpX;
     float tmpY;
+    std::list<sf::RectangleShape> m;
 
 public:
     int X;
@@ -27,7 +28,6 @@ public:
     std::string content;
     sf::Text text;
     std::string::iterator cursor;
-    //std::list<int> postion;
     int position;
     bool multiline;
     bool clicked;
@@ -53,7 +53,7 @@ public:
 private:
     void calibrateCursor();
     void moveview(int _x, int _y);
-    void movecursor(float x,float y);
+    int movecursor(float x,float y);
 public:
     void Show();
     void Hide();
