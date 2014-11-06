@@ -2373,8 +2373,34 @@ void ModModule::processTask(std::list<std::string> _args)
                                                         x.push_back("access");
                                                         x.push_back(elem->ID);
                                                         x.push_back("property");
-                                                        x.push_back("displayText");
+                                                        x.push_back("content");
                                                         x.push_back(elem->textBox.content);
+                                                        dLink->pushEvent(x);
+                                                    }
+                                                }
+                                                else if(*_args.begin() == "multiline")
+                                                {
+                                                    _args.pop_front();
+                                                    if(*_args.begin() == "set")
+                                                    {
+                                                        LOG::file("[ModModule][Info] Task end node reached...");
+                                                        _args.pop_front();
+                                                        elem->textBox.multiline = util::toBool(*_args.begin());
+                                                        LOG::file("[ModModule][Info] Task instructions performed");
+                                                    }
+                                                    else if(*_args.begin() == "get")
+                                                    {
+                                                        std::list<std::string> x;
+                                                        x.push_back("gui");
+                                                        x.push_back("menu");
+                                                        x.push_back("access");
+                                                        x.push_back(it->ID);
+                                                        x.push_back("element");
+                                                        x.push_back("access");
+                                                        x.push_back(elem->ID);
+                                                        x.push_back("property");
+                                                        x.push_back("multiline");
+                                                        x.push_back(util::toString(elem->textBox.multiline));
                                                         dLink->pushEvent(x);
                                                     }
                                                 }
