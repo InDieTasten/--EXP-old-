@@ -278,6 +278,9 @@ void DataBank::loadDataBank(std::string _path)
     LOG::console("[MemBank][Info] Level loaded");
     stream.close();
     LOG::console("[MemBank][Info] Handle closed");
+    std::list<std::string> x;
+    x.push_back("level_loaded");
+    pushEvent(x);
 }
 
 void DataBank::pushEvent(std::list<std::string> _args)
