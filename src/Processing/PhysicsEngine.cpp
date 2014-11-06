@@ -52,9 +52,24 @@ void PhysicsEngine::Run()
                 }
 
                 Vector forw(cos(it->Rotation - PI/2.0),sin(it->Rotation - PI/2.0));
-                forw = forw * dLink->localCtrl.translateForward;
+                forw = forw * dLink->localCtrl.translateForward * (!dLink->guiMode);
                 forw = forw * frametime;
                 it->Velocity = it->Velocity + forw;
+
+                Vector backw(cos(it->Rotation + PI/2.0),sin(it->Rotation + PI/2.0));
+                backw = backw * dLink->localCtrl.translateBack * (!dLink->guiMode);
+                backw = backw * frametime;
+                it->Velocity = it->Velocity + backw;
+
+                Vector left(cos(it->Rotation + PI),sin(it->Rotation + PI));
+                left = left * dLink->localCtrl.translateLeft * (!dLink->guiMode);
+                left = left * frametime;
+                it->Velocity = it->Velocity + left;
+
+                Vector right(cos(it->Rotation),sin(it->Rotation));
+                right = right * dLink->localCtrl.translateRight * (!dLink->guiMode);
+                right = right * frametime;
+                it->Velocity = it->Velocity + right;
             }
             it->Position = it->Position + (it->Velocity * frametime);
         }
