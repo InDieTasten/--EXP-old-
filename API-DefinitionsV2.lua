@@ -10,15 +10,16 @@ syss = getSystems() --
 
 selectSystem("systemID1") --
 
-sys = getSystem(<selected>) --
+sys = getSystem() --
 	sys["id"] = "systemID1"
 	sys["name"] = "systemName1"
 	sys["description"] = "description of system"
 
 setSystem(sys) --
+
 removeSystem() --
 
-objs = getObjects(<selected>) --
+objs = getObjects() --
 	objs[1] = "objName1"
 	objs[2] = "objName2"
 
@@ -35,8 +36,8 @@ obj = getObject("objName1") --
 
 setObject(obj) --
 
-removeObject("objName1") 
+removeObject("objName1") --
 
 x, y = getGameMouse() --
 
-x, y = getGuiMouse()
+x, y = getGuiMouse() --

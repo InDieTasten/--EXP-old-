@@ -31,6 +31,7 @@ void ModModule::Run()
         lua_register(it->state, "removeSystem", ModModule::lRemoveSystem);
         lua_register(it->state, "getObjects", ModModule::lGetObjects);
         lua_register(it->state, "getGameMouse", ModModule::lGetGameMouse);
+        lua_register(it->state, "getGuiMouse", ModModule::lGetGuiMouse);
         lua_register(it->state, "getObject", ModModule::lGetObject);
         lua_register(it->state, "setObject", ModModule::lSetObject);
         lua_register(it->state, "removeObject", ModModule::lRemoveObject);
@@ -358,6 +359,19 @@ int ModModule::lGetGameMouse(lua_State *L)
 
     x = dLink->renderWindow->mapPixelToCoords(sf::Mouse::getPosition(*dLink->renderWindow), dLink->gameView).x;
     y = dLink->renderWindow->mapPixelToCoords(sf::Mouse::getPosition(*dLink->renderWindow), dLink->gameView).y;
+
+    lua_pushnumber(L, x);
+    lua_pushnumber(L, y);
+
+    return 2;
+}
+int ModModule::lGetGuiMouse(lua_State *L)
+{
+    int n = lua_gettop(L);
+    int x, y;
+
+    x = (int) dLink->renderWindow->mapPixelToCoords(sf::Mouse::getPosition(*dLink->renderWindow), dLink->guiView).x;
+    y = (int) dLink->renderWindow->mapPixelToCoords(sf::Mouse::getPosition(*dLink->renderWindow), dLink->guiView).y;
 
     lua_pushnumber(L, x);
     lua_pushnumber(L, y);
