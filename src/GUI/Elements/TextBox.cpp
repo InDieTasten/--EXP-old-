@@ -181,6 +181,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                             content.erase(cursor);
                             std::list<std::string> x;
                             x.push_back("textbox_update");
+                            x.push_back(_mID);
                             x.push_back(_id);
                             x.push_back(content);
                             dLink->pushEvent(x);
@@ -206,6 +207,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                         content.erase(cursor);
                         std::list<std::string> x;
                         x.push_back("textbox_update");
+                        x.push_back(_mID);
                         x.push_back(_id);
                         x.push_back(content);
                         dLink->pushEvent(x);
@@ -226,6 +228,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                     }
                     std::list<std::string> x;
                     x.push_back("textbox_update");
+                    x.push_back(_mID);
                     x.push_back(_id);
                     text.findCharacterPos(position);
                     x.push_back(content);
@@ -264,6 +267,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                             content.erase(cursor);
                             std::list<std::string> x;
                             x.push_back("textbox_update");
+                            x.push_back(_mID);
                             x.push_back(_id);
                             x.push_back(content);
                             dLink->pushEvent(x);
@@ -277,6 +281,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                 {
                     std::list<std::string> x;
                     x.push_back("textbox_submit");
+                    x.push_back(_mID);
                     x.push_back(_id);
                     x.push_back(content);
                     dLink->pushEvent(x);
@@ -294,6 +299,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                         content.erase(cursor);
                         std::list<std::string> x;
                         x.push_back("textbox_update");
+                        x.push_back(_mID);
                         x.push_back(_id);
                         x.push_back(content);
                         dLink->pushEvent(x);
@@ -314,6 +320,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                     }
                     std::list<std::string> x;
                     x.push_back("textbox_update");
+                    x.push_back(_mID);
                     x.push_back(_id);
                     x.push_back(content);
                     dLink->pushEvent(x);
