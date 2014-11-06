@@ -243,15 +243,12 @@ int ModModule::lGetObjects(lua_State *L)
 {
     int n = lua_gettop(L);
     std::string index;
-    if(n == 1)
+    if(n != 0)
     {
-        index = "";
-        index += lua_tostring(L,1);
+        //Error
+        return 0;
     }
-    else
-    {
-        index = selectedSystem;
-    }
+    index = selectedSystem;
     SolarSystem* sys;
     if(dLink->level.activeSystem.ID == index)
     {

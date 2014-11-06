@@ -2,7 +2,7 @@ l = getLevel() --
 	l["name"] = "name of the level"
 	l["description"] = "description of the level"
 
-setLevel(l)
+setLevel(l) --
 
 syss = getSystems() --
 	syss[1] = "systemID1"
@@ -10,19 +10,19 @@ syss = getSystems() --
 
 selectSystem("systemID1") --
 
-sys = getSystem("systemID1" || selected) --
+sys = getSystem(<selected>) --
 	sys["id"] = "systemID1"
 	sys["name"] = "systemName1"
 	sys["description"] = "description of system"
 
-setSystem(sys)
+setSystem(sys) -
 removeSystem()
 
-objs = getObjects("systemID2" || selected) --
+objs = getObjects(<selected>) --
 	objs[1] = "objName1"
 	objs[2] = "objName2"
 
-obj = getObject("systemID2" || selected, "objName1") --
+obj = getObject("objName1") --
 	obj["name"] = "objName1"
 	obj["description"] = "description of object"
 	obj["rotation"] = 270
@@ -33,9 +33,9 @@ obj = getObject("systemID2" || selected, "objName1") --
 	obj["textureID"] = "$_missing"
 	obj["mass"] = 20.4
 
-setObject("systemID2" || selected, obj) --
+setObject(obj) --
 
-removeObject("systemID2" || selected, obj || "objName1") 
+removeObject("objName1") 
 
 x, y = getGameMouse() --
 
