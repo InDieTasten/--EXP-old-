@@ -39,6 +39,7 @@ public:
     //METHODS
 private:
     static int lGetLevel(lua_State *L);
+    static int lSetLevel(lua_State *L);
     static int lGetSystems(lua_State *L);
     static int lSelectSystem(lua_State *L);
     static int lGetSystem(lua_State *L);
