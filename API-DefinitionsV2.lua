@@ -16,7 +16,7 @@ sys = getSystem(<selected>) --
 	sys["description"] = "description of system"
 
 setSystem(sys) --
-removeSystem()
+removeSystem() --
 
 objs = getObjects(<selected>) --
 	objs[1] = "objName1"

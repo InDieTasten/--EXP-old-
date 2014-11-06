@@ -27,6 +27,8 @@ void ModModule::Run()
         lua_register(it->state, "getSystems", ModModule::lGetSystems);
         lua_register(it->state, "selectSystem", ModModule::lSelectSystem);
         lua_register(it->state, "getSystem", ModModule::lGetSystem);
+        lua_register(it->state, "setSystem", ModModule::lSetSystem);
+        lua_register(it->state, "removeSystem", ModModule::lRemoveSystem);
         lua_register(it->state, "getObjects", ModModule::lGetObjects);
         lua_register(it->state, "getGameMouse", ModModule::lGetGameMouse);
         lua_register(it->state, "getObject", ModModule::lGetObject);
@@ -280,6 +282,36 @@ int ModModule::lSetSystem(lua_State *L)
         dLink->level.inactiveSystems.push_back(syst);
     }
 
+    return 0;
+}
+int ModModule::lRemoveSystem(lua_State *L)
+{
+    int n = lua_gettop(L);
+    std::string index;
+    if(n != 0)
+    {
+        //Error
+        return 0;
+    }
+
+    index = selectedSystem;
+    SolarSystem* sys;
+    if(dLink->level.activeSystem.ID == index)
+    {
+        //Error(Can't remove active system)
+    }
+    else
+    {
+        for(std::list<SolarSystem>::iterator it = dLink->level.inactiveSystems.begin(); it != dLink->level.inactiveSystems.end(); it++)
+        {
+            if(it->ID == index)
+            {
+                dLink->level.inactiveSystems.erase(it);
+                break;
+            }
+        }
+        //Error(Not found)
+    }
     return 0;
 }
 int ModModule::lGetObjects(lua_State *L)
