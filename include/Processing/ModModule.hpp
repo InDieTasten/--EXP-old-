@@ -47,6 +47,7 @@ private:
     static int lRemoveSystem(lua_State *L);
     static int lGetObjects(lua_State *L);
     static int lGetGameMouse(lua_State *L);
+    static int lGetGuiMouse(lua_State *L);
     static int lGetObject(lua_State *L);
     static int lSetObject(lua_State *L);
     static int lRemoveObject(lua_State *L);
