@@ -205,7 +205,7 @@ int ModModule::lGetSystem(lua_State *L)
 {
     int n = lua_gettop(L);
     std::string index;
-    if(n != 1)
+    if(n != 0)
     {
         //Error
         return 0;
