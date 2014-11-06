@@ -543,7 +543,7 @@ int ModModule::lPrint(lua_State *L)
     LOG::console("[ModModule]"+message);
     return 0;
 }
-int ModModule::lPushEvent(lua_State *L) // api.print("mein text hat ", 5, "Wörter")
+int ModModule::lPushEvent(lua_State *L)
 {
     //number of arguments
     int n = lua_gettop(L);
@@ -558,7 +558,7 @@ int ModModule::lPushEvent(lua_State *L) // api.print("mein text hat ", 5, "Wörte
     dLink->pushEvent(event);
     return 0;
 }
-int ModModule::lPushTask(lua_State *L) // api.print("mein text hat ", 5, "Wörter")
+int ModModule::lPushTask(lua_State *L)
 {
     //number of arguments
     int n = lua_gettop(L);
