@@ -41,3 +41,4 @@ removeObject("objName1") --
 x, y = getGameMouse() --
 
 x, y = getGuiMouse() --
+
