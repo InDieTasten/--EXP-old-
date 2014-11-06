@@ -23,6 +23,7 @@ void ModModule::Run()
         lua_register(it->state, "pushEvent", ModModule::lPushEvent);
         lua_register(it->state, "pushTask", ModModule::lPushTask);
         lua_register(it->state, "getLevel", ModModule::lGetLevel);
+        lua_register(it->state, "setLevel", ModModule::lSetLevel);
         lua_register(it->state, "getSystems", ModModule::lGetSystems);
         lua_register(it->state, "selectSystem", ModModule::lSelectSystem);
         lua_register(it->state, "getSystem", ModModule::lGetSystem);
@@ -132,6 +133,21 @@ int ModModule::lGetLevel(lua_State *L)
     lua_settable(L, -3);
 
     return 1;
+}
+int ModModule::lSetLevel(lua_State *L)
+{
+    int n = lua_gettop(L);
+    if(n != 1)
+    {
+        // Error
+        return 0;
+    }
+    lua_getfield(L, 1, "name");
+    dLink->level.name = lua_tostring(L, -1);
+    lua_getfield(L, 1, "description");
+    dLink->level.description = lua_tostring(L, -1);
+
+    return 0;
 }
 int ModModule::lGetSystems(lua_State *L)
 {
