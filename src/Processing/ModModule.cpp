@@ -201,16 +201,12 @@ int ModModule::lGetSystem(lua_State *L)
 {
     int n = lua_gettop(L);
     std::string index;
-    if(n == 1)
+    if(n != 1)
     {
-        index = "";
-        index += lua_tostring(L,1);
+        //Error
         return 0;
     }
-    else
-    {
-        index = selectedSystem;
-    }
+    index = selectedSystem;
     SolarSystem* sys;
     if(dLink->level.activeSystem.ID == index)
     {
@@ -238,6 +234,53 @@ int ModModule::lGetSystem(lua_State *L)
     lua_pushstring(L, sys->Description.c_str());
     lua_settable(L, -3);
     return 1;
+}
+int ModModule::lSetSystem(lua_State *L)
+{
+    int n = lua_gettop(L);
+    std::string index;
+    if(n != 1)
+    {
+        //Error
+        return 0;
+    }
+
+    index = selectedSystem;
+    if(dLink->level.activeSystem.ID == index)
+    {
+        lua_getfield(L, 1, "id");
+        dLink->level.activeSystem.ID = lua_tostring(L, -1);
+        lua_getfield(L, 1, "name");
+        dLink->level.activeSystem.Name = lua_tostring(L, -1);
+        lua_getfield(L, 1, "description");
+        dLink->level.activeSystem.Description = lua_tostring(L, -1);
+    }
+    else
+    {
+        for(std::list<SolarSystem>::iterator it = dLink->level.inactiveSystems.begin(); it != dLink->level.inactiveSystems.end(); it++)
+        {
+            if(it->ID == index)
+            {
+                lua_getfield(L, 1, "id");
+                it->ID = lua_tostring(L, -1);
+                lua_getfield(L, 1, "name");
+                it->Name = lua_tostring(L, -1);
+                lua_getfield(L, 1, "description");
+                it->Description = lua_tostring(L, -1);
+                break;
+            }
+        }
+        SolarSystem syst;
+        lua_getfield(L, 1, "id");
+        syst.ID = lua_tostring(L, -1);
+        lua_getfield(L, 1, "name");
+        syst.Name = lua_tostring(L, -1);
+        lua_getfield(L, 1, "description");
+        syst.Description = lua_tostring(L, -1);
+        dLink->level.inactiveSystems.push_back(syst);
+    }
+
+    return 0;
 }
 int ModModule::lGetObjects(lua_State *L)
 {
