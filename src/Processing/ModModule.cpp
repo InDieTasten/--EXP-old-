@@ -500,13 +500,32 @@ int ModModule::lRemoveObject(lua_State *L)
         //Error
         return 0;
     }
-    SpaceObject obj;
-
-    lua_getfield(L, 1, "id");
-    lua_tostring(L, -1);
-    lua_getfield(L, 1, "y");
-    lua_tonumber(L, -1);
-
+    std::string searched = lua_tostring(L, 1);
+    SolarSystem* sys;
+    if(dLink->level.activeSystem.ID == index)
+    {
+        sys = &dLink->level.activeSystem;
+    }
+    else
+    {
+        for(std::list<SolarSystem>::iterator it = dLink->level.inactiveSystems.begin(); it != dLink->level.inactiveSystems.end(); it++)
+        {
+            if(it->ID == index)
+            {
+                sys = &(*it);
+                break;
+            }
+        }
+    }
+    for(std::list<SpaceObject>::iterator it = sys->SpaceObjectList.begin(); it != sys->SpaceObjectList.end(); it++)
+    {
+        if(it->ID == searched)
+        {
+            sys->SpaceObjectList.erase(it);
+            break;
+        }
+    }
+    //Error (Not found)
     return 0;
 }
 
