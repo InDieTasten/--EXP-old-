@@ -126,6 +126,7 @@ int ModModule::lGetLevel(lua_State *L)
     if(n != 0)
     {
         // Error
+        return 0;
     }
     lua_newtable(L);
     lua_pushstring(L, "name");
