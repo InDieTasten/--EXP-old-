@@ -59,7 +59,7 @@ int TextBox::movecursor(float x,float y)
             tmpX = text.findCharacterPos(tmp).x;
         }
         while(tmpX > (x+2.0f) + sliderX && tmp < content.size()+1);
-    return tmp;
+        return tmp;
     }
 }
 
@@ -116,7 +116,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                 clicked = true;
                 if(_event->mouseButton.button == sf::Mouse::Left && _event->type == sf::Event::MouseButtonPressed)
                 {
-                   position = movecursor((float)x,(float)y);
+                    position = movecursor((float)x,(float)y);
                 }
                 if(_event->type == sf::Event::MouseButtonReleased)
                 {
