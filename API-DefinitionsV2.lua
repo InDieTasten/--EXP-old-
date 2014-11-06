@@ -2,6 +2,8 @@ l = getLevel() --
 	l["name"] = "name of the level"
 	l["description"] = "description of the level"
 
+setLevel(l)
+
 syss = getSystems() --
 	syss[1] = "systemID1"
 	syss[2] = "systemID2"
@@ -12,6 +14,9 @@ sys = getSystem("systemID1" || selected) --
 	sys["id"] = "systemID1"
 	sys["name"] = "systemName1"
 	sys["description"] = "description of system"
+
+setSystem(sys)
+removeSystem()
 
 objs = getObjects("systemID2" || selected) --
 	objs[1] = "objName1"
