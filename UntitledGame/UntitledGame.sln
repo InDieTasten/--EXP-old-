@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.22310.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UntitledGame", "UntitledGame.vcxproj", "{9B198942-2A43-4057-A168-CB8AE19D4A6F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UntitledMake", "..\UntitledMake\UntitledMake.vcxproj", "{1AAA318D-71F8-4B91-A94D-D50367458E29}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -15,6 +17,10 @@ Global
 		{9B198942-2A43-4057-A168-CB8AE19D4A6F}.Debug|Win32.Build.0 = Debug|Win32
 		{9B198942-2A43-4057-A168-CB8AE19D4A6F}.Release|Win32.ActiveCfg = Release|Win32
 		{9B198942-2A43-4057-A168-CB8AE19D4A6F}.Release|Win32.Build.0 = Release|Win32
+		{1AAA318D-71F8-4B91-A94D-D50367458E29}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1AAA318D-71F8-4B91-A94D-D50367458E29}.Debug|Win32.Build.0 = Debug|Win32
+		{1AAA318D-71F8-4B91-A94D-D50367458E29}.Release|Win32.ActiveCfg = Release|Win32
+		{1AAA318D-71F8-4B91-A94D-D50367458E29}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
