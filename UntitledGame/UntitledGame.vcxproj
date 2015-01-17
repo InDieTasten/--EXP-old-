@@ -45,6 +45,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\Users\InDie\Bibliotheken\Documents\GitHub\UG_libavc\include;C:\Users\InDie\Bibliotheken\Documents\GitHub\UG_lua\include;C:\Users\InDie\Bibliotheken\Documents\GitHub\UG_sfml\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
