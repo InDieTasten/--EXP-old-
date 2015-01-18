@@ -37,17 +37,19 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <NMakeBuildCommandLine>nmake build</NMakeBuildCommandLine>
-    <NMakeOutput>UG.exe</NMakeOutput>
+    <NMakeOutput>UG.bat</NMakeOutput>
     <NMakeCleanCommandLine>nmake clean</NMakeCleanCommandLine>
     <NMakeReBuildCommandLine>nmake rebuild</NMakeReBuildCommandLine>
     <NMakePreprocessorDefinitions>WIN32;_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <OutDir>$(SolutionDir)\..\..\UG_content</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <NMakeBuildCommandLine>nmake build</NMakeBuildCommandLine>
-    <NMakeOutput>UG.exe</NMakeOutput>
+    <NMakeOutput>UG.bat</NMakeOutput>
     <NMakeCleanCommandLine>nmake clean</NMakeCleanCommandLine>
     <NMakeReBuildCommandLine>nmake rebuild</NMakeReBuildCommandLine>
     <NMakePreprocessorDefinitions>WIN32;NDEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <OutDir>$(SolutionDir)\..\..\UG_content</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup>
   </ItemDefinitionGroup>
