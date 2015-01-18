@@ -1,16 +1,16 @@
-﻿Build started 18.01.2015 13:41:32.
-     1>Project "C:\Users\InDie\Bibliotheken\Documents\GitHub\--UntitledGame--\UntitledMake\UntitledMake.vcxproj" on node 2 (Build target(s)).
+﻿Der Buildvorgang wurde am 18.01.2015 22:01:56 gestartet.
+     1>Projekt "C:\Users\InDie\Bibliotheken\Documents\GitHub\--UntitledGame--\UntitledMake\UntitledMake.vcxproj" auf Knoten "2", Build Ziel(e).
      1>Build:
          nmake build
          
-         Microsoft (R) Program Maintenance Utility Version 14.00.22310.1
-         Copyright (C) Microsoft Corporation.  All rights reserved.
+         Microsoft (R) Program Maintenance Utility, Version 12.00.21005.1
+         Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
          
          	chdir
          C:\Users\InDie\Bibliotheken\Documents\GitHub\--UntitledGame--\UntitledMake
          	"C:\Program Files\CodeBlocks\MinGW\bin\mingw32-g++.exe" -L..\..\UG_lua\src\Lua5.2.3\bin\Release  -L..\..\UG_sfml\lib  -L..\..\UG_libavc\lib -o ..\..\UG_content\UG.exe ..\src\Processing\PhysicsEngine.o  ..\src\Processing\ModModule.o  ..\src\Processing\main.o  ..\src\Processing\EventManager.o  ..\src\Processing\GraphicsEngine.o  ..\src\MemoryBank\DataBank.o  ..\src\MemoryBank\Level\Level.o  ..\src\MemoryBank\Level\SpaceObject.o  ..\src\MemoryBank\Level\SolarSystem.o  ..\src\MemoryBank\Level\Vector.o  ..\src\MemoryBank\Level\LocalControl.o  ..\src\MemoryBank\Entities\Texture.o  ..\src\MemoryBank\Entities\Video.o  ..\src\MemoryBank\Entities\Track.o  ..\src\MemoryBank\Entities\Sound.o  ..\src\MemoryBank\Entities\Script.o  ..\src\MemoryBank\Entities\Font.o  ..\src\GUI\GUIManager.o  ..\src\GUI\GUIElement.o  ..\src\GUI\GUIMenu.o  ..\src\GUI\GUIDockItem.o  ..\src\GUI\Elements\TextBox.o  ..\src\GUI\Elements\CheckBox.o  ..\src\GUI\Elements\HorSlider.o  ..\src\GUI\Elements\Button.o  ..\src\GUI\Elements\VertSlider.o  ..\src\GUI\Elements\Label.o  ..\src\GUI\Elements\CodeBox.o  ..\src\GUI\Elements\Canvas.o  ..\src\Utilities\util.o  ..\src\Utilities\Logger.o  ..\src\Utilities\FileLogger.o   -lsfml-audio  -lsfml-network  -lsfml-graphics  -lsfml-window  -lsfml-system  ..\..\UG_lua\src\Lua5.2.3\bin\Release\libLua5.2.3.a  -lavcodec  -lavformat  -lavutil  -lswscale
-     1>Done Building Project "C:\Users\InDie\Bibliotheken\Documents\GitHub\--UntitledGame--\UntitledMake\UntitledMake.vcxproj" (Build target(s)).
+     1>Die Erstellung des Projekts "C:\Users\InDie\Bibliotheken\Documents\GitHub\--UntitledGame--\UntitledMake\UntitledMake.vcxproj" ist abgeschlossen, Build Ziel(e).
 
-Build succeeded.
+Build erfolgreich.
 
-Time Elapsed 00:00:00.86
+Verstrichene Zeit 00:00:05.24
