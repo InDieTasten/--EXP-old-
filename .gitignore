@@ -6,3 +6,4 @@
 UG/logs/libstdc++-6.dll
 UG/logs/libgcc_s_dw2-1.dll
 *.html
+*.opensdf
