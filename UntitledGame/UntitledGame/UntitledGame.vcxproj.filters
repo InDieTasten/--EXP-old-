@@ -13,9 +13,6 @@
     <Filter Include="Processing">
       <UniqueIdentifier>{6b179dd4-7465-4057-8a56-6b4dc7704fc8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="DUMMY">
-      <UniqueIdentifier>{96b74c35-99fe-4136-83fa-5c624f5ce433}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GUI\Elements">
       <UniqueIdentifier>{1402dc71-bdad-4fed-85a2-d67f52bee20f}</UniqueIdentifier>
     </Filter>
