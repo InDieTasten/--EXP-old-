@@ -22,6 +22,15 @@
     <Filter Include="MemoryBank\Entities">
       <UniqueIdentifier>{c37f6745-3a37-4bb1-a30c-5dbaec1cd050}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Lua">
+      <UniqueIdentifier>{b81eeeb4-ba7c-42db-a8a7-f763d90c4a84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lua\Menu">
+      <UniqueIdentifier>{63e54d96-12af-4840-a7b9-cd2a17dc01e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lua\Level">
+      <UniqueIdentifier>{74f4634b-d203-4bd3-8c3d-c4d301a82047}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\GUI\GUIMenu.hpp">
@@ -233,5 +242,28 @@
     <ClCompile Include="..\..\src\Processing\PhysicsEngine.cpp">
       <Filter>Processing</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\UG_content\content\stock\scripts\plugin_loader.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="..\..\..\UG_content\content\plugins\lStart.lua">
+      <Filter>Lua\Level</Filter>
+    </None>
+    <None Include="..\..\..\UG_content\content\plugins\mConsole.lua">
+      <Filter>Lua\Menu</Filter>
+    </None>
+    <None Include="..\..\..\UG_content\content\plugins\mDebug.lua">
+      <Filter>Lua\Menu</Filter>
+    </None>
+    <None Include="..\..\..\UG_content\content\plugins\mEditor.lua">
+      <Filter>Lua\Menu</Filter>
+    </None>
+    <None Include="..\..\..\UG_content\content\plugins\mMenu.lua">
+      <Filter>Lua\Menu</Filter>
+    </None>
+    <None Include="..\..\..\UG_content\content\plugins\mSettings.lua">
+      <Filter>Lua\Menu</Filter>
+    </None>
   </ItemGroup>
 </Project>
