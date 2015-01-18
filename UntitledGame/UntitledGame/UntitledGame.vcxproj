@@ -141,6 +141,15 @@
     <ClCompile Include="..\..\src\Utilities\Logger.cpp" />
     <ClCompile Include="..\..\src\Utilities\util.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\UG_content\content\plugins\lStart.lua" />
+    <None Include="..\..\..\UG_content\content\plugins\mConsole.lua" />
+    <None Include="..\..\..\UG_content\content\plugins\mDebug.lua" />
+    <None Include="..\..\..\UG_content\content\plugins\mEditor.lua" />
+    <None Include="..\..\..\UG_content\content\plugins\mMenu.lua" />
+    <None Include="..\..\..\UG_content\content\plugins\mSettings.lua" />
+    <None Include="..\..\..\UG_content\content\stock\scripts\plugin_loader.lua" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
