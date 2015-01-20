@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <list>
 #include <string>
-#include "MemoryBank/DataBank.hpp"
+#include <MemoryBank/DataBank.hpp>
 
 extern DataBank* dLink;
 
