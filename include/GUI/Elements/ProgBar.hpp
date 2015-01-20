@@ -2,7 +2,7 @@
 #define _ProgBar_hpp_
 
 #include <string.h>
-#include "MemoryBank/DataBank.hpp"
+#include <MemoryBank/DataBank.hpp>
 
 class ProgBar
 {
