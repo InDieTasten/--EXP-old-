@@ -1,4 +1,4 @@
-#include "MemoryBank/Entities/Sound.hpp"
+#include <MemoryBank/Entities/Sound.hpp>
 //CONSTRUCTORS
 Sound::Sound(std::string _id, std::string _path)
 {
