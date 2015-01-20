@@ -1,7 +1,7 @@
 #ifndef _SolarSystem_hpp_
 #define _SolarSystem_hpp_
 
-#include "SpaceObject.hpp"
+#include <MemoryBank/Level/SpaceObject.hpp>
 #include <list>
 
 class SolarSystem
