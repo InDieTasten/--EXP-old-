@@ -1,4 +1,4 @@
-#include "GUI/Elements/Label.hpp"
+#include <GUI/Elements/Label.hpp>
 
 //CONSTRUCTORS
 

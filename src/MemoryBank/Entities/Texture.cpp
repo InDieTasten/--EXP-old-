@@ -1,4 +1,4 @@
-#include "MemoryBank/Entities/Texture.hpp"
+#include <MemoryBank/Entities/Texture.hpp>
 //CONSTRUCTORS
 Texture::Texture(std::string _id, std::string _path)
 {
