@@ -1,4 +1,4 @@
-#include "MemoryBank/LocalControl.hpp"
+#include <MemoryBank/LocalControl.hpp>
 
 LocalControl::LocalControl()
 {
