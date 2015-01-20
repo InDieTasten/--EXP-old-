@@ -1,10 +1,10 @@
 #ifndef _VertSlider_hpp_
 #define _VertSlider_hpp_
 
-#include "Utilities/util.hpp"
+#include <Utilities/util.hpp>
 #include <string.h>
 #include <math.h>
-#include "MemoryBank/DataBank.hpp"
+#include <MemoryBank/DataBank.hpp>
 
 extern DataBank* dLink;
 
