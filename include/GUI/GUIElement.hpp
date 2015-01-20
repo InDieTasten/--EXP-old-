@@ -3,17 +3,17 @@
 
 // Hallo, dies ist eine Änderung
 
-#include "MemoryBank/DataBank.hpp"
-#include "GUI/Elements/Button.hpp"
-#include "GUI/Elements/Canvas.hpp"
-#include "GUI/Elements/CodeBox.hpp"
-#include "GUI/Elements/HorSlider.hpp"
-#include "GUI/Elements/Label.hpp"
-#include "GUI/Elements/Picture.hpp"
-#include "GUI/Elements/ProgBar.hpp"
-#include "GUI/Elements/TextBox.hpp"
-#include "GUI/Elements/VertSlider.hpp"
-#include "GUI/Elements/CheckBox.hpp"
+#include <MemoryBank/DataBank.hpp>
+#include <GUI/Elements/Button.hpp>
+#include <GUI/Elements/Canvas.hpp>
+#include <GUI/Elements/CodeBox.hpp>
+#include <GUI/Elements/HorSlider.hpp>
+#include <GUI/Elements/Label.hpp>
+#include <GUI/Elements/Picture.hpp>
+#include <GUI/Elements/ProgBar.hpp>
+#include <GUI/Elements/TextBox.hpp>
+#include <GUI/Elements/VertSlider.hpp>
+#include <GUI/Elements/CheckBox.hpp>
 
 class GUIElement
 {

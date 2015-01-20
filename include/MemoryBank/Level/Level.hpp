@@ -1,10 +1,10 @@
 #ifndef _Level_hpp_
 #define _Level_hpp_
 
-#include "SolarSystem.hpp"
-#include "SpaceObject.hpp"
+#include <MemoryBank/Level/SolarSystem.hpp>
+#include <MemoryBank/Level/SpaceObject.hpp>
 #include <fstream>
-#include "Utilities/Logger.hpp"
+#include <Utilities/Logger.hpp>
 
 class Level
 {
