@@ -2,7 +2,7 @@
 #define _Picture_hpp_
 
 #include <string.h>
-#include "MemoryBank/DataBank.hpp"
+#include <MemoryBank/DataBank.hpp>
 
 class Picture
 {
