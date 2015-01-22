@@ -149,6 +149,8 @@
     <None Include="..\..\..\UG_content\content\plugins\mMenu.lua" />
     <None Include="..\..\..\UG_content\content\plugins\mSettings.lua" />
     <None Include="..\..\..\UG_content\content\stock\scripts\plugin_loader.lua" />
+    <None Include="..\..\API-Definitions.lua" />
+    <None Include="..\..\API-DefinitionsV2.lua" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
