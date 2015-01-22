@@ -265,5 +265,7 @@
     <None Include="..\..\..\UG_content\content\plugins\mSettings.lua">
       <Filter>Lua\Menu</Filter>
     </None>
+    <None Include="..\..\API-Definitions.lua" />
+    <None Include="..\..\API-DefinitionsV2.lua" />
   </ItemGroup>
 </Project>
