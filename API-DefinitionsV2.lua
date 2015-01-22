@@ -42,3 +42,7 @@ x, y = getGameMouse() --
 
 x, y = getGuiMouse() --
 
+level = {}
+gui = {}
+bg = {}
+fg = {}
