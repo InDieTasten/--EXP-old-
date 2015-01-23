@@ -115,6 +115,12 @@ menus = {
                 isActive = false,
                 isHidden = false,
                 ["type"] = "label",
+                events = {
+                    onchange = function() end,
+                    onclick = function() end,
+                    onenter = function() end,
+                    onleave = function() end,
+                },
                 props = {
                     property1 = "value1",
                     property2 = "value2",
@@ -126,5 +132,28 @@ menus = {
         },
     },
 }
-dock = {}
-hud = {}
+dock = {
+    mode = "retract", -- retract/show/hide
+    items = {
+        [1] = {
+            ID = "dockItem1",
+            enabled = true,
+            events = {
+                onclick = function() end,
+                onenter = function() end,
+                onleave = function() end,
+            },
+            textureID = "missing",
+        },
+        [2] = {
+            ID = "dockItem1",
+            enabled = true,
+            events = {
+                onclick = function() end,
+                onenter = function() end,
+                onleave = function() end,
+            },
+            textureID = "missing",
+        },
+    }
+}
