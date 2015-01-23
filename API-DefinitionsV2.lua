@@ -109,10 +109,22 @@ menus = {
                 },
             },
         },
-
-        elements = {},
+        elements = {
+            elem1 = {
+                ID = "elem1",
+                isActive = false,
+                isHidden = false,
+                ["type"] = "label",
+                props = {
+                    property1 = "value1",
+                    property2 = "value2",
+                    property3 = "value3",
+                    property4 = "value4",
+                    property5 = "value5",
+                },
+            },
+        },
     },
 }
 dock = {}
-bg = {}
-fg = {}
+hud = {}
