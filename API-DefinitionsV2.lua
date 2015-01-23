@@ -42,7 +42,77 @@ x, y = getGameMouse() --
 
 x, y = getGuiMouse() --
 
-level = {}
-gui = {}
+level = {
+    name = "default",
+    description = "decription of level 'default'",
+    systems = {
+        System1 = {
+            ID = "System1",
+            name = "System No. 1",
+            description = "Description of system 'System1'",
+            objects = {
+                Object1 = {
+                    ID = "Object1",
+                    description = "description of object 'Object1'",
+                    collidable = true,
+                    flyByLocal = false,
+                    ai = {"###AI-Behaviour scripts/options###"},
+                    mass = 15,
+                    position = {0, 0},
+                    velocity = {1, 1},
+                    gravity = true,
+                    positionTarget = {100, 100},
+                    rotation = 0,
+                    rotationSpeed = 0,
+                    shootdownTarget = "",
+                    textureID = "missing",
+                    visible = true,
+                },
+                Object2 = {
+                    
+                },
+            },
+        },
+    },
+    timestamp = "some weird time format"
+}
+menus = {
+    menu1 = {
+        ID = "Menu1",
+        title = "My Menu #1",
+        height = 200,
+        width = 150,
+        totalHeight = 200,
+        totalWidth = 150,
+        x = 10,
+        y = 10,
+        isActive = true,
+        isHidden = false,
+        scrollable = false,
+        style = {
+            background = {
+                active = "#000000A0",
+                inactive = "#00000010",
+            },
+            border = {
+                active = "#00FF00A0",
+                inactive = "#22222210",
+            },
+            title = {
+                background = {
+                    active = "#00000000",
+                    inactive = "#00000000",
+                },
+                text = {
+                    active = "#00000000",
+                    inactive = "#00000000",
+                },
+            },
+        },
+
+        elements = {},
+    },
+}
+dock = {}
 bg = {}
 fg = {}
