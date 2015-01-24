@@ -1,18 +1,18 @@
 //includes
-#include "Utilities/VERSION.hpp"
-#include "Utilities/Logger.hpp"
+#include <Utilities/VERSION.hpp>
+#include <Utilities/Logger.hpp>
 #include <iostream>
-#include "MemoryBank/DataBank.hpp"
-#include "MemoryBank/Level/Vector.hpp"
-#include "GUI/GUIManager.hpp"
-#include "Processing/GraphicsEngine.hpp"
-#include "Processing/PhysicsEngine.hpp"
-#include "Processing/ModModule.hpp"
-#include "Processing/EventManager.hpp"
+#include <MemoryBank/DataBank.hpp>
+#include <MemoryBank/Level/Vector.hpp>
+#include <GUI/GUIManager.hpp>
+#include <Processing/GraphicsEngine.hpp>
+#include <Processing/PhysicsEngine.hpp>
+#include <Processing/ModModule.hpp>
+#include <Processing/EventManager.hpp>
 #include <conio.h>
 #include <list>
 #include <time.h>
-#include "Utilities/util.hpp"
+#include <Utilities/util.hpp>
 #include <SFML\System.hpp>
 
 
@@ -24,10 +24,10 @@ extern "C" {
 
 
 // Thread Throttleling
-float mLimit =  100.0; //Cycles per second
-float gLimit =  100.0; //Cycles per second
+float mLimit =  50.0; //Cycles per second
+float gLimit =  60.0; //Cycles per second
 float pLimit =  100.0; //Cycles per second
-float mainLimit =  100.0; //Cycles per second
+float mainLimit =  60.0; //Cycles per second
 
 // Global accessors
 std::list< std::list<std::string> > eventBuffer;
@@ -193,7 +193,7 @@ int main ( int argc, char *argv[] )
     GMutex.unlock();
 
     printf("\n=|=|=|=|=|=|=|=|=|=|=|=|=|=\n\nThe game closed. If you see errors above, please contact the developers");
-    //getchar();
+    getchar();
     return EXIT_SUCCESS;
 }
 

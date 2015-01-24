@@ -2,10 +2,10 @@
 #define _ModModule_hpp_
 
 #include <list>
-#include "MemoryBank/DataBank.hpp"
-#include "GUI/GUIManager.hpp"
-#include "Utilities/Logger.hpp"
-#include "MemoryBank/Entities/Script.hpp"
+#include <MemoryBank/DataBank.hpp>
+#include <GUI/GUIManager.hpp>
+#include <Utilities/Logger.hpp>
+#include <MemoryBank/Entities/Script.hpp>
 #include <sstream>
 extern float mLimit;
 extern DataBank* dLink;
