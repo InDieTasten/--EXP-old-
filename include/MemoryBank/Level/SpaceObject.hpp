@@ -1,9 +1,9 @@
 #ifndef _SpaceObject_hpp_
 #define _SpaceObject_hpp_
 
-#include "Utilities/util.hpp"
+#include <Utilities/util.hpp>
 #include <SFML\Graphics.hpp>
-#include "Vector.hpp"
+#include <MemoryBank/Level/Vector.hpp>
 #include <list>
 #include <fstream>
 

@@ -2,7 +2,7 @@
 #define _LocalControl_hpp_
 
 #include <iostream>
-#include "MemoryBank/Level/Vector.hpp"
+#include <MemoryBank/Level/Vector.hpp>
 #include <list>
 
 class LocalControl

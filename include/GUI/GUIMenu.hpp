@@ -2,10 +2,10 @@
 #define GUIMenu_cpp
 
 #include <list>
-#include "GUIElement.hpp"
-#include "GUI/Elements/VertSlider.hpp"
-#include "GUI/Elements/HorSlider.hpp"
-#include "GUI/Elements/Button.hpp"
+#include <GUI/GUIElement.hpp>
+#include <GUI/Elements/VertSlider.hpp>
+#include <GUI/Elements/HorSlider.hpp>
+#include <GUI/Elements/Button.hpp>
 
 class GUIMenu
 {
