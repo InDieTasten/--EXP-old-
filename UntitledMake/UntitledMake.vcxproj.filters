@@ -5,7 +5,6 @@
     <Text Include="makefile" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\API-DefinitionsV2.lua" />
     <None Include="..\..\UG_content\content\stock\scripts\plugin_loader.lua">
       <Filter>Lua</Filter>
     </None>
@@ -28,6 +27,7 @@
       <Filter>Lua\Level</Filter>
     </None>
     <None Include="..\API-Definitions.lua" />
+    <None Include="..\API-DefinitionsV2-3.lua" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GUI">
