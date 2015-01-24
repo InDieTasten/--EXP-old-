@@ -2,7 +2,7 @@
 #define _TextBox_hpp_
 
 #include <string.h>
-#include "MemoryBank/DataBank.hpp"
+#include <MemoryBank/DataBank.hpp>
 
 extern DataBank* dLink;
 
@@ -28,7 +28,8 @@ public:
     std::string content;
     sf::Text text;
     std::string::iterator cursor;
-    int position;
+	std::string::iterator cursorend;
+    int position,position2;
     bool multiline;
     bool clicked;
     int sliderX;
