@@ -83,7 +83,7 @@
     <None Include="..\API-Definitions.lua">
       <FileType>Document</FileType>
     </None>
-    <None Include="..\API-DefinitionsV2.lua">
+    <None Include="..\API-DefinitionsV2-3.lua">
       <FileType>Document</FileType>
     </None>
   </ItemGroup>
