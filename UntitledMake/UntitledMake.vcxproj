@@ -42,7 +42,7 @@
     <NMakeReBuildCommandLine>nmake rebuild</NMakeReBuildCommandLine>
     <NMakePreprocessorDefinitions>WIN32;_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
     <OutDir>$(SolutionDir)\..\..\UG_content</OutDir>
-    <IncludePath>C:\Users\InDie\Bibliotheken\Documents\GitHub\UG_libavc\include;C:\Users\InDie\Bibliotheken\Documents\GitHub\UG_lua\include;C:\Users\InDie\Bibliotheken\Documents\GitHub\UG_sfml\include;C:\Users\InDie\Bibliotheken\Documents\GitHub\--UntitledGame--\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\..\..\UG_libavc\include;$(SolutionDir)\..\..\UG_lua\include;$(SolutionDir)\..\..\UG_sfml\include;$(SolutionDir)\..\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <NMakeBuildCommandLine>nmake build</NMakeBuildCommandLine>
