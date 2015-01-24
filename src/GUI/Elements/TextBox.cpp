@@ -20,14 +20,14 @@ void TextBox::calibrateCursor()
     }
 	if (position != position2)
 	{
-		for (i = 0;i < position2;i++)
+		for (int i = 0;i < position2;i++)
 		{
-			cusorend++
+			cursorend++;
 		}
 	}
 	else
 	{
-		cusorend = cursor;
+		cursorend = cursor;
 	}
 }
 void TextBox::Setup()
@@ -200,7 +200,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                         {
 							position--;
 							calibrateCursor();
-							content.erase(cursor,cusorend);
+							content.erase(cursor,cursorend);
 							std::list<std::string> x;
 							x.push_back("textbox_update");
 							x.push_back(_mID);
