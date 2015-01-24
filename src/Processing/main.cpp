@@ -193,7 +193,7 @@ int main ( int argc, char *argv[] )
     GMutex.unlock();
 
     printf("\n=|=|=|=|=|=|=|=|=|=|=|=|=|=\n\nThe game closed. If you see errors above, please contact the developers");
-    //getchar();
+    getchar();
     return EXIT_SUCCESS;
 }
 
