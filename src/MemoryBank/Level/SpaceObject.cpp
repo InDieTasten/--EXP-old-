@@ -1,5 +1,5 @@
-#include "MemoryBank/Level/SpaceObject.hpp"
-#include "MemoryBank/DataBank.hpp"
+#include <MemoryBank/Level/SpaceObject.hpp>
+#include <MemoryBank/DataBank.hpp>
 
 //CONSTRUCTORS
 SpaceObject::SpaceObject()

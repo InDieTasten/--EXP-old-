@@ -1,4 +1,4 @@
-#include "GUI/GUIManager.hpp"
+#include <GUI/GUIManager.hpp>
 //CONSTRUCTORS
 GUIManager::GUIManager()
 {

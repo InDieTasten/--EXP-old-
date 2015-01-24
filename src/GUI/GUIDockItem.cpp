@@ -1,4 +1,4 @@
-#include "GUI/GUIDockItem.hpp"
+#include <GUI/GUIDockItem.hpp>
 //CONSTRUCTORS
 GUIDockItem::GUIDockItem(std::string _id, std::string _imageid)
 {
