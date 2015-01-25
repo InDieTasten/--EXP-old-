@@ -6,32 +6,32 @@
 
 class Vector
 {
-    //MEMBERS
+	//MEMBERS
 private:
 public:
-    double x;
-    double y;
+	double x;
+	double y;
 
-    //CONSTRUCTORS
-    Vector();
-    Vector(double _x, double _y);
-    Vector(float _x, float _y);
-    Vector(sf::Vector2f);
+	//CONSTRUCTORS
+	Vector();
+	Vector(double _x, double _y);
+	Vector(float _x, float _y);
+	Vector(sf::Vector2f);
 
-    //DESTRUCTORS
+	//DESTRUCTORS
 
-    //METHODS
+	//METHODS
 
-    Vector operator+(const Vector&  other);
-    //Vector operator+=(const Vector&  other);
-    Vector operator-(const Vector&  other);
-    Vector operator*(const Vector&  other);
-    Vector operator*(const float&  multiplier);
-    //Vector operator*=(const Vector&  other);
-    Vector operator/(const Vector&  other);
+	Vector operator+(const Vector&  other);
+	//Vector operator+=(const Vector&  other);
+	Vector operator-(const Vector&  other);
+	Vector operator*(const Vector&  other);
+	Vector operator*(const float&  multiplier);
+	//Vector operator*=(const Vector&  other);
+	Vector operator/(const Vector&  other);
 
-    void saveToStream(std::ofstream& output);
-    void loadFromStream(std::ifstream& input);
+	void saveToStream(std::ofstream& output);
+	void loadFromStream(std::ifstream& input);
 };
 
 #endif

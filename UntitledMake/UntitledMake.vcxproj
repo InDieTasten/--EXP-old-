@@ -56,7 +56,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <Text Include="makefile" />
-    <Text Include="readme.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\UG_content\content\plugins\lStart.lua">
