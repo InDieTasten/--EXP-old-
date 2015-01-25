@@ -7,22 +7,22 @@
 
 class Sound
 {
-    //MEMBERS
+	//MEMBERS
 private:
-    std::list<sf::SoundBuffer> sound;
+	std::list<sf::SoundBuffer> sound;
 public:
-    std::string id;
-    std::string path;
+	std::string id;
+	std::string path;
 
-    //CONSTRUCTORS
-    Sound(std::string _id, std::string _path);
+	//CONSTRUCTORS
+	Sound(std::string _id, std::string _path);
 
-    //DESTRUCTORS
+	//DESTRUCTORS
 
-    //METHODS
-    void load();
-    void unload();
-    sf::SoundBuffer* getSound();
+	//METHODS
+	void load();
+	void unload();
+	sf::SoundBuffer* getSound();
 };
 
 #endif

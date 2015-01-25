@@ -6,21 +6,21 @@
 
 class SolarSystem
 {
-    //MEMBERS
+	//MEMBERS
 private:
 public:
-    std::string ID;
-    std::string Name;
-    std::string Description;
-    std::list<SpaceObject> SpaceObjectList;
+	std::string ID;
+	std::string Name;
+	std::string Description;
+	std::list<SpaceObject> SpaceObjectList;
 
-    //CONSTRUCTORS
+	//CONSTRUCTORS
 
-    //DESTRUCTORS
+	//DESTRUCTORS
 
-    //METHODS
-    void saveToStream(std::ofstream& output);
-    void loadFromStream(std::ifstream& input);
+	//METHODS
+	void saveToStream(std::ofstream& output);
+	void loadFromStream(std::ifstream& input);
 };
 
 #endif

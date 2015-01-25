@@ -10,22 +10,22 @@ class Level
 {
 private:
 public:
-    // MEMBERS
-    std::string name;
-    std::string description;
-    unsigned long long timestamp;
+	// MEMBERS
+	std::string name;
+	std::string description;
+	unsigned long long timestamp;
 
-    SolarSystem activeSystem;
+	SolarSystem activeSystem;
 
-    std::list<SolarSystem> inactiveSystems;
+	std::list<SolarSystem> inactiveSystems;
 
-    //CONSTRUCTORS
-    Level();
-    //DESTRUCTORS
-    //METHODS
+	//CONSTRUCTORS
+	Level();
+	//DESTRUCTORS
+	//METHODS
 
-    void saveToStream(std::ofstream& output);
-    void loadFromStream(std::ifstream& input);
+	void saveToStream(std::ofstream& output);
+	void loadFromStream(std::ifstream& input);
 };
 
 #endif // _Level_hpp_
