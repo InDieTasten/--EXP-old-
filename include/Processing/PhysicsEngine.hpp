@@ -13,26 +13,26 @@ extern sf::Mutex GMutex;
 
 class PhysicsEngine
 {
-    //MEMBERS
+	//MEMBERS
 private:
-    double PI;
-    double G;
-    double dX;
-    float frametime;
+	double PI;
+	double G;
+	double dX;
+	float frametime;
 public:
 
-    //CONSTRUCTORS
-    PhysicsEngine();
+	//CONSTRUCTORS
+	PhysicsEngine();
 
-    //DESTRUCTORS
+	//DESTRUCTORS
 
-    //METHODS
+	//METHODS
 private:
-    double calcDistanceX(Vector _obj1, Vector _obj2);
-    double calcDistanceY(Vector _obj1, Vector _obj2);
-    float calcDistance(Vector _obj1, Vector _obj2);
+	double calcDistanceX(Vector _obj1, Vector _obj2);
+	double calcDistanceY(Vector _obj1, Vector _obj2);
+	float calcDistance(Vector _obj1, Vector _obj2);
 public:
-    void Run();
-    void Stop();
+	void Run();
+	void Stop();
 };
 #endif

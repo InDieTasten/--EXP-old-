@@ -15,21 +15,21 @@ extern sf::Mutex GMutex;
 
 class GraphicsEngine
 {
-    //MEMBERS
+	//MEMBERS
 private:
-    double PI;
-    sf::Sprite renderSprite;
-    sf::Sprite starSprite;
+	double PI;
+	sf::Sprite renderSprite;
+	sf::Sprite starSprite;
 public:
-    //CONSTRUCTORS
-    GraphicsEngine();
+	//CONSTRUCTORS
+	GraphicsEngine();
 
-    //DESTRUCTORS
+	//DESTRUCTORS
 
-    //METHODS
+	//METHODS
 private:
 public:
-    void Run();
-    void Stop();
+	void Run();
+	void Stop();
 };
 #endif
