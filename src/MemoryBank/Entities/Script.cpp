@@ -7,8 +7,8 @@ extern "C" {
 //CONSTRUCTORS
 Script::Script(std::string _path)
 {
-    path = _path;
-    state = luaL_newstate();
+	path = _path;
+	state = luaL_newstate();
 }
 
 //DECONSTRUCTORS
