@@ -6,11 +6,29 @@
 //METHODS
 void TextBox::calibrateCursor()
 {
+	int tmp;
+	if (position > position2)
+	{
+		tmp = position;
+		position = position2;
+		position2 = tmp;
+	}
     cursor = content.begin();
     for(int i = 0; i < position; i++)
     {
         cursor++;
     }
+	if (position != position2)
+	{
+		for (int i = 0;i < position2;i++)
+		{
+			cursorend++;
+		}
+	}
+	else
+	{
+		cursorend = cursor;
+	}
 }
 void TextBox::Setup()
 {
@@ -122,7 +140,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                 {
                     if(_event->mouseButton.button == sf::Mouse::Left)
                     {
-                        movecursor((float)x,(float)y);
+                       position2 = movecursor((float)x,(float)y);
                     }
                 }
             }
@@ -147,6 +165,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                     if(position > 0)
                     {
                         position--;
+						position2 = position;
                     }
                 }
                 if(_event->key.code == sf::Keyboard::Right)
@@ -154,6 +173,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                     if(position < content.size())
                     {
                         position++;
+						position2 = position;
                     }
                 }
 
@@ -162,11 +182,13 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                     if(text.findCharacterPos(position).y > 8.0f + _y)
                     {
                         movecursor(text.findCharacterPos(position).x,text.findCharacterPos(position).y - 8.0f);
+						position2 = position;
                     }
                 }
                 if(_event->key.code == sf::Keyboard::Down)
                 {
                     movecursor(text.findCharacterPos(position).x,text.findCharacterPos(position).y + 16.0f);
+					position2 = position;
                 }
 
                 if(_event->key.code == sf::Keyboard::Delete)
@@ -176,14 +198,14 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                         position++;
                         if(position > 0)
                         {
-                            position--;
-                            calibrateCursor();
-                            content.erase(cursor);
-                            std::list<std::string> x;
-                            x.push_back("textbox_update");
-                            x.push_back(_mID);
-                            x.push_back(_id);
-                            x.push_back(content);
+							position--;
+							calibrateCursor();
+							content.erase(cursor,cursorend);
+							std::list<std::string> x;
+							x.push_back("textbox_update");
+							x.push_back(_mID);
+							x.push_back(_id);
+							x.push_back(content);
                             dLink->pushEvent(x);
                         }
                     }
@@ -237,7 +259,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                 }
             }
         }
-        else
+        else //Multiline false
         {
             if(_event->type == sf::Event::KeyPressed)
             {
