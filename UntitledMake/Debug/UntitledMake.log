@@ -1,4 +1,4 @@
-﻿Der Buildvorgang wurde am 24.01.2015 01:26:31 gestartet.
+﻿Der Buildvorgang wurde am 25.01.2015 21:24:12 gestartet.
      1>Projekt "C:\Users\Luca\Documents\GitHub\--UntitledGame--\UntitledMake\UntitledMake.vcxproj" auf Knoten "2", Build Ziel(e).
      1>Build:
          nmake build
@@ -13,19 +13,11 @@
                           from ..\src\GUI\Elements\TextBox.cpp:1:
          ..\..\UG_libavc\include/libavcodec/avcodec.h:522:27: warning: attribute ignored in declaration of 'enum AVLPCType' [enabled by default]
          ..\..\UG_libavc\include/libavcodec/avcodec.h:522:27: warning: attribute for 'enum AVLPCType' must follow the 'enum' keyword [enabled by default]
-         ..\src\GUI\Elements\TextBox.cpp: In member function 'void TextBox::calibrateCursor()':
-         ..\src\GUI\Elements\TextBox.cpp:23:8: error: name lookup of 'i' changed for ISO 'for' scoping [-fpermissive]
-         ..\src\GUI\Elements\TextBox.cpp:23:8: note: (if you use '-fpermissive' G++ will accept your code)
-         ..\src\GUI\Elements\TextBox.cpp:25:4: error: 'cusorend' was not declared in this scope
-         ..\src\GUI\Elements\TextBox.cpp:26:3: error: expected ';' before '}' token
-         ..\src\GUI\Elements\TextBox.cpp:30:3: error: 'cusorend' was not declared in this scope
-         ..\src\GUI\Elements\TextBox.cpp: In member function 'void TextBox::handleEvent(sf::Event*, int, int, std::string, std::string)':
-         ..\src\GUI\Elements\TextBox.cpp:203:29: error: 'cusorend' was not declared in this scope
-     1>NMAKE : fatal error U1077: ""C:\Program Files\CodeBlocks\MinGW\bin\mingw32-g++.exe"": R³ckgabe-Code "0x1"
-         Stop.
-     1>C:\Program Files\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.MakeFile.Targets(38,5): error MSB3073: Der Befehl "nmake build" wurde mit dem Code 2 beendet.
-     1>Die Erstellung des Projekts "C:\Users\Luca\Documents\GitHub\--UntitledGame--\UntitledMake\UntitledMake.vcxproj" ist abgeschlossen, Build Ziel(e) -- FEHLER.
+         	chdir
+         C:\Users\Luca\Documents\GitHub\--UntitledGame--\UntitledMake
+         	"C:\Program Files\CodeBlocks\MinGW\bin\mingw32-g++.exe" -L..\..\UG_lua\src\Lua5.2.3\bin\Release  -L..\..\UG_sfml\lib  -L..\..\UG_libavc\lib -o ..\..\UG_content\UG.exe ..\src\Processing\PhysicsEngine.o  ..\src\Processing\ModModule.o  ..\src\Processing\main.o  ..\src\Processing\EventManager.o  ..\src\Processing\GraphicsEngine.o  ..\src\MemoryBank\DataBank.o  ..\src\MemoryBank\Level\Level.o  ..\src\MemoryBank\Level\SpaceObject.o  ..\src\MemoryBank\Level\SolarSystem.o  ..\src\MemoryBank\Level\Vector.o  ..\src\MemoryBank\Level\LocalControl.o  ..\src\MemoryBank\Entities\Texture.o  ..\src\MemoryBank\Entities\Video.o  ..\src\MemoryBank\Entities\Track.o  ..\src\MemoryBank\Entities\Sound.o  ..\src\MemoryBank\Entities\Script.o  ..\src\MemoryBank\Entities\Font.o  ..\src\GUI\GUIManager.o  ..\src\GUI\GUIElement.o  ..\src\GUI\GUIMenu.o  ..\src\GUI\GUIDockItem.o  ..\src\GUI\Elements\TextBox.o  ..\src\GUI\Elements\CheckBox.o  ..\src\GUI\Elements\HorSlider.o  ..\src\GUI\Elements\Button.o  ..\src\GUI\Elements\VertSlider.o  ..\src\GUI\Elements\Label.o  ..\src\GUI\Elements\CodeBox.o  ..\src\GUI\Elements\Canvas.o  ..\src\Utilities\util.o  ..\src\Utilities\Logger.o  ..\src\Utilities\FileLogger.o   -lsfml-audio  -lsfml-network  -lsfml-graphics  -lsfml-window  -lsfml-system  ..\..\UG_lua\src\Lua5.2.3\bin\Release\libLua5.2.3.a  -lavcodec  -lavformat  -lavutil  -lswscale
+     1>Die Erstellung des Projekts "C:\Users\Luca\Documents\GitHub\--UntitledGame--\UntitledMake\UntitledMake.vcxproj" ist abgeschlossen, Build Ziel(e).
 
-Fehler beim Buildvorgang.
+Build erfolgreich.
 
-Verstrichene Zeit 00:00:00.80
+Verstrichene Zeit 00:00:02.55

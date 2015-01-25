@@ -33,7 +33,7 @@ void TextBox::calibrateCursor()
 void TextBox::Setup()
 {
     position = 0;
-    content = "";
+    content = "abcdefghijklmnopqrstuvwxyz";
     isActive = true;
     multiline = true;
     clicked = false;
@@ -80,7 +80,6 @@ int TextBox::movecursor(float x,float y)
         return tmp;
     }
 }
-
 void TextBox::Update(int _x, int _y,std::string _id, std::string _mID)
 {
     rect.setPosition((float)_x,(float)_y);
@@ -94,6 +93,12 @@ void TextBox::Update(int _x, int _y,std::string _id, std::string _mID)
     cursB.setFillColor(sf::Color(0,0,0,128));
     cursB.setOutlineThickness(1.0f);
     cursB.setOutlineColor(sf::Color(0,255,0,255));
+
+	cursE.setPosition(text.findCharacterPos(position2));
+	cursE.setSize(sf::Vector2f((float)0, (float)12));
+	cursE.setFillColor(sf::Color(0, 0, 0, 128));
+	cursE.setOutlineThickness(1.0f);
+	cursE.setOutlineColor(sf::Color(0, 255, 0, 255));
 
     text.setColor(sf::Color::White);
     text.setPosition(_x+1, _y+1);
@@ -117,8 +122,11 @@ void TextBox::Render(int _x, int _y, std::string _id, std::string _mID)
     dLink->renderWindow->draw(rect);
     dLink->renderWindow->setView(view);
     dLink->renderWindow->draw(text);
-    if(clicked)
-        dLink->renderWindow->draw(cursB);
+	if (clicked)
+	{
+		dLink->renderWindow->draw(cursB);
+		dLink->renderWindow->draw(cursE);
+	}
     dLink->renderWindow->setView(dLink->guiView);
 }
 void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std::string _mID)
@@ -200,13 +208,16 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                         {
 							position--;
 							calibrateCursor();
-							content.erase(cursor,cursorend);
+							content.erase(position, (position2 - position));
+							if (position == position2)
+								content.erase(cursor);
 							std::list<std::string> x;
 							x.push_back("textbox_update");
 							x.push_back(_mID);
 							x.push_back(_id);
 							x.push_back(content);
                             dLink->pushEvent(x);
+							position2 = position;
                         }
                     }
                 }
@@ -218,6 +229,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                     calibrateCursor();
                     content.insert(cursor,'\n');
                     position++;
+					position2 = position;
                     return;
                 }
                 if (static_cast<char>(_event->text.unicode) == '\b')
@@ -225,6 +237,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                     if(position > 0)
                     {
                         position--;
+						position2 = position;
                         calibrateCursor();
                         content.erase(cursor);
                         std::list<std::string> x;
@@ -256,6 +269,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                     x.push_back(content);
                     dLink->pushEvent(x);
                     position++;
+					position2 = position;
                 }
             }
         }
