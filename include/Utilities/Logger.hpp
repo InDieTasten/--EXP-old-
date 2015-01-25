@@ -11,9 +11,9 @@
 
 namespace LOG
 {
-void console(std::string msg);
-void file(std::string msg);
-void safe(std::string msg);
+	void console(std::string msg);
+	void file(std::string msg);
+	void safe(std::string msg);
 }
 
 #endif

@@ -1,38 +1,38 @@
 l = getLevel() --
-	l["name"] = "name of the level"
-	l["description"] = "description of the level"
+l["name"] = "name of the level"
+l["description"] = "description of the level"
 
 setLevel(l) --
 
 syss = getSystems() --
-	syss[1] = "systemID1"
-	syss[2] = "systemID2"
+syss[1] = "systemID1"
+syss[2] = "systemID2"
 
 selectSystem("systemID1") --
 
 sys = getSystem() --
-	sys["id"] = "systemID1"
-	sys["name"] = "systemName1"
-	sys["description"] = "description of system"
+sys["id"] = "systemID1"
+sys["name"] = "systemName1"
+sys["description"] = "description of system"
 
 setSystem(sys) --
 
 removeSystem() --
 
 objs = getObjects() --
-	objs[1] = "objName1"
-	objs[2] = "objName2"
+objs[1] = "objName1"
+objs[2] = "objName2"
 
 obj = getObject("objName1") --
-	obj["name"] = "objName1"
-	obj["description"] = "description of object"
-	obj["rotation"] = 270
-	obj["x"] = 0.5
-	obj["y"] = 0.5
-	obj["dx"] = 1.5
-	obj["dy"] = 1.5
-	obj["textureID"] = "$_missing"
-	obj["mass"] = 20.4
+obj["name"] = "objName1"
+obj["description"] = "description of object"
+obj["rotation"] = 270
+obj["x"] = 0.5
+obj["y"] = 0.5
+obj["dx"] = 1.5
+obj["dy"] = 1.5
+obj["textureID"] = "$_missing"
+obj["mass"] = 20.4
 
 setObject(obj) --
 
@@ -45,31 +45,36 @@ x, y = getGuiMouse() --
 level = {
     name = "default",
     description = "decription of level 'default'",
-    systems = {
-        System1 = {
+    systems =
+    {
+        System1 =
+        {
             ID = "System1",
             name = "System No. 1",
             description = "Description of system 'System1'",
-            objects = {
-                Object1 = {
+            objects =
+            {
+                Object1 =
+                {
                     ID = "Object1",
                     description = "description of object 'Object1'",
                     collidable = true,
                     flyByLocal = false,
-                    ai = {"###AI-Behaviour scripts/options###"},
+                    ai = { "###AI-Behaviour scripts/options###" },
                     mass = 15,
-                    position = {0, 0},
-                    velocity = {1, 1},
+                    position = { 0, 0 },
+                    velocity = { 1, 1 },
                     gravity = true,
-                    positionTarget = {100, 100},
+                    positionTarget = { 100, 100 },
                     rotation = 0,
                     rotationSpeed = 0,
                     shootdownTarget = "",
                     textureID = "missing",
                     visible = true,
                 },
-                Object2 = {
-                    
+                Object2 =
+                {
+
                 },
             },
         },
@@ -77,7 +82,8 @@ level = {
     timestamp = "some weird time format"
 }
 menus = {
-    menu1 = {
+    menu1 =
+    {
         ID = "Menu1",
         title = "My Menu #1",
         height = 200,
@@ -89,39 +95,49 @@ menus = {
         isActive = true,
         isHidden = false,
         scrollable = false,
-        style = {
-            background = {
+        style =
+        {
+            background =
+            {
                 active = "#000000A0",
                 inactive = "#00000010",
             },
-            border = {
+            border =
+            {
                 active = "#00FF00A0",
                 inactive = "#22222210",
             },
-            title = {
-                background = {
+            title =
+            {
+                background =
+                {
                     active = "#00000000",
                     inactive = "#00000000",
                 },
-                text = {
+                text =
+                {
                     active = "#00000000",
                     inactive = "#00000000",
                 },
             },
         },
-        elements = {
-            elem1 = {
+        elements =
+        {
+            elem1 =
+            {
                 ID = "elem1",
                 isActive = false,
                 isHidden = false,
                 ["type"] = "label",
-                events = {
+                events =
+                {
                     onchange = function() end,
                     onclick = function() end,
                     onenter = function() end,
                     onleave = function() end,
                 },
-                props = {
+                props =
+                {
                     property1 = "value1",
                     property2 = "value2",
                     property3 = "value3",
@@ -133,22 +149,28 @@ menus = {
     },
 }
 dock = {
-    mode = "retract", -- retract/show/hide
-    items = {
-        [1] = {
+    mode = "retract",
+    -- retract/show/hide
+    items =
+    {
+        [1] =
+        {
             ID = "dockItem1",
             enabled = true,
-            events = {
+            events =
+            {
                 onclick = function() end,
                 onenter = function() end,
                 onleave = function() end,
             },
             textureID = "missing",
         },
-        [2] = {
+        [2] =
+        {
             ID = "dockItem1",
             enabled = true,
-            events = {
+            events =
+            {
                 onclick = function() end,
                 onenter = function() end,
                 onleave = function() end,
