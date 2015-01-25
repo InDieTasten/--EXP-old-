@@ -5,7 +5,7 @@ class Action
 {
 private:
 public:
-    sf::Event ignitionDescriptor;
-    std::string name;
+	sf::Event ignitionDescriptor;
+	std::string name;
 };
 #endif // _Action_hpp_

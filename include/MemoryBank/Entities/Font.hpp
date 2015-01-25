@@ -8,22 +8,22 @@
 
 class Font
 {
-    //MEMBER
+	//MEMBER
 private:
-    std::list<sf::Font> font;
+	std::list<sf::Font> font;
 public:
-    std::string id;
-    std::string path;
+	std::string id;
+	std::string path;
 
-    //CONSTRUCTORS
-    Font(std::string, std::string);
+	//CONSTRUCTORS
+	Font(std::string, std::string);
 
-    //DESCTRUCTORS
+	//DESCTRUCTORS
 
-    //METHODS
-    void load();
-    void unload();
-    sf::Font* getFont();
+	//METHODS
+	void load();
+	void unload();
+	sf::Font* getFont();
 };
 
 #endif
