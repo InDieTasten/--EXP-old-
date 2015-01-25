@@ -17,13 +17,13 @@ void Sound::unload()
 }
 sf::SoundBuffer* Sound::getSound()
 {
-    if(sound.size() == 1)
-    {
-        return &(*sound.begin());
-    }
-    else
-    {
-        load();
-        return &(*sound.begin());
-    }
+	if (sound.size() == 1)
+	{
+		return &(*sound.begin());
+	}
+	else
+	{
+		load();
+		return &(*sound.begin());
+	}
 }

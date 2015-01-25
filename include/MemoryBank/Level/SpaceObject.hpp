@@ -12,35 +12,35 @@ extern DataBank* dLink;
 
 class SpaceObject
 {
-    //MEMBERS
+	//MEMBERS
 private:
 public:
-    std::string ID; //
-    std::string Description;
-    Vector Position; //units in meters
-    float Rotation; //unit in radians
-    Vector Velocity; //units in m/s
-    double Mass; //unit in tons
-    std::string TextureID; //
-    bool flyByLocal; //
-    bool AI; //
-    short difficulty; //
-    bool movable; //
-    bool collidable; //
-    bool gravity; //
-    bool visible; //
-    std::string PositionTarget; //
-    std::string ShootdownTarget; //
-    float RotationSpeed; //
+	std::string ID; //
+	std::string Description;
+	Vector Position; //units in meters
+	float Rotation; //unit in radians
+	Vector Velocity; //units in m/s
+	double Mass; //unit in tons
+	std::string TextureID; //
+	bool flyByLocal; //
+	bool AI; //
+	short difficulty; //
+	bool movable; //
+	bool collidable; //
+	bool gravity; //
+	bool visible; //
+	std::string PositionTarget; //
+	std::string ShootdownTarget; //
+	float RotationSpeed; //
 
-    //CONSTRUCTORS
-    SpaceObject();
+	//CONSTRUCTORS
+	SpaceObject();
 
-    //DESTRUCTORS
+	//DESTRUCTORS
 
-    //METHODS
-    void saveToStream(std::ofstream& output);
-    void loadFromStream(std::ifstream& input);
+	//METHODS
+	void saveToStream(std::ofstream& output);
+	void loadFromStream(std::ifstream& input);
 };
 
 #endif

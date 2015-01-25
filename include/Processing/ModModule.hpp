@@ -19,50 +19,50 @@ extern std::string selectedSystem;
 
 struct ASync
 {
-    sf::Clock time;
-    int target;
-    std::list<std::string> task;
+	sf::Clock time;
+	int target;
+	std::list<std::string> task;
 };
 
 class ModModule
 {
-    //MEMBERS
+	//MEMBERS
 private:
-    std::list<ASync> waitingTasks;
+	std::list<ASync> waitingTasks;
 public:
 
 
-    //CONSTRUCTORS
+	//CONSTRUCTORS
 
-    //DESTRUCTORS
+	//DESTRUCTORS
 
-    //METHODS
+	//METHODS
 private:
-    static int lGetLevel(lua_State *L);
-    static int lSetLevel(lua_State *L);
-    static int lGetSystems(lua_State *L);
-    static int lSelectSystem(lua_State *L);
-    static int lGetSystem(lua_State *L);
-    static int lSetSystem(lua_State *L);
-    static int lRemoveSystem(lua_State *L);
-    static int lGetObjects(lua_State *L);
-    static int lGetGameMouse(lua_State *L);
-    static int lGetGuiMouse(lua_State *L);
-    static int lGetObject(lua_State *L);
-    static int lSetObject(lua_State *L);
-    static int lRemoveObject(lua_State *L);
+	static int lGetLevel(lua_State *L);
+	static int lSetLevel(lua_State *L);
+	static int lGetSystems(lua_State *L);
+	static int lSelectSystem(lua_State *L);
+	static int lGetSystem(lua_State *L);
+	static int lSetSystem(lua_State *L);
+	static int lRemoveSystem(lua_State *L);
+	static int lGetObjects(lua_State *L);
+	static int lGetGameMouse(lua_State *L);
+	static int lGetGuiMouse(lua_State *L);
+	static int lGetObject(lua_State *L);
+	static int lSetObject(lua_State *L);
+	static int lRemoveObject(lua_State *L);
 
-    static int lPrint(lua_State *L); //message
-    static int lPushEvent(lua_State *L);
-    static int lPushTask(lua_State *L);
+	static int lPrint(lua_State *L); //message
+	static int lPushEvent(lua_State *L);
+	static int lPushTask(lua_State *L);
 
-    void processTask(std::list<std::string> _args);
+	void processTask(std::list<std::string> _args);
 
 public:
-    void Run();
-    void Stop();
-    void SetDataLink(DataBank* _datalink, GUIManager* _gmanager, int *_level);
-    void handleEvent(sf::Event* _event);
+	void Run();
+	void Stop();
+	void SetDataLink(DataBank* _datalink, GUIManager* _gmanager, int *_level);
+	void handleEvent(sf::Event* _event);
 };
 
 #endif

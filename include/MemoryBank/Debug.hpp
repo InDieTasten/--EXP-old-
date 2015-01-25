@@ -3,16 +3,16 @@
 
 struct Debug
 {
-    std::list<float> tMainSleep;
-    std::list<float> tGraphSleep;
-    std::list<float> tPhysSleep;
-    std::list<float> tModSleep;
+	std::list<float> tMainSleep;
+	std::list<float> tGraphSleep;
+	std::list<float> tPhysSleep;
+	std::list<float> tModSleep;
 
-    std::list<int> eventCounts; //
-    std::list<int> taskCounts; //
+	std::list<int> eventCounts; //
+	std::list<int> taskCounts; //
 
-    int eventCount;
-    int taskCount;
+	int eventCount;
+	int taskCount;
 };
 
 #endif // _Debug_hpp_
