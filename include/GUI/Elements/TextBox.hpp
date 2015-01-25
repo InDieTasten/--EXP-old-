@@ -28,7 +28,8 @@ public:
     std::string content;
     sf::Text text;
     std::string::iterator cursor;
-    int position;
+	std::string::iterator cursorend;
+    int position,position2;
     bool multiline;
     bool clicked;
     int sliderX;
