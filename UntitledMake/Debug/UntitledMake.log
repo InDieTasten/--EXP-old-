@@ -1,0 +1,31 @@
+﻿Der Buildvorgang wurde am 24.01.2015 01:26:31 gestartet.
+     1>Projekt "C:\Users\Luca\Documents\GitHub\--UntitledGame--\UntitledMake\UntitledMake.vcxproj" auf Knoten "2", Build Ziel(e).
+     1>Build:
+         nmake build
+         
+         Microsoft (R) Program Maintenance Utility, Version 12.00.21005.1
+         Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+         
+         	"C:\Program Files\CodeBlocks\MinGW\bin\mingw32-g++.exe" -fexceptions  -O3 -I..\..\UG_lua\include  -I..\..\UG_sfml\include  -I..\..\UG_libavc\include  -I..\include -c ..\src\GUI\Elements\TextBox.cpp -o ..\src\GUI\Elements\TextBox.o
+         In file included from ..\include/MemoryBank/Entities/Video.hpp:15:0,
+                          from ..\include/MemoryBank/DataBank.hpp:19,
+                          from ..\include/GUI/Elements/TextBox.hpp:5,
+                          from ..\src\GUI\Elements\TextBox.cpp:1:
+         ..\..\UG_libavc\include/libavcodec/avcodec.h:522:27: warning: attribute ignored in declaration of 'enum AVLPCType' [enabled by default]
+         ..\..\UG_libavc\include/libavcodec/avcodec.h:522:27: warning: attribute for 'enum AVLPCType' must follow the 'enum' keyword [enabled by default]
+         ..\src\GUI\Elements\TextBox.cpp: In member function 'void TextBox::calibrateCursor()':
+         ..\src\GUI\Elements\TextBox.cpp:23:8: error: name lookup of 'i' changed for ISO 'for' scoping [-fpermissive]
+         ..\src\GUI\Elements\TextBox.cpp:23:8: note: (if you use '-fpermissive' G++ will accept your code)
+         ..\src\GUI\Elements\TextBox.cpp:25:4: error: 'cusorend' was not declared in this scope
+         ..\src\GUI\Elements\TextBox.cpp:26:3: error: expected ';' before '}' token
+         ..\src\GUI\Elements\TextBox.cpp:30:3: error: 'cusorend' was not declared in this scope
+         ..\src\GUI\Elements\TextBox.cpp: In member function 'void TextBox::handleEvent(sf::Event*, int, int, std::string, std::string)':
+         ..\src\GUI\Elements\TextBox.cpp:203:29: error: 'cusorend' was not declared in this scope
+     1>NMAKE : fatal error U1077: ""C:\Program Files\CodeBlocks\MinGW\bin\mingw32-g++.exe"": R³ckgabe-Code "0x1"
+         Stop.
+     1>C:\Program Files\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.MakeFile.Targets(38,5): error MSB3073: Der Befehl "nmake build" wurde mit dem Code 2 beendet.
+     1>Die Erstellung des Projekts "C:\Users\Luca\Documents\GitHub\--UntitledGame--\UntitledMake\UntitledMake.vcxproj" ist abgeschlossen, Build Ziel(e) -- FEHLER.
+
+Fehler beim Buildvorgang.
+
+Verstrichene Zeit 00:00:00.80
