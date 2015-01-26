@@ -285,6 +285,7 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                     calibrateCursor();
 					content.erase(position, (position2 - position));
                     content.insert(cursor,'\n');
+					
                     position++;
 					position2 = position;
                     return;
