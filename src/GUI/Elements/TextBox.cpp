@@ -164,26 +164,105 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
     }
     else if(isActive && clicked)
     {
+		if (_event->type == sf::Event::KeyPressed)
+		{
+			if (_event->key.code == sf::Keyboard::Left)
+			{
+				if (position > 0)
+				{
+					position--;
+					position2 = position;
+				}
+			}
+			if (_event->key.code == sf::Keyboard::Right)
+			{
+				if (position < content.size())
+				{
+					position++;
+					position2 = position;
+				}
+			}
+			if (_event->key.code == sf::Keyboard::Delete)
+			{
+				if (position < content.size())
+				{
+					position++;
+					if (position > 0)
+					{
+						position--;
+						calibrateCursor();
+						content.erase(position, (position2 - position));
+						if (position == position2)
+							content.erase(cursor);
+						std::list<std::string> x;
+						x.push_back("textbox_update");
+						x.push_back(_mID);
+						x.push_back(_id);
+						x.push_back(content);
+						dLink->pushEvent(x);
+						position2 = position;
+					}
+				}
+			}
+		}
+		else if (_event->type == sf::Event::TextEntered)
+		{
+			if (static_cast<char>(_event->text.unicode) == '\b')
+			{
+				if (position > 0 || position2 > 0)
+				{
+					if (position == position2)
+					{
+						position--;
+						position2--;
+						calibrateCursor();
+						content.erase(cursor);
+					}
+					else
+					{
+						calibrateCursor();
+						content.erase(position, (position2 - position));
+					}
+					std::list<std::string> x;
+					x.push_back("textbox_update");
+					x.push_back(_mID);
+					x.push_back(_id);
+					x.push_back(content);
+					dLink->pushEvent(x);
+					position2 = position;
+				}
+				return;
+			}
+			if (_event->text.unicode < 128)
+			{
+				calibrateCursor();
+				if (content.size() == 0)
+				{
+					content.erase(position, (position2 - position));
+					content.push_back(static_cast<char>(_event->text.unicode));
+					cursor = content.begin();
+				}
+				else
+				{
+					content.erase(position, (position2 - position));
+					content.insert(cursor, static_cast<char>(_event->text.unicode));
+				}
+				std::list<std::string> x;
+				x.push_back("textbox_update");
+				x.push_back(_mID);
+				x.push_back(_id);
+				text.findCharacterPos(position);
+				x.push_back(content);
+				dLink->pushEvent(x);
+				position++;
+				position2 = position;
+			}
+		}
+		
         if(multiline)
         {
             if(_event->type == sf::Event::KeyPressed)
             {
-                if(_event->key.code == sf::Keyboard::Left)
-                {
-                    if(position > 0)
-                    {
-                        position--;
-						position2 = position;
-                    }
-                }
-                if(_event->key.code == sf::Keyboard::Right)
-                {
-                    if(position < content.size())
-                    {
-                        position++;
-						position2 = position;
-                    }
-                }
 
                 if(_event->key.code == sf::Keyboard::Up)
                 {
@@ -198,120 +277,23 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                     movecursor(text.findCharacterPos(position).x,text.findCharacterPos(position).y + 16.0f);
 					position2 = position;
                 }
-
-                if(_event->key.code == sf::Keyboard::Delete)
-                {
-                    if(position < content.size())
-                    {
-                        position++;
-                        if(position > 0)
-                        {
-							position--;
-							calibrateCursor();
-							content.erase(position, (position2 - position));
-							if (position == position2)
-								content.erase(cursor);
-							std::list<std::string> x;
-							x.push_back("textbox_update");
-							x.push_back(_mID);
-							x.push_back(_id);
-							x.push_back(content);
-                            dLink->pushEvent(x);
-							position2 = position;
-                        }
-                    }
-                }
             }
             else if(_event->type == sf::Event::TextEntered)
             {
                 if (static_cast<char>(_event->text.unicode) == sf::Uint32(13))
                 {
                     calibrateCursor();
+					content.erase(position, (position2 - position));
                     content.insert(cursor,'\n');
                     position++;
 					position2 = position;
                     return;
                 }
-                if (static_cast<char>(_event->text.unicode) == '\b')
-                {
-                    if(position > 0)
-                    {
-                        position--;
-						position2 = position;
-                        calibrateCursor();
-                        content.erase(cursor);
-                        std::list<std::string> x;
-                        x.push_back("textbox_update");
-                        x.push_back(_mID);
-                        x.push_back(_id);
-                        x.push_back(content);
-                        dLink->pushEvent(x);
-                    }
-                    return;
-                }
-                if (_event->text.unicode < 128)
-                {
-                    calibrateCursor();
-                    if(content.size() == 0)
-                    {
-                        content.push_back(static_cast<char>(_event->text.unicode));
-                        cursor = content.begin();
-                    }
-                    else
-                    {
-                        content.insert(cursor,static_cast<char>(_event->text.unicode));
-                    }
-                    std::list<std::string> x;
-                    x.push_back("textbox_update");
-                    x.push_back(_mID);
-                    x.push_back(_id);
-                    text.findCharacterPos(position);
-                    x.push_back(content);
-                    dLink->pushEvent(x);
-                    position++;
-					position2 = position;
-                }
             }
         }
         else //Multiline false
         {
-            if(_event->type == sf::Event::KeyPressed)
-            {
-                if(_event->key.code == sf::Keyboard::Left)
-                {
-                    if(position > 0)
-                    {
-                        position--;
-                    }
-                }
-                if(_event->key.code == sf::Keyboard::Right)
-                {
-                    if(position < content.size())
-                    {
-                        position++;
-                    }
-                }
-                if(_event->key.code == sf::Keyboard::Delete)
-                {
-                    if(position < content.size())
-                    {
-                        position++;
-                        if(position > 0)
-                        {
-                            position--;
-                            calibrateCursor();
-                            content.erase(cursor);
-                            std::list<std::string> x;
-                            x.push_back("textbox_update");
-                            x.push_back(_mID);
-                            x.push_back(_id);
-                            x.push_back(content);
-                            dLink->pushEvent(x);
-                        }
-                    }
-                }
-            }
-            else if(_event->type == sf::Event::TextEntered)
+            if(_event->type == sf::Event::TextEntered)
             {
                 if (static_cast<char>(_event->text.unicode) == sf::Uint32(13))
                 {
@@ -325,42 +307,6 @@ void TextBox::handleEvent(sf::Event* _event, int _x, int _y,std::string _id, std
                     position = 0;
                     calibrateCursor();
                     return;
-                }
-                if (static_cast<char>(_event->text.unicode) == '\b')
-                {
-                    if(position > 0)
-                    {
-                        position--;
-                        calibrateCursor();
-                        content.erase(cursor);
-                        std::list<std::string> x;
-                        x.push_back("textbox_update");
-                        x.push_back(_mID);
-                        x.push_back(_id);
-                        x.push_back(content);
-                        dLink->pushEvent(x);
-                    }
-                    return;
-                }
-                if (_event->text.unicode < 128)
-                {
-                    calibrateCursor();
-                    if(content.size() == 0)
-                    {
-                        content.push_back(static_cast<char>(_event->text.unicode));
-                        cursor = content.begin();
-                    }
-                    else
-                    {
-                        content.insert(cursor,static_cast<char>(_event->text.unicode));
-                    }
-                    std::list<std::string> x;
-                    x.push_back("textbox_update");
-                    x.push_back(_mID);
-                    x.push_back(_id);
-                    x.push_back(content);
-                    dLink->pushEvent(x);
-                    position++;
                 }
             }
         }
