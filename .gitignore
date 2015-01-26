@@ -9,3 +9,4 @@ UG/logs/libgcc_s_dw2-1.dll
 *.opensdf
 *.suo
 *.sdf
+*.log
