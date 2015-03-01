@@ -1,11 +1,13 @@
 
 OUTPUT = ..\..\UG_content\UG.exe
 
-COMPILER = "C:\Program Files\CodeBlocks\MinGW\bin\mingw32-g++.exe"
+COMPILER = "C:\Program Files (x86)\CodeBlocks\MinGW\bin\mingw32-g++.exe"
+#COMPILER = "C:\Program Files\CodeBlocks\MinGW\bin\mingw32-g++.exe"
 
 SWITCHES = \
 	-fexceptions \
-	-O3
+	-O3 \
+	-std=c++11
 
 INCLUDES = \
 	-I..\..\UG_lua\include \
