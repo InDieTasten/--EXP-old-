@@ -21,13 +21,7 @@
     <ClCompile Include="..\src\Processing\ModModule.cpp">
       <Filter>Processing</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Utilities\FileLogger.cpp">
-      <Filter>Utilities</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\Utilities\Logger.cpp">
-      <Filter>Utilities</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Utilities\util.cpp">
       <Filter>Utilities</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,13 +32,7 @@
     <ClInclude Include="..\include\Processing\ModModule.hpp">
       <Filter>Processing</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\Utilities\FileLogger.hpp">
-      <Filter>Utilities</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\Utilities\Logger.hpp">
-      <Filter>Utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\Utilities\util.hpp">
       <Filter>Utilities</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Utilities\VERSION.hpp">
