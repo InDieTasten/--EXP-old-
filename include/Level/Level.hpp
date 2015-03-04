@@ -18,7 +18,10 @@ public:
 	~Level();
 
 	SolarSystem* getSystem();
-	SolarSystem* getSystem(string _id);
+	SolarSystem* getSystem(string* _id);
+
+	void addSystem(string* _id);
+	void removeSystem(string* _id);
 };
 
 #endif // !_Level_hpp_
