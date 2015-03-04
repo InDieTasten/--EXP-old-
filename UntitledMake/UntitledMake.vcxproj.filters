@@ -13,6 +13,9 @@
     <Filter Include="Assets">
       <UniqueIdentifier>{bbb9ff1f-a28a-47c0-9b38-a0d1d42a9586}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Level">
+      <UniqueIdentifier>{728e7019-3a60-4f49-8486-e4b23d33159c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Processing\main.cpp">
@@ -49,6 +52,9 @@
     </ClInclude>
     <ClInclude Include="..\include\Assets\Video.hpp">
       <Filter>Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Level\Level.hpp">
+      <Filter>Level</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

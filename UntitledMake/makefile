@@ -41,6 +41,7 @@ OBJECTS = \
 	..\src\Assets\Sound.o \
 	..\src\Assets\Music.o \
 	..\src\Assets\Video.o \
+	..\src\Level\Level.o \
 	..\src\Utilities\Logger.o
 
 rebuild: clean build
