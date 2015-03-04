@@ -33,7 +33,7 @@ MORESWITCHES = \
 	-lswscale
 
 OBJECTS = \
-	..\src\Processing\main.o \
+	..\src\Core\main.o \
 	..\src\Utilities\Logger.o
 
 rebuild: clean build
