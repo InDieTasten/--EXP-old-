@@ -3,7 +3,6 @@
 
 #include <map>
 #include <Level\SolarSystem.hpp>
-//#include <Core\ThreadManager.hpp>
 #include <string>
 
 using namespace std;
@@ -13,7 +12,6 @@ class Level
 private:
 	std::map<string, SolarSystem*> sytems;
 	SolarSystem* currentSystem;
-	//ThreadManager* threadHandler;
 
 public:
 	Level();
