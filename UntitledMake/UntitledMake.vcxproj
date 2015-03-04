@@ -64,6 +64,7 @@
   <ItemGroup>
     <ClInclude Include="..\include\Assets\Asset.hpp" />
     <ClInclude Include="..\include\Assets\Font.hpp" />
+    <ClInclude Include="..\include\Assets\Music.hpp" />
     <ClInclude Include="..\include\Assets\Sound.hpp" />
     <ClInclude Include="..\include\Assets\Texture.hpp" />
     <ClInclude Include="..\include\Core\Databank.hpp" />
