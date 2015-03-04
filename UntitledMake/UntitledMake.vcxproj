@@ -58,106 +58,23 @@
     <Text Include="makefile" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\UG_content\content\plugins\lStart.lua">
-      <FileType>Document</FileType>
-    </None>
-    <None Include="..\..\UG_content\content\plugins\mConsole.lua">
-      <FileType>Document</FileType>
-    </None>
-    <None Include="..\..\UG_content\content\plugins\mDebug.lua">
-      <FileType>Document</FileType>
-    </None>
-    <None Include="..\..\UG_content\content\plugins\mEditor.lua">
-      <FileType>Document</FileType>
-    </None>
-    <None Include="..\..\UG_content\content\plugins\mMenu.lua">
-      <FileType>Document</FileType>
-    </None>
-    <None Include="..\..\UG_content\content\plugins\mSettings.lua">
-      <FileType>Document</FileType>
-    </None>
-    <None Include="..\..\UG_content\content\stock\scripts\plugin_loader.lua">
-      <FileType>Document</FileType>
-    </None>
-    <None Include="..\API-Definitions.lua">
-      <FileType>Document</FileType>
-    </None>
-    <None Include="..\API-DefinitionsV2-3.lua">
-      <FileType>Document</FileType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\src\GUI\Elements\Button.cpp" />
-    <ClCompile Include="..\src\GUI\Elements\Canvas.cpp" />
-    <ClCompile Include="..\src\GUI\Elements\CheckBox.cpp" />
-    <ClCompile Include="..\src\GUI\Elements\CodeBox.cpp" />
-    <ClCompile Include="..\src\GUI\Elements\HorSlider.cpp" />
-    <ClCompile Include="..\src\GUI\Elements\Label.cpp" />
-    <ClCompile Include="..\src\GUI\Elements\TextBox.cpp" />
-    <ClCompile Include="..\src\GUI\Elements\VertSlider.cpp" />
-    <ClCompile Include="..\src\GUI\GUIDockItem.cpp" />
-    <ClCompile Include="..\src\GUI\GUIElement.cpp" />
-    <ClCompile Include="..\src\GUI\GUIManager.cpp" />
-    <ClCompile Include="..\src\GUI\GUIMenu.cpp" />
-    <ClCompile Include="..\src\MemoryBank\DataBank.cpp" />
-    <ClCompile Include="..\src\MemoryBank\Entities\Font.cpp" />
-    <ClCompile Include="..\src\MemoryBank\Entities\Script.cpp" />
-    <ClCompile Include="..\src\MemoryBank\Entities\Sound.cpp" />
-    <ClCompile Include="..\src\MemoryBank\Entities\Texture.cpp" />
-    <ClCompile Include="..\src\MemoryBank\Entities\Track.cpp" />
-    <ClCompile Include="..\src\MemoryBank\Entities\Video.cpp" />
-    <ClCompile Include="..\src\MemoryBank\Level\Level.cpp" />
-    <ClCompile Include="..\src\MemoryBank\Level\LocalControl.cpp" />
-    <ClCompile Include="..\src\MemoryBank\Level\SolarSystem.cpp" />
-    <ClCompile Include="..\src\MemoryBank\Level\SpaceObject.cpp" />
-    <ClCompile Include="..\src\MemoryBank\Level\Vector.cpp" />
-    <ClCompile Include="..\src\Processing\EventManager.cpp" />
     <ClCompile Include="..\src\Processing\GraphicsEngine.cpp" />
     <ClCompile Include="..\src\Processing\main.cpp" />
     <ClCompile Include="..\src\Processing\ModModule.cpp" />
-    <ClCompile Include="..\src\Processing\PhysicsEngine.cpp" />
     <ClCompile Include="..\src\Utilities\FileLogger.cpp" />
     <ClCompile Include="..\src\Utilities\Logger.cpp" />
     <ClCompile Include="..\src\Utilities\util.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\GUI\Elements\Button.hpp" />
-    <ClInclude Include="..\include\GUI\Elements\Canvas.hpp" />
-    <ClInclude Include="..\include\GUI\Elements\CheckBox.hpp" />
-    <ClInclude Include="..\include\GUI\Elements\CodeBox.hpp" />
-    <ClInclude Include="..\include\GUI\Elements\HorSlider.hpp" />
-    <ClInclude Include="..\include\GUI\Elements\Label.hpp" />
-    <ClInclude Include="..\include\GUI\Elements\Picture.hpp" />
-    <ClInclude Include="..\include\GUI\Elements\ProgBar.hpp" />
-    <ClInclude Include="..\include\GUI\Elements\TextBox.hpp" />
-    <ClInclude Include="..\include\GUI\Elements\VertSlider.hpp" />
-    <ClInclude Include="..\include\GUI\GUIDockItem.hpp" />
-    <ClInclude Include="..\include\GUI\GUIElement.hpp" />
-    <ClInclude Include="..\include\GUI\GUIManager.hpp" />
-    <ClInclude Include="..\include\GUI\GUIMenu.hpp" />
-    <ClInclude Include="..\include\MemoryBank\DataBank.hpp" />
-    <ClInclude Include="..\include\MemoryBank\Debug.hpp" />
-    <ClInclude Include="..\include\MemoryBank\Entities\Action.hpp" />
-    <ClInclude Include="..\include\MemoryBank\Entities\Font.hpp" />
-    <ClInclude Include="..\include\MemoryBank\Entities\Script.hpp" />
-    <ClInclude Include="..\include\MemoryBank\Entities\Sound.hpp" />
-    <ClInclude Include="..\include\MemoryBank\Entities\Texture.hpp" />
-    <ClInclude Include="..\include\MemoryBank\Entities\Track.hpp" />
-    <ClInclude Include="..\include\MemoryBank\Entities\Video.hpp" />
-    <ClInclude Include="..\include\MemoryBank\Level\Level.hpp" />
-    <ClInclude Include="..\include\MemoryBank\Level\SolarSystem.hpp" />
-    <ClInclude Include="..\include\MemoryBank\Level\SpaceObject.hpp" />
-    <ClInclude Include="..\include\MemoryBank\Level\Vector.hpp" />
-    <ClInclude Include="..\include\MemoryBank\LocalControl.hpp" />
-    <ClInclude Include="..\include\MemoryBank\Settings.hpp" />
-    <ClInclude Include="..\include\Processing\EventManager.hpp" />
     <ClInclude Include="..\include\Processing\GraphicsEngine.hpp" />
     <ClInclude Include="..\include\Processing\ModModule.hpp" />
-    <ClInclude Include="..\include\Processing\PhysicsEngine.hpp" />
     <ClInclude Include="..\include\Utilities\FileLogger.hpp" />
     <ClInclude Include="..\include\Utilities\Logger.hpp" />
     <ClInclude Include="..\include\Utilities\util.hpp" />
     <ClInclude Include="..\include\Utilities\VERSION.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
