@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="cfda542c-ebca-4513-b55c-a9eed4e908a4" name="UntitledClasses" linkedPackageId="f99927cf-2cf7-49f8-8d03-8a44aa353ac8" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="1a41966c-bec4-4eec-9e96-7b79109e00fd">
+      <profileInstance Id="23776f31-7bd1-4177-bc71-b600c3ac6dfe" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="e035413b-3e5d-4fe9-b7d1-7f50fee2a0fe">
+      <profileInstance Id="3d43e67d-e896-450d-9649-c70828c84a85" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="cc04aae3-329f-4084-b599-f6ea4bc84825" name="Databank" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="a13447d4-7075-4331-87d9-ba1338315786" />
+        <ownedAttributesInternal>
+          <property Id="73451482-c5c1-48bc-b6d2-003ceb96e114" name="level" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="38189d71-b100-44c9-9add-a2da0d2b683f" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="f4532f08-e7c8-4843-9659-2278ded9bbbd" LastKnownName="Level" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="88508e72-0c95-4ea7-b3a2-2c81f23bdd7d" name="Texture" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="07258590-2bdb-4e3c-b325-cc83601fd2ec" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="1217de25-0b5b-4095-ae11-c9360d2d858a" name="Font" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="5c138e27-f68c-4970-953a-d6a8152d81a9" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="f439bb0d-3ed5-4bbf-a275-bfa656f432e6" name="Sound" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="9670f91c-e063-4ee0-b260-dea087503985" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="2cd81e8a-e35f-4fbb-9af6-e89e0568da0c" name="Asteroid" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="4959005f-7933-47ab-8670-31e782516720" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="5c279bad-f315-488e-a29b-e36491658942" name="Planet" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="a3117564-e9dd-4547-9f4f-98c29d6bed0f" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="2e490764-5d75-4eb1-9c95-ffee05cdfd8b" name="Ship" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="8cbb94a6-9693-4b00-b46f-13aa9cddfe6d" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="afbfc7a1-863a-4e26-8827-7119775ea386" name="Debris" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="5698f57e-ac2c-4741-be65-9ef82b584b84" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="badaeba6-4369-4582-8e95-184d91e330ed" name="Level" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="3d472483-d785-40e5-ab56-8e32282db1b4" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="ffc1f11e-f377-451c-ae90-7cb0c9115536" name="SolarSystem" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="24ceac42-8000-4846-86fe-b9484e9c4d2c" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="a1f24503-3fb6-461d-b38e-de337410182e" name="Construction" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="129a17c8-7a40-4028-ad08-d01cb8d24fa6" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="fcdfbfdb-c328-46e0-8c8a-4b8cd7d33968" name="CollisionMesh" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="8e5702d4-cc0d-49f9-bc0a-b1a50124cce6" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="ebb928a7-c6a1-4509-a398-610c519a4a8e" name="GravityThread" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="0daf2a63-e760-40c9-9c08-d339437dc559" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="0d0674d5-50d6-430e-832b-be0e3cc61c4b" name="MovementThread" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="cd47a0f2-8106-4bcc-9345-bbf913121801" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="398aab70-2366-4e54-b81f-a703ab95595a" name="ThreadManager" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="d8fb86a5-c7ef-4c12-afd0-445c109316e1" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="15c9404f-4c10-4c3e-9e82-f21af9c9c452" name="Vector" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="ab3b44f2-f48b-4b3c-8b9a-0977d661c2a5" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="711c5d12-5e79-4d54-b0f2-16ae83c4c9e9" name="Bullet" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="8fbce19b-f81b-4241-a9c1-02693af27fcd" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="f4532f08-e7c8-4843-9659-2278ded9bbbd" name="Level" isAbstract="false" isLeaf="false" cachedFullName="UntitledModels::Level">
+        <elementDefinition Id="3d472483-d785-40e5-ab56-8e32282db1b4" />
+      </referencedType>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="f99927cf-2cf7-49f8-8d03-8a44aa353ac8" name="UntitledModels">
+    <elementDefinition Id="2a88a995-d767-450e-a66b-26f6c1fbd6c6" />
+  </package>
+</logicalClassDesignerModel>
