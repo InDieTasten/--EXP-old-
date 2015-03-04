@@ -18,9 +18,10 @@ extern "C" {
 
 int main(int argc, char *argv[])
 {
-	ug::log("Game is launching")
+	ug::log("Game is launching");
 	sf::RenderWindow App(sf::VideoMode(1280, 720, 32), VERSION::name + " " + VERSION::version, sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
 	
+
 
 	while (App.isOpen())
 	{
