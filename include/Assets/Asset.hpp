@@ -14,7 +14,7 @@ protected:
 
 public:
 	Asset();
-	Asset(string _id, string _path);
+	Asset(string* _id, string* _path);
 	~Asset();
 };
 
