@@ -12,13 +12,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\Processing\GraphicsEngine.cpp">
-      <Filter>Processing</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\Processing\main.cpp">
-      <Filter>Processing</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Processing\ModModule.cpp">
       <Filter>Processing</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Utilities\Logger.cpp">
@@ -26,12 +20,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\Processing\GraphicsEngine.hpp">
-      <Filter>Processing</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\Processing\ModModule.hpp">
-      <Filter>Processing</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\Utilities\Logger.hpp">
       <Filter>Utilities</Filter>
     </ClInclude>
