@@ -36,6 +36,7 @@ OBJECTS = \
 	..\src\Core\main.o \
 	..\src\Core\Databank.o \
 	..\src\Assets\Asset.o \
+	..\src\Assets\Texture.o \
 	..\src\Assets\Font.o \
 	..\src\Assets\Sound.o \
 	..\src\Utilities\Logger.o
