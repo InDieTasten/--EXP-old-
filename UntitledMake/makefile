@@ -37,6 +37,7 @@ OBJECTS = \
 	..\src\Core\Databank.o \
 	..\src\Assets\Asset.o \
 	..\src\Assets\Font.o \
+	..\src\Assets\Sound.o \
 	..\src\Utilities\Logger.o
 
 rebuild: clean build
