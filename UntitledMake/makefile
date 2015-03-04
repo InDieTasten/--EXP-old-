@@ -62,8 +62,7 @@ OBJECTS = \
 	..\src\GUI\Elements\CodeBox.o \
 	..\src\GUI\Elements\Canvas.o \
 	..\src\Utilities\util.o \
-	..\src\Utilities\Logger.o \
-	..\src\Utilities\FileLogger.o
+	..\src\Utilities\Logger.o
 
 rebuild: clean build
 	echo DONE!

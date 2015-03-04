@@ -2,14 +2,11 @@
 #include <Utilities/VERSION.hpp>
 #include <Utilities/Logger.hpp>
 #include <iostream>
-#include <Processing/GraphicsEngine.hpp>
-#include <Processing/ModModule.hpp>
 #include <conio.h>
-#include <list>
-#include <time.h>
-#include <Utilities/util.hpp>
 #include <SFML\System.hpp>
+#include <SFML\Graphics.hpp>
 
+extern void ug::log(std::string);
 
 extern "C" {
 #include <lua.h>
@@ -21,6 +18,7 @@ extern "C" {
 
 int main(int argc, char *argv[])
 {
+	ug::log("Game is launching")
 	sf::RenderWindow App(sf::VideoMode(1280, 720, 32), VERSION::name + " " + VERSION::version, sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
 	
 
