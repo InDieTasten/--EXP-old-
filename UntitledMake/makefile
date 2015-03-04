@@ -35,6 +35,7 @@ MORESWITCHES = \
 OBJECTS = \
 	..\src\Core\main.o \
 	..\src\Core\Databank.o \
+	..\src\Assets\Asset.o \
 	..\src\Utilities\Logger.o
 
 rebuild: clean build
