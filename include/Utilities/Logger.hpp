@@ -9,11 +9,9 @@
 #include <sstream>
 
 
-namespace LOG
+namespace ug
 {
-	void console(std::string msg);
-	void file(std::string msg);
-	void safe(std::string msg);
+	void log(std::string msg);
 }
 
 #endif
