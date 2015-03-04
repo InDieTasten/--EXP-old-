@@ -56,6 +56,9 @@
     <ClInclude Include="..\include\Level\Level.hpp">
       <Filter>Level</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Level\SolarSystem.hpp">
+      <Filter>Level</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
