@@ -39,6 +39,7 @@ OBJECTS = \
 	..\src\Assets\Texture.o \
 	..\src\Assets\Font.o \
 	..\src\Assets\Sound.o \
+	..\src\Assets\Music.o \
 	..\src\Utilities\Logger.o
 
 rebuild: clean build
