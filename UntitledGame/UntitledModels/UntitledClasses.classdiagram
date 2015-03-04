@@ -18,11 +18,63 @@
     <logicalClassDesignerModelHasTypes>
       <class Id="cc04aae3-329f-4084-b599-f6ea4bc84825" name="Databank" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="a13447d4-7075-4331-87d9-ba1338315786" />
+        <suppliersInternal>
+          <dependency Id="5f3a4c5b-3757-4a8d-8bb1-2d94f1f2ed42">
+            <classMoniker Id="badaeba6-4369-4582-8e95-184d91e330ed" LastKnownName="Level" />
+            <elementDefinition Id="dfd6bb98-33d4-48d5-800d-79d71405427a" />
+          </dependency>
+          <dependency Id="c341ba3d-f06d-4444-859e-ead95f631ad1">
+            <classMoniker Id="88508e72-0c95-4ea7-b3a2-2c81f23bdd7d" LastKnownName="Texture" />
+            <elementDefinition Id="bee6bae2-bce4-423c-8181-1641ae4b51d7" />
+          </dependency>
+          <dependency Id="57452f87-c358-4260-b3ec-e135d5c222c5">
+            <classMoniker Id="f439bb0d-3ed5-4bbf-a275-bfa656f432e6" LastKnownName="Sound" />
+            <elementDefinition Id="1fa8def2-ea75-4d25-8da9-2e98f21a59b4" />
+          </dependency>
+          <dependency Id="b3a35151-4c5e-4d0a-9c35-05f5f9c6fcc6">
+            <classMoniker Id="4e84c5ba-fe11-44ad-bf60-7324c51d0c6d" LastKnownName="Track" />
+            <elementDefinition Id="d35a24cb-3b6d-4a3f-9664-588376747c8d" />
+          </dependency>
+          <dependency Id="96bf1314-b0bc-4055-80df-bb16690cf55a">
+            <classMoniker Id="1217de25-0b5b-4095-ae11-c9360d2d858a" LastKnownName="Font" />
+            <elementDefinition Id="e317cec9-f1f8-4bd2-8cb9-f23a6ea98d18" />
+          </dependency>
+          <dependency Id="81573afa-e957-4478-a6a3-18c936bc29d9">
+            <classMoniker Id="8e5dbf8d-7695-42b8-ba24-3bc2a768bb6e" LastKnownName="Video" />
+            <elementDefinition Id="1be4c9ae-e0e9-4da4-b94f-00f3e8ccd5c8" />
+          </dependency>
+          <dependency Id="951b8852-39c0-4a23-9819-b322c365fe11">
+            <classMoniker Id="398aab70-2366-4e54-b81f-a703ab95595a" LastKnownName="ThreadManager" />
+            <elementDefinition Id="10699c84-fe8a-4d78-a849-305f7b62df1e" />
+          </dependency>
+          <dependency Id="061922b0-5417-4698-949f-105c535aaacc">
+            <classMoniker Id="e07ddf36-0917-456f-8760-2d731248067e" LastKnownName="GUIManager" />
+            <elementDefinition Id="81bce1c9-b30f-430f-b704-ba4175cbbd94" />
+          </dependency>
+        </suppliersInternal>
         <ownedAttributesInternal>
           <property Id="73451482-c5c1-48bc-b6d2-003ceb96e114" name="level" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="38189d71-b100-44c9-9add-a2da0d2b683f" />
             <type_NamedElement>
               <referencedTypeMoniker Id="f4532f08-e7c8-4843-9659-2278ded9bbbd" LastKnownName="Level" />
+            </type_NamedElement>
+          </property>
+          <property Id="0918e483-bc49-4b60-8bb9-3a71389794cb" name="fonts" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="c7f0ce72-0af6-47ea-8204-d7b7b34aed67" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="6c1df791-8a52-4445-91e8-706d6dc1c282" LastKnownName="std::map&lt;string,sf::Font*&gt;" />
+            </type_NamedElement>
+          </property>
+          <property Id="0634a0b8-0482-4754-b1fe-3d809b6440c4" name="textures" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="14934c80-f366-4bff-bcaa-f8fe15da93c3" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="bd60115f-898b-4d17-8c93-f35978569ce8" LastKnownName="std::map&lt;string,sf::Texture*&gt;" />
+            </type_NamedElement>
+          </property>
+          <property Id="9585628d-ab8a-4ab0-acab-06543dcbd5ef" name="sounds" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="2110cac7-f1e3-4cc2-a691-d365c395bdec" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="fc691b78-938e-4ec2-a52d-ea0d44d8a00f" LastKnownName="std::map&lt;string,sf::SoundBuffer*&gt;" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -46,41 +98,109 @@
     <logicalClassDesignerModelHasTypes>
       <class Id="2cd81e8a-e35f-4fbb-9af6-e89e0568da0c" name="Asteroid" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="4959005f-7933-47ab-8670-31e782516720" />
+        <suppliersInternal>
+          <dependency Id="20d145fd-6231-402c-ae1f-b2b8cdd71707">
+            <classMoniker Id="6fcc05c5-b363-4dbe-a5da-38649d1a23ec" LastKnownName="PhysicalInstance" />
+            <elementDefinition Id="debdbad7-fd03-4b5e-9361-43f0cd40bd4f" />
+          </dependency>
+        </suppliersInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
       <class Id="5c279bad-f315-488e-a29b-e36491658942" name="Planet" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="a3117564-e9dd-4547-9f4f-98c29d6bed0f" />
+        <suppliersInternal>
+          <dependency Id="b25d53c4-0e42-453f-ac24-cf2cb0441fcf">
+            <classMoniker Id="6fcc05c5-b363-4dbe-a5da-38649d1a23ec" LastKnownName="PhysicalInstance" />
+            <elementDefinition Id="2dbbb52e-c988-4706-88a3-8f4d80cacbf3" />
+          </dependency>
+        </suppliersInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
       <class Id="2e490764-5d75-4eb1-9c95-ffee05cdfd8b" name="Ship" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="8cbb94a6-9693-4b00-b46f-13aa9cddfe6d" />
+        <suppliersInternal>
+          <dependency Id="62a5e658-3ccd-4486-8cb3-6f060c371997">
+            <classMoniker Id="6fcc05c5-b363-4dbe-a5da-38649d1a23ec" LastKnownName="PhysicalInstance" />
+            <elementDefinition Id="b2997620-55af-432b-b393-3e33cd109f47" />
+          </dependency>
+        </suppliersInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
       <class Id="afbfc7a1-863a-4e26-8827-7119775ea386" name="Debris" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="5698f57e-ac2c-4741-be65-9ef82b584b84" />
+        <suppliersInternal>
+          <dependency Id="b273c199-b928-4d5d-8a15-6c66b5aef094">
+            <classMoniker Id="6fcc05c5-b363-4dbe-a5da-38649d1a23ec" LastKnownName="PhysicalInstance" />
+            <elementDefinition Id="cc4954b9-3bc9-4216-8a9e-8169ad132154" />
+          </dependency>
+        </suppliersInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
       <class Id="badaeba6-4369-4582-8e95-184d91e330ed" name="Level" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="3d472483-d785-40e5-ab56-8e32282db1b4" />
+        <suppliersInternal>
+          <dependency Id="75291576-f3a7-4279-9b5c-8d0299de4416">
+            <classMoniker Id="ffc1f11e-f377-451c-ae90-7cb0c9115536" LastKnownName="SolarSystem" />
+            <elementDefinition Id="2bd11534-a4f2-4109-b9b1-f2958ccd7fcc" />
+          </dependency>
+        </suppliersInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
       <class Id="ffc1f11e-f377-451c-ae90-7cb0c9115536" name="SolarSystem" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="24ceac42-8000-4846-86fe-b9484e9c4d2c" />
+        <suppliersInternal>
+          <dependency Id="af5a4ec9-bcaf-48c6-aba4-969317c58dc4">
+            <classMoniker Id="711c5d12-5e79-4d54-b0f2-16ae83c4c9e9" LastKnownName="Bullet" />
+            <elementDefinition Id="5465d6fe-b1d6-4ae6-b582-03182826e487" />
+          </dependency>
+          <dependency Id="6885e418-afc1-4629-a1a6-566cc2dcb0bb">
+            <classMoniker Id="a1f24503-3fb6-461d-b38e-de337410182e" LastKnownName="Construction" />
+            <elementDefinition Id="630be776-cd72-4734-abf5-1d82eafdd030" />
+          </dependency>
+          <dependency Id="dc57de56-6caf-4e11-8215-a29b7001af3d">
+            <classMoniker Id="2e490764-5d75-4eb1-9c95-ffee05cdfd8b" LastKnownName="Ship" />
+            <elementDefinition Id="ff3b458d-8b88-4316-8173-960f50d9bb6c" />
+          </dependency>
+          <dependency Id="9d35b8f0-2df0-4f2a-bc6a-dd8d08ee72af">
+            <classMoniker Id="5c279bad-f315-488e-a29b-e36491658942" LastKnownName="Planet" />
+            <elementDefinition Id="369dfb35-7afe-449c-a37d-ef13a2175972" />
+          </dependency>
+          <dependency Id="e4bd313a-ef3a-412a-8b0c-a55b08235288">
+            <classMoniker Id="2cd81e8a-e35f-4fbb-9af6-e89e0568da0c" LastKnownName="Asteroid" />
+            <elementDefinition Id="f0ff5904-e11f-43ef-a62a-3f108860d66a" />
+          </dependency>
+          <dependency Id="f5c414f0-f168-4c86-bfaa-a328b681a680">
+            <classMoniker Id="afbfc7a1-863a-4e26-8827-7119775ea386" LastKnownName="Debris" />
+            <elementDefinition Id="f5d3ad43-484f-44ed-a220-88753dd92c01" />
+          </dependency>
+        </suppliersInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
       <class Id="a1f24503-3fb6-461d-b38e-de337410182e" name="Construction" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="129a17c8-7a40-4028-ad08-d01cb8d24fa6" />
+        <suppliersInternal>
+          <dependency Id="49af456f-1492-48a8-bc99-38d272388aa2">
+            <classMoniker Id="6fcc05c5-b363-4dbe-a5da-38649d1a23ec" LastKnownName="PhysicalInstance" />
+            <elementDefinition Id="71696cb1-f108-4fa7-91a8-383bacdabdc3" />
+          </dependency>
+        </suppliersInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
       <class Id="fcdfbfdb-c328-46e0-8c8a-4b8cd7d33968" name="CollisionMesh" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="8e5702d4-cc0d-49f9-bc0a-b1a50124cce6" />
+        <suppliersInternal>
+          <dependency Id="d792ddf0-73dd-4307-830b-4f7e2c1a60df">
+            <classMoniker Id="15c9404f-4c10-4c3e-9e82-f21af9c9c452" LastKnownName="Vector" />
+            <elementDefinition Id="c328e2ec-cbe6-409a-ac87-005e679ed59a" />
+          </dependency>
+        </suppliersInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
@@ -96,16 +216,60 @@
     <logicalClassDesignerModelHasTypes>
       <class Id="398aab70-2366-4e54-b81f-a703ab95595a" name="ThreadManager" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="d8fb86a5-c7ef-4c12-afd0-445c109316e1" />
+        <suppliersInternal>
+          <dependency Id="0a1f4c35-b9b6-4c22-9fe6-15437974c6cb">
+            <classMoniker Id="ebb928a7-c6a1-4509-a398-610c519a4a8e" LastKnownName="GravityThread" />
+            <elementDefinition Id="4029d8d1-7ba1-43a6-922a-09066598a90a" />
+          </dependency>
+          <dependency Id="2c868fb4-0573-4898-97d7-f18acfe855e8">
+            <classMoniker Id="0d0674d5-50d6-430e-832b-be0e3cc61c4b" LastKnownName="MovementThread" />
+            <elementDefinition Id="806e9b6a-9056-4e49-ba10-e758ea85f38e" />
+          </dependency>
+          <dependency Id="ccef1246-1390-4b97-a728-cf51fc32290f">
+            <classMoniker Id="84332154-7dad-4500-a80e-24f84cb2a667" LastKnownName="GraphicsThread" />
+            <elementDefinition Id="814ea0aa-7792-4a29-9c87-f00e72e4a59c" />
+          </dependency>
+          <dependency Id="0f862da7-6bdd-46d2-94ef-baf6a84b7327">
+            <classMoniker Id="866ef619-7143-4eb6-928b-5cd364463c46" LastKnownName="ModThread" />
+            <elementDefinition Id="50379b6e-a1d2-4151-8cf7-ab2766c0bc03" />
+          </dependency>
+        </suppliersInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
       <class Id="15c9404f-4c10-4c3e-9e82-f21af9c9c452" name="Vector" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="ab3b44f2-f48b-4b3c-8b9a-0977d661c2a5" />
+        <ownedAttributesInternal>
+          <property Id="a41aa9b1-b85b-4d55-8d3d-cb9dbf53068b" name="X" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="c22e74d3-2dd2-41cb-b3c9-2c57d7854e4d" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="b1f6a5f6-130e-4173-8bee-e5392073e6c7" LastKnownName="double" />
+            </type_NamedElement>
+          </property>
+          <property Id="3ed0929d-ff8b-4ce5-9da3-89a836278429" name="Y" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="578582fe-f3f5-493f-963d-ce7d66131446" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="b1f6a5f6-130e-4173-8bee-e5392073e6c7" LastKnownName="double" />
+            </type_NamedElement>
+          </property>
+          <property Id="1d9d519e-673a-4446-bad6-7e680cb3ef78" name="R" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="6a766e55-9960-4132-8cb3-3064c6b83493" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="3c2db2b6-d77f-4c6f-ac6c-80019f86929b" LastKnownName="float" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
       <class Id="711c5d12-5e79-4d54-b0f2-16ae83c4c9e9" name="Bullet" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="8fbce19b-f81b-4241-a9c1-02693af27fcd" />
+        <suppliersInternal>
+          <dependency Id="400bdbb6-0ab4-4490-9d7a-8eb38aa581c7">
+            <classMoniker Id="6fcc05c5-b363-4dbe-a5da-38649d1a23ec" LastKnownName="PhysicalInstance" />
+            <elementDefinition Id="931bc6bc-f69d-47c2-83f7-080876bf8c18" />
+          </dependency>
+        </suppliersInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <packageHasNamedElement>
@@ -113,6 +277,165 @@
         <elementDefinition Id="3d472483-d785-40e5-ab56-8e32282db1b4" />
       </referencedType>
     </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="6fcc05c5-b363-4dbe-a5da-38649d1a23ec" name="PhysicalInstance" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="8004feff-d8a1-4177-95e0-cee42f8ed6b3" />
+        <suppliersInternal>
+          <dependency Id="70dc39b2-1d8a-463a-a88d-eb59b358572a">
+            <classMoniker Id="fcdfbfdb-c328-46e0-8c8a-4b8cd7d33968" LastKnownName="CollisionMesh" />
+            <elementDefinition Id="b45b433c-c647-437a-b243-334a32d5172b" />
+          </dependency>
+          <dependency Id="d013e3a8-39f7-4449-9db8-0ad4086a0075">
+            <classMoniker Id="15c9404f-4c10-4c3e-9e82-f21af9c9c452" LastKnownName="Vector" />
+            <elementDefinition Id="7fd54327-f000-4c65-98bf-f24068b9c377" />
+          </dependency>
+        </suppliersInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="8e5dbf8d-7695-42b8-ba24-3bc2a768bb6e" name="Video" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="31fd4bae-1c08-4ef2-9b2a-71d010db5bf4" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="6c1df791-8a52-4445-91e8-706d6dc1c282" name="std::map&lt;string,sf::Font*&gt;" isAbstract="false" isLeaf="false" cachedFullName="std::map&lt;string,sf::Font*&gt;">
+        <elementDefinition Id="98bf2e27-892c-41e7-8daa-64b3675d576d" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="bd60115f-898b-4d17-8c93-f35978569ce8" name="std::map&lt;string,sf::Texture*&gt;" isAbstract="false" isLeaf="false" cachedFullName="std::map&lt;string,sf::Texture*&gt;">
+        <elementDefinition Id="733453a1-d772-4e0b-a458-d17a1d9e1ce9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="84332154-7dad-4500-a80e-24f84cb2a667" name="GraphicsThread" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="5978a738-5531-4c19-a489-8d180306307d" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="b1f6a5f6-130e-4173-8bee-e5392073e6c7" name="double" isAbstract="false" isLeaf="false" cachedFullName="double">
+        <elementDefinition Id="f9a89af7-4162-4008-992a-8421be4e43a4" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="3c2db2b6-d77f-4c6f-ac6c-80019f86929b" name="float" isAbstract="false" isLeaf="false" cachedFullName="float">
+        <elementDefinition Id="eb0f40a1-9d3c-491c-8d92-558a3e05ec79" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="4e84c5ba-fe11-44ad-bf60-7324c51d0c6d" name="Track" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="f4067dd2-61c4-49bc-9b63-00c0ff82d2ca" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="866ef619-7143-4eb6-928b-5cd364463c46" name="ModThread" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="4c8b4483-0963-4ba3-b2f4-90581b694f24" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="fc691b78-938e-4ec2-a52d-ea0d44d8a00f" name="std::map&lt;string,sf::SoundBuffer*&gt;" isAbstract="false" isLeaf="false" cachedFullName="std::map&lt;string,sf::SoundBuffer*&gt;">
+        <elementDefinition Id="bc623cf3-da99-483b-b875-924998c0c561" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="e07ddf36-0917-456f-8760-2d731248067e" name="GUIManager" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="30e91945-cc58-4c07-90a5-06d966b583fb" />
+        <suppliersInternal>
+          <dependency Id="d5e6a62a-72a2-46cd-9269-c1791651cb18">
+            <classMoniker Id="840718ac-64a5-485d-9365-66bedd3eddb5" LastKnownName="GUIMenu" />
+            <elementDefinition Id="c4279246-71b4-47b9-8b7a-62407bba3294" />
+          </dependency>
+        </suppliersInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="840718ac-64a5-485d-9365-66bedd3eddb5" name="GUIMenu" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="67b63f8f-a8bb-4ffa-ae6e-6b2b3417d377" />
+        <suppliersInternal>
+          <dependency Id="d78a5e41-0f64-4289-8b3f-50d6e9b6056f">
+            <classMoniker Id="4310da41-eecd-4180-ad83-aa3381cd72db" LastKnownName="Button" />
+            <elementDefinition Id="bc48b0cb-cdb0-411d-9c48-fb6965847c97" />
+          </dependency>
+          <dependency Id="3a1d3987-e014-46cd-a44b-b1932f6d61b4">
+            <classMoniker Id="00cdc1fa-c7cd-41d2-b262-f547a32bc809" LastKnownName="Textbox" />
+            <elementDefinition Id="b374da06-39ce-4873-8e70-76b32e042ae0" />
+          </dependency>
+          <dependency Id="59359bd8-cc89-4302-9f7b-4c54b042deb4">
+            <classMoniker Id="d4d5d865-490a-4e33-a804-b9b77bd7d30e" LastKnownName="HorSlider" />
+            <elementDefinition Id="9c9064ed-0f85-4a50-9e47-bddc240860e9" />
+          </dependency>
+          <dependency Id="ef9be0df-fbd6-4e25-87be-6a8bc2ed8966">
+            <classMoniker Id="205101c2-388c-47a7-a8ed-0bfc79e00856" LastKnownName="VertSlider" />
+            <elementDefinition Id="5671f827-77e0-41f0-a0e2-8575dc769719" />
+          </dependency>
+          <dependency Id="ff129987-7660-4ebb-ad37-10ef5b3d778c">
+            <classMoniker Id="cad15b75-1872-4f64-96cb-02ff578e277a" LastKnownName="CheckBox" />
+            <elementDefinition Id="2f8ec331-dcc0-4843-a32b-6341f6594b35" />
+          </dependency>
+          <dependency Id="08ee5977-874b-40ca-b650-f095e706b061">
+            <classMoniker Id="9800bdd5-e90c-4025-9278-b93bbddd57f6" LastKnownName="Canvas" />
+            <elementDefinition Id="476e144e-02a9-4bcb-afbe-c3172191569d" />
+          </dependency>
+          <dependency Id="6d2dde35-dc2a-4ee7-97c9-77d14c8df0db">
+            <classMoniker Id="48291616-276d-4b03-867d-3628261a72f2" LastKnownName="ProgressBar" />
+            <elementDefinition Id="58eb4db6-c48d-4897-a4cc-af0b14d01427" />
+          </dependency>
+          <dependency Id="22a3a454-1d74-465a-aa68-e1b62568c59b">
+            <classMoniker Id="728b6ca0-564e-4f1e-afcc-08f27bf65270" LastKnownName="PictureBox" />
+            <elementDefinition Id="09f4a6df-e75f-45c4-b22d-66640b08857a" />
+          </dependency>
+          <dependency Id="e2d079cb-9026-4792-9858-01f692fa5ddc">
+            <classMoniker Id="44cf68a3-4ada-4f34-bbe1-7c5d9b28fea7" LastKnownName="Label" />
+            <elementDefinition Id="49ed8235-9c04-4a91-b746-7d223c7d91de" />
+          </dependency>
+        </suppliersInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="4310da41-eecd-4180-ad83-aa3381cd72db" name="Button" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="bfdf0ae7-b485-49ac-9707-da9491e3d18a" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="00cdc1fa-c7cd-41d2-b262-f547a32bc809" name="Textbox" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="5da74c8c-6d10-4561-9285-6d0cbb23154c" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="d4d5d865-490a-4e33-a804-b9b77bd7d30e" name="HorSlider" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="0fe3a971-c681-4bbc-8f61-26e726bbf6f1" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="205101c2-388c-47a7-a8ed-0bfc79e00856" name="VertSlider" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="931ecccd-758e-4f33-ad4c-d3f2d78822b5" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="cad15b75-1872-4f64-96cb-02ff578e277a" name="CheckBox" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="99985779-5e27-462e-8695-cbe9262ccd40" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="9800bdd5-e90c-4025-9278-b93bbddd57f6" name="Canvas" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="5c08bad4-73c1-465a-ad15-70544e237d15" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="48291616-276d-4b03-867d-3628261a72f2" name="ProgressBar" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="0ecb0757-e900-4deb-b0c8-030d024dbad4" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="728b6ca0-564e-4f1e-afcc-08f27bf65270" name="PictureBox" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="afc41c9f-ed8b-473a-af43-522b10e5e431" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="44cf68a3-4ada-4f34-bbe1-7c5d9b28fea7" name="Label" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="f69f0ae5-68b3-4efa-b140-f5a7f3671720" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
   </packagedElements>
   <package Id="f99927cf-2cf7-49f8-8d03-8a44aa353ac8" name="UntitledModels">
     <elementDefinition Id="2a88a995-d767-450e-a66b-26f6c1fbd6c6" />
