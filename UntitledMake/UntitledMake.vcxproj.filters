@@ -47,6 +47,9 @@
     <ClInclude Include="..\include\Assets\Music.hpp">
       <Filter>Assets</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Assets\Video.hpp">
+      <Filter>Assets</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
