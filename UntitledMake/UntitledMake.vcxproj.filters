@@ -4,16 +4,16 @@
     <Text Include="makefile" />
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Processing">
-      <UniqueIdentifier>{f820f2cd-cf53-4ac6-9b0f-aa01276d9219}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Utilities">
       <UniqueIdentifier>{787b3c1d-5c9b-44f3-913d-e6f6769abe7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{f820f2cd-cf53-4ac6-9b0f-aa01276d9219}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Processing\main.cpp">
-      <Filter>Processing</Filter>
+      <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Utilities\Logger.cpp">
       <Filter>Utilities</Filter>
