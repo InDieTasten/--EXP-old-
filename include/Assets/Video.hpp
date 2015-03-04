@@ -1,6 +1,8 @@
 #ifndef _Video_hpp_
 #define _Video_hpp_
 
+#include <Assets\Asset.hpp>
+
 class Video : public Asset
 {
 private:
