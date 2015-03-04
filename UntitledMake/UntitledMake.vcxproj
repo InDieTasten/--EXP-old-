@@ -69,6 +69,7 @@
     <ClInclude Include="..\include\Assets\Texture.hpp" />
     <ClInclude Include="..\include\Assets\Video.hpp" />
     <ClInclude Include="..\include\Core\Databank.hpp" />
+    <ClInclude Include="..\include\Level\Level.hpp" />
     <ClInclude Include="..\include\Utilities\Logger.hpp" />
     <ClInclude Include="..\include\Utilities\VERSION.hpp" />
   </ItemGroup>
