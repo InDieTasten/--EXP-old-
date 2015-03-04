@@ -3,13 +3,13 @@
 
 #include <map>
 #include <string>
-#include <Assets/Texture.hpp>
-#include <Assets/Font.hpp>
-#include <Assets/Sound.hpp>
-#include <Assets/Music.hpp>
-#include <Assets/Video.hpp>
-#include <Level/Level.hpp>
-#include <Core/ThreadManager.hpp>
+#include <Assets\Texture.hpp>
+#include <Assets\Font.hpp>
+#include <Assets\Sound.hpp>
+#include <Assets\Music.hpp>
+#include <Assets\Video.hpp>
+#include <Level\Level.hpp>
+#include <Core\ThreadManager.hpp>
 #include <SFML\Audio.hpp>
 
 using namespace std;
