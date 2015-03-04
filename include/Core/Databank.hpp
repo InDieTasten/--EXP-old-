@@ -17,11 +17,11 @@ using namespace std;
 class Databank
 {
 private:
-	std::map<string, Texture> *textures;
-	std::map<string, Font> *fonts;
-	std::map<string, Sound> *sounds;
-	std::map<string, Music> *tracks;
-	std::map<string, Video> *videos;
+	std::map<string, Texture>* textures;
+	std::map<string, Font>* fonts;
+	std::map<string, Sound>* sounds;
+	std::map<string, Music>* tracks;
+	std::map<string, Video>* videos;
 
 	sf::RenderWindow* renderWindow;
 	Level* level;
@@ -29,28 +29,28 @@ private:
 	GUIManager* guiManager;
 	
 public:
-	Databank(sf::RenderWindow*);
+	Databank(sf::RenderWindow* _window);
 	~Databank();
 
-	void addTexture(string _id, string _path);
-	void removeTexture(string _id);
-	sf::Texture* getTexture(string _id);
+	void addTexture(string* _id, string* _path);
+	void removeTexture(string* _id);
+	sf::Texture* getTexture(string* _id);
 
-	void addFont(string _id, string _path);
-	void removeFont(string _id);
-	sf::Font* getFont(string _id);
+	void addFont(string* _id, string* _path);
+	void removeFont(string* _id);
+	sf::Font* getFont(string* _id);
 
-	void addSound(string _id, string _path);
-	void removeSound(string _id);
-	sf::Sound* getSound(string _id);
+	void addSound(string* _id, string* _path);
+	void removeSound(string* _id);
+	sf::Sound* getSound(string* _id);
 
-	void addMusic(string _id, string _path);
-	void removeMusic(string _id);
-	sf::Music* getMusic(string _id);
+	void addMusic(string* _id, string* _path);
+	void removeMusic(string* _id);
+	sf::Music* getMusic(string* _id);
 
-	void addVideo(string _id, string _path);
-	void removeVideo(string _id);
-	Video* getVideo(string _id);
+	void addVideo(string* _id, string* _path);
+	void removeVideo(string* _id);
+	Video* getVideo(string* _id);
 
 };
 
