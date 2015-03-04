@@ -10,7 +10,7 @@
 #include <Assets\Video.hpp>
 #include <Level\Level.hpp>
 #include <SFML\Audio.hpp>
-#include <Core\GUIManager.hpp>
+//#include <Core\GUIManager.hpp>
 
 using namespace std;
 
@@ -25,7 +25,7 @@ private:
 
 	sf::RenderWindow* renderWindow;
 	Level* level;
-	GUIManager* guiManager;
+	//GUIManager* guiManager;
 	
 public:
 	Databank(sf::RenderWindow* _window);
