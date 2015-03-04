@@ -9,8 +9,8 @@
 #include <Assets\Music.hpp>
 #include <Assets\Video.hpp>
 #include <Level\Level.hpp>
-#include <Core\ThreadManager.hpp>
 #include <SFML\Audio.hpp>
+#include <Core\GUIManager.hpp>
 
 using namespace std;
 
@@ -25,7 +25,6 @@ private:
 
 	sf::RenderWindow* renderWindow;
 	Level* level;
-	ThreadManager* threadManager;
 	GUIManager* guiManager;
 	
 public:
