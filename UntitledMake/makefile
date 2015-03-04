@@ -40,6 +40,7 @@ OBJECTS = \
 	..\src\Assets\Font.o \
 	..\src\Assets\Sound.o \
 	..\src\Assets\Music.o \
+	..\src\Assets\Video.o \
 	..\src\Utilities\Logger.o
 
 rebuild: clean build
