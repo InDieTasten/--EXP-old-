@@ -714,6 +714,13 @@
               LastKnownName="Label"
               LastKnownLocation="UntitledModels.uml" />
           </dependency>
+          <dependency
+            Id="c62924be-affb-48a3-9258-6c9ba570ec28">
+            <classMoniker
+              Id="623542da-940d-486a-b02f-9a5fb2c216b6"
+              LastKnownName="VideoPlayer"
+              LastKnownLocation="UntitledModels.uml" />
+          </dependency>
         </suppliersInternal>
       </class>
     </packageHasNamedElement>
@@ -785,6 +792,14 @@
       <class
         Id="f69f0ae5-68b3-4efa-b140-f5a7f3671720"
         name="Label"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="623542da-940d-486a-b02f-9a5fb2c216b6"
+        name="VideoPlayer"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false" />
