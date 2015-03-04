@@ -11,7 +11,7 @@ class Level
 {
 private:
 	std::map<string, SolarSystem*> sytems;
-	string* currentSystem;
+	SolarSystem* currentSystem;
 
 public:
 	Level();
