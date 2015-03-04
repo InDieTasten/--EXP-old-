@@ -62,6 +62,11 @@
     <ClCompile Include="..\src\Utilities\Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\Assets\Asset.hpp" />
+    <ClInclude Include="..\include\Assets\Font.hpp" />
+    <ClInclude Include="..\include\Assets\Sound.hpp" />
+    <ClInclude Include="..\include\Assets\Texture.hpp" />
+    <ClInclude Include="..\include\Core\Databank.hpp" />
     <ClInclude Include="..\include\Utilities\Logger.hpp" />
     <ClInclude Include="..\include\Utilities\VERSION.hpp" />
   </ItemGroup>
