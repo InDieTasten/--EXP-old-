@@ -4,55 +4,6 @@
     <Text Include="makefile" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\UG_content\content\stock\scripts\plugin_loader.lua">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="..\..\UG_content\content\plugins\mConsole.lua">
-      <Filter>Lua\Menu</Filter>
-    </None>
-    <None Include="..\..\UG_content\content\plugins\mDebug.lua">
-      <Filter>Lua\Menu</Filter>
-    </None>
-    <None Include="..\..\UG_content\content\plugins\mEditor.lua">
-      <Filter>Lua\Menu</Filter>
-    </None>
-    <None Include="..\..\UG_content\content\plugins\mMenu.lua">
-      <Filter>Lua\Menu</Filter>
-    </None>
-    <None Include="..\..\UG_content\content\plugins\mSettings.lua">
-      <Filter>Lua\Menu</Filter>
-    </None>
-    <None Include="..\..\UG_content\content\plugins\lStart.lua">
-      <Filter>Lua\Level</Filter>
-    </None>
-    <None Include="..\API-Definitions.lua" />
-    <None Include="..\API-DefinitionsV2-3.lua" />
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="GUI">
-      <UniqueIdentifier>{74415ceb-e472-46f6-8291-4a3bdfe7c571}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GUI\Elements">
-      <UniqueIdentifier>{e90a4262-9bd1-4c59-ae67-a16062a86451}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lua">
-      <UniqueIdentifier>{a1c07a0a-c2ad-4640-8df5-e98437acbb98}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lua\Menu">
-      <UniqueIdentifier>{c1a606d2-edd1-4b30-87be-4c45c5ff7b35}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lua\Level">
-      <UniqueIdentifier>{e575a20b-8104-4510-98f5-785086071234}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MemoryBank">
-      <UniqueIdentifier>{2f1e585a-a5f1-411d-b887-1e10ee9b1bce}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MemoryBank\Level">
-      <UniqueIdentifier>{b6609538-dd7c-4206-8e91-5e31404752ae}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MemoryBank\Entities">
-      <UniqueIdentifier>{dad5fb14-ef38-4c9d-83bf-f698c6a71ab6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Processing">
       <UniqueIdentifier>{f820f2cd-cf53-4ac6-9b0f-aa01276d9219}</UniqueIdentifier>
     </Filter>
@@ -61,81 +12,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\GUI\GUIDockItem.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\GUI\GUIElement.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\GUI\GUIManager.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\GUI\GUIMenu.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\GUI\Elements\Button.cpp">
-      <Filter>GUI\Elements</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\GUI\Elements\Canvas.cpp">
-      <Filter>GUI\Elements</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\GUI\Elements\CheckBox.cpp">
-      <Filter>GUI\Elements</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\GUI\Elements\CodeBox.cpp">
-      <Filter>GUI\Elements</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\GUI\Elements\HorSlider.cpp">
-      <Filter>GUI\Elements</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\GUI\Elements\Label.cpp">
-      <Filter>GUI\Elements</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\GUI\Elements\TextBox.cpp">
-      <Filter>GUI\Elements</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\GUI\Elements\VertSlider.cpp">
-      <Filter>GUI\Elements</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\MemoryBank\DataBank.cpp">
-      <Filter>MemoryBank</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\MemoryBank\Level\LocalControl.cpp">
-      <Filter>MemoryBank</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\MemoryBank\Level\Level.cpp">
-      <Filter>MemoryBank\Level</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\MemoryBank\Level\SolarSystem.cpp">
-      <Filter>MemoryBank\Level</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\MemoryBank\Level\SpaceObject.cpp">
-      <Filter>MemoryBank\Level</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\MemoryBank\Level\Vector.cpp">
-      <Filter>MemoryBank\Level</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\MemoryBank\Entities\Font.cpp">
-      <Filter>MemoryBank\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\MemoryBank\Entities\Script.cpp">
-      <Filter>MemoryBank\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\MemoryBank\Entities\Sound.cpp">
-      <Filter>MemoryBank\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\MemoryBank\Entities\Texture.cpp">
-      <Filter>MemoryBank\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\MemoryBank\Entities\Track.cpp">
-      <Filter>MemoryBank\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\MemoryBank\Entities\Video.cpp">
-      <Filter>MemoryBank\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Processing\EventManager.cpp">
-      <Filter>Processing</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\Processing\GraphicsEngine.cpp">
       <Filter>Processing</Filter>
     </ClCompile>
@@ -143,9 +19,6 @@
       <Filter>Processing</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Processing\ModModule.cpp">
-      <Filter>Processing</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Processing\PhysicsEngine.cpp">
       <Filter>Processing</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Utilities\FileLogger.cpp">
@@ -159,103 +32,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\GUI\GUIDockItem.hpp">
-      <Filter>GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GUI\GUIElement.hpp">
-      <Filter>GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GUI\GUIManager.hpp">
-      <Filter>GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GUI\GUIMenu.hpp">
-      <Filter>GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GUI\Elements\Button.hpp">
-      <Filter>GUI\Elements</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GUI\Elements\Canvas.hpp">
-      <Filter>GUI\Elements</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GUI\Elements\CheckBox.hpp">
-      <Filter>GUI\Elements</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GUI\Elements\CodeBox.hpp">
-      <Filter>GUI\Elements</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GUI\Elements\HorSlider.hpp">
-      <Filter>GUI\Elements</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GUI\Elements\Label.hpp">
-      <Filter>GUI\Elements</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GUI\Elements\Picture.hpp">
-      <Filter>GUI\Elements</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GUI\Elements\ProgBar.hpp">
-      <Filter>GUI\Elements</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GUI\Elements\TextBox.hpp">
-      <Filter>GUI\Elements</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GUI\Elements\VertSlider.hpp">
-      <Filter>GUI\Elements</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\MemoryBank\DataBank.hpp">
-      <Filter>MemoryBank</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\MemoryBank\Debug.hpp">
-      <Filter>MemoryBank</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\MemoryBank\LocalControl.hpp">
-      <Filter>MemoryBank</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\MemoryBank\Settings.hpp">
-      <Filter>MemoryBank</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\MemoryBank\Level\Level.hpp">
-      <Filter>MemoryBank\Level</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\MemoryBank\Level\SolarSystem.hpp">
-      <Filter>MemoryBank\Level</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\MemoryBank\Level\SpaceObject.hpp">
-      <Filter>MemoryBank\Level</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\MemoryBank\Level\Vector.hpp">
-      <Filter>MemoryBank\Level</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\MemoryBank\Entities\Action.hpp">
-      <Filter>MemoryBank\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\MemoryBank\Entities\Font.hpp">
-      <Filter>MemoryBank\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\MemoryBank\Entities\Script.hpp">
-      <Filter>MemoryBank\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\MemoryBank\Entities\Sound.hpp">
-      <Filter>MemoryBank\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\MemoryBank\Entities\Texture.hpp">
-      <Filter>MemoryBank\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\MemoryBank\Entities\Track.hpp">
-      <Filter>MemoryBank\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\MemoryBank\Entities\Video.hpp">
-      <Filter>MemoryBank\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\Processing\EventManager.hpp">
-      <Filter>Processing</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\Processing\GraphicsEngine.hpp">
       <Filter>Processing</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Processing\ModModule.hpp">
-      <Filter>Processing</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\Processing\PhysicsEngine.hpp">
       <Filter>Processing</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Utilities\FileLogger.hpp">
@@ -270,5 +50,8 @@
     <ClInclude Include="..\include\Utilities\VERSION.hpp">
       <Filter>Utilities</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

@@ -33,7 +33,6 @@ MORESWITCHES = \
 	-lswscale
 
 OBJECTS = \
-	..\src\Processing\PhysicsEngine.o \
 	..\src\Processing\ModModule.o \
 	..\src\Processing\main.o \
 	..\src\Processing\EventManager.o \
