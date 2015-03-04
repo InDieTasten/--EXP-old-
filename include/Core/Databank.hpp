@@ -23,11 +23,13 @@ private:
 	std::map<string, Music> *tracks;
 	std::map<string, Video> *videos;
 
+	sf::RenderWindow* renderWindow;
 	Level* level;
 	ThreadManager* threadManager;
 	GUIManager* guiManager;
+	
 public:
-	Databank();
+	Databank(sf::RenderWindow*);
 	~Databank();
 
 	void addTexture(string _id, string _path);
