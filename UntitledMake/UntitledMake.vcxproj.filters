@@ -10,6 +10,9 @@
     <Filter Include="Core">
       <UniqueIdentifier>{f820f2cd-cf53-4ac6-9b0f-aa01276d9219}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{bbb9ff1f-a28a-47c0-9b38-a0d1d42a9586}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Processing\main.cpp">
@@ -25,6 +28,21 @@
     </ClInclude>
     <ClInclude Include="..\include\Utilities\VERSION.hpp">
       <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\Databank.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Assets\Texture.hpp">
+      <Filter>Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Assets\Font.hpp">
+      <Filter>Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Assets\Sound.hpp">
+      <Filter>Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Assets\Asset.hpp">
+      <Filter>Assets</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
