@@ -58,14 +58,10 @@
     <Text Include="makefile" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\Processing\GraphicsEngine.cpp" />
     <ClCompile Include="..\src\Processing\main.cpp" />
-    <ClCompile Include="..\src\Processing\ModModule.cpp" />
     <ClCompile Include="..\src\Utilities\Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\Processing\GraphicsEngine.hpp" />
-    <ClInclude Include="..\include\Processing\ModModule.hpp" />
     <ClInclude Include="..\include\Utilities\Logger.hpp" />
     <ClInclude Include="..\include\Utilities\VERSION.hpp" />
   </ItemGroup>

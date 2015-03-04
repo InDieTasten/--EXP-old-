@@ -33,35 +33,7 @@ MORESWITCHES = \
 	-lswscale
 
 OBJECTS = \
-	..\src\Processing\ModModule.o \
 	..\src\Processing\main.o \
-	..\src\Processing\EventManager.o \
-	..\src\Processing\GraphicsEngine.o \
-	..\src\MemoryBank\DataBank.o \
-	..\src\MemoryBank\Level\Level.o \
-	..\src\MemoryBank\Level\SpaceObject.o \
-	..\src\MemoryBank\Level\SolarSystem.o \
-	..\src\MemoryBank\Level\Vector.o \
-	..\src\MemoryBank\Level\LocalControl.o \
-	..\src\MemoryBank\Entities\Texture.o \
-	..\src\MemoryBank\Entities\Video.o \
-	..\src\MemoryBank\Entities\Track.o \
-	..\src\MemoryBank\Entities\Sound.o \
-	..\src\MemoryBank\Entities\Script.o \
-	..\src\MemoryBank\Entities\Font.o \
-	..\src\GUI\GUIManager.o \
-	..\src\GUI\GUIElement.o \
-	..\src\GUI\GUIMenu.o \
-	..\src\GUI\GUIDockItem.o \
-	..\src\GUI\Elements\TextBox.o \
-	..\src\GUI\Elements\CheckBox.o \
-	..\src\GUI\Elements\HorSlider.o \
-	..\src\GUI\Elements\Button.o \
-	..\src\GUI\Elements\VertSlider.o \
-	..\src\GUI\Elements\Label.o \
-	..\src\GUI\Elements\CodeBox.o \
-	..\src\GUI\Elements\Canvas.o \
-	..\src\Utilities\util.o \
 	..\src\Utilities\Logger.o
 
 rebuild: clean build
