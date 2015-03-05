@@ -4,14 +4,14 @@
 class Vector
 {
 public:
-	double X;
-	double Y;
-	float R;
+	double* X;
+	double* Y;
+	float* R;
 
 	Vector();
-	Vector(double);
-	Vector(double, double);
-	Vector(double, double, float);
+	Vector(double*);
+	Vector(double*, double*);
+	Vector(double*, double*, float*);
 	~Vector();
 
 	//operator
