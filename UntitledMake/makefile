@@ -48,6 +48,7 @@ OBJECTS = \
 	..\src\Level\Vector.o \
 	..\src\Level\CollisionMesh.o \
 	..\src\Level\Line.o \
+	..\src\Level\Poly.o \
 	..\src\Utilities\Logger.o
 
 rebuild: clean build
