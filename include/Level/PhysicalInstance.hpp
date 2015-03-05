@@ -14,7 +14,8 @@ private:
 	Vector* gravityForce;
 	sf::Clock lastupdate;
 
-	Vector* ghostForce;
+	Vector* relGhostForce;
+	Vector* absGhostForce;
 	double* mass;
 
 	CollisionMesh* collMesh;
