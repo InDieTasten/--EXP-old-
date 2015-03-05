@@ -45,6 +45,7 @@ OBJECTS = \
 	..\src\Level\SolarSystem.o \
 	..\src\Level\Planet.o \
 	..\src\Level\PhysicalInstance.o \
+	..\src\Level\Vector.o \
 	..\src\Utilities\Logger.o
 
 rebuild: clean build

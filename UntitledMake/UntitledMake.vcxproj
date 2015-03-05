@@ -73,6 +73,7 @@
     <ClInclude Include="..\include\Level\PhysicalInstance.hpp" />
     <ClInclude Include="..\include\Level\Planet.hpp" />
     <ClInclude Include="..\include\Level\SolarSystem.hpp" />
+    <ClInclude Include="..\include\Level\Vector.hpp" />
     <ClInclude Include="..\include\Utilities\Logger.hpp" />
     <ClInclude Include="..\include\Utilities\VERSION.hpp" />
   </ItemGroup>
