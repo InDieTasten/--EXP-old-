@@ -46,6 +46,7 @@ OBJECTS = \
 	..\src\Level\Planet.o \
 	..\src\Level\PhysicalInstance.o \
 	..\src\Level\Vector.o \
+	..\src\Level\CollisionMesh.o \
 	..\src\Utilities\Logger.o
 
 rebuild: clean build
