@@ -70,6 +70,7 @@
     <ClInclude Include="..\include\Assets\Video.hpp" />
     <ClInclude Include="..\include\Core\Databank.hpp" />
     <ClInclude Include="..\include\Level\Level.hpp" />
+    <ClInclude Include="..\include\Level\PhysicalInstance.hpp" />
     <ClInclude Include="..\include\Level\Planet.hpp" />
     <ClInclude Include="..\include\Level\SolarSystem.hpp" />
     <ClInclude Include="..\include\Utilities\Logger.hpp" />
