@@ -71,6 +71,7 @@
     <ClInclude Include="..\include\Core\Databank.hpp" />
     <ClInclude Include="..\include\Level\Bullet.hpp" />
     <ClInclude Include="..\include\Level\CollisionMesh.hpp" />
+    <ClInclude Include="..\include\Level\Construction.hpp" />
     <ClInclude Include="..\include\Level\Level.hpp" />
     <ClInclude Include="..\include\Level\Line.hpp" />
     <ClInclude Include="..\include\Level\PhysicalInstance.hpp" />
