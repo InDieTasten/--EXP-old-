@@ -80,6 +80,9 @@
     <ClInclude Include="..\include\Level\Bullet.hpp">
       <Filter>Level</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Level\Construction.hpp">
+      <Filter>Level</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
