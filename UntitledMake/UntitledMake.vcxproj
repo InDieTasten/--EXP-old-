@@ -69,6 +69,7 @@
     <ClInclude Include="..\include\Assets\Texture.hpp" />
     <ClInclude Include="..\include\Assets\Video.hpp" />
     <ClInclude Include="..\include\Core\Databank.hpp" />
+    <ClInclude Include="..\include\Core\ThreadManager.hpp" />
     <ClInclude Include="..\include\Level\Asteroid.hpp" />
     <ClInclude Include="..\include\Level\Bullet.hpp" />
     <ClInclude Include="..\include\Level\CollisionMesh.hpp" />
