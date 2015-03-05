@@ -86,6 +86,9 @@
     <ClInclude Include="..\include\Level\Ship.hpp">
       <Filter>Level</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Level\Asteroid.hpp">
+      <Filter>Level</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
