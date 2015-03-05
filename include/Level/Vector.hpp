@@ -9,6 +9,7 @@ public:
 	float R;
 
 	Vector();
+	Vector(double);
 	Vector(double, double);
 	Vector(double, double, float);
 	~Vector();
