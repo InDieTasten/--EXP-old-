@@ -10,6 +10,7 @@
 #include <Level\Asteroid.hpp>
 #include <Level\Debris.hpp>
 #include <Core\ThreadManager.hpp>
+
 class SolarSystem
 {
 private:
