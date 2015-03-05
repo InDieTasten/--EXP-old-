@@ -68,6 +68,9 @@
     <ClInclude Include="..\include\Level\Vector.hpp">
       <Filter>Level</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Level\CollisionMesh.hpp">
+      <Filter>Level</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
