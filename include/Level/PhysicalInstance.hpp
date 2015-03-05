@@ -12,7 +12,7 @@ private:
 	Vector* velocity;
 
 	Vector* gravityForce;
-	sf::Clock lastupdate;
+	sf::Clock* lastupdate;
 
 	Vector* relGhostForce;
 	Vector* absGhostForce;
