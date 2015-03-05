@@ -7,6 +7,7 @@
 class Planet
 {
 private:
+	SolarSystem* parent;
 	string* ID;
 	PhysicalInstance* phInstance;
 public:
