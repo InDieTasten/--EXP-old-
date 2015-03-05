@@ -10,7 +10,7 @@ using namespace std;
 class Level
 {
 private:
-	std::map<string, SolarSystem*> sytems;
+	std::map<string*, SolarSystem*>* sytems;
 	SolarSystem* currentSystem;
 
 public:
