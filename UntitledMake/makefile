@@ -46,6 +46,7 @@ OBJECTS = \
 	..\src\Level\Planet.o \
 	..\src\Level\Bullet.o \
 	..\src\Level\Construction.o \
+	..\src\Level\Ship.o \
 	..\src\Level\PhysicalInstance.o \
 	..\src\Level\Vector.o \
 	..\src\Level\CollisionMesh.o \
