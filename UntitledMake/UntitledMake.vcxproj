@@ -69,6 +69,9 @@
     <ClInclude Include="..\include\Assets\Texture.hpp" />
     <ClInclude Include="..\include\Assets\Video.hpp" />
     <ClInclude Include="..\include\Core\Databank.hpp" />
+    <ClInclude Include="..\include\Core\GraphicsThread.hpp" />
+    <ClInclude Include="..\include\Core\GravityThread.hpp" />
+    <ClInclude Include="..\include\Core\MovementThread.hpp" />
     <ClInclude Include="..\include\Core\ThreadManager.hpp" />
     <ClInclude Include="..\include\Level\Asteroid.hpp" />
     <ClInclude Include="..\include\Level\Bullet.hpp" />
@@ -85,9 +88,6 @@
     <ClInclude Include="..\include\Level\Vector.hpp" />
     <ClInclude Include="..\include\Utilities\Logger.hpp" />
     <ClInclude Include="..\include\Utilities\VERSION.hpp" />
-    <ClInclude Include="GraphicsThread.hpp" />
-    <ClInclude Include="GravityThread.hpp" />
-    <ClInclude Include="MovementThread.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
