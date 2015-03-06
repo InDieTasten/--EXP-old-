@@ -5,6 +5,8 @@
 #include <string>
 #include <Level\PhysicalInstance.hpp>
 
+class SolarSystem;
+
 using namespace std;
 
 class Planet
