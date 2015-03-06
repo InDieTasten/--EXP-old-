@@ -1,7 +1,6 @@
 #ifndef _Ship_hpp_
 #define _Ship_hpp_
 
-#include <Level\SolarSystem.hpp>
 #include <Level\PhysicalInstance.hpp>
 
 using namespace std;
