@@ -3,11 +3,12 @@
 
 class Vector
 {
-public:
+private:
 	double* X;
 	double* Y;
 	float* R;
 
+public:
 	Vector();
 	Vector(double*);
 	Vector(double*, double*);
