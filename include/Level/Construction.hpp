@@ -1,7 +1,6 @@
 #ifndef _Construction_hpp_
 #define _Construction_hpp_
 
-#include <Level\SolarSystem.hpp>
 #include <Level\PhysicalInstance.hpp>
 
 using namespace std;
