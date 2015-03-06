@@ -5,6 +5,8 @@
 
 using namespace std;
 
+class SolarSystem;
+
 class Ship
 {
 private:
