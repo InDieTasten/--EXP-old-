@@ -16,6 +16,12 @@
     <Filter Include="Level">
       <UniqueIdentifier>{728e7019-3a60-4f49-8486-e4b23d33159c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Level\Objects">
+      <UniqueIdentifier>{9e4538c5-2f70-4b78-ade8-6a5896dc9462}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\Collision">
+      <UniqueIdentifier>{ca60134f-8c2b-4b36-8908-9bbfc7baba9b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Processing\main.cpp">
@@ -59,41 +65,41 @@
     <ClInclude Include="..\include\Level\SolarSystem.hpp">
       <Filter>Level</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\Level\Planet.hpp">
-      <Filter>Level</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\Level\PhysicalInstance.hpp">
       <Filter>Level</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Level\Vector.hpp">
       <Filter>Level</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\Level\CollisionMesh.hpp">
-      <Filter>Level</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\Level\Line.hpp">
-      <Filter>Level</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\Level\Poly.hpp">
-      <Filter>Level</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\Level\Bullet.hpp">
-      <Filter>Level</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\Level\Construction.hpp">
-      <Filter>Level</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\Level\Ship.hpp">
-      <Filter>Level</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\Level\Asteroid.hpp">
-      <Filter>Level</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\Level\Debris.hpp">
-      <Filter>Level</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\Core\ThreadManager.hpp">
       <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Level\Asteroid.hpp">
+      <Filter>Level\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Level\Bullet.hpp">
+      <Filter>Level\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Level\Construction.hpp">
+      <Filter>Level\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Level\Debris.hpp">
+      <Filter>Level\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Level\Planet.hpp">
+      <Filter>Level\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Level\Ship.hpp">
+      <Filter>Level\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Level\CollisionMesh.hpp">
+      <Filter>Level\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Level\Line.hpp">
+      <Filter>Level\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Level\Poly.hpp">
+      <Filter>Level\Collision</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
