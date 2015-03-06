@@ -5,7 +5,6 @@
 #include <Core\MovementThread.hpp>
 #include <list>
 #include <Core\GraphicsThread.hpp>
-#include <Level\SolarSystem.hpp>
 
 using namespace std;
 
