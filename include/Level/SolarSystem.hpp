@@ -2,7 +2,6 @@
 #define _SolarSystem_hpp_
 
 #include <list>
-#include <Level\Level.hpp>
 #include <Level\Planet.hpp>
 #include <Level\Bullet.hpp>
 #include <Level\Construction.hpp>
@@ -11,6 +10,8 @@
 #include <Level\Debris.hpp>
 
 #include <Core\ThreadManager.hpp>
+
+class Level;
 
 class SolarSystem
 {
