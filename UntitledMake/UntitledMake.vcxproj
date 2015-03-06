@@ -85,6 +85,9 @@
     <ClInclude Include="..\include\Level\Vector.hpp" />
     <ClInclude Include="..\include\Utilities\Logger.hpp" />
     <ClInclude Include="..\include\Utilities\VERSION.hpp" />
+    <ClInclude Include="GraphicsThread.hpp" />
+    <ClInclude Include="GravityThread.hpp" />
+    <ClInclude Include="MovementThread.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
