@@ -37,6 +37,7 @@ OBJECTS = \
 	..\src\Core\Databank.o \
 	..\src\Core\ThreadManager.o \
 	..\src\Core\GravityThread.o \
+	..\src\Core\MovementThread.o \
 	..\src\Assets\Asset.o \
 	..\src\Assets\Texture.o \
 	..\src\Assets\Font.o \
