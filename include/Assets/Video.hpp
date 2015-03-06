@@ -3,6 +3,8 @@
 
 #include <Assets\Asset.hpp>
 
+using namespace std;
+
 class Video : public Asset
 {
 private:
