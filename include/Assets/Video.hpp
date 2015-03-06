@@ -3,6 +3,8 @@
 
 #include <Assets\Asset.hpp>
 
+#include <list>
+
 using namespace std;
 
 class Video : public Asset
