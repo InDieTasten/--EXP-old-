@@ -1,6 +1,7 @@
 #ifndef _MovementThread_hpp_
 #define _MovementThread_hpp_
 
+class ThreadManager;
 
 using namespace std;
 
