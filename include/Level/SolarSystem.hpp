@@ -11,17 +11,19 @@
 #include <Level\Debris.hpp>
 #include <Core\ThreadManager.hpp>
 
+using namespace std;
+
 class SolarSystem
 {
 private:
 	Level* parent;
 
-	std::list<Planet*>* planets;
-	std::list<Bullet*>* bullets;
-	std::list<Construction*>* constructs;
-	std::list<Ship*>* ships;
-	std::list<Asteroid*>* asteroids;
-	std::list<Debris*>* debris;
+	list<Planet*>* planets;
+	list<Bullet*>* bullets;
+	list<Construction*>* constructs;
+	list<Ship*>* ships;
+	list<Asteroid*>* asteroids;
+	list<Debris*>* debris;
 
 	ThreadManager* threadManager;
 

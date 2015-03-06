@@ -1,6 +1,8 @@
 #ifndef _Vector_hpp_
 #define _Vector_hpp_
 
+using namespace std;
+
 class Vector
 {
 private:

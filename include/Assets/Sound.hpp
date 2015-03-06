@@ -3,6 +3,8 @@
 
 #include <Assets/Asset.hpp>
 
+using namespace std;
+
 class Sound : public Asset
 {
 private:

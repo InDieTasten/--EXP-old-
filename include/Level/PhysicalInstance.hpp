@@ -5,6 +5,8 @@
 #include <SFML\System.hpp>
 #include <Level\CollisionMesh.hpp>
 
+using namespace std;
+
 class PhysicalInstance
 {
 private:

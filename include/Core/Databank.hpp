@@ -17,11 +17,11 @@ using namespace std;
 class Databank
 {
 private:
-	std::map<string*, Texture*>* textures;
-	std::map<string*, Font*>* fonts;
-	std::map<string*, Sound*>* sounds;
-	std::map<string*, Music*>* tracks;
-	std::map<string*, Video*>* videos;
+	map<string*, Texture*>* textures;
+	map<string*, Font*>* fonts;
+	map<string*, Sound*>* sounds;
+	map<string*, Music*>* tracks;
+	map<string*, Video*>* videos;
 
 	sf::RenderWindow* renderWindow;
 	Level* level;
