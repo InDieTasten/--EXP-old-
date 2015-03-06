@@ -101,13 +101,13 @@
     <ClInclude Include="..\include\Level\Poly.hpp">
       <Filter>Level\Collision</Filter>
     </ClInclude>
-    <ClInclude Include="GravityThread.hpp">
+    <ClInclude Include="..\include\Core\GraphicsThread.hpp">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="MovementThread.hpp">
+    <ClInclude Include="..\include\Core\GravityThread.hpp">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicsThread.hpp">
+    <ClInclude Include="..\include\Core\MovementThread.hpp">
       <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
