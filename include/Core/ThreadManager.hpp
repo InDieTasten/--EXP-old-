@@ -7,11 +7,13 @@
 #include <Core\GraphicsThread.hpp>
 #include <Level\SolarSystem.hpp>
 
+using namespace std;
+
 class ThreadManager
 {
 	SolarSystem* parent;
 	GravityThread* gravThread;
-	std::list<MovementThread*>* moveThreads;
+	list<MovementThread*>* moveThreads;
 	GraphicsThread* graphThread;
 
 public:

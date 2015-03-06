@@ -6,12 +6,14 @@
 #include <Level\Line.hpp>
 #include <Level\Poly.hpp>
 
+using namespace std;
+
 class CollisionMesh
 {
 private:
-	std::list<Vector*>* dots;
-	std::list<Line*>* edges;
-	std::list<Poly*>* polys;
+	list<Vector*>* dots;
+	list<Line*>* edges;
+	list<Poly*>* polys;
 
 public:
 	CollisionMesh();

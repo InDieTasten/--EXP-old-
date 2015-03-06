@@ -4,6 +4,8 @@
 #include <Level\SolarSystem.hpp>
 #include <Level\PhysicalInstance.hpp>
 
+using namespace std;
+
 class Construction
 {
 private:
