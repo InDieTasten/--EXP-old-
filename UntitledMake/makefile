@@ -35,6 +35,7 @@ MORESWITCHES = \
 OBJECTS = \
 	..\src\Core\main.o \
 	..\src\Core\Databank.o \
+	..\src\Core\GUIManager.o \
 	..\src\Core\ThreadManager.o \
 	..\src\Core\GravityThread.o \
 	..\src\Core\MovementThread.o \
