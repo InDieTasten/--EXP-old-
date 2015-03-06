@@ -3,6 +3,8 @@
 
 #include <Level\Vector.hpp>
 
+using namespace std;
+
 class Line
 {
 private:

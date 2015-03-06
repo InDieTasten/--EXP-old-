@@ -9,7 +9,7 @@ using namespace std;
 class Poly
 {
 private:
-	std::list<Line*>* edges;
+	list<Line*>* edges;
 
 public:
 	Poly();

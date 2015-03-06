@@ -7,6 +7,8 @@
 
 using namespace std;
 
+using namespace std;
+
 class Texture : public Asset
 {
 private:

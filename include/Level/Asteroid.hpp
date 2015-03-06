@@ -5,6 +5,8 @@
 #include <string>
 #include <Level\PhysicalInstance.hpp>
 
+using namespace std;
+
 class Asteroid
 {
 private:
