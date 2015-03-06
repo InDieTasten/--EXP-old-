@@ -101,6 +101,15 @@
     <ClInclude Include="..\include\Level\Poly.hpp">
       <Filter>Level\Collision</Filter>
     </ClInclude>
+    <ClInclude Include="GravityThread.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="MovementThread.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsThread.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
