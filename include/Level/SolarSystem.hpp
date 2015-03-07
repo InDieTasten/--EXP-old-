@@ -13,6 +13,9 @@
 
 class Level;
 
+using namespace std;
+extern void ug::log(std::string);
+
 class SolarSystem
 {
 private:

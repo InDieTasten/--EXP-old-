@@ -5,12 +5,23 @@ Databank::Databank(sf::RenderWindow* _window)
 	//pointer
 	renderWindow = _window;
 
-	//construct real data
-	textures = new map<string*, Texture*>();
-	fonts = new map<string*, Font*>();
-	sounds = new map<string*, Sound*>();
-	tracks = new map<string*, Music*>();
-	videos = new map<string*, Video*>();
-	level = new Level();
-	guiManager = new GUIManager();
+	//WORK set parents of level and guiManager
+}
+Databank::~Databank()
+{
+	//pointer
+	renderWindow = nullptr;
+
+	//WORK unset parents of level and guiManager
+}
+void Databank::addTexture(string _id, string _path)
+{
+	if (textures.find(_id) == textures.end())
+	{
+
+	}
+	else
+	{
+		
+	}
 }

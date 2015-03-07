@@ -4,6 +4,7 @@
 #include <Assets/Asset.hpp>
 
 using namespace std;
+extern void ug::log(std::string);
 
 class Sound : public Asset
 {

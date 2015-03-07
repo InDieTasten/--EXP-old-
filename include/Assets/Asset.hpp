@@ -4,6 +4,7 @@
 #include <string>
 
 using namespace std;
+extern void ug::log(std::string);
 
 class Asset
 {
