@@ -1,6 +1,7 @@
 #ifndef _ThreadManager_hpp_
 #define _ThreadManager_hpp_
 
+#include <Core\EventThread.hpp>
 #include <Core\GravityThread.hpp>
 #include <Core\MovementThread.hpp>
 #include <list>
@@ -12,12 +13,13 @@ extern void ug::log(std::string);
 class ThreadManager
 {
 	SolarSystem* parent;
+	EventThread* eventThread;
 	GravityThread* gravThread;
 	list<MovementThread*>* moveThreads;
 	GraphicsThread* graphThread;
 
 public:
-	ThreadManager(SolarSystem* _system);
+	ThreadManager(SolarSystem* _system, EventThread* _main);
 	~ThreadManager();
 
 	void Run();
