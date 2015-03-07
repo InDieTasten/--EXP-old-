@@ -26,3 +26,8 @@ void Databank::removeTexture(string* _id)
 	//WORK unload Texture beforehand
 	textures.erase(textures.find(*_id));
 }
+sf::Texture* Databank::getTexture(string* _id)
+{
+	//WORK check for valid id
+	return textures.find(*_id)->second->getTexture();
+}
