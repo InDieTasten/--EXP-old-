@@ -77,6 +77,7 @@
     <ClInclude Include="..\include\Core\GUIManager.hpp" />
     <ClInclude Include="..\include\Core\MovementThread.hpp" />
     <ClInclude Include="..\include\Core\ThreadManager.hpp" />
+    <ClInclude Include="..\include\GUI\Menu.hpp" />
     <ClInclude Include="..\include\Level\Asteroid.hpp" />
     <ClInclude Include="..\include\Level\Bullet.hpp" />
     <ClInclude Include="..\include\Level\CollisionMesh.hpp" />
