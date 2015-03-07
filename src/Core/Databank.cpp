@@ -94,3 +94,8 @@ void Databank::removeVideo(string* _id)
 	//WORK unload Texture beforehand
 	videos.erase(videos.find(*_id));
 }
+Video* Databank::getVideo(string* _id)
+{
+	//WORK check for valid id
+	return videos.find(*_id)->second;
+}
