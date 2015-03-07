@@ -63,6 +63,11 @@ public:
 	/// <param name="_access">Specifies the time, at which a resource gets unloaded</param>
 	void shrink(sf::Time _access);
 
+	/// <summary>
+	/// Will inject the thread pointer to the level
+	/// </summary>
+	void injectEventThread(EventThread* _thread);
+
 };
 
 #endif // !_Databank_hpp_
