@@ -47,7 +47,7 @@ public:
 
 	void addSound(string _id, string _path);
 	void removeSound(string* _id);
-	sf::Sound* getSound(string* _id);
+	sf::SoundBuffer* getSound(string* _id);
 
 	void addMusic(string _id, string _path);
 	void removeMusic(string* _id);
