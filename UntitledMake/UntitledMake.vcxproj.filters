@@ -23,6 +23,9 @@
     <Filter Include="Level\Collision">
       <UniqueIdentifier>{ca60134f-8c2b-4b36-8908-9bbfc7baba9b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{975bb2b0-31fa-4511-a49d-bbc447ab41ce}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Utilities\Logger.cpp">
@@ -119,6 +122,9 @@
     </ClInclude>
     <ClInclude Include="..\include\Core\EventThread.hpp">
       <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GUI\Menu.hpp">
+      <Filter>GUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
