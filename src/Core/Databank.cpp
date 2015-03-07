@@ -20,3 +20,9 @@ void Databank::addTexture(string _id, string _path)
 	//WORK check for valid path
 	textures.insert(pair<string, Texture*>(_id, new Texture(_path)));
 }
+void Databank::removeTexture(string* _id)
+{
+	//WORK check for valid id
+	//WORK unload Texture beforehand
+	textures.erase(textures.find(*_id));
+}
