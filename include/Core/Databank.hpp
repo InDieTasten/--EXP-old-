@@ -13,6 +13,7 @@
 #include <Core\GUIManager.hpp>
 
 using namespace std;
+extern void ug::log(std::string);
 
 /// <summary>
 /// Class holding pretty much the entire game state.
@@ -28,8 +29,8 @@ private:
 	map<string, Video*> videos;
 
 	sf::RenderWindow* renderWindow;
-	Level* level;
-	GUIManager* guiManager;
+	Level level;
+	GUIManager guiManager;
 	
 public:
 	Databank(sf::RenderWindow* _window);
