@@ -31,3 +31,9 @@ sf::Texture* Databank::getTexture(string* _id)
 	//WORK check for valid id
 	return textures.find(*_id)->second->getTexture();
 }
+void Databank::addFont(string _id, string _path)
+{
+	//WORK check for id already existing
+	//WORK check for valid path
+	fonts.insert(pair<string, Font*>(_id, new Font(_path)));
+}
