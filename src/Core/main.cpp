@@ -23,23 +23,15 @@ int main(int argc, char *argv[])
 	ug::log("Game is launching");
 	sf::RenderWindow App(sf::VideoMode(1280, 720, 32), VERSION::name + " " + VERSION::version, sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
 	
-	EventThread eventThread;
+	EventThread eventThread(&App);
 
 	Databank* databank = new Databank(&App);
 	databank->injectEventThread(&eventThread);
 
 	//Game loop
-	eventThread->Run();
-	while (App.isOpen())
-	{
-		sf::Event Event;
-		while (App.pollEvent(Event))
-		{
-			
-		}
-	}
+	eventThread.Run();
 
-	ug::log("Game is done");
+	ug::log("Game quit!");
 	getchar();
 	return EXIT_SUCCESS;
 }
