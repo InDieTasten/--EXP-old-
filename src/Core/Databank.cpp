@@ -37,3 +37,9 @@ void Databank::addFont(string _id, string _path)
 	//WORK check for valid path
 	fonts.insert(pair<string, Font*>(_id, new Font(_path)));
 }
+void Databank::removeFont(string* _id)
+{
+	//WORK check for valid id
+	//WORK unload Texture beforehand
+	fonts.erase(fonts.find(*_id));
+}
