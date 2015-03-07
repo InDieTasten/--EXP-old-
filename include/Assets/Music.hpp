@@ -13,6 +13,8 @@ private:
 	sf::Music* data;
 
 public:
+	Music(string _path);
+	~Music();
 
 	sf::Music* getMusic();
 	void load();
