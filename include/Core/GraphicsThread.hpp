@@ -13,6 +13,9 @@ private:
 public:
 	GraphicsThread();
 	~GraphicsThread();
+
+	void launch();
+	void terminate();
 };
 
 #endif // !_GraphicsThread_hpp_
