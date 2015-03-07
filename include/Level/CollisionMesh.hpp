@@ -7,6 +7,7 @@
 #include <Level\Poly.hpp>
 
 using namespace std;
+extern void ug::log(std::string);
 
 class CollisionMesh
 {
