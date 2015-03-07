@@ -1,18 +1,18 @@
 #ifndef _GUIManager_hpp_
 #define _GUIManager_hpp_
 
-#include <GUI\GUIMenu.hpp>
+#include <GUI\Menu.hpp>
 
 using namespace std;
+extern void ug::log(std::string);
 
 class Databank;
-extern void ug::log(std::string);
 
 class GUIManager
 {
 private:
 	Databank* parent;
-	map<string*, GUIMenu*>* menus;
+	map<string, Menu*> menus;
 public:
 	GUIManager();
 	~GUIManager();
