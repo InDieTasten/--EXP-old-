@@ -16,12 +16,7 @@ Databank::~Databank()
 }
 void Databank::addTexture(string _id, string _path)
 {
-	if (textures.find(_id) == textures.end())
-	{
-
-	}
-	else
-	{
-		
-	}
+	//WORK check for id already existing
+	//WORK check for valid path
+	textures.insert(pair<string, Texture*>(_id, new Texture(_path)));
 }

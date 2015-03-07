@@ -14,6 +14,9 @@ private:
 	sf::Texture* data;
 
 public:
+	Texture(string _path);
+	~Texture();
+
 	sf::Texture* getTexture();
 	void load();
 	void unload();
