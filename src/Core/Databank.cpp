@@ -60,3 +60,8 @@ void Databank::removeSound(string* _id)
 	//WORK unload Texture beforehand
 	sounds.erase(sounds.find(*_id));
 }
+sf::SoundBuffer* Databank::getSound(string* _id)
+{
+	//WORK check for valid id
+	return sounds.find(*_id)->second->getSound();
+}
