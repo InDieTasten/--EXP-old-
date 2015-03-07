@@ -1,6 +1,8 @@
 #ifndef _GraphicsThread_hpp_
 #define _GraphicsThread_hpp_
 
+#include <thread>
+
 class ThreadManager;
 
 using namespace std;
@@ -10,6 +12,9 @@ class GraphicsThread
 {
 private:
 	ThreadManager* parent;
+	thread me;
+	void run();
+
 public:
 	GraphicsThread();
 	~GraphicsThread();
