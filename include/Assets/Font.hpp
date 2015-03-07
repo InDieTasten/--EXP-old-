@@ -14,6 +14,9 @@ private:
 	sf::Font* data;
 
 public:
+	Font(string _path);
+	~Font();
+
 	sf::Font* getFont();
 	void load();
 	void unload();
