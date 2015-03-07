@@ -54,3 +54,9 @@ void Databank::addSound(string _id, string _path)
 	//WORK check for valid path
 	sounds.insert(pair<string, Sound*>(_id, new Sound(_path)));
 }
+void Databank::removeSound(string* _id)
+{
+	//WORK check for valid id
+	//WORK unload Texture beforehand
+	sounds.erase(sounds.find(*_id));
+}
