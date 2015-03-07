@@ -6,6 +6,7 @@
 using namespace std;
 
 class Databank;
+extern void ug::log(std::string);
 
 class GUIManager
 {
