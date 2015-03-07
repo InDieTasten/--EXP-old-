@@ -55,6 +55,7 @@
   <ItemDefinitionGroup>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Text Include="..\UntitledGame\Error-Codes.txt" />
     <Text Include="makefile" />
   </ItemGroup>
   <ItemGroup>

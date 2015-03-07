@@ -1,6 +1,7 @@
 #ifndef _Databank_hpp_
 #define _Databank_hpp_
 
+#include <Utilities/Logger.hpp>
 #include <map>
 #include <string>
 #include <Assets\Texture.hpp>
