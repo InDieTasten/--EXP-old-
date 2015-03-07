@@ -12,6 +12,9 @@ private:
 	sf::SoundBuffer* data;
 
 public:
+	Sound(string _path);
+	~Sound();
+
 	sf::SoundBuffer* getSound();
 	void load();
 	void unload();
