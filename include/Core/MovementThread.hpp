@@ -10,10 +10,15 @@ class MovementThread
 {
 private:
 	ThreadManager* parent;
+	thread me;
+	void run();
 
 public:
-	MovementThread();
+	MovementThread(ThreadManager* _parent);
 	~MovementThread();
+
+	void launch();
+	void terminate();
 };
 
 #endif // !_MovementThread_hpp_
