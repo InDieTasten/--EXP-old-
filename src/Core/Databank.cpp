@@ -43,3 +43,8 @@ void Databank::removeFont(string* _id)
 	//WORK unload Texture beforehand
 	fonts.erase(fonts.find(*_id));
 }
+sf::Font* Databank::getFont(string* _id)
+{
+	//WORK check for valid id
+	return fonts.find(*_id)->second->getFont();
+}
