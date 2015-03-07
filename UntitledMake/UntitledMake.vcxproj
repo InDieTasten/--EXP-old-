@@ -71,6 +71,7 @@
     <ClInclude Include="..\include\Assets\Texture.hpp" />
     <ClInclude Include="..\include\Assets\Video.hpp" />
     <ClInclude Include="..\include\Core\Databank.hpp" />
+    <ClInclude Include="..\include\Core\EventThread.hpp" />
     <ClInclude Include="..\include\Core\GraphicsThread.hpp" />
     <ClInclude Include="..\include\Core\GravityThread.hpp" />
     <ClInclude Include="..\include\Core\GUIManager.hpp" />
