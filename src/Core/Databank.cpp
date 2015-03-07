@@ -78,3 +78,8 @@ void Databank::removeMusic(string* _id)
 	//WORK unload Texture beforehand
 	tracks.erase(tracks.find(*_id));
 }
+sf::Music* Databank::getMusic(string* _id)
+{
+	//WORK check for valid id
+	return tracks.find(*_id)->second->getMusic();
+}
