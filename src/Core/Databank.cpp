@@ -48,3 +48,9 @@ sf::Font* Databank::getFont(string* _id)
 	//WORK check for valid id
 	return fonts.find(*_id)->second->getFont();
 }
+void Databank::addSound(string _id, string _path)
+{
+	//WORK check for id already existing
+	//WORK check for valid path
+	sounds.insert(pair<string, Sound*>(_id, new Sound(_path)));
+}
