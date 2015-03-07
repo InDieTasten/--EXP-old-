@@ -28,7 +28,6 @@ int main(int argc, char *argv[])
 	Databank* databank = new Databank(&App);
 	databank->injectEventThread(&eventThread);
 
-	//Game loop
 	eventThread.Run();
 
 	ug::log("Game quit!");
