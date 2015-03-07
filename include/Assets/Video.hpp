@@ -14,6 +14,9 @@ private:
 	int* data;
 
 public:
+	Video(string _path);
+	~Video();
+
 	int* getVideo();
 	void load();
 	void unload();
