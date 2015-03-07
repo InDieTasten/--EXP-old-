@@ -72,3 +72,9 @@ void Databank::addMusic(string _id, string _path)
 	//WORK check for valid path
 	tracks.insert(pair<string, Music*>(_id, new Music(_path)));
 }
+void Databank::removeMusic(string* _id)
+{
+	//WORK check for valid id
+	//WORK unload Texture beforehand
+	tracks.erase(tracks.find(*_id));
+}
