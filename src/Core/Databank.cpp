@@ -88,3 +88,9 @@ void Databank::addVideo(string _id, string _path)
 	//WORK check for valid path
 	sounds.insert(pair<string, Sound*>(_id, new Sound(_path)));
 }
+void Databank::removeVideo(string* _id)
+{
+	//WORK check for valid id
+	//WORK unload Texture beforehand
+	videos.erase(videos.find(*_id));
+}
