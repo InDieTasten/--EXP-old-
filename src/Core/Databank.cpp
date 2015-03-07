@@ -65,3 +65,10 @@ sf::SoundBuffer* Databank::getSound(string* _id)
 	//WORK check for valid id
 	return sounds.find(*_id)->second->getSound();
 }
+
+void Databank::addMusic(string _id, string _path)
+{
+	//WORK check for id already existing
+	//WORK check for valid path
+	tracks.insert(pair<string, Music*>(_id, new Music(_path)));
+}
