@@ -2,7 +2,7 @@
 #define _Databank_hpp_
 
 #include <Utilities/Logger.hpp>
-#include <map>
+#include <unordered_map>
 #include <string>
 #include <Assets\Texture.hpp>
 #include <Assets\Font.hpp>
@@ -23,11 +23,11 @@ extern void ug::log(std::string);
 class Databank
 {
 private:
-	map<string*, Texture*> textures;
-	map<string*, Font*> fonts;
-	map<string*, Sound*> sounds;
-	map<string*, Music*> tracks;
-	map<string*, Video*> videos;
+	unordered_map<string*, Texture*> textures;
+	unordered_map<string*, Font*> fonts;
+	unordered_map<string*, Sound*> sounds;
+	unordered_map<string*, Music*> tracks;
+	unordered_map<string*, Video*> videos;
 
 	sf::RenderWindow* renderWindow;
 	Level level;
