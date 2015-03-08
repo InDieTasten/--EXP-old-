@@ -8,8 +8,6 @@ Video::Video(string* _id, string _path)
 }
 Video::~Video()
 {
-	if (data)
-		unload();
 	ug::log("A Video has been destructed: " + *id);
 }
 //WORK rest of video management
