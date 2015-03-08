@@ -37,3 +37,15 @@ void Texture::load()
 		data->loadFromFile(path);
 	}
 }
+void Texture::unload()
+{
+	if (!data)
+	{
+		ug::log("Tried to unload already unloaded Texture: " + *id);
+	}
+	else {
+		ug::log("Unloading Texture: " + *id);
+		delete data;
+		data = nullptr;
+	}
+}
