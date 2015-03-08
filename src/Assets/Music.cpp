@@ -4,10 +4,11 @@ Music::Music(string* _id, string _path)
 {
 	id = _id;
 	path = _path;
+	ug::log("A Track has been constructed: " + *id);
 }
 Music::~Music()
 {
 	if (data)
 		unload();
-	ug::log("A Track has been destructed");
+	ug::log("A Track has been destructed: " + *id);
 }
