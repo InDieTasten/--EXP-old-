@@ -18,18 +18,35 @@ void Databank::addTexture(string _id, string _path)
 {
 	//WORK check for id already existing
 	//WORK check for valid path
-	textures.insert(pair<string, Texture*>(_id, new Texture(_path)));
+	string* index = new string(_id);
+	textures.insert(pair<string*, Texture*>(index, new Texture(index, _path)));
 }
 void Databank::removeTexture(string* _id)
 {
 	//WORK check for valid id
-	//WORK unload Texture beforehand
-	textures.erase(textures.find(*_id));
+	for (auto i : textures)
+	{
+		if (*(i.first) == *_id)
+		{
+			i.second->unload();
+			//WORK make sure all pointers to it are removed
+			textures.erase(i.first);
+			break;
+		}
+	}
 }
-sf::Texture* Databank::getTexture(string* _id)
+Texture* Databank::getTexture(string *_id)
 {
 	//WORK check for valid id
-	return textures.find(*_id)->second->getTexture();
+	for (auto i : textures)
+	{
+		if (*(i.first) == *_id)
+		{
+			return i.second;
+		}
+	}
+	return getTexture(new string("missing"));
+	//WORK debug output
 }
 void Databank::addFont(string _id, string _path)
 {
@@ -43,10 +60,10 @@ void Databank::removeFont(string* _id)
 	//WORK unload Texture beforehand
 	fonts.erase(fonts.find(*_id));
 }
-sf::Font* Databank::getFont(string* _id)
+Font* Databank::getFont(string* _id)
 {
 	//WORK check for valid id
-	return fonts.find(*_id)->second->getFont();
+	return fonts.find(*_id)->second;
 }
 void Databank::addSound(string _id, string _path)
 {
@@ -60,10 +77,10 @@ void Databank::removeSound(string* _id)
 	//WORK unload Texture beforehand
 	sounds.erase(sounds.find(*_id));
 }
-sf::SoundBuffer* Databank::getSound(string* _id)
+Sound* Databank::getSound(string* _id)
 {
 	//WORK check for valid id
-	return sounds.find(*_id)->second->getSound();
+	return sounds.find(*_id)->second;
 }
 void Databank::addMusic(string _id, string _path)
 {
@@ -77,10 +94,10 @@ void Databank::removeMusic(string* _id)
 	//WORK unload Texture beforehand
 	tracks.erase(tracks.find(*_id));
 }
-sf::Music* Databank::getMusic(string* _id)
+Music* Databank::getMusic(string* _id)
 {
 	//WORK check for valid id
-	return tracks.find(*_id)->second->getMusic();
+	return tracks.find(*_id)->second;
 }
 void Databank::addVideo(string _id, string _path)
 {
