@@ -8,6 +8,8 @@ Font::Font(string* _id, string _path)
 }
 Font::~Font()
 {
+	if (data)
+		unload();
 	ug::log("A Font has been deconstructed: " + *id);
 }
 sf::Font* Font::getFont()
