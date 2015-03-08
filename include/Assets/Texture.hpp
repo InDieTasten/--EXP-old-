@@ -14,7 +14,7 @@ private:
 	sf::Texture* data;
 
 public:
-	Texture(string _path);
+	Texture(string* _id, string _path);
 	~Texture();
 
 	sf::Texture* getTexture();
