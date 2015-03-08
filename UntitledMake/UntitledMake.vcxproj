@@ -61,6 +61,7 @@
   <ItemGroup>
     <ClCompile Include="..\src\Assets\Asset.cpp" />
     <ClCompile Include="..\src\Assets\Font.cpp" />
+    <ClCompile Include="..\src\Assets\Music.cpp" />
     <ClCompile Include="..\src\Core\Databank.cpp" />
     <ClCompile Include="..\src\Core\main.cpp" />
     <ClCompile Include="..\src\Utilities\Logger.cpp" />
