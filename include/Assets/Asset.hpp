@@ -16,6 +16,7 @@ protected:
 	sf::Clock lastget;
 
 public:
+	Asset();
 	Asset(string* _id, string _path);
 	~Asset();
 };
