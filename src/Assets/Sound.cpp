@@ -37,3 +37,15 @@ void Sound::load()
 		data->loadFromFile(path);
 	}
 }
+void Sound::unload()
+{
+	if (!data)
+	{
+		ug::log("Tried to unload already unloaded Sound: " + *id);
+	}
+	else {
+		ug::log("Unloading Sound: " + *id);
+		delete data;
+		data = nullptr;
+	}
+}
