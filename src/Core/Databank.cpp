@@ -88,9 +88,7 @@ Font* Databank::getFont(string* _id)
 }
 void Databank::addSound(string _id, string _path)
 {
-	//WORK check for id already existing
-	//WORK check for valid path
-	sounds.insert(pair<string, Sound*>(_id, new Sound(_path)));
+	//WORK
 }
 void Databank::removeSound(string* _id)
 {
