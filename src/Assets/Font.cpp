@@ -6,3 +6,7 @@ Font::Font(string* _id, string _path)
 	path = _path;
 	ug::log("A Font has been constructed");
 }
+Font::~Font()
+{
+	ug::log("A Font has been deconstructed");
+}
