@@ -92,9 +92,7 @@ void Databank::addSound(string _id, string _path)
 }
 void Databank::removeSound(string* _id)
 {
-	//WORK check for valid id
-	//WORK unload Texture beforehand
-	sounds.erase(sounds.find(*_id));
+	//WORK
 }
 Sound* Databank::getSound(string* _id)
 {
