@@ -25,3 +25,15 @@ sf::Music* Music::getMusic()
 		getMusic();
 	}
 }
+void Music::load()
+{
+	if (data)
+	{
+		ug::log("Tried to load already loaded Track: " + *id);
+	}
+	else {
+		ug::log("Loading Track: " + *id);
+		data = new sf::Music();
+		data->openFromFile(path);
+	}
+}
