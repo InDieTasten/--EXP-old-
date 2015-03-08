@@ -16,7 +16,7 @@ sf::Music* Music::getMusic()
 {
 	if (data)
 	{
-		lastget.restart();
+		lastget = chrono::steady_clock::now();
 		ug::log("The Track '" + *id + "' has been gotton");
 		return data;
 	}
