@@ -65,6 +65,54 @@
     <ClCompile Include="..\src\Core\EventThread.cpp">
       <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Core\GraphicsThread.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\GravityThread.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\GUIManager.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\MovementThread.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\ThreadManager.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GUI\Menu.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Level\Vector.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Level\SolarSystem.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Level\PhysicalInstance.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Level\Level.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Level\Ship.cpp">
+      <Filter>Level\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Level\Planet.cpp">
+      <Filter>Level\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Level\Bullet.cpp">
+      <Filter>Level\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Level\Asteroid.cpp">
+      <Filter>Level\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Level\Debris.cpp">
+      <Filter>Level\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Level\Construction.cpp">
+      <Filter>Level\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Utilities\Logger.hpp">
