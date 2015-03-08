@@ -1,7 +1,9 @@
 #ifndef _Asset_hpp_
 #define _Asset_hpp_
 
+#include <Utilities\Logger.hpp>
 #include <string>
+#include <SFML\System.hpp>
 
 using namespace std;
 extern void ug::log(std::string);
