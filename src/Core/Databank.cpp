@@ -61,8 +61,17 @@ void Databank::addFont(string _id, string _path)
 void Databank::removeFont(string* _id)
 {
 	//WORK check for valid id
-	//WORK unload Texture beforehand
-	fonts.erase(fonts.find(*_id));
+	for (auto i : fonts)
+	{
+		if (*(i.first) == *_id)
+		{
+			i.second->unload();
+			//WORK make sure all pointers to it are removed
+			fonts.erase(i.first);
+			break;
+		}
+	}
+	//WORK debug output
 }
 Font* Databank::getFont(string* _id)
 {
