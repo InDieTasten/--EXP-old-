@@ -4,11 +4,11 @@ Font::Font(string* _id, string _path)
 {
 	id = _id;
 	path = _path;
-	ug::log("A Font has been constructed");
+	ug::log("A Font has been constructed: " + *id);
 }
 Font::~Font()
 {
-	ug::log("A Font has been deconstructed");
+	ug::log("A Font has been deconstructed: " + *id);
 }
 sf::Font* Font::getFont()
 {
@@ -21,5 +21,17 @@ sf::Font* Font::getFont()
 	else {
 		load();
 		getFont();
+	}
+}
+void Font::load()
+{
+	if (data)
+	{
+		ug::log("Tried to load already loaded Font: " + *id);
+	}
+	else {
+		ug::log("Loading Font: " + *id);
+		data = new sf::Font();
+		data->loadFromFile(path);
 	}
 }
