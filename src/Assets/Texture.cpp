@@ -25,3 +25,15 @@ sf::Texture* Texture::getTexture()
 		getTexture();
 	}
 }
+void Texture::load()
+{
+	if (data)
+	{
+		ug::log("Tried to load already loaded Texture: " + *id);
+	}
+	else {
+		ug::log("Loading Texture: " + *id);
+		data = new sf::Texture();
+		data->loadFromFile(path);
+	}
+}
