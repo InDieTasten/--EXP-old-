@@ -16,7 +16,7 @@ sf::Texture* Texture::getTexture()
 {
 	if (data)
 	{
-		lastget.restart();
+		lastget = chrono::steady_clock::now();
 		ug::log("The Texture '" + *id + "' has been gotton");
 		return data;
 	}
