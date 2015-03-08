@@ -12,3 +12,4 @@ Video::~Video()
 		unload();
 	ug::log("A Video has been destructed: " + *id);
 }
+//WORK rest of video management
