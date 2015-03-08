@@ -100,35 +100,25 @@ Sound* Databank::getSound(string* _id)
 }
 void Databank::addMusic(string _id, string _path)
 {
-	//WORK check for id already existing
-	//WORK check for valid path
-	tracks.insert(pair<string, Music*>(_id, new Music(_path)));
+	//WORK
 }
 void Databank::removeMusic(string* _id)
 {
-	//WORK check for valid id
-	//WORK unload Texture beforehand
-	tracks.erase(tracks.find(*_id));
+	//WORK
 }
 Music* Databank::getMusic(string* _id)
 {
-	//WORK check for valid id
-	return tracks.find(*_id)->second;
+	//WORK
 }
 void Databank::addVideo(string _id, string _path)
 {
-	//WORK check for id already existing
-	//WORK check for valid path
-	sounds.insert(pair<string, Sound*>(_id, new Sound(_path)));
+	//WORK
 }
 void Databank::removeVideo(string* _id)
 {
-	//WORK check for valid id
-	//WORK unload Texture beforehand
-	videos.erase(videos.find(*_id));
+	//WORK
 }
 Video* Databank::getVideo(string* _id)
 {
-	//WORK check for valid id
-	return videos.find(*_id)->second;
+	//WORK
 }
