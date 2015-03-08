@@ -35,3 +35,15 @@ void Font::load()
 		data->loadFromFile(path);
 	}
 }
+void Font::unload()
+{
+	if (!data)
+	{
+		ug::log("Tried to unload already unloaded Font: " + *id);
+	}
+	else {
+		ug::log("Unloading Font: " + *id);
+		delete data;
+		data = nullptr;
+	}
+}
