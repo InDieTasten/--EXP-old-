@@ -17,8 +17,7 @@ public:
 	Video(string* _id, string _path);
 	~Video();
 
-	void load();
-	void unload();
+	//WORK rest of video management
 };
 
 #endif // !_Video_hpp_
