@@ -20,6 +20,7 @@ void Databank::addTexture(string _id, string _path)
 	//WORK check for valid path
 	string* index = new string(_id);
 	textures.insert(pair<string*, Texture*>(index, new Texture(index, _path)));
+	//WORK debug output
 }
 void Databank::removeTexture(string* _id)
 {
@@ -34,6 +35,7 @@ void Databank::removeTexture(string* _id)
 			break;
 		}
 	}
+	//WORK debug output
 }
 Texture* Databank::getTexture(string *_id)
 {
@@ -52,7 +54,9 @@ void Databank::addFont(string _id, string _path)
 {
 	//WORK check for id already existing
 	//WORK check for valid path
-	fonts.insert(pair<string, Font*>(_id, new Font(_path)));
+	string* index = new string(_id);
+	fonts.insert(pair<string*, Font*>(index, new Font(index, _path)));
+	//WORK debug output
 }
 void Databank::removeFont(string* _id)
 {
