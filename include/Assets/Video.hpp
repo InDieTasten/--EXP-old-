@@ -14,7 +14,7 @@ private:
 	int* data;
 
 public:
-	Video(string _path);
+	Video(string* _id, string _path);
 	~Video();
 
 	int* getVideo();
