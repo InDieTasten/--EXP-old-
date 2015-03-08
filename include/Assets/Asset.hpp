@@ -10,12 +10,11 @@ class Asset
 {
 protected:
 	string* id;
-	string* path;
-	sf::Clock* lastget;
+	string path;
+	sf::Clock lastget;
 
 public:
-	Asset();
-	Asset(string* _id, string* _path);
+	Asset(string* _id, string _path);
 	~Asset();
 };
 
