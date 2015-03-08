@@ -37,3 +37,15 @@ void Music::load()
 		data->openFromFile(path);
 	}
 }
+void Music::unload()
+{
+	if (!data)
+	{
+		ug::log("Tried to unload already unloaded Track: " + *id);
+	}
+	else {
+		ug::log("Unloading Track: " + *id);
+		delete data;
+		data = nullptr;
+	}
+}
