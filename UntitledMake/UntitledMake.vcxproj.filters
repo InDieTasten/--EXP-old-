@@ -9,195 +9,195 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Utilities">
-      <UniqueIdentifier>{787b3c1d-5c9b-44f3-913d-e6f6769abe7e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core">
-      <UniqueIdentifier>{f820f2cd-cf53-4ac6-9b0f-aa01276d9219}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Assets">
-      <UniqueIdentifier>{bbb9ff1f-a28a-47c0-9b38-a0d1d42a9586}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level">
-      <UniqueIdentifier>{728e7019-3a60-4f49-8486-e4b23d33159c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\Objects">
-      <UniqueIdentifier>{9e4538c5-2f70-4b78-ade8-6a5896dc9462}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\Collision">
-      <UniqueIdentifier>{ca60134f-8c2b-4b36-8908-9bbfc7baba9b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GUI">
       <UniqueIdentifier>{975bb2b0-31fa-4511-a49d-bbc447ab41ce}</UniqueIdentifier>
     </Filter>
     <Filter Include="Z stuff">
       <UniqueIdentifier>{ab043266-873a-4755-ba66-079a8d0b108c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="A Core">
+      <UniqueIdentifier>{f820f2cd-cf53-4ac6-9b0f-aa01276d9219}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="B Level">
+      <UniqueIdentifier>{728e7019-3a60-4f49-8486-e4b23d33159c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="B Level\Objects">
+      <UniqueIdentifier>{9e4538c5-2f70-4b78-ade8-6a5896dc9462}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="B Level\Collision">
+      <UniqueIdentifier>{ca60134f-8c2b-4b36-8908-9bbfc7baba9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C Assets">
+      <UniqueIdentifier>{bbb9ff1f-a28a-47c0-9b38-a0d1d42a9586}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="D Utilities">
+      <UniqueIdentifier>{787b3c1d-5c9b-44f3-913d-e6f6769abe7e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Utilities\Logger.cpp">
-      <Filter>Utilities</Filter>
+      <Filter>D Utilities</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Core\main.cpp">
-      <Filter>Core</Filter>
+      <Filter>A Core</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Core\Databank.cpp">
-      <Filter>Core</Filter>
+      <Filter>A Core</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Assets\Asset.cpp">
-      <Filter>Assets</Filter>
+      <Filter>C Assets</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Assets\Font.cpp">
-      <Filter>Assets</Filter>
+      <Filter>C Assets</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Assets\Music.cpp">
-      <Filter>Assets</Filter>
+      <Filter>C Assets</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Assets\Sound.cpp">
-      <Filter>Assets</Filter>
+      <Filter>C Assets</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Assets\Texture.cpp">
-      <Filter>Assets</Filter>
+      <Filter>C Assets</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Assets\Video.cpp">
-      <Filter>Assets</Filter>
+      <Filter>C Assets</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Core\EventThread.cpp">
-      <Filter>Core</Filter>
+      <Filter>A Core</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Core\GraphicsThread.cpp">
-      <Filter>Core</Filter>
+      <Filter>A Core</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Core\GravityThread.cpp">
-      <Filter>Core</Filter>
+      <Filter>A Core</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Core\GUIManager.cpp">
-      <Filter>Core</Filter>
+      <Filter>A Core</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Core\MovementThread.cpp">
-      <Filter>Core</Filter>
+      <Filter>A Core</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Core\ThreadManager.cpp">
-      <Filter>Core</Filter>
+      <Filter>A Core</Filter>
     </ClCompile>
     <ClCompile Include="..\src\GUI\Menu.cpp">
       <Filter>GUI</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Level\Vector.cpp">
-      <Filter>Level</Filter>
+      <Filter>B Level</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Level\SolarSystem.cpp">
-      <Filter>Level</Filter>
+      <Filter>B Level</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Level\PhysicalInstance.cpp">
-      <Filter>Level</Filter>
+      <Filter>B Level</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Level\Level.cpp">
-      <Filter>Level</Filter>
+      <Filter>B Level</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Level\Ship.cpp">
-      <Filter>Level\Objects</Filter>
+      <Filter>B Level\Objects</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Level\Planet.cpp">
-      <Filter>Level\Objects</Filter>
+      <Filter>B Level\Objects</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Level\Bullet.cpp">
-      <Filter>Level\Objects</Filter>
+      <Filter>B Level\Objects</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Level\Asteroid.cpp">
-      <Filter>Level\Objects</Filter>
+      <Filter>B Level\Objects</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Level\Debris.cpp">
-      <Filter>Level\Objects</Filter>
+      <Filter>B Level\Objects</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Level\Construction.cpp">
-      <Filter>Level\Objects</Filter>
+      <Filter>B Level\Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Utilities\Logger.hpp">
-      <Filter>Utilities</Filter>
+      <Filter>D Utilities</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Utilities\VERSION.hpp">
-      <Filter>Utilities</Filter>
+      <Filter>D Utilities</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Core\Databank.hpp">
-      <Filter>Core</Filter>
+      <Filter>A Core</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Assets\Texture.hpp">
-      <Filter>Assets</Filter>
+      <Filter>C Assets</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Assets\Font.hpp">
-      <Filter>Assets</Filter>
+      <Filter>C Assets</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Assets\Sound.hpp">
-      <Filter>Assets</Filter>
+      <Filter>C Assets</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Assets\Asset.hpp">
-      <Filter>Assets</Filter>
+      <Filter>C Assets</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Assets\Music.hpp">
-      <Filter>Assets</Filter>
+      <Filter>C Assets</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Assets\Video.hpp">
-      <Filter>Assets</Filter>
+      <Filter>C Assets</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Level\Level.hpp">
-      <Filter>Level</Filter>
+      <Filter>B Level</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Level\SolarSystem.hpp">
-      <Filter>Level</Filter>
+      <Filter>B Level</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Level\PhysicalInstance.hpp">
-      <Filter>Level</Filter>
+      <Filter>B Level</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Level\Vector.hpp">
-      <Filter>Level</Filter>
+      <Filter>B Level</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Core\ThreadManager.hpp">
-      <Filter>Core</Filter>
+      <Filter>A Core</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Level\Asteroid.hpp">
-      <Filter>Level\Objects</Filter>
+      <Filter>B Level\Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Level\Bullet.hpp">
-      <Filter>Level\Objects</Filter>
+      <Filter>B Level\Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Level\Construction.hpp">
-      <Filter>Level\Objects</Filter>
+      <Filter>B Level\Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Level\Debris.hpp">
-      <Filter>Level\Objects</Filter>
+      <Filter>B Level\Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Level\Planet.hpp">
-      <Filter>Level\Objects</Filter>
+      <Filter>B Level\Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Level\Ship.hpp">
-      <Filter>Level\Objects</Filter>
+      <Filter>B Level\Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Level\CollisionMesh.hpp">
-      <Filter>Level\Collision</Filter>
+      <Filter>B Level\Collision</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Level\Line.hpp">
-      <Filter>Level\Collision</Filter>
+      <Filter>B Level\Collision</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Level\Poly.hpp">
-      <Filter>Level\Collision</Filter>
+      <Filter>B Level\Collision</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Core\GraphicsThread.hpp">
-      <Filter>Core</Filter>
+      <Filter>A Core</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Core\GravityThread.hpp">
-      <Filter>Core</Filter>
+      <Filter>A Core</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Core\MovementThread.hpp">
-      <Filter>Core</Filter>
+      <Filter>A Core</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Core\GUIManager.hpp">
-      <Filter>Core</Filter>
+      <Filter>A Core</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Core\EventThread.hpp">
-      <Filter>Core</Filter>
+      <Filter>A Core</Filter>
     </ClInclude>
     <ClInclude Include="..\include\GUI\Menu.hpp">
       <Filter>GUI</Filter>
