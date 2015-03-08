@@ -4,7 +4,7 @@ Asset::Asset(string* _id, string _path)
 {
 	id = _id;
 	path = _path;
-	lastget.restart();
+	lastget = chrono::steady_clock::now();
 	ug::log("An asset has been constructed");
 }
 Asset::~Asset()
