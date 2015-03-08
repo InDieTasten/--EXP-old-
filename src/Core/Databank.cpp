@@ -29,7 +29,7 @@ void Databank::removeTexture(string* _id)
 	{
 		if (*(i.first) == *_id)
 		{
-			i.second->unload();
+			delete i.second;
 			//WORK make sure all pointers to it are removed
 			textures.erase(i.first);
 			break;
@@ -65,7 +65,7 @@ void Databank::removeFont(string* _id)
 	{
 		if (*(i.first) == *_id)
 		{
-			i.second->unload();
+			delete i.second;
 			//WORK make sure all pointers to it are removed
 			fonts.erase(i.first);
 			break;
