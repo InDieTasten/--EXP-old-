@@ -96,8 +96,7 @@ void Databank::removeSound(string* _id)
 }
 Sound* Databank::getSound(string* _id)
 {
-	//WORK check for valid id
-	return sounds.find(*_id)->second;
+	//WORK
 }
 void Databank::addMusic(string _id, string _path)
 {
