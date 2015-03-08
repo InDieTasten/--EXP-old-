@@ -12,7 +12,7 @@ private:
 	sf::SoundBuffer* data;
 
 public:
-	Sound(string _path);
+	Sound(string* _id, string _path);
 	~Sound();
 
 	sf::SoundBuffer* getSound();
