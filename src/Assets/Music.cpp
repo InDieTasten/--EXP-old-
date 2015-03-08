@@ -9,5 +9,5 @@ Music::~Music()
 {
 	if (data)
 		unload();
-	ug::log("A Track has been destructed")
+	ug::log("A Track has been destructed");
 }
