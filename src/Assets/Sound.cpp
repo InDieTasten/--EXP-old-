@@ -16,7 +16,7 @@ sf::SoundBuffer* Sound::getSound()
 {
 	if (data)
 	{
-		lastget.restart();
+		lastget = chrono::steady_clock::now();
 		ug::log("The Sound '" + *id + "' has been gotton");
 		return data;
 	}
