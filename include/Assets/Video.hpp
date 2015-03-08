@@ -17,7 +17,6 @@ public:
 	Video(string* _id, string _path);
 	~Video();
 
-	int* getVideo();
 	void load();
 	void unload();
 };
