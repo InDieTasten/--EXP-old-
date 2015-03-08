@@ -2,6 +2,7 @@
 #define _Sound_hpp_
 
 #include <Assets/Asset.hpp>
+#include <SFML\Audio.hpp>
 
 using namespace std;
 extern void ug::log(std::string);
