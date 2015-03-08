@@ -76,7 +76,15 @@ void Databank::removeFont(string* _id)
 Font* Databank::getFont(string* _id)
 {
 	//WORK check for valid id
-	return fonts.find(*_id)->second;
+	for (auto i : fonts)
+	{
+		if (*(i.first) == *_id)
+		{
+			return i.second;
+		}
+	}
+	return getFont(new string("missing"));
+	//WORK debug output
 }
 void Databank::addSound(string _id, string _path)
 {
