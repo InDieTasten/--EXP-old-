@@ -12,3 +12,16 @@ Sound::~Sound()
 		unload();
 	ug::log("A Sound has been destructed: " + *id);
 }
+sf::SoundBuffer* Sound::getSound()
+{
+	if (data)
+	{
+		lastget.restart();
+		ug::log("The Sound '" + *id + "' has been gotton");
+		return data;
+	}
+	else {
+		load();
+		getSound();
+	}
+}
