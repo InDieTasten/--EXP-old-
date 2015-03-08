@@ -25,3 +25,15 @@ sf::SoundBuffer* Sound::getSound()
 		getSound();
 	}
 }
+void Sound::load()
+{
+	if (data)
+	{
+		ug::log("Tried to load already loaded Sound: " + *id);
+	}
+	else {
+		ug::log("Loading Sound: " + *id);
+		data = new sf::SoundBuffer();
+		data->loadFromFile(path);
+	}
+}
