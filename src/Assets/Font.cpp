@@ -16,7 +16,7 @@ sf::Font* Font::getFont()
 {
 	if (data)
 	{
-		lastget.restart();
+		lastget = chrono::steady_clock::now();
 		ug::log("The Font '" + *id + "' has been gotton");
 		return data;
 	}
