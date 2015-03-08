@@ -6,3 +6,9 @@ Texture::Texture(string* _id, string _path)
 	path = _path;
 	ug::log("A Texture has been constructed: " + *id);
 }
+Texture::~Texture()
+{
+	if (data)
+		unload();
+	ug::log("A Texture has been destructed: " + *id);
+}
