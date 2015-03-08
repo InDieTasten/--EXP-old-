@@ -64,6 +64,7 @@
     <ClCompile Include="..\src\Assets\Music.cpp" />
     <ClCompile Include="..\src\Assets\Sound.cpp" />
     <ClCompile Include="..\src\Assets\Texture.cpp" />
+    <ClCompile Include="..\src\Assets\Video.cpp" />
     <ClCompile Include="..\src\Core\Databank.cpp" />
     <ClCompile Include="..\src\Core\main.cpp" />
     <ClCompile Include="..\src\Utilities\Logger.cpp" />
