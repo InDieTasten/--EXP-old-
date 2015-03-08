@@ -10,7 +10,7 @@ Font::~Font()
 {
 	if (data)
 		unload();
-	ug::log("A Font has been deconstructed: " + *id);
+	ug::log("A Font has been destructed: " + *id);
 }
 sf::Font* Font::getFont()
 {
