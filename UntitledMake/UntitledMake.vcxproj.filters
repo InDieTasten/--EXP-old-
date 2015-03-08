@@ -1,8 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Text Include="makefile" />
-    <Text Include="..\UntitledGame\Error-Codes.txt" />
+    <Text Include="makefile">
+      <Filter>Z stuff</Filter>
+    </Text>
+    <Text Include="..\UntitledGame\Error-Codes.txt">
+      <Filter>Z stuff</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Utilities">
@@ -25,6 +29,9 @@
     </Filter>
     <Filter Include="GUI">
       <UniqueIdentifier>{975bb2b0-31fa-4511-a49d-bbc447ab41ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Z stuff">
+      <UniqueIdentifier>{ab043266-873a-4755-ba66-079a8d0b108c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +153,8 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram.cd">
+      <Filter>Z stuff</Filter>
+    </None>
   </ItemGroup>
 </Project>
