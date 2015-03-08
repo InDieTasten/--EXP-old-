@@ -23,11 +23,11 @@ extern void ug::log(std::string);
 class Databank
 {
 private:
-	map<string, Texture*> textures;
-	map<string, Font*> fonts;
-	map<string, Sound*> sounds;
-	map<string, Music*> tracks;
-	map<string, Video*> videos;
+	map<string*, Texture*> textures;
+	map<string*, Font*> fonts;
+	map<string*, Sound*> sounds;
+	map<string*, Music*> tracks;
+	map<string*, Video*> videos;
 
 	sf::RenderWindow* renderWindow;
 	Level level;
@@ -39,19 +39,19 @@ public:
 
 	void addTexture(string _id, string _path);
 	void removeTexture(string* _id);
-	sf::Texture* getTexture(string* _id);
+	Texture* getTexture(string* _id);
 
 	void addFont(string _id, string _path);
 	void removeFont(string* _id);
-	sf::Font* getFont(string* _id);
+	Font* getFont(string* _id);
 
 	void addSound(string _id, string _path);
 	void removeSound(string* _id);
-	sf::SoundBuffer* getSound(string* _id);
+	Sound* getSound(string* _id);
 
 	void addMusic(string _id, string _path);
 	void removeMusic(string* _id);
-	sf::Music* getMusic(string* _id);
+	Music* getMusic(string* _id);
 
 	void addVideo(string _id, string _path);
 	void removeVideo(string* _id);
