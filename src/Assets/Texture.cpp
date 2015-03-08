@@ -12,3 +12,16 @@ Texture::~Texture()
 		unload();
 	ug::log("A Texture has been destructed: " + *id);
 }
+sf::Texture* Texture::getTexture()
+{
+	if (data)
+	{
+		lastget.restart();
+		ug::log("The Texture '" + *id + "' has been gotton");
+		return data;
+	}
+	else {
+		load();
+		getTexture();
+	}
+}
