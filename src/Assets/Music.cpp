@@ -12,3 +12,16 @@ Music::~Music()
 		unload();
 	ug::log("A Track has been destructed: " + *id);
 }
+sf::Music* Music::getMusic()
+{
+	if (data)
+	{
+		lastget.restart();
+		ug::log("The Track '" + *id + "' has been gotton");
+		return data;
+	}
+	else {
+		load();
+		getMusic();
+	}
+}
