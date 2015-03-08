@@ -46,6 +46,9 @@
     <ClCompile Include="..\src\Assets\Music.cpp">
       <Filter>Assets</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Assets\Sound.cpp">
+      <Filter>Assets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Utilities\Logger.hpp">
