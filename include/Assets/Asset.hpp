@@ -4,6 +4,7 @@
 #include <Utilities\Logger.hpp>
 #include <string>
 #include <SFML\System.hpp>
+#include <chrono>
 
 using namespace std;
 extern void ug::log(std::string);
@@ -13,7 +14,7 @@ class Asset
 protected:
 	string* id;
 	string path;
-	sf::Clock lastget;
+	chrono::steady_clock::time_point lastget;
 
 public:
 	Asset();
