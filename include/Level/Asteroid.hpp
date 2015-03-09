@@ -1,6 +1,7 @@
 #ifndef _Asteroid_hpp_
 #define _Asteroid_hpp_
 
+#include <Utilities\Logger.hpp>
 #include <string>
 #include <Level\PhysicalInstance.hpp>
 
