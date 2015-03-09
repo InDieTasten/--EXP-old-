@@ -1,6 +1,7 @@
 #ifndef _Music_hpp_
 #define _Music_hpp_
 
+#include <Utilities\Logger.hpp>
 #include <Assets\Asset.hpp>
 #include <SFML\Audio.hpp>
 
