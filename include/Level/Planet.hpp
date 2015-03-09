@@ -1,7 +1,7 @@
 #ifndef _Planet_hpp_
 #define _Planet_hpp_
 
-
+#include <Utilities\Logger.hpp>
 #include <string>
 #include <Level\PhysicalInstance.hpp>
 
