@@ -1,6 +1,7 @@
 #ifndef _GraphicsThread_hpp_
 #define _GraphicsThread_hpp_
 
+#include <Utilities\Logger.hpp>
 #include <thread>
 
 class ThreadManager;
