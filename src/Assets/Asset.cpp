@@ -1,5 +1,9 @@
 #include <Assets\Asset.hpp>
 
+Asset::Asset()
+{
+
+}
 Asset::Asset(string* _id, string _path)
 {
 	id = _id;
