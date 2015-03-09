@@ -1,6 +1,7 @@
 #ifndef _Construction_hpp_
 #define _Construction_hpp_
 
+#include <Utilities\Logger.hpp>
 #include <Level\PhysicalInstance.hpp>
 
 class SolarSystem;
