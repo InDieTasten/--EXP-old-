@@ -1,6 +1,7 @@
 #ifndef _Font_hpp_
 #define _Font_hpp_
 
+#include <Utilities\Logger.hpp>
 #include <Assets\Asset.hpp>
 #include <string>
 #include <SFML\Graphics.hpp>
