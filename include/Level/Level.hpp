@@ -1,6 +1,7 @@
 #ifndef _Level_hpp_
 #define _Level_hpp_
 
+#include <Utilities\Logger.hpp>
 #include <map>
 #include <Level\SolarSystem.hpp>
 #include <string>
