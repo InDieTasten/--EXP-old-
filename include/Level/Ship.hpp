@@ -1,6 +1,7 @@
 #ifndef _Ship_hpp_
 #define _Ship_hpp_
 
+#include <Utilities\Logger.hpp>
 #include <Level\PhysicalInstance.hpp>
 
 using namespace std;
