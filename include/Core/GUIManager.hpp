@@ -1,6 +1,7 @@
 #ifndef _GUIManager_hpp_
 #define _GUIManager_hpp_
 
+#include <Utilities\Logger.hpp>
 #include <GUI\Menu.hpp>
 
 using namespace std;
