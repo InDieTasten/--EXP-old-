@@ -4,11 +4,16 @@ OUTPUT = ..\..\UG_content\UG.exe
 COMPILER = "C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe"
 #COMPILER = "C:\Program Files\CodeBlocks\MinGW\bin\mingw32-g++.exe"
 
-SWITCHES = \
+CSWITCHES = \
 	-fexceptions \
 	-O3 \
 	-std=c++11 \
-	-m32
+	-m32 \
+	-flto
+
+LSWITCHES = \
+	-m32 \
+	-flto
 
 INCLUDES = \
 	-I..\..\UG_lua\include \
@@ -16,12 +21,12 @@ INCLUDES = \
 	-I..\..\UG_libavc\include \
 	-I..\include
 
-LIBRARIES = \
+LIBPATH = \
 	-L..\..\UG_lua\src\Lua5.2.3\bin\Release \
 	-L..\..\UG_sfml\lib \
 	-L..\..\UG_libavc\lib
 
-MORESWITCHES = \
+LIBRARIES = \
 	-lsfml-audio \
 	-lsfml-network \
 	-lsfml-graphics \
@@ -68,7 +73,7 @@ rebuild: clean build
 
 build: $(OBJECTS)
 	chdir
-	$(COMPILER) -m32 $(LIBRARIES) -o $(OUTPUT) $(OBJECTS)   $(MORESWITCHES)
+	$(COMPILER) $(LSWITCHES) $(LIBPATH) -o $(OUTPUT) $(OBJECTS)   $(LIBRARIES)
 
 clean:
 	chdir
@@ -77,5 +82,5 @@ clean:
 	echo "Clean complete"
 
 $(OBJECTS): $(SOURCEDIR)$(@R).cpp
-	$(COMPILER) $(SWITCHES) $(INCLUDES) -c $(@R).cpp -o $(@R).o
+	$(COMPILER) $(CSWITCHES) $(INCLUDES) -c $(@R).cpp -o $(@R).o
 	
