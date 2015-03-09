@@ -1,6 +1,7 @@
 #ifndef _Line_hpp_
 #define _Line_hpp_
 
+#include <Utilities\Logger.hpp>
 #include <Level\Vector.hpp>
 
 using namespace std;
