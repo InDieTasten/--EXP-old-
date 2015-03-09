@@ -1,6 +1,8 @@
 #ifndef _Vector_hpp_
 #define _Vector_hpp_
 
+#include <Utilities\Logger.hpp>
+
 using namespace std;
 extern void ug::log(std::string);
 
