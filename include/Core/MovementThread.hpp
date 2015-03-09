@@ -1,6 +1,9 @@
 #ifndef _MovementThread_hpp_
 #define _MovementThread_hpp_
 
+#include <Utilities\Logger.hpp>
+#include <thread>
+
 class ThreadManager;
 
 using namespace std;
