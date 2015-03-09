@@ -1,6 +1,7 @@
 #ifndef _Debris_hpp_
 #define _Debris_hpp_
 
+#include <Utilities\Logger.hpp>
 #include <string>
 #include <Level\PhysicalInstance.hpp>
 
