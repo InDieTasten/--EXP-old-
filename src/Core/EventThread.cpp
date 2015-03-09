@@ -16,7 +16,7 @@ void EventThread::run()
 	{
 
 		//consumed time:
-		this_thread::sleep_for(chrono::steady_clock::now() - last - looptime);
+		this_thread::sleep_for(looptime - (chrono::steady_clock::now() - last));
 		last = chrono::steady_clock::now();
 
 
