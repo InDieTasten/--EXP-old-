@@ -1,6 +1,7 @@
 #ifndef _Menu_hpp_
 #define _Menu_hpp_
 
+#include <Utilities\Logger.hpp>
 #include <list>
 #include <SFML\Graphics.hpp>
 
