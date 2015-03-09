@@ -113,6 +113,15 @@
     <ClCompile Include="..\src\Level\Construction.cpp">
       <Filter>B Level\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Level\CollisionMesh.cpp">
+      <Filter>B Level\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Level\Line.cpp">
+      <Filter>B Level\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Level\Poly.cpp">
+      <Filter>B Level\Collision</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Utilities\Logger.hpp">
@@ -196,11 +205,11 @@
     <ClInclude Include="..\include\Core\GUIManager.hpp">
       <Filter>A Core</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\Core\EventThread.hpp">
-      <Filter>A Core</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\GUI\Menu.hpp">
       <Filter>D GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\EventThread.hpp">
+      <Filter>A Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
