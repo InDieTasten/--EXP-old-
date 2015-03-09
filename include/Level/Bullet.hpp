@@ -1,6 +1,7 @@
 #ifndef _Bullet_hpp_
 #define _Bullet_hpp_
 
+#include <Utilities\Logger.hpp>
 #include <string>
 #include <Level\PhysicalInstance.hpp>
 
