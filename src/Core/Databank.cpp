@@ -122,3 +122,7 @@ Video* Databank::getVideo(string* _id)
 {
 	//WORK
 }
+void Databank::injectEventThread(EventThread* _thread)
+{
+	//pass it through to the level, which can pass it to the systems, which can pass it to the threadmangers
+}
