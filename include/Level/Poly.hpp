@@ -1,6 +1,7 @@
 #ifndef _Poly_hpp_
 #define _Poly_hpp_
 
+#include <Utilities\Logger.hpp>
 #include <list>
 #include <Level\Line.hpp>
 
