@@ -1,13 +1,14 @@
 
 OUTPUT = ..\..\UG_content\UG.exe
 
-COMPILER = "C:\Program Files (x86)\CodeBlocks\MinGW\bin\mingw32-g++.exe"
+COMPILER = "C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe"
 #COMPILER = "C:\Program Files\CodeBlocks\MinGW\bin\mingw32-g++.exe"
 
 SWITCHES = \
 	-fexceptions \
 	-O3 \
-	-std=c++11
+	-std=c++11 \
+	-m32
 
 INCLUDES = \
 	-I..\..\UG_lua\include \
@@ -37,6 +38,7 @@ OBJECTS = \
 	..\src\Core\Databank.o \
 	..\src\Core\GUIManager.o \
 	..\src\Core\ThreadManager.o \
+	..\src\Core\EventThread.o \
 	..\src\Core\GravityThread.o \
 	..\src\Core\MovementThread.o \
 	..\src\Core\GraphicsThread.o \
@@ -66,7 +68,7 @@ rebuild: clean build
 
 build: $(OBJECTS)
 	chdir
-	$(COMPILER) $(LIBRARIES) -o $(OUTPUT) $(OBJECTS)   $(MORESWITCHES)
+	$(COMPILER) -m32 $(LIBRARIES) -o $(OUTPUT) $(OBJECTS)   $(MORESWITCHES)
 
 clean:
 	chdir
