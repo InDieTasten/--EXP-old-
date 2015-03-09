@@ -1,6 +1,7 @@
 #ifndef _Video_hpp_
 #define _Video_hpp_
 
+#include <Utilities\Logger.hpp>
 #include <Assets\Asset.hpp>
 
 #include <list>
