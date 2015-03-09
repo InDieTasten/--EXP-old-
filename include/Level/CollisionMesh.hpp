@@ -1,6 +1,7 @@
 #ifndef _CollisionMesh_hpp_
 #define _CollisionMesh_hpp_
 
+#include <Utilities\Logger.hpp>
 #include <list>
 #include <Level\Vector.hpp>
 #include <Level\Line.hpp>
