@@ -1,6 +1,7 @@
 #ifndef _PhysicalInstance_hpp_
 #define _PhysicalInstance_hpp_
 
+#include <Utilities\Logger.hpp>
 #include <Level\Vector.hpp>
 #include <SFML\System.hpp>
 #include <Level\CollisionMesh.hpp>
