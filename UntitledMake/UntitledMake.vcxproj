@@ -76,11 +76,14 @@
     <ClCompile Include="..\src\GUI\Menu.cpp" />
     <ClCompile Include="..\src\Level\Asteroid.cpp" />
     <ClCompile Include="..\src\Level\Bullet.cpp" />
+    <ClCompile Include="..\src\Level\CollisionMesh.cpp" />
     <ClCompile Include="..\src\Level\Construction.cpp" />
     <ClCompile Include="..\src\Level\Debris.cpp" />
     <ClCompile Include="..\src\Level\Level.cpp" />
+    <ClCompile Include="..\src\Level\Line.cpp" />
     <ClCompile Include="..\src\Level\PhysicalInstance.cpp" />
     <ClCompile Include="..\src\Level\Planet.cpp" />
+    <ClCompile Include="..\src\Level\Poly.cpp" />
     <ClCompile Include="..\src\Level\Ship.cpp" />
     <ClCompile Include="..\src\Level\SolarSystem.cpp" />
     <ClCompile Include="..\src\Level\Vector.cpp" />
