@@ -6,6 +6,7 @@
 #include <SFML\System.hpp>
 #include <SFML\Graphics.hpp>
 
+#include <Core\EventThread.hpp>
 #include <Core\Databank.hpp>
 
 extern void ug::log(std::string);
