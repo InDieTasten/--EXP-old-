@@ -1,6 +1,7 @@
 #ifndef _Texture_hpp_
 #define _Texture_hpp_
 
+#include <Utilities\Logger.hpp>
 #include <Assets\Asset.hpp>
 #include <string>
 #include <SFML\Graphics.hpp>
