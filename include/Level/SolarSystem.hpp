@@ -3,6 +3,7 @@
 
 #include <Utilities\Logger.hpp>
 #include <list>
+#include <string>
 #include <Level\Planet.hpp>
 #include <Level\Bullet.hpp>
 #include <Level\Construction.hpp>
@@ -19,6 +20,8 @@ extern void ug::log(std::string);
 class SolarSystem
 {
 private:
+	string ID;
+
 	Level* parent;
 
 	list< Planet* >* planets;
@@ -33,6 +36,8 @@ private:
 public:
 	SolarSystem();
 	~SolarSystem();
+
+	string* getID();
 };
 
 #endif // !_SolarSystem_hpp_
