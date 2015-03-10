@@ -6,6 +6,7 @@ ThreadManager::ThreadManager(SolarSystem* _parent, EventThread* _main)
 	parent = _parent;
 	eventThread = _main;
 	ug::log("ThreadManager has been constructed: " + *_parent->getID());
+	looptime = chrono::milliseconds(1000 / 100);
 }
 ThreadManager::~ThreadManager()
 {
@@ -24,4 +25,14 @@ void ThreadManager::launch()
 void ThreadManager::terminate()
 {
 	running = false;
+}
+void ThreadManager::run()
+{
+	chrono::steady_clock::time_point last = chrono::steady_clock::now();
+	while (running)
+	{
+		//Thread throttle
+		this_thread::sleep_for(looptime - (chrono::steady_clock::now() - last));
+		last = chrono::steady_clock::now();
+	}
 }
