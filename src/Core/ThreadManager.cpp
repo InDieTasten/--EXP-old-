@@ -10,9 +10,9 @@ ThreadManager::ThreadManager(SolarSystem* _parent, EventThread* _main)
 ThreadManager::~ThreadManager()
 {
 	string tmp = *parent->getID();
-	//Tell SolarSystem
+	//WORK Tell SolarSystem
 	parent = nullptr;
-	//Tell EventThread
+	//WORK Tell EventThread
 	eventThread = nullptr;
 	ug::log("ThreadManager has been destructed: " + tmp);
 }
