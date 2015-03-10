@@ -19,7 +19,7 @@ ThreadManager::~ThreadManager()
 }
 void ThreadManager::launch()
 {
-	me = thread(&run);
+	me = thread(&ThreadManager::run, this);
 	running = true;
 }
 void ThreadManager::terminate()
