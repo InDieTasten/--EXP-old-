@@ -18,9 +18,9 @@ class ThreadManager
 {
 	SolarSystem* parent;
 	EventThread* eventThread;
-	GravityThread* gravThread;
+	GravityThread gravThread;
 	list<MovementThread> moveThreads;
-	GraphicsThread graphThread;
+	GraphicsThread* graphThread;
 
 	thread me;
 	chrono::milliseconds looptime;
