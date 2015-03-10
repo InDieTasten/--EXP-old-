@@ -2,7 +2,7 @@
 #define _Level_hpp_
 
 #include <Utilities\Logger.hpp>
-#include <map>
+#include <unordered_map>
 #include <Level\SolarSystem.hpp>
 #include <string>
 
@@ -12,7 +12,7 @@ extern void ug::log(std::string);
 class Level
 {
 private:
-	map<string*, SolarSystem*>* sytems;
+	unordered_map<string*, SolarSystem*>* sytems;
 	SolarSystem* currentSystem;
 
 public:
