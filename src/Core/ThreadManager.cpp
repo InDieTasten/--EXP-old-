@@ -16,3 +16,7 @@ ThreadManager::~ThreadManager()
 	eventThread = nullptr;
 	ug::log("ThreadManager has been destructed: " + tmp);
 }
+void ThreadManager::launch()
+{
+	me = thread(&run);
+}
