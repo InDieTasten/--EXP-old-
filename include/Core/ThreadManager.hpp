@@ -22,6 +22,7 @@ class ThreadManager
 	GraphicsThread graphThread;
 	thread me;
 	bool running;
+
 	void run();
 
 public:
