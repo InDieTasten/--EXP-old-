@@ -7,6 +7,7 @@ ThreadManager::ThreadManager(SolarSystem* _parent, EventThread* _main)
 	eventThread = _main;
 	ug::log("ThreadManager has been constructed: " + *_parent->getID());
 	looptime = chrono::milliseconds(1000 / 100);
+	graphThread = new GraphicsThread();
 }
 ThreadManager::~ThreadManager()
 {
@@ -15,6 +16,8 @@ ThreadManager::~ThreadManager()
 	parent = nullptr;
 	//WORK Tell EventThread
 	eventThread = nullptr;
+	delete graphThread;
+	graphThread = nullptr;
 	ug::log("ThreadManager has been destructed: " + tmp);
 }
 void ThreadManager::launch()
@@ -34,5 +37,13 @@ void ThreadManager::run()
 		//Thread throttle
 		this_thread::sleep_for(looptime - (chrono::steady_clock::now() - last));
 		last = chrono::steady_clock::now();
+
+		//Movement(always)
+
+		//Gravity(on demand)
+
+		//Modding(on demand)
+
+		//Transfer/Import/Removal/Balancing(on demand)
 	}
 }
