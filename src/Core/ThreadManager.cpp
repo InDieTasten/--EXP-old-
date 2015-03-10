@@ -19,4 +19,5 @@ ThreadManager::~ThreadManager()
 void ThreadManager::launch()
 {
 	me = thread(&run);
+	running = true;
 }
