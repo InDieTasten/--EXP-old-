@@ -21,6 +21,7 @@ class ThreadManager
 	list<MovementThread> moveThreads;
 	GraphicsThread graphThread;
 	thread me;
+	bool running;
 	void run();
 
 public:
