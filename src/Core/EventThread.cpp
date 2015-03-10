@@ -14,8 +14,7 @@ void EventThread::run()
 	chrono::steady_clock::time_point last = chrono::steady_clock::now();
 	while (app->isOpen())
 	{
-
-		//consumed time:
+		//thread throttle
 		this_thread::sleep_for(looptime - (chrono::steady_clock::now() - last));
 		last = chrono::steady_clock::now();
 
