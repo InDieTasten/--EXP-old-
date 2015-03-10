@@ -7,6 +7,7 @@
 #include <list>
 #include <Core\GraphicsThread.hpp>
 #include <thread>
+#include <chrono>
 
 using namespace std;
 extern void ug::log(std::string);
@@ -17,10 +18,12 @@ class ThreadManager
 {
 	SolarSystem* parent;
 	EventThread* eventThread;
-	GravityThread gravThread;
+	GravityThread* gravThread;
 	list<MovementThread> moveThreads;
 	GraphicsThread graphThread;
+
 	thread me;
+	chrono::milliseconds looptime;
 	bool running;
 
 	void run();
