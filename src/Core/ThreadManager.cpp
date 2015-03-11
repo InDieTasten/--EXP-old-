@@ -46,3 +46,7 @@ void ThreadManager::run()
 		//Transfer/Import/Removal/Balancing(on demand)
 	}
 }
+SolarSystem* ThreadManager::getParent()
+{
+	return parent;
+}
