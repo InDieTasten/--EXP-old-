@@ -21,7 +21,7 @@ extern "C" {
 
 int main(int argc, char *argv[])
 {
-	ug::log("Game is launching");
+	ug::log("Game is launching in version: " + VERSION::version);
 	sf::RenderWindow App(sf::VideoMode(1280, 720, 32), VERSION::name + " " + VERSION::version, sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
 	
 	EventThread eventThread(&App);
@@ -29,6 +29,7 @@ int main(int argc, char *argv[])
 	Databank* databank = new Databank(&App, &eventThread);
 
 	databank->getLevel()->addSystem(new string("flubb"));
+	databank->getLevel()->removeSystem(new string("flubb"));
 
 	eventThread.run();
 
