@@ -4,6 +4,7 @@ Level::Level(Databank* _parent)
 {
 	//pointer
 	parent = _parent;
+	currentSystem = nullptr;
 
 	//default level
 
