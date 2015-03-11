@@ -21,16 +21,16 @@ class Level;
 class SolarSystem
 {
 private:
-	string ID;
+	string* ID;
 
 	Level* parent;
 
-	list< Planet* >* planets;
-	list< Bullet*>* bullets;
-	list< Construction*>* constructs;
-	list< Ship*>* ships;
-	list< Asteroid*>* asteroids;
-	list< Debris*>* debris;
+	list< Planet* > planets;
+	list< Bullet*> bullets;
+	list< Construction*> constructs;
+	list< Ship*> ships;
+	list< Asteroid*> asteroids;
+	list< Debris*> debris;
 
 	ThreadManager* threadManager;
 
