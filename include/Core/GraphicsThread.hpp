@@ -17,7 +17,7 @@ private:
 	void run();
 
 public:
-	GraphicsThread();
+	GraphicsThread(ThreadManager* _parent);
 	~GraphicsThread();
 
 	void launch();
