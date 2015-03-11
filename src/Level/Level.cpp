@@ -28,3 +28,15 @@ SolarSystem* Level::getSystem()
 		return currentSystem;
 	}
 }
+SolarSystem* Level::getSystem(string _id)
+{
+	for (auto it : systems)
+	{
+		if (*it.second->getID() == _id)
+		{
+			return it.second;
+		}
+	}
+	ug::log("[Warning] Level::getSystem(string _id) has to return a nullpointer");
+	return nullptr;
+}
