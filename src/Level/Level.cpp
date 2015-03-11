@@ -17,3 +17,14 @@ Level::~Level()
 	parent = nullptr;
 	ug::log("A level has been destructed");
 }
+SolarSystem* Level::getSystem()
+{
+	if (currentSystem)
+	{
+		return currentSystem;
+	}
+	else {
+		ug::log("[Warning] Level::getSystem() has to return a nullpointer");
+		return currentSystem;
+	}
+}
