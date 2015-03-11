@@ -15,16 +15,16 @@ SolarSystem::SolarSystem(Level* _parent, string* _id)
 }
 SolarSystem::~SolarSystem()
 {
+	//member
+	delete threadManager;
+	threadManager = nullptr;
+
 	//pointer
 	string* tmp = ID;
 	ID = nullptr;
 	parent = nullptr;
 
-	//member
-	delete threadManager;
-	threadManager = nullptr;
-
-	ug::log("A system has been destructed: " + *tmp);
+	//ug::log("A system has been destructed: " + *tmp);
 }
 string* SolarSystem::getID()
 {
