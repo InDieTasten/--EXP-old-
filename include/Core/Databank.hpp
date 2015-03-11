@@ -39,6 +39,7 @@ public:
 	~Databank();
 
 	EventThread* getEventThread();
+	Level* getLevel();
 
 	void addTexture(string _id, string _path);
 	void removeTexture(string* _id);
