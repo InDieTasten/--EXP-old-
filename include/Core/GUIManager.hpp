@@ -15,7 +15,7 @@ private:
 	Databank* parent;
 	map<string, Menu*> menus;
 public:
-	GUIManager();
+	GUIManager(Databank* _parent);
 	~GUIManager();
 };
 
