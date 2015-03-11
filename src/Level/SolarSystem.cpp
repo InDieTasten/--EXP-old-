@@ -24,3 +24,7 @@ SolarSystem::~SolarSystem()
 
 	ug::log("A system has been destructed: " + *tmp);
 }
+string* SolarSystem::getID()
+{
+	return ID;
+}
