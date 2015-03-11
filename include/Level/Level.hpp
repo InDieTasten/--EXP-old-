@@ -24,6 +24,7 @@ public:
 
 	SolarSystem* getSystem();
 	SolarSystem* getSystem(string _id);
+	Databank* getParent();
 
 	void addSystem(string* _id);
 	void removeSystem(string* _id);
