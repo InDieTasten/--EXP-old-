@@ -40,3 +40,13 @@ SolarSystem* Level::getSystem(string _id)
 	ug::log("[Warning] Level::getSystem(string _id) has to return a nullpointer");
 	return nullptr;
 }
+void Level::addSystem(string* _id)
+{
+	if (getSystem(*_id))
+	{
+		ug::log("[Warning] Level::addSystem aborts routine of already allocated id: " + *_id);
+	}
+	string* tmp = new string(*_id);
+	systems.insert(pair<string*, SolarSystem*>(tmp, new SolarSystem(this, tmp)));
+	ug::log("Level resgistered new System: " + *_id);
+}
