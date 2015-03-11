@@ -17,8 +17,10 @@ private:
 	void run();
 
 public:
-	GravityThread();
+	GravityThread(ThreadManager* _parent);
 	~GravityThread();
+
+	ThreadManager* getParent();
 
 	void launch();
 	void terminate();
