@@ -12,10 +12,11 @@
 #include <Level\Debris.hpp>
 #include <Core\ThreadManager.hpp>
 
-class Level;
 
 using namespace std;
 extern void ug::log(std::string);
+
+class Level;
 
 class SolarSystem
 {
@@ -34,7 +35,7 @@ private:
 	ThreadManager* threadManager;
 
 public:
-	SolarSystem();
+	SolarSystem(Level* _parent, string* _id);
 	~SolarSystem();
 
 	string* getID();
