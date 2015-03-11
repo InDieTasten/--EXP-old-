@@ -28,6 +28,8 @@ int main(int argc, char *argv[])
 
 	Databank* databank = new Databank(&App, &eventThread);
 
+	databank->getLevel()->addSystem(new string("flubb"));
+
 	eventThread.run();
 
 	ug::log("Game quit!");
