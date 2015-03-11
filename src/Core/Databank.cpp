@@ -5,14 +5,20 @@ Databank::Databank(sf::RenderWindow* _window)
 	//pointer
 	renderWindow = _window;
 
-	//WORK set parents of level and guiManager
+	//member
+	level = new Level(this);
+	guiManager = new GUIManager(this);
 }
 Databank::~Databank()
 {
 	//pointer
 	renderWindow = nullptr;
 
-	//WORK unset parents of level and guiManager
+	//member
+	delete level;
+	level = nullptr;
+	delete guiManager;
+	guiManager = nullptr;
 }
 void Databank::addTexture(string _id, string _path)
 {
