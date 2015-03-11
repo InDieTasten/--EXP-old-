@@ -61,3 +61,7 @@ void Level::removeSystem(string* _id)
 		ug::log("[Warning] Couldn't find system to remove: " + *_id);
 	}
 }
+Databank* Level::getParent()
+{
+	return parent;
+}
