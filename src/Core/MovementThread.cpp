@@ -9,3 +9,11 @@ MovementThread::MovementThread(ThreadManager* _parent)
 
 	ug::log("A MovementThread has been constructed: " + *parent->getParent()->getID());
 }
+MovementThread::~MovementThread()
+{
+	//pointer
+	ThreadManager* tmp = parent;
+	parent = nullptr;
+
+	ug::log("A MovementThread has been destructed: " + *tmp->getParent()->getID());
+}
