@@ -9,6 +9,8 @@
 using namespace std;
 extern void ug::log(std::string);
 
+class Databank;
+
 class Level
 {
 private:
