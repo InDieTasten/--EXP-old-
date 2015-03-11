@@ -1,4 +1,6 @@
 #include <Level\SolarSystem.hpp>
+#include <Level\Level.hpp>
+#include <Core\Databank.hpp>
 
 SolarSystem::SolarSystem(Level* _parent, string* _id)
 {
@@ -7,7 +9,7 @@ SolarSystem::SolarSystem(Level* _parent, string* _id)
 	parent = _parent;
 
 	//member
-	threadManager = new ThreadManager(this);
+	threadManager = new ThreadManager(this, parent->getParent()->getEventThread());
 
 	ug::log("A system has been constructed: " + *_id);
 }
