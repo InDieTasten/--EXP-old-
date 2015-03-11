@@ -1,10 +1,10 @@
 #include <Core\ThreadManager.hpp>
 #include <Level\SolarSystem.hpp>
 
-ThreadManager::ThreadManager(SolarSystem* _parent)
+ThreadManager::ThreadManager(SolarSystem* _parent, EventThread* _main)
 {
 	parent = _parent;
-	eventThread = nullptr;
+	eventThread = _main;
 	ug::log("ThreadManager has been constructed: " + *_parent->getID());
 	looptime = chrono::milliseconds(1000 / 100);
 	graphThread = new GraphicsThread();
@@ -39,9 +39,8 @@ void ThreadManager::run()
 		last = chrono::steady_clock::now();
 
 		//Movement(always)
-
+		//Graphics(always)
 		//Gravity(on demand)
-
 		//Modding(on demand)
 
 		//Transfer/Import/Removal/Balancing(on demand)
