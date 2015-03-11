@@ -30,8 +30,8 @@ private:
 	unordered_map<string*, Video*> videos;
 
 	sf::RenderWindow* renderWindow;
-	Level level;
-	GUIManager guiManager;
+	Level* level;
+	GUIManager* guiManager;
 	
 public:
 	Databank(sf::RenderWindow* _window);
