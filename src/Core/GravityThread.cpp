@@ -9,3 +9,11 @@ GravityThread::GravityThread(ThreadManager* _parent)
 
 	ug::log("A GravityThread has been constructed: " + *parent->getParent()->getID());
 }
+GravityThread::~GravityThread()
+{
+	//pointer
+	ThreadManager* tmp = parent;
+	parent = nullptr;
+
+	ug::log("A GravityThread has been destructed: " + *tmp->getParent()->getID());
+}
