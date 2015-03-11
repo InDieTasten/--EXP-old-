@@ -12,11 +12,12 @@ extern void ug::log(std::string);
 class Level
 {
 private:
+	Databank* parent;
 	unordered_map<string*, SolarSystem*>* sytems;
 	SolarSystem* currentSystem;
 
 public:
-	Level();
+	Level(Databank* _parent);
 	~Level();
 
 	SolarSystem* getSystem();
