@@ -18,16 +18,16 @@ ThreadManager::ThreadManager(SolarSystem* _parent, EventThread* _main)
 }
 ThreadManager::~ThreadManager()
 {
-	//pointer
-	string tmp = *parent->getID();
-	parent = nullptr;
-	eventThread = nullptr;
-
 	//member
 	delete graphThread;
 	graphThread = nullptr;
 	delete gravThread;
 	gravThread = nullptr;
+
+	//pointer
+	string tmp = *parent->getID();
+	parent = nullptr;
+	eventThread = nullptr;
 
 	ug::log("ThreadManager has been destructed: " + tmp);
 }
