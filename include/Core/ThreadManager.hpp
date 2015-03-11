@@ -29,7 +29,7 @@ class ThreadManager
 	void run();
 
 public:
-	ThreadManager(SolarSystem* _parent);
+	ThreadManager(SolarSystem* _parent, EventThread* _main);
 	~ThreadManager();
 
 	void launch();
