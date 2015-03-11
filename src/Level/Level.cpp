@@ -6,9 +6,6 @@ Level::Level(Databank* _parent)
 	parent = _parent;
 	currentSystem = nullptr;
 
-	//default level
-
-
 	ug::log("A level has been constructed");
 }
 Level::~Level()
