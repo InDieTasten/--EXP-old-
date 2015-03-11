@@ -1,9 +1,10 @@
 #include <Core\Databank.hpp>
 
-Databank::Databank(sf::RenderWindow* _window)
+Databank::Databank(sf::RenderWindow* _window, EventThread* _eventThread)
 {
 	//pointer
 	renderWindow = _window;
+	eventThread = _eventThread;
 
 	//member
 	level = new Level(this);
@@ -13,6 +14,7 @@ Databank::~Databank()
 {
 	//pointer
 	renderWindow = nullptr;
+	eventThread = nullptr;
 
 	//member
 	delete level;
@@ -128,7 +130,7 @@ Video* Databank::getVideo(string* _id)
 {
 	//WORK
 }
-void Databank::injectEventThread(EventThread* _thread)
+EventThread* Databank::getEventThread()
 {
-	//pass it through to the level, which can pass it to the systems, which can pass it to the threadmangers
+	return eventThread;
 }
