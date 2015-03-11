@@ -3,21 +3,32 @@
 
 ThreadManager::ThreadManager(SolarSystem* _parent, EventThread* _main)
 {
+	//pointer
 	parent = _parent;
 	eventThread = _main;
-	ug::log("ThreadManager has been constructed: " + *_parent->getID());
+	
+	//member
+	graphThread = new GraphicsThread(this);
+	gravThread = new GravityThread(this);
+
+	//init
 	looptime = chrono::milliseconds(1000 / 100);
-	graphThread = new GraphicsThread();
+
+	ug::log("ThreadManager has been constructed: " + *_parent->getID());
 }
 ThreadManager::~ThreadManager()
 {
+	//pointer
 	string tmp = *parent->getID();
-	//WORK Tell SolarSystem
 	parent = nullptr;
-	//WORK Tell EventThread
 	eventThread = nullptr;
+
+	//member
 	delete graphThread;
 	graphThread = nullptr;
+	delete gravThread;
+	gravThread = nullptr;
+
 	ug::log("ThreadManager has been destructed: " + tmp);
 }
 void ThreadManager::launch()
