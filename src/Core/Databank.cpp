@@ -134,3 +134,7 @@ EventThread* Databank::getEventThread()
 {
 	return eventThread;
 }
+Level* Databank::getLevel()
+{
+	return level;
+}
