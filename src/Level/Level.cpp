@@ -50,3 +50,17 @@ void Level::addSystem(string* _id)
 	systems.insert(pair<string*, SolarSystem*>(tmp, new SolarSystem(this, tmp)));
 	ug::log("Level resgistered new System: " + *_id);
 }
+void Level::removeSystem(string* _id)
+{
+	SolarSystem* n = getSystem(*_id);
+	if (n)
+	{
+		string* tmp = n->getID();
+		systems.erase(tmp);
+		delete n;
+		delete tmp;
+	}
+	else {
+		ug::log("[Warning] Couldn't find system to remove: " + *_id);
+	}
+}
