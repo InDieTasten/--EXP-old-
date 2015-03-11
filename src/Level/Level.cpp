@@ -7,5 +7,6 @@ Level::Level(Databank* _parent)
 }
 Level::~Level()
 {
-
+	//pointer
+	parent = nullptr;
 }
