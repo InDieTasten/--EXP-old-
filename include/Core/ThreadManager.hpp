@@ -32,6 +32,8 @@ public:
 	ThreadManager(SolarSystem* _parent, EventThread* _main);
 	~ThreadManager();
 
+	SolarSystem* getParent();
+
 	void launch();
 	void terminate();
 };
