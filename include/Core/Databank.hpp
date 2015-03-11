@@ -32,10 +32,13 @@ private:
 	sf::RenderWindow* renderWindow;
 	Level* level;
 	GUIManager* guiManager;
+	EventThread* eventThread;
 	
 public:
-	Databank(sf::RenderWindow* _window);
+	Databank(sf::RenderWindow* _window, EventThread* _eventThread);
 	~Databank();
+
+	EventThread* getEventThread();
 
 	void addTexture(string _id, string _path);
 	void removeTexture(string* _id);
@@ -62,12 +65,6 @@ public:
 	/// </summary>
 	/// <param name="_access">Specifies the time, at which a resource gets unloaded</param>
 	void shrink(sf::Time _access);
-
-	/// <summary>
-	/// Will inject the thread pointer to the level
-	/// </summary>
-	void injectEventThread(EventThread* _thread);
-
 };
 
 #endif // !_Databank_hpp_
