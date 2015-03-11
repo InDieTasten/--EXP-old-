@@ -26,8 +26,7 @@ int main(int argc, char *argv[])
 	
 	EventThread eventThread(&App);
 
-	Databank* databank = new Databank(&App);
-	databank->injectEventThread(&eventThread);
+	Databank* databank = new Databank(&App, &eventThread);
 
 	eventThread.run();
 
