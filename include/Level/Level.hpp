@@ -15,7 +15,7 @@ class Level
 {
 private:
 	Databank* parent;
-	unordered_map<string*, SolarSystem*>* sytems;
+	unordered_map<string*, SolarSystem*> systems;
 	SolarSystem* currentSystem;
 
 public:
@@ -23,7 +23,7 @@ public:
 	~Level();
 
 	SolarSystem* getSystem();
-	SolarSystem* getSystem(string* _id);
+	SolarSystem* getSystem(string _id);
 
 	void addSystem(string* _id);
 	void removeSystem(string* _id);
