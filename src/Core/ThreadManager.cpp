@@ -33,8 +33,8 @@ ThreadManager::~ThreadManager()
 }
 void ThreadManager::launch()
 {
-	me = thread(&ThreadManager::run, this);
 	running = true;
+	me = thread(&ThreadManager::run, this);
 }
 void ThreadManager::terminate()
 {
