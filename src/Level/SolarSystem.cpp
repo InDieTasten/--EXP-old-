@@ -30,3 +30,7 @@ string* SolarSystem::getID()
 {
 	return ID;
 }
+ThreadManager* SolarSystem::getThreadManager()
+{
+	return threadManager;
+}
