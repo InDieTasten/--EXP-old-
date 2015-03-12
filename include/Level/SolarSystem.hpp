@@ -39,6 +39,7 @@ public:
 	~SolarSystem();
 
 	string* getID();
+	ThreadManager* getThreadManager();
 };
 
 #endif // !_SolarSystem_hpp_
