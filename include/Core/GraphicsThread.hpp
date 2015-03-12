@@ -15,6 +15,7 @@ private:
 	ThreadManager* parent;
 	thread me;
 
+	chrono::milliseconds looptime;
 	bool running;
 	void run();
 
