@@ -7,7 +7,7 @@ GravityThread::GravityThread(ThreadManager* _parent)
 	//pointer
 	parent = _parent;
 
-	ug::log("A GravityThread has been constructed: " + *parent->getParent()->getID());
+	ug::log("[Info]A GravityThread has been constructed: " + *parent->getParent()->getID());
 }
 GravityThread::~GravityThread()
 {
@@ -15,5 +15,5 @@ GravityThread::~GravityThread()
 	ThreadManager* tmp = parent;
 	parent = nullptr;
 
-	ug::log("A GravityThread has been destructed: " + *tmp->getParent()->getID());
+	ug::log("[Info]A GravityThread has been destructed: " + *tmp->getParent()->getID());
 }

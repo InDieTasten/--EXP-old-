@@ -11,7 +11,7 @@ SolarSystem::SolarSystem(Level* _parent, string* _id)
 	//member
 	threadManager = new ThreadManager(this, parent->getParent()->getEventThread());
 
-	ug::log("A system has been constructed: " + *_id);
+	ug::log("[Info]A system has been constructed: " + *_id);
 }
 SolarSystem::~SolarSystem()
 {
@@ -24,7 +24,7 @@ SolarSystem::~SolarSystem()
 	ID = nullptr;
 	parent = nullptr;
 
-	//ug::log("A system has been destructed: " + *tmp);
+	ug::log("[Info]A system has been destructed: " + *tmp);
 }
 string* SolarSystem::getID()
 {

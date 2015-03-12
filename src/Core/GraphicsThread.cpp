@@ -5,12 +5,12 @@ GraphicsThread::GraphicsThread(ThreadManager* _parent)
 	//pointer
 	parent = _parent;
 
-	ug::log("A GraphicsThread has been constructed");
+	ug::log("[Info]A GraphicsThread has been constructed");
 }
 GraphicsThread::~GraphicsThread()
 {
 	//pointer
 	parent = nullptr;
 
-	ug::log("A GraphicsThread has been destructed");
+	ug::log("[Info]A GraphicsThread has been destructed");
 }

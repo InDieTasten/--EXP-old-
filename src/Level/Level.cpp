@@ -6,13 +6,13 @@ Level::Level(Databank* _parent)
 	parent = _parent;
 	currentSystem = nullptr;
 
-	ug::log("A level has been constructed");
+	ug::log("[Info]A level has been constructed");
 }
 Level::~Level()
 {
 	//pointer
 	parent = nullptr;
-	ug::log("A level has been destructed");
+	ug::log("[Info]A level has been destructed");
 }
 SolarSystem* Level::getSystem()
 {
@@ -21,7 +21,7 @@ SolarSystem* Level::getSystem()
 		return currentSystem;
 	}
 	else {
-		ug::log("[Warning] Level::getSystem() has to return a nullpointer");
+		ug::log("[Warning]Level::getSystem() has to return a nullpointer");
 		return currentSystem;
 	}
 }
@@ -34,18 +34,18 @@ SolarSystem* Level::getSystem(string _id)
 			return it.second;
 		}
 	}
-	ug::log("[Warning] Level::getSystem(string _id) has to return a nullpointer");
+	ug::log("[Warning]Level::getSystem(\"" + *_id + "\") has to return a nullpointer");
 	return nullptr;
 }
 void Level::addSystem(string* _id)
 {
 	if (getSystem(*_id))
 	{
-		ug::log("[Warning] Level::addSystem aborts routine of already allocated id: " + *_id);
+		ug::log("[Warning]Level::addSystem aborts routine of already allocated id: " + *_id);
 	}
 	string* tmp = new string(*_id);
 	systems.insert(pair<string*, SolarSystem*>(tmp, new SolarSystem(this, tmp)));
-	ug::log("Level registered new System: " + *_id);
+	ug::log("[Info]Level registered new System: " + *_id);
 }
 void Level::removeSystem(string* _id)
 {
@@ -56,10 +56,10 @@ void Level::removeSystem(string* _id)
 		systems.erase(tmp);
 		delete n;
 		delete tmp;
-		ug::log("Level removed System: " + *_id);
+		ug::log("[Info]Level removed System: " + *_id);
 	}
 	else {
-		ug::log("[Warning] Couldn't find system to remove: " + *_id);
+		ug::log("[Warning]Couldn't find system to remove: " + *_id);
 	}
 }
 Databank* Level::getParent()
