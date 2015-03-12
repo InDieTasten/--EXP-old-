@@ -34,7 +34,7 @@ SolarSystem* Level::getSystem(string _id)
 			return it.second;
 		}
 	}
-	ug::log("[Warning]Level::getSystem(\"" + *_id + "\") has to return a nullpointer");
+	ug::log("[Warning]Level::getSystem(\"" + _id + "\") has to return a nullpointer");
 	return nullptr;
 }
 void Level::addSystem(string* _id)
