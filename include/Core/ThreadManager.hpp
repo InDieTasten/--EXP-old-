@@ -36,6 +36,16 @@ public:
 
 	void launch();
 	void terminate();
+
+	//GraphicsThread
+	void startRender(sf::View _view, sf::RenderWindow* _window);
+	void stopRender();
+
+	//Gravity/Movement Thread
+	void startSimulation();
+	void incThreads(int _amount);
+	void decThreads(int _amount);
+	void stopSimulation();
 };
 
 #endif // !_ThreadManager_hpp_
