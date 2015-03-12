@@ -1,5 +1,6 @@
 #include <Utilities/Logger.hpp>
 #include <sstream>
+#include <thread>
 //CONSTRUCTORS
 //DESTRUCTORS
 //METHODS
@@ -18,7 +19,7 @@ void ug::log(std::string msg)
 	strftime(T, 14, "%j|%H:%M:%S", timeinfo);
 
 
-	std::cout << "&f" << T << msg << std::endl;
+	std::cout << "&f" << T << "{" << std::this_thread::get_id() << "}" << msg << std::endl;
 }
 //void LOG::file(std::string msg)
 //{
