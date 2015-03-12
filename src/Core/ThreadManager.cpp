@@ -14,7 +14,7 @@ ThreadManager::ThreadManager(SolarSystem* _parent, EventThread* _main)
 	//init
 	looptime = chrono::milliseconds(1000 / 100);
 
-	ug::log("ThreadManager has been constructed: " + *_parent->getID());
+	ug::log("[Info]ThreadManager has been constructed: " + *_parent->getID());
 }
 ThreadManager::~ThreadManager()
 {
@@ -29,7 +29,7 @@ ThreadManager::~ThreadManager()
 	parent = nullptr;
 	eventThread = nullptr;
 
-	ug::log("ThreadManager has been destructed: " + tmp);
+	ug::log("[Info]ThreadManager has been destructed: " + tmp);
 }
 void ThreadManager::launch()
 {
@@ -42,6 +42,7 @@ void ThreadManager::terminate()
 }
 void ThreadManager::run()
 {
+	ug::log("[Info]ThreadManager is running in this thread");
 	chrono::steady_clock::time_point last = chrono::steady_clock::now();
 	while (running)
 	{
@@ -56,6 +57,7 @@ void ThreadManager::run()
 
 		//Transfer/Import/Removal/Balancing(on demand)
 	}
+	ug::log("[Info]ThreadManager has stopped running in this thread");
 }
 SolarSystem* ThreadManager::getParent()
 {

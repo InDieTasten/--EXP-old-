@@ -4,20 +4,20 @@ Texture::Texture(string* _id, string _path)
 {
 	id = _id;
 	path = _path;
-	ug::log("A Texture has been constructed: " + *id);
+	ug::log("[Info]A Texture has been constructed: " + *id);
 }
 Texture::~Texture()
 {
 	if (data)
 		unload();
-	ug::log("A Texture has been destructed: " + *id);
+	ug::log("[Info]A Texture has been destructed: " + *id);
 }
 sf::Texture* Texture::getTexture()
 {
 	if (data)
 	{
 		lastget = chrono::steady_clock::now();
-		ug::log("The Texture '" + *id + "' has been gotton");
+		ug::log("[Info]The Texture '" + *id + "' has been gotton");
 		return data;
 	}
 	else {
@@ -29,10 +29,10 @@ void Texture::load()
 {
 	if (data)
 	{
-		ug::log("Tried to load already loaded Texture: " + *id);
+		ug::log("[Warning]Tried to load already loaded Texture: " + *id);
 	}
 	else {
-		ug::log("Loading Texture: " + *id);
+		ug::log("[Info]Loading Texture: " + *id);
 		data = new sf::Texture();
 		data->loadFromFile(path);
 	}
@@ -41,10 +41,10 @@ void Texture::unload()
 {
 	if (!data)
 	{
-		ug::log("Tried to unload already unloaded Texture: " + *id);
+		ug::log("[Warning]Tried to unload already unloaded Texture: " + *id);
 	}
 	else {
-		ug::log("Unloading Texture: " + *id);
+		ug::log("[Info]Unloading Texture: " + *id);
 		delete data;
 		data = nullptr;
 	}
