@@ -14,6 +14,8 @@ class GraphicsThread
 private:
 	ThreadManager* parent;
 	thread me;
+
+	bool running;
 	void run();
 
 public:
