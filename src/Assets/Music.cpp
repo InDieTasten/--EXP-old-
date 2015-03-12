@@ -4,20 +4,20 @@ Music::Music(string* _id, string _path)
 {
 	id = _id;
 	path = _path;
-	ug::log("A Track has been constructed: " + *id);
+	ug::log("[Info]A Track has been constructed: " + *id);
 }
 Music::~Music()
 {
 	if (data)
 		unload();
-	ug::log("A Track has been destructed: " + *id);
+	ug::log("[Info]A Track has been destructed: " + *id);
 }
 sf::Music* Music::getMusic()
 {
 	if (data)
 	{
 		lastget = chrono::steady_clock::now();
-		ug::log("The Track '" + *id + "' has been gotton");
+		ug::log("[Info]The Track '" + *id + "' has been gotton");
 		return data;
 	}
 	else {
@@ -29,10 +29,10 @@ void Music::load()
 {
 	if (data)
 	{
-		ug::log("Tried to load already loaded Track: " + *id);
+		ug::log("[Warning]Tried to load already loaded Track: " + *id);
 	}
 	else {
-		ug::log("Loading Track: " + *id);
+		ug::log("[Info]Loading Track: " + *id);
 		data = new sf::Music();
 		data->openFromFile(path);
 	}
@@ -41,10 +41,10 @@ void Music::unload()
 {
 	if (!data)
 	{
-		ug::log("Tried to unload already unloaded Track: " + *id);
+		ug::log("[Warning]Tried to unload already unloaded Track: " + *id);
 	}
 	else {
-		ug::log("Unloading Track: " + *id);
+		ug::log("[Info]Unloading Track: " + *id);
 		delete data;
 		data = nullptr;
 	}
