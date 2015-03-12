@@ -14,3 +14,7 @@ GraphicsThread::~GraphicsThread()
 
 	ug::log("[Info]A GraphicsThread has been destructed");
 }
+void GraphicsThread::launch()
+{
+	me = thread(&GraphicsThread::run, this);
+}
