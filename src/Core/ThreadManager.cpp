@@ -13,6 +13,7 @@ ThreadManager::ThreadManager(SolarSystem* _parent, EventThread* _main)
 
 	//init
 	looptime = chrono::milliseconds(1000 / 100);
+	running = false;
 
 	ug::log("[Info]ThreadManager has been constructed: " + *_parent->getID());
 }
