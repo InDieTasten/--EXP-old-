@@ -29,13 +29,11 @@ private:
 	unordered_map<string*, Music*> tracks;
 	unordered_map<string*, Video*> videos;
 
-	sf::RenderWindow* renderWindow;
 	Level* level;
 	GUIManager* guiManager;
-	EventThread* eventThread;
 	
 public:
-	Databank(sf::RenderWindow* _window, EventThread* _eventThread);
+	Databank(EventThread* _eventThread, GraphicsThread* _graphThread);
 	~Databank();
 
 	EventThread* getEventThread();
