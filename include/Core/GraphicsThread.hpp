@@ -1,6 +1,7 @@
 #ifndef _GraphicsThread_hpp_
 #define _GraphicsThread_hpp_
 
+#include <SFML\Graphics.hpp>
 #include <Utilities\Logger.hpp>
 #include <thread>
 
@@ -13,6 +14,7 @@ class GraphicsThread
 {
 private:
 	ThreadManager* parent;
+	sf::RenderWindow* renderWindow;
 	thread me;
 
 	chrono::milliseconds looptime;
@@ -20,7 +22,7 @@ private:
 	void run();
 
 public:
-	GraphicsThread(ThreadManager* _parent);
+	GraphicsThread(sf::RenderWindow* _renderWindow);
 	~GraphicsThread();
 
 	void launch();
