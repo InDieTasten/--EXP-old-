@@ -7,6 +7,7 @@ SolarSystem::SolarSystem(Level* _parent, string* _id)
 	//pointer
 	ID = _id;
 	parent = _parent;
+	threadManager = nullptr;
 
 	ug::log("[Info]A system has been constructed: " + *_id);
 }
