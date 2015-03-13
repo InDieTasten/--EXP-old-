@@ -97,3 +97,10 @@ void ThreadManager::stopRender()
 		ug::log("[Warning]ThreadManager couldn't terminate GraphicsThread, because it doesn't know one");
 	}
 }
+void ThreadManager::startSimulation()
+{
+	//WORK destribute/assign to gravThread
+	//WORK create at least one movementThread
+	//WORK distribute/assign elements to movementThread(s)
+	//WORK launch everything
+}
