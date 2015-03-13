@@ -31,7 +31,6 @@ int main(int argc, char *argv[])
 	Databank* databank = new Databank(&eventThread, &graphThread);
 
 	databank->getLevel()->addSystem(new string("test"));
-	databank->getLevel()->getSystem("test")->getThreadManager()->launch();
 
 	eventThread.run();
 
