@@ -16,13 +16,13 @@ class Level
 private:
 	Databank* parent;
 	unordered_map<string*, SolarSystem*> systems;
-	SolarSystem* currentSystem;
+	EventThread* eventThread;
+	GraphicsThread* graphThread;
 
 public:
-	Level(Databank* _parent);
+	Level(Databank* _parent, EventThread* _eventThread, GraphicsThread* _graphThread);
 	~Level();
 
-	SolarSystem* getSystem();
 	SolarSystem* getSystem(string _id);
 	Databank* getParent();
 
