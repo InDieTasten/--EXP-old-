@@ -38,3 +38,13 @@ void SolarSystem::activate()
 	else
 		ug::log("[Warning]Tried activating already active SolarSystem: " + *ID);
 }
+void SolarSystem::deactivate()
+{
+	if (threadManager)
+	{
+		delete threadManager;
+		threadManager = nullptr;
+	}
+	else
+		ug::log("[Warning]Tried deactivating already deactive SolarSystem: " + *ID);
+}
