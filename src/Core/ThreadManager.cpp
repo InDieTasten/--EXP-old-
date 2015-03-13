@@ -62,3 +62,22 @@ SolarSystem* ThreadManager::getParent()
 {
 	return parent;
 }
+void ThreadManager::startRender(sf::View _view)
+{
+	if (graphThread)
+	{
+		if (graphThread->isRunning())
+		{
+			ug::log("[Warning]ThreadManager will terminate GraphicsThread to re-launch it");
+			graphThread->terminate();
+			startRender(_view);
+		}
+		else {
+			//WORK set graphThread
+			graphThread->launch();
+		}
+	}
+	else {
+		ug::log("[Warning]ThreadManager couldn't launch GraphicsThread, because it doesn't know one");
+	}
+}
