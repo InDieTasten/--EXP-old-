@@ -63,3 +63,7 @@ EventThread* Level::getEventThread()
 {
 	return eventThread;
 }
+GraphicsThread* Level::getGraphicsThread()
+{
+	return graphThread;
+}
