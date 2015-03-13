@@ -8,9 +8,6 @@ SolarSystem::SolarSystem(Level* _parent, string* _id)
 	ID = _id;
 	parent = _parent;
 
-	//member
-	threadManager = new ThreadManager(this, parent->getParent()->getEventThread());
-
 	ug::log("[Info]A system has been constructed: " + *_id);
 }
 SolarSystem::~SolarSystem()
@@ -33,4 +30,11 @@ string* SolarSystem::getID()
 ThreadManager* SolarSystem::getThreadManager()
 {
 	return threadManager;
+}
+void SolarSystem::activate()
+{
+	if (!threadManager)
+		threadManager = new ThreadManager(this, parent->getParent()->getEventThread());
+	else
+		ug::log("[Warning]Tried activating already active SolarSystem: " + *ID);
 }
