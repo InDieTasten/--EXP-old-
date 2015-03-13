@@ -11,7 +11,7 @@ extern void ug::log(std::string);
 
 class Databank;
 
-class Level
+class Level 
 {
 private:
 	Databank* parent;
