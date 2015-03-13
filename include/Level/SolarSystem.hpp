@@ -38,6 +38,7 @@ public:
 	SolarSystem(Level* _parent, string* _id);
 	~SolarSystem();
 
+	ThreadManager* getThreadManager();
 	string* getID();
 
 	void activate();
