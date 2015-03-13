@@ -26,8 +26,9 @@ int main(int argc, char *argv[])
 	App.setActive(false);
 
 	EventThread eventThread(&App);
+	GraphicsThread graphThread(&App);
 
-	Databank* databank = new Databank(&App, &eventThread);
+	Databank* databank = new Databank(&eventThread, &graphThread);
 
 	databank->getLevel()->addSystem(new string("test"));
 	databank->getLevel()->getSystem("test")->getThreadManager()->launch();
