@@ -1,9 +1,9 @@
 #include <Core\GraphicsThread.hpp>
 
-GraphicsThread::GraphicsThread(ThreadManager* _parent)
+GraphicsThread::GraphicsThread(sf::RenderWindow* _renderWindow)
 {
 	//pointer
-	parent = _parent;
+	renderWindow = _renderWindow;
 
 	running = false;
 	looptime = chrono::milliseconds(1000/40);
