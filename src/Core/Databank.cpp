@@ -122,5 +122,8 @@ Video* Databank::getVideo(string* _id)
 }
 Level* Databank::getLevel()
 {
-	return level;
+	if (level)
+		return level;
+	else
+		ug::log("[Error]Tried getting non-existant Level");
 }
