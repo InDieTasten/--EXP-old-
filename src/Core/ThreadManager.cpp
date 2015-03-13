@@ -69,7 +69,7 @@ void ThreadManager::startRender(sf::View _view)
 		if (graphThread->isRunning())
 		{
 			ug::log("[Warning]ThreadManager will terminate GraphicsThread to re-launch it");
-			graphThread->terminate();
+			stopRender();
 			startRender(_view);
 		}
 		else {
