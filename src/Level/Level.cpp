@@ -1,10 +1,11 @@
 #include <Level\Level.hpp>
 
-Level::Level(Databank* _parent)
+Level::Level(Databank* _parent, EventThread* _eventThread, GraphicsThread* _graphThread)
 {
 	//pointer
 	parent = _parent;
-	currentSystem = nullptr;
+	eventThread = _eventThread;
+	graphThread = _graphThread;
 
 	ug::log("[Info]A level has been constructed");
 }
@@ -12,18 +13,10 @@ Level::~Level()
 {
 	//pointer
 	parent = nullptr;
+	eventThread = nullptr;
+	graphThread = nullptr;
+
 	ug::log("[Info]A level has been destructed");
-}
-SolarSystem* Level::getSystem()
-{
-	if (currentSystem)
-	{
-		return currentSystem;
-	}
-	else {
-		ug::log("[Warning]Level::getSystem() has to return a nullpointer");
-		return currentSystem;
-	}
 }
 SolarSystem* Level::getSystem(string _id)
 {
