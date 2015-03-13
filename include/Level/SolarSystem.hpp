@@ -39,7 +39,6 @@ public:
 	~SolarSystem();
 
 	string* getID();
-	ThreadManager* getThreadManager();
 
 	void activate();
 	void deactivate();
