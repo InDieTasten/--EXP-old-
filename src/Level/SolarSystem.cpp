@@ -45,3 +45,7 @@ void SolarSystem::deactivate()
 	else
 		ug::log("[Warning]Tried deactivating already deactive SolarSystem: " + *ID);
 }
+ThreadManager* SolarSystem::getThreadManager()
+{
+	return threadManager;
+}
