@@ -34,7 +34,7 @@ ThreadManager* SolarSystem::getThreadManager()
 void SolarSystem::activate()
 {
 	if (!threadManager)
-		threadManager = new ThreadManager(this, parent->getParent()->getEventThread());
+		threadManager = new ThreadManager(this, parent->getEventThread(), parent->getGraphicsThread());
 	else
 		ug::log("[Warning]Tried activating already active SolarSystem: " + *ID);
 }
