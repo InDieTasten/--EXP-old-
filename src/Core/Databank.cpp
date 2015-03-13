@@ -1,22 +1,12 @@
 #include <Core\Databank.hpp>
 
-Databank::Databank(sf::RenderWindow* _window, EventThread* _eventThread)
+Databank::Databank(EventThread* _eventThread, GraphicsThread* _graphThread)
 {
-	//pointer
-	renderWindow = _window;
-	eventThread = _eventThread;
-
-	//member
-	level = new Level(this);
+	level = new Level(this, _eventThread, _graphThread);
 	guiManager = new GUIManager(this);
 }
 Databank::~Databank()
 {
-	//pointer
-	renderWindow = nullptr;
-	eventThread = nullptr;
-
-	//member
 	delete level;
 	level = nullptr;
 	delete guiManager;
