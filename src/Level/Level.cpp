@@ -59,3 +59,7 @@ Databank* Level::getParent()
 {
 	return parent;
 }
+EventThread* Level::getEventThread()
+{
+	return eventThread;
+}
