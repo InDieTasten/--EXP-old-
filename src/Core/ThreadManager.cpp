@@ -81,3 +81,19 @@ void ThreadManager::startRender(sf::View _view)
 		ug::log("[Warning]ThreadManager couldn't launch GraphicsThread, because it doesn't know one");
 	}
 }
+void ThreadManager::stopRender()
+{
+	if (graphThread)
+	{
+		if (graphThread->isRunning())
+		{
+			graphThread->terminate();
+		}
+		else {
+			ug::log("[Warning]ThreadManager tried to stop already stopped GraphicsThread");
+		}
+	}
+	else {
+		ug::log("[Warning]ThreadManager couldn't terminate GraphicsThread, because it doesn't know one");
+	}
+}
