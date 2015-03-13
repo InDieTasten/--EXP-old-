@@ -1,14 +1,14 @@
 #include <Core\ThreadManager.hpp>
 #include <Level\SolarSystem.hpp>
 
-ThreadManager::ThreadManager(SolarSystem* _parent, EventThread* _main)
+ThreadManager::ThreadManager(SolarSystem* _parent, EventThread* _eventThread, GraphicsThread* _graphThread)
 {
 	//pointer
 	parent = _parent;
-	eventThread = _main;
+	eventThread = _eventThread;
+	graphThread = _graphThread;
 	
 	//member
-	graphThread = new GraphicsThread(this);
 	gravThread = new GravityThread(this);
 
 	//init
@@ -20,8 +20,6 @@ ThreadManager::ThreadManager(SolarSystem* _parent, EventThread* _main)
 ThreadManager::~ThreadManager()
 {
 	//member
-	delete graphThread;
-	graphThread = nullptr;
 	delete gravThread;
 	gravThread = nullptr;
 
