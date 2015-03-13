@@ -25,6 +25,8 @@ public:
 
 	SolarSystem* getSystem(string _id);
 	Databank* getParent();
+	EventThread* getEventThread();
+	GraphicsThread* getGraphicsThread();
 
 	void addSystem(string* _id);
 	void removeSystem(string* _id);
