@@ -120,10 +120,6 @@ Video* Databank::getVideo(string* _id)
 {
 	//WORK
 }
-EventThread* Databank::getEventThread()
-{
-	return eventThread;
-}
 Level* Databank::getLevel()
 {
 	return level;

@@ -36,7 +36,6 @@ public:
 	Databank(EventThread* _eventThread, GraphicsThread* _graphThread);
 	~Databank();
 
-	EventThread* getEventThread();
 	Level* getLevel();
 
 	void addTexture(string _id, string _path);
