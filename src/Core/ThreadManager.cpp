@@ -49,12 +49,10 @@ void ThreadManager::run()
 		this_thread::sleep_for(looptime - (chrono::steady_clock::now() - last));
 		last = chrono::steady_clock::now();
 
-		//Movement(always)
-		//Graphics(always)
-		//Gravity(on demand)
-		//Modding(on demand)
-
-		//Transfer/Import/Removal/Balancing(on demand)
+		//write ghostforces
+		//read actions all at once(Gravity, Movement, Graphics)
+		//write actions all at once
+		//management/balancing/removal/inclusion
 	}
 	ug::log("[Info]ThreadManager has stopped running in this thread");
 }
