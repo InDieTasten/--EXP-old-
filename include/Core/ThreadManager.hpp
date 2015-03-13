@@ -29,7 +29,7 @@ class ThreadManager
 	void run();
 
 public:
-	ThreadManager(SolarSystem* _parent, EventThread* _main);
+	ThreadManager(SolarSystem* _parent, EventThread* _eventThread, GraphicsThread* _graphThread);
 	~ThreadManager();
 
 	SolarSystem* getParent();
@@ -38,7 +38,7 @@ public:
 	void terminate();
 
 	//GraphicsThread
-	void startRender(sf::View _view, sf::RenderWindow* _window);
+	void startRender(sf::View _view);
 	void stopRender();
 
 	//Gravity/Movement Thread
