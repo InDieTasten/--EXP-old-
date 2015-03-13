@@ -27,10 +27,6 @@ string* SolarSystem::getID()
 {
 	return ID;
 }
-ThreadManager* SolarSystem::getThreadManager()
-{
-	return threadManager;
-}
 void SolarSystem::activate()
 {
 	if (!threadManager)
