@@ -40,6 +40,9 @@ public:
 
 	string* getID();
 	ThreadManager* getThreadManager();
+
+	void activate();
+	void deactivate();
 };
 
 #endif // !_SolarSystem_hpp_
