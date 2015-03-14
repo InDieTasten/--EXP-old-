@@ -19,8 +19,14 @@ GraphicsThread::~GraphicsThread()
 }
 void GraphicsThread::launch()
 {
-	running = true;
-	me = thread(&GraphicsThread::run, this);
+	if (isRunning())
+	{
+		ug::log("[Warning]Tried to launch already running GraphicsThread");
+	}
+	else {
+		running = true;
+		me = thread(&GraphicsThread::run, this);
+	}
 }
 void GraphicsThread::run()
 {
@@ -33,5 +39,15 @@ void GraphicsThread::run()
 		last = chrono::steady_clock::now();
 
 	}
-	ug::log("[Info]GraphicsThread has stopped running in this thread");
+	ug::log("[Info]GraphicsThread has terminated");
+}
+bool GraphicsThread::isRunning()
+{
+	return me.joinable();
+}
+void GraphicsThread::terminate()
+{
+	ug::log("[Info]Terminating GraphicsThread...");
+	running = false;
+	me.join();
 }
