@@ -8,9 +8,11 @@
 #include <stdio.h>
 #include <sstream>
 #include <thread>
+#include <mutex>
 
 namespace ug
 {
+	std::mutex loggermtx;
 	void log(std::string msg);
 }
 
