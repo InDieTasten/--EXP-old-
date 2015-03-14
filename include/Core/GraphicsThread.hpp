@@ -25,6 +25,8 @@ public:
 	GraphicsThread(sf::RenderWindow* _renderWindow);
 	~GraphicsThread();
 
+	bool isRunning();
+
 	void launch();
 	void terminate();
 };
