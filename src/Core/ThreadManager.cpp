@@ -23,6 +23,11 @@ ThreadManager::~ThreadManager()
 	delete gravThread;
 	gravThread = nullptr;
 
+	if (me.joinable())
+	{
+		terminate();
+	}
+
 	//pointer
 	string tmp = *parent->getID();
 	parent = nullptr;
@@ -32,12 +37,27 @@ ThreadManager::~ThreadManager()
 }
 void ThreadManager::launch()
 {
-	running = true;
-	me = thread(&ThreadManager::run, this);
+	if (!me.joinable())
+	{
+		ug::log("[Info]Launching ThreadManager... " + *parent->getID());
+		running = true;
+		me = thread(&ThreadManager::run, this);
+	}
+	else {
+		ug::log("[Warning]Tried launching already running ThreadManager: " + *parent->getID());
+	}
 }
 void ThreadManager::terminate()
 {
-	running = false;
+	if (me.joinable())
+	{
+		running = false;
+		ug::log("[Info]Terminating ThreadManager... " + *parent->getID());
+		me.join();
+	}
+	else {
+		ug::log("[Warning]Tried terminating already stopped ThreadManager: " + *parent->getID());
+	}
 }
 void ThreadManager::run()
 {
