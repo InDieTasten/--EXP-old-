@@ -32,12 +32,10 @@ ThreadManager::~ThreadManager()
 
 	//pointer
 	string tmp = *parent->getID();
-	ug::log("DEBUG2");
 	parent = nullptr;
 	eventThread = nullptr;
 
 	ug::log("[Info]ThreadManager has been destructed: " + tmp);
-	ug::log("DEBUG3");
 }
 void ThreadManager::launch()
 {

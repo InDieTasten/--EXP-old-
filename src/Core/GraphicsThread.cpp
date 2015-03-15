@@ -43,7 +43,8 @@ void GraphicsThread::run()
 		renderWindow->display();
 	}
 	renderWindow->setActive(false);
-	ug::log("[Info]GraphicsThread has terminated");
+	ug::log("[Info]GraphicsThread has terminated in this thread");
+	this_thread::sleep_for(chrono::seconds(1));
 }
 bool GraphicsThread::isRunning()
 {
@@ -53,5 +54,5 @@ void GraphicsThread::terminate()
 {
 	ug::log("[Info]Terminating GraphicsThread...");
 	running = false;
-	me.join();
+	this_thread::sleep_for(chrono::seconds(3));
 }
