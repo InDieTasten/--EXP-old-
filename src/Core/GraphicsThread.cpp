@@ -31,6 +31,7 @@ void GraphicsThread::launch()
 void GraphicsThread::run()
 {
 	ug::log("[Info]GraphicsThread is running in this thread");
+	renderWindow->setActive(true);
 	chrono::steady_clock::time_point last = chrono::steady_clock::now();
 	while (running)
 	{
@@ -38,7 +39,10 @@ void GraphicsThread::run()
 		this_thread::sleep_for(looptime - (chrono::steady_clock::now() - last));
 		last = chrono::steady_clock::now();
 
+		renderWindow->clear(sf::Color(10, 10, 10, 10));
+		renderWindow->display();
 	}
+	renderWindow->setActive(false);
 	ug::log("[Info]GraphicsThread has terminated");
 }
 bool GraphicsThread::isRunning()
