@@ -51,8 +51,8 @@ void ThreadManager::terminate()
 {
 	if (me.joinable())
 	{
-		running = false;
 		ug::log("[Info]Terminating ThreadManager... " + *parent->getID());
+		running = false;
 		me.join();
 	}
 	else {

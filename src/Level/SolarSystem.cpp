@@ -19,36 +19,36 @@ SolarSystem::~SolarSystem()
 	//member
 	delete threadManager;
 	threadManager = nullptr;
-	for (auto it : planets)
-	{
-		delete it;
-		it = nullptr;
-	}
-	for (auto it : bullets)
-	{
-		delete it;
-		it = nullptr;
-	}
-	for (auto it : constructs)
-	{
-		delete it;
-		it = nullptr;
-	}
-	for (auto it : ships)
-	{
-		delete it;
-		it = nullptr;
-	}
-	for (auto it : asteroids)
-	{
-		delete it;
-		it = nullptr;
-	}
-	for (auto it : debris)
-	{
-		delete it;
-		it = nullptr;
-	}
+	//for (auto it : planets)
+	//{
+	//	delete it;
+	//	it = nullptr;
+	//}
+	//for (auto it : bullets)
+	//{
+	//	delete it;
+	//	it = nullptr;
+	//}
+	//for (auto it : constructs)
+	//{
+	//	delete it;
+	//	it = nullptr;
+	//}
+	//for (auto it : ships)
+	//{
+	//	delete it;
+	//	it = nullptr;
+	//}
+	//for (auto it : asteroids)
+	//{
+	//	delete it;
+	//	it = nullptr;
+	//}
+	//for (auto it : debris)
+	//{
+	//	delete it;
+	//	it = nullptr;
+	//}
 
 	//pointer
 	string* tmp = ID;
