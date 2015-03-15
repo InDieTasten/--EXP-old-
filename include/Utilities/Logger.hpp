@@ -12,7 +12,7 @@
 
 namespace ug
 {
-	std::mutex loggermtx;
+	
 	void log(std::string msg);
 }
 

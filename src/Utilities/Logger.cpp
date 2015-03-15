@@ -4,8 +4,10 @@
 //CONSTRUCTORS
 //DESTRUCTORS
 //METHODS
-
-
+namespace ug
+{
+	std::mutex loggermtx;
+}
 void ug::log(std::string msg)
 {
 	time_t rawtime;
