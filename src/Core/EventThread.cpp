@@ -44,3 +44,16 @@ void EventThread::addParent(ThreadManager* _manager)
 	parents.push_back(_manager);
 	ug::log("[Info]A parent was added to EventThread");
 }
+void EventThread::removeParent(ThreadManager* _manager)
+{
+	for (auto it : parents)
+	{
+		if (it == _manager)
+		{
+			parents.remove(it);
+			ug::log("[Info]A parent was removed from EventThread");
+			return;
+		}
+	}
+	ug::log("[Warning]Tried removing non-existant parent from EventThread");
+}
