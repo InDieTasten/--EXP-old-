@@ -31,7 +31,10 @@ string* SolarSystem::getID()
 void SolarSystem::activate()
 {
 	if (!threadManager)
+	{
 		threadManager = new ThreadManager(this, parent->getEventThread(), parent->getGraphicsThread());
+		parent->getEventThread()->addParent(threadManager);
+	}
 	else
 		ug::log("[Warning]Tried activating already active SolarSystem: " + *ID);
 }
@@ -39,6 +42,7 @@ void SolarSystem::deactivate()
 {
 	if (threadManager)
 	{
+		parent->getEventThread()->removeParent(threadmanager);
 		delete threadManager;
 		threadManager = nullptr;
 	}
