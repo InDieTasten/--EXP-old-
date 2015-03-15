@@ -2,6 +2,7 @@
 
 Level::Level(Databank* _parent, EventThread* _eventThread, GraphicsThread* _graphThread)
 {
+	ug::log("[Info]A level is constructing...");
 	//pointer
 	parent = _parent;
 	eventThread = _eventThread;
@@ -11,18 +12,15 @@ Level::Level(Databank* _parent, EventThread* _eventThread, GraphicsThread* _grap
 }
 Level::~Level()
 {
+	ug::log("[Info]A level is destructing...");
 	//member
 	for (auto it : systems)
 	{
 		delete it.second;
+		delete it.first;
 		it.second = nullptr;
 	}
-	for (auto it : systems)
-	{
-		delete it.first;
-	}
 	
-
 	//pointer
 	parent = nullptr;
 	eventThread = nullptr;
