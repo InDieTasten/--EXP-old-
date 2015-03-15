@@ -11,6 +11,18 @@ Level::Level(Databank* _parent, EventThread* _eventThread, GraphicsThread* _grap
 }
 Level::~Level()
 {
+	//member
+	for (auto it : systems)
+	{
+		delete it.second;
+		it.second = nullptr;
+	}
+	for (auto it : systems)
+	{
+		delete it.first;
+	}
+	
+
 	//pointer
 	parent = nullptr;
 	eventThread = nullptr;
