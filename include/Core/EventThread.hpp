@@ -10,7 +10,6 @@
 
 using namespace std;
 extern void ug::log(string);
-extern void ug::terminate();
 
 class ThreadManager;
 
