@@ -18,18 +18,28 @@ extern "C" {
 #include <lauxlib.h>
 }
 
-
+namespace ug{
+	void terminate();
+	EventThread* eventthread;
+	GraphicsThread* graphicsthread;
+	Databank* databank;
+	sf::RenderWindow* renderwindow;
+}
 
 int main(int argc, char *argv[])
 {
 	ug::log("[Info]Game is launching in version: " + VERSION::version);
 	sf::RenderWindow App(sf::VideoMode(1280, 720, 32), VERSION::name + " " + VERSION::version, sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
 	App.setActive(false);
+	ug::renderwindow = &App;
 
 	EventThread eventThread(&App);
+	ug::eventthread = &eventThread;
 	GraphicsThread graphThread(&App);
+	ug::graphicsthread = &graphThread;
 
 	Databank* databank = new Databank(&eventThread, &graphThread);
+	ug::databank = databank;
 
 	databank->getLevel()->addSystem(new string("test"));
 
@@ -49,6 +59,12 @@ int main(int argc, char *argv[])
 
 	//Enter event loop
 	eventThread.run();
+
+	//Terminate game
+	delete ug::databank;
+	delete ug::graphicsthread;
+	delete ug::eventthread;
+	ug::renderwindow->close();
 
 	ug::log("[Info]Game quit!");
 	getchar();

@@ -42,7 +42,7 @@ void SolarSystem::deactivate()
 {
 	if (threadManager)
 	{
-		parent->getEventThread()->removeParent(threadmanager);
+		parent->getEventThread()->removeParent(threadManager);
 		delete threadManager;
 		threadManager = nullptr;
 	}
