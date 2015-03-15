@@ -9,11 +9,13 @@ CSWITCHES = \
 	-O3 \
 	-std=c++11 \
 	-m32 \
-	-flto
+	-flto \
+	-g
 
 LSWITCHES = \
 	-m32 \
-	-flto
+	-flto \
+	-g
 
 INCLUDES = \
 	-I..\..\UG_lua\include \

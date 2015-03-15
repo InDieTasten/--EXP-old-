@@ -1,2 +1,2 @@
 cd ..\..\UG_content\
-start UG.exe
+C:\TDM-GCC-64\bin\gdb.exe UG.exe
