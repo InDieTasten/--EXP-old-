@@ -4,6 +4,8 @@ Databank::Databank(EventThread* _eventThread, GraphicsThread* _graphThread)
 {
 	level = new Level(this, _eventThread, _graphThread);
 	guiManager = new GUIManager(this);
+
+	ug::log("[Info]Databank has been constructed");
 }
 Databank::~Databank()
 {
@@ -11,6 +13,38 @@ Databank::~Databank()
 	level = nullptr;
 	delete guiManager;
 	guiManager = nullptr;
+
+	for (auto it : textures)
+	{
+		delete it.second;
+		delete it.first;
+		it.second = nullptr;
+	}
+	for (auto it : fonts)
+	{
+		delete it.second;
+		delete it.first;
+		it.second = nullptr;
+	}
+	for (auto it : sounds)
+	{
+		delete it.second;
+		delete it.first;
+		it.second = nullptr;
+	}
+	for (auto it : tracks)
+	{
+		delete it.second;
+		delete it.first;
+		it.second = nullptr;
+	}
+	for (auto it : videos)
+	{
+		delete it.second;
+		delete it.first;
+		it.second = nullptr;
+	}
+	ug::log("[Info]Databank has been destructed");
 }
 void Databank::addTexture(string _id, string _path)
 {
