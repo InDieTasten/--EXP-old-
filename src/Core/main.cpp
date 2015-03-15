@@ -61,9 +61,14 @@ int main(int argc, char *argv[])
 	eventThread.run();
 
 	//Terminate game
+	ug::log("[KILL]Entering TERMINATION sequence");
+	ug::log("[KILL]Destroying Databank environment");
 	delete ug::databank;
+	ug::log("[KILL]Destroying GraphicsThread environment");
 	delete ug::graphicsthread;
+	ug::log("[KILL]Destroying EventThread environment");
 	delete ug::eventthread;
+	ug::log("[KILL]Closing RenderWindow");
 	ug::renderwindow->close();
 
 	ug::log("[Info]Game quit!");
