@@ -1,4 +1,5 @@
 #include <Core\EventThread.hpp>
+#include <Core\ThreadManager.hpp>
 
 EventThread::EventThread(sf::RenderWindow* _window)
 {
@@ -15,7 +16,7 @@ EventThread::~EventThread()
 void EventThread::run()
 {
 	chrono::steady_clock::time_point last = chrono::steady_clock::now();
-	while (app->isOpen())
+	while (true)
 	{
 		//thread throttle
 		this_thread::sleep_for(looptime - (chrono::steady_clock::now() - last));
@@ -27,7 +28,7 @@ void EventThread::run()
 		{
 			//WORK do something with events
 			this_thread::sleep_for(chrono::seconds(10));
-			app->close();
+			return;
 		}
 	}
 }
