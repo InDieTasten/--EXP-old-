@@ -9,6 +9,7 @@
 #include <Core\EventThread.hpp>
 #include <Core\Databank.hpp>
 
+extern std::mutex loggermtx;
 extern void ug::log(std::string);
 
 extern "C" {
