@@ -15,8 +15,10 @@ EventThread::~EventThread()
 }
 void EventThread::run()
 {
+	ug::log("[Info]EventThread has launched in this thread");
 	chrono::steady_clock::time_point last = chrono::steady_clock::now();
-	while (true)
+	bool running = true;
+	while (running)
 	{
 		//thread throttle
 		this_thread::sleep_for(looptime - (chrono::steady_clock::now() - last));
@@ -27,10 +29,12 @@ void EventThread::run()
 		while (app->pollEvent(Event))
 		{
 			//WORK do something with events
-			this_thread::sleep_for(chrono::seconds(10));
-			return;
+			
+			running = false;
 		}
 	}
+	this_thread::sleep_for(chrono::seconds(3));
+	ug::log("[Info]EventThread is terminating in this thread");
 }
 void EventThread::addParent(ThreadManager* _manager)
 {
