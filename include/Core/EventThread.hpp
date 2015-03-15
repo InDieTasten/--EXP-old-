@@ -26,6 +26,9 @@ public:
 
 	void run();
 	void terminate();
+
+	void addParent(ThreadManager* _manager);
+	void removeParent(ThreadManager* _manager);
 };
 
 #endif // !_EventThread_hpp_
