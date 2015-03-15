@@ -19,21 +19,25 @@ ThreadManager::ThreadManager(SolarSystem* _parent, EventThread* _eventThread, Gr
 }
 ThreadManager::~ThreadManager()
 {
+	//stop processed
+	stopSimulation();
+	stopRender();
+	terminate();
+
+
 	//member
 	delete gravThread;
 	gravThread = nullptr;
 
-	if (me.joinable())
-	{
-		terminate();
-	}
 
 	//pointer
 	string tmp = *parent->getID();
+	ug::log("DEBUG2");
 	parent = nullptr;
 	eventThread = nullptr;
 
 	ug::log("[Info]ThreadManager has been destructed: " + tmp);
+	ug::log("DEBUG3");
 }
 void ThreadManager::launch()
 {
@@ -53,7 +57,6 @@ void ThreadManager::terminate()
 	{
 		ug::log("[Info]Terminating ThreadManager... " + *parent->getID());
 		running = false;
-		me.join();
 	}
 	else {
 		ug::log("[Warning]Tried terminating already stopped ThreadManager: " + *parent->getID());
@@ -121,4 +124,8 @@ void ThreadManager::startSimulation()
 	//WORK create at least one movementThread
 	//WORK distribute/assign elements to movementThread(s)
 	//WORK launch everything
+}
+void ThreadManager::stopSimulation()
+{
+
 }
