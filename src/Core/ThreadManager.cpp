@@ -55,6 +55,7 @@ void ThreadManager::terminate()
 	{
 		ug::log("[Info]Terminating ThreadManager... " + *parent->getID());
 		running = false;
+		me.join();
 	}
 	else {
 		ug::log("[Warning]Tried terminating already stopped ThreadManager: " + *parent->getID());

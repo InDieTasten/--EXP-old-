@@ -50,12 +50,14 @@ int main(int argc, char *argv[])
 
 	//Tell thread manager to launch itself
 	working->getThreadManager()->launch();
+	working->getThreadManager()->terminate();
 
+	working->deactivate();
 	//Tell thread manager to start rendering
-	working->getThreadManager()->startRender(App.getDefaultView());
+	//working->getThreadManager()->startRender(App.getDefaultView());
 
 	//Tell thread manager to start simulating
-	working->getThreadManager()->startSimulation();
+	//working->getThreadManager()->startSimulation();
 
 	//Enter event loop
 	eventThread.run();
