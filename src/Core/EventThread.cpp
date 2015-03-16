@@ -29,11 +29,15 @@ void EventThread::run()
 		while (app->pollEvent(Event))
 		{
 			//WORK do something with events
-			
-			running = false;
+			if (Event.type == sf::Event::KeyReleased)
+			{
+				if (Event.key.code == sf::Keyboard::Escape)
+				{
+					running = false;
+				}
+			}
 		}
 	}
-	this_thread::sleep_for(chrono::seconds(3));
 	ug::log("[Info]EventThread is terminating in this thread");
 }
 void EventThread::addParent(ThreadManager* _manager)
