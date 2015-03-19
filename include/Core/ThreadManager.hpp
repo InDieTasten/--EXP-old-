@@ -9,7 +9,6 @@
 #include <thread>
 #include <chrono>
 
-
 using namespace std;
 extern void ug::log(std::string);
 
