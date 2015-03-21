@@ -31,9 +31,12 @@ int main(int argc, char *argv[])
 	sf::RenderWindow App(sf::VideoMode(1280, 720, 32), VERSION::name + " " + VERSION::version, sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
 
 	EventThread* eThread = new EventThread(&App);
+	GraphicsThread* gThread = new GraphicsThread(&App);
 
 	eThread->run();
 
+	delete gThread;
+	gThread = nullptr;
 	delete eThread;
 	eThread = nullptr;
 
