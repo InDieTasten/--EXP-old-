@@ -8,10 +8,14 @@ EventThread::EventThread(sf::RenderWindow* _window)
 
 	//init
 	looptime = chrono::milliseconds(1000/50);
+
+	ug::log("[Info]EventThread has been constructed");
 }
 EventThread::~EventThread()
 {
 	app = nullptr;
+
+	ug::log("[Info]EventThread has been destructed");
 }
 void EventThread::run()
 {
