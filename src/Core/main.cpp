@@ -33,6 +33,7 @@ int main(int argc, char *argv[])
 
 
 
+	App.close();
 	ug::log("[Info]Game quit!");
 	getchar();
 	return EXIT_SUCCESS;
