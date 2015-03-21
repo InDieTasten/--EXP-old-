@@ -31,7 +31,10 @@ int main(int argc, char *argv[])
 	ug::log("[Info]Game is launching in version: " + VERSION::version);
 	sf::RenderWindow App(sf::VideoMode(1280, 720, 32), VERSION::name + " " + VERSION::version, sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
 
+	EventThread* eThread = new EventThread(&App);
 
+	delete eThread;
+	eThread = nullptr;
 
 	App.close();
 	ug::log("[Info]Game quit!");
