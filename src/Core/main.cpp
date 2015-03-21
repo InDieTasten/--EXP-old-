@@ -25,18 +25,38 @@ namespace ug{
 	sf::RenderWindow* renderwindow;
 }
 
+class test
+{
+public:
+	thread x;
+	bool running;
+	void func() { running = true; while (running){} }
+	void launch() { x = thread(&func, this); }
+	void terminate() { if (x.joinable()){ running = false; x.join(); } }
+};
+
 int main(int argc, char *argv[])
 {
 	ug::log("[Info]Game is launching in version: " + VERSION::version);
 	sf::RenderWindow App(sf::VideoMode(1280, 720, 32), VERSION::name + " " + VERSION::version, sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
 
+
+	ug::log("[THREAD] 1");
+	test* a = new test();
+	ug::log("[THREAD] 2");
+	a->launch();
+	ug::log("[THREAD] 3");
+	a->terminate();
+	ug::log("[THREAD] 4");
+	delete a;
+	a = nullptr;
+
+
+
 	EventThread* eThread = new EventThread(&App);
-	GraphicsThread* gThread = new GraphicsThread(&App);
 
 	eThread->run();
 
-	delete gThread;
-	gThread = nullptr;
 	delete eThread;
 	eThread = nullptr;
 
