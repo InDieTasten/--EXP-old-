@@ -2,7 +2,6 @@
 #include <Utilities/VERSION.hpp>
 #include <Utilities/Logger.hpp>
 #include <iostream>
-#include <conio.h>
 #include <SFML\System.hpp>
 #include <SFML\Graphics.hpp>
 
@@ -33,11 +32,12 @@ int main(int argc, char *argv[])
 
 	EventThread* eThread = new EventThread(&App);
 
+	eThread->run();
+
 	delete eThread;
 	eThread = nullptr;
 
 	App.close();
 	ug::log("[Info]Game quit!");
-	getchar();
 	return EXIT_SUCCESS;
 }
