@@ -12,6 +12,10 @@ GraphicsThread::GraphicsThread(sf::RenderWindow* _renderWindow)
 }
 GraphicsThread::~GraphicsThread()
 {
+	//process
+	if (isRunning())
+		terminate();
+
 	//pointer
 	parent = nullptr;
 
@@ -44,7 +48,6 @@ void GraphicsThread::run()
 	}
 	renderWindow->setActive(false);
 	ug::log("[Info]GraphicsThread has terminated in this thread");
-	this_thread::sleep_for(chrono::seconds(1));
 }
 bool GraphicsThread::isRunning()
 {
@@ -52,7 +55,18 @@ bool GraphicsThread::isRunning()
 }
 void GraphicsThread::terminate()
 {
-	ug::log("[Info]Terminating GraphicsThread...");
 	running = false;
-	this_thread::sleep_for(chrono::seconds(3));
+	if (me.joinable())
+	{
+		this_thread::sleep_for(chrono::seconds(2));
+		ug::log("[Info]Terminating GraphicsThread...");
+		ug::log("[Debug]1");
+		this_thread::sleep_for(chrono::seconds(2));
+		ug::log("[Debug]2");
+		me.join();
+		ug::log("[Debug]3");
+	}
+	else {
+		ug::log("[Warning]Tried terminating already terminated GraphicsThread");
+	}
 }
