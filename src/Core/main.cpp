@@ -19,11 +19,11 @@ extern "C" {
 int main(int argc, char *argv[])
 {
 	ug::log("[Info]Game is launching in version: " + VERSION::version);
-	sf::RenderWindow App(sf::VideoMode(1280, 720, 32), VERSION::name + " " + VERSION::version, sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
+	sf::RenderWindow Window(sf::VideoMode(1280, 720, 32), VERSION::name + " " + VERSION::version, sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
 
 	
 
-	App.close();
+	Window.close();
 	ug::log("[Info]Game quit!");
 	return EXIT_SUCCESS;
 }
