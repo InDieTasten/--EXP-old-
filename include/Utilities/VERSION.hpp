@@ -1,7 +1,7 @@
 #ifndef _VERSION_hpp_
 #define _VERSION_hpp_
 
-#include "string"
+#include <string>
 
 namespace VERSION
 {
