@@ -42,32 +42,6 @@ LIBRARIES = \
 
 OBJECTS = \
 	..\src\Core\main.o \
-	..\src\Core\Databank.o \
-	..\src\Core\GUIManager.o \
-	..\src\Core\ThreadManager.o \
-	..\src\Core\EventThread.o \
-	..\src\Core\GravityThread.o \
-	..\src\Core\MovementThread.o \
-	..\src\Core\GraphicsThread.o \
-	..\src\Assets\Asset.o \
-	..\src\Assets\Texture.o \
-	..\src\Assets\Font.o \
-	..\src\Assets\Sound.o \
-	..\src\Assets\Music.o \
-	..\src\Assets\Video.o \
-	..\src\Level\Level.o \
-	..\src\Level\SolarSystem.o \
-	..\src\Level\Planet.o \
-	..\src\Level\Bullet.o \
-	..\src\Level\Construction.o \
-	..\src\Level\Ship.o \
-	..\src\Level\Asteroid.o \
-	..\src\Level\Debris.o \
-	..\src\Level\PhysicalInstance.o \
-	..\src\Level\Vector.o \
-	..\src\Level\CollisionMesh.o \
-	..\src\Level\Line.o \
-	..\src\Level\Poly.o \
 	..\src\Utilities\Logger.o
 
 rebuild: clean build
