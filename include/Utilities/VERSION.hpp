@@ -5,7 +5,7 @@
 
 namespace VERSION
 {
-	std::string name = "[[Untitled Game]]";
+	std::string name = "EXP - EXPanded EXPloration";
 	std::string version = "v0.10.0-alpha";
 }
 
