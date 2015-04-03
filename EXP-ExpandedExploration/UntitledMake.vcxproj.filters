@@ -2,26 +2,23 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Text Include="makefile">
-      <Filter>Z stuff</Filter>
-    </Text>
-    <Text Include="..\UntitledGame\Error-Codes.txt">
-      <Filter>Z stuff</Filter>
+      <Filter>EAZ stuff</Filter>
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Z stuff">
-      <UniqueIdentifier>{ab043266-873a-4755-ba66-079a8d0b108c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="A Core">
       <UniqueIdentifier>{f820f2cd-cf53-4ac6-9b0f-aa01276d9219}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Y Utilities">
+    <Filter Include="EAZ stuff">
+      <UniqueIdentifier>{ab043266-873a-4755-ba66-079a8d0b108c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EAY">
       <UniqueIdentifier>{787b3c1d-5c9b-44f3-913d-e6f6769abe7e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Utilities\Logger.cpp">
-      <Filter>Y Utilities</Filter>
+      <Filter>EAY</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Core\main.cpp">
       <Filter>A Core</Filter>
@@ -29,15 +26,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Utilities\Logger.hpp">
-      <Filter>Y Utilities</Filter>
+      <Filter>EAY</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Utilities\VERSION.hpp">
-      <Filter>Y Utilities</Filter>
+      <Filter>EAY</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd">
-      <Filter>Z stuff</Filter>
-    </None>
   </ItemGroup>
 </Project>
