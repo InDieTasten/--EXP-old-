@@ -43,7 +43,8 @@ LIBRARIES = \
 OBJECTS = \
 	..\src\Core\main.o \
 	..\src\Utilities\Logger.o \
-	..\src\Assets\Texture.o
+	..\src\Assets\Texture.o \
+	..\src\Assets\TextureManager.o
 
 rebuild: clean build
 	echo DONE!
