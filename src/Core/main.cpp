@@ -3,10 +3,9 @@
 #include <Utilities\Logger.hpp>
 #include <SFML\Graphics.hpp>
 
-#include <mutex>
-
 extern sf::Mutex loggermtx;
 extern void EXP::log(std::string);
+extern void EXP::init();
 
 extern "C" {
 #include <lua.h>
@@ -17,10 +16,9 @@ extern "C" {
 
 int main(int argc, char *argv[])
 {
+	EXP::init();
 	EXP::log("[Info]Game is launching in version: " + VERSION::version);
 	sf::RenderWindow Window(sf::VideoMode(1280, 720, 32), VERSION::name + " " + VERSION::version, sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
-
-	
 
 	Window.close();
 	EXP::log("[Info]Game quit!");
