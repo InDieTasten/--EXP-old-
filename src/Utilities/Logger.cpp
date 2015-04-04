@@ -4,11 +4,11 @@
 //CONSTRUCTORS
 //DESTRUCTORS
 //METHODS
-namespace ug
+namespace EXP
 {
 	std::mutex loggermtx;
 }
-void ug::log(std::string msg)
+void EXP::log(std::string msg)
 {
 	time_t rawtime;
 	struct tm * timeinfo;
