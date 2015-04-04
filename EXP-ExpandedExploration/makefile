@@ -1,21 +1,15 @@
 
 OUTPUT = ..\..\UG_content\UG.exe
 
-COMPILER = "C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe"
-#COMPILER = "C:\Program Files\CodeBlocks\MinGW\bin\mingw32-g++.exe"
+#COMPILER = "C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe"
+COMPILER = "C:\Program Files (x86)\CodeBlocks\MinGW\bin\mingw32-g++.exe"
 
 CSWITCHES = \
 	-fexceptions \
 	-O3 \
-	-std=c++11 \
-	-m32 \
-	-flto \
-	-g
+	-std=c++11
 
 LSWITCHES = \
-	-m32 \
-	-flto \
-	-g
 
 INCLUDES = \
 	-I..\..\UG_lua\include \
