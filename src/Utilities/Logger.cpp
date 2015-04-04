@@ -13,7 +13,9 @@ void EXP::log(std::string msg)
 {
 	if (!threadid)
 	{
+		loggermtx.lock();
 		threadid = (int*)++threadcounter;
+		loggermtx.unlock();
 	}
 
 	time_t rawtime;
