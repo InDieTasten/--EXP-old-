@@ -10,7 +10,7 @@
 #include <thread>
 #include <mutex>
 
-namespace ug
+namespace EXP
 {
 	
 	void log(std::string msg);
