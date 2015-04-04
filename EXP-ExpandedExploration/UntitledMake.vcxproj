@@ -59,6 +59,7 @@
     <Text Include="makefile" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\Assets\Texture.cpp" />
     <ClCompile Include="..\src\Core\main.cpp" />
     <ClCompile Include="..\src\Utilities\Logger.cpp" />
   </ItemGroup>

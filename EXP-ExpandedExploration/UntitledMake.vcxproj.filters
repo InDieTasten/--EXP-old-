@@ -32,6 +32,9 @@
     <ClCompile Include="..\src\Core\main.cpp">
       <Filter>9 Extras</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Assets\Texture.cpp">
+      <Filter>1 Assets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Utilities\Logger.hpp">
