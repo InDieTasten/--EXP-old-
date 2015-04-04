@@ -40,5 +40,11 @@
     <ClInclude Include="..\include\Utilities\VERSION.hpp">
       <Filter>8 Utilities</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Assets\TextureManager.hpp">
+      <Filter>1 Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Assets\Texture.hpp">
+      <Filter>1 Assets</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
