@@ -35,6 +35,9 @@
     <ClCompile Include="..\src\Assets\Texture.cpp">
       <Filter>1 Assets</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Assets\TextureManager.cpp">
+      <Filter>1 Assets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Utilities\Logger.hpp">

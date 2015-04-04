@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Assets\Texture.cpp" />
+    <ClCompile Include="..\src\Assets\TextureManager.cpp" />
     <ClCompile Include="..\src\Core\main.cpp" />
     <ClCompile Include="..\src\Utilities\Logger.cpp" />
   </ItemGroup>
