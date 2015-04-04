@@ -5,10 +5,17 @@
 
 namespace EXP
 {
+	static int threadcounter = -1;
+	sf::ThreadLocalPtr<int> threadid;
 	sf::Mutex loggermtx;
 }
 void EXP::log(std::string msg)
 {
+	if (!threadid)
+	{
+		threadid = (int*)++threadcounter;
+	}
+
 	time_t rawtime;
 	struct tm * timeinfo;
 
@@ -20,8 +27,15 @@ void EXP::log(std::string msg)
 	strftime(T, 14, "%j|%H:%M:%S", timeinfo);
 
 	loggermtx.lock();
-	std::cout << "&f" << T << msg << std::endl;
+	std::cout << "&f" << T << "{" << threadid << "}" << msg << std::endl;
 	loggermtx.unlock();
+}
+void EXP::init()
+{
+	if (!threadid)
+	{
+		threadid = (int*)++threadcounter;
+	}
 }
 //void LOG::file(std::string msg)
 //{
