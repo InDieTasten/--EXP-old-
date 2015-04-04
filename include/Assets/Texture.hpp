@@ -21,6 +21,8 @@ public:
 	void load();
 	void unload();
 	sf::Texture* get();
+	std::string getID();
+	std::string getPath();
 };
 
 #endif // !_Texture_hpp_
