@@ -1,12 +1,11 @@
 #include <Utilities/Logger.hpp>
 #include <sstream>
-#include <thread>
-//CONSTRUCTORS
-//DESTRUCTORS
-//METHODS
+#include <SFML\System.hpp>
+
+
 namespace EXP
 {
-	std::mutex loggermtx;
+	sf::Mutex loggermtx;
 }
 void EXP::log(std::string msg)
 {
@@ -21,7 +20,7 @@ void EXP::log(std::string msg)
 	strftime(T, 14, "%j|%H:%M:%S", timeinfo);
 
 	loggermtx.lock();
-	std::cout << "&f" << T << "{" << std::this_thread::get_id() << "}" << msg << std::endl;
+	std::cout << "&f" << T << msg << std::endl;
 	loggermtx.unlock();
 }
 //void LOG::file(std::string msg)
