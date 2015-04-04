@@ -1,6 +1,6 @@
 #include <Assets\Texture.hpp>
 
-Texture::Texture(std::string* _id, std::string _path)
+Texture::Texture(const std::string* _id, std::string _path)
 {
 	if (!_id)
 	{

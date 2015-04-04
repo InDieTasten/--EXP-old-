@@ -12,10 +12,10 @@ class Texture
 {
 private:
 	sf::Texture* data;
-	std::string* id;
+	const std::string* id;
 	std::string path;
 public:
-	Texture(std::string* _id, std::string _path);
+	Texture(const std::string* _id, std::string _path);
 	~Texture();
 
 	void load();
