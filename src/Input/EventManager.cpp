@@ -495,8 +495,29 @@ void EventManager::removeMouseEnter(void(*_listener)(void))
 	confmtx.unlock();
 	EXP::log("[Warning]Tried removing non-registered MouseEnter listener");
 }
-void EventManager::addMouseLeave(void(*_listener)(void)){}
-void EventManager::removeMouseLeave(void(*_listener)(void)){}
+void EventManager::addMouseLeave(void(*_listener)(void))
+{
+	confmtx.lock();
+	mouseLeave.push_back(_listener);
+	confmtx.unlock();
+	EXP::log("[Info]MouseLeave listener registered");
+}
+void EventManager::removeMouseLeave(void(*_listener)(void))
+{
+	confmtx.lock();
+	for (auto it = mouseLeave.begin(); it != mouseLeave.end(); it++)
+	{
+		if (*it == _listener)
+		{
+			mouseLeave.erase(it);
+			confmtx.unlock();
+			EXP::log("[Info]MouseLeave listener removed");
+			return;
+		}
+	}
+	confmtx.unlock();
+	EXP::log("[Warning]Tried removing non-registered MouseLeave listener");
+}
 void EventManager::addResize(void(*_listener)(sf::Event::SizeEvent))
 {
 	confmtx.lock();
