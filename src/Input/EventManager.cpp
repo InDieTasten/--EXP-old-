@@ -255,8 +255,29 @@ void EventManager::removeKeyPress(void(*_listener)(sf::Event::KeyEvent))
 	confmtx.unlock();
 	EXP::log("[Warning]Tried removing non-registered KeyPress listener");
 }
-void EventManager::addKeyRelease(void(*_listener)(sf::Event::KeyEvent)){}
-void EventManager::removeKeyRelease(void(*_listener)(sf::Event::KeyEvent)){}
+void EventManager::addKeyRelease(void(*_listener)(sf::Event::KeyEvent))
+{
+	confmtx.lock();
+	keyRelease.push_back(_listener);
+	confmtx.unlock();
+	EXP::log("[Info]KeyRelease listener registered");
+}
+void EventManager::removeKeyRelease(void(*_listener)(sf::Event::KeyEvent))
+{
+	confmtx.lock();
+	for (auto it = keyRelease.begin(); it != keyRelease.end(); it++)
+	{
+		if (*it == _listener)
+		{
+			keyRelease.erase(it);
+			confmtx.unlock();
+			EXP::log("[Info]KeyRelease listener removed");
+			return;
+		}
+	}
+	confmtx.unlock();
+	EXP::log("[Warning]Tried removing non-registered KeyRelease listener");
+}
 void EventManager::addTextEnter(void(*_listener)(sf::Event::TextEvent)){}
 void EventManager::removeTextEnter(void(*_listener)(sf::Event::TextEvent)){}
 void EventManager::addJoyPress(void(*_listener)(sf::Event::JoystickButtonEvent)){}
