@@ -67,6 +67,7 @@
   <ItemGroup>
     <ClInclude Include="..\include\Assets\Texture.hpp" />
     <ClInclude Include="..\include\Assets\TextureManager.hpp" />
+    <ClInclude Include="..\include\Input\EventManager.hpp" />
     <ClInclude Include="..\include\Utilities\Logger.hpp" />
     <ClInclude Include="..\include\Utilities\VERSION.hpp" />
   </ItemGroup>
