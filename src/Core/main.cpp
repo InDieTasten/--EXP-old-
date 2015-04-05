@@ -15,12 +15,18 @@ extern "C" {
 #include <lauxlib.h>
 }
 
-#include <string>
 
-void listener(int x, int y)
+
+#include <Input\EventManager.hpp>
+namespace EXP {
+	EventManager* eventManager;
+}
+void gameQuit(sf::Event::KeyEvent _event)
 {
-	EXP::log("[DEBUG]");
-	return;
+	if (_event.code == sf::Keyboard::Escape)
+	{
+		EXP::eventManager->terminate();
+	}
 }
 
 int main(int argc, char *argv[])
@@ -29,14 +35,13 @@ int main(int argc, char *argv[])
 	EXP::log("[Info]Game is launching in version: " + VERSION::version);
 	sf::RenderWindow Window(sf::VideoMode(1280, 720, 32), VERSION::name + " " + VERSION::version, sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
 
-	std::list<void(*)(int, int)> listeners;
+	EventManager man(&Window);
+	EXP::eventManager = &man;
 
-	listeners.push_back(&listener);
 
-	for (auto it : listeners)
-	{
-		it(5, 6);
-	}
+	man.addKeyRelease(&gameQuit);
+
+	man.listen();
 
 	Window.close();
 	EXP::log("[Info]Game quit!");

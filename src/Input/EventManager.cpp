@@ -31,6 +31,8 @@ EventManager::~EventManager()
 	joyMove.clear();
 	focusGained.clear();
 	focusLost.clear();
+	mouseEnter.clear();
+	mouseLeave.clear();
 	resize.clear();
 
 	EXP::log("[Info]EventManager has been destructed");
@@ -107,6 +109,14 @@ void EventManager::listen()
 					it();
 				break;
 			case sf::Event::LostFocus:
+				for (auto it : focusLost)
+					it();
+				break;
+			case sf::Event::MouseEntered:
+				for (auto it : focusLost)
+					it();
+				break;
+			case sf::Event::MouseLeft:
 				for (auto it : focusLost)
 					it();
 				break;
@@ -462,6 +472,31 @@ void EventManager::removeFocusLost(void(*_listener)(void))
 	confmtx.unlock();
 	EXP::log("[Warning]Tried removing non-registered FocusLost listener");
 }
+void EventManager::addMouseEnter(void(*_listener)(void))
+{
+	confmtx.lock();
+	mouseEnter.push_back(_listener);
+	confmtx.unlock();
+	EXP::log("[Info]MouseEnter listener registered");
+}
+void EventManager::removeMouseEnter(void(*_listener)(void))
+{
+	confmtx.lock();
+	for (auto it = mouseEnter.begin(); it != mouseEnter.end(); it++)
+	{
+		if (*it == _listener)
+		{
+			mouseEnter.erase(it);
+			confmtx.unlock();
+			EXP::log("[Info]MouseEnter listener removed");
+			return;
+		}
+	}
+	confmtx.unlock();
+	EXP::log("[Warning]Tried removing non-registered MouseEnter listener");
+}
+void EventManager::addMouseLeave(void(*_listener)(void)){}
+void EventManager::removeMouseLeave(void(*_listener)(void)){}
 void EventManager::addResize(void(*_listener)(sf::Event::SizeEvent))
 {
 	confmtx.lock();
