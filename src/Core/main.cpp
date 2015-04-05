@@ -38,8 +38,7 @@ int main(int argc, char *argv[])
 	EventManager man(&Window);
 	EXP::eventManager = &man;
 
-
-	man.addKeyRelease(&gameQuit);
+	man.addKeyPress(&gameQuit);
 
 	man.listen();
 
