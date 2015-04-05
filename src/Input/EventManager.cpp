@@ -393,8 +393,29 @@ void EventManager::removeJoyDisconnect(void(*_listener)(sf::Event::JoystickConne
 	confmtx.unlock();
 	EXP::log("[Warning]Tried removing non-registered JoyDisconnect listener");
 }
-void EventManager::addJoyMove(void(*_listener)(sf::Event::JoystickMoveEvent)){}
-void EventManager::removeJoyMove(void(*_listener)(sf::Event::JoystickMoveEvent)){}
+void EventManager::addJoyMove(void(*_listener)(sf::Event::JoystickMoveEvent))
+{
+	confmtx.lock();
+	joyMove.push_back(_listener);
+	confmtx.unlock();
+	EXP::log("[Info]JoyMove listener registered");
+}
+void EventManager::removeJoyMove(void(*_listener)(sf::Event::JoystickMoveEvent))
+{
+	confmtx.lock();
+	for (auto it = joyMove.begin(); it != joyMove.end(); it++)
+	{
+		if (*it == _listener)
+		{
+			joyMove.erase(it);
+			confmtx.unlock();
+			EXP::log("[Info]JoyMove listener removed");
+			return;
+		}
+	}
+	confmtx.unlock();
+	EXP::log("[Warning]Tried removing non-registered JoyMove listener");
+}
 void EventManager::addFocusGained(void(*_listener)(void)){}
 void EventManager::removeFocusGained(void(*_listener)(void)){}
 void EventManager::addFocusLost(void(*_listener)(void)){}
