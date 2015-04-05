@@ -200,7 +200,13 @@ void EventManager::removeMouseRelease(void(*_listener)(sf::Event::MouseButtonEve
 	}
 	EXP::log("[Warning]Tried removing non-registered MouseRelease listener");
 }
-void EventManager::addMouseWheel(void(*_listener)(sf::Event::MouseWheelEvent)){}
+void EventManager::addMouseWheel(void(*_listener)(sf::Event::MouseWheelEvent))
+{
+	confmtx.lock();
+	mouseWheel.push_back(_listener);
+	confmtx.unlock();
+	EXP::log("[Info]MouseWheel listener registered");
+}
 void EventManager::removeMouseWheel(void(*_listener)(sf::Event::MouseWheelEvent)){}
 void EventManager::addKeyPress(void(*_listener)(sf::Event::KeyEvent)){}
 void EventManager::removeKeyPress(void(*_listener)(sf::Event::KeyEvent)){}
