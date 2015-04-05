@@ -149,15 +149,18 @@ void EventManager::addMouseMove(void(*_listener)(sf::Event::MouseMoveEvent))
 }
 void EventManager::removeMouseMove(void(*_listener)(sf::Event::MouseMoveEvent))
 {
+	confmtx.lock();
 	for (auto it = mouseMove.begin(); it != mouseMove.end(); it++)
 	{
 		if (*it == _listener)
 		{
 			mouseMove.erase(it);
+			confmtx.unlock();
 			EXP::log("[Info]MouseMove listener removed");
 			return;
 		}
 	}
+	confmtx.unlock();
 	EXP::log("[Warning]Tried removing non-registered MouseMove listener");
 }
 void EventManager::addMousePress(void(*_listener)(sf::Event::MouseButtonEvent))
@@ -169,15 +172,18 @@ void EventManager::addMousePress(void(*_listener)(sf::Event::MouseButtonEvent))
 }
 void EventManager::removeMousePress(void(*_listener)(sf::Event::MouseButtonEvent))
 {
+	confmtx.lock();
 	for (auto it = mousePress.begin(); it != mousePress.end(); it++)
 	{
 		if (*it == _listener)
 		{
 			mousePress.erase(it);
+			confmtx.unlock();
 			EXP::log("[Info]MousePress listener removed");
 			return;
 		}
 	}
+	confmtx.unlock();
 	EXP::log("[Warning]Tried removing non-registered MousePress listener");
 }
 void EventManager::addMouseRelease(void(*_listener)(sf::Event::MouseButtonEvent))
@@ -189,15 +195,18 @@ void EventManager::addMouseRelease(void(*_listener)(sf::Event::MouseButtonEvent)
 }
 void EventManager::removeMouseRelease(void(*_listener)(sf::Event::MouseButtonEvent))
 {
+	confmtx.lock();
 	for (auto it = mouseRelease.begin(); it != mouseRelease.end(); it++)
 	{
 		if (*it == _listener)
 		{
 			mouseRelease.erase(it);
+			confmtx.unlock();
 			EXP::log("[Info]MouseRelease listener removed");
 			return;
 		}
 	}
+	confmtx.unlock();
 	EXP::log("[Warning]Tried removing non-registered MouseRelease listener");
 }
 void EventManager::addMouseWheel(void(*_listener)(sf::Event::MouseWheelEvent))
