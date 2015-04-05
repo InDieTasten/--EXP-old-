@@ -26,6 +26,8 @@ private:
 	//(misc)
 	std::list<void(*)(void)> focusGained;
 	std::list<void(*)(void)> focusLost;
+	std::list<void(*)(void)> mouseEnter;
+	std::list<void(*)(void)> mouseLeave;
 	std::list<void(*)(sf::Event::SizeEvent)> resize;
 
 	sf::RenderWindow* target;
@@ -69,6 +71,10 @@ public:
 	void removeFocusGained(void(*_listener)(void));
 	void addFocusLost(void(*_listener)(void));
 	void removeFocusLost(void(*_listener)(void));
+	void addMouseEnter(void(*_listener)(void));
+	void removeMouseEnter(void(*_listener)(void));
+	void addMouseLeave(void(*_listener)(void));
+	void removeMouseLeave(void(*_listener)(void));
 	void addResize(void(*_listener)(sf::Event::SizeEvent));
 	void removeResize(void(*_listener)(sf::Event::SizeEvent));
 };
