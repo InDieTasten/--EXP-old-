@@ -324,8 +324,29 @@ void EventManager::removeJoyPress(void(*_listener)(sf::Event::JoystickButtonEven
 	confmtx.unlock();
 	EXP::log("[Warning]Tried removing non-registered JoyPress listener");
 }
-void EventManager::addJoyRelease(void(*_listener)(sf::Event::JoystickButtonEvent)){}
-void EventManager::removeJoyRelease(void(*_listener)(sf::Event::JoystickButtonEvent)){}
+void EventManager::addJoyRelease(void(*_listener)(sf::Event::JoystickButtonEvent))
+{
+	confmtx.lock();
+	joyRelease.push_back(_listener);
+	confmtx.unlock();
+	EXP::log("[Info]JoyRelease listener registered");
+}
+void EventManager::removeJoyRelease(void(*_listener)(sf::Event::JoystickButtonEvent))
+{
+	confmtx.lock();
+	for (auto it = joyRelease.begin(); it != joyRelease.end(); it++)
+	{
+		if (*it == _listener)
+		{
+			joyRelease.erase(it);
+			confmtx.unlock();
+			EXP::log("[Info]JoyRelease listener removed");
+			return;
+		}
+	}
+	confmtx.unlock();
+	EXP::log("[Warning]Tried removing non-registered JoyRelease listener");
+}
 void EventManager::addJoyConnect(void(*_listener)(sf::Event::JoystickConnectEvent)){}
 void EventManager::removeJoyConnect(void(*_listener)(sf::Event::JoystickConnectEvent)){}
 void EventManager::addJoyDisconnect(void(*_listener)(sf::Event::JoystickConnectEvent)){}
