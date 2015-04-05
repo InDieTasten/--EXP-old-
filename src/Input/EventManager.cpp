@@ -301,8 +301,29 @@ void EventManager::removeTextEnter(void(*_listener)(sf::Event::TextEvent))
 	confmtx.unlock();
 	EXP::log("[Warning]Tried removing non-registered TextEnter listener");
 }
-void EventManager::addJoyPress(void(*_listener)(sf::Event::JoystickButtonEvent)){}
-void EventManager::removeJoyPress(void(*_listener)(sf::Event::JoystickButtonEvent)){}
+void EventManager::addJoyPress(void(*_listener)(sf::Event::JoystickButtonEvent))
+{
+	confmtx.lock();
+	joyPress.push_back(_listener);
+	confmtx.unlock();
+	EXP::log("[Info]JoyPress listener registered");
+}
+void EventManager::removeJoyPress(void(*_listener)(sf::Event::JoystickButtonEvent))
+{
+	confmtx.lock();
+	for (auto it = joyPress.begin(); it != joyPress.end(); it++)
+	{
+		if (*it == _listener)
+		{
+			joyPress.erase(it);
+			confmtx.unlock();
+			EXP::log("[Info]JoyPress listener removed");
+			return;
+		}
+	}
+	confmtx.unlock();
+	EXP::log("[Warning]Tried removing non-registered JoyPress listener");
+}
 void EventManager::addJoyRelease(void(*_listener)(sf::Event::JoystickButtonEvent)){}
 void EventManager::removeJoyRelease(void(*_listener)(sf::Event::JoystickButtonEvent)){}
 void EventManager::addJoyConnect(void(*_listener)(sf::Event::JoystickConnectEvent)){}
