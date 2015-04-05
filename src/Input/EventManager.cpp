@@ -439,7 +439,28 @@ void EventManager::removeFocusGained(void(*_listener)(void))
 	confmtx.unlock();
 	EXP::log("[Warning]Tried removing non-registered FocusGained listener");
 }
-void EventManager::addFocusLost(void(*_listener)(void)){}
-void EventManager::removeFocusLost(void(*_listener)(void)){}
+void EventManager::addFocusLost(void(*_listener)(void))
+{
+	confmtx.lock();
+	focusLost.push_back(_listener);
+	confmtx.unlock();
+	EXP::log("[Info]FocusLost listener registered");
+}
+void EventManager::removeFocusLost(void(*_listener)(void))
+{
+	confmtx.lock();
+	for (auto it = focusLost.begin(); it != focusLost.end(); it++)
+	{
+		if (*it == _listener)
+		{
+			focusLost.erase(it);
+			confmtx.unlock();
+			EXP::log("[Info]FocusLost listener removed");
+			return;
+		}
+	}
+	confmtx.unlock();
+	EXP::log("[Warning]Tried removing non-registered FocusLost listener");
+}
 void EventManager::addResize(void(*_listener)(sf::Event::SizeEvent)){}
 void EventManager::removeResize(void(*_listener)(sf::Event::SizeEvent)){}
