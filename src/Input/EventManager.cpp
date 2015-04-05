@@ -160,3 +160,67 @@ void EventManager::removeMouseMove(void(*_listener)(sf::Event::MouseMoveEvent))
 	}
 	EXP::log("[Warning]Tried removing non-registered MouseMove listener");
 }
+void EventManager::addMousePress(void(*_listener)(sf::Event::MouseButtonEvent))
+{
+	confmtx.lock();
+	mousePress.push_back(_listener);
+	confmtx.unlock();
+	EXP::log("[Info]MousePress listener registered");
+}
+void EventManager::removeMousePress(void(*_listener)(sf::Event::MouseButtonEvent))
+{
+	for (auto it = mousePress.begin(); it != mousePress.end(); it++)
+	{
+		if (*it == _listener)
+		{
+			mousePress.erase(it);
+			EXP::log("[Info]MousePress listener removed");
+			return;
+		}
+	}
+	EXP::log("[Warning]Tried removing non-registered MousePress listener");
+}
+void EventManager::addMouseRelease(void(*_listener)(sf::Event::MouseButtonEvent))
+{
+	confmtx.lock();
+	mouseRelease.push_back(_listener);
+	confmtx.unlock();
+	EXP::log("[Info]MouseRelease listener registered");
+}
+void EventManager::removeMouseRelease(void(*_listener)(sf::Event::MouseButtonEvent))
+{
+	for (auto it = mouseRelease.begin(); it != mouseRelease.end(); it++)
+	{
+		if (*it == _listener)
+		{
+			mouseRelease.erase(it);
+			EXP::log("[Info]MouseRelease listener removed");
+			return;
+		}
+	}
+	EXP::log("[Warning]Tried removing non-registered MouseRelease listener");
+}
+void EventManager::addMouseWheel(void(*_listener)(sf::Event::MouseWheelEvent)){}
+void EventManager::removeMouseWheel(void(*_listener)(sf::Event::MouseWheelEvent)){}
+void EventManager::addKeyPress(void(*_listener)(sf::Event::KeyEvent)){}
+void EventManager::removeKeyPress(void(*_listener)(sf::Event::KeyEvent)){}
+void EventManager::addKeyRelease(void(*_listener)(sf::Event::KeyEvent)){}
+void EventManager::removeKeyRelease(void(*_listener)(sf::Event::KeyEvent)){}
+void EventManager::addTextEnter(void(*_listener)(sf::Event::TextEvent)){}
+void EventManager::removeTextEnter(void(*_listener)(sf::Event::TextEvent)){}
+void EventManager::addJoyPress(void(*_listener)(sf::Event::JoystickButtonEvent)){}
+void EventManager::removeJoyPress(void(*_listener)(sf::Event::JoystickButtonEvent)){}
+void EventManager::addJoyRelease(void(*_listener)(sf::Event::JoystickButtonEvent)){}
+void EventManager::removeJoyRelease(void(*_listener)(sf::Event::JoystickButtonEvent)){}
+void EventManager::addJoyConnect(void(*_listener)(sf::Event::JoystickConnectEvent)){}
+void EventManager::removeJoyConnect(void(*_listener)(sf::Event::JoystickConnectEvent)){}
+void EventManager::addJoyDisconnect(void(*_listener)(sf::Event::JoystickConnectEvent)){}
+void EventManager::removeJoyDisconnect(void(*_listener)(sf::Event::JoystickConnectEvent)){}
+void EventManager::addJoyMove(void(*_listener)(sf::Event::JoystickMoveEvent)){}
+void EventManager::removeJoyMove(void(*_listener)(sf::Event::JoystickMoveEvent)){}
+void EventManager::addFocusGained(void(*_listener)(void)){}
+void EventManager::removeFocusGained(void(*_listener)(void)){}
+void EventManager::addFocusLost(void(*_listener)(void)){}
+void EventManager::removeFocusLost(void(*_listener)(void)){}
+void EventManager::addResize(void(*_listener)(sf::Event::SizeEvent)){}
+void EventManager::removeResize(void(*_listener)(sf::Event::SizeEvent)){}
