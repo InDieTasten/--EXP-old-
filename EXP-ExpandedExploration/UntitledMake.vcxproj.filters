@@ -52,5 +52,8 @@
     <ClInclude Include="..\include\Assets\Texture.hpp">
       <Filter>1 Assets</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Input\EventManager.hpp">
+      <Filter>3 Input</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
