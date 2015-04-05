@@ -232,8 +232,29 @@ void EventManager::removeMouseWheel(void(*_listener)(sf::Event::MouseWheelEvent)
 	confmtx.unlock();
 	EXP::log("[Warning]Tried removing non-registered MouseWheel listener");
 }
-void EventManager::addKeyPress(void(*_listener)(sf::Event::KeyEvent)){}
-void EventManager::removeKeyPress(void(*_listener)(sf::Event::KeyEvent)){}
+void EventManager::addKeyPress(void(*_listener)(sf::Event::KeyEvent))
+{
+	confmtx.lock();
+	keyPress.push_back(_listener);
+	confmtx.unlock();
+	EXP::log("[Info]KeyPress listener registered");
+}
+void EventManager::removeKeyPress(void(*_listener)(sf::Event::KeyEvent))
+{
+	confmtx.lock();
+	for (auto it = keyPress.begin(); it != keyPress.end(); it++)
+	{
+		if (*it == _listener)
+		{
+			keyPress.erase(it);
+			confmtx.unlock();
+			EXP::log("[Info]KeyPress listener removed");
+			return;
+		}
+	}
+	confmtx.unlock();
+	EXP::log("[Warning]Tried removing non-registered KeyPress listener");
+}
 void EventManager::addKeyRelease(void(*_listener)(sf::Event::KeyEvent)){}
 void EventManager::removeKeyRelease(void(*_listener)(sf::Event::KeyEvent)){}
 void EventManager::addTextEnter(void(*_listener)(sf::Event::TextEvent)){}
