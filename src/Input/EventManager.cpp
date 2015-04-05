@@ -113,11 +113,11 @@ void EventManager::listen()
 					it();
 				break;
 			case sf::Event::MouseEntered:
-				for (auto it : focusLost)
+				for (auto it : mouseEnter)
 					it();
 				break;
 			case sf::Event::MouseLeft:
-				for (auto it : focusLost)
+				for (auto it : mouseLeave)
 					it();
 				break;
 			case sf::Event::Resized:
@@ -125,6 +125,7 @@ void EventManager::listen()
 					it(event.size);
 				break;
 			default:
+				std::cout << event.type << std::endl;
 				EXP::log("[WARNING]Something strange happened");
 			}
 		}
@@ -141,6 +142,9 @@ void EventManager::terminate()
 	}
 	confmtx.lock();
 	listening = false;
+	confmtx.unlock();
+	sf::sleep(sf::seconds(0.05f));
+	confmtx.lock();
 	confmtx.unlock();
 }
 void EventManager::setSampleRate(sf::Time _looptime)
