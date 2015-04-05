@@ -38,7 +38,8 @@ OBJECTS = \
 	..\src\Core\main.o \
 	..\src\Utilities\Logger.o \
 	..\src\Assets\Texture.o \
-	..\src\Assets\TextureManager.o
+	..\src\Assets\TextureManager.o \
+	..\src\Input\EventManager.o
 
 rebuild: clean build
 	echo DONE!
