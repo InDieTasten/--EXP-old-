@@ -42,7 +42,9 @@ int main(int argc, char *argv[])
 
 	delete EXP::eventManager;
 	EXP::eventManager = nullptr;
+
 	Window.close();
+
 	EXP::log("[Info]Game quit!");
 	return EXIT_SUCCESS;
 }
