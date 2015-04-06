@@ -28,8 +28,6 @@ void gameQuit(sf::Event::KeyEvent _event)
 	}
 }
 
-#include <Data\Vector.hpp>
-
 int main(int argc, char *argv[])
 {
 	EXP::init();
@@ -45,20 +43,6 @@ int main(int argc, char *argv[])
 	EXP::eventManager = nullptr;
 
 	Window.close();
-
-	Vector n;
-	std::cout << n.getX() << std::endl;
-	std::cout << n.getY() << std::endl;
-
-	n += Vector(10, 12, 0);
-	std::cout << n.getX() << std::endl;
-	std::cout << n.getY() << std::endl;
-
-	Vector m = n + Vector(10, 12, 0);
-	std::cout << n.getX() << std::endl;
-	std::cout << n.getY() << std::endl;
-	std::cout << m.getX() << std::endl;
-	std::cout << m.getY() << std::endl;
 
 	EXP::log("[Info]Game quit!");
 	return EXIT_SUCCESS;
