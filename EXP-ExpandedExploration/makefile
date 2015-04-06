@@ -39,7 +39,8 @@ OBJECTS = \
 	..\src\Utilities\Logger.o \
 	..\src\Assets\Texture.o \
 	..\src\Assets\TextureManager.o \
-	..\src\Input\EventManager.o
+	..\src\Input\EventManager.o \
+	..\src\Data\Vector.o
 
 rebuild: clean build
 	echo DONE!

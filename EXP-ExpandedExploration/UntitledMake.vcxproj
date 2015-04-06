@@ -62,12 +62,15 @@
     <ClCompile Include="..\src\Assets\Texture.cpp" />
     <ClCompile Include="..\src\Assets\TextureManager.cpp" />
     <ClCompile Include="..\src\Core\main.cpp" />
+    <ClCompile Include="..\src\Data\Vector.cpp" />
     <ClCompile Include="..\src\Input\EventManager.cpp" />
     <ClCompile Include="..\src\Utilities\Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Assets\Texture.hpp" />
     <ClInclude Include="..\include\Assets\TextureManager.hpp" />
+    <ClInclude Include="..\include\Data\PhysicalInfo.hpp" />
+    <ClInclude Include="..\include\Data\Vector.hpp" />
     <ClInclude Include="..\include\Input\EventManager.hpp" />
     <ClInclude Include="..\include\Utilities\Logger.hpp" />
     <ClInclude Include="..\include\Utilities\VERSION.hpp" />
