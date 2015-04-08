@@ -1,5 +1,71 @@
 #include <Data\Mesh.hpp>
 
+int Mesh::orientation(sf::Vector2f _a, sf::Vector2f _b, sf::Vector2f _c)
+{
+	int val = (_b.y - _a.y) * (_c.x - _b.x) -
+		      (_b.x - _a.x) * (_c.y - _b.y);
+
+	if (val == 0) return 0;
+	return (val > 0) ? 1 : 2;
+}
+bool Mesh::isValid()
+{
+	if (vertices.size() > 1)
+	{
+		if (vertices[0].position == vertices[vertices.size() - 1].position)
+		{
+			//area
+			if (vertices.size() < 3)
+				return false;
+			int linecount = vertices.size() - 1;
+			for (int first = 0; first < linecount - 2; first++)
+			{
+				sf::Vector2f p1 = vertices[first].position;
+				sf::Vector2f q1 = vertices[first + 1].position;
+				for (int second = first + 2; second < linecount; second++)
+				{
+					sf::Vector2f p2 = vertices[second].position;
+					sf::Vector2f q2 = vertices[second + 1].position;
+					int o1 = orientation(p1, q1, p2);
+					int o2 = orientation(p1, q1, q2);
+					int o3 = orientation(p2, q2, p1);
+					int o4 = orientation(p2, q2, q1);
+					if (o1 + o2 == 3 && o3 + o4 == 3)
+						return false;
+				}
+			}
+			return true;
+		}
+		else {
+			//strip
+
+			int linecount = vertices.size() - 1;
+			for (int first = 0; first < linecount - 2; first++)
+			{
+				sf::Vector2f p1 = vertices[first].position;
+				sf::Vector2f q1 = vertices[first+1].position;
+				for (int second = first + 2; second < linecount; second++)
+				{
+					sf::Vector2f p2 = vertices[second].position;
+					sf::Vector2f q2 = vertices[second + 1].position;
+					int o1 = orientation(p1, q1, p2);
+					int o2 = orientation(p1, q1, q2);
+					int o3 = orientation(p2, q2, p1);
+					int o4 = orientation(p2, q2, q1);
+					if (o1 + o2 == 3 && o3 + o4 == 3)
+						return false;
+				}
+			}
+			return true;
+		}
+	}
+	else if (vertices.size() == 1)
+	{
+		//point
+		return true;
+	}
+}
+
 Mesh::Mesh()
 {
 	EXP::log("[Info]Mesh has been constructed");
@@ -10,204 +76,15 @@ Mesh::~Mesh()
 }
 void Mesh::clear()
 {
-	strips.clear();
+	vertices.clear();
 	EXP::log("[Info]Mesh has been cleared");
 }
-void Mesh::addStrip(Strip _strip)
+void Mesh::addVertex(sf::Vertex _strip)
 {
-	strips.push_back(_strip);
-	EXP::log("[Info]Strip has been added to Mesh");
+	vertices.push_back(_strip);
+	EXP::log("[Info]Vertex has been added to Mesh");
 }
-void Mesh::addStrip(int _pos, Strip _strip)
-{
-	if (_pos > strips.size() || _pos < 0)
-	{
-		EXP::log("[Error]Tried inserting Strip at unknown location");
-		return;
-	}
-	auto it = strips.begin();
-	for (int i = 0; i < _pos; i++)
-		it++;
-	strips.insert(it, _strip);
-	EXP::log("[Info]Strip has been inserted to Mesh");
-}
-void Mesh::removeStrip(int _pos)
-{
-	if (_pos > strips.size() || _pos < 0)
-	{
-		EXP::log("[Error]Tried erasing Strip at unknown location");
-		return;
-	}
-	auto it = strips.begin();
-	for (int i = 0; i < _pos; i++)
-		it++;
-	strips.erase(it);
-	EXP::log("[Info]Strip has been erased from Mesh");
-}
-void Mesh::setStrip(int _pos, Strip _strip)
-{
-	if (_pos >= strips.size() || _pos < 0)
-	{
-		EXP::log("[Error]Tried setting Strip at unknown location");
-		return;
-	}
-	strips[_pos] = _strip;
-	EXP::log("[Info]Strip has been set in Mesh");
-}
-Mesh::Strip Mesh::getStrip(int _pos)
-{
-	if (_pos >= strips.size() || _pos < 0)
-	{
-		EXP::log("[Error]Tried getting Strip at unknown location");
-		return Mesh::Strip();
-	}
-	return strips[_pos];
-}
-void Mesh::setStrips(std::vector<Strip> _strips)
-{
-	strips = _strips;
-	EXP::log("[Info]Strips of Mesh have been overriden");
-}
-std::vector<Mesh::Strip> Mesh::getStrips()
-{
-	return strips;
-}
-//
-//
-//
-//
-//
-//
-//
-//
-void Mesh::draw(sf::RenderTarget* _target, sf::Color _color)
-{
-	for (auto it : strips)
-	{
-		it.draw(_target, _color);
-	}
-}
-
-Mesh::Vertex::Vertex()
-{
-	x = 0.0f;
-	y = 0.0f;
-	EXP::log("[Info]Vertex has been constructed");
-}
-Mesh::Vertex::Vertex(float _x, float _y)
-{
-	x = _x;
-	y = _y;
-	EXP::log("[Info]Vertex has been constructed");
-}
-Mesh::Vertex::~Vertex()
-{
-	EXP::log("[Info]Vertex has been destructed");
-}
-Mesh::Vertex& Mesh::Vertex::operator+=(const Vertex& rhs)
-{
-	this->x += rhs.x;
-	this->y += rhs.y;
-	return *this;
-}
-Mesh::Vertex& Mesh::Vertex::operator-=(const Vertex& rhs)
-{
-	this->x -= rhs.x;
-	this->y -= rhs.y;
-	return *this;
-}
-Mesh::Vertex& Mesh::Vertex::operator*=(const Vertex& rhs)
-{
-	this->x *= rhs.x;
-	this->y *= rhs.y;
-	return *this;
-}
-Mesh::Vertex& Mesh::Vertex::operator/=(const Vertex& rhs)
-{
-	this->x /= rhs.x;
-	this->y /= rhs.y;
-	return *this;
-}
-Mesh::Vertex& Mesh::Vertex::operator+(const Vertex& rhs)
-{
-	return Vertex(
-		this->x + rhs.x,
-		this->y + rhs.y);
-}
-Mesh::Vertex& Mesh::Vertex::operator-(const Vertex& rhs)
-{
-	return Vertex(
-		this->x - rhs.x,
-		this->y - rhs.y);
-}
-Mesh::Vertex& Mesh::Vertex::operator*(const Vertex& rhs)
-{
-	return Vertex(
-		this->x * rhs.x,
-		this->y * rhs.y);
-}
-Mesh::Vertex& Mesh::Vertex::operator/(const Vertex& rhs)
-{
-	return Vertex(
-		this->x / rhs.x,
-		this->y / rhs.y);
-}
-bool Mesh::Vertex::operator==(const Vertex& rhs)
-{
-	return (this->x == rhs.x && this->y == rhs.y);
-}
-bool Mesh::Vertex::operator!=(const Vertex& rhs)
-{
-	return !(this->x == rhs.x && this->y == rhs.y);
-}
-void Mesh::Vertex::draw(sf::RenderTarget* _target, sf::Color _color)
-{
-	sf::CircleShape shape(3.0f, 10);
-	shape.setFillColor(sf::Color(0, 0, 0, 0));
-	shape.setOutlineColor(_color*sf::Color(255,255,255,255));
-	shape.setOutlineThickness(1.0f);
-	shape.setPosition(sf::Vector2f(x, y));
-	_target->draw(shape);
-}
-
-bool Mesh::Strip::isArea()
-{
-	if (vertices.size() > 2)
-	{
-		return (*(vertices.begin()) == *(vertices.end()));
-	}
-	else {
-		return false;
-	}
-}
-bool Mesh::Strip::isStripe()
-{
-	if (vertices.size() > 1)
-	{
-		return (*(vertices.begin()) != *(vertices.end()));
-	}
-	else {
-		return false;
-	}
-}
-bool Mesh::Strip::isPoint()
-{
-	return (vertices.size() == 1);
-}
-Mesh::Strip::Strip()
-{
-	EXP::log("[Info]Strip has been constructed");
-}
-Mesh::Strip::~Strip()
-{
-	EXP::log("[Info]Strip has been destrcuted");
-}
-void Mesh::Strip::addVertex(Vertex _vertex)
-{
-	vertices.push_back(_vertex);
-	EXP::log("[Info]Vertex has been added to Strip");
-}
-void Mesh::Strip::addVertex(int _pos, Vertex _vertex)
+void Mesh::addVertex(int _pos, sf::Vertex _strip)
 {
 	if (_pos > vertices.size() || _pos < 0)
 	{
@@ -217,61 +94,190 @@ void Mesh::Strip::addVertex(int _pos, Vertex _vertex)
 	auto it = vertices.begin();
 	for (int i = 0; i < _pos; i++)
 		it++;
-	vertices.insert(it, _vertex);
-	EXP::log("[Info]Vertex has been inserted to Strip");
+	vertices.insert(it, _strip);
+	EXP::log("[Info]Vertex has been inserted to Mesh");
 }
-void Mesh::Strip::removeVertex(int _pos)
+void Mesh::removeVertex(int _pos)
 {
-	if (_pos >= vertices.size() || _pos < 0)
+	if (_pos > vertices.size() || _pos < 0)
 	{
-		EXP::log("[Error]Tried erasing Vertex at unknown location");
+		EXP::log("[Error]Tried erasing Strip at unknown location");
 		return;
 	}
 	auto it = vertices.begin();
 	for (int i = 0; i < _pos; i++)
 		it++;
 	vertices.erase(it);
-	EXP::log("[Info]Vertex has been erased from Strip");
+	EXP::log("[Info]Vertex has been erased from Mesh");
 }
-void Mesh::Strip::setVertex(int _pos, Vertex _vertex)
+void Mesh::setVertex(int _pos, sf::Vertex _strip)
 {
 	if (_pos >= vertices.size() || _pos < 0)
 	{
 		EXP::log("[Error]Tried setting Vertex at unknown location");
 		return;
 	}
-	vertices[_pos] = _vertex;
-	EXP::log("[Info]Vertex has been set in Strip");
+	vertices[_pos] = _strip;
+	EXP::log("[Info]Vertex has been set in Mesh");
 }
-Mesh::Vertex Mesh::Strip::getVertex(int _pos)
+sf::Vertex Mesh::getVertex(int _pos)
 {
 	if (_pos >= vertices.size() || _pos < 0)
 	{
 		EXP::log("[Error]Tried getting Vertex at unknown location");
-		return Vertex();
+		return sf::Vertex(sf::Vector2f(0.0f,0.0f));
 	}
 	return vertices[_pos];
 }
-void Mesh::Strip::setVertices(std::vector<Mesh::Vertex> _vertices)
+void Mesh::setVertices(std::vector<sf::Vertex> _strips)
 {
-	vertices = _vertices;
-	EXP::log("[Info]Vertices have been overridden");
+	vertices = _strips;
+	EXP::log("[Info]Vertices of Mesh have been overriden");
 }
-std::vector<Mesh::Vertex> Mesh::Strip::getVertices()
+std::vector<sf::Vertex> Mesh::getVertices()
 {
 	return vertices;
 }
-//
-//
-void Mesh::Strip::draw(sf::RenderTarget* _target, sf::Color _color)
+bool Mesh::checkOverlapping(Mesh _other)
 {
-	if (isArea())
+	if (vertices.size() > 1)
 	{
-		sf::ConvexShape shape;
-		shape.setPointCount(vertices.size());
-		for (unsigned int i = 0; i < vertices.size(); i++)
+		if (vertices[0].position == vertices[vertices.size() - 1].position)
 		{
-			
+			//area (this)
+			if (_other.vertices.size() > 1)
+			{
+				if (_other.vertices[0].position == _other.vertices[_other.vertices.size() - 1].position)
+				{
+					//area - area
+
+				}
+				else {
+					//area - strip
+
+				}
+			}
+			else if (_other.vertices.size() == 1)
+			{
+				//area - point
+
+			}
+		}
+		else {
+			//strip (this)
+			if (_other.vertices.size() > 1)
+			{
+				if (_other.vertices[0].position == _other.vertices[_other.vertices.size() - 1].position)
+				{
+					//strip - area
+
+				}
+				else {
+					//strip - strip
+
+				}
+			}
+			else if (_other.vertices.size() == 1)
+			{
+				//strip - point
+				std::vector<sf::Vertex>& point = _other.vertices;
+				std::vector<sf::Vertex>& strip = vertices;
+
+				sf::Vector2f r = point[0].position;
+				for (int line = 0; line < strip.size() - 1; line++)
+				{
+					sf::Vector2f p = strip[line].position;
+					sf::Vector2f q = strip[line + 1].position;
+					if ((q.x <= std::max(p.x, r.x) && q.x >= std::min(p.x, r.x) &&
+						q.y <= std::max(p.y, r.y) && q.y >= std::min(p.y, r.y)))
+					{
+						return true;
+					}
+				}
+				return false;
+			}
 		}
 	}
+	else if (vertices.size() == 1)
+	{
+		//point (this)
+		if (_other.vertices.size() > 1)
+		{
+			if (_other.vertices[0].position == _other.vertices[_other.vertices.size() - 1].position)
+			{
+				//point - area
+				std::vector<sf::Vertex>& point = vertices;
+				std::vector<sf::Vertex>& area = _other.vertices;
+
+				int line = 0;
+				int previous = (line + (area.size() - 1) - 1) % (area.size() - 1);
+				int next = (line + 1) % (area.size() - 1);
+				
+				for (line = 1; line < area.size() - 1; line++)
+				{
+					int previous = (line + (area.size() - 1) - 1) % (area.size() - 1);
+					int next = (line + 1) % (area.size() - 1);
+
+				}
+
+				int max = 0;
+				for (int vertex = 1; vertex < area.size(); vertex++)
+				{
+					float maxX = std::abs(area[max].position.x);
+					float maxY = std::abs(area[max].position.y);
+					float maxT = maxX + maxY;
+					float verX = std::abs(area[vertex].position.x);
+					float verY = std::abs(area[vertex].position.y);
+					float verT = verX + verY;
+					if (verT > maxT)
+					{
+						max = vertex;
+					}
+				}
+
+			}
+			else {
+				//point - strip
+				std::vector<sf::Vertex>& point = vertices;
+				std::vector<sf::Vertex>& strip = _other.vertices;
+
+				sf::Vector2f r = point[0].position;
+				for (int line = 0; line < strip.size() - 1; line++)
+				{
+					sf::Vector2f p = strip[line].position;
+					sf::Vector2f q = strip[line + 1].position;
+					if ((q.x <= std::max(p.x, r.x) && q.x >= std::min(p.x, r.x) &&
+						q.y <= std::max(p.y, r.y) && q.y >= std::min(p.y, r.y)))
+					{
+						return true;
+					}
+				}
+				return false;
+			}
+		}
+		else if (_other.vertices.size() == 1)
+		{
+			//point - point
+			std::vector<sf::Vertex>& point1 = vertices;
+			std::vector<sf::Vertex>& point2 = _other.vertices;
+
+			return (point1[0].position == point2[0].position);
+		}
+	}
+	return false;
+}
+//
+//
+//
+//
+//
+//
+//
+void Mesh::draw(sf::RenderTarget* _target, sf::Color _color)
+{
+	for (auto it : vertices)
+	{
+		it.color = _color;
+	}
+	_target->draw(&vertices[0], vertices.size(), sf::LinesStrip);
 }
