@@ -3,6 +3,7 @@
 
 #include <Vector>
 #include <list>
+#include <set>
 #include <SFML\Graphics.hpp>
 #include <Utilities\Logger.hpp>
 
