@@ -2,14 +2,21 @@
 #define _Mesh_hpp_
 
 #include <Vector>
+#include <list>
 #include <SFML\Graphics.hpp>
 #include <Utilities\Logger.hpp>
 
 class Mesh
 {
 private:
-	std::vector<sf::Vertex> vertices;
-	int orientation(sf::Vector2f _a, sf::Vector2f _b, sf::Vector2f _c);
+	std::vector<sf::Vertex> accessVertices;
+	std::vector<sf::ConvexShape> internal;
+	void updateInternal();
+	int ccw(sf::Vector2f _a, sf::Vector2f _b, sf::Vector2f _c);
+	int curvature(int _index);
+	int curvature(int _a, int _b, int _c);
+	int prev(int _index);
+	int next(int _index);
 	bool isValid();
 public:
 	
