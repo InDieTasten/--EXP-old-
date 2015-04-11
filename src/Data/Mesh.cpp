@@ -3,10 +3,13 @@
 void Mesh::updateInternal()
 {
 	internal.clear();
+	//check for polygon
 	if (accessVertices.size() < 2)
 	{
 		return;
 	}
+
+	//retrieve outmost point
 	int startingPoint = 0;
 	for (int i = 1; i < accessVertices.size(); i++)
 	{
@@ -19,26 +22,53 @@ void Mesh::updateInternal()
 			startingPoint = i;
 		}
 	}
+	//set default curvature
+	int polyCurve = curvature(startingPoint);
 
-	std::list< std::list<int> > convexes;
-	while (true)
+	//create list of open vertices
+	std::set<int> open;
+	for (int i = 0; i < accessVertices.size(); i++)
+		open.insert(i);
+
+	//convert, until no vertices are unassigned
+	while (open.size() > 0)
 	{
-		std::list<int> tmpConvex;
-		int startingCurvature = curvature(startingPoint);
-		tmpConvex.push_back(startingPoint);
-	
-		for (int i = next(startingPoint); i != startingPoint; i = next(i))
-		{
-			tmpConvex.push_back(i);
-			if (curvature(i) + startingCurvature == 0)
-			{
-				//concave
-				while (true)
-				{
+		//get reference point
+		int ref = *open.begin();
 
-				}
+		//get valid vertices
+		std::set<int> sample;
+		sample.insert(ref);
+		if (curvature(ref) == polyCurve)
+		{
+			//ref is valid(check both sides)
+			int left = prev(ref);
+			while (curvature(left) == polyCurve && left != ref)
+			{
+				sample.insert(left);
+				left = prev(left);
+			}
+			if (left == ref)
+			{
+				//done
+			}
+			int right = next(ref);
+			while (curvature(right) == polyCurve && right != ref)
+			{
+				sample.insert(right);
+				right = next(right);
 			}
 		}
+		else {
+			//ref is invalid(check one side)
+			int left = prev(ref);
+			while (curvature(left) == polyCurve && left != ref)
+			{
+				sample.insert(left);
+				left = prev(left);
+			}
+		}
+		
 
 	}
 	
