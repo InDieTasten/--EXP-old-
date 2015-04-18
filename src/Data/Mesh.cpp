@@ -3,20 +3,34 @@
 void Mesh::updateInternal()
 {
 	internal.clear();
+	std::list <std::vector<sf::Vertex> > all = makeConvex(accessVertices);
+	for (auto poly : all)
+	{
+		sf::ConvexShape shape;
+		shape.setPointCount(poly.size());
+		for (int vertex = 0; vertex < poly.size(); vertex++)
+		{
+			shape.setPoint(vertex, poly[vertex].position);
+		}
+		internal.push_back(shape);
+	}
+}
+std::list<std::vector<sf::Vertex> > Mesh::makeConvex(std::vector<sf::Vertex> _input)
+{
 	//check for polygon
-	if (accessVertices.size() < 2)
+	if (_input.size() < 2)
 	{
 		return;
 	}
 
 	//retrieve outmost point
 	int startingPoint = 0;
-	for (int i = 1; i < accessVertices.size(); i++)
+	for (int i = 1; i < _input.size(); i++)
 	{
-		float max = accessVertices[startingPoint].position.x
-			+ accessVertices[startingPoint].position.y;
-		float cur = accessVertices[i].position.x
-			+ accessVertices[i].position.y;
+		float max = _input[startingPoint].position.x
+			+ _input[startingPoint].position.y;
+		float cur = _input[i].position.x
+			+ _input[i].position.y;
 		if (cur > max)
 		{
 			startingPoint = i;
@@ -25,54 +39,98 @@ void Mesh::updateInternal()
 	//set default curvature
 	int polyCurve = curvature(startingPoint);
 
-	//create list of open vertices
-	std::set<int> open;
-	for (int i = 0; i < accessVertices.size(); i++)
-		open.insert(i);
-
-	//convert, until no vertices are unassigned
-	while (open.size() > 0)
+	//global lists
+	std::set<int> conflicting;
+	for (int i = 0; i < _input.size(); i++)
 	{
-		//get reference point
-		int ref = *open.begin();
-
-		//get valid vertices
-		std::set<int> sample;
-		sample.insert(ref);
-		if (curvature(ref) == polyCurve)
+		if (curvature(i) != polyCurve)
 		{
-			//ref is valid(check both sides)
-			int left = prev(ref);
-			while (curvature(left) == polyCurve && left != ref)
-			{
-				sample.insert(left);
-				left = prev(left);
-			}
-			if (left == ref)
-			{
-				//done
-			}
-			int right = next(ref);
-			while (curvature(right) == polyCurve && right != ref)
-			{
-				sample.insert(right);
-				right = next(right);
-			}
+			conflicting.insert(i);
+			break;
 		}
-		else {
-			//ref is invalid(check one side)
-			int left = prev(ref);
-			while (curvature(left) == polyCurve && left != ref)
-			{
-				sample.insert(left);
-				left = prev(left);
-			}
-		}
-		
-
 	}
-	
-}	
+
+	for (auto it : conflicting)
+	{
+		int currentChoice;
+		int choiceRating = 6;
+		for (int i = 0; i < _input.size(); i++)
+		{
+			int weight = 5;
+			if (curvature(i) != polyCurve)
+			{
+				weight--;
+			}
+			if (curvature(prev(it), it, i) == polyCurve)
+			{
+				weight--;
+			}
+			if (curvature(i, it, next(it)) == polyCurve)
+			{
+				weight--;
+			}
+			if (curvature(prev(i), i, it) == polyCurve)
+			{
+				weight--;
+			}
+			if (curvature(it, i, next(i)) == polyCurve)
+			{
+				weight--;
+			}
+			if (weight < choiceRating)
+			{
+				//check possible
+				bool possible = true;
+				for (int hull = 0; hull < _input.size(); hull++)
+				{
+					if (intersect(it, i, hull, next(hull)))
+					{
+						possible = false;
+						break;
+					}
+				}
+				if (possible)
+				{
+					currentChoice = i;
+					choiceRating = weight;
+					if (!weight)
+						break;
+				}
+				
+			}
+		}
+		//make split
+		std::list<std::vector<sf::Vertex> > output;
+
+		std::vector<sf::Vertex> first;
+		for (int start = it; start != currentChoice; first.push_back(_input[start = next(start)])){}
+		output.merge(makeConvex(first));
+
+		std::vector<sf::Vertex> second;
+		for (int start = currentChoice; start != it; first.push_back(_input[start = next(start)])){}
+		output.merge(makeConvex(second));
+
+		return output;
+	}
+	std::list<std::vector<sf::Vertex> > output;
+	output.push_back(_input);
+	return output;
+}
+bool Mesh::intersect(int a1, int a2, int b1, int b2)
+{
+	int o1 = curvature(a1, a2, b1);
+	int o2 = curvature(a1, a2, b2);
+	int o3 = curvature(b1, b2, a1);
+	int o4 = curvature(b1, b2, a2);
+
+	if (o1*o2*o3*o4)
+		return false;
+
+	if (o1 != o2 && o3 != o4)
+		return true;
+
+	return false;
+}
 int Mesh::ccw(sf::Vector2f _a, sf::Vector2f _b, sf::Vector2f _c)
 {
 	int val = (_b.y - _a.y) * (_c.x - _b.x) -
@@ -86,24 +144,14 @@ int Mesh::curvature(int _index)
 	int prev = Mesh::prev(_index);
 	int cur = _index;
 	int next = Mesh::next(_index);
-	switch (ccw(accessVertices[prev].position, accessVertices[cur].position, accessVertices[next].position))
-	{
-	case 1: return 1;
-	case 2: return 2;
-	default: return 0;
-	}
+	return (ccw(accessVertices[prev].position, accessVertices[cur].position, accessVertices[next].position));
 }
 int Mesh::curvature(int _a, int _b, int _c)
 {
 	int prev = _a;
 	int cur = _b;
 	int next = _c;
-	switch (ccw(accessVertices[prev].position, accessVertices[cur].position, accessVertices[next].position))
-	{
-	case 1: return 1;
-	case 2: return 2;
-	default: return 0;
-	}
+	return (ccw(accessVertices[prev].position, accessVertices[cur].position, accessVertices[next].position));
 }
 int Mesh::prev(int _index)
 {
