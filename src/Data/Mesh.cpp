@@ -20,7 +20,7 @@ std::list<std::vector<sf::Vertex> > Mesh::makeConvex(std::vector<sf::Vertex> _in
 	//check for polygon
 	if (_input.size() < 2)
 	{
-		return;
+		return std::list<std::vector<sf::Vertex> >();
 	}
 
 	//retrieve outmost point
