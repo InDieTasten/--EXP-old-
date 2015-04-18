@@ -15,6 +15,7 @@ private:
 	void updateInternal();
 	std::list<std::vector<sf::Vertex> > makeConvex(std::vector<sf::Vertex> _input);
 	bool intersect(int a1, int a2, int b1, int b2);
+	sf::Vector2f intersect(sf::Vector2f a1, sf::Vector2f a2, sf::Vector2f b1, sf::Vector2f b2);
 	int ccw(sf::Vector2f _a, sf::Vector2f _b, sf::Vector2f _c);
 	int curvature(int _index);
 	int curvature(int _a, int _b, int _c);
@@ -38,7 +39,8 @@ public:
 	void setVertices(std::vector<sf::Vertex> _vertices);
 	std::vector<sf::Vertex> getVertices();
 
-	bool checkOverlapping(Mesh _other); //
+	
+	sf::Vector2f overlap(Mesh _other); //
 
 	float getArea(); //
 	sf::Vector2f getAreaCenter(); //

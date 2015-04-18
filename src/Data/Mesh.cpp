@@ -131,6 +131,30 @@ bool Mesh::intersect(int a1, int a2, int b1, int b2)
 
 	return false;
 }
+sf::Vector2f Mesh::intersect(sf::Vector2f a1, sf::Vector2f a2, sf::Vector2f b1, sf::Vector2f b2)
+{
+	float x1 = a1.x;
+	float x2 = a2.x;
+	float x3 = b1.x;
+	float x4 = b2.x;
+	float y1 = a1.y;
+	float y2 = a2.y;
+	float y3 = b1.y;
+	float y4 = b2.y;
+	sf::Vector2f result;
+	
+	float denominator = ((x1 - x2)*(y3 - y4) - (y1 - y2)*(x3 - x4));
+	if (!denominator)
+	{
+		EXP::log("[Error]Deviding by ZERO(Line intersection test)");
+		return sf::Vector2f(13, 37);
+	}
+	float prenominator = (x1*y2 - y1*x2);
+	float postnominator = (x3*y4 - y3*x4);
+	result.x = (prenominator*(x3 - x4) - (x1 - x2)*postnominator) / denominator;
+	result.y = (prenominator*(y3 - y4) - (y1 - y2)*postnominator) / denominator;
+	return result;
+}
 int Mesh::ccw(sf::Vector2f _a, sf::Vector2f _b, sf::Vector2f _c)
 {
 	int val = (_b.y - _a.y) * (_c.x - _b.x) -
