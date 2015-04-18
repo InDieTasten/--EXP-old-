@@ -39,7 +39,7 @@ public:
 	void setVertices(std::vector<sf::Vertex> _vertices);
 	std::vector<sf::Vertex> getVertices();
 
-	
+	sf::Vector2f overlap(sf::ConvexShape a, sf::ConvexShape b);
 	sf::Vector2f overlap(Mesh _other); //
 
 	float getArea(); //
