@@ -13,6 +13,8 @@ private:
 	std::vector<sf::Vertex> accessVertices;
 	std::vector<sf::ConvexShape> internal;
 	void updateInternal();
+	std::list<std::vector<sf::Vertex> > makeConvex(std::vector<sf::Vertex> _input);
+	bool intersect(int a1, int a2, int b1, int b2);
 	int ccw(sf::Vector2f _a, sf::Vector2f _b, sf::Vector2f _c);
 	int curvature(int _index);
 	int curvature(int _a, int _b, int _c);
