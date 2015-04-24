@@ -185,3 +185,60 @@ int Mesh::next(int _index)
 {
 	return (_index + 1) % accessVertices.size();
 }
+
+Mesh::Mesh()
+{
+	EXP::log("Mesh has been constructed");
+}
+Mesh::~Mesh()
+{
+	EXP::log("Mesh has been destructed");
+}
+
+void Mesh::clear()
+{
+	accessVertices.clear();
+	internal.clear();
+}
+void Mesh::addVertex(sf::Vertex _vertex)
+{
+	accessVertices.push_back(_vertex);
+	updateInternal();
+}
+void Mesh::addVertex(int _pos, sf::Vertex _vertex)
+{
+	std::vector<sf::Vertex>::iterator it = accessVertices.begin();
+	for (; _pos > 0; it++, _pos--);
+	accessVertices.insert(it, _vertex);
+	updateInternal();
+}
+void Mesh::removeVertex(int _pos)
+{
+	std::vector<sf::Vertex>::iterator it = accessVertices.begin();
+	for (; _pos > 0; it++, _pos--);
+	accessVertices.erase(it);
+	updateInternal();
+}
+void Mesh::setVertex(int _pos, sf::Vertex _vertex)
+{
+	accessVertices[_pos] = _vertex;
+	updateInternal();
+}
+sf::Vertex Mesh::getVertex(int _pos)
+{
+	return accessVertices[_pos];
+}
+void Mesh::setVertices(std::vector<sf::Vertex> _vertices)
+{
+	accessVertices = _vertices;
+	updateInternal();
+}
+std::vector<sf::Vertex> Mesh::getVertices()
+{
+	return accessVertices;
+}
+
+sf::Vector2f Mesh::overlap(Mesh _other)
+{
+	//HERE
+}
