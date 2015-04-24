@@ -238,7 +238,15 @@ std::vector<sf::Vertex> Mesh::getVertices()
 	return accessVertices;
 }
 
-sf::Vector2f Mesh::overlap(Mesh _other)
+sf::Vector2f Mesh::overlap(Mesh* _other)
 {
-	//HERE
+	std::list<sf::Vector2f> centroids;
+	for (int a = 0; a < this->internal.size(); a++)
+	{
+		sf::ConvexShape& shapeA = this->internal[a];
+		for (int b = 0; b < _other->internal.size(); b++)
+		{
+			sf::ConvexShape& shapeB = _other->internal[b];
+		}
+	}
 }
