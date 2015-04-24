@@ -38,7 +38,7 @@ public:
 	void setVertices(std::vector<sf::Vertex> _vertices);
 	std::vector<sf::Vertex> getVertices();
 
-	sf::Vector2f overlap(Mesh _other); //
+	sf::Vector2f overlap(Mesh* _other); //
 
 	float getArea(); //
 	sf::Vector2f getAreaCenter(); //
