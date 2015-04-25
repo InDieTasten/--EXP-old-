@@ -4,6 +4,9 @@
     <Text Include="makefile">
       <Filter>9 Extras</Filter>
     </Text>
+    <Text Include="Storyline.txt">
+      <Filter>9 Extras</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="8 Utilities">

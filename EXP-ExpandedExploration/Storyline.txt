@@ -1,0 +1,35 @@
+-- {Companies} doing lobby work intrude governments
+-- Economy gets destroyed
+-- Medical Attention gets destroyed
+-- No place for trash
+-- No {resources left to gather
+-- {Scientist} tries best to get help from alien specieses
+-- {Scientist} launches player from earth
+-- No luck, humanity is almost erased
+-- {Rich people} escape to orbit around {home-planet}
+-- {Scientist} dies after 4 months later
+-- {Player} is deep-sleeping while traveling
+-- {Time} passes
+-- {Player} awakes due to his life-support-systems actions
+-- {Player} overcomes his seizure
+-- He gets the message from the {Scientist}
+-- {Player} is feeling hotter and hotter
+-- {Alien#rescue} rescues player from falling further to {sun}
+-- {Alien#rescue} brings ship including {Player} to habitat
+-- {Alien#snitch} sees {Alien#rescue} holding {Player} calling {Police}
+-- {Police} arrests {Alien#rescue} and captivates {Player}
+-- Around one hour passes
+-- {Player} and his ship are examined by {Alien#federalAuth}
+-- {Alien#federalAuth} tries to communicate with {Player}
+-- {Alien species} actually has english like language
+-- {Player} explains as much as he can remember
+-- {Alien#federalAuth} injects positioning bugging device
+-- {Alien#federalAuth} grants {Player} "freedom"
+-- {Alien#federalAuth} doesn't give much of a fuck, but will grant a small exploration fleet to {Player}s source destination
+-- {Player} will have to get the fleet together himself though
+QUEST 1
+ - get used to alien culture
+ - get used to aliens
+ - get used to alien economy
+ - find people that help you
+ Alt: Help {Alien#rescue} get out of jail
