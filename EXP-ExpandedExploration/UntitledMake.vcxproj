@@ -57,6 +57,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <Text Include="makefile" />
+    <Text Include="Storyline.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Assets\Texture.cpp" />
