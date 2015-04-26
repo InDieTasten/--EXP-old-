@@ -1,35 +1,67 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!WARNING: Reading this file will horrifically SPOILER anything within EXP!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+{Companies} 
+{Resources} The missing ones: silver, copper, gold, iron? Maybe fictive ones?
+{Scientist}
+{Player}
+{home-planet} Earth maybe?
+{Rich people}
+{Time} How long has the player been in deep-sleep?
+{Alien#rescue} Freelance miner? How do they look? Name?
+{MiningCompany} Name? Size?
+{sun} How's the alien sun called? How does it look?
+{Alien#snitch} Federation? Snitch.
+{Police} How do they act? Worknames?
+{Alien#federalAuth} Federal Authority. How do they act? What are they allowed to do?
+
+
 -- {Companies} doing lobby work intrude governments
 -- Economy gets destroyed
 -- Medical Attention gets destroyed
 -- No place for trash
--- No {resources left to gather
--- {Scientist} tries best to get help from alien specieses
--- {Scientist} launches player from earth
+-- No {Resources} left to gather
+-- {Scientist} tries best to inform alien specieses of humanity
+-- {Scientist} launches {Player} from {home-planet} with following message:
+-- "Somewhere in an aciant galaxy, far from where you started your journey, you shall find the destination. You shall experience unknown worlds, and proclaim your story. And after all that, your Expanded Exploration has come to an End... Don't try to save us. We will be gone long before."
 -- No luck, humanity is almost erased
 -- {Rich people} escape to orbit around {home-planet}
--- {Scientist} dies after 4 months later
+-- {Scientist} dies 4 months later
 -- {Player} is deep-sleeping while traveling
 -- {Time} passes
 -- {Player} awakes due to his life-support-systems actions
 -- {Player} overcomes his seizure
 -- He gets the message from the {Scientist}
+-- "Somewhere in an aciant galaxy, far from where you started your journey, you shall find the destination. You shall experience unknown worlds, and proclaim your stoy. And after all that, your Expanded Exploration..."chhhh, audiofile corrupted
 -- {Player} is feeling hotter and hotter
--- {Alien#rescue} rescues player from falling further to {sun}
+-- {Alien#rescue} rescues {Player} from falling further to {sun}
 -- {Alien#rescue} brings ship including {Player} to habitat
+-- {Alien#rescue} tells player, who he is working for and how he is called.
 -- {Alien#snitch} sees {Alien#rescue} holding {Player} calling {Police}
 -- {Police} arrests {Alien#rescue} and captivates {Player}
 -- Around one hour passes
 -- {Player} and his ship are examined by {Alien#federalAuth}
+-- {Alien#federalAuth} restores audiofile, but keeps message for hisself
 -- {Alien#federalAuth} tries to communicate with {Player}
 -- {Alien species} actually has english like language
--- {Player} explains as much as he can remember
--- {Alien#federalAuth} injects positioning bugging device
+-- {Player} explains as much as he can remember and mentions the audiofile
+-- {Alien#federalAuth} injects tracking bugging device to {Player}s body
 -- {Alien#federalAuth} grants {Player} "freedom"
 -- {Alien#federalAuth} doesn't give much of a fuck, but will grant a small exploration fleet to {Player}s source destination
 -- {Player} will have to get the fleet together himself though
-QUEST 1
- - get used to alien culture
- - get used to aliens
- - get used to alien economy
- - find people that help you
- Alt: Help {Alien#rescue} get out of jail
+QUEST 1 (Goal: Get back to homeplanet)
+ - get used to alien culture ~20minutes
+ - get used to aliens ~20minutes
+ - get used to alien economy ~30minutes
+ - find people who help you ~60minutes
+   - get money ~60minutes
+     - get a job ~3minutes
+ - find equip for the journey ~60minutes
+ Alt: Help {Alien#rescue} get out of jail ~5minutes
+
+Player is released within a small escape pod.
+Pod introduces him to the controls. ~1minute
+Pod introduces to mechanics of orbital flight ~3minutes
+
+Player works on QUEST 1 (total of ~265minutes)
