@@ -8,6 +8,10 @@ extern sf::Mutex loggermtx;
 extern void EXP::log(std::string);
 extern void EXP::init();
 
+//TESTZONE START
+//#include <Data\Mesh.hpp>
+//TESTZONE END
+
 
 extern "C" {
 #include <lua.h>
@@ -36,6 +40,10 @@ int main(int argc, char *argv[])
 
 	EXP::eventManager = new EventManager(&Window);
 	EXP::eventManager->addKeyRelease(&gameQuit);
+
+	//TESTZONE START
+	//Mesh test;
+	//TESTZONE END
 
 	EXP::eventManager->listen();
 

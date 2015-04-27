@@ -1,9 +1,8 @@
 #ifndef _Mesh_hpp_
 #define _Mesh_hpp_
 
-#include <Vector>
+#include <vector>
 #include <list>
-#include <set>
 #include <SFML\Graphics.hpp>
 #include <Utilities\Logger.hpp>
 
