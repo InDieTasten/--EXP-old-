@@ -28,11 +28,11 @@ LIBRARIES = \
 	-lsfml-graphics \
 	-lsfml-window \
 	-lsfml-system \
-	..\..\UG_lua\src\Lua5.2.3\bin\Release\libLua5.2.3.a \
-	-lavcodec \
-	-lavformat \
-	-lavutil \
-	-lswscale
+	..\..\UG_lua\src\Lua5.2.3\bin\Release\libLua5.2.3.a
+#	-lavcodec \
+#	-lavformat \
+#	-lavutil \
+#	-lswscale
 
 OBJECTS = \
 	..\src\Core\main.o \
@@ -40,7 +40,8 @@ OBJECTS = \
 	..\src\Assets\Texture.o \
 	..\src\Assets\TextureManager.o \
 	..\src\Input\EventManager.o \
-	..\src\Data\Vector.o
+	..\src\Data\Vector.o \
+	..\src\Data\Mesh.o
 
 rebuild: clean build
 	echo DONE!
