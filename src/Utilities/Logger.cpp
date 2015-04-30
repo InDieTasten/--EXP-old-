@@ -17,17 +17,12 @@ void EXP::log(std::string msg)
 		threadid = (int*)++threadcounter;
 		loggermtx.unlock();
 	}
-
 	time_t rawtime;
 	struct tm * timeinfo;
-
 	char T[14];
-
 	time(&rawtime);
 	timeinfo = localtime(&rawtime);
-
 	strftime(T, 14, "%j|%H:%M:%S", timeinfo);
-
 	loggermtx.lock();
 	std::cout << "&f" << T << "{" << threadid << "}" << msg << std::endl;
 	loggermtx.unlock();
