@@ -1,24 +1,24 @@
 #include <Data\Mesh.hpp>
 
-//void Mesh::updateInternal()
-//{
-//	internal.clear();
-//	std::list <std::vector<sf::Vertex> > all = makeConvex(accessVertices);
-//	for (auto poly : all)
-//	{
-//		sf::ConvexShape shape;
-//		shape.setPointCount(poly.size());
-//		for (int vertex = 0; vertex < poly.size(); vertex++)
-//		{
-//			shape.setPoint(vertex, poly[vertex].position);
-//		}
-//		internal.push_back(shape);
-//	}
-//}
+void Mesh::updateInternal()
+{
+	internal.clear();
+	std::list <std::vector<sf::Vertex> > all = makeConvex(accessVertices);
+	for (auto poly : all)
+	{
+		sf::ConvexShape shape;
+		shape.setPointCount(poly.size());
+		for (int vertex = 0; vertex < poly.size(); vertex++)
+		{
+			shape.setPoint(vertex, poly[vertex].position);
+		}
+		internal.push_back(shape);
+	}
+}
 std::list<std::vector<sf::Vertex> > Mesh::makeConvex(std::vector<sf::Vertex> _input)
 {
 	//check for polygon
-	if (_input.size() < 2)
+	if (_input.size() <= 2)
 	{
 		return std::list<std::vector<sf::Vertex> >();
 	}
@@ -39,7 +39,6 @@ std::list<std::vector<sf::Vertex> > Mesh::makeConvex(std::vector<sf::Vertex> _in
 	//set default curvature
 	int polyCurve = curvature(startingPoint);
 
-	//global lists
 	std::list<int> conflicting;
 	for (int i = 0; i < _input.size(); i++)
 	{
@@ -56,6 +55,9 @@ std::list<std::vector<sf::Vertex> > Mesh::makeConvex(std::vector<sf::Vertex> _in
 		int choiceRating = 6;
 		for (int i = 0; i < _input.size(); i++)
 		{
+			if (it == i || it == next(i) || it == prev(i))
+				continue;
+
 			int weight = 5;
 			if (curvature(i) != polyCurve)
 			{
@@ -77,9 +79,12 @@ std::list<std::vector<sf::Vertex> > Mesh::makeConvex(std::vector<sf::Vertex> _in
 			{
 				weight--;
 			}
+			EXP::log("[Debug]weight check...");
 			if (weight < choiceRating)
 			{
+				EXP::log("[Debug]passed");
 				//check possible
+				EXP::log("[Debug]possibility check...");
 				bool possible = true;
 				for (int hull = 0; hull < _input.size(); hull++)
 				{
@@ -91,6 +96,7 @@ std::list<std::vector<sf::Vertex> > Mesh::makeConvex(std::vector<sf::Vertex> _in
 				}
 				if (possible)
 				{
+					EXP::log("[Debug]passed");
 					currentChoice = i;
 					choiceRating = weight;
 					if (!weight)
@@ -98,18 +104,24 @@ std::list<std::vector<sf::Vertex> > Mesh::makeConvex(std::vector<sf::Vertex> _in
 				}
 			}
 		}
+		it = prev(it);
+		currentChoice = prev(currentChoice);
+		EXP::log("[Debug] it: " + utils::tostring(it));
+		EXP::log("[Debug] Current choice: " + utils::tostring(currentChoice));
 		//make split
 		std::list<std::vector<sf::Vertex> > output;
 
 		std::vector<sf::Vertex> first;
-		for (int start = it; start != currentChoice; first.push_back(_input[start = next(start)])){}
+		for (int start = it; start != next(currentChoice); first.push_back(_input[start = next(start)])){}
+		EXP::log("[Debug] First size: " + utils::tostring(first.size()));
 		for (auto half : makeConvex(first))
 		{
 			output.push_back(half);
 		}
 
 		std::vector<sf::Vertex> second;
-		for (int start = currentChoice; start != it; first.push_back(_input[start = next(start)])){}
+		for (int start = currentChoice; start != next(it); second.push_back(_input[start = next(start)])){}
+		EXP::log("[Debug] Second size: " + utils::tostring(second.size()));
 		for (auto half : makeConvex(second))
 		{
 			output.push_back(half);
@@ -128,7 +140,7 @@ bool Mesh::intersect(int a1, int a2, int b1, int b2)
 	int o3 = curvature(b1, b2, a1);
 	int o4 = curvature(b1, b2, a2);
 
-	if (o1*o2*o3*o4)
+	if (!(o1*o2*o3*o4))
 		return false;
 
 	if (o1 != o2 && o3 != o4)
@@ -193,11 +205,11 @@ int Mesh::next(int _index)
 
 Mesh::Mesh()
 {
-	EXP::log("Mesh has been constructed");
+	EXP::log("[Info]Mesh has been constructed");
 }
 Mesh::~Mesh()
 {
-	EXP::log("Mesh has been destructed");
+	EXP::log("[Info]Mesh has been destructed");
 }
 
 void Mesh::clear()
@@ -205,65 +217,66 @@ void Mesh::clear()
 	accessVertices.clear();
 	internal.clear();
 }
-//void Mesh::addVertex(sf::Vertex _vertex)
-//{
-//	accessVertices.push_back(_vertex);
-//	updateInternal();
-//}
-//void Mesh::addVertex(int _pos, sf::Vertex _vertex)
-//{
-//	std::vector<sf::Vertex>::iterator it = accessVertices.begin();
-//	for (; _pos > 0; it++, _pos--);
-//	accessVertices.insert(it, _vertex);
-//	updateInternal();
-//}
-//void Mesh::removeVertex(int _pos)
-//{
-//	std::vector<sf::Vertex>::iterator it = accessVertices.begin();
-//	for (; _pos > 0; it++, _pos--);
-//	accessVertices.erase(it);
-//	updateInternal();
-//}
-//void Mesh::setVertex(int _pos, sf::Vertex _vertex)
-//{
-//	accessVertices[_pos] = _vertex;
-//	updateInternal();
-//}
-//sf::Vertex Mesh::getVertex(int _pos)
-//{
-//	return accessVertices[_pos];
-//}
-//void Mesh::setVertices(std::vector<sf::Vertex> _vertices)
-//{
-//	accessVertices = _vertices;
-//	updateInternal();
-//}
-//std::vector<sf::Vertex> Mesh::getVertices()
-//{
-//	return accessVertices;
-//}
-//
-//sf::Vector2f Mesh::overlap(Mesh* _other)
-//{
-//	std::list<sf::Vector2f> centroids;
-//	for (int a = 0; a < this->internal.size(); a++)
-//	{
-//		sf::ConvexShape& shapeA = this->internal[a];
-//		for (int b = 0; b < _other->internal.size(); b++)
-//		{
-//			sf::ConvexShape& shapeB = _other->internal[b];
-//			//WORK
-//		}
-//	}
-//}
-//
-//void Mesh::draw(sf::RenderTarget* _target, sf::Color _color)
-//{
-//	for (auto it : internal)
-//	{
-//		it.setOutlineThickness(1.0f);
-//		it.setOutlineColor(_color);
-//		it.setFillColor(_color*sf::Color(255, 255, 255, 128));
-//		_target->draw(it);
-//	}
-//}
+void Mesh::addVertex(sf::Vertex _vertex)
+{
+	accessVertices.push_back(_vertex);
+	updateInternal();
+}
+void Mesh::addVertex(int _pos, sf::Vertex _vertex)
+{
+	std::vector<sf::Vertex>::iterator it = accessVertices.begin();
+	for (; _pos > 0; it++, _pos--);
+	accessVertices.insert(it, _vertex);
+	updateInternal();
+}
+void Mesh::removeVertex(int _pos)
+{
+	std::vector<sf::Vertex>::iterator it = accessVertices.begin();
+	for (; _pos > 0; it++, _pos--);
+	accessVertices.erase(it);
+	updateInternal();
+}
+void Mesh::setVertex(int _pos, sf::Vertex _vertex)
+{
+	accessVertices[_pos] = _vertex;
+	updateInternal();
+}
+sf::Vertex Mesh::getVertex(int _pos)
+{
+	return accessVertices[_pos];
+}
+void Mesh::setVertices(std::vector<sf::Vertex> _vertices)
+{
+	accessVertices = _vertices;
+	updateInternal();
+}
+std::vector<sf::Vertex> Mesh::getVertices()
+{
+	return accessVertices;
+}
+
+sf::Vector2f Mesh::overlap(Mesh* _other)
+{
+	std::list<sf::Vector2f> centroids;
+	for (int a = 0; a < this->internal.size(); a++)
+	{
+		sf::ConvexShape& shapeA = this->internal[a];
+		for (int b = 0; b < _other->internal.size(); b++)
+		{
+			sf::ConvexShape& shapeB = _other->internal[b];
+			//WORK
+		}
+	}
+}
+
+void Mesh::draw(sf::RenderTarget* _target, sf::Color _color)
+{
+	for (auto it : internal)
+	{
+		EXP::log("[Debug]render poly: " + utils::tostring(it.getPointCount()));
+		it.setOutlineThickness(1.0f);
+		it.setOutlineColor(_color);
+		it.setFillColor(_color*sf::Color(255, 255, 255, 64));
+		_target->draw(it);
+	}
+}
