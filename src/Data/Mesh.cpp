@@ -155,6 +155,21 @@ bool Mesh::intersect(int a1, int a2, int b1, int b2)
 
 	return false;
 }
+bool Mesh::intersectCheck(sf::Vector2f a1, sf::Vector2f a2, sf::Vector2f b1, sf::Vector2f b2)
+{
+	int o1 = ccw(a1, a2, b1);
+	int o2 = ccw(a1, a2, b2);
+	int o3 = ccw(b1, b2, a1);
+	int o4 = ccw(b1, b2, a2);
+
+	if (!(o1*o2*o3*o4))
+		return false;
+
+	if (o1 != o2 && o3 != o4)
+		return true;
+
+	return false;
+}
 sf::Vector2f Mesh::intersect(sf::Vector2f a1, sf::Vector2f a2, sf::Vector2f b1, sf::Vector2f b2)
 {
 	float x1 = a1.x;
@@ -262,18 +277,159 @@ std::vector<sf::Vertex> Mesh::getVertices()
 	return accessVertices;
 }
 
-sf::Vector2f Mesh::overlap(Mesh* _other)
+bool Mesh::doesOverlap(Mesh* _other)
 {
-	std::list<sf::Vector2f> centroids;
-	for (int a = 0; a < this->internal.size(); a++)
+	//thisPoints in other
+	for (auto hull : accessVertices)
 	{
-		sf::ConvexShape& shapeA = this->internal[a];
-		for (int b = 0; b < _other->internal.size(); b++)
+		bool collide = false;
+		for (auto poly : _other->internal)
 		{
-			sf::ConvexShape& shapeB = _other->internal[b];
-			//WORK
+			bool collide2 = false;
+			int curve = ccw(poly.getPoint(poly.getPointCount() - 1), poly.getPoint(0), hull.position);
+			for (int vertex = 0; vertex < poly.getPointCount() - 1; vertex++)
+			{
+				if (ccw(poly.getPoint(vertex), poly.getPoint(vertex + 1), hull.position) != curve)
+				{
+					collide2 = true;
+					break;
+				}
+			}
+			if (collide2)
+			{
+				collide = true;
+				break;
+			}
+		}
+		if (collide)
+		{
+			return true;
 		}
 	}
+	//otherPoints in this
+	for (auto hull : _other->accessVertices)
+	{
+		bool collide = false;
+		for (auto poly : internal)
+		{
+			bool collide2 = false;
+			int curve = ccw(poly.getPoint(poly.getPointCount() - 1), poly.getPoint(0), hull.position);
+			for (int vertex = 0; vertex < poly.getPointCount() - 1; vertex++)
+			{
+				if (ccw(poly.getPoint(vertex), poly.getPoint(vertex + 1), hull.position) != curve)
+				{
+					collide2 = true;
+					break;
+				}
+			}
+			if (collide2)
+			{
+				collide = true;
+				break;
+			}
+		}
+		if (collide)
+		{
+			return true;
+		}
+	}
+	//line intersects
+	for (int hullA = 0; hullA < accessVertices.size(); hullA++)
+	{
+		for (int hullB = 0; hullB < _other->accessVertices.size(); hullB++)
+		{
+			if (intersectCheck(accessVertices[hullA].position,
+				accessVertices[next(hullA)].position,
+				_other->accessVertices[hullB].position,
+				_other->accessVertices[_other->next(hullB)].position))
+			{
+				return true;
+			}
+		}
+	}
+	return false;
+}
+sf::Vector2f Mesh::overlap(Mesh* _other)
+{
+	std::list<sf::Vector2f> intersections;
+	
+	//thisPoints in other
+	for (auto hull : accessVertices)
+	{
+		bool collide = false;
+		for (auto poly : _other->internal)
+		{
+			bool collide2 = false;
+			int curve = ccw(poly.getPoint(poly.getPointCount()-1), poly.getPoint(0), hull.position);
+			for (int vertex = 0; vertex < poly.getPointCount()-1; vertex++)
+			{
+				if (ccw(poly.getPoint(vertex), poly.getPoint(vertex + 1), hull.position) != curve)
+				{
+					collide2 = true;
+					break;
+				}
+			}
+			if (collide2)
+			{
+				collide = true;
+				break;
+			}
+		}
+		if (collide)
+		{
+			intersections.push_back(hull.position);
+		}
+	}
+	//otherPoints in this
+	for (auto hull : _other->accessVertices)
+	{
+		bool collide = false;
+		for (auto poly : internal)
+		{
+			bool collide2 = false;
+			int curve = ccw(poly.getPoint(poly.getPointCount() - 1), poly.getPoint(0), hull.position);
+			for (int vertex = 0; vertex < poly.getPointCount() - 1; vertex++)
+			{
+				if (ccw(poly.getPoint(vertex), poly.getPoint(vertex + 1), hull.position) != curve)
+				{
+					collide2 = true;
+					break;
+				}
+			}
+			if (collide2)
+			{
+				collide = true;
+				break;
+			}
+		}
+		if (collide)
+		{
+			intersections.push_back(hull.position);
+		}
+	}
+	//line intersects
+	for (int hullA = 0; hullA < accessVertices.size(); hullA++)
+	{
+		for (int hullB = 0; hullB < _other->accessVertices.size(); hullB++)
+		{
+			if (intersectCheck(accessVertices[hullA].position,
+				accessVertices[next(hullA)].position,
+				_other->accessVertices[hullB].position,
+				_other->accessVertices[_other->next(hullB)].position))
+			{
+				intersections.push_back(intersect(accessVertices[hullA].position,
+					accessVertices[next(hullA)].position,
+					_other->accessVertices[hullB].position,
+					_other->accessVertices[_other->next(hullB)].position));
+			}
+		}
+	}
+	sf::Vector2f mean;
+	for (auto it : intersections)
+	{
+		mean += it;
+	}
+	return mean / (float)intersections.size();
 }
 
 void Mesh::draw(sf::RenderTarget* _target, sf::Color _color)
