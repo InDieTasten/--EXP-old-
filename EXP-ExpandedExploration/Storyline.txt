@@ -2,6 +2,7 @@
 !!!WARNING: Reading this file will horrifically SPOILER anything within EXP!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+DETAIL VIEW
 {Companies} 
 {Resources} The missing ones: silver, copper, gold, iron? Maybe fictive ones?
 {Scientist}
@@ -17,6 +18,7 @@
 {Alien#federalAuth} Federal Authority. How do they act? What are they allowed to do?
 
 
+ACTIONS
 -- {Companies} doing lobby work intrude governments
 -- Economy gets destroyed
 -- Medical Attention gets destroyed
@@ -65,3 +67,12 @@ Pod introduces him to the controls. ~1minute
 Pod introduces to mechanics of orbital flight ~3minutes
 
 Player works on QUEST 1 (total of ~265minutes)
+
+
+Additional Twists:
+- Player is not the only one. There was a total of 12 missions sent to accomplish the scientists desire
+
+
+Additional Ideas:
+- Reputation
+- plasmacutter (+dmg -bulletspeed)
