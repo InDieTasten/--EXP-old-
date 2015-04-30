@@ -45,20 +45,20 @@ int main(int argc, char *argv[])
 	EXP::eventManager->addKeyRelease(&gameQuit);
 
 	//TESTZONE START
-	Mesh* test = new Mesh();
+	Mesh* test1 = new Mesh();
 
-	test->addVertex(sf::Vertex(sf::Vector2f(-20, 20)));
-	test->addVertex(sf::Vertex(sf::Vector2f(20, 20)));
-	test->addVertex(sf::Vertex(sf::Vector2f(20, -20)));
-	test->addVertex(sf::Vertex(sf::Vector2f(-10, -10)));
-	test->addVertex(sf::Vertex(sf::Vector2f(10, 10)));
+	test1->addVertex(sf::Vertex(sf::Vector2f(-20, 20)));
+	test1->addVertex(sf::Vertex(sf::Vector2f(20, 20)));
+	test1->addVertex(sf::Vertex(sf::Vector2f(20, -20)));
+	test1->addVertex(sf::Vertex(sf::Vector2f(-10, -10)));
+	test1->addVertex(sf::Vertex(sf::Vector2f(10, 10)));
 
 	Window.clear();
-	test->draw(&Window, sf::Color(0, 255, 0, 255));
+	test1->draw(&Window, sf::Color(0, 255, 0, 255));
 	Window.display();
 
-	delete test;
-	test = nullptr;
+	delete test1;
+	test1 = nullptr;
 	//TESTZONE END
 
 	EXP::eventManager->listen();
