@@ -52,6 +52,7 @@ int main(int argc, char *argv[])
 	test1->addVertex(sf::Vertex(sf::Vector2f(20, -20)));
 	test1->addVertex(sf::Vertex(sf::Vector2f(-10, -10)));
 	test1->addVertex(sf::Vertex(sf::Vector2f(10, 10)));
+	
 
 	Window.clear();
 	test1->draw(&Window, sf::Color(0, 255, 0, 255));

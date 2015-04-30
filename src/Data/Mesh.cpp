@@ -8,8 +8,11 @@ void Mesh::updateInternal()
 	{
 		sf::ConvexShape shape;
 		shape.setPointCount(poly.size());
+		EXP::log("[Debug] Convex:");
 		for (int vertex = 0; vertex < poly.size(); vertex++)
 		{
+			EXP::log("[Debug]  Point: " + utils::tostring(poly[vertex].position.x)
+				+ utils::tostring(poly[vertex].position.y));
 			shape.setPoint(vertex, poly[vertex].position);
 		}
 		internal.push_back(shape);
@@ -104,28 +107,32 @@ std::list<std::vector<sf::Vertex> > Mesh::makeConvex(std::vector<sf::Vertex> _in
 				}
 			}
 		}
-		it = prev(it);
-		currentChoice = prev(currentChoice);
 		EXP::log("[Debug] it: " + utils::tostring(it));
 		EXP::log("[Debug] Current choice: " + utils::tostring(currentChoice));
 		//make split
 		std::list<std::vector<sf::Vertex> > output;
 
 		std::vector<sf::Vertex> first;
-		for (int start = it; start != next(currentChoice); first.push_back(_input[start = next(start)])){}
-		EXP::log("[Debug] First size: " + utils::tostring(first.size()));
+		for (int start = it; start != next(currentChoice); start = next(start))
+		{
+			first.push_back(_input[start]);
+		}
 		for (auto half : makeConvex(first))
 		{
 			output.push_back(half);
 		}
+		output.push_back(first);
 
 		std::vector<sf::Vertex> second;
-		for (int start = currentChoice; start != next(it); second.push_back(_input[start = next(start)])){}
-		EXP::log("[Debug] Second size: " + utils::tostring(second.size()));
+		for (int start = it; start != prev(currentChoice); start = prev(start))
+		{
+			second.push_back(_input[start]);
+		}
 		for (auto half : makeConvex(second))
 		{
 			output.push_back(half);
 		}
+		output.push_back(second);
 
 		return output;
 	}
