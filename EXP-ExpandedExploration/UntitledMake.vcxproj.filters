@@ -76,5 +76,8 @@
     <ClInclude Include="..\include\Data\Mesh.hpp">
       <Filter>2 Data</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Utilities\Conversion.hpp">
+      <Filter>8 Utilities</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
