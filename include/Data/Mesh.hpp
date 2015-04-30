@@ -39,10 +39,7 @@ public:
 	std::vector<sf::Vertex> getVertices();
 
 	bool doesOverlap(Mesh* _other);
-	sf::Vector2f overlap(Mesh* _other); //
-
-	float getArea(); //
-	sf::Vector2f getAreaCenter(); //
+	sf::Vector2f overlap(Mesh* _other);
 
 	void draw(sf::RenderTarget* _target, sf::Color _color);
 };
