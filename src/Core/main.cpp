@@ -55,7 +55,9 @@ int main(int argc, char *argv[])
 	
 
 	Window.clear();
-	test1->draw(&Window, sf::Color(0, 255, 0, 64));
+	sf::Transform x;
+	x.scale(2.0,2.0);
+	test1->draw(&Window, x,  sf::Color(0, 255, 0, 64));
 	Window.display();
 
 	delete test1;
