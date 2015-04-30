@@ -437,9 +437,9 @@ void Mesh::draw(sf::RenderTarget* _target, sf::Color _color)
 	for (auto it : internal)
 	{
 		EXP::log("[Debug]render poly: " + utils::tostring(it.getPointCount()));
-		it.setOutlineThickness(1.0f);
+		it.setOutlineThickness(0.5f);
 		it.setOutlineColor(_color);
-		it.setFillColor(_color*sf::Color(255, 255, 255, 64));
+		it.setFillColor(_color);
 		_target->draw(it);
 	}
 }
