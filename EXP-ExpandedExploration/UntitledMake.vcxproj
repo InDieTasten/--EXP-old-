@@ -75,6 +75,7 @@
     <ClInclude Include="..\include\Data\PhysicalInfo.hpp" />
     <ClInclude Include="..\include\Data\Vector.hpp" />
     <ClInclude Include="..\include\Input\EventManager.hpp" />
+    <ClInclude Include="..\include\Utilities\Conversion.hpp" />
     <ClInclude Include="..\include\Utilities\Logger.hpp" />
     <ClInclude Include="..\include\Utilities\VERSION.hpp" />
   </ItemGroup>
