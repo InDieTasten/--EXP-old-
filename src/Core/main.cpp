@@ -9,7 +9,7 @@ extern void EXP::log(std::string);
 extern void EXP::init();
 
 //TESTZONE START
-//#include <Data\Mesh.hpp>
+#include <Data\Mesh.hpp>
 //TESTZONE END
 
 
@@ -37,12 +37,28 @@ int main(int argc, char *argv[])
 	EXP::init();
 	EXP::log("[Info]Game is launching in version: " + VERSION::version);
 	sf::RenderWindow Window(sf::VideoMode(1280, 720, 32), VERSION::name + " " + VERSION::version, sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
+	sf::View view = Window.getDefaultView();
+	view.setCenter(0.0f, 0.0f);
+	Window.setView(view);
 
 	EXP::eventManager = new EventManager(&Window);
 	EXP::eventManager->addKeyRelease(&gameQuit);
 
 	//TESTZONE START
-	//Mesh test;
+	Mesh* test = new Mesh();
+
+	test->addVertex(sf::Vertex(sf::Vector2f(-20, 20)));
+	test->addVertex(sf::Vertex(sf::Vector2f(20, 20)));
+	test->addVertex(sf::Vertex(sf::Vector2f(20, -20)));
+	test->addVertex(sf::Vertex(sf::Vector2f(-10, -10)));
+	test->addVertex(sf::Vertex(sf::Vector2f(10, 10)));
+
+	Window.clear();
+	test->draw(&Window, sf::Color(0, 255, 0, 255));
+	Window.display();
+
+	delete test;
+	test = nullptr;
 	//TESTZONE END
 
 	EXP::eventManager->listen();
