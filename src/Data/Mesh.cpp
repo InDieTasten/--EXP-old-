@@ -432,14 +432,14 @@ sf::Vector2f Mesh::overlap(Mesh* _other)
 	return mean / (float)intersections.size();
 }
 
-void Mesh::draw(sf::RenderTarget* _target, sf::Color _color)
+void Mesh::draw(sf::RenderTarget* _target, sf::Transform parentTransform, sf::Color _color)
 {
 	for (auto it : internal)
 	{
 		EXP::log("[Debug]render poly: " + utils::tostring(it.getPointCount()));
-		it.setOutlineThickness(0.5f);
+		it.setOutlineThickness(0.5);
 		it.setOutlineColor(_color);
 		it.setFillColor(_color);
-		_target->draw(it);
+		_target->draw(it, parentTransform);
 	}
 }

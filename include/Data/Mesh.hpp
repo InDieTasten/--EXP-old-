@@ -41,7 +41,7 @@ public:
 	bool doesOverlap(Mesh* _other);
 	sf::Vector2f overlap(Mesh* _other);
 
-	void draw(sf::RenderTarget* _target, sf::Color _color);
+	void draw(sf::RenderTarget* _target, sf::Transform parentTransform, sf::Color _color);
 };
 
 
