@@ -38,10 +38,10 @@ public:
 	void setVertices(std::vector<sf::Vertex> _vertices);
 	std::vector<sf::Vertex> getVertices();
 
-	bool doesOverlap(Mesh* _other);
-	sf::Vector2f overlap(Mesh* _other);
+	bool doesOverlap(sf::Transform _me, Mesh* _other, sf::Transform _othertr);
+	std::list<sf::Vector2f> overlap(sf::Transform _me, Mesh* _other, sf::Transform _othertr);
 
-	void draw(sf::RenderTarget* _target, sf::Transform parentTransform, sf::Color _color);
+	void draw(sf::RenderTarget* _target, sf::Transformable parentTransform, sf::Color _color);
 };
 
 
