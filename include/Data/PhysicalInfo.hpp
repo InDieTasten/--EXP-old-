@@ -5,7 +5,7 @@
 #include <Data\Mesh.hpp>
 #include <Utilities\Logger.hpp>
 
-class PhysicalInfo : private sf::Transformable
+class PhysicalInfo
 {
 private:
 	Vector position;
@@ -16,7 +16,17 @@ public:
 	PhysicalInfo();
 	~PhysicalInfo();
 
+	void setPosition(Vector _position);
+	void setVelocity(Vector _velocity);
+	void setMass(float _mass);
+	void setCollisionMesh(Mesh _collisionMesh);
 
+	Vector getPosition();
+	Vector getVelocity();
+	float getMass();
+	Mesh getCollisionMesh();
+
+	void draw(sf::RenderTarget* _target, sf::Color _color);
 };
 
 #endif // !_PhysicalInfo_hpp_
