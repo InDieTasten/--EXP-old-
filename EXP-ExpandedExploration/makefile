@@ -41,7 +41,8 @@ OBJECTS = \
 	..\src\Assets\TextureManager.o \
 	..\src\Input\EventManager.o \
 	..\src\Data\Vector.o \
-	..\src\Data\Mesh.o
+	..\src\Data\Mesh.o \
+	..\src\Data\PhysicalInfo.o
 
 rebuild: clean build
 	echo DONE!
