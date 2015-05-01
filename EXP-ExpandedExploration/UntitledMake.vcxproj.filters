@@ -50,6 +50,9 @@
     <ClCompile Include="..\src\Data\Mesh.cpp">
       <Filter>2 Data</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Data\PhysicalInfo.cpp">
+      <Filter>2 Data</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Utilities\Logger.hpp">
