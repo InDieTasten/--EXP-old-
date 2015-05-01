@@ -9,7 +9,7 @@ extern void EXP::log(std::string);
 extern void EXP::init();
 
 //TESTZONE START
-
+#include <Data\PhysicalInfo.hpp>
 //TESTZONE END
 
 
@@ -46,7 +46,10 @@ int main(int argc, char *argv[])
 
 	//TESTZONE START
 	
+	PhysicalInfo* test = new PhysicalInfo();
 
+	delete test;
+	test = nullptr;
 
 	//TESTZONE END
 
