@@ -277,7 +277,7 @@ std::vector<sf::Vertex> Mesh::getVertices()
 	return accessVertices;
 }
 
-bool Mesh::doesOverlap(Mesh* _other)
+bool Mesh::doesOverlap(sf::Transform _me, Mesh* _other, sf::Transform _othertr)
 {
 	//thisPoints in other
 	for (auto hull : accessVertices)
@@ -286,10 +286,10 @@ bool Mesh::doesOverlap(Mesh* _other)
 		for (auto poly : _other->internal)
 		{
 			bool collide2 = false;
-			int curve = ccw(poly.getPoint(poly.getPointCount() - 1), poly.getPoint(0), hull.position);
+			int curve = ccw(_othertr.transformPoint(poly.getPoint(poly.getPointCount() - 1)), _othertr.transformPoint(poly.getPoint(0)), _me.transformPoint(hull.position));
 			for (int vertex = 0; vertex < poly.getPointCount() - 1; vertex++)
 			{
-				if (ccw(poly.getPoint(vertex), poly.getPoint(vertex + 1), hull.position) != curve)
+				if (ccw(_othertr.transformPoint(poly.getPoint(vertex)), _othertr.transformPoint(poly.getPoint(vertex + 1)), _me.transformPoint(hull.position)) != curve)
 				{
 					collide2 = true;
 					break;
@@ -313,10 +313,10 @@ bool Mesh::doesOverlap(Mesh* _other)
 		for (auto poly : internal)
 		{
 			bool collide2 = false;
-			int curve = ccw(poly.getPoint(poly.getPointCount() - 1), poly.getPoint(0), hull.position);
+			int curve = ccw(_me.transformPoint(poly.getPoint(poly.getPointCount() - 1)), _me.transformPoint(poly.getPoint(0)), _othertr.transformPoint(hull.position));
 			for (int vertex = 0; vertex < poly.getPointCount() - 1; vertex++)
 			{
-				if (ccw(poly.getPoint(vertex), poly.getPoint(vertex + 1), hull.position) != curve)
+				if (ccw(_me.transformPoint(poly.getPoint(vertex)), _me.transformPoint(poly.getPoint(vertex + 1)), _othertr.transformPoint(hull.position)) != curve)
 				{
 					collide2 = true;
 					break;
@@ -338,10 +338,10 @@ bool Mesh::doesOverlap(Mesh* _other)
 	{
 		for (int hullB = 0; hullB < _other->accessVertices.size(); hullB++)
 		{
-			if (intersectCheck(accessVertices[hullA].position,
-				accessVertices[next(hullA)].position,
-				_other->accessVertices[hullB].position,
-				_other->accessVertices[_other->next(hullB)].position))
+			if (intersectCheck(_me.transformPoint(accessVertices[hullA].position),
+				_me.transformPoint(accessVertices[next(hullA)].position),
+				_othertr.transformPoint(_other->accessVertices[hullB].position),
+				_othertr.transformPoint(_other->accessVertices[_other->next(hullB)].position)))
 			{
 				return true;
 			}
@@ -349,7 +349,7 @@ bool Mesh::doesOverlap(Mesh* _other)
 	}
 	return false;
 }
-sf::Vector2f Mesh::overlap(Mesh* _other)
+std::list<sf::Vector2f> Mesh::overlap(sf::Transform _me, Mesh* _other, sf::Transform _othertr)
 {
 	std::list<sf::Vector2f> intersections;
 	
@@ -359,13 +359,13 @@ sf::Vector2f Mesh::overlap(Mesh* _other)
 		bool collide = false;
 		for (auto poly : _other->internal)
 		{
-			bool collide2 = false;
-			int curve = ccw(poly.getPoint(poly.getPointCount()-1), poly.getPoint(0), hull.position);
-			for (int vertex = 0; vertex < poly.getPointCount()-1; vertex++)
+			bool collide2 = true;
+			int curve = ccw(_othertr.transformPoint(poly.getPoint(poly.getPointCount() - 1)), _othertr.transformPoint(poly.getPoint(0)), _me.transformPoint(hull.position));
+			for (int vertex = 0; vertex < poly.getPointCount() - 1; vertex++)
 			{
-				if (ccw(poly.getPoint(vertex), poly.getPoint(vertex + 1), hull.position) != curve)
+				if (ccw(_othertr.transformPoint(poly.getPoint(vertex)), _othertr.transformPoint(poly.getPoint(vertex + 1)), _me.transformPoint(hull.position)) != curve)
 				{
-					collide2 = true;
+					collide2 = false;
 					break;
 				}
 			}
@@ -377,7 +377,7 @@ sf::Vector2f Mesh::overlap(Mesh* _other)
 		}
 		if (collide)
 		{
-			intersections.push_back(hull.position);
+			intersections.push_back(_me.transformPoint(hull.position));
 		}
 	}
 	//otherPoints in this
@@ -386,13 +386,13 @@ sf::Vector2f Mesh::overlap(Mesh* _other)
 		bool collide = false;
 		for (auto poly : internal)
 		{
-			bool collide2 = false;
-			int curve = ccw(poly.getPoint(poly.getPointCount() - 1), poly.getPoint(0), hull.position);
+			bool collide2 = true;
+			int curve = ccw(_me.transformPoint(poly.getPoint(poly.getPointCount() - 1)), _me.transformPoint(poly.getPoint(0)), _othertr.transformPoint(hull.position));
 			for (int vertex = 0; vertex < poly.getPointCount() - 1; vertex++)
 			{
-				if (ccw(poly.getPoint(vertex), poly.getPoint(vertex + 1), hull.position) != curve)
+				if (ccw(_me.transformPoint(poly.getPoint(vertex)), _me.transformPoint(poly.getPoint(vertex + 1)), _othertr.transformPoint(hull.position)) != curve)
 				{
-					collide2 = true;
+					collide2 = false;
 					break;
 				}
 			}
@@ -404,7 +404,7 @@ sf::Vector2f Mesh::overlap(Mesh* _other)
 		}
 		if (collide)
 		{
-			intersections.push_back(hull.position);
+			intersections.push_back(_othertr.transformPoint(hull.position));
 		}
 	}
 	//line intersects
@@ -412,34 +412,29 @@ sf::Vector2f Mesh::overlap(Mesh* _other)
 	{
 		for (int hullB = 0; hullB < _other->accessVertices.size(); hullB++)
 		{
-			if (intersectCheck(accessVertices[hullA].position,
-				accessVertices[next(hullA)].position,
-				_other->accessVertices[hullB].position,
-				_other->accessVertices[_other->next(hullB)].position))
+			if (intersectCheck(_me.transformPoint(accessVertices[hullA].position),
+				_me.transformPoint(accessVertices[next(hullA)].position),
+				_othertr.transformPoint(_other->accessVertices[hullB].position),
+				_othertr.transformPoint(_other->accessVertices[_other->next(hullB)].position)))
 			{
-				intersections.push_back(intersect(accessVertices[hullA].position,
-					accessVertices[next(hullA)].position,
-					_other->accessVertices[hullB].position,
-					_other->accessVertices[_other->next(hullB)].position));
+				intersections.push_back(intersect(_me.transformPoint(accessVertices[hullA].position),
+					_me.transformPoint(accessVertices[next(hullA)].position),
+					_othertr.transformPoint(_other->accessVertices[hullB].position),
+					_othertr.transformPoint(_other->accessVertices[_other->next(hullB)].position)));
 			}
 		}
 	}
-	sf::Vector2f mean;
-	for (auto it : intersections)
-	{
-		mean += it;
-	}
-	return mean / (float)intersections.size();
+	return intersections;
 }
 
-void Mesh::draw(sf::RenderTarget* _target, sf::Transform parentTransform, sf::Color _color)
+void Mesh::draw(sf::RenderTarget* _target, sf::Transformable parentTransform, sf::Color _color)
 {
 	for (auto it : internal)
 	{
 		EXP::log("[Debug]render poly: " + utils::tostring(it.getPointCount()));
-		it.setOutlineThickness(0.5);
+		it.setOutlineThickness(-1.0/parentTransform.getScale().x);
 		it.setOutlineColor(_color);
 		it.setFillColor(_color);
-		_target->draw(it, parentTransform);
+		_target->draw(it, parentTransform.getTransform());
 	}
 }
