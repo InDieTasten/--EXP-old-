@@ -3,14 +3,20 @@
 
 #include <Data\Vector.hpp>
 #include <Data\Mesh.hpp>
+#include <Utilities\Logger.hpp>
 
-class PhysicalInfo
+class PhysicalInfo : private sf::Transformable
 {
 private:
 	Vector position;
 	Vector velocity;
 	float mass;
 	Mesh collisionMesh;
+public:
+	PhysicalInfo();
+	~PhysicalInfo();
+
+
 };
 
 #endif // !_PhysicalInfo_hpp_
