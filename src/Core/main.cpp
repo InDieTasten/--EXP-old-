@@ -1,16 +1,17 @@
 //includes
-#include <Utilities/VERSION.hpp>
-#include <Utilities/Logger.hpp>
-#include <iostream>
-#include <conio.h>
-#include <SFML\System.hpp>
+#include <Utilities\VERSION.hpp>
+#include <Utilities\Logger.hpp>
 #include <SFML\Graphics.hpp>
+#include <Input\EventManager.hpp>
 
-#include <Core\EventThread.hpp>
-#include <Core\Databank.hpp>
+extern sf::Mutex loggermtx;
+extern void EXP::log(std::string);
+extern void EXP::init();
 
-extern std::mutex loggermtx;
-extern void ug::log(std::string);
+//TESTZONE START
+#include <Data\PhysicalInfo.hpp>
+//TESTZONE END
+
 
 extern "C" {
 #include <lua.h>
@@ -18,62 +19,47 @@ extern "C" {
 #include <lauxlib.h>
 }
 
-namespace ug{
-	void terminate();
-	EventThread* eventthread;
-	GraphicsThread* graphicsthread;
-	Databank* databank;
-	sf::RenderWindow* renderwindow;
+
+namespace EXP {
+	EventManager* eventManager = nullptr;
+}
+
+void gameQuit(sf::Event::KeyEvent _event)
+{
+	if (_event.code == sf::Keyboard::Escape)
+	{
+		EXP::eventManager->terminate();
+	}
 }
 
 int main(int argc, char *argv[])
 {
-	ug::log("[Info]Game is launching in version: " + VERSION::version);
-	sf::RenderWindow App(sf::VideoMode(1280, 720, 32), VERSION::name + " " + VERSION::version, sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
-	App.setActive(false);
-	ug::renderwindow = &App;
+	EXP::init();
+	EXP::log("[Info]Game is launching in version: " + VERSION::version);
+	sf::RenderWindow Window(sf::VideoMode(1280, 720, 32), VERSION::name + " " + VERSION::version, sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
+	sf::View view = Window.getDefaultView();
+	view.setCenter(0.0f, 0.0f);
+	Window.setView(view);
 
-	EventThread eventThread(&App);
-	ug::eventthread = &eventThread;
-	GraphicsThread graphThread(&App);
-	ug::graphicsthread = &graphThread;
+	EXP::eventManager = new EventManager(&Window);
+	EXP::eventManager->addKeyRelease(&gameQuit);
 
-	Databank* databank = new Databank(&eventThread, &graphThread);
-	ug::databank = databank;
+	//TESTZONE START
+	
+	PhysicalInfo* test = new PhysicalInfo();
 
-	databank->getLevel()->addSystem(new string("test"));
+	delete test;
+	test = nullptr;
 
-	SolarSystem* working = databank->getLevel()->getSystem("test");
+	//TESTZONE END
 
-	//Tell solar system to construct it's thread manager
-	working->activate();
+	EXP::eventManager->listen();
 
-	//Tell thread manager to launch itself
-	working->getThreadManager()->launch();
-	working->getThreadManager()->terminate();
+	delete EXP::eventManager;
+	EXP::eventManager = nullptr;
 
-	working->deactivate();
-	//Tell thread manager to start rendering
-	//working->getThreadManager()->startRender(App.getDefaultView());
+	Window.close();
 
-	//Tell thread manager to start simulating
-	//working->getThreadManager()->startSimulation();
-
-	//Enter event loop
-	eventThread.run();
-
-	//Terminate game
-	ug::log("[KILL]Entering TERMINATION sequence");
-	ug::log("[KILL]Destroying Databank environment");
-	delete ug::databank;
-	ug::log("[KILL]Destroying GraphicsThread environment");
-	delete ug::graphicsthread;
-	ug::log("[KILL]Destroying EventThread environment");
-	delete ug::eventthread;
-	ug::log("[KILL]Closing RenderWindow");
-	ug::renderwindow->close();
-
-	ug::log("[Info]Game quit!");
-	getchar();
+	EXP::log("[Info]Game quit!");
 	return EXIT_SUCCESS;
 }

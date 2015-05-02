@@ -1,28 +1,38 @@
 #include <Utilities/Logger.hpp>
 #include <sstream>
-#include <thread>
-//CONSTRUCTORS
-//DESTRUCTORS
-//METHODS
-namespace ug
+#include <SFML\System.hpp>
+
+
+namespace EXP
 {
-	std::mutex loggermtx;
+	static int threadcounter = -1;
+	sf::ThreadLocalPtr<int> threadid;
+	sf::Mutex loggermtx;
 }
-void ug::log(std::string msg)
+void EXP::log(std::string msg)
 {
+	if (!threadid)
+	{
+		loggermtx.lock();
+		threadid = (int*)++threadcounter;
+		loggermtx.unlock();
+	}
 	time_t rawtime;
 	struct tm * timeinfo;
-
 	char T[14];
-
 	time(&rawtime);
 	timeinfo = localtime(&rawtime);
-
 	strftime(T, 14, "%j|%H:%M:%S", timeinfo);
-
 	loggermtx.lock();
-	std::cout << "&f" << T << "{" << std::this_thread::get_id() << "}" << msg << std::endl;
+	std::cout << "&f" << T << "{" << threadid << "}" << msg << std::endl;
 	loggermtx.unlock();
+}
+void EXP::init()
+{
+	if (!threadid)
+	{
+		threadid = (int*)++threadcounter;
+	}
 }
 //void LOG::file(std::string msg)
 //{
