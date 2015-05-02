@@ -1,4 +1,0 @@
---UntitledGame--
-================
-
-[[Untitled Game]]

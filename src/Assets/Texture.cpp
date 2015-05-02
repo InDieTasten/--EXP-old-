@@ -1,51 +1,64 @@
 #include <Assets\Texture.hpp>
 
-Texture::Texture(string* _id, string _path)
+Texture::Texture(const std::string* _id, std::string _path)
 {
+	if (!_id)
+	{
+		EXP::log("[Error]Trying to construct Texture with null-pointer ID");
+		return;
+	}
 	id = _id;
 	path = _path;
-	ug::log("[Info]A Texture has been constructed: " + *id);
+	data = nullptr;
+
+	//check
+	load();
+	unload();
+
+	EXP::log("[Info]Texture has been constructed: " + *id);
 }
 Texture::~Texture()
 {
-	if (data)
-		unload();
-	ug::log("[Info]A Texture has been destructed: " + *id);
-}
-sf::Texture* Texture::getTexture()
-{
+	std::string tmp = *id;
 	if (data)
 	{
-		lastget = chrono::steady_clock::now();
-		ug::log("[Info]The Texture '" + *id + "' has been gotton");
-		return data;
+		EXP::log("[Warning]Forcefully unloading Texture: " + tmp);
+		unload();
 	}
-	else {
-		load();
-		getTexture();
-	}
+	id = nullptr;
+	EXP::log("[Info]Texture has been destructed: " + tmp);
 }
 void Texture::load()
 {
 	if (data)
 	{
-		ug::log("[Warning]Tried to load already loaded Texture: " + *id);
+		EXP::log("[Warning]Tried to load already loaded Texture: " + *id);
+		return;
 	}
-	else {
-		ug::log("[Info]Loading Texture: " + *id);
-		data = new sf::Texture();
-		data->loadFromFile(path);
+	data = new sf::Texture();
+	if (!data->loadFromFile(path))
+	{
+		EXP::log("[Error]Cannot find Texture: " + *id);
+		return;
 	}
+	EXP::log("[Info]Texture has been loaded: " + *id);
 }
 void Texture::unload()
 {
 	if (!data)
 	{
-		ug::log("[Warning]Tried to unload already unloaded Texture: " + *id);
+		EXP::log("[Warning]Tried to unload already unloaded Texture: " + *id);
+		return;
 	}
-	else {
-		ug::log("[Info]Unloading Texture: " + *id);
-		delete data;
-		data = nullptr;
-	}
+	delete data;
+	data = nullptr;
+	EXP::log("[Info]Texture has been unloaded: " + *id);
+}
+std::string Texture::getID()
+{
+	return *id;
+}
+std::string Texture::getPath()
+{
+	return path;
 }

@@ -7,13 +7,12 @@
 #include <fstream>
 #include <stdio.h>
 #include <sstream>
-#include <thread>
-#include <mutex>
+#include <SFML\System.hpp>
 
-namespace ug
+namespace EXP
 {
-	
 	void log(std::string msg);
+	void init();
 }
 
 #endif
