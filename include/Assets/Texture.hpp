@@ -1,26 +1,28 @@
 #ifndef _Texture_hpp_
 #define _Texture_hpp_
 
-#include <Utilities\Logger.hpp>
-#include <Assets\Asset.hpp>
-#include <string>
+
 #include <SFML\Graphics.hpp>
+#include <string>
+#include <Utilities\Logger.hpp>
 
-using namespace std;
-extern void ug::log(std::string);
+extern void EXP::log(std::string);
 
-class Texture : public Asset
+class Texture
 {
 private:
 	sf::Texture* data;
-
+	const std::string* id;
+	std::string path;
 public:
-	Texture(string* _id, string _path);
+	Texture(const std::string* _id, std::string _path);
 	~Texture();
 
-	sf::Texture* getTexture();
 	void load();
 	void unload();
+	sf::Texture* get();
+	std::string getID();
+	std::string getPath();
 };
 
 #endif // !_Texture_hpp_

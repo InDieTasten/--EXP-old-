@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Text Include="makefile">
+      <Filter>9 Extras</Filter>
+    </Text>
+    <Text Include="Storyline.txt">
+      <Filter>9 Extras</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="8 Utilities">
+      <UniqueIdentifier>{787b3c1d-5c9b-44f3-913d-e6f6769abe7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="9 Extras">
+      <UniqueIdentifier>{ab043266-873a-4755-ba66-079a8d0b108c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="1 Assets">
+      <UniqueIdentifier>{f820f2cd-cf53-4ac6-9b0f-aa01276d9219}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="2 Data">
+      <UniqueIdentifier>{6bac3511-0b79-4dc7-b428-10820e94d0b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3 Input">
+      <UniqueIdentifier>{0dbcdea2-49bc-451d-bdee-e765fbe23980}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="4 Processing">
+      <UniqueIdentifier>{e03e3b8e-1fd3-4aa1-a907-0e1dcc1bae2a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\Utilities\Logger.cpp">
+      <Filter>8 Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\main.cpp">
+      <Filter>9 Extras</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Assets\Texture.cpp">
+      <Filter>1 Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Assets\TextureManager.cpp">
+      <Filter>1 Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Input\EventManager.cpp">
+      <Filter>3 Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Data\Vector.cpp">
+      <Filter>2 Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Data\Mesh.cpp">
+      <Filter>2 Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Data\PhysicalInfo.cpp">
+      <Filter>2 Data</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\Utilities\Logger.hpp">
+      <Filter>8 Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Utilities\VERSION.hpp">
+      <Filter>8 Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Assets\TextureManager.hpp">
+      <Filter>1 Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Assets\Texture.hpp">
+      <Filter>1 Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Input\EventManager.hpp">
+      <Filter>3 Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Data\PhysicalInfo.hpp">
+      <Filter>2 Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Data\Vector.hpp">
+      <Filter>2 Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Data\Mesh.hpp">
+      <Filter>2 Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Utilities\Conversion.hpp">
+      <Filter>8 Utilities</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
