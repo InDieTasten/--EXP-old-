@@ -1,7 +1,7 @@
 #ifndef _Thruster_hpp_
 #define _Thruster_hpp_
 
-#include <Data\Resource.hpp>
+#include <Data\ResourceType.hpp>
 #include <Data\Attachable.hpp>
 
 class Thruster : public Attachable

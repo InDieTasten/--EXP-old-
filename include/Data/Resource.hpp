@@ -1,7 +1,7 @@
 #ifndef _Resource_hpp_
 #define _Resource_hpp_
 
-#include <Data\ResourceType>
+#include <Data\ResourceType.hpp>
 
 class Resource
 {
