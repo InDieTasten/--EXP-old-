@@ -82,5 +82,23 @@
     <ClInclude Include="..\include\Utilities\Conversion.hpp">
       <Filter>8 Utilities</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Data\Ship.hpp">
+      <Filter>2 Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Data\PilotSeat.hpp">
+      <Filter>2 Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Data\Attachable.hpp">
+      <Filter>2 Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Data\Thruster.hpp">
+      <Filter>2 Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Data\Resource.hpp">
+      <Filter>2 Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Data\ResourceType.hpp">
+      <Filter>2 Data</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
