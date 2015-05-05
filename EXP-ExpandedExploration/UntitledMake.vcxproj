@@ -72,8 +72,14 @@
   <ItemGroup>
     <ClInclude Include="..\include\Assets\Texture.hpp" />
     <ClInclude Include="..\include\Assets\TextureManager.hpp" />
+    <ClInclude Include="..\include\Data\Attachable.hpp" />
     <ClInclude Include="..\include\Data\Mesh.hpp" />
     <ClInclude Include="..\include\Data\PhysicalInfo.hpp" />
+    <ClInclude Include="..\include\Data\PilotSeat.hpp" />
+    <ClInclude Include="..\include\Data\Resource.hpp" />
+    <ClInclude Include="..\include\Data\ResourceType.hpp" />
+    <ClInclude Include="..\include\Data\Ship.hpp" />
+    <ClInclude Include="..\include\Data\Thruster.hpp" />
     <ClInclude Include="..\include\Data\Vector.hpp" />
     <ClInclude Include="..\include\Input\EventManager.hpp" />
     <ClInclude Include="..\include\Utilities\Conversion.hpp" />
