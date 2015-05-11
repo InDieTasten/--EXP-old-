@@ -2,6 +2,7 @@
 #define _PilotSeat_hpp_
 
 #include <Data\Attachable.hpp>
+#include <Data\Thruster.hpp>
 #include <list>
 
 struct Actuator {};
@@ -21,7 +22,7 @@ public:
 	PilotSeat();
 	~PilotSeat();
 
-	void calibrateThrusters(std::list<Thruster*>);
+	float getInput(Thruster* _thruster); //will return the current input vector for the thruster given
 };
 
 #endif // !_PilotSeat_hpp_
