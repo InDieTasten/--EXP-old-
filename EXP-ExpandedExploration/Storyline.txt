@@ -4,10 +4,11 @@
 
 DETAIL VIEW
 {Companies} 
-{Resources} The missing ones: silver, copper, gold, iron? Maybe fictive ones?
+{Resources} Fictive resources with fictive applications and properties
 {Scientist}
 {Player}
 {home-planet} Earth maybe?
+{home-race} Race of player.
 {Rich people}
 {Time} How long has the player been in deep-sleep?
 {Alien#rescue} Freelance miner? How do they look? Name?
@@ -15,7 +16,7 @@ DETAIL VIEW
 {sun} How's the alien sun called? How does it look?
 {Alien#snitch} Federation? Snitch.
 {Police} How do they act? Worknames?
-{Alien#federalAuth} Federal Authority. How do they act? What are they allowed to do?
+{Alien#federalAuth} Federal Authority. How do they act? What are they allowed to do? Whats their position in the executive order.
 
 
 ACTIONS
@@ -25,9 +26,9 @@ ACTIONS
 -- No place for trash
 -- No {Resources} left to gather
 -- {Scientist} tries best to inform alien specieses of humanity
--- {Scientist} launches {Player} from {home-planet} with following message:
--- "Somewhere in an aciant galaxy, far from where you started your journey, you shall find the destination. You shall experience unknown worlds, and proclaim your story. And after all that, your Expanded Exploration has come to an End... Don't try to save us. We will be gone long before."
--- No luck, humanity is almost erased
+-- {Scientist} launches {Player} + 11 equivalent missions from {home-planet} with following message:
+-- "Somewhere in an aciant galaxy, far from where you started your journey, you shall find the destination. You shall experience unknown worlds, and proclaim your story. And after all that, your Expanded Exploration has come to an End... Don't return, since we will be gone long before."
+-- No luck, {home-race} is almost erased
 -- {Rich people} escape to orbit around {home-planet}
 -- {Scientist} dies 4 months later
 -- {Player} is deep-sleeping while traveling
@@ -46,11 +47,11 @@ ACTIONS
 -- {Player} and his ship are examined by {Alien#federalAuth}
 -- {Alien#federalAuth} restores audiofile, but keeps message for hisself
 -- {Alien#federalAuth} tries to communicate with {Player}
--- {Alien species} actually has english like language
+-- {Alien species} actually uses english-like language
 -- {Player} explains as much as he can remember and mentions the audiofile
 -- {Alien#federalAuth} injects tracking bugging device to {Player}s body
 -- {Alien#federalAuth} grants {Player} "freedom"
--- {Alien#federalAuth} doesn't give much of a fuck, but will grant a small exploration fleet to {Player}s source destination
+-- {Alien#federalAuth} doesn't give much of a fuck, but will permit a small exploration fleet to {Player}s source destination
 -- {Player} will have to get the fleet together himself though
 QUEST 1 (Goal: Get back to homeplanet)
  - get used to alien culture ~20minutes
@@ -62,7 +63,7 @@ QUEST 1 (Goal: Get back to homeplanet)
  - find equip for the journey ~60minutes
  Alt: Help {Alien#rescue} get out of jail ~5minutes
 
-Player is released within a small escape pod.
+Player is released within a small pod.
 Pod introduces him to the controls. ~1minute
 Pod introduces to mechanics of orbital flight ~3minutes
 
@@ -76,3 +77,4 @@ Additional Twists:
 Additional Ideas:
 - Reputation
 - plasmacutter (+dmg -bulletspeed)
+- {home-race} actually derives from {foreign-race}
