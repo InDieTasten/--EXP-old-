@@ -65,6 +65,9 @@
     <ClCompile Include="..\src\Core\main.cpp" />
     <ClCompile Include="..\src\Data\Mesh.cpp" />
     <ClCompile Include="..\src\Data\PhysicalInfo.cpp" />
+    <ClCompile Include="..\src\Data\PilotSeat.cpp" />
+    <ClCompile Include="..\src\Data\Ship.cpp" />
+    <ClCompile Include="..\src\Data\Thruster.cpp" />
     <ClCompile Include="..\src\Data\Vector.cpp" />
     <ClCompile Include="..\src\Input\EventManager.cpp" />
     <ClCompile Include="..\src\Utilities\Logger.cpp" />
@@ -76,7 +79,6 @@
     <ClInclude Include="..\include\Data\Mesh.hpp" />
     <ClInclude Include="..\include\Data\PhysicalInfo.hpp" />
     <ClInclude Include="..\include\Data\PilotSeat.hpp" />
-    <ClInclude Include="..\include\Data\Resource.hpp" />
     <ClInclude Include="..\include\Data\ResourceType.hpp" />
     <ClInclude Include="..\include\Data\Ship.hpp" />
     <ClInclude Include="..\include\Data\Thruster.hpp" />
