@@ -42,7 +42,11 @@ OBJECTS = \
 	..\src\Input\EventManager.o \
 	..\src\Data\Vector.o \
 	..\src\Data\Mesh.o \
-	..\src\Data\PhysicalInfo.o
+	..\src\Data\PhysicalInfo.o \
+	..\src\Data\Ship.o \
+	..\src\Data\PilotSeat.o \
+	..\src\Data\ResourceType.o \
+	..\src\Data\Container.o
 
 rebuild: clean build
 	echo DONE!

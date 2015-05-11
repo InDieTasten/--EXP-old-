@@ -53,6 +53,15 @@
     <ClCompile Include="..\src\Data\PhysicalInfo.cpp">
       <Filter>2 Data</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Data\Ship.cpp">
+      <Filter>2 Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Data\PilotSeat.cpp">
+      <Filter>2 Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Data\Thruster.cpp">
+      <Filter>2 Data</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Utilities\Logger.hpp">
@@ -92,9 +101,6 @@
       <Filter>2 Data</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Data\Thruster.hpp">
-      <Filter>2 Data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\Data\Resource.hpp">
       <Filter>2 Data</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Data\ResourceType.hpp">
