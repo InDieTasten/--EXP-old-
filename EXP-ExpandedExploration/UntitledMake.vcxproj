@@ -65,16 +65,27 @@
     <ClCompile Include="..\src\Core\main.cpp" />
     <ClCompile Include="..\src\Data\Mesh.cpp" />
     <ClCompile Include="..\src\Data\PhysicalInfo.cpp" />
+    <ClCompile Include="..\src\Data\PilotSeat.cpp" />
+    <ClCompile Include="..\src\Data\ResourceType.cpp" />
+    <ClCompile Include="..\src\Data\Ship.cpp" />
+    <ClCompile Include="..\src\Data\Thruster.cpp" />
     <ClCompile Include="..\src\Data\Vector.cpp" />
+    <ClCompile Include="..\src\Input\Actuator.cpp" />
     <ClCompile Include="..\src\Input\EventManager.cpp" />
     <ClCompile Include="..\src\Utilities\Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Assets\Texture.hpp" />
     <ClInclude Include="..\include\Assets\TextureManager.hpp" />
+    <ClInclude Include="..\include\Data\Attachable.hpp" />
     <ClInclude Include="..\include\Data\Mesh.hpp" />
     <ClInclude Include="..\include\Data\PhysicalInfo.hpp" />
+    <ClInclude Include="..\include\Data\PilotSeat.hpp" />
+    <ClInclude Include="..\include\Data\ResourceType.hpp" />
+    <ClInclude Include="..\include\Data\Ship.hpp" />
+    <ClInclude Include="..\include\Data\Thruster.hpp" />
     <ClInclude Include="..\include\Data\Vector.hpp" />
+    <ClInclude Include="..\include\Input\Actuator.hpp" />
     <ClInclude Include="..\include\Input\EventManager.hpp" />
     <ClInclude Include="..\include\Utilities\Conversion.hpp" />
     <ClInclude Include="..\include\Utilities\Logger.hpp" />
