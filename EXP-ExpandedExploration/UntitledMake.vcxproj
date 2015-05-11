@@ -66,6 +66,7 @@
     <ClCompile Include="..\src\Data\Mesh.cpp" />
     <ClCompile Include="..\src\Data\PhysicalInfo.cpp" />
     <ClCompile Include="..\src\Data\PilotSeat.cpp" />
+    <ClCompile Include="..\src\Data\ResourceType.cpp" />
     <ClCompile Include="..\src\Data\Ship.cpp" />
     <ClCompile Include="..\src\Data\Thruster.cpp" />
     <ClCompile Include="..\src\Data\Vector.cpp" />
