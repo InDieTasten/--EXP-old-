@@ -28,6 +28,8 @@ public:
 	void disable();
 	bool getEnabled();
 
+
+	void detectNext();
 	void setInputType(InputType _type);
 	void setKey(sf::Keyboard::Key _key);
 	void setAxis(sf::Joystick::Axis _axis);
