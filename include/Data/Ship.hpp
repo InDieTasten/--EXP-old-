@@ -9,12 +9,14 @@
 class Ship : public PhysicalInfo
 {
 private:
-	void recalcMass();
+	void updateMass();
 	PilotSeat seat;
 	
 public:
 	Ship();
 	~Ship();
+
+
 
 	void draw(sf::RenderTarget* _target);
 };
