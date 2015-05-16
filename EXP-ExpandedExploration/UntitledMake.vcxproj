@@ -63,7 +63,9 @@
     <ClCompile Include="..\src\Assets\Texture.cpp" />
     <ClCompile Include="..\src\Assets\TextureManager.cpp" />
     <ClCompile Include="..\src\Core\main.cpp" />
+    <ClCompile Include="..\src\Data\Attachable.cpp" />
     <ClCompile Include="..\src\Data\Container.cpp" />
+    <ClCompile Include="..\src\Data\GraphicalInfo.cpp" />
     <ClCompile Include="..\src\Data\Mesh.cpp" />
     <ClCompile Include="..\src\Data\PhysicalInfo.cpp" />
     <ClCompile Include="..\src\Data\PilotSeat.cpp" />
@@ -81,6 +83,7 @@
     <ClInclude Include="..\include\Assets\TextureManager.hpp" />
     <ClInclude Include="..\include\Data\Attachable.hpp" />
     <ClInclude Include="..\include\Data\Container.hpp" />
+    <ClInclude Include="..\include\Data\GraphicalInfo.hpp" />
     <ClInclude Include="..\include\Data\Mesh.hpp" />
     <ClInclude Include="..\include\Data\PhysicalInfo.hpp" />
     <ClInclude Include="..\include\Data\PilotSeat.hpp" />
