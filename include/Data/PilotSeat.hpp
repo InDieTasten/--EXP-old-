@@ -5,7 +5,7 @@
 #include <Data\Taggable.hpp>
 #include <Input\Actuator.hpp>
 #include <Data\Thruster.hpp>
-#include <list>
+#include <vector>
 
 
 class PilotSeat : public Attachable, public Taggable
@@ -23,7 +23,7 @@ public:
 	PilotSeat();
 	~PilotSeat();
 
-	void setThrust(std::list<Thruster*> _thrusters); //will return the current input vector for the thruster given
+	void setThrust(std::vector<Thruster*> _thrusters); //will return the current input vector for the thruster given
 };
 
 #endif // !_PilotSeat_hpp_
