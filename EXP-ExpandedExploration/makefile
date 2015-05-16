@@ -46,7 +46,8 @@ OBJECTS = \
 	..\src\Data\Ship.o \
 	..\src\Data\PilotSeat.o \
 	..\src\Data\ResourceType.o \
-	..\src\Data\Container.o
+	..\src\Data\Container.o \
+	..\src\Data\Taggable.o
 
 rebuild: clean build
 	echo DONE!
