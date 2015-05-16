@@ -70,7 +70,7 @@ Vector& Vector::operator/=(const Vector& rhs)
 	this->r /= rhs.r;
 	return *this;
 }
-Vector& Vector::operator+(const Vector& rhs)
+Vector Vector::operator+(const Vector& rhs)
 {
 	Vector tmp;
 	tmp.x = this->x + rhs.x;
@@ -78,7 +78,7 @@ Vector& Vector::operator+(const Vector& rhs)
 	tmp.r = this->r + rhs.r;
 	return tmp;
 }
-Vector& Vector::operator-(const Vector& rhs)
+Vector Vector::operator-(const Vector& rhs)
 {
 	Vector tmp;
 	tmp.x = this->x - rhs.x;
@@ -86,7 +86,7 @@ Vector& Vector::operator-(const Vector& rhs)
 	tmp.r = this->r - rhs.r;
 	return tmp;
 }
-Vector& Vector::operator*(const Vector& rhs)
+Vector Vector::operator*(const Vector& rhs)
 {
 	Vector tmp;
 	tmp.x = this->x * rhs.x;
@@ -94,7 +94,7 @@ Vector& Vector::operator*(const Vector& rhs)
 	tmp.r = this->r * rhs.r;
 	return tmp;
 }
-Vector& Vector::operator/(const Vector& rhs)
+Vector Vector::operator/(const Vector& rhs)
 {
 	Vector tmp;
 	tmp.x = this->x / rhs.x;
