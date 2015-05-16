@@ -227,11 +227,11 @@ int Mesh::next(int _index)
 
 Mesh::Mesh()
 {
-	EXP::log("[Info]Mesh has been constructed");
+	EXP::log("[Info]Mesh has been constructed: " +  utils::tostring(this));
 }
 Mesh::~Mesh()
 {
-	EXP::log("[Info]Mesh has been destructed");
+	EXP::log("[Info]Mesh has been destructed: " + utils::tostring(this));
 }
 
 void Mesh::clear()

@@ -4,6 +4,7 @@
 #include <map>
 #include <Assets\Texture.hpp>
 #include <Utilities\Logger.hpp>
+#include <Utilities\Conversion.hpp>
 
 extern void EXP::log(std::string);
 
