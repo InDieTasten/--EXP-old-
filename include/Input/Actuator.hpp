@@ -3,6 +3,7 @@
 
 #include <SFML\Graphics.hpp>
 #include <Utilities\Logger.hpp>
+#include <Utilities\Conversion.hpp>
 
 class Actuator
 {
