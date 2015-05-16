@@ -74,6 +74,12 @@
     <ClCompile Include="..\src\Data\Taggable.cpp">
       <Filter>2 Data</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Data\GraphicalInfo.cpp">
+      <Filter>2 Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Data\Attachable.cpp">
+      <Filter>2 Data</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Utilities\Logger.hpp">
@@ -125,6 +131,9 @@
       <Filter>2 Data</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Data\Taggable.hpp">
+      <Filter>2 Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Data\GraphicalInfo.hpp">
       <Filter>2 Data</Filter>
     </ClInclude>
   </ItemGroup>
