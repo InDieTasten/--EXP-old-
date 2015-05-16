@@ -3,10 +3,11 @@
 
 #include <list>
 #include <Data\PhysicalInfo.hpp>
+#include <Data\Taggable.hpp>
 #include <Data\PilotSeat.hpp>
 
 
-class Ship : public PhysicalInfo
+class Ship : public PhysicalInfo, public Taggable
 {
 private:
 	void updateMass();
