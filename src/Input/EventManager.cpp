@@ -6,7 +6,7 @@ EventManager::EventManager(sf::RenderWindow* _target)
 	listening = false;
 	sampleRate = sf::milliseconds(1000/30);
 
-	EXP::log("[Info]EventManager has been constructed");
+	EXP::log("[Info]EventManager has been constructed: " + utils::tostring(this));
 }
 EventManager::~EventManager()
 {
@@ -35,7 +35,7 @@ EventManager::~EventManager()
 	mouseLeave.clear();
 	resize.clear();
 
-	EXP::log("[Info]EventManager has been destructed");
+	EXP::log("[Info]EventManager has been destructed: " + utils::tostring(this));
 }
 void EventManager::listen()
 {
