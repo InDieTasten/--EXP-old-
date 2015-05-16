@@ -1,24 +1,33 @@
 #ifndef _Ship_hpp_
 #define _Ship_hpp_
 
-#include <list>
+#include <vector>
 #include <Data\PhysicalInfo.hpp>
+#include <Data\GraphicalInfo.hpp>
+#include <Data\Taggable.hpp>
 #include <Data\PilotSeat.hpp>
+#include <Data\Container.hpp>
 
+#include <Utilities\Logger.hpp>
+#include <Utilities\Conversion.hpp>
 
-class Ship : public PhysicalInfo
+class Ship : public PhysicalInfo, public Taggable, public GraphicalInfo
 {
 private:
-	void updateMass();
 	PilotSeat seat;
-	
+	std::vector<Thruster> thrusters;
+	std::vector<Container> containers;
+
 public:
 	Ship();
 	~Ship();
 
+	void draw(sf::RenderTarget& target, sf::RenderStates states);
 
+	//SET
 
-	void draw(sf::RenderTarget* _target);
+	//MOVE
+	//GET
 };
 
 #endif // !_Ship_hpp_
