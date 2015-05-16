@@ -15,14 +15,14 @@ public:
 	~Taggable();
 
 	//SET
-	void setTag(std::string _attributes);
-	void clearTag(std::string _attribute);
-	void clearTags();
+	void setTag(std::string _attributes, float _value);
+	void setTags(std::map<std::string, float> _tags);
+	void cleanMap(); //removes attributes with value 0.0f
 	//MOVE
 	void moveTag(std::string _attribute, float _value);
 	//GET
-	float getTag(std::string _attribute);
-	std::map<std::string, float> getTags();
+	float getTag(std::string _attribute); //returns 0.0f, when no attribute is defined
+	std::map<std::string, float> getTags(); 
 };
 
 #endif // !_Taggable_hpp_
