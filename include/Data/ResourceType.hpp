@@ -2,8 +2,9 @@
 #define _ResourceType_hpp_
 
 #include <string>
+#include <Data\Taggable.hpp>
 
-class ResourceType
+class ResourceType : public Taggable
 {
 private:
 	std::string name;
