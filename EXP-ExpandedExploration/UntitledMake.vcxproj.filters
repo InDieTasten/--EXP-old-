@@ -71,6 +71,9 @@
     <ClCompile Include="..\src\Data\Container.cpp">
       <Filter>2 Data</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Data\Taggable.cpp">
+      <Filter>2 Data</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Utilities\Logger.hpp">
@@ -119,6 +122,9 @@
       <Filter>3 Input</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Data\Container.hpp">
+      <Filter>2 Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Data\Taggable.hpp">
       <Filter>2 Data</Filter>
     </ClInclude>
   </ItemGroup>
