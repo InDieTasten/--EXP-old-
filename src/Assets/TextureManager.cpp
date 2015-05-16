@@ -2,7 +2,7 @@
 
 TextureManager::TextureManager()
 {
-	EXP::log("[Info]TextureManager has been constructed");
+	EXP::log("[Info]TextureManager has been constructed: " + utils::tostring(this));
 }
 TextureManager::~TextureManager()
 {
@@ -15,7 +15,7 @@ TextureManager::~TextureManager()
 			it.second = nullptr;
 		}
 	}
-	EXP::log("[Info]TextureManager has been destructed");
+	EXP::log("[Info]TextureManager has been destructed: " + utils::tostring(this));
 }
 void TextureManager::addTexture(std::string _id, std::string _path)
 {
