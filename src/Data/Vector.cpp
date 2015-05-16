@@ -5,11 +5,11 @@ Vector::Vector()
 	x = 0.0f;
 	y = 0.0f;
 	r = 0.0f;
-	EXP::log("[Info]Vector has been constructed");
+	EXP::log("[Info]Vector has been constructed: " + utils::tostring(this));
 }
 Vector::~Vector()
 {
-	EXP::log("[Info]Vector has been destructed");
+	EXP::log("[Info]Vector has been destructed: " + utils::tostring(this));
 }
 Vector::Vector(double _x, double _y, float _r)
 {
