@@ -2,12 +2,13 @@
 #define _PilotSeat_hpp_
 
 #include <Data\Attachable.hpp>
+#include <Data\Taggable.hpp>
 #include <Input\Actuator.hpp>
 #include <Data\Thruster.hpp>
 #include <list>
 
 
-class PilotSeat : public Attachable
+class PilotSeat : public Attachable, public Taggable
 {
 private:
 	Actuator translateForward;
