@@ -13,6 +13,17 @@ private:
 public:
 	Thruster();
 	~Thruster();
+
+
+
+	//SET
+	void setThrust(float _thrust);
+	void setFuel(ResourceType _resourceType);
+	void setISP(float _isp);
+	//GET
+	float getThrust();
+	ResourceType getFuel();
+	float getISP();
 };
 
 #endif // !_Thruster_hpp_
