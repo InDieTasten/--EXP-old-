@@ -3,13 +3,16 @@
 
 #include <Data\ResourceType.hpp>
 #include <Data\Attachable.hpp>
+#include <Data\Taggable.hpp>
 
-class Thruster : public Attachable
+class Thruster : public Attachable, public Taggable
 {
 private:
 	float thrust;
 	ResourceType fuel;
 	float isp;
+
+
 public:
 	Thruster();
 	~Thruster();
