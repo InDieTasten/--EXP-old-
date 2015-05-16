@@ -5,6 +5,9 @@
 #include <Data\Attachable.hpp>
 #include <Data\Taggable.hpp>
 
+#include <Utilities\Logger.hpp>
+#include <Utilities\Conversion.hpp>
+
 class Thruster : public Attachable, public Taggable
 {
 private:
@@ -21,7 +24,7 @@ public:
 
 	//SET
 	void setThrust(float _thrust);
-	void setFuel(ResourceType _resourceType);
+	void setFuel(ResourceType _fuel);
 	void setISP(float _isp);
 	//GET
 	float getThrust();
