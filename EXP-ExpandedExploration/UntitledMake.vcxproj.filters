@@ -68,6 +68,18 @@
     <ClCompile Include="..\src\Data\ResourceType.cpp">
       <Filter>2 Data</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Data\Container.cpp">
+      <Filter>2 Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Data\Taggable.cpp">
+      <Filter>2 Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Data\GraphicalInfo.cpp">
+      <Filter>2 Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Data\Attachable.cpp">
+      <Filter>2 Data</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Utilities\Logger.hpp">
@@ -114,6 +126,15 @@
     </ClInclude>
     <ClInclude Include="..\include\Input\Actuator.hpp">
       <Filter>3 Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Data\Container.hpp">
+      <Filter>2 Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Data\Taggable.hpp">
+      <Filter>2 Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Data\GraphicalInfo.hpp">
+      <Filter>2 Data</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
