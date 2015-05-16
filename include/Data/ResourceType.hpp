@@ -4,6 +4,9 @@
 #include <string>
 #include <Data\Taggable.hpp>
 
+#include <Utilities\Logger.hpp>
+#include <Utilities\Conversion.hpp>
+
 class ResourceType : public Taggable
 {
 private:
