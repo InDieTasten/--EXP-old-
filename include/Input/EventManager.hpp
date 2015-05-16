@@ -4,7 +4,9 @@
 #include <list>
 #include <SFML\System.hpp>
 #include <SFML\Graphics.hpp>
+
 #include <Utilities\Logger.hpp>
+#include <Utilities\Conversion.hpp>
 
 class EventManager
 {

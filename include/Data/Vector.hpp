@@ -2,6 +2,8 @@
 #define _Vector_hpp_
 
 #include <Utilities\Logger.hpp>
+#include <Utilities\Conversion.hpp>
+
 #define _USE_MATH_DEFINES 
 #include <math.h>
 
