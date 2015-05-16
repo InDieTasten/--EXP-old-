@@ -40,13 +40,18 @@ OBJECTS = \
 	..\src\Assets\Texture.o \
 	..\src\Assets\TextureManager.o \
 	..\src\Input\EventManager.o \
+	..\src\Input\Actuator.o \
 	..\src\Data\Vector.o \
 	..\src\Data\Mesh.o \
 	..\src\Data\PhysicalInfo.o \
+	..\src\Data\GraphicalInfo.o \
 	..\src\Data\Ship.o \
+	..\src\Data\Attachable.o \
 	..\src\Data\PilotSeat.o \
+	..\src\Data\Thruster.o \
 	..\src\Data\ResourceType.o \
-	..\src\Data\Container.o
+	..\src\Data\Container.o \
+	..\src\Data\Taggable.o
 
 rebuild: clean build
 	echo DONE!

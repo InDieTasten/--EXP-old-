@@ -3,6 +3,7 @@
 
 #include <SFML\Graphics.hpp>
 #include <Utilities\Logger.hpp>
+#include <Utilities\Conversion.hpp>
 
 class Actuator
 {
@@ -10,14 +11,23 @@ public:
 	enum InputType
 	{
 		Keyboard,
-		Mouse,
+		MouseButton,
+		MousePosition,
 		Joystick
 	};
-
+	enum MouseAxis
+	{
+		X,
+		Y
+	};
 private:
 	InputType inputType;
+
 	sf::Keyboard::Key key;
+	sf::Mouse::Button button;
+	MouseAxis mouseAxis;
 	sf::Joystick::Axis axis;
+
 	bool enabled;
 
 public:
@@ -28,15 +38,23 @@ public:
 	void disable();
 	bool getEnabled();
 
+
+	void detectNext();
+	void detectNext(InputType _filter);
+
 	void setInputType(InputType _type);
 	void setKey(sf::Keyboard::Key _key);
+	void setButton(sf::Mouse::Button _button);
+	void setMouseAxis(MouseAxis _mouseAxis);
 	void setAxis(sf::Joystick::Axis _axis);
 
 	InputType getInputType();
 	sf::Keyboard::Key getKey();
+	sf::Mouse::Button getButton();
+	MouseAxis getMouseAxis();
 	sf::Joystick::Axis getAxis();
 
-	sf::Vector2f getControlVector();
+	float getControlVector();
 };
 
 #endif // !_Actuator_hpp_

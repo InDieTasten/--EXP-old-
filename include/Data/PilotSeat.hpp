@@ -2,12 +2,13 @@
 #define _PilotSeat_hpp_
 
 #include <Data\Attachable.hpp>
+#include <Data\Taggable.hpp>
+#include <Input\Actuator.hpp>
 #include <Data\Thruster.hpp>
-#include <list>
+#include <vector>
 
-struct Actuator {};
 
-class PilotSeat : public Attachable
+class PilotSeat : public Attachable, public Taggable
 {
 private:
 	Actuator translateForward;
@@ -22,7 +23,7 @@ public:
 	PilotSeat();
 	~PilotSeat();
 
-	float getInput(Thruster* _thruster); //will return the current input vector for the thruster given
+	void setThrust(std::vector<Thruster*> _thrusters); //will return the current input vector for the thruster given
 };
 
 #endif // !_PilotSeat_hpp_
