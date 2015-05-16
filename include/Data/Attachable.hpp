@@ -13,10 +13,15 @@ public:
 	Attachable();
 	~Attachable();
 
+	//SET
 	void setPosition(sf::Vector2f);
 	void setSize(sf::Vector2f);
 	void setRotation(float);
-
+	//DISPLACE
+	void movePosition(sf::Vector2f);
+	void moveSize(sf::Vector2f);
+	void moveRotation(float);
+	//GET
 	sf::Vector2f getPosition();
 	sf::Vector2f getSize();
 	float getRotation();
