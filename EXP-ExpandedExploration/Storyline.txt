@@ -20,6 +20,12 @@ DETAIL VIEW
 
 
 ACTIONS
+-- {a civilization} breaks down and sends escape missions around the galaxy
+-- {a civilisation} finally dies
+-- One escape mission ends up to form {home-race}
+-- Another escape mission ends up to form {foreign-race}
+-- Escape missions form new civilizations with similar culture and language
+-- However the history becomes forgotton
 -- {Companies} doing lobby work intrude governments
 -- Economy gets destroyed
 -- Medical Attention gets destroyed
