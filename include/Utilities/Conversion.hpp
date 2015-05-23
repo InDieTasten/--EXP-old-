@@ -2,7 +2,7 @@
 #define _Conversion_hpp_
 
 namespace utils {
-	template<class T>
+	template<typename T>
 	std::string tostring(T i)
 	{
 		std::stringstream ss;
