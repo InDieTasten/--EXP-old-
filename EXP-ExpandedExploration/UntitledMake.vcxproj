@@ -38,7 +38,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <NMakeBuildCommandLine>nmake build</NMakeBuildCommandLine>
-    <NMakeOutput>UG.bat</NMakeOutput>
+    <NMakeOutput>EXP.bat</NMakeOutput>
     <NMakeCleanCommandLine>nmake clean</NMakeCleanCommandLine>
     <NMakeReBuildCommandLine>nmake rebuild</NMakeReBuildCommandLine>
     <NMakePreprocessorDefinitions>WIN32;_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
@@ -97,6 +97,7 @@
     <ClInclude Include="..\include\Utilities\Conversion.hpp" />
     <ClInclude Include="..\include\Utilities\Logger.hpp" />
     <ClInclude Include="..\include\Utilities\VERSION.hpp" />
+    <ClInclude Include="TestCode.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
