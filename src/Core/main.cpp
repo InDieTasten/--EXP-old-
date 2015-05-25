@@ -69,8 +69,3 @@ int main(int argc, char *argv[])
 	gameStart(argc, argv);
 	return EXIT_SUCCESS;
 }
-
-void test()
-{
-	//
-}
