@@ -12,7 +12,7 @@ namespace tests {
 	void tester(void(*_testFunc)(void)) {
 		try {
 			std::cout << "Running test: ";
-			sf::sleep(sf::milliseconds(50));
+			sf::sleep(sf::milliseconds(70));
 			_testFunc();
 			std::cout << "PASSED" << std::endl;
 		}
