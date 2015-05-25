@@ -7,9 +7,10 @@ COMPILER = "C:\Program Files (x86)\CodeBlocks\MinGW\bin\mingw32-g++.exe"
 CSWITCHES = \
 	-fexceptions \
 	-O3 \
-	-std=c++11
+	-std=c++11 \
+	-D SFML_STATIC
 
-LSWITCHES = \
+LSWITCHES = -D SFML_STATIC \
 
 INCLUDES = \
 	-I..\..\UG_lua\include \
@@ -23,16 +24,17 @@ LIBPATH = \
 	-L..\..\UG_libavc\lib
 
 LIBRARIES = \
-	-lsfml-audio \
-	-lsfml-network \
-	-lsfml-graphics \
-	-lsfml-window \
-	-lsfml-system \
-	..\..\UG_lua\src\Lua5.2.3\bin\Release\libLua5.2.3.a \
-	-lavcodec \
-	-lavformat \
-	-lavutil \
-	-lswscale
+	-lsfml-audio-s \
+	-lsfml-network-s \
+	-lsfml-graphics-s \
+	-lsfml-window-s \
+	-lsfml-system-s \
+	..\..\UG_lua\src\Lua5.2.3\bin\Release\libLua5.2.3.a
+#
+#	-lavcodec \
+#	-lavformat \
+#	-lavutil \
+#	-lswscale
 
 OBJECTS = \
 	..\src\Core\main.o \
