@@ -32,7 +32,7 @@ namespace tests {
 	}
 	void Utilities_Conversion_tostring_stringConversion()
 	{
-		if (utils::tostring(std::string("Hallo Welt!")) != std::string("Hallo Welt"))
+		if (utils::tostring(std::string("Hallo Welt!")) != std::string("Hallo Welt!"))
 			throw std::string("Utilities_Conversion_tostring_stringConversion: unexpected return value");
 	}
 	void Utilities_Conversion_tostring_floatConversion()
