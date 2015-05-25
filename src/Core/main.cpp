@@ -8,8 +8,10 @@ extern sf::Mutex loggermtx;
 extern void EXP::log(std::string);
 extern void EXP::init();
 
+
 //TESTZONE START
-#include <Data\PhysicalInfo.hpp>
+#include <..\EXP-ExpandedExploration\TestCode.hpp>
+extern void EXP::testCode();
 //TESTZONE END
 
 
@@ -23,7 +25,6 @@ extern "C" {
 namespace EXP {
 	EventManager* eventManager = nullptr;
 }
-
 void gameQuit(sf::Event::KeyEvent _event)
 {
 	if (_event.code == sf::Keyboard::Escape)
@@ -31,8 +32,7 @@ void gameQuit(sf::Event::KeyEvent _event)
 		EXP::eventManager->terminate();
 	}
 }
-
-int main(int argc, char *argv[])
+int gameStart(int argc, char *argv[])
 {
 	EXP::init();
 	EXP::log("[Info]Game is launching in version: " + VERSION::version);
@@ -44,15 +44,6 @@ int main(int argc, char *argv[])
 	EXP::eventManager = new EventManager(&Window);
 	EXP::eventManager->addKeyRelease(&gameQuit);
 
-	//TESTZONE START
-	
-	PhysicalInfo* test = new PhysicalInfo();
-
-	delete test;
-	test = nullptr;
-
-	//TESTZONE END
-
 	EXP::eventManager->listen();
 
 	delete EXP::eventManager;
@@ -62,4 +53,24 @@ int main(int argc, char *argv[])
 
 	EXP::log("[Info]Game quit!");
 	return EXIT_SUCCESS;
+}
+void test();
+int main(int argc, char *argv[])
+{
+	//Running test code
+	try {
+		EXP::testCode();
+	}
+	catch (std::exception ex) {
+		EXP::log("[FATAL]Test code failed: " + std::string(ex.what()));
+		return EXIT_FAILURE;
+	}
+	//Running game code
+	gameStart(argc, argv);
+	return EXIT_SUCCESS;
+}
+
+void test()
+{
+	//
 }
