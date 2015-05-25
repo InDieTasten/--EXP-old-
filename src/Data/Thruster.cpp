@@ -13,6 +13,10 @@ void Thruster::setThrust(float _thrust)
 {
 	thrust = _thrust;
 }
+void Thruster::setThrottle(float _throttle)
+{
+	throttle = _throttle;
+}
 void Thruster::setFuel(ResourceType _fuel)
 {
 	fuel = _fuel;
@@ -24,6 +28,10 @@ void Thruster::setISP(float _isp)
 float Thruster::getThrust()
 {
 	return thrust;
+}
+float Thruster::getThrottle()
+{
+	return throttle;
 }
 ResourceType Thruster::getFuel()
 {
