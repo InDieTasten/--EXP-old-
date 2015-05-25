@@ -136,5 +136,8 @@
     <ClInclude Include="..\include\Data\GraphicalInfo.hpp">
       <Filter>2 Data</Filter>
     </ClInclude>
+    <ClInclude Include="TestCode.hpp">
+      <Filter>9 Extras</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
