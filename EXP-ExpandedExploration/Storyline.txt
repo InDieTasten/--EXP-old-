@@ -19,7 +19,7 @@ DETAIL VIEW
 {Alien#federalAuth} Federal Authority. How do they act? What are they allowed to do? Whats their position in the executive order.
 
 
-ACTIONS
+CHRONOLOGICALLY ORDERED EVENTS
 -- {a civilization} breaks down and sends escape missions around the galaxy
 -- {a civilisation} finally dies
 -- One escape mission ends up to form {home-race}
