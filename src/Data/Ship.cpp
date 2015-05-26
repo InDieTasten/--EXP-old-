@@ -10,3 +10,7 @@ Ship::~Ship()
 	EXP::log("[Info]Ship has been destructed: " +  utils::tostring(this));
 }
 
+void Ship::draw(sf::RenderTarget& target, sf::RenderStates states)
+{
+	//WORK
+}
