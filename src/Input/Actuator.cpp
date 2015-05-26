@@ -1,5 +1,18 @@
 #include <Input\Actuator.hpp>
 
+Actuator::Actuator()
+{
+	eventManager = nullptr;
+	enabled = true;
+	inputType = InputType::Keyboard;
+	key = sf::Keyboard::Escape;
+	button = sf::Mouse::Left;
+	mouseAxis = MouseAxis::X;
+	joystick = 0;
+	joyButton = 0;
+	axis = sf::Joystick::X;
+	EXP::log("[Info]Actuator has been constructed: " + utils::tostring(this));
+}
 Actuator::Actuator(EventManager* _eventManager)
 {
 	eventManager = _eventManager;
@@ -31,6 +44,16 @@ void Actuator::detectNext(InputType _filter)
 {
 	//WORK
 }
+
+void Actuator::setEventManager(EventManager* _eventManager)
+{
+	eventManager = _eventManager;
+}
+EventManager* Actuator::getEventManager()
+{
+	return eventManager;
+}
+
 void Actuator::setInputType(InputType _type)
 {
 	inputType = _type;
