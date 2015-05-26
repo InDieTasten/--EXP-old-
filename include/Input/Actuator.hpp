@@ -37,6 +37,7 @@ private:
 	bool enabled;
 
 public:
+	Actuator();
 	Actuator(EventManager* _eventManager);
 	~Actuator();
 
@@ -45,6 +46,9 @@ public:
 
 	void detectNext();
 	void detectNext(InputType _filter);
+
+	void setEventManager(EventManager* _eventManager);
+	EventManager* getEventManager();
 
 	void setInputType(InputType _type);
 	void setKey(sf::Keyboard::Key _key);
