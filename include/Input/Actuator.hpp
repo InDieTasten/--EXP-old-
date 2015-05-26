@@ -1,6 +1,7 @@
 #ifndef _Actuator_hpp_
 #define _Actuator_hpp_
 
+#include <Input\EventManager.hpp>
 #include <SFML\Graphics.hpp>
 #include <Utilities\Logger.hpp>
 #include <Utilities\Conversion.hpp>
@@ -13,7 +14,8 @@ public:
 		Keyboard,
 		MouseButton,
 		MousePosition,
-		Joystick
+		Joystick,
+		JoystickButton
 	};
 	enum MouseAxis
 	{
@@ -21,18 +23,21 @@ public:
 		Y
 	};
 private:
+	EventManager* eventManager;
+
 	InputType inputType;
 
 	sf::Keyboard::Key key;
 	sf::Mouse::Button button;
 	MouseAxis mouseAxis;
 	unsigned int joystick;
+	unsigned int joyButton;
 	sf::Joystick::Axis axis;
 
 	bool enabled;
 
 public:
-	Actuator();
+	Actuator(EventManager* _eventManager);
 	~Actuator();
 
 	bool getEnabled();
@@ -46,6 +51,7 @@ public:
 	void setButton(sf::Mouse::Button _button);
 	void setMouseAxis(MouseAxis _mouseAxis);
 	void setAxis(unsigned int _joystick, sf::Joystick::Axis _axis);
+	void setJoyButton(unsigned int _joystick, unsigned int _button);
 
 	InputType getInputType();
 	sf::Keyboard::Key getKey();
@@ -53,6 +59,7 @@ public:
 	MouseAxis getMouseAxis();
 	sf::Joystick::Axis getAxis();
 	unsigned int getJoystick();
+	unsigned int getJoyButton();
 
 	float getControlVector();
 };
