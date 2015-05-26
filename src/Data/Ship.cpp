@@ -1,7 +1,8 @@
 #include <Data\Ship.hpp>
 
-Ship::Ship() : Taggable()
+Ship::Ship(EventManager* _eventManager) : Taggable(), seat(_eventManager)
 {
+	eventManager = _eventManager;
 	EXP::log("[Info]Ship has been constructed: " + utils::tostring(this));
 }
 Ship::~Ship()
