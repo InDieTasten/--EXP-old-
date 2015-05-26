@@ -1,8 +1,16 @@
 #include <Input\Actuator.hpp>
 
-Actuator::Actuator()
+Actuator::Actuator(EventManager* _eventManager)
 {
+	eventManager = _eventManager;
 	enabled = true;
+	inputType = InputType::Keyboard;
+	key = sf::Keyboard::Escape;
+	button = sf::Mouse::Left;
+	mouseAxis = MouseAxis::X;
+	joystick = 0;
+	joyButton = 0;
+	axis = sf::Joystick::X;
 	EXP::log("[Info]Actuator has been constructed: " + utils::tostring(this));
 }
 Actuator::~Actuator()
@@ -16,7 +24,8 @@ bool Actuator::getEnabled()
 }
 void Actuator::detectNext()
 {
-	//WORK
+	EXP::log("[Info]Actuator detects: " + utils::tostring(this));
+	//eventManager->add
 }
 void Actuator::detectNext(InputType _filter)
 {
@@ -43,6 +52,11 @@ void Actuator::setAxis(unsigned int _joystick, sf::Joystick::Axis _axis)
 	joystick = _joystick;
 	axis = _axis;
 }
+void Actuator::setJoyButton(unsigned int _joystick, unsigned int _button)
+{
+	joystick = _joystick;
+	joyButton = _button;
+}
 Actuator::InputType Actuator::getInputType()
 {
 	return inputType;
@@ -67,6 +81,10 @@ unsigned int Actuator::getJoystick()
 {
 	return joystick;
 }
+unsigned int Actuator::getJoyButton()
+{
+	return joyButton;
+}
 float Actuator::getControlVector()
 {
 	switch (inputType)
@@ -88,6 +106,8 @@ float Actuator::getControlVector()
 		}
 	case InputType::Joystick:
 		return sf::Joystick::getAxisPosition(joystick, axis)/100.0f;
+	case InputType::JoystickButton:
+		return (float)sf::Joystick::isButtonPressed(joystick, joyButton);
 	default:
 		EXP::log("[Warning]Actuators input type is highly strange: " + utils::tostring(this));
 		return 0.0f;
