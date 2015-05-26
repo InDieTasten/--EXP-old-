@@ -7,13 +7,15 @@
 #include <Utilities\Logger.hpp>
 #include <Utilities\Conversion.hpp>
 
-class GraphicalInfo : public sf::Drawable
+class GraphicalInfo : private sf::Drawable
 {
 protected:
 	sf::Texture* texture;
 public:
 	GraphicalInfo();
 	~GraphicalInfo();
+
+	virtual void draw(sf::RenderTarget& _target, sf::RenderStates _states);
 
 	//SET
 	void setTexture(sf::Texture* _texture);
