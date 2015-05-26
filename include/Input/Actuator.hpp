@@ -26,6 +26,7 @@ private:
 	sf::Keyboard::Key key;
 	sf::Mouse::Button button;
 	MouseAxis mouseAxis;
+	unsigned int joystick;
 	sf::Joystick::Axis axis;
 
 	bool enabled;
@@ -34,8 +35,6 @@ public:
 	Actuator();
 	~Actuator();
 
-	void enable();
-	void disable();
 	bool getEnabled();
 
 
@@ -46,13 +45,14 @@ public:
 	void setKey(sf::Keyboard::Key _key);
 	void setButton(sf::Mouse::Button _button);
 	void setMouseAxis(MouseAxis _mouseAxis);
-	void setAxis(sf::Joystick::Axis _axis);
+	void setAxis(unsigned int _joystick, sf::Joystick::Axis _axis);
 
 	InputType getInputType();
 	sf::Keyboard::Key getKey();
 	sf::Mouse::Button getButton();
 	MouseAxis getMouseAxis();
 	sf::Joystick::Axis getAxis();
+	unsigned int getJoystick();
 
 	float getControlVector();
 };
