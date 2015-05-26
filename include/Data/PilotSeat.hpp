@@ -1,6 +1,7 @@
 #ifndef _PilotSeat_hpp_
 #define _PilotSeat_hpp_
 
+#include <Input\EventManager.hpp>
 #include <Data\Attachable.hpp>
 #include <Data\Taggable.hpp>
 #include <Input\Actuator.hpp>
@@ -11,19 +12,21 @@
 class PilotSeat : public Attachable, public Taggable
 {
 private:
+	EventManager* eventManager;
+
 	Actuator translateForward;
 	Actuator translateBack;
 	Actuator translateLeft;
 	Actuator translateRight;
-	Actuator triggerPrimary;
-	Actuator triggerSecondary;
 	Actuator rotateLeft;
 	Actuator rotateRight;
+	Actuator primaryWeapon;
+	Actuator secondaryWeapon;
 public:
-	PilotSeat();
+	PilotSeat(EventManager* _eventManager);
 	~PilotSeat();
 
-	void setThrust(std::vector<Thruster*> _thrusters); //will return the current input vector for the thruster given
+	void setThrottle(std::vector<Thruster>& _thrusters); //will return the current input vector for the thruster given
 };
 
 #endif // !_PilotSeat_hpp_
