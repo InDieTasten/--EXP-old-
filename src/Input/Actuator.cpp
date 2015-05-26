@@ -38,7 +38,7 @@ bool Actuator::getEnabled()
 void Actuator::detectNext()
 {
 	EXP::log("[Info]Actuator detects: " + utils::tostring(this));
-	//eventManager->add
+	//WORK
 }
 void Actuator::detectNext(InputType _filter)
 {
