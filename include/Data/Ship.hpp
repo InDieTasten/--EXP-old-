@@ -14,12 +14,13 @@
 class Ship : public PhysicalInfo, public Taggable, public GraphicalInfo
 {
 private:
+	EventManager* eventManager;
 	PilotSeat seat;
 	std::vector<Thruster> thrusters;
 	std::vector<Container> containers;
 
 public:
-	Ship();
+	Ship(EventManager* _eventManager);
 	~Ship();
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states);
