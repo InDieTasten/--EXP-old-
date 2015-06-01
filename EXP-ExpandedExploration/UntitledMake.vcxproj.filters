@@ -140,4 +140,9 @@
       <Filter>9 Extras</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Filter>9 Extras</Filter>
+    </None>
+  </ItemGroup>
 </Project>
