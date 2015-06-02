@@ -80,6 +80,9 @@
     <ClCompile Include="..\src\Data\Attachable.cpp">
       <Filter>2 Data</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Data\System.cpp">
+      <Filter>2 Data</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Utilities\Logger.hpp">
@@ -138,6 +141,9 @@
     </ClInclude>
     <ClInclude Include="TestCode.hpp">
       <Filter>9 Extras</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Data\System.hpp">
+      <Filter>2 Data</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
