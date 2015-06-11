@@ -1,5 +1,5 @@
 
-OUTPUT = ..\..\UG_content\UG.exe
+OUTPUT = ..\..\UG_content\EXP.exe
 
 #COMPILER = "C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe"
 COMPILER = "C:\Program Files (x86)\CodeBlocks\MinGW\bin\mingw32-g++.exe"
