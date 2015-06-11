@@ -130,6 +130,19 @@ namespace tests {
 		if (result.getR() != 28.0f)
 			throw std::string("Data_Vector_operatorMultiply: wrong member R result");
 	}
+	void Data_Vector_operatorDevide()
+	{
+		Vector first(9.0f, 12.0f, 15.0f);
+		Vector second(3.0f, 3.0f, 2.0f);
+
+		Vector result = first * second;
+		if (result.getX() != 3.0f)
+			throw std::string("Data_Vector_operatorDevide: wrong member X result");
+		if (result.getY() != 4.0f)
+			throw std::string("Data_Vector_operatorDevide: wrong member Y result");
+		if (result.getR() != 7.5f)
+			throw std::string("Data_Vector_operatorDevide: wrong member R result");
+	}
 	//WORK
 }
 
@@ -153,6 +166,7 @@ namespace EXP {
 			failed += tests::tester(&tests::Data_Vector_operatorAdd);
 			failed += tests::tester(&tests::Data_Vector_operatorSubtract);
 			failed += tests::tester(&tests::Data_Vector_operatorMultiply);
+			failed += tests::tester(&tests::Data_Vector_operatorDevide);
 			
 			std::cout << std::endl << std::endl << failed << " Tests failed! Finishing up..." << std::endl;
 			sf::sleep(sf::seconds(2));
