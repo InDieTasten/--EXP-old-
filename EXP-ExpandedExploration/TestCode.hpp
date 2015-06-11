@@ -57,7 +57,16 @@ namespace tests {
 		if (x.getR() != 0.0f)
 			throw std::string("Data_Vector_Constructor_Deafult: wrong R member initialization");
 	}
-
+	void Data_Vector_Constructor_1()
+	{
+		Vector x(1.0f, 2.0f, 4.0f);
+		if (x.getX() != 0.0f)
+			throw std::string("Data_Vector_Constructor_1: wrong X member initialization");
+		if (x.getY() != 0.0f)
+			throw std::string("Data_Vector_Constructor_1: wrong Y member initialization");
+		if (x.getR() != 0.0f)
+			throw std::string("Data_Vector_Constructor_1: wrong R member initialization");
+	}
 	//WORK
 }
 
@@ -72,6 +81,7 @@ namespace EXP {
 			tests::tester(&tests::Utilities_Conversion_tostring_floatConversion);
 			tests::tester(&tests::Utilities_Conversion_tostring_doubleConversion);
 			tests::tester(&tests::Data_Vector_Constructor_Default);
+			tests::tester(&tests::Data_Vector_Constructor_1);
 		}
 		catch (std::exception ex) {
 			std::cout << "Strange exception in test code throwing following what(): " << ex.what() << std::endl;
