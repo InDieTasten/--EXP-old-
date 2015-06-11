@@ -69,6 +69,34 @@ Vector& Vector::operator/=(const Vector& rhs)
 	this->r /= rhs.r;
 	return *this;
 }
+Vector& Vector::operator+=(const double& rhs)
+{
+	this->x += rhs;
+	this->y += rhs;
+	this->r += rhs;
+	return *this;
+}
+Vector& Vector::operator-=(const double& rhs)
+{
+	this->x -= rhs;
+	this->y -= rhs;
+	this->r -= rhs;
+	return *this;
+}
+Vector& Vector::operator*=(const double& rhs)
+{
+	this->x *= rhs;
+	this->y *= rhs;
+	this->r *= rhs;
+	return *this;
+}
+Vector& Vector::operator/=(const double& rhs)
+{
+	this->x /= rhs;
+	this->y /= rhs;
+	this->r /= rhs;
+	return *this;
+}
 Vector Vector::operator+(const Vector& rhs)
 {
 	Vector tmp;
