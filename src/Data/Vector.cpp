@@ -11,12 +11,11 @@ Vector::~Vector()
 {
 	EXP::log("[Info]Vector has been destructed: " + utils::tostring(this));
 }
-Vector::Vector(double _x, double _y, float _r)
+Vector::Vector(double _x, double _y, float _r) : Vector()
 {
 	x = _x;
 	y = _y;
 	r = _r;
-	EXP::log("[Info]Vector has been constructed");
 }
 void Vector::setX(double _x)
 {
@@ -100,5 +99,37 @@ Vector Vector::operator/(const Vector& rhs)
 	tmp.x = this->x / rhs.x;
 	tmp.y = this->y / rhs.y;
 	tmp.r = this->r / rhs.r;
+	return tmp;
+}
+Vector Vector::operator+(const double& rhs)
+{
+	Vector tmp;
+	tmp.x = this->x + rhs;
+	tmp.y = this->y + rhs;
+	tmp.r = this->r + rhs;
+	return tmp;
+}
+Vector Vector::operator-(const double& rhs)
+{
+	Vector tmp;
+	tmp.x = this->x - rhs;
+	tmp.y = this->y - rhs;
+	tmp.r = this->r - rhs;
+	return tmp;
+}
+Vector Vector::operator*(const double& rhs)
+{
+	Vector tmp;
+	tmp.x = this->x * rhs;
+	tmp.y = this->y * rhs;
+	tmp.r = this->r * rhs;
+	return tmp;
+}
+Vector Vector::operator/(const double& rhs)
+{
+	Vector tmp;
+	tmp.x = this->x / rhs;
+	tmp.y = this->y / rhs;
+	tmp.r = this->r / rhs;
 	return tmp;
 }
