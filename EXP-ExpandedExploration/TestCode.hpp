@@ -299,6 +299,34 @@ namespace tests {
 		if (test.getTag("TestTag") != 0.0f)
 			throw std::string("Data_Taggable_Constructor_Default: Ghost tag allocated");
 	}
+	void Data_Taggable_setTag()
+	{
+		Taggable test;
+		test.setTag("TestTag", 1.5f);
+		if (test.getTag("TestTag") != 1.5f)
+			throw std::string("Data_Taggable_setTag: Bad Tag value");
+	}
+	void Data_Taggable_getTags()
+	{
+		Taggable test;
+		test.setTag("TestTag", 1.0f);
+		std::map<std::string, float> testTags = test.getTags();
+		if (testTags["TestTag"] != 1.0f)
+			throw std::string("Data_Taggable_getTags: Bad Tag value");
+	}
+	void Data_Taggable_setTags()
+	{
+		Taggable test;
+		test.setTag("TestTag", 1.0f);
+		std::map<std::string, float> testTags = test.getTags();
+		testTags["TestTag2"] = 7.5f;
+		test.setTags(testTags);
+		if (test.getTag("TestTag2") != 7.5f)
+			throw std::string("Data_Taggable_getTags: Bad Tag value for new Tag");
+		if (test.getTag("TestTag") != 1.0f)
+			throw std::string("Data_Taggable_getTags: Bad Tag value for old Tag");
+	}
+
 }
 
 #include <Utilities\Logger.hpp>
@@ -337,6 +365,9 @@ namespace EXP {
 			failed += tests::tester(&tests::Data_Vector_operatorDevideEqual_float);
 
 			failed += tests::tester(&tests::Data_Taggable_Constructor_Default);
+			failed += tests::tester(&tests::Data_Taggable_setTag);
+			failed += tests::tester(&tests::Data_Taggable_getTags);
+			failed += tests::tester(&tests::Data_Taggable_setTags);
 			
 			std::cout << std::endl << std::endl << failed << " Tests failed! Finishing up..." << std::endl;
 			sf::sleep(sf::seconds(2));
