@@ -88,6 +88,19 @@ namespace tests {
 		if (test.getR() != 1.0f)
 			throw std::string("Data_Vector_setR: wrong value set");
 	}
+	void Data_Vector_operatorPlus()
+	{
+		Vector first(1.0f,1.0f,1.0f);
+		Vector second(2.0f, 2.0f, 2.0f);
+
+		Vector result = first + second;
+		if (result.getX() != 3.0f)
+			throw std::string("Data_Vector_operatorPlus: wrong member X result");
+		if (result.getY() != 3.0f)
+			throw std::string("Data_Vector_operatorPlus: wrong member Y result");
+		if (result.getR() != 3.0f)
+			throw std::string("Data_Vector_operatorPlus: wrong member R result");
+	}
 	//WORK
 }
 
@@ -107,6 +120,7 @@ namespace EXP {
 			tests::tester(&tests::Data_Vector_setX);
 			tests::tester(&tests::Data_Vector_setY);
 			tests::tester(&tests::Data_Vector_setR);
+			tests::tester(&tests::Data_Vector_operatorPlus);
 		}
 		catch (std::exception ex) {
 			std::cout << "Strange exception in test code throwing following what(): " << ex.what() << std::endl;
