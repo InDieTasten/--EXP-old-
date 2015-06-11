@@ -88,18 +88,31 @@ namespace tests {
 		if (test.getR() != 1.0f)
 			throw std::string("Data_Vector_setR: wrong value set");
 	}
-	void Data_Vector_operatorPlus()
+	void Data_Vector_operatorAdd()
 	{
 		Vector first(1.0f,1.0f,1.0f);
 		Vector second(2.0f, 2.0f, 2.0f);
 
 		Vector result = first + second;
 		if (result.getX() != 3.0f)
-			throw std::string("Data_Vector_operatorPlus: wrong member X result");
+			throw std::string("Data_Vector_operatorAdd: wrong member X result");
 		if (result.getY() != 3.0f)
-			throw std::string("Data_Vector_operatorPlus: wrong member Y result");
+			throw std::string("Data_Vector_operatorAdd: wrong member Y result");
 		if (result.getR() != 3.0f)
-			throw std::string("Data_Vector_operatorPlus: wrong member R result");
+			throw std::string("Data_Vector_operatorAdd: wrong member R result");
+	}
+	void Data_Vector_operatorSubtract()
+	{
+		Vector first(5.0f, 6.0f, 7.0f);
+		Vector second(2.0f, 3.0f, 4.0f);
+
+		Vector result = first - second;
+		if (result.getX() != 3.0f)
+			throw std::string("Data_Vector_operatorSubtract: wrong member X result");
+		if (result.getY() != 3.0f)
+			throw std::string("Data_Vector_operatorSubtract: wrong member Y result");
+		if (result.getR() != 3.0f)
+			throw std::string("Data_Vector_operatorSubtract: wrong member R result");
 	}
 	//WORK
 }
@@ -120,7 +133,8 @@ namespace EXP {
 			tests::tester(&tests::Data_Vector_setX);
 			tests::tester(&tests::Data_Vector_setY);
 			tests::tester(&tests::Data_Vector_setR);
-			tests::tester(&tests::Data_Vector_operatorPlus);
+			tests::tester(&tests::Data_Vector_operatorAdd);
+			tests::tester(&tests::Data_Vector_operatorSubtract);
 		}
 		catch (std::exception ex) {
 			std::cout << "Strange exception in test code throwing following what(): " << ex.what() << std::endl;
