@@ -12,7 +12,7 @@ namespace tests {
 	void tester(void(*_testFunc)(void)) {
 		try {
 			std::cout << "Running test: ";
-			sf::sleep(sf::milliseconds(70));
+			sf::sleep(sf::milliseconds(30));
 			_testFunc();
 			std::cout << "PASSED" << std::endl;
 		}
@@ -47,6 +47,17 @@ namespace tests {
 	}
 	//Data
 	//Data/Vector
+	void Data_Vector_Constructor_Default()
+	{
+		Vector x;
+		if (x.getX() != 0.0f)
+			throw std::string("Data_Vector_Constructor_Default: wrong X member initialization");
+		if (x.getY() != 0.0f)
+			throw std::string("Data_Vector_Constructor_Deafult: wrong Y member initialization");
+		if (x.getR() != 0.0f)
+			throw std::string("Data_Vector_Constructor_Deafult: wrong R member initialization");
+	}
+
 	//WORK
 }
 
@@ -60,6 +71,7 @@ namespace EXP {
 			tests::tester(&tests::Utilities_Conversion_tostring_stringConversion);
 			tests::tester(&tests::Utilities_Conversion_tostring_floatConversion);
 			tests::tester(&tests::Utilities_Conversion_tostring_doubleConversion);
+			tests::tester(&tests::Data_Vector_Constructor_Default);
 		}
 		catch (std::exception ex) {
 			std::cout << "Strange exception in test code throwing following what(): " << ex.what() << std::endl;
