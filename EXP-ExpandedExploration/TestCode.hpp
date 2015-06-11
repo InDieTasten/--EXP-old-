@@ -114,6 +114,19 @@ namespace tests {
 		if (result.getR() != 3.0f)
 			throw std::string("Data_Vector_operatorSubtract: wrong member R result");
 	}
+	void Data_Vector_operatorMultiply()
+	{
+		Vector first(5.0f, 6.0f, 7.0f);
+		Vector second(2.0f, 3.0f, 4.0f);
+
+		Vector result = first * second;
+		if (result.getX() != 10.0f)
+			throw std::string("Data_Vector_operatorMultiply: wrong member X result");
+		if (result.getY() != 18.0f)
+			throw std::string("Data_Vector_operatorMultiply: wrong member Y result");
+		if (result.getR() != 28.0f)
+			throw std::string("Data_Vector_operatorMultiply: wrong member R result");
+	}
 	//WORK
 }
 
@@ -135,6 +148,7 @@ namespace EXP {
 			tests::tester(&tests::Data_Vector_setR);
 			tests::tester(&tests::Data_Vector_operatorAdd);
 			tests::tester(&tests::Data_Vector_operatorSubtract);
+			tests::tester(&tests::Data_Vector_operatorMultiply);
 		}
 		catch (std::exception ex) {
 			std::cout << "Strange exception in test code throwing following what(): " << ex.what() << std::endl;
