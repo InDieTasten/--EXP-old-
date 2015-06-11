@@ -60,11 +60,11 @@ namespace tests {
 	void Data_Vector_Constructor_1()
 	{
 		Vector x(1.0f, 2.0f, 4.0f);
-		if (x.getX() != 0.0f)
+		if (x.getX() != 1.0f)
 			throw std::string("Data_Vector_Constructor_1: wrong X member initialization");
-		if (x.getY() != 0.0f)
+		if (x.getY() != 2.0f)
 			throw std::string("Data_Vector_Constructor_1: wrong Y member initialization");
-		if (x.getR() != 0.0f)
+		if (x.getR() != 4.0f)
 			throw std::string("Data_Vector_Constructor_1: wrong R member initialization");
 	}
 	//WORK
