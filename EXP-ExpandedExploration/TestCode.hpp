@@ -11,14 +11,14 @@
 namespace tests {
 	void tester(void(*_testFunc)(void)) {
 		try {
-			std::cout << "Running test: ";
+			
 			sf::sleep(sf::milliseconds(30));
 			_testFunc();
-			std::cout << "PASSED" << std::endl;
+			std::cout << "Running test : PASSED" << std::endl;
 		}
-		catch (std::string ex)
+		catch (std::string ex )
 		{
-			std::cout << "FAILED @" << std::endl << ex << std::endl;
+			std::cout << "Running test: FAILED @" << std::endl << ex << std::endl;
 		}
 	}
 
@@ -67,6 +67,13 @@ namespace tests {
 		if (x.getR() != 4.0f)
 			throw std::string("Data_Vector_Constructor_1: wrong R member initialization");
 	}
+	void Data_Vector_setX()
+	{
+		Vector test;
+		test.setX(1.0f);
+		if (test.getX() != 1.0f)
+			throw std::string("Data_Vector_setX: wrong value set");
+	}
 	//WORK
 }
 
@@ -75,6 +82,7 @@ namespace tests {
 namespace EXP {
 	void testCode()
 	{
+		EXP::log(" [Info]==Init Logger==");
 		try {
 			tests::tester(&tests::Utilities_Conversion_tostring_integerConversion);
 			tests::tester(&tests::Utilities_Conversion_tostring_stringConversion);
@@ -82,6 +90,8 @@ namespace EXP {
 			tests::tester(&tests::Utilities_Conversion_tostring_doubleConversion);
 			tests::tester(&tests::Data_Vector_Constructor_Default);
 			tests::tester(&tests::Data_Vector_Constructor_1);
+			tests::tester(&tests::Data_Vector_setX);
+
 		}
 		catch (std::exception ex) {
 			std::cout << "Strange exception in test code throwing following what(): " << ex.what() << std::endl;
