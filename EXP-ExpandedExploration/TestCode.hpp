@@ -143,6 +143,18 @@ namespace tests {
 		if (result.getR() != 7.5f)
 			throw std::string("Data_Vector_operatorDevide: wrong member R result");
 	}
+	void Data_Vector_operatorAdd_float()
+	{
+		Vector first(1.0f, 1.0f, 1.0f);
+
+		Vector result = first + 2.0f;
+		if (result.getX() != 3.0f)
+			throw std::string("Data_Vector_operatorAdd_float: wrong member X result");
+		if (result.getY() != 3.0f)
+			throw std::string("Data_Vector_operatorAdd_float: wrong member Y result");
+		if (result.getR() != 3.0f)
+			throw std::string("Data_Vector_operatorAdd_float: wrong member R result");
+	}
 	//WORK
 }
 
@@ -167,6 +179,7 @@ namespace EXP {
 			failed += tests::tester(&tests::Data_Vector_operatorSubtract);
 			failed += tests::tester(&tests::Data_Vector_operatorMultiply);
 			failed += tests::tester(&tests::Data_Vector_operatorDevide);
+			failed += tests::tester(&tests::Data_Vector_operatorAdd_float);
 			
 			std::cout << std::endl << std::endl << failed << " Tests failed! Finishing up..." << std::endl;
 			sf::sleep(sf::seconds(2));
