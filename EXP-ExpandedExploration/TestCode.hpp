@@ -187,7 +187,7 @@ namespace tests {
 		Vector first(9.0f, 12.0f, 15.0f);
 		Vector second(3.0f, 3.0f, 2.0f);
 
-		first =/ second;
+		first /= second;
 		if (first.getX() != 3.0f)
 			throw std::string("Data_Vector_operatorDevideEqual: wrong member X result");
 		if (first.getY() != 4.0f)
