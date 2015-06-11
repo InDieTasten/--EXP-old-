@@ -143,6 +143,58 @@ namespace tests {
 		if (result.getR() != 7.5f)
 			throw std::string("Data_Vector_operatorDevide: wrong member R result");
 	}
+	void Data_Vector_operatorAddEqual()
+	{
+		Vector first(1.0f, 1.0f, 1.0f);
+		Vector second(2.0f, 2.0f, 2.0f);
+
+		first += second;
+		if (first.getX() != 3.0f)
+			throw std::string("Data_Vector_operatorAddEqual: wrong member X result");
+		if (first.getY() != 3.0f)
+			throw std::string("Data_Vector_operatorAddEqual: wrong member Y result");
+		if (first.getR() != 3.0f)
+			throw std::string("Data_Vector_operatorAddEqual: wrong member R result");
+	}
+	void Data_Vector_operatorSubtractEqual()
+	{
+		Vector first(5.0f, 6.0f, 7.0f);
+		Vector second(2.0f, 3.0f, 4.0f);
+
+		first -= second;
+		if (first.getX() != 3.0f)
+			throw std::string("Data_Vector_operatorSubtractEqual: wrong member X result");
+		if (first.getY() != 3.0f)
+			throw std::string("Data_Vector_operatorSubtractEqual: wrong member Y result");
+		if (first.getR() != 3.0f)
+			throw std::string("Data_Vector_operatorSubtractEqual: wrong member R result");
+	}
+	void Data_Vector_operatorMultiplyEqual()
+	{
+		Vector first(5.0f, 6.0f, 7.0f);
+		Vector second(2.0f, 3.0f, 4.0f);
+
+		first *= second;
+		if (first.getX() != 10.0f)
+			throw std::string("Data_Vector_operatorMultiplyEqual: wrong member X result");
+		if (first.getY() != 18.0f)
+			throw std::string("Data_Vector_operatorMultiplyEqual: wrong member Y result");
+		if (first.getR() != 28.0f)
+			throw std::string("Data_Vector_operatorMultiplyEqual: wrong member R result");
+	}
+	void Data_Vector_operatorDevideEqual()
+	{
+		Vector first(9.0f, 12.0f, 15.0f);
+		Vector second(3.0f, 3.0f, 2.0f);
+
+		first =/ second;
+		if (first.getX() != 3.0f)
+			throw std::string("Data_Vector_operatorDevideEqual: wrong member X result");
+		if (first.getY() != 4.0f)
+			throw std::string("Data_Vector_operatorDevideEqual: wrong member Y result");
+		if (first.getR() != 7.5f)
+			throw std::string("Data_Vector_operatorDevideEqual: wrong member R result");
+	}
 	void Data_Vector_operatorAdd_float()
 	{
 		Vector first(1.0f, 1.0f, 1.0f);
@@ -215,6 +267,10 @@ namespace EXP {
 			failed += tests::tester(&tests::Data_Vector_operatorSubtract);
 			failed += tests::tester(&tests::Data_Vector_operatorMultiply);
 			failed += tests::tester(&tests::Data_Vector_operatorDevide);
+			failed += tests::tester(&tests::Data_Vector_operatorAddEqual);
+			failed += tests::tester(&tests::Data_Vector_operatorSubtractEqual);
+			failed += tests::tester(&tests::Data_Vector_operatorMultiplyEqual);
+			failed += tests::tester(&tests::Data_Vector_operatorDevideEqual);
 			failed += tests::tester(&tests::Data_Vector_operatorAdd_float);
 			failed += tests::tester(&tests::Data_Vector_operatorSubtract_float);
 			failed += tests::tester(&tests::Data_Vector_operatorMultiply_float);
