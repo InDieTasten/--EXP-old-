@@ -20,7 +20,7 @@ namespace tests {
 		}
 		catch (std::string ex )
 		{
-			std::cout << "Running test: FAILED @" << std::endl << ex << std::endl;
+			std::cout << "Running test : FAILED @" << std::endl << ex << std::endl;
 			return 1;
 		}
 		return 0;
