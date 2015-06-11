@@ -10,20 +10,23 @@
 #include <Data\Vector.hpp>
 #include <Data\Taggable.hpp>
 namespace tests {
-	int tester(void(*_testFunc)(void)) {
+	int failed = 0;
+	int succeed = 0;
+	void tester(void(*_testFunc)(void)) {
 		try {
 			
 			sf::sleep(sf::milliseconds(30));
 			_testFunc();
 			std::cout << "Running test : PASSED" << std::endl;
-			return 0;
+			succeed++;
+			return;
 		}
 		catch (std::string ex )
 		{
 			std::cout << "Running test : FAILED @" << std::endl << ex << std::endl;
-			return 1;
+			failed++;
+			return;
 		}
-		return 0;
 	}
 
 	//Utilities
@@ -331,7 +334,7 @@ namespace tests {
 		Taggable test;
 		test.setTag("TestTag", 1.0f);
 		test.moveTag("TestTag", 3.0f);
-		if (test.getTag("TestTag2") != 4.0f)
+		if (test.getTag("TestTag") != 4.0f)
 			throw std::string("Data_Taggable_moveTag: Bad Tag value for moved Tag");
 	}
 
@@ -348,37 +351,37 @@ namespace EXP {
 			tests::tester(&tests::Utilities_Conversion_tostring_integerConversion);
 			tests::tester(&tests::Utilities_Conversion_tostring_stringConversion);
 			tests::tester(&tests::Utilities_Conversion_tostring_floatConversion);
-			failed += tests::tester(&tests::Utilities_Conversion_tostring_doubleConversion);
+			tests::tester(&tests::Utilities_Conversion_tostring_doubleConversion);
 
-			failed += tests::tester(&tests::Data_Vector_Constructor_Default);
-			failed += tests::tester(&tests::Data_Vector_Constructor_1);
-			failed += tests::tester(&tests::Data_Vector_setX);
-			failed += tests::tester(&tests::Data_Vector_setY);
-			failed += tests::tester(&tests::Data_Vector_setR);
-			failed += tests::tester(&tests::Data_Vector_operatorAdd);
-			failed += tests::tester(&tests::Data_Vector_operatorSubtract);
-			failed += tests::tester(&tests::Data_Vector_operatorMultiply);
-			failed += tests::tester(&tests::Data_Vector_operatorDevide);
-			failed += tests::tester(&tests::Data_Vector_operatorAddEqual);
-			failed += tests::tester(&tests::Data_Vector_operatorSubtractEqual);
-			failed += tests::tester(&tests::Data_Vector_operatorMultiplyEqual);
-			failed += tests::tester(&tests::Data_Vector_operatorDevideEqual);
-			failed += tests::tester(&tests::Data_Vector_operatorAdd_float);
-			failed += tests::tester(&tests::Data_Vector_operatorSubtract_float);
-			failed += tests::tester(&tests::Data_Vector_operatorMultiply_float);
-			failed += tests::tester(&tests::Data_Vector_operatorDevide_float);
-			failed += tests::tester(&tests::Data_Vector_operatorAddEqual_float);
-			failed += tests::tester(&tests::Data_Vector_operatorSubtractEqual_float);
-			failed += tests::tester(&tests::Data_Vector_operatorMultiplyEqual_float);
-			failed += tests::tester(&tests::Data_Vector_operatorDevideEqual_float);
+			tests::tester(&tests::Data_Vector_Constructor_Default);
+			tests::tester(&tests::Data_Vector_Constructor_1);
+			tests::tester(&tests::Data_Vector_setX);
+			tests::tester(&tests::Data_Vector_setY);
+			tests::tester(&tests::Data_Vector_setR);
+			tests::tester(&tests::Data_Vector_operatorAdd);
+			tests::tester(&tests::Data_Vector_operatorSubtract);
+			tests::tester(&tests::Data_Vector_operatorMultiply);
+			tests::tester(&tests::Data_Vector_operatorDevide);
+			tests::tester(&tests::Data_Vector_operatorAddEqual);
+			tests::tester(&tests::Data_Vector_operatorSubtractEqual);
+			tests::tester(&tests::Data_Vector_operatorMultiplyEqual);
+			tests::tester(&tests::Data_Vector_operatorDevideEqual);
+			tests::tester(&tests::Data_Vector_operatorAdd_float);
+			tests::tester(&tests::Data_Vector_operatorSubtract_float);
+			tests::tester(&tests::Data_Vector_operatorMultiply_float);
+			tests::tester(&tests::Data_Vector_operatorDevide_float);
+			tests::tester(&tests::Data_Vector_operatorAddEqual_float);
+			tests::tester(&tests::Data_Vector_operatorSubtractEqual_float);
+			tests::tester(&tests::Data_Vector_operatorMultiplyEqual_float);
+			tests::tester(&tests::Data_Vector_operatorDevideEqual_float);
 
-			failed += tests::tester(&tests::Data_Taggable_Constructor_Default);
-			failed += tests::tester(&tests::Data_Taggable_setTag);
-			failed += tests::tester(&tests::Data_Taggable_getTags);
-			failed += tests::tester(&tests::Data_Taggable_setTags);
-			failed += tests::tester(&tests::Data_Taggable_moveTag);
+			tests::tester(&tests::Data_Taggable_Constructor_Default);
+			tests::tester(&tests::Data_Taggable_setTag);
+			tests::tester(&tests::Data_Taggable_getTags);
+			tests::tester(&tests::Data_Taggable_setTags);
+			tests::tester(&tests::Data_Taggable_moveTag);
 			
-			std::cout << std::endl << std::endl << failed << " Tests failed! Finishing up..." << std::endl;
+			std::cout << std::endl << std::endl << tests::succeed << "/" << tests::failed + tests::succeed << " Tests succeeded! Finishing up..." << std::endl;
 			sf::sleep(sf::seconds(2));
 		}
 		catch (std::exception ex) {
