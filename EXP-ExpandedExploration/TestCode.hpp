@@ -326,6 +326,14 @@ namespace tests {
 		if (test.getTag("TestTag") != 1.0f)
 			throw std::string("Data_Taggable_getTags: Bad Tag value for old Tag");
 	}
+	void Data_Taggable_moveTag()
+	{
+		Taggable test;
+		test.setTag("TestTag", 1.0f);
+		test.moveTag("TestTag", 3.0f);
+		if (test.getTag("TestTag2") != 4.0f)
+			throw std::string("Data_Taggable_moveTag: Bad Tag value for moved Tag");
+	}
 
 }
 
@@ -337,9 +345,9 @@ namespace EXP {
 		EXP::log(" [Info]==Init Logger==");
 		int failed = 0;
 		try {
-			failed += tests::tester(&tests::Utilities_Conversion_tostring_integerConversion);
-			failed += tests::tester(&tests::Utilities_Conversion_tostring_stringConversion);
-			failed += tests::tester(&tests::Utilities_Conversion_tostring_floatConversion);
+			tests::tester(&tests::Utilities_Conversion_tostring_integerConversion);
+			tests::tester(&tests::Utilities_Conversion_tostring_stringConversion);
+			tests::tester(&tests::Utilities_Conversion_tostring_floatConversion);
 			failed += tests::tester(&tests::Utilities_Conversion_tostring_doubleConversion);
 
 			failed += tests::tester(&tests::Data_Vector_Constructor_Default);
@@ -368,6 +376,7 @@ namespace EXP {
 			failed += tests::tester(&tests::Data_Taggable_setTag);
 			failed += tests::tester(&tests::Data_Taggable_getTags);
 			failed += tests::tester(&tests::Data_Taggable_setTags);
+			failed += tests::tester(&tests::Data_Taggable_moveTag);
 			
 			std::cout << std::endl << std::endl << failed << " Tests failed! Finishing up..." << std::endl;
 			sf::sleep(sf::seconds(2));
