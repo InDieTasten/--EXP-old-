@@ -306,6 +306,7 @@ namespace EXP {
 			failed += tests::tester(&tests::Utilities_Conversion_tostring_stringConversion);
 			failed += tests::tester(&tests::Utilities_Conversion_tostring_floatConversion);
 			failed += tests::tester(&tests::Utilities_Conversion_tostring_doubleConversion);
+
 			failed += tests::tester(&tests::Data_Vector_Constructor_Default);
 			failed += tests::tester(&tests::Data_Vector_Constructor_1);
 			failed += tests::tester(&tests::Data_Vector_setX);
