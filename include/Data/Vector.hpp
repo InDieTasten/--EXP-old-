@@ -33,6 +33,10 @@ public:
 	Vector operator-(const Vector& rhs);
 	Vector operator*(const Vector& rhs);
 	Vector operator/(const Vector& rhs);
+	Vector operator+(const double& rhs);
+	Vector operator-(const double& rhs);
+	Vector operator*(const double& rhs);
+	Vector operator/(const double& rhs);
 };
 
 #endif // !_Vector_hpp_
