@@ -135,7 +135,7 @@ namespace tests {
 		Vector first(9.0f, 12.0f, 15.0f);
 		Vector second(3.0f, 3.0f, 2.0f);
 
-		Vector result = first * second;
+		Vector result = first / second;
 		if (result.getX() != 3.0f)
 			throw std::string("Data_Vector_operatorDevide: wrong member X result");
 		if (result.getY() != 4.0f)
