@@ -81,6 +81,13 @@ namespace tests {
 		if (test.getY() != 1.0f)
 			throw std::string("Data_Vector_setY: wrong value set");
 	}
+	void Data_Vector_setR()
+	{
+		Vector test;
+		test.setR(1.0f);
+		if (test.getR() != 1.0f)
+			throw std::string("Data_Vector_setR: wrong value set");
+	}
 	//WORK
 }
 
@@ -99,6 +106,7 @@ namespace EXP {
 			tests::tester(&tests::Data_Vector_Constructor_1);
 			tests::tester(&tests::Data_Vector_setX);
 			tests::tester(&tests::Data_Vector_setY);
+			tests::tester(&tests::Data_Vector_setR);
 		}
 		catch (std::exception ex) {
 			std::cout << "Strange exception in test code throwing following what(): " << ex.what() << std::endl;
