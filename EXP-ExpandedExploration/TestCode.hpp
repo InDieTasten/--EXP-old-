@@ -9,17 +9,20 @@
 #include <Utilities\Conversion.hpp>
 #include <Data\Vector.hpp>
 namespace tests {
-	void tester(void(*_testFunc)(void)) {
+	int tester(void(*_testFunc)(void)) {
 		try {
 			
 			sf::sleep(sf::milliseconds(30));
 			_testFunc();
 			std::cout << "Running test : PASSED" << std::endl;
+			return 0;
 		}
 		catch (std::string ex )
 		{
 			std::cout << "Running test: FAILED @" << std::endl << ex << std::endl;
+			return 1;
 		}
+		return 0;
 	}
 
 	//Utilities
@@ -136,19 +139,23 @@ namespace EXP {
 	void testCode()
 	{
 		EXP::log(" [Info]==Init Logger==");
+		int failed = 0;
 		try {
-			tests::tester(&tests::Utilities_Conversion_tostring_integerConversion);
-			tests::tester(&tests::Utilities_Conversion_tostring_stringConversion);
-			tests::tester(&tests::Utilities_Conversion_tostring_floatConversion);
-			tests::tester(&tests::Utilities_Conversion_tostring_doubleConversion);
-			tests::tester(&tests::Data_Vector_Constructor_Default);
-			tests::tester(&tests::Data_Vector_Constructor_1);
-			tests::tester(&tests::Data_Vector_setX);
-			tests::tester(&tests::Data_Vector_setY);
-			tests::tester(&tests::Data_Vector_setR);
-			tests::tester(&tests::Data_Vector_operatorAdd);
-			tests::tester(&tests::Data_Vector_operatorSubtract);
-			tests::tester(&tests::Data_Vector_operatorMultiply);
+			failed += tests::tester(&tests::Utilities_Conversion_tostring_integerConversion);
+			failed += tests::tester(&tests::Utilities_Conversion_tostring_stringConversion);
+			failed += tests::tester(&tests::Utilities_Conversion_tostring_floatConversion);
+			failed += tests::tester(&tests::Utilities_Conversion_tostring_doubleConversion);
+			failed += tests::tester(&tests::Data_Vector_Constructor_Default);
+			failed += tests::tester(&tests::Data_Vector_Constructor_1);
+			failed += tests::tester(&tests::Data_Vector_setX);
+			failed += tests::tester(&tests::Data_Vector_setY);
+			failed += tests::tester(&tests::Data_Vector_setR);
+			failed += tests::tester(&tests::Data_Vector_operatorAdd);
+			failed += tests::tester(&tests::Data_Vector_operatorSubtract);
+			failed += tests::tester(&tests::Data_Vector_operatorMultiply);
+			
+			std::cout << std::endl << std::endl << failed << " Tests failed! Finishing up..." << std::endl;
+			sf::sleep(sf::seconds(2));
 		}
 		catch (std::exception ex) {
 			std::cout << "Strange exception in test code throwing following what(): " << ex.what() << std::endl;
