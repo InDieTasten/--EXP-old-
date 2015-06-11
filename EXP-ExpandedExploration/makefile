@@ -1,5 +1,5 @@
 
-OUTPUT = ..\..\UG_content\UG.exe
+OUTPUT = ..\..\UG_content\EXP.exe
 
 #COMPILER = "C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe"
 COMPILER = "C:\Program Files (x86)\CodeBlocks\MinGW\bin\mingw32-g++.exe"
@@ -37,7 +37,6 @@ LIBRARIES = \
 #	-lswscale
 
 OBJECTS = \
-	..\src\Core\main.o \
 	..\src\Utilities\Logger.o \
 	..\src\Assets\Texture.o \
 	..\src\Assets\TextureManager.o \
@@ -58,15 +57,18 @@ OBJECTS = \
 rebuild: clean build
 	echo DONE!
 
-build: $(OBJECTS)
+build: ..\src\Core\main.o $(OBJECTS)
 	chdir
-	$(COMPILER) $(LSWITCHES) $(LIBPATH) -o $(OUTPUT) $(OBJECTS)   $(LIBRARIES)
+	$(COMPILER) $(LSWITCHES) $(LIBPATH) -o $(OUTPUT) ..\src\Core\main.o $(OBJECTS)   $(LIBRARIES)
 
 clean:
 	chdir
 	echo "Cleaning up"
 	del /S ..\src\*.o
 	echo "Clean complete"
+
+..\src\Core\main.o: ..\src\Core\main.cpp ..\EXP-ExpandedExploration\TestCode.hpp
+	$(COMPILER) $(CSWITCHES) $(INCLUDES) -c ..\src\Core\main.cpp -o ..\src\Core\main.o
 
 $(OBJECTS): $(SOURCEDIR)$(@R).cpp
 	$(COMPILER) $(CSWITCHES) $(INCLUDES) -c $(@R).cpp -o $(@R).o

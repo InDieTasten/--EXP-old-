@@ -71,6 +71,7 @@
     <ClCompile Include="..\src\Data\PilotSeat.cpp" />
     <ClCompile Include="..\src\Data\ResourceType.cpp" />
     <ClCompile Include="..\src\Data\Ship.cpp" />
+    <ClCompile Include="..\src\Data\System.cpp" />
     <ClCompile Include="..\src\Data\Taggable.cpp" />
     <ClCompile Include="..\src\Data\Thruster.cpp" />
     <ClCompile Include="..\src\Data\Vector.cpp" />
@@ -89,6 +90,7 @@
     <ClInclude Include="..\include\Data\PilotSeat.hpp" />
     <ClInclude Include="..\include\Data\ResourceType.hpp" />
     <ClInclude Include="..\include\Data\Ship.hpp" />
+    <ClInclude Include="..\include\Data\System.hpp" />
     <ClInclude Include="..\include\Data\Taggable.hpp" />
     <ClInclude Include="..\include\Data\Thruster.hpp" />
     <ClInclude Include="..\include\Data\Vector.hpp" />
@@ -98,6 +100,9 @@
     <ClInclude Include="..\include\Utilities\Logger.hpp" />
     <ClInclude Include="..\include\Utilities\VERSION.hpp" />
     <ClInclude Include="TestCode.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\LICENSE" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
