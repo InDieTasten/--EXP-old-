@@ -8,6 +8,7 @@
 
 #include <Utilities\Conversion.hpp>
 #include <Data\Vector.hpp>
+#include <Data\Taggable.hpp>
 namespace tests {
 	int tester(void(*_testFunc)(void)) {
 		try {
@@ -291,7 +292,13 @@ namespace tests {
 		if (first.getR() != 2.5f)
 			throw std::string("Data_Vector_operatorDevideEqual_float: wrong member R result");
 	}
-	//WORK
+	//Data/Taggable
+	void Data_Taggable_Constructor_Default()
+	{
+		Taggable test;
+		if (test.getTag("TestTag") != 0.0f)
+			throw std::string("Data_Taggable_Constructor_Default: Ghost tag allocated");
+	}
 }
 
 #include <Utilities\Logger.hpp>
@@ -328,6 +335,8 @@ namespace EXP {
 			failed += tests::tester(&tests::Data_Vector_operatorSubtractEqual_float);
 			failed += tests::tester(&tests::Data_Vector_operatorMultiplyEqual_float);
 			failed += tests::tester(&tests::Data_Vector_operatorDevideEqual_float);
+
+			failed += tests::tester(&tests::Data_Taggable_Constructor_Default);
 			
 			std::cout << std::endl << std::endl << failed << " Tests failed! Finishing up..." << std::endl;
 			sf::sleep(sf::seconds(2));
