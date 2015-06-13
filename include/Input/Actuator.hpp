@@ -6,6 +6,7 @@
 #include <Utilities\Logger.hpp>
 #include <Utilities\Conversion.hpp>
 
+
 class Actuator
 {
 public:
@@ -23,6 +24,9 @@ public:
 		Y
 	};
 private:
+	
+	static void getNextAny(sf::Event* _event);
+
 	EventManager* eventManager;
 
 	InputType inputType;
@@ -67,5 +71,7 @@ public:
 
 	float getControlVector();
 };
+
+
 
 #endif // !_Actuator_hpp_
