@@ -337,7 +337,19 @@ namespace tests {
 		if (test.getTag("TestTag") != 4.0f)
 			throw std::string("Data_Taggable_moveTag: Bad Tag value for moved Tag");
 	}
-
+	//Input
+	//Input/EventManager
+	void Input_EventManager_Constructor_1()
+	{
+		try {
+			sf::RenderWindow testWindow;
+			EventManager test(&testWindow);
+		}
+		catch (...)
+		{
+			throw std::string("Input_EventManager_Constructor_1: Could not construct");
+		}
+	}
 }
 
 #include <Utilities\Logger.hpp>
@@ -380,6 +392,8 @@ namespace EXP {
 			tests::tester(&tests::Data_Taggable_getTags);
 			tests::tester(&tests::Data_Taggable_setTags);
 			tests::tester(&tests::Data_Taggable_moveTag);
+
+			tests::tester(&tests::Input_EventManager_Constructor_1);
 			
 			std::cout << std::endl << std::endl << tests::succeed << "/" << tests::failed + tests::succeed << " Tests succeeded! Finishing up..." << std::endl;
 			sf::sleep(sf::seconds(2));
