@@ -34,6 +34,7 @@ EventManager::~EventManager()
 	mouseEnter.clear();
 	mouseLeave.clear();
 	resize.clear();
+	any.clear();
 
 	EXP::log("[Info]EventManager has been destructed: " + utils::tostring(this));
 }
@@ -52,6 +53,12 @@ void EventManager::listen()
 		confmtx.lock();
 
 		sf::Event event;
+
+		for (auto it : any)
+		{
+			it(&event);
+		}
+
 		while (target->pollEvent(event))
 		{
 			switch (event.type)
