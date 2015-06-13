@@ -31,6 +31,8 @@ private:
 	std::list<void(*)(void)> mouseEnter;
 	std::list<void(*)(void)> mouseLeave;
 	std::list<void(*)(sf::Event::SizeEvent)> resize;
+	//(any)
+	std::list<void(*)(sf::Event*)> any;
 
 	sf::RenderWindow* target;
 	bool listening;
@@ -79,6 +81,8 @@ public:
 	void removeMouseLeave(void(*_listener)(void));
 	void addResize(void(*_listener)(sf::Event::SizeEvent));
 	void removeResize(void(*_listener)(sf::Event::SizeEvent));
+	void addAny(void(*_listener)(sf::Event*));
+	void removeAny(void(*_listener)(sf::Event*));
 };
 
 #endif // !_EventManager_hpp_
