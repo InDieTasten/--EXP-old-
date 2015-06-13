@@ -6,6 +6,7 @@
 #include <Utilities\Logger.hpp>
 #include <Utilities\Conversion.hpp>
 
+
 class Actuator
 {
 public:
@@ -15,7 +16,8 @@ public:
 		MouseButton,
 		MousePosition,
 		Joystick,
-		JoystickButton
+		JoystickButton,
+		Magic
 	};
 	enum MouseAxis
 	{
@@ -23,6 +25,9 @@ public:
 		Y
 	};
 private:
+	
+	static void getNextAny(sf::Event* _event);
+
 	EventManager* eventManager;
 
 	InputType inputType;
@@ -33,6 +38,8 @@ private:
 	unsigned int joystick;
 	unsigned int joyButton;
 	sf::Joystick::Axis axis;
+
+	float value;
 
 	bool enabled;
 
@@ -65,7 +72,10 @@ public:
 	unsigned int getJoystick();
 	unsigned int getJoyButton();
 
+	void setControlVector(float _value);
 	float getControlVector();
 };
+
+
 
 #endif // !_Actuator_hpp_
