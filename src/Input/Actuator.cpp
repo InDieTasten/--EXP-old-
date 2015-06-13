@@ -1,13 +1,10 @@
 #include <Input\Actuator.hpp>
 
-#ifndef ActDetectionXXX
-#define ActDetectionXXX
 namespace ActDetection {
 	sf::Mutex detection;
 	Actuator* detecting;
 	Actuator::InputType* filter;
 }
-#endif
 
 Actuator::Actuator()
 {
@@ -197,10 +194,16 @@ unsigned int Actuator::getJoyButton()
 {
 	return joyButton;
 }
+void Actuator::setControlVector(float _value)
+{
+	value = _value;
+}
 float Actuator::getControlVector()
 {
 	switch (inputType)
 	{
+	case InputType::Magic:
+		return value;
 	case InputType::Keyboard:
 		return (float)sf::Keyboard::isKeyPressed(key);
 	case InputType::MouseButton:

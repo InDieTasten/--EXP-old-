@@ -16,7 +16,8 @@ public:
 		MouseButton,
 		MousePosition,
 		Joystick,
-		JoystickButton
+		JoystickButton,
+		Magic
 	};
 	enum MouseAxis
 	{
@@ -37,6 +38,8 @@ private:
 	unsigned int joystick;
 	unsigned int joyButton;
 	sf::Joystick::Axis axis;
+
+	float value;
 
 	bool enabled;
 
@@ -69,6 +72,7 @@ public:
 	unsigned int getJoystick();
 	unsigned int getJoyButton();
 
+	void setControlVector(float _value);
 	float getControlVector();
 };
 
