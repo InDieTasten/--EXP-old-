@@ -11,7 +11,7 @@ Button::~Button()
 	EXP::log("[Info]Button has been destructed: " + utils::tostring(this));
 }
 
-void Button::draw(sf::RenderTarget& target, sf::RenderStates states)
+void Button::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	//Button draw routine (WORK)
 }
