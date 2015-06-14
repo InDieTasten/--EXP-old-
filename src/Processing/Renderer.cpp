@@ -1,8 +1,11 @@
 #include <Processing\Renderer.hpp>
 
-Renderer::Renderer(sf::RenderWindow* _window, System* _level) : running(false)
+Renderer::Renderer(sf::RenderWindow* _window, GUIManager* _guiManager, System* _level) :
+	running(false),
+	thread(&Renderer::run, this)
 {
 	window = _window;
+	guiManager = _guiManager;
 	level = _level;
 	EXP::log("[Info]Renderer has been  constructed: " + utils::tostring(this));
 }
@@ -15,13 +18,27 @@ Renderer::~Renderer()
 void Renderer::run()
 {
 	EXP::log("[Info]Renderer running in this thread: " + utils::tostring(this));
+	sf::Clock limiter;
+	limiter.restart();
+
+	window->setActive(true);
+
 	while (running)
 	{
 		//limiter
-		//sf::sleep(elapsedTime);
+		sf::sleep(sf::Time(sf::milliseconds(1000.0f/60.0f) - limiter.restart()));
+
+		//clear frame
+		window->clear(sf::Color::Black);
 
 		//rendering of level
-		//level->render(window);
+		//window->draw(*level);
+
+		//rendering of gui
+		window->draw(*guiManager);
+
+		//display final frame
+		window->display();
 	}
 	EXP::log("[Info]Renderer stops running in this thread: " + utils::tostring(this));
 }
@@ -31,8 +48,8 @@ void Renderer::launch()
 	if (!running)
 	{
 		EXP::log("[Info]Launching Renderer in new thread: " + utils::tostring(this));
-		//WORK start run in new thread
 		running = true;
+		thread.launch();
 	}
 	else {
 		EXP::log("[Warning]Tried launching already running Renderer: " + utils::tostring(this));
@@ -43,8 +60,9 @@ void Renderer::terminate()
 	if (running)
 	{
 		EXP::log("[Info]Terminating Renderer: " + utils::tostring(this));
-		//WORK terminate simulation thread
 		running = false;
+		thread.wait();
+		sf::sleep(sf::seconds(1));
 	}
 	else {
 		EXP::log("[Warning]Tried terminating already terminated Renderer: " + utils::tostring(this));
