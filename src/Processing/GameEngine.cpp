@@ -77,7 +77,6 @@ void GameEngine::launch()
 	//have the main thread listen
 	eventManager->listen(guiManager);
 
-
 	//stopping
 	simulator->terminate();
 	renderer->terminate();
