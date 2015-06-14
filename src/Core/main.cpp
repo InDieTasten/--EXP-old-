@@ -24,15 +24,15 @@ extern "C" {
 int gameStart(int argc, char *argv[])
 {
 	EXP::init();
-	
-	
+
+
 	GameEngine* engine = new GameEngine();
 	engine->launch();
 
 	delete engine;
 	engine = nullptr;
 
-	
+
 
 	EXP::log("[Info]Game quit! Securing all threads have terminated");
 	sf::sleep(sf::seconds(1));

@@ -22,7 +22,7 @@ public:
 	void moveTag(std::string _attribute, float _value);
 	//GET
 	float getTag(std::string _attribute); //returns 0.0f, when no attribute is defined
-	std::map<std::string, float> getTags(); 
+	std::map<std::string, float> getTags();
 };
 
 #endif // !_Taggable_hpp_
