@@ -19,15 +19,16 @@ private:
 	int height;
 	std::string title;
 
-	std::vector<GUIElement&> elements;
+	std::vector<GUIElement*> elements;
 public:
 	GUIMenu();
 	~GUIMenu();
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states);
+	void handleEvent(sf::Event* _event);
 
-	int addElement(GUIElement& _element);
-	GUIElement& getElement(int);
+	int addElement(GUIElement* _element);
+	GUIElement* getElement(int);
 	void removeElement(int);
 
 	void setX(int);
