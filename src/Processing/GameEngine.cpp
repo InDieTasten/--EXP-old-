@@ -1,15 +1,6 @@
 #include <Processing\GameEngine.hpp>
 #include <Utilities\VERSION.hpp>
 
-////////
-void gameQuit(sf::Event::KeyEvent _event)
-{
-	if (_event.code == sf::Keyboard::Escape)
-	{
-		GameEngine::eventManager->terminate();
-	}
-}
-////////
 
 
 GameEngine::GameEngine()
@@ -60,7 +51,6 @@ void GameEngine::launch()
 
 	//create event handler for that window
 	eventManager = new EventManager(gameWindow);
-	eventManager->addKeyRelease(gameQuit);
 
 	//Here comes the loading screen logic (WORK)
 	// the main thread should just hook into that, so it requires an extra thread to launch the other threads and generate the level xD
