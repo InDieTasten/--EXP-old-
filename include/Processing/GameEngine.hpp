@@ -15,6 +15,11 @@
 
 class GameEngine
 {
+public:
+	struct AssetManagers {
+		TextureManager textureManager;
+		FontManager fontManager;
+	};
 private:
 	sf::RenderWindow* gameWindow;
 	GUIManager* guiManager;
@@ -22,8 +27,7 @@ private:
 	Renderer* renderer;
 	Simulator* simulator;
 
-	TextureManager textureManager;
-	FontManager fontManager;
+	AssetManagers assetMans;
 
 	System* level;
 	sf::View defaultView;
