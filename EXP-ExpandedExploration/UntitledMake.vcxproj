@@ -77,6 +77,7 @@
     <ClCompile Include="..\src\Data\Vector.cpp" />
     <ClCompile Include="..\src\Input\Actuator.cpp" />
     <ClCompile Include="..\src\Input\EventManager.cpp" />
+    <ClCompile Include="..\src\Processing\GameEngine.cpp" />
     <ClCompile Include="..\src\Utilities\Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -96,6 +97,7 @@
     <ClInclude Include="..\include\Data\Vector.hpp" />
     <ClInclude Include="..\include\Input\Actuator.hpp" />
     <ClInclude Include="..\include\Input\EventManager.hpp" />
+    <ClInclude Include="..\include\Processing\GameEngine.hpp" />
     <ClInclude Include="..\include\Utilities\Conversion.hpp" />
     <ClInclude Include="..\include\Utilities\Logger.hpp" />
     <ClInclude Include="..\include\Utilities\VERSION.hpp" />
