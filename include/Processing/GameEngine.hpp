@@ -14,6 +14,8 @@ class GameEngine
 {
 private:
 	sf::RenderWindow* gameWindow;
+	GUIManager* guiManager;
+	EventManager* eventManager;
 	Renderer* renderer;
 	Simulator* simulator;
 
@@ -21,7 +23,7 @@ private:
 	sf::View defaultView;
 
 public:
-	EventManager* eventManager;
+	
 
 	GameEngine();
 	~GameEngine();
