@@ -52,6 +52,7 @@ void GameEngine::launch()
 	gameWindow->setView(defaultView);
 	gameWindow->clear(sf::Color::Black);
 	gameWindow->display();
+	gameWindow->setActive(false);
 
 	//gui manager
 	guiManager = new GUIManager();
