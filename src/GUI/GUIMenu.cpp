@@ -11,6 +11,22 @@ GUIMenu::~GUIMenu()
 	EXP::log("[Info]GUIMenu has been destructed: " + utils::tostring(this));
 }
 
+void GUIMenu::draw(sf::RenderTarget& _target, sf::RenderStates _states)
+{
+	_states.transform.translate(sf::Vector2f((float)x, (float)y));
+	for (auto it : elements)
+	{
+		it->draw(_target, _states);
+	}
+}
+void GUIMenu::handleEvent(sf::Event* _event)
+{
+	for (auto it : elements)
+	{
+		it->handleEvent(_event);
+	}
+}
+
 int GUIMenu::addElement(GUIElement* _element)
 {
 	elements.push_back(_element);
