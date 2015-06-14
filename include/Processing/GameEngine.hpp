@@ -16,13 +16,15 @@ class GameEngine
 {
 private:
 	sf::RenderWindow* gameWindow;
-	EventManager* eventManager;
 	Renderer* renderer;
 	Simulator* simulator;
 
 	System* level;
+	sf::View defaultView;
 
 public:
+	static EventManager* eventManager;
+
 	GameEngine();
 	~GameEngine();
 
