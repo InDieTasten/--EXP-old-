@@ -14,6 +14,7 @@ Simulator::~Simulator()
 
 void Simulator::run()
 {
+	EXP::log("[Info]Simulator running in this thread: " + utils::tostring(this));
 	while (running)
 	{
 		//limiter
@@ -22,6 +23,7 @@ void Simulator::run()
 		//simulation of level
 		//level->simulate(frametime);
 	}
+	EXP::log("[Info]Simulator stops running in this thread: " + utils::tostring(this));
 }
 
 void Simulator::launch()
