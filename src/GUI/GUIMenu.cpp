@@ -11,7 +11,7 @@ GUIMenu::~GUIMenu()
 	EXP::log("[Info]GUIMenu has been destructed: " + utils::tostring(this));
 }
 
-void GUIMenu::draw(sf::RenderTarget& _target, sf::RenderStates _states)
+void GUIMenu::draw(sf::RenderTarget& _target, sf::RenderStates _states) const
 {
 	_states.transform.translate(sf::Vector2f((float)x, (float)y));
 	for (auto it : elements)

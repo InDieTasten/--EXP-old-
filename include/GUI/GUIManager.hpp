@@ -20,7 +20,7 @@ public:
 	GUIMenu* getMenu(int);
 	void removeMenu(int);
 
-	void draw(sf::RenderTarget& _target, sf::RenderStates _states);
+	void draw(sf::RenderTarget& _target, sf::RenderStates _states) const;
 	void handleEvent(sf::Event* _event);
 };
 

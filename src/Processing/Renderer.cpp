@@ -39,8 +39,8 @@ void Renderer::launch()
 	if (!running)
 	{
 		EXP::log("[Info]Launching Renderer in new thread: " + utils::tostring(this));
-		//WORK start run in new thread
 		running = true;
+		thread.launch();
 	}
 	else {
 		EXP::log("[Warning]Tried launching already running Renderer: " + utils::tostring(this));
@@ -51,8 +51,8 @@ void Renderer::terminate()
 	if (running)
 	{
 		EXP::log("[Info]Terminating Renderer: " + utils::tostring(this));
-		//WORK terminate simulation thread
 		running = false;
+		thread.wait();
 	}
 	else {
 		EXP::log("[Warning]Tried terminating already terminated Renderer: " + utils::tostring(this));

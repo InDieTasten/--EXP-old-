@@ -24,7 +24,7 @@ public:
 	GUIMenu();
 	~GUIMenu();
 
-	void draw(sf::RenderTarget& target, sf::RenderStates states);
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	void handleEvent(sf::Event* _event);
 
 	int addElement(GUIElement* _element);
