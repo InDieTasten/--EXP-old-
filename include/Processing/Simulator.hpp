@@ -1,6 +1,9 @@
 #ifndef _Simulator_hpp_
 #define _Simulator_hpp_
 
+#include <SFML\Graphics.hpp>
+#include <Data\System.hpp>
+
 #include <Utilities\Conversion.hpp>
 #include <Utilities\Logger.hpp>
 
