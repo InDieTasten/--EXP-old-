@@ -131,6 +131,11 @@ void EventManager::listen()
 				for (auto it : resize)
 					it(event.size);
 				break;
+			case sf::Event::Closed:
+				EXP::log("[Info]The application is requested to close itself...");
+				EXP::log("[Info]EventManager follows this request: " + utils::tostring(this));
+				terminate();
+				break;
 			default:
 				std::cout << event.type << std::endl;
 				EXP::log("[WARNING]Something strange happened");
