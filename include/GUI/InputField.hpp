@@ -12,6 +12,8 @@ private:
 	int width;
 	int height;
 
+	//sf::Font font;
+
 	std::string content;
 public:
 	InputField();
