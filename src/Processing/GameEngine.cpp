@@ -56,6 +56,11 @@ void GameEngine::launch()
 
 	//gui manager
 	guiManager = new GUIManager();
+	GUIMenu test;
+	InputField x;
+	GUIElement* p = &x;
+	test.addElement(p);
+	guiManager->addMenu(&test);
 
 	//create event handler for that window
 	eventManager = new EventManager(gameWindow);

@@ -2,7 +2,10 @@
 
 GUIMenu::GUIMenu()
 {
-
+	x = 15;
+	y = 15;
+	height = 200;
+	width = 200;
 	EXP::log("[Info]GUIMenu has been constructed: " + utils::tostring(this));
 }
 GUIMenu::~GUIMenu()
@@ -13,11 +16,14 @@ GUIMenu::~GUIMenu()
 
 void GUIMenu::draw(sf::RenderTarget& _target, sf::RenderStates _states) const
 {
+	EXP::log("DEBUG1");
 	_states.transform.translate(sf::Vector2f((float)x, (float)y));
+	EXP::log("DEBUG2");
 	for (auto it : elements)
 	{
 		it->draw(_target, _states);
 	}
+	EXP::log("DEBUG3");
 }
 void GUIMenu::handleEvent(sf::Event* _event)
 {
