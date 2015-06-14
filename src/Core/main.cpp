@@ -1,5 +1,4 @@
 //includes
-#include <Utilities\VERSION.hpp>
 #include <Utilities\Logger.hpp>
 #include <SFML\Graphics.hpp>
 #include <Input\EventManager.hpp>
@@ -25,7 +24,7 @@ extern "C" {
 int gameStart(int argc, char *argv[])
 {
 	EXP::init();
-	EXP::log("[Info]Game is launching in version: " + VERSION::version);
+	
 	
 	GameEngine* engine = new GameEngine();
 	engine->launch();
