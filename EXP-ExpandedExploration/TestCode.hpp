@@ -14,14 +14,14 @@ namespace tests {
 	int succeed = 0;
 	void tester(void(*_testFunc)(void)) {
 		try {
-			
+
 			sf::sleep(sf::milliseconds(30));
 			_testFunc();
 			std::cout << "Running test : PASSED" << std::endl;
 			succeed++;
 			return;
 		}
-		catch (std::string ex )
+		catch (std::string ex)
 		{
 			std::cout << "Running test : FAILED @" << std::endl << ex << std::endl;
 			failed++;
@@ -97,7 +97,7 @@ namespace tests {
 	}
 	void Data_Vector_operatorAdd()
 	{
-		Vector first(1.0f,1.0f,1.0f);
+		Vector first(1.0f, 1.0f, 1.0f);
 		Vector second(2.0f, 2.0f, 2.0f);
 
 		Vector result = first + second;
@@ -394,7 +394,7 @@ namespace EXP {
 			tests::tester(&tests::Data_Taggable_moveTag);
 
 			tests::tester(&tests::Input_EventManager_Constructor_1);
-			
+
 			std::cout << std::endl << std::endl << tests::succeed << "/" << tests::failed + tests::succeed << " Tests succeeded! Finishing up..." << std::endl;
 			sf::sleep(sf::seconds(2));
 		}
