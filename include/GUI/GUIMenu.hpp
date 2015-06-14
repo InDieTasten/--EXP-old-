@@ -20,10 +20,22 @@ private:
 	std::string title;
 
 	std::vector<GUIElement*> elements;
+
+	struct Assets{
+		sf::Font* title;
+	} assets;
+	struct Components{
+		sf::RectangleShape titleRect;
+		sf::RectangleShape bodyRect;
+		sf::Text titleText;
+		sf::RectangleShape closeButtonRect;
+		sf::VertexArray closeButtonCross;
+	} components;
 public:
 	GUIMenu();
 	~GUIMenu();
 
+	void update();
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	void handleEvent(sf::Event* _event);
 
