@@ -6,7 +6,7 @@
 #include <Utilities\Logger.hpp>
 #include <Utilities\Conversion.hpp>
 
-class InputField : GUIElement
+class InputField : public GUIElement
 {
 private:
 	int width;
@@ -17,7 +17,7 @@ public:
 	InputField();
 	~InputField();
 
-	void draw(sf::RenderTarget* target, sf::RenderStates states);
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	void handleEvent(sf::Event* _event);
 
 	void setWidth(int);
