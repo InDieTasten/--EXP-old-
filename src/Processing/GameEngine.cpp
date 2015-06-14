@@ -47,7 +47,7 @@ void GameEngine::launch()
 	//threads
 	renderer = new Renderer(gameWindow, level);
 	simulator = new Simulator(gameWindow, level);
-	renderer.launch();
-	simulator.launch();
+	renderer->launch();
+	simulator->launch();
 
 }
