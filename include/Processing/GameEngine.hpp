@@ -24,7 +24,7 @@ private:
 	sf::View defaultView;
 
 public:
-	
+
 
 	GameEngine();
 	~GameEngine();

@@ -181,7 +181,7 @@ sf::Vector2f Mesh::intersect(sf::Vector2f a1, sf::Vector2f a2, sf::Vector2f b1, 
 	float y3 = b1.y;
 	float y4 = b2.y;
 	sf::Vector2f result;
-	
+
 	float denominator = ((x1 - x2)*(y3 - y4) - (y1 - y2)*(x3 - x4));
 	if (!denominator)
 	{
@@ -197,7 +197,7 @@ sf::Vector2f Mesh::intersect(sf::Vector2f a1, sf::Vector2f a2, sf::Vector2f b1, 
 int Mesh::ccw(sf::Vector2f _a, sf::Vector2f _b, sf::Vector2f _c)
 {
 	int val = (_b.y - _a.y) * (_c.x - _b.x) -
-		      (_b.x - _a.x) * (_c.y - _b.y);
+		(_b.x - _a.x) * (_c.y - _b.y);
 
 	if (val == 0) return 0;
 	return (val > 0) ? 1 : 2;
@@ -227,7 +227,7 @@ int Mesh::next(int _index)
 
 Mesh::Mesh()
 {
-	EXP::log("[Info]Mesh has been constructed: " +  utils::tostring(this));
+	EXP::log("[Info]Mesh has been constructed: " + utils::tostring(this));
 }
 Mesh::~Mesh()
 {
@@ -352,7 +352,7 @@ bool Mesh::doesOverlap(sf::Transform _me, Mesh* _other, sf::Transform _othertr)
 std::list<sf::Vector2f> Mesh::overlap(sf::Transform _me, Mesh* _other, sf::Transform _othertr)
 {
 	std::list<sf::Vector2f> intersections;
-	
+
 	//thisPoints in other
 	for (auto hull : accessVertices)
 	{
@@ -432,7 +432,7 @@ void Mesh::draw(sf::RenderTarget* _target, sf::Transformable parentTransform, sf
 	for (auto it : internal)
 	{
 		EXP::log("[Debug]render poly: " + utils::tostring(it.getPointCount()));
-		it.setOutlineThickness(-1.0/parentTransform.getScale().x);
+		it.setOutlineThickness(-1.0 / parentTransform.getScale().x);
 		it.setOutlineColor(_color);
 		it.setFillColor(_color);
 		_target->draw(it, parentTransform.getTransform());
