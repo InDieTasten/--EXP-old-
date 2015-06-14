@@ -1,6 +1,9 @@
 #ifndef _Simulator_hpp_
 #define _Simulator_hpp_
 
+#include <Utilities\Conversion.hpp>
+#include <Utilities\Logger.hpp>
+
 class Simulator
 {
 private:
