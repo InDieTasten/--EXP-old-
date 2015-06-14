@@ -40,6 +40,8 @@ OBJECTS = \
 	..\src\Utilities\Logger.o \
 	..\src\Assets\Texture.o \
 	..\src\Assets\TextureManager.o \
+	..\src\Assets\Font.o \
+	..\src\Assets\FontManager.o \
 	..\src\Input\EventManager.o \
 	..\src\Input\Actuator.o \
 	..\src\Data\Vector.o \
