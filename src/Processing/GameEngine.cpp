@@ -6,6 +6,7 @@
 GameEngine::GameEngine()
 {
 	gameWindow = nullptr;
+	guiManager = nullptr;
 	eventManager = nullptr;
 	renderer = nullptr;
 	simulator = nullptr;
@@ -19,6 +20,8 @@ GameEngine::~GameEngine()
 	//De-allocate game memory (note, that this is quite the hardcore way to quit it)
 	delete gameWindow;
 	gameWindow = nullptr;
+	delete guiManager;
+	guiManager = nullptr;
 	delete eventManager;
 	eventManager = nullptr;
 	delete renderer;
@@ -49,6 +52,10 @@ void GameEngine::launch()
 	gameWindow->setView(defaultView);
 	gameWindow->clear(sf::Color::Black);
 	gameWindow->display();
+	gameWindow->setActive(false);
+
+	//gui manager
+	guiManager = new GUIManager();
 
 	//create event handler for that window
 	eventManager = new EventManager(gameWindow);
@@ -59,14 +66,16 @@ void GameEngine::launch()
 	//default level
 	level = new System();
 
+	
+
 	//threads
-	renderer = new Renderer(gameWindow, level);
+	renderer = new Renderer(gameWindow, guiManager, level);
 	simulator = new Simulator(gameWindow, level);
 	renderer->launch();
 	simulator->launch();
 
 	//have the main thread listen
-	eventManager->listen();
+	eventManager->listen(guiManager);
 
 	//stopping
 	simulator->terminate();
@@ -78,10 +87,10 @@ void GameEngine::launch()
 
 	delete level;
 	level = nullptr;
-
 	delete eventManager;
 	eventManager = nullptr;
-
+	delete guiManager;
+	guiManager = nullptr;
 	gameWindow->close();
 	delete gameWindow;
 	gameWindow = nullptr;
