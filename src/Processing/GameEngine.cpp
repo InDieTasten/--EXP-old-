@@ -47,7 +47,8 @@ void GameEngine::launch()
 	defaultView = gameWindow->getDefaultView();
 	defaultView.setCenter(0.0f, 0.0f);
 	gameWindow->setView(defaultView);
-	gameWindow->clear();
+	gameWindow->clear(sf::Color::Black);
+	gameWindow->display();
 
 	//create event handler for that window
 	eventManager = new EventManager(gameWindow);
