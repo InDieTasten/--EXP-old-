@@ -61,7 +61,7 @@ void EventManager::listen(GUIManager* _guiManager)
 
 		while (target->pollEvent(event))
 		{
-			//_guiManager->handleEvent(&event);
+			_guiManager->handleEvent(&event);
 
 			switch (event.type)
 			{
