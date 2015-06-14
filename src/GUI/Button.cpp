@@ -2,9 +2,7 @@
 
 Button::Button()
 {
-	width = 50;
-	height = 14;
-	text = "{no text}";
+	type = ElementType::Button;
 	EXP::log("[Info]Button has been constructed: " + utils::tostring(this));
 }
 Button::~Button()
