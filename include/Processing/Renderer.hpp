@@ -1,6 +1,9 @@
 #ifndef _Renderer_hpp_
 #define _Renderer_hpp_
 
+#include <SFML\Graphics.hpp>
+#include <Data\System.hpp>
+
 #include <Utilities\Conversion.hpp>
 #include <Utilities\Logger.hpp>
 
