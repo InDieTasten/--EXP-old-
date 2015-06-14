@@ -57,4 +57,6 @@ void GameEngine::launch()
 	renderer->launch();
 	simulator->launch();
 
+	//have the main thread listen
+	eventManager->listen();
 }
