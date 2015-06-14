@@ -116,6 +116,12 @@
     <ClCompile Include="..\src\GUI\Responsive.cpp">
       <Filter>5 GUI</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Assets\FontManager.cpp">
+      <Filter>1 Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Assets\Font.cpp">
+      <Filter>1 Assets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Utilities\Logger.hpp">
@@ -207,6 +213,12 @@
     </ClInclude>
     <ClInclude Include="..\include\GUI\Button.hpp">
       <Filter>5 GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Assets\Font.hpp">
+      <Filter>1 Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Assets\FontManager.hpp">
+      <Filter>1 Assets</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
