@@ -51,7 +51,7 @@ void Simulator::terminate()
 		EXP::log("[Info]Terminating Simulator: " + utils::tostring(this));
 		running = false;
 		thread.wait();
-		sf::sleep(sf::seconds(1));
+		//sf::sleep(sf::seconds(1));
 	}
 	else {
 		EXP::log("[Warning]Tried terminating already terminated Simulator: " + utils::tostring(this));
