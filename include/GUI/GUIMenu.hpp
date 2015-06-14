@@ -3,11 +3,14 @@
 
 #include <SFML\Graphics.hpp>
 #include <Data\Taggable.hpp>
+#include <string>
+#include <vector>
+#include <GUI\GUIElement.hpp>
 
 #include <Utilities\Logger.hpp>
 #include <Utilities\Conversion.hpp>
 
-class GUIMenu : sf::Drawable, Taggable
+class GUIMenu : sf::Drawable, Taggable, Responsive
 {
 private:
 	int x;
@@ -15,11 +18,17 @@ private:
 	int width;
 	int height;
 	std::string title;
+
+	std::vector<GUIElement&> elements;
 public:
 	GUIMenu();
 	~GUIMenu();
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states);
+
+	int addElement(GUIElement& _element);
+	GUIElement& getElement(int);
+	void removeElement(int);
 
 	void setX(int);
 	void setY(int);
