@@ -4,6 +4,7 @@
 #include <list>
 #include <SFML\System.hpp>
 #include <SFML\Graphics.hpp>
+#include <GUI\GUIManager.hpp>
 
 #include <Utilities\Logger.hpp>
 #include <Utilities\Conversion.hpp>
@@ -43,7 +44,7 @@ public:
 	EventManager(sf::RenderWindow* _target);
 	~EventManager();
 
-	void listen();
+	void listen(GUIManager* _guiManager);
 	void terminate();
 	void setSampleRate(sf::Time);
 

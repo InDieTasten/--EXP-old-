@@ -38,7 +38,7 @@ EventManager::~EventManager()
 
 	EXP::log("[Info]EventManager has been destructed: " + utils::tostring(this));
 }
-void EventManager::listen()
+void EventManager::listen(GUIManager* _guiManager)
 {
 	EXP::log("[Info]EventManager starts listening");
 	confmtx.lock();
@@ -61,6 +61,8 @@ void EventManager::listen()
 
 		while (target->pollEvent(event))
 		{
+			//_guiManager->handleEvent(&event);
+
 			switch (event.type)
 			{
 			case sf::Event::MouseMoved:

@@ -13,7 +13,7 @@ public:
 	Responsive();
 	~Responsive();
 
-	virtual void handleEvent(sf::Event* _event) const = 0;
+	virtual void handleEvent(sf::Event* _event) = 0;
 };
 
 #endif // !_Responsive_hpp_
