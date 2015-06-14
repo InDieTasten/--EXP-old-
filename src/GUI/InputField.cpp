@@ -4,6 +4,9 @@ InputField::InputField()
 {
 	type = ElementType::InputField;
 	EXP::log("[Info]InputField has been constructed: " + utils::tostring(this));
+
+	
+	
 }
 InputField::~InputField()
 {
@@ -12,7 +15,15 @@ InputField::~InputField()
 
 void InputField::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	//WORK
+	sf::RectangleShape x(sf::Vector2f(300,300));
+	
+
+	sf::Text text(content, font);
+
+	x.setFillColor(sf::Color::Blue);
+
+
+	target.draw(x);
 }
 void InputField::handleEvent(sf::Event* _event)
 {
