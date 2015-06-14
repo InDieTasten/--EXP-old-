@@ -54,7 +54,8 @@ OBJECTS = \
 	..\src\Data\Container.o \
 	..\src\Data\Taggable.o \
 	..\src\Processing\GameEngine.o \
-	..\src\Processing\Renderer.o
+	..\src\Processing\Renderer.o \
+	..\src\Processing\Simulator.o
 
 rebuild: clean build
 	echo DONE!
