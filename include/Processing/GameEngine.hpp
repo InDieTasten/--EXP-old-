@@ -7,6 +7,8 @@
 #include <Processing\Renderer.hpp>
 #include <Processing\Simulator.hpp>
 #include <GUI\InputField.hpp>
+#include <Assets\TextureManager.hpp>
+#include <Assets\FontManager.hpp>
 
 #include <Utilities\Conversion.hpp>
 #include <Utilities\Logger.hpp>
@@ -19,6 +21,9 @@ private:
 	EventManager* eventManager;
 	Renderer* renderer;
 	Simulator* simulator;
+
+	TextureManager textureManager;
+	FontManager fontManager;
 
 	System* level;
 	sf::View defaultView;
