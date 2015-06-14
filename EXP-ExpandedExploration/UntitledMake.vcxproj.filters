@@ -27,6 +27,9 @@
     <Filter Include="4 Processing">
       <UniqueIdentifier>{e03e3b8e-1fd3-4aa1-a907-0e1dcc1bae2a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="5 GUI">
+      <UniqueIdentifier>{c2773cbc-1b0a-41c0-87ef-25b3046f894e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Utilities\Logger.cpp">
@@ -91,6 +94,27 @@
     </ClCompile>
     <ClCompile Include="..\src\Processing\Simulator.cpp">
       <Filter>4 Processing</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GUI\GUIMenu.cpp">
+      <Filter>5 GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GUI\InputField.cpp">
+      <Filter>5 GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GUI\Button.cpp">
+      <Filter>5 GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GUI\GUIElement.cpp">
+      <Filter>5 GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GUI\GUIManager.cpp">
+      <Filter>5 GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GUI\Label.cpp">
+      <Filter>5 GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GUI\Responsive.cpp">
+      <Filter>5 GUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +186,27 @@
     </ClInclude>
     <ClInclude Include="..\include\Processing\Simulator.hpp">
       <Filter>4 Processing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GUI\GUIMenu.hpp">
+      <Filter>5 GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GUI\GUIManager.hpp">
+      <Filter>5 GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GUI\GUIElement.hpp">
+      <Filter>5 GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GUI\Responsive.hpp">
+      <Filter>5 GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GUI\InputField.hpp">
+      <Filter>5 GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GUI\Label.hpp">
+      <Filter>5 GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GUI\Button.hpp">
+      <Filter>5 GUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
