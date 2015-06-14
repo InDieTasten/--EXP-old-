@@ -48,7 +48,7 @@ void PhysicalInfo::draw(sf::RenderTarget* _target, sf::Color _color)
 	tmp.setRotation(position.getR());
 	//draw Mesh
 	collisionMesh.draw(_target, tmp, _color);
-	
+
 	////draw velocity line
 	//sf::Vertex line[3]{
 	//	sf::Vertex(tmp.getPosition(), sf::Color::Blue),

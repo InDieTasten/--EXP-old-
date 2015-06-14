@@ -16,7 +16,7 @@ GameEngine::GameEngine()
 }
 GameEngine::~GameEngine()
 {
-	
+
 	//De-allocate game memory (note, that this is quite the hardcore way to quit it)
 	delete gameWindow;
 	gameWindow = nullptr;
@@ -71,7 +71,7 @@ void GameEngine::launch()
 	//default level
 	level = new System();
 
-	
+
 
 	//threads
 	renderer = new Renderer(gameWindow, guiManager, level);

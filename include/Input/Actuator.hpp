@@ -25,7 +25,7 @@ public:
 		Y
 	};
 private:
-	
+
 	static void getNextAny(sf::Event* _event);
 
 	EventManager* eventManager;
