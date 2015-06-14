@@ -10,7 +10,7 @@
 #include <Utilities\Logger.hpp>
 #include <Utilities\Conversion.hpp>
 
-class GUIMenu : sf::Drawable, Taggable, Responsive
+class GUIMenu : public sf::Drawable, public Taggable, public Responsive
 {
 private:
 	int x;
