@@ -35,5 +35,19 @@ void GameEngine::launch()
 	gameWindow = new sf::RenderWindow(sf::VideoMode(1280, 720, 32), VERSION::name + " " + VERSION::version, sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
 	gameWindow->clear();
 
+	//create event handler for that window
+	eventManager = new EventManager(gameWindow);
+
+	//Here comes the loading screen logic (WORK)
+	// the main thread should just hook into that, so it requires an extra thread to launch the other threads and generate the level xD
+
+	//default level
+	level = new System();
+
+	//threads
+	renderer = new Renderer(gameWindow, level);
+	simulator = new Simulator(gameWindow, level);
+	renderer.launch();
+	simulator.launch();
 
 }
