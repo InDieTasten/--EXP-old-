@@ -11,12 +11,12 @@ GUIMenu::~GUIMenu()
 	EXP::log("[Info]GUIMenu has been destructed: " + utils::tostring(this));
 }
 
-int GUIMenu::addElement(GUIElement& _element)
+int GUIMenu::addElement(GUIElement* _element)
 {
 	elements.push_back(_element);
 	return elements.size() - 1;
 }
-GUIElement& GUIMenu::getElement(int _pos)
+GUIElement* GUIMenu::getElement(int _pos)
 {
 	return elements[_pos];
 }
