@@ -1,8 +1,6 @@
 #ifndef _GameEngine_hpp_
 #define _GameEngine_hpp_
 
-#include <Utilities\VERSION.hpp>
-
 #include <SFML\Graphics.hpp>
 #include <Data\System.hpp>
 #include <Input\EventManager.hpp>
