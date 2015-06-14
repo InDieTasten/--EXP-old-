@@ -23,7 +23,7 @@ void GUIManager::removeMenu(int _pos)
 	menus.erase(menus.begin() + _pos);
 }
 
-void GUIManager::draw(sf::RenderTarget& _target, sf::RenderStates _states)
+void GUIManager::draw(sf::RenderTarget& _target, sf::RenderStates _states) const
 {
 	for (auto it : menus)
 	{
