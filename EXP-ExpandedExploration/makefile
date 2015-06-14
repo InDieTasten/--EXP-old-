@@ -56,7 +56,8 @@ OBJECTS = \
 	..\src\Data\System.o \
 	..\src\Processing\GameEngine.o \
 	..\src\Processing\Renderer.o \
-	..\src\Processing\Simulator.o
+	..\src\Processing\Simulator.o \
+	..\src\GUI\GUIMenu.o
 
 rebuild: clean build
 	echo DONE!
