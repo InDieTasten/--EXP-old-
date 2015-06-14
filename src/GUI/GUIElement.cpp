@@ -2,7 +2,8 @@
 
 GUIElement::GUIElement()
 {
-
+	x = 0;
+	y = 0;
 	EXP::log("[Info]GUIElement has been constructed: " + utils::tostring(this));
 }
 GUIElement::~GUIElement()
