@@ -62,6 +62,7 @@ void Renderer::terminate()
 		EXP::log("[Info]Terminating Renderer: " + utils::tostring(this));
 		running = false;
 		thread.wait();
+		sf::sleep(sf::seconds(1));
 	}
 	else {
 		EXP::log("[Warning]Tried terminating already terminated Renderer: " + utils::tostring(this));

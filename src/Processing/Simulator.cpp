@@ -1,6 +1,8 @@
 #include <Processing\Simulator.hpp>
 
-Simulator::Simulator(sf::RenderWindow* _window, System* _level) : running(false)
+Simulator::Simulator(sf::RenderWindow* _window, System* _level) :
+	running(false),
+	thread(&Simulator::run, this)
 {
 	window = _window;
 	level = _level;
@@ -15,10 +17,14 @@ Simulator::~Simulator()
 void Simulator::run()
 {
 	EXP::log("[Info]Simulator running in this thread: " + utils::tostring(this));
+
+	sf::Clock limiter;
+	limiter.restart();
+
 	while (running)
 	{
 		//limiter
-		//sf::sleep(elapsedTime);
+		sf::sleep(sf::Time(sf::milliseconds(1000.0f / 60.0f) - limiter.restart()));
 
 		//simulation of level
 		//level->simulate(frametime);
@@ -31,8 +37,8 @@ void Simulator::launch()
 	if (!running)
 	{
 		EXP::log("[Info]Launching Simulator in new thread: " + utils::tostring(this));
-		//WORK start run in new thread
 		running = true;
+		thread.launch();
 	}
 	else {
 		EXP::log("[Warning]Tried launching already running Simulator: " + utils::tostring(this));
@@ -43,8 +49,9 @@ void Simulator::terminate()
 	if (running)
 	{
 		EXP::log("[Info]Terminating Simulator: " + utils::tostring(this));
-		//WORK terminate simulation thread
 		running = false;
+		thread.wait();
+		sf::sleep(sf::seconds(1));
 	}
 	else {
 		EXP::log("[Warning]Tried terminating already terminated Simulator: " + utils::tostring(this));
