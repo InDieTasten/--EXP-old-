@@ -1,14 +1,14 @@
 #include <Data\PilotSeat.hpp>
 
-PilotSeat::PilotSeat(EventManager* _eventManager) : 
-	Attachable(),
-	Taggable(),
-	translateForward(_eventManager),
-	translateBack(_eventManager),
-	translateLeft(_eventManager),
-	translateRight(_eventManager),
-	rotateLeft(_eventManager),
-	rotateRight(_eventManager)
+PilotSeat::PilotSeat(EventManager* _eventManager) :
+Attachable(),
+Taggable(),
+translateForward(_eventManager),
+translateBack(_eventManager),
+translateLeft(_eventManager),
+translateRight(_eventManager),
+rotateLeft(_eventManager),
+rotateRight(_eventManager)
 {
 	eventManager = _eventManager;
 	translateForward.setInputType(Actuator::InputType::Keyboard);

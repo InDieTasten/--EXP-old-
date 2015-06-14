@@ -1,8 +1,8 @@
 #include <Processing\Renderer.hpp>
 
 Renderer::Renderer(sf::RenderWindow* _window, GUIManager* _guiManager, System* _level) :
-	running(false),
-	thread(&Renderer::run, this)
+running(false),
+thread(&Renderer::run, this)
 {
 	window = _window;
 	guiManager = _guiManager;
@@ -26,7 +26,7 @@ void Renderer::run()
 	while (running)
 	{
 		//limiter
-		sf::sleep(sf::Time(sf::milliseconds(1000.0f/60.0f) - limiter.restart()));
+		sf::sleep(sf::Time(sf::milliseconds(1000.0f / 60.0f) - limiter.restart()));
 
 		//clear frame
 		window->clear(sf::Color::Black);
