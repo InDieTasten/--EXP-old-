@@ -31,6 +31,13 @@ GameEngine::~GameEngine()
 
 void GameEngine::launch()
 {
+	//Check for current instance
+	if (gameWindow)
+	{
+		EXP::log("[Error]Tried launching already running GameEngine: " + utils::tostring(this));
+		return;
+	}
+
 	//create window
 	gameWindow = new sf::RenderWindow(sf::VideoMode(1280, 720, 32), VERSION::name + " " + VERSION::version, sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
 	gameWindow->clear();
