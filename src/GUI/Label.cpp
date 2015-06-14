@@ -10,7 +10,7 @@ Label::~Label()
 	EXP::log("[Info]Label has been destructed: " + utils::tostring(this));
 }
 
-void Label::draw(sf::RenderTarget* target, sf::RenderStates states)
+void Label::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	//WORK
 }
