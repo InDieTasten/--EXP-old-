@@ -20,16 +20,25 @@ void Renderer::run()
 	EXP::log("[Info]Renderer running in this thread: " + utils::tostring(this));
 	sf::Clock limiter;
 	limiter.restart();
+
+	window->setActive(true);
+
 	while (running)
 	{
 		//limiter
 		sf::sleep(sf::Time(sf::milliseconds(1000.0f/60.0f) - limiter.restart()));
+
+		//clear frame
+		window->clear(sf::Color::Black);
 
 		//rendering of level
 		//window->draw(*level);
 
 		//rendering of gui
 		window->draw(*guiManager);
+
+		//display final frame
+		window->display();
 	}
 	EXP::log("[Info]Renderer stops running in this thread: " + utils::tostring(this));
 }
