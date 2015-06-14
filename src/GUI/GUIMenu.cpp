@@ -16,7 +16,28 @@ GUIMenu::~GUIMenu()
 
 void GUIMenu::draw(sf::RenderTarget& _target, sf::RenderStates _states) const
 {
-	_states.transform.translate(sf::Vector2f((float)x, (float)y));
+	sf::RectangleShape titleRect(sf::Vector2f(width, 16));
+	titleRect.setPosition(x, y);
+	titleRect.setFillColor(sf::Color(80, 80, 80, 128));
+	titleRect.setOutlineColor(sf::Color(0, 255, 0, 255));
+	titleRect.setOutlineThickness(1.0f);
+	_target.draw(titleRect, _states);
+
+	sf::RectangleShape bodyRect(sf::Vector2f(width, height));
+	bodyRect.setPosition(x, y + 17); //17 because outline overlaps
+	bodyRect.setFillColor(sf::Color(80, 80, 80, 64));
+	bodyRect.setOutlineColor(sf::Color(0, 255, 0, 255));
+	bodyRect.setOutlineThickness(1.0f);
+	_target.draw(bodyRect, _states);
+
+	sf::Text titleText;
+	titleText.setCharacterSize(14);
+	titleText.setPosition(x+1, y+1);
+	titleText.setString("--My test menu--");
+	titleText.setColor(sf::Color::White);
+	_target.draw(titleText, _states);
+
+	_states.transform.translate(sf::Vector2f((float)x, (float)y+14));
 	for (auto it : elements)
 	{
 		it->draw(_target, _states);
