@@ -1,8 +1,11 @@
 #include <Processing\Renderer.hpp>
 
-Renderer::Renderer(sf::RenderWindow* _window, System* _level) : running(false)
+Renderer::Renderer(sf::RenderWindow* _window, GUIManager* _guiManager, System* _level) :
+	running(false),
+	thread(&Renderer::run, this)
 {
 	window = _window;
+	guiManager = _guiManager;
 	level = _level;
 	EXP::log("[Info]Renderer has been  constructed: " + utils::tostring(this));
 }
@@ -15,13 +18,18 @@ Renderer::~Renderer()
 void Renderer::run()
 {
 	EXP::log("[Info]Renderer running in this thread: " + utils::tostring(this));
+	sf::Clock limiter;
+	limiter.restart();
 	while (running)
 	{
 		//limiter
-		//sf::sleep(elapsedTime);
+		sf::sleep(sf::Time(sf::milliseconds(1000.0f/60.0f) - limiter.restart()));
 
 		//rendering of level
-		//level->render(window);
+		//window->draw(*level);
+
+		//rendering of gui
+		window->draw(*guiManager);
 	}
 	EXP::log("[Info]Renderer stops running in this thread: " + utils::tostring(this));
 }
