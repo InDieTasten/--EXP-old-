@@ -10,7 +10,7 @@ InputField::~InputField()
 	EXP::log("[Info]InputField has been destructed: " + utils::tostring(this));
 }
 
-void InputField::draw(sf::RenderTarget* target, sf::RenderStates states)
+void InputField::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	//WORK
 }
