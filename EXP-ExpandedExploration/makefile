@@ -57,7 +57,13 @@ OBJECTS = \
 	..\src\Processing\GameEngine.o \
 	..\src\Processing\Renderer.o \
 	..\src\Processing\Simulator.o \
-	..\src\GUI\GUIMenu.o
+	..\src\GUI\Button.o \
+	..\src\GUI\GUIElement.o \
+	..\src\GUI\GUIManager.o \
+	..\src\GUI\GUIMenu.o \
+	..\src\GUI\InputField.o \
+	..\src\GUI\Label.o \
+	..\src\GUI\Responsive.o
 
 rebuild: clean build
 	echo DONE!
