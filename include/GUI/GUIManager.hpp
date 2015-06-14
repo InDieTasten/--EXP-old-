@@ -11,13 +11,13 @@
 class GUIManager : public sf::Drawable, public Responsive
 {
 private:
-	std::vector<GUIMenu&> menus;
+	std::vector<GUIMenu*> menus;
 public:
 	GUIManager();
 	~GUIManager();
 
-	int addMenu(GUIMenu&);
-	GUIMenu& getMenu(int);
+	int addMenu(GUIMenu*);
+	GUIMenu* getMenu(int);
 	void removeMenu(int);
 
 	void draw(sf::RenderTarget& _target, sf::RenderStates _states);

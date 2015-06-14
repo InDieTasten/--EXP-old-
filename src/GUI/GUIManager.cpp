@@ -9,12 +9,12 @@ GUIManager::~GUIManager()
 	EXP::log("[Info]GUIManager has been destructed: " + utils::tostring(this));
 }
 
-int GUIManager::addMenu(GUIMenu& _menu)
+int GUIManager::addMenu(GUIMenu* _menu)
 {
 	menus.push_back(_menu);
 	return menus.size() - 1;
 }
-GUIMenu& GUIManager::getMenu(int _pos)
+GUIMenu* GUIManager::getMenu(int _pos)
 {
 	return menus[_pos];
 }
@@ -27,13 +27,13 @@ void GUIManager::draw(sf::RenderTarget& _target, sf::RenderStates _states)
 {
 	for (auto it : menus)
 	{
-		it.draw(_target, _states);
+		it->draw(_target, _states);
 	}
 }
 void GUIManager::handleEvent(sf::Event* _event)
 {
 	for (auto it : menus)
 	{
-		it.handleEvent(_event);
+		it->handleEvent(_event);
 	}
 }
