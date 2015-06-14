@@ -53,6 +53,7 @@ OBJECTS = \
 	..\src\Data\ResourceType.o \
 	..\src\Data\Container.o \
 	..\src\Data\Taggable.o \
+	..\src\Data\System.o \
 	..\src\Processing\GameEngine.o \
 	..\src\Processing\Renderer.o \
 	..\src\Processing\Simulator.o
