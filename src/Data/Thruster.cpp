@@ -2,7 +2,7 @@
 
 Thruster::Thruster() : Attachable(), Taggable()
 {
-	EXP::log("[Info]Thruster has been constructed: " +  utils::tostring(this));
+	EXP::log("[Info]Thruster has been constructed: " + utils::tostring(this));
 }
 Thruster::~Thruster()
 {
