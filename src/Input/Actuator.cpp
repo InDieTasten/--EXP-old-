@@ -216,11 +216,11 @@ float Actuator::getControlVector()
 		case MouseAxis::Y:
 			return sf::Mouse::getPosition().y;
 		default:
-			EXP::log("[Warning]Actuators mouse axis is highly strange: " +  utils::tostring(this));
+			EXP::log("[Warning]Actuators mouse axis is highly strange: " + utils::tostring(this));
 			return 0.0f;
 		}
 	case InputType::Joystick:
-		return sf::Joystick::getAxisPosition(joystick, axis)/100.0f;
+		return sf::Joystick::getAxisPosition(joystick, axis) / 100.0f;
 	case InputType::JoystickButton:
 		return (float)sf::Joystick::isButtonPressed(joystick, joyButton);
 	default:
