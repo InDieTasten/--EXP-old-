@@ -4,7 +4,7 @@ EventManager::EventManager(sf::RenderWindow* _target)
 {
 	target = _target;
 	listening = false;
-	sampleRate = sf::milliseconds(1000/30);
+	sampleRate = sf::milliseconds(1000 / 30);
 
 	EXP::log("[Info]EventManager has been constructed: " + utils::tostring(this));
 }

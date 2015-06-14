@@ -1,8 +1,8 @@
 #include <Processing\Simulator.hpp>
 
 Simulator::Simulator(sf::RenderWindow* _window, System* _level) :
-	running(false),
-	thread(&Simulator::run, this)
+running(false),
+thread(&Simulator::run, this)
 {
 	window = _window;
 	level = _level;
@@ -65,7 +65,7 @@ void Simulator::setWindow(sf::RenderWindow* _window)
 		EXP::log("[Info]Terminating simulation to change target window: " + utils::tostring(this));
 		terminate();
 	}
-		
+
 	window = _window;
 
 	if (tmp){

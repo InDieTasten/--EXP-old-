@@ -26,7 +26,7 @@ public:
 	int getWidth();
 	int getHeight();
 	std::string getContent();
-	
+
 };
 
 #endif // !_InputField_hpp_
