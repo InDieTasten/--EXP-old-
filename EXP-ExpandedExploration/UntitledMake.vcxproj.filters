@@ -86,6 +86,9 @@
     <ClCompile Include="..\src\Processing\GameEngine.cpp">
       <Filter>4 Processing</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Processing\Renderer.cpp">
+      <Filter>4 Processing</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Utilities\Logger.hpp">
@@ -149,6 +152,9 @@
       <Filter>2 Data</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Processing\GameEngine.hpp">
+      <Filter>4 Processing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Processing\Renderer.hpp">
       <Filter>4 Processing</Filter>
     </ClInclude>
   </ItemGroup>
