@@ -10,6 +10,7 @@
 class Simulator
 {
 private:
+	sf::Thread thread;
 	bool running;
 
 	sf::RenderWindow* window;
