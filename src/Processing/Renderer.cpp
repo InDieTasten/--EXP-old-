@@ -1,6 +1,6 @@
 #include <Processing\Renderer.hpp>
 
-Renderer::Renderer(sf::RenderWindow* _window, System* _level)
+Renderer::Renderer(sf::RenderWindow* _window, System* _level) : running(false)
 {
 	window = _window;
 	level = _level;
