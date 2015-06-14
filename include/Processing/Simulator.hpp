@@ -7,11 +7,24 @@
 class Simulator
 {
 private:
+	bool running;
+
+	sf::RenderWindow* window;
+	System* level;
+
+	void run(); //internal method for thread
+
 public:
-	Simulator();
+	Simulator(sf::RenderWindow* _window, System* _level);
 	~Simulator();
 
+	void launch();
+	void terminate();
 
+	void setWindow(sf::RenderWindow* _window);
+	void setLevel(System* _level);
+	sf::RenderWindow* getWindow();
+	System* getLevel();
 };
 
 #endif // !_Simulator_hpp_
