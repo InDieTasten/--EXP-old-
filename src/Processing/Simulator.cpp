@@ -12,7 +12,17 @@ Simulator::~Simulator()
 	EXP::log("[Info]Simulator has been  destructed: " + utils::tostring(this));
 }
 
-//WORK run function
+void Simulator::run()
+{
+	while (running)
+	{
+		//limiter
+		//sf::sleep(elapsedTime);
+
+		//simulation of level
+		//level->simulate(frametime);
+	}
+}
 
 void Simulator::launch()
 {
