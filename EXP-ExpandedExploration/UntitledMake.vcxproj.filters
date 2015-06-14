@@ -98,6 +98,24 @@
     <ClCompile Include="..\src\GUI\GUIMenu.cpp">
       <Filter>5 GUI</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\GUI\InputField.cpp">
+      <Filter>5 GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GUI\Button.cpp">
+      <Filter>5 GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GUI\GUIElement.cpp">
+      <Filter>5 GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GUI\GUIManager.cpp">
+      <Filter>5 GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GUI\Label.cpp">
+      <Filter>5 GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GUI\Responsive.cpp">
+      <Filter>5 GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Utilities\Logger.hpp">
@@ -170,6 +188,24 @@
       <Filter>4 Processing</Filter>
     </ClInclude>
     <ClInclude Include="..\include\GUI\GUIMenu.hpp">
+      <Filter>5 GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GUI\GUIManager.hpp">
+      <Filter>5 GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GUI\GUIElement.hpp">
+      <Filter>5 GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GUI\Responsive.hpp">
+      <Filter>5 GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GUI\InputField.hpp">
+      <Filter>5 GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GUI\Label.hpp">
+      <Filter>5 GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GUI\Button.hpp">
       <Filter>5 GUI</Filter>
     </ClInclude>
   </ItemGroup>
