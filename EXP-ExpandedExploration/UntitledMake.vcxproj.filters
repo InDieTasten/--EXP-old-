@@ -89,6 +89,9 @@
     <ClCompile Include="..\src\Processing\Renderer.cpp">
       <Filter>4 Processing</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Processing\Simulator.cpp">
+      <Filter>4 Processing</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Utilities\Logger.hpp">
@@ -155,6 +158,9 @@
       <Filter>4 Processing</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Processing\Renderer.hpp">
+      <Filter>4 Processing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Processing\Simulator.hpp">
       <Filter>4 Processing</Filter>
     </ClInclude>
   </ItemGroup>
