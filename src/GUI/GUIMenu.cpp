@@ -2,10 +2,11 @@
 
 GUIMenu::GUIMenu()
 {
-	x = 15;
-	y = 15;
+	x = 0;
+	y = 0;
 	height = 200;
 	width = 200;
+	update();
 	EXP::log("[Info]GUIMenu has been constructed: " + utils::tostring(this));
 }
 GUIMenu::~GUIMenu()
@@ -14,30 +15,42 @@ GUIMenu::~GUIMenu()
 	EXP::log("[Info]GUIMenu has been destructed: " + utils::tostring(this));
 }
 
+void GUIMenu::update()
+{
+	//grab assets
+	// somehow needs access to asset managers
+
+	//update components
+	components.titleRect.setSize(sf::Vector2f(width, 16));
+	components.titleRect.setPosition(x, y);
+	components.titleRect.setFillColor(sf::Color(80, 80, 80, 128));
+	components.titleRect.setOutlineColor(sf::Color(0, 255, 0, 255));
+	components.titleRect.setOutlineThickness(1.0f);
+
+	components.bodyRect.setSize(sf::Vector2f(width, height));
+	components.bodyRect.setPosition(x, y + 17); //17 because outline overlaps
+	components.bodyRect.setFillColor(sf::Color(80, 80, 80, 64));
+	components.bodyRect.setOutlineColor(sf::Color(0, 255, 0, 255));
+	components.bodyRect.setOutlineThickness(1.0f);
+
+	components.titleText.setCharacterSize(14);
+	components.titleText.setPosition(x + 1, y + 1);
+	components.titleText.setString("--My test menu--");
+	components.titleText.setColor(sf::Color::White);
+	components.titleText.setFont(*assets.title);
+
+	//WORK closeButtonRect;
+	//WORK closeButtonCross;
+}
 void GUIMenu::draw(sf::RenderTarget& _target, sf::RenderStates _states) const
 {
-	sf::RectangleShape titleRect(sf::Vector2f(width, 16));
-	titleRect.setPosition(x, y);
-	titleRect.setFillColor(sf::Color(80, 80, 80, 128));
-	titleRect.setOutlineColor(sf::Color(0, 255, 0, 255));
-	titleRect.setOutlineThickness(1.0f);
-	_target.draw(titleRect, _states);
+	_target.draw(components.titleRect, _states);
+	_target.draw(components.bodyRect, _states);
+	_target.draw(components.titleText, _states);
+	_target.draw(components.closeButtonRect, _states);
+	_target.draw(components.closeButtonCross, _states);
 
-	sf::RectangleShape bodyRect(sf::Vector2f(width, height));
-	bodyRect.setPosition(x, y + 17); //17 because outline overlaps
-	bodyRect.setFillColor(sf::Color(80, 80, 80, 64));
-	bodyRect.setOutlineColor(sf::Color(0, 255, 0, 255));
-	bodyRect.setOutlineThickness(1.0f);
-	_target.draw(bodyRect, _states);
-
-	sf::Text titleText;
-	titleText.setCharacterSize(14);
-	titleText.setPosition(x+1, y+1);
-	titleText.setString("--My test menu--");
-	titleText.setColor(sf::Color::White);
-	_target.draw(titleText, _states);
-
-	_states.transform.translate(sf::Vector2f((float)x, (float)y+14));
+	_states.transform.translate(sf::Vector2f((float)x, (float)y+16));
 	for (auto it : elements)
 	{
 		it->draw(_target, _states);
@@ -68,22 +81,27 @@ void GUIMenu::removeElement(int _pos)
 void GUIMenu::setX(int _x)
 {
 	x = _x;
+	update();
 }
 void GUIMenu::setY(int _y)
 {
 	y = _y;
+	update();
 }
 void GUIMenu::setWidth(int _width)
 {
 	width = _width;
+	update();
 }
 void GUIMenu::setHeight(int _height)
 {
 	height = _height;
+	update();
 }
 void GUIMenu::setTitle(std::string _title)
 {
 	title = _title;
+	update();
 }
 int GUIMenu::getX()
 {
