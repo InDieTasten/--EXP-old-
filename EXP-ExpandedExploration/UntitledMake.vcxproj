@@ -75,6 +75,7 @@
     <ClCompile Include="..\src\Data\Taggable.cpp" />
     <ClCompile Include="..\src\Data\Thruster.cpp" />
     <ClCompile Include="..\src\Data\Vector.cpp" />
+    <ClCompile Include="..\src\GUI\GUIMenu.cpp" />
     <ClCompile Include="..\src\Input\Actuator.cpp" />
     <ClCompile Include="..\src\Input\EventManager.cpp" />
     <ClCompile Include="..\src\Processing\GameEngine.cpp" />
@@ -97,6 +98,7 @@
     <ClInclude Include="..\include\Data\Taggable.hpp" />
     <ClInclude Include="..\include\Data\Thruster.hpp" />
     <ClInclude Include="..\include\Data\Vector.hpp" />
+    <ClInclude Include="..\include\GUI\GUIMenu.hpp" />
     <ClInclude Include="..\include\Input\Actuator.hpp" />
     <ClInclude Include="..\include\Input\EventManager.hpp" />
     <ClInclude Include="..\include\Processing\GameEngine.hpp" />
