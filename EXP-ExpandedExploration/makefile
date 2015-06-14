@@ -53,7 +53,8 @@ OBJECTS = \
 	..\src\Data\ResourceType.o \
 	..\src\Data\Container.o \
 	..\src\Data\Taggable.o \
-	..\src\Processing\GameEngine.o
+	..\src\Processing\GameEngine.o \
+	..\src\Processing\Renderer.o
 
 rebuild: clean build
 	echo DONE!
