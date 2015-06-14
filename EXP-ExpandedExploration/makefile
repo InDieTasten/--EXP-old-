@@ -52,7 +52,8 @@ OBJECTS = \
 	..\src\Data\Thruster.o \
 	..\src\Data\ResourceType.o \
 	..\src\Data\Container.o \
-	..\src\Data\Taggable.o
+	..\src\Data\Taggable.o \
+	..\src\Processing\GameEngine.o
 
 rebuild: clean build
 	echo DONE!
