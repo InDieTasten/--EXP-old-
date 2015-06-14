@@ -21,7 +21,7 @@ private:
 	sf::View defaultView;
 
 public:
-	static EventManager* eventManager;
+	EventManager* eventManager;
 
 	GameEngine();
 	~GameEngine();
