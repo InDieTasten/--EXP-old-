@@ -54,6 +54,10 @@ void Font::unload()
 	data = nullptr;
 	EXP::log("[Info]Font has been unloaded: " + *id);
 }
+sf::Font* Font::get()
+{
+	return data;
+}
 std::string Font::getID()
 {
 	return *id;
