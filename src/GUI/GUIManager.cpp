@@ -3,6 +3,7 @@
 GUIManager::GUIManager(AssetManager* _assets)
 {
 	assets = _assets;
+	assets->addFont("MenuTitle", "C:/Windows/Fonts/Consola.ttf");
 	EXP::log("[Info]GUIManager has been constructed: " + utils::tostring(this));
 }
 GUIManager::~GUIManager()
