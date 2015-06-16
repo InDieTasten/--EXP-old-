@@ -7,8 +7,7 @@
 #include <Processing\Renderer.hpp>
 #include <Processing\Simulator.hpp>
 #include <GUI\InputField.hpp>
-#include <Assets\TextureManager.hpp>
-#include <Assets\FontManager.hpp>
+#include <Assets\AssetManager.hpp>
 
 #include <Utilities\Conversion.hpp>
 #include <Utilities\Logger.hpp>
@@ -16,10 +15,6 @@
 class GameEngine
 {
 public:
-	struct AssetManagers {
-		TextureManager textureManager;
-		FontManager fontManager;
-	};
 private:
 	sf::RenderWindow* gameWindow;
 	GUIManager* guiManager;
@@ -27,7 +22,7 @@ private:
 	Renderer* renderer;
 	Simulator* simulator;
 
-	AssetManagers assetMans;
+	AssetManager assets;
 
 	System* level;
 	sf::View defaultView;
