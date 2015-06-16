@@ -21,7 +21,12 @@ GUIMenu::~GUIMenu()
 void GUIMenu::update()
 {
 	//grab assets
-	asset.title = assets->getFont("identifier of font")->get();
+	if (Font* x = assets->getFont("MenuTitle"))
+	{
+		EXP::log("[DEBUG]1");
+		asset.title = x->get();
+		EXP::log("[DEBUG]2: " + utils::tostring(asset.title));
+	}
 
 	//update components
 	components.titleRect.setSize(sf::Vector2f(width, 16));

@@ -56,6 +56,15 @@ void Font::unload()
 }
 sf::Font* Font::get()
 {
+	if (!data)
+	{
+		EXP::log("[Warning]Tried to retrieve unloaded Font: " + *id);
+		load();
+		if (!data)
+		{
+			return nullptr;
+		}
+	}
 	return data;
 }
 std::string Font::getID()
