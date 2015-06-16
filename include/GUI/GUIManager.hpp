@@ -4,6 +4,7 @@
 #include <SFML\Graphics.hpp>
 #include <GUI\Responsive.hpp>
 #include <GUI\GUIMenu.hpp>
+#include <Assets\AssetManager.hpp>
 
 #include <Utilities\Logger.hpp>
 #include <Utilities\Conversion.hpp>
