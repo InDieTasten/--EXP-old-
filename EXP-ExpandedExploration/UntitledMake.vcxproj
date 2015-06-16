@@ -60,6 +60,7 @@
     <Text Include="Storyline.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\Assets\AssetManager.cpp" />
     <ClCompile Include="..\src\Assets\Font.cpp" />
     <ClCompile Include="..\src\Assets\FontManager.cpp" />
     <ClCompile Include="..\src\Assets\Texture.cpp" />
@@ -92,6 +93,7 @@
     <ClCompile Include="..\src\Utilities\Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\Assets\AssetManager.hpp" />
     <ClInclude Include="..\include\Assets\Font.hpp" />
     <ClInclude Include="..\include\Assets\FontManager.hpp" />
     <ClInclude Include="..\include\Assets\Texture.hpp" />
