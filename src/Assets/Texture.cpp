@@ -54,6 +54,10 @@ void Texture::unload()
 	data = nullptr;
 	EXP::log("[Info]Texture has been unloaded: " + *id);
 }
+sf::Texture* Texture::get()
+{
+	return data;
+}
 std::string Texture::getID()
 {
 	return *id;
