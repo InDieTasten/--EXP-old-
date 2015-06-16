@@ -21,8 +21,7 @@ private:
 	EventManager* eventManager;
 	Renderer* renderer;
 	Simulator* simulator;
-
-	AssetManager assets;
+	AssetManager* assets;
 
 	System* level;
 	sf::View defaultView;

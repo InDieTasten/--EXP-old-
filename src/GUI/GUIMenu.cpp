@@ -1,14 +1,13 @@
 #include <GUI\GUIMenu.hpp>
-#include <Processing\GameEngine.hpp>
 
-GUIMenu::GUIMenu(GameEngine::AssetManagers* _assets)
+GUIMenu::GUIMenu(AssetManager* _assets)
 {
 	x = 0;
 	y = 0;
 	height = 200;
 	width = 200;
 
-	assets = ;
+	assets = _assets;
 
 	update();
 	EXP::log("[Info]GUIMenu has been constructed: " + utils::tostring(this));
@@ -22,7 +21,7 @@ GUIMenu::~GUIMenu()
 void GUIMenu::update()
 {
 	//grab assets
-	// somehow needs access to asset managers
+	asset.title = assets->getFont("identifier of font")->get();
 
 	//update components
 	components.titleRect.setSize(sf::Vector2f(width, 16));
@@ -41,7 +40,7 @@ void GUIMenu::update()
 	components.titleText.setPosition(x + 1, y + 1);
 	components.titleText.setString("--My test menu--");
 	components.titleText.setColor(sf::Color::White);
-	components.titleText.setFont(*assets.title);
+	components.titleText.setFont(*asset.title);
 
 	//WORK closeButtonRect;
 	//WORK closeButtonCross;
