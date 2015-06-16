@@ -21,6 +21,8 @@ private:
 
 	std::vector<GUIElement*> elements;
 
+	AssetManager* assets;
+
 	struct Assets{
 		sf::Font* title;
 	} assets;
@@ -32,7 +34,7 @@ private:
 		sf::VertexArray closeButtonCross;
 	} components;
 public:
-	GUIMenu();
+	GUIMenu(AssetManager* _assets);
 	~GUIMenu();
 
 	void update();
