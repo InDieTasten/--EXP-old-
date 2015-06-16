@@ -1,6 +1,7 @@
 #ifndef _GUIMenu_hpp_
 #define _GUIMenu_hpp_
 
+#include <Assets\AssetManager.hpp>
 #include <SFML\Graphics.hpp>
 #include <Data\Taggable.hpp>
 #include <string>
@@ -25,7 +26,7 @@ private:
 
 	struct Assets{
 		sf::Font* title;
-	} assets;
+	} asset;
 	struct Components{
 		sf::RectangleShape titleRect;
 		sf::RectangleShape bodyRect;
