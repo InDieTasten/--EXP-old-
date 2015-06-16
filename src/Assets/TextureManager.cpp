@@ -42,6 +42,6 @@ Texture* TextureManager::getTexture(std::string _id)
 		return tmp;
 	}
 	else {
-		EXP::log("[Warning]Trtied to get unknown Texture: " + _id);
+		EXP::log("[Warning]Tried to get unknown Texture: " + _id);
 	}
 }
