@@ -55,8 +55,8 @@ void GameEngine::launch()
 	gameWindow->setActive(false);
 
 	//gui manager
-	guiManager = new GUIManager();
-	GUIMenu test;
+	guiManager = new GUIManager(&assets);
+	GUIMenu test(&assets);
 	InputField x;
 	GUIElement* p = &x;
 	test.addElement(p);
