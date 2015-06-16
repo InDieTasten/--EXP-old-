@@ -11,9 +11,10 @@
 class GUIManager : public sf::Drawable, public Responsive
 {
 private:
+	AssetManager* assets;
 	std::vector<GUIMenu*> menus;
 public:
-	GUIManager();
+	GUIManager(AssetManager* _assets);
 	~GUIManager();
 
 	int addMenu(GUIMenu*);

@@ -1,7 +1,8 @@
 #include <GUI\GUIManager.hpp>
 
-GUIManager::GUIManager()
+GUIManager::GUIManager(AssetManager* _assets)
 {
+	assets = _assets;
 	EXP::log("[Info]GUIManager has been constructed: " + utils::tostring(this));
 }
 GUIManager::~GUIManager()
