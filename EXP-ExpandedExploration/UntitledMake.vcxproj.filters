@@ -122,6 +122,9 @@
     <ClCompile Include="..\src\Assets\Font.cpp">
       <Filter>1 Assets</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Assets\AssetManager.cpp">
+      <Filter>1 Assets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Utilities\Logger.hpp">
@@ -218,6 +221,9 @@
       <Filter>1 Assets</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Assets\FontManager.hpp">
+      <Filter>1 Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Assets\AssetManager.hpp">
       <Filter>1 Assets</Filter>
     </ClInclude>
   </ItemGroup>
