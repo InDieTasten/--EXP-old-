@@ -1,11 +1,15 @@
 #include <GUI\GUIMenu.hpp>
+#include <Processing\GameEngine.hpp>
 
-GUIMenu::GUIMenu()
+GUIMenu::GUIMenu(GameEngine::AssetManagers* _assets)
 {
 	x = 0;
 	y = 0;
 	height = 200;
 	width = 200;
+
+	assets = ;
+
 	update();
 	EXP::log("[Info]GUIMenu has been constructed: " + utils::tostring(this));
 }
