@@ -42,6 +42,6 @@ Font* FontManager::getFont(std::string _id)
 		return tmp;
 	}
 	else {
-		EXP::log("[Warning]Trtied to get unknown Font: " + _id);
+		EXP::log("[Warning]Tried to get unknown Font: " + _id);
 	}
 }
