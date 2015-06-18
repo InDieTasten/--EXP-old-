@@ -1,13 +1,11 @@
 #include <GUI\GUIMenu.hpp>
 
-GUIMenu::GUIMenu(AssetManager* _assets)
+GUIMenu::GUIMenu(AssetManager* _assets) : Responsive(_assets)
 {
 	x = 0;
 	y = 0;
 	height = 200;
 	width = 200;
-
-	assets = _assets;
 
 	update();
 	EXP::log("[Info]GUIMenu has been constructed: " + utils::tostring(this));
@@ -21,12 +19,6 @@ GUIMenu::~GUIMenu()
 void GUIMenu::update()
 {
 	//grab assets
-	if (Font* x = assets->getFont("MenuTitle"))
-	{
-		EXP::log("[DEBUG]1");
-		asset.title = x->get();
-		EXP::log("[DEBUG]2: " + utils::tostring(asset.title));
-	}
 
 	//update components
 	components.titleRect.setSize(sf::Vector2f(width, 16));
@@ -41,11 +33,11 @@ void GUIMenu::update()
 	components.bodyRect.setOutlineColor(sf::Color(0, 255, 0, 255));
 	components.bodyRect.setOutlineThickness(1.0f);
 
-	components.titleText.setCharacterSize(14);
-	components.titleText.setPosition(x + 1, y + 1);
-	components.titleText.setString("--My test menu--");
+	components.titleText.setPosition(x, y - 1);
 	components.titleText.setColor(sf::Color::White);
-	components.titleText.setFont(*asset.title);
+	components.titleText.setFont(*assets->getFont("MenuTitle")->get());
+	components.titleText.setCharacterSize(14);
+	components.titleText.setString("--My test menu--");
 
 	//WORK closeButtonRect;
 	//WORK closeButtonCross;

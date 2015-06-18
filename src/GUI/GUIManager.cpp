@@ -1,9 +1,9 @@
 #include <GUI\GUIManager.hpp>
 
-GUIManager::GUIManager(AssetManager* _assets)
+GUIManager::GUIManager(AssetManager* _assets) : Responsive(_assets)
 {
-	assets = _assets;
-	assets->addFont("MenuTitle", "C:/Windows/Fonts/Consola.ttf");
+	assets->addFont("MenuTitle", "C:/Windows/Fonts/lucon.ttf");
+	assets->addTexture("missing", "./content/stock/texture/missing.png");
 	EXP::log("[Info]GUIManager has been constructed: " + utils::tostring(this));
 }
 GUIManager::~GUIManager()
