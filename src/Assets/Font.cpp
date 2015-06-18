@@ -3,6 +3,7 @@
 Font::Font(const std::string* _id, std::string _path)
 {
 	EXP::log("[Info]Constructing Font... " + utils::tostring(this));
+
 	if (!_id)
 	{
 		EXP::log("[Error]Trying to construct Font with null-pointer ID");
@@ -60,10 +61,11 @@ sf::Font* Font::get()
 {
 	if (!data)
 	{
-		EXP::log("[Warning]Tried to retrieve unloaded Font: " + *id);
+		EXP::log("[Warning]Tried retrieving unloaded Font: " + *id);
 		load();
 		if (!data)
 		{
+			EXP::log("[Error]Could not load Font!!: " + *id);
 			return nullptr;
 		}
 	}
