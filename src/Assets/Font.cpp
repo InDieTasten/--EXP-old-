@@ -22,7 +22,7 @@ Font::~Font()
 	std::string tmp = *id;
 	if (data)
 	{
-		EXP::log("[Warning]Forcefully unloading Font: " + tmp);
+		EXP::log("[Info]Forcefully unloading Font: " + tmp);
 		unload();
 	}
 	id = nullptr;

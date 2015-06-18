@@ -9,7 +9,7 @@
 
 class Responsive
 {
-private:
+protected:
 	AssetManager* assets;
 public:
 	Responsive(AssetManager* _assets);
