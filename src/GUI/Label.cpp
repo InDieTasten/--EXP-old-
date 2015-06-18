@@ -7,6 +7,7 @@ Label::Label(AssetManager* _assets) : GUIElement(_assets)
 }
 Label::~Label()
 {
+	EXP::log("[Info]Destructing Label... " + utils::tostring(this));
 	EXP::log("[Info]Label has been destructed: " + utils::tostring(this));
 }
 

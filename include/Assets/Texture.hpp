@@ -5,6 +5,7 @@
 #include <SFML\Graphics.hpp>
 #include <string>
 #include <Utilities\Logger.hpp>
+#include <Utilities\Conversion.hpp>
 
 extern void EXP::log(std::string);
 

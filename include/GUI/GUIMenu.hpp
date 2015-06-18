@@ -22,15 +22,13 @@ private:
 
 	std::vector<GUIElement*> elements;
 
-	struct Assets{
-		sf::Font* title;
-	} asset;
 	struct Components{
 		sf::RectangleShape titleRect;
 		sf::RectangleShape bodyRect;
 		sf::Text titleText;
 		sf::RectangleShape closeButtonRect;
 		sf::VertexArray closeButtonCross;
+		sf::Sprite someSprite;
 	} components;
 public:
 	GUIMenu(AssetManager* _assets);
