@@ -1,13 +1,12 @@
 #include <GUI\Button.hpp>
 
-Button::Button()
+Button::Button(AssetManager* _assets) : GUIElement(_assets)
 {
 	type = ElementType::Button;
 	EXP::log("[Info]Button has been constructed: " + utils::tostring(this));
 }
 Button::~Button()
 {
-
 	EXP::log("[Info]Button has been destructed: " + utils::tostring(this));
 }
 

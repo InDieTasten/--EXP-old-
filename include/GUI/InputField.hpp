@@ -14,7 +14,7 @@ private:
 
 	std::string content;
 public:
-	InputField();
+	InputField(AssetManager* _assets);
 	~InputField();
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;

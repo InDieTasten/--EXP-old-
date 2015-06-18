@@ -1,6 +1,6 @@
 #include <GUI\InputField.hpp>
 
-InputField::InputField()
+InputField::InputField(AssetManager* _assets) : GUIElement(_assets)
 {
 	type = ElementType::InputField;
 	EXP::log("[Info]InputField has been constructed: " + utils::tostring(this));
