@@ -2,6 +2,7 @@
 
 Font::Font(const std::string* _id, std::string _path)
 {
+	EXP::log("[Info]Constructing Font... " + utils::tostring(this));
 	if (!_id)
 	{
 		EXP::log("[Error]Trying to construct Font with null-pointer ID");
@@ -19,6 +20,7 @@ Font::Font(const std::string* _id, std::string _path)
 }
 Font::~Font()
 {
+	EXP::log("[Info]Destructing Font... " + utils::tostring(this));
 	std::string tmp = *id;
 	if (data)
 	{

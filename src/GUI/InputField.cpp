@@ -7,6 +7,7 @@ InputField::InputField(AssetManager* _assets) : GUIElement(_assets)
 }
 InputField::~InputField()
 {
+	EXP::log("[Info]Destructing InputField... " + utils::tostring(this));
 	EXP::log("[Info]InputField has been destructed: " + utils::tostring(this));
 }
 

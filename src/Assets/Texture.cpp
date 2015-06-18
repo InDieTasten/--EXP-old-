@@ -2,6 +2,8 @@
 
 Texture::Texture(const std::string* _id, std::string _path)
 {
+	EXP::log("[Info]Constructing Texture... " + utils::tostring(this));
+
 	if (!_id)
 	{
 		EXP::log("[Error]Trying to construct Texture with null-pointer ID");
@@ -19,10 +21,11 @@ Texture::Texture(const std::string* _id, std::string _path)
 }
 Texture::~Texture()
 {
+	EXP::log("[Info]Destructing Texture... " + utils::tostring(this));
 	std::string tmp = *id;
 	if (data)
 	{
-		EXP::log("[Warning]Forcefully unloading Texture: " + tmp);
+		EXP::log("[Info]Forcefully unloading Texture: " + tmp);
 		unload();
 	}
 	id = nullptr;
@@ -56,6 +59,16 @@ void Texture::unload()
 }
 sf::Texture* Texture::get()
 {
+	if (!data)
+	{
+		EXP::log("[Warning]Tried retrieving unloaded Texture: " + *id);
+		load();
+		if (!data)
+		{
+			EXP::log("[Error]Could not load Texture!!: " + *id);
+			return nullptr;
+		}
+	}
 	return data;
 }
 std::string Texture::getID()
