@@ -1,6 +1,6 @@
 #include <GUI\GUIElement.hpp>
 
-GUIElement::GUIElement()
+GUIElement::GUIElement(AssetManager* _assets) : Responsive(_assets)
 {
 
 	EXP::log("[Info]GUIElement has been constructed: " + utils::tostring(this));

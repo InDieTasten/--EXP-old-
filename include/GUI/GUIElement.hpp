@@ -18,7 +18,7 @@ protected:
 	int x;
 	int y;
 public:
-	GUIElement();
+	GUIElement(AssetManager* _assets);
 	~GUIElement();
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const = 0;
