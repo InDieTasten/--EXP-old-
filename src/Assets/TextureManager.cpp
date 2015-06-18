@@ -8,7 +8,7 @@ TextureManager::~TextureManager()
 {
 	if (textures.size() != 0)
 	{
-		EXP::log("[Warning]Forcefully destructing textures");
+		EXP::log("[Info]Forcefully destructing textures");
 		for (auto it : textures)
 		{
 			delete it.second;

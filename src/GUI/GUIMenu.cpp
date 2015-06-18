@@ -18,8 +18,6 @@ GUIMenu::~GUIMenu()
 
 void GUIMenu::update()
 {
-	//grab assets
-
 	//update components
 	components.titleRect.setSize(sf::Vector2f(width, 16));
 	components.titleRect.setPosition(x, y);
@@ -39,6 +37,9 @@ void GUIMenu::update()
 	components.titleText.setCharacterSize(14);
 	components.titleText.setString("--My test menu--");
 
+	components.someSprite.setPosition(x, y);
+	components.someSprite.setTexture(*assets->getTexture("missing")->get());
+
 	//WORK closeButtonRect;
 	//WORK closeButtonCross;
 }
@@ -49,6 +50,7 @@ void GUIMenu::draw(sf::RenderTarget& _target, sf::RenderStates _states) const
 	_target.draw(components.titleText, _states);
 	_target.draw(components.closeButtonRect, _states);
 	_target.draw(components.closeButtonCross, _states);
+	_target.draw(components.someSprite, _states);
 
 	_states.transform.translate(sf::Vector2f((float)x, (float)y+16));
 	for (auto it : elements)
