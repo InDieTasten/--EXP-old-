@@ -11,7 +11,7 @@ class Label : GUIElement
 private:
 	std::string text;
 public:
-	Label();
+	Label(AssetManager* _assets);
 	~Label();
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
