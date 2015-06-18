@@ -1,6 +1,6 @@
 #include <GUI\Label.hpp>
 
-Label::Label()
+Label::Label(AssetManager* _assets) : GUIElement(_assets)
 {
 	type = ElementType::Label;
 	EXP::log("[Info]Label has been constructed: " + utils::tostring(this));
