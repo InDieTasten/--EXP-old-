@@ -8,7 +8,7 @@ FontManager::~FontManager()
 {
 	if (fonts.size() != 0)
 	{
-		EXP::log("[Warning]Forcefully destructing fonts");
+		EXP::log("[Info]Forcefully destructing fonts");
 		for (auto it : fonts)
 		{
 			delete it.second;

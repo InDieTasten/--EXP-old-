@@ -63,7 +63,7 @@ void GameEngine::launch()
 	//gui manager
 	guiManager = new GUIManager(assets);
 	GUIMenu test(assets);
-	InputField x;
+	InputField x(assets);
 	GUIElement* p = &x;
 	test.addElement(p);
 	guiManager->addMenu(&test);
