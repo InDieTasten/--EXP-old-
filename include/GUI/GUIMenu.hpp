@@ -22,8 +22,6 @@ private:
 
 	std::vector<GUIElement*> elements;
 
-	AssetManager* assets;
-
 	struct Assets{
 		sf::Font* title;
 	} asset;
