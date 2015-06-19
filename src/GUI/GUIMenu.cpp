@@ -1,11 +1,16 @@
 #include <GUI\GUIMenu.hpp>
 
-GUIMenu::GUIMenu()
+GUIMenu::GUIMenu(AssetManager* _assets) : Responsive(_assets)
 {
-	x = 15;
-	y = 15;
+	x = 0;
+	y = 0;
 	height = 200;
 	width = 200;
+	once = false;
+
+	title = "-- BANANA --";
+
+	update();
 	EXP::log("[Info]GUIMenu has been constructed: " + utils::tostring(this));
 }
 GUIMenu::~GUIMenu()
@@ -14,16 +19,38 @@ GUIMenu::~GUIMenu()
 	EXP::log("[Info]GUIMenu has been destructed: " + utils::tostring(this));
 }
 
+void GUIMenu::update()
+{
+	//update components
+	components.titleRect.setSize(sf::Vector2f(width, 16));
+	components.titleRect.setPosition(x, y);
+	components.titleRect.setFillColor(sf::Color(80, 80, 80, 128));
+	components.titleRect.setOutlineColor(sf::Color(0, 255, 0, 255));
+	components.titleRect.setOutlineThickness(1.0f);
+
+	components.bodyRect.setSize(sf::Vector2f(width, height));
+	components.bodyRect.setPosition(x, y + 17); //17 because outline overlaps
+	components.bodyRect.setFillColor(sf::Color(80, 80, 80, 64));
+	components.bodyRect.setOutlineColor(sf::Color(0, 255, 0, 255));
+	components.bodyRect.setOutlineThickness(1.0f);
+
+	components.titleText.setPosition(x + 3, y - 1);
+	components.titleText.setString(title);
+	components.titleText.setCharacterSize(14);
+	components.titleText.setFont(*assets->getFont("MenuTitle")->get());
+}
 void GUIMenu::draw(sf::RenderTarget& _target, sf::RenderStates _states) const
 {
-	EXP::log("DEBUG1");
-	_states.transform.translate(sf::Vector2f((float)x, (float)y));
-	EXP::log("DEBUG2");
+	_target.draw(components.titleRect, _states);
+	_target.draw(components.bodyRect, _states);
+	_target.draw(components.titleText, _states);
+
+
+	_states.transform.translate(sf::Vector2f((float)x, (float)y+16));
 	for (auto it : elements)
 	{
 		it->draw(_target, _states);
 	}
-	EXP::log("DEBUG3");
 }
 void GUIMenu::handleEvent(sf::Event* _event)
 {
@@ -50,22 +77,27 @@ void GUIMenu::removeElement(int _pos)
 void GUIMenu::setX(int _x)
 {
 	x = _x;
+	update();
 }
 void GUIMenu::setY(int _y)
 {
 	y = _y;
+	update();
 }
 void GUIMenu::setWidth(int _width)
 {
 	width = _width;
+	update();
 }
 void GUIMenu::setHeight(int _height)
 {
 	height = _height;
+	update();
 }
 void GUIMenu::setTitle(std::string _title)
 {
 	title = _title;
+	update();
 }
 int GUIMenu::getX()
 {

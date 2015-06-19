@@ -2,10 +2,12 @@
 
 Taggable::Taggable()
 {
+	EXP::log("[Info]Constructing Taggable... " + utils::tostring(this));
 	EXP::log("[Info]Taggable has been constructed: " + utils::tostring(this));
 }
 Taggable::~Taggable()
 {
+	EXP::log("[Info]Destructing Taggable... " + utils::tostring(this));
 	EXP::log("[Info]Taggable has been destructed: " + utils::tostring(this));
 }
 

@@ -11,6 +11,7 @@ GameEngine::GameEngine()
 	renderer = nullptr;
 	simulator = nullptr;
 	level = nullptr;
+	assets = nullptr;
 
 	EXP::log("[Info]GameEngine has been constructed: " + utils::tostring(this));
 }
@@ -30,6 +31,8 @@ GameEngine::~GameEngine()
 	simulator = nullptr;
 	delete level;
 	level = nullptr;
+	delete assets;
+	assets = nullptr;
 
 	EXP::log("[Info]GameEngine has been destructed: " + utils::tostring(this));
 }
@@ -54,10 +57,13 @@ void GameEngine::launch()
 	gameWindow->display();
 	gameWindow->setActive(false);
 
+	//asset manager
+	assets = new AssetManager();
+
 	//gui manager
-	guiManager = new GUIManager();
-	GUIMenu test;
-	InputField x;
+	guiManager = new GUIManager(assets);
+	GUIMenu test(assets);
+	InputField x(assets);
 	GUIElement* p = &x;
 	test.addElement(p);
 	guiManager->addMenu(&test);
@@ -96,6 +102,8 @@ void GameEngine::launch()
 	eventManager = nullptr;
 	delete guiManager;
 	guiManager = nullptr;
+	delete assets;
+	assets = nullptr;
 	gameWindow->close();
 	delete gameWindow;
 	gameWindow = nullptr;

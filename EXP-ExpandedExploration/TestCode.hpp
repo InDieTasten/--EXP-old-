@@ -28,7 +28,17 @@ namespace tests {
 			return;
 		}
 	}
-
+	//SFML
+	//SFML/Sprite
+	void SFML_Sprite_Destruction1()
+	{
+		sf::Sprite x;
+	}
+	void SFML_Sprite_Destruction2()
+	{
+		sf::Sprite* x = new sf::Sprite();
+		delete x;
+	}
 	//Utilities
 	//Utilities/Conversion
 	//Utilities/Conversion/tostring
@@ -360,6 +370,9 @@ namespace EXP {
 		EXP::log(" [Info]==Init Logger==");
 		int failed = 0;
 		try {
+			tests::tester(&tests::SFML_Sprite_Destruction1);
+			tests::tester(&tests::SFML_Sprite_Destruction2);
+
 			tests::tester(&tests::Utilities_Conversion_tostring_integerConversion);
 			tests::tester(&tests::Utilities_Conversion_tostring_stringConversion);
 			tests::tester(&tests::Utilities_Conversion_tostring_floatConversion);

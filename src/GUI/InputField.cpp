@@ -1,29 +1,19 @@
 #include <GUI\InputField.hpp>
 
-InputField::InputField()
+InputField::InputField(AssetManager* _assets) : GUIElement(_assets)
 {
 	type = ElementType::InputField;
 	EXP::log("[Info]InputField has been constructed: " + utils::tostring(this));
-
-	
-	
 }
 InputField::~InputField()
 {
+	EXP::log("[Info]Destructing InputField... " + utils::tostring(this));
 	EXP::log("[Info]InputField has been destructed: " + utils::tostring(this));
 }
 
 void InputField::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	sf::RectangleShape x(sf::Vector2f(300,300));
-	
-
-	sf::Text text(content, font);
-
-	x.setFillColor(sf::Color::Blue);
-
-
-	target.draw(x);
+	//WORK
 }
 void InputField::handleEvent(sf::Event* _event)
 {

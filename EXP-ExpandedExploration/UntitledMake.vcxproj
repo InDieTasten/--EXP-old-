@@ -60,6 +60,9 @@
     <Text Include="Storyline.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\Assets\AssetManager.cpp" />
+    <ClCompile Include="..\src\Assets\Font.cpp" />
+    <ClCompile Include="..\src\Assets\FontManager.cpp" />
     <ClCompile Include="..\src\Assets\Texture.cpp" />
     <ClCompile Include="..\src\Assets\TextureManager.cpp" />
     <ClCompile Include="..\src\Core\main.cpp" />
@@ -87,9 +90,13 @@
     <ClCompile Include="..\src\Processing\GameEngine.cpp" />
     <ClCompile Include="..\src\Processing\Renderer.cpp" />
     <ClCompile Include="..\src\Processing\Simulator.cpp" />
+    <ClCompile Include="..\src\SFML\Text.cpp" />
     <ClCompile Include="..\src\Utilities\Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\Assets\AssetManager.hpp" />
+    <ClInclude Include="..\include\Assets\Font.hpp" />
+    <ClInclude Include="..\include\Assets\FontManager.hpp" />
     <ClInclude Include="..\include\Assets\Texture.hpp" />
     <ClInclude Include="..\include\Assets\TextureManager.hpp" />
     <ClInclude Include="..\include\Data\Attachable.hpp" />
@@ -116,6 +123,7 @@
     <ClInclude Include="..\include\Processing\GameEngine.hpp" />
     <ClInclude Include="..\include\Processing\Renderer.hpp" />
     <ClInclude Include="..\include\Processing\Simulator.hpp" />
+    <ClInclude Include="..\include\SFML\Text.hpp" />
     <ClInclude Include="..\include\Utilities\Conversion.hpp" />
     <ClInclude Include="..\include\Utilities\Logger.hpp" />
     <ClInclude Include="..\include\Utilities\VERSION.hpp" />
