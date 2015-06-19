@@ -1,7 +1,9 @@
 #ifndef _GUIMenu_hpp_
 #define _GUIMenu_hpp_
 
+#include <Assets\AssetManager.hpp>
 #include <SFML\Graphics.hpp>
+#include <SFML\Text.hpp>
 #include <Data\Taggable.hpp>
 #include <string>
 #include <vector>
@@ -19,11 +21,22 @@ private:
 	int height;
 	std::string title;
 
+	mutable bool once;
+
 	std::vector<GUIElement*> elements;
+
+	struct Components{
+		sf::RectangleShape titleRect;
+		sf::RectangleShape bodyRect;
+		Text titleText;
+		sf::RectangleShape closeButtonRect;
+		sf::VertexArray closeButtonCross;
+	} components;
 public:
-	GUIMenu();
+	GUIMenu(AssetManager* _assets);
 	~GUIMenu();
 
+	void update();
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	void handleEvent(sf::Event* _event);
 

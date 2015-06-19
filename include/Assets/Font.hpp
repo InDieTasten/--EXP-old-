@@ -1,5 +1,5 @@
-#ifndef _Texture_hpp_
-#define _Texture_hpp_
+#ifndef _Font_hpp_
+#define _Font_hpp_
 
 
 #include <SFML\Graphics.hpp>
@@ -9,21 +9,21 @@
 
 extern void EXP::log(std::string);
 
-class Texture
+class Font
 {
 private:
-	sf::Texture* data;
+	sf::Font* data;
 	const std::string* id;
 	std::string path;
 public:
-	Texture(const std::string* _id, std::string _path);
-	~Texture();
+	Font(const std::string* _id, std::string _path);
+	~Font();
 
 	void load();
 	void unload();
-	sf::Texture* get();
+	sf::Font* get();
 	std::string getID();
 	std::string getPath();
 };
 
-#endif // !_Texture_hpp_
+#endif // !_Font_hpp_

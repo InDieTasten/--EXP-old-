@@ -40,6 +40,9 @@ OBJECTS = \
 	..\src\Utilities\Logger.o \
 	..\src\Assets\Texture.o \
 	..\src\Assets\TextureManager.o \
+	..\src\Assets\Font.o \
+	..\src\Assets\FontManager.o \
+	..\src\Assets\AssetManager.o \
 	..\src\Input\EventManager.o \
 	..\src\Input\Actuator.o \
 	..\src\Data\Vector.o \
@@ -63,7 +66,8 @@ OBJECTS = \
 	..\src\GUI\GUIMenu.o \
 	..\src\GUI\InputField.o \
 	..\src\GUI\Label.o \
-	..\src\GUI\Responsive.o
+	..\src\GUI\Responsive.o \
+	..\src\SFML\Text.o
 
 rebuild: clean build
 	echo DONE!
