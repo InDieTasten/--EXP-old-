@@ -30,6 +30,9 @@
     <Filter Include="5 GUI">
       <UniqueIdentifier>{c2773cbc-1b0a-41c0-87ef-25b3046f894e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="0 SFML">
+      <UniqueIdentifier>{852dffb1-94a5-48f0-a6e2-5c21a3c33999}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Utilities\Logger.cpp">
@@ -115,6 +118,18 @@
     </ClCompile>
     <ClCompile Include="..\src\GUI\Responsive.cpp">
       <Filter>5 GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Assets\FontManager.cpp">
+      <Filter>1 Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Assets\Font.cpp">
+      <Filter>1 Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Assets\AssetManager.cpp">
+      <Filter>1 Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\SFML\Text.cpp">
+      <Filter>0 SFML</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -207,6 +222,18 @@
     </ClInclude>
     <ClInclude Include="..\include\GUI\Button.hpp">
       <Filter>5 GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Assets\Font.hpp">
+      <Filter>1 Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Assets\FontManager.hpp">
+      <Filter>1 Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Assets\AssetManager.hpp">
+      <Filter>1 Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SFML\Text.hpp">
+      <Filter>0 SFML</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

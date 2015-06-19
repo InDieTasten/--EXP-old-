@@ -8,7 +8,7 @@ TextureManager::~TextureManager()
 {
 	if (textures.size() != 0)
 	{
-		EXP::log("[Warning]Forcefully destructing textures");
+		EXP::log("[Info]Forcefully destructing textures");
 		for (auto it : textures)
 		{
 			delete it.second;
@@ -42,6 +42,7 @@ Texture* TextureManager::getTexture(std::string _id)
 		return tmp;
 	}
 	else {
-		EXP::log("[Warning]Trtied to get unknown Texture: " + _id);
+		EXP::log("[Warning]Tried to get unknown Texture: " + _id);
+		return nullptr;
 	}
 }

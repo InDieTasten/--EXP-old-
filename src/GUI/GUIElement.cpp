@@ -1,14 +1,13 @@
 #include <GUI\GUIElement.hpp>
 
-GUIElement::GUIElement()
+GUIElement::GUIElement(AssetManager* _assets) : Responsive(_assets)
 {
-	x = 0;
-	y = 0;
+	EXP::log("[Info]Constructing GUIElement... " + utils::tostring(this));
 	EXP::log("[Info]GUIElement has been constructed: " + utils::tostring(this));
 }
 GUIElement::~GUIElement()
 {
-
+	EXP::log("[Info]Destructing GUIElement... " + utils::tostring(this));
 	EXP::log("[Info]GUIElement has been destructed: " + utils::tostring(this));
 }
 

@@ -14,7 +14,7 @@ private:
 	int height;
 	std::string text;
 public:
-	Button();
+	Button(AssetManager* _assets);
 	~Button();
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
