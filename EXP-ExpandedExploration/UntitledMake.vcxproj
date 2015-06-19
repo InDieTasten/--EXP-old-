@@ -90,6 +90,7 @@
     <ClCompile Include="..\src\Processing\GameEngine.cpp" />
     <ClCompile Include="..\src\Processing\Renderer.cpp" />
     <ClCompile Include="..\src\Processing\Simulator.cpp" />
+    <ClCompile Include="..\src\SFML\Text.cpp" />
     <ClCompile Include="..\src\Utilities\Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +123,7 @@
     <ClInclude Include="..\include\Processing\GameEngine.hpp" />
     <ClInclude Include="..\include\Processing\Renderer.hpp" />
     <ClInclude Include="..\include\Processing\Simulator.hpp" />
+    <ClInclude Include="..\include\SFML\Text.hpp" />
     <ClInclude Include="..\include\Utilities\Conversion.hpp" />
     <ClInclude Include="..\include\Utilities\Logger.hpp" />
     <ClInclude Include="..\include\Utilities\VERSION.hpp" />
