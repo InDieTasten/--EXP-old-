@@ -6,6 +6,9 @@ GUIMenu::GUIMenu(AssetManager* _assets) : Responsive(_assets)
 	y = 0;
 	height = 200;
 	width = 200;
+	once = false;
+
+	title = "-- BANANA --";
 
 	update();
 	EXP::log("[Info]GUIMenu has been constructed: " + utils::tostring(this));
@@ -31,26 +34,17 @@ void GUIMenu::update()
 	components.bodyRect.setOutlineColor(sf::Color(0, 255, 0, 255));
 	components.bodyRect.setOutlineThickness(1.0f);
 
-	components.titleText.setPosition(x, y - 1);
-	components.titleText.setColor(sf::Color::White);
-	components.titleText.setFont(*assets->getFont("MenuTitle")->get());
+	components.titleText.setPosition(x + 3, y - 1);
+	components.titleText.setString(title);
 	components.titleText.setCharacterSize(14);
-	components.titleText.setString("--My test menu--");
-
-	components.someSprite.setPosition(x, y);
-	components.someSprite.setTexture(*assets->getTexture("missing")->get());
-
-	//WORK closeButtonRect;
-	//WORK closeButtonCross;
+	components.titleText.setFont(*assets->getFont("MenuTitle")->get());
 }
 void GUIMenu::draw(sf::RenderTarget& _target, sf::RenderStates _states) const
 {
 	_target.draw(components.titleRect, _states);
 	_target.draw(components.bodyRect, _states);
 	_target.draw(components.titleText, _states);
-	_target.draw(components.closeButtonRect, _states);
-	_target.draw(components.closeButtonCross, _states);
-	_target.draw(components.someSprite, _states);
+
 
 	_states.transform.translate(sf::Vector2f((float)x, (float)y+16));
 	for (auto it : elements)
