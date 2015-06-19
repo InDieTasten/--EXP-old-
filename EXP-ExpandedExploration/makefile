@@ -66,7 +66,8 @@ OBJECTS = \
 	..\src\GUI\GUIMenu.o \
 	..\src\GUI\InputField.o \
 	..\src\GUI\Label.o \
-	..\src\GUI\Responsive.o
+	..\src\GUI\Responsive.o \
+	..\src\SFML\Text.o
 
 rebuild: clean build
 	echo DONE!
