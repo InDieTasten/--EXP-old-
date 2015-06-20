@@ -22,8 +22,6 @@ private:
 	int height;
 	std::string title;
 
-	mutable bool once;
-
 	std::vector<GUIElement*> elements;
 
 	struct Components {
@@ -38,6 +36,8 @@ private:
 		bool moving = false;
 		sf::Vector2i lastPosition;
 		bool closeButtonHover = false;
+		bool open = true;
+		bool quitting = false;
 	} state;
 public:
 	GUIMenu(AssetManager* _assets);
@@ -46,6 +46,9 @@ public:
 	void update();
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	void handleEvent(sf::RenderTarget& target, sf::Event* _event);
+
+	void show();
+	void close();
 
 	int addElement(GUIElement* _element);
 	GUIElement* getElement(int);
