@@ -15,7 +15,7 @@ void Label::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	//WORK
 }
-void Label::handleEvent(sf::Event* _event)
+void Label::handleEvent(sf::RenderTarget& target, sf::Event* _event)
 {
 	//WORK
 }
