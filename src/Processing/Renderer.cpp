@@ -35,6 +35,7 @@ void Renderer::run()
 		//window->draw(*level);
 
 		//rendering of gui
+		window->setView(window->getDefaultView());
 		window->draw(*guiManager);
 
 		//display final frame
