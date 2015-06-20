@@ -15,7 +15,7 @@ void InputField::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	//WORK
 }
-void InputField::handleEvent(sf::RenderTarget& target, sf::Event* _event)
+void InputField::handleEvent(sf::RenderWindow& target, sf::Event* _event)
 {
 	//WORK
 }

@@ -18,7 +18,7 @@ public:
 	~Button();
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-	void handleEvent(sf::RenderTarget& target, sf::Event* _event);
+	void handleEvent(sf::RenderWindow& target, sf::Event* _event);
 
 	void setWidth(int);
 	void setHeight(int);
