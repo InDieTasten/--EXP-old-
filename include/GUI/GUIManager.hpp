@@ -22,7 +22,7 @@ public:
 	void removeMenu(int);
 
 	void draw(sf::RenderTarget& _target, sf::RenderStates _states) const;
-	void handleEvent(sf::RenderTarget& _target, sf::Event* _event);
+	void handleEvent(sf::RenderWindow& _target, sf::Event* _event);
 };
 
 #endif // !_GUIManager_hpp_

@@ -69,7 +69,7 @@ void GUIMenu::draw(sf::RenderTarget& _target, sf::RenderStates _states) const
 		it->draw(_target, _states);
 	}
 }
-void GUIMenu::handleEvent(sf::RenderTarget& target, sf::Event* _event)
+void GUIMenu::handleEvent(sf::RenderWindow& target, sf::Event* _event)
 {
 	if (!state.open)
 		return;
