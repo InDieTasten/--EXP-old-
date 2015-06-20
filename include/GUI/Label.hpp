@@ -15,7 +15,7 @@ public:
 	~Label();
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-	void handleEvent(sf::Event* _event);
+	void handleEvent(sf::RenderTarget& target, sf::Event* _event);
 
 	void setText(std::string);
 	std::string getText();

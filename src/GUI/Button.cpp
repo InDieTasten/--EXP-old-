@@ -14,7 +14,7 @@ void Button::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	//Button draw routine (WORK)
 }
-void Button::handleEvent(sf::Event* _event)
+void Button::handleEvent(sf::RenderTarget& target, sf::Event* _event)
 {
 	//Button handling routine (WORK)
 }
