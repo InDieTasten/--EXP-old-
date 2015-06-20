@@ -15,7 +15,7 @@ public:
 	Responsive(AssetManager* _assets);
 	~Responsive();
 
-	virtual void handleEvent(sf::RenderTarget& target, sf::Event* _event) = 0;
+	virtual void handleEvent(sf::RenderWindow& target, sf::Event* _event) = 0;
 };
 
 #endif // !_Responsive_hpp_
