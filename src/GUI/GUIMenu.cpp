@@ -2,10 +2,10 @@
 
 GUIMenu::GUIMenu(AssetManager* _assets) : Responsive(_assets)
 {
-	x = 0;
-	y = 0;
 	height = 200;
 	width = 200;
+	x = 1;
+	y = 1;
 
 	title = "Undefined MenuTitle";
 
@@ -69,11 +69,12 @@ void GUIMenu::draw(sf::RenderTarget& _target, sf::RenderStates _states) const
 		it->draw(_target, _states);
 	}
 }
-void GUIMenu::handleEvent(sf::RenderTarget& target, sf::Event* _event)
+void GUIMenu::handleEvent(sf::RenderWindow& target, sf::Event* _event)
 {
 	if (!state.open)
 		return;
 	sf::Vector2i mouseNow;
+
 	switch (_event->type)
 	{
 	case sf::Event::MouseButtonPressed:
@@ -89,7 +90,10 @@ void GUIMenu::handleEvent(sf::RenderTarget& target, sf::Event* _event)
 		}
 		break;
 	case sf::Event::MouseMoved:
-		mouseNow = (sf::Vector2i)target.mapPixelToCoords(sf::Vector2i(_event->mouseMove.x, _event->mouseMove.y));
+		mouseNow  = (sf::Vector2i)target.mapPixelToCoords(sf::Vector2i(_event->mouseMove.x, _event->mouseMove.y));
+
+		EXP::log("[DEBUG] Diff: " + utils::tostring(mouseNow.x) + " : " + utils::tostring(mouseNow.y));
+
 		if (state.moving)
 		{
 			x += mouseNow.x - state.lastPosition.x;
@@ -103,6 +107,8 @@ void GUIMenu::handleEvent(sf::RenderTarget& target, sf::Event* _event)
 			update();
 		}
 		
+		state.lastPosition = mouseNow;
+
 		state.titleHover = utils::hovering(components.titleRect.getGlobalBounds(), state.lastPosition);
 		
 		bool old = state.closeButtonHover;
@@ -111,10 +117,8 @@ void GUIMenu::handleEvent(sf::RenderTarget& target, sf::Event* _event)
 			update();
 		}
 
-		state.lastPosition = mouseNow;
 		break;
 	}
-
 	for (auto it : elements)
 	{
 		it->handleEvent(target, _event);
