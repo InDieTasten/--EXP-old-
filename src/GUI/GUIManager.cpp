@@ -41,10 +41,10 @@ void GUIManager::draw(sf::RenderTarget& _target, sf::RenderStates _states) const
 		it->draw(_target, _states);
 	}
 }
-void GUIManager::handleEvent(sf::Event* _event)
+void GUIManager::handleEvent(sf::RenderTarget& _target, sf::Event* _event)
 {
 	for (auto it : menus)
 	{
-		it->handleEvent(_event);
+		it->handleEvent(_target, _event);
 	}
 }

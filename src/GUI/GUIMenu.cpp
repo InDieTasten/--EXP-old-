@@ -34,6 +34,20 @@ void GUIMenu::update()
 	components.bodyRect.setOutlineColor(sf::Color(0, 255, 0, 255));
 	components.bodyRect.setOutlineThickness(1.0f);
 
+	components.closeButtonRect.setSize(sf::Vector2f(14, 14));
+	components.closeButtonRect.setPosition(x + width - 15, y + 1);
+	components.closeButtonRect.setFillColor(sf::Color(80, 80, 80, 0));
+	components.closeButtonRect.setOutlineColor(sf::Color(0, 255, 0, 255));
+	components.closeButtonRect.setOutlineThickness(-1.0f);
+
+	components.closeButtonCross.setPrimitiveType(sf::PrimitiveType::Lines);
+	components.closeButtonCross.clear();
+	components.closeButtonCross.append(sf::Vertex(sf::Vector2f(x + width - 13, y + 3 ), sf::Color::White)); //upper left
+	components.closeButtonCross.append(sf::Vertex(sf::Vector2f(x + width - 3,  y + 13), sf::Color::White)); //lower right
+	components.closeButtonCross.append(sf::Vertex(sf::Vector2f(x + width - 13, y + 13), sf::Color::White)); //lower left
+	components.closeButtonCross.append(sf::Vertex(sf::Vector2f(x + width - 3,  y + 3 ), sf::Color::White)); //upper right
+
+
 	components.titleText.setPosition(x + 3, y - 1);
 	components.titleText.setString(title);
 	components.titleText.setCharacterSize(14);
@@ -43,6 +57,8 @@ void GUIMenu::draw(sf::RenderTarget& _target, sf::RenderStates _states) const
 {
 	_target.draw(components.titleRect, _states);
 	_target.draw(components.bodyRect, _states);
+	_target.draw(components.closeButtonRect, _states);
+	_target.draw(components.closeButtonCross, _states);
 	_target.draw(components.titleText, _states);
 
 
@@ -52,11 +68,37 @@ void GUIMenu::draw(sf::RenderTarget& _target, sf::RenderStates _states) const
 		it->draw(_target, _states);
 	}
 }
-void GUIMenu::handleEvent(sf::Event* _event)
+void GUIMenu::handleEvent(sf::RenderTarget& target, sf::Event* _event)
 {
+	sf::Vector2i mouseNow;
+	switch (_event->type)
+	{
+	case sf::Event::MouseButtonPressed:
+		state.moving = state.titleHover;
+		break;
+	case sf::Event::MouseButtonReleased:
+		state.moving = false;
+		break;
+	case sf::Event::MouseMoved:
+		mouseNow = (sf::Vector2i)target.mapPixelToCoords(sf::Vector2i(_event->mouseMove.x, _event->mouseMove.y));
+		if (state.moving)
+		{
+			x += mouseNow.x - state.lastPosition.x;
+			y += mouseNow.y - state.lastPosition.y;
+			update();
+		}
+
+
+		state.titleHover = utils::hovering(components.titleRect.getGlobalBounds(), state.lastPosition);
+		state.closeButtonHover = utils::hovering(components.closeButtonRect.getGlobalBounds(), state.lastPosition);
+
+		state.lastPosition = mouseNow;
+		break;
+	}
+
 	for (auto it : elements)
 	{
-		it->handleEvent(_event);
+		it->handleEvent(target, _event);
 	}
 }
 

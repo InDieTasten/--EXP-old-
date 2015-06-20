@@ -11,6 +11,7 @@
 
 #include <Utilities\Logger.hpp>
 #include <Utilities\Conversion.hpp>
+#include <Utilities\UI.hpp>
 
 class GUIMenu : public sf::Drawable, public Taggable, public Responsive
 {
@@ -25,20 +26,26 @@ private:
 
 	std::vector<GUIElement*> elements;
 
-	struct Components{
+	struct Components {
 		sf::RectangleShape titleRect;
 		sf::RectangleShape bodyRect;
 		Text titleText;
 		sf::RectangleShape closeButtonRect;
 		sf::VertexArray closeButtonCross;
 	} components;
+	struct State {
+		bool titleHover = false;
+		bool moving = false;
+		sf::Vector2i lastPosition;
+		bool closeButtonHover = false;
+	} state;
 public:
 	GUIMenu(AssetManager* _assets);
 	~GUIMenu();
 
 	void update();
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-	void handleEvent(sf::Event* _event);
+	void handleEvent(sf::RenderTarget& target, sf::Event* _event);
 
 	int addElement(GUIElement* _element);
 	GUIElement* getElement(int);
