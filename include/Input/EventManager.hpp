@@ -38,7 +38,6 @@ private:
 	sf::RenderWindow* target;
 	bool listening;
 	sf::Mutex confmtx;
-	sf::Time sampleRate;
 
 public:
 	EventManager(sf::RenderWindow* _target);
@@ -46,7 +45,6 @@ public:
 
 	void listen(GUIManager* _guiManager);
 	void terminate();
-	void setSampleRate(sf::Time);
 
 	void addMouseMove(void(*_listener)(sf::Event::MouseMoveEvent));
 	void removeMouseMove(void(*_listener)(sf::Event::MouseMoveEvent));
