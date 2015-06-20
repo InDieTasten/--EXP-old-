@@ -2,10 +2,10 @@
 
 GUIMenu::GUIMenu(AssetManager* _assets) : Responsive(_assets)
 {
-	x = 0;
-	y = 0;
 	height = 200;
 	width = 200;
+	x = 1;
+	y = 1;
 
 	title = "Undefined MenuTitle";
 
