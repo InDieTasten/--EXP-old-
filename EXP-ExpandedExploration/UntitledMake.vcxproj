@@ -92,6 +92,7 @@
     <ClCompile Include="..\src\Processing\Simulator.cpp" />
     <ClCompile Include="..\src\SFML\Text.cpp" />
     <ClCompile Include="..\src\Utilities\Logger.cpp" />
+    <ClCompile Include="..\src\Utilities\UI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Assets\AssetManager.hpp" />
@@ -126,6 +127,7 @@
     <ClInclude Include="..\include\SFML\Text.hpp" />
     <ClInclude Include="..\include\Utilities\Conversion.hpp" />
     <ClInclude Include="..\include\Utilities\Logger.hpp" />
+    <ClInclude Include="..\include\Utilities\UI.hpp" />
     <ClInclude Include="..\include\Utilities\VERSION.hpp" />
     <ClInclude Include="TestCode.hpp" />
   </ItemGroup>

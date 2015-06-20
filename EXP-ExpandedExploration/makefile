@@ -38,6 +38,7 @@ LIBRARIES = \
 
 OBJECTS = \
 	..\src\Utilities\Logger.o \
+	..\src\Utilities\UI.o \
 	..\src\Assets\Texture.o \
 	..\src\Assets\TextureManager.o \
 	..\src\Assets\Font.o \
