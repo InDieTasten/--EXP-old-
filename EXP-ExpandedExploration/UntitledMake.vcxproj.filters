@@ -131,6 +131,9 @@
     <ClCompile Include="..\src\SFML\Text.cpp">
       <Filter>0 SFML</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Utilities\UI.cpp">
+      <Filter>8 Utilities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Utilities\Logger.hpp">
@@ -234,6 +237,9 @@
     </ClInclude>
     <ClInclude Include="..\include\SFML\Text.hpp">
       <Filter>0 SFML</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Utilities\UI.hpp">
+      <Filter>8 Utilities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
