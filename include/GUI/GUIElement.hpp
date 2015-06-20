@@ -22,7 +22,7 @@ public:
 	~GUIElement();
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const = 0;
-	virtual void handleEvent(sf::Event* _event) = 0;
+	virtual void handleEvent(sf::RenderTarget& target, sf::Event* _event) = 0;
 
 	void setX(int);
 	void setY(int);
