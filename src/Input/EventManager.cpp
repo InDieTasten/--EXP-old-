@@ -4,7 +4,6 @@ EventManager::EventManager(sf::RenderWindow* _target)
 {
 	target = _target;
 	listening = false;
-	sampleRate = sf::milliseconds(1000 / 30);
 
 	EXP::log("[Info]EventManager has been constructed: " + utils::tostring(this));
 }
@@ -44,12 +43,10 @@ void EventManager::listen(GUIManager* _guiManager)
 	confmtx.lock();
 	listening = true;
 	sf::Clock limiter;
-	limiter.restart();
 	while (listening)
 	{
-		sf::Time time = sampleRate - limiter.restart();
 		confmtx.unlock();
-		sf::sleep(time);
+		sf::sleep(sf::Time(sf::milliseconds(1000.0f / 60.0f) - limiter.restart()));
 		confmtx.lock();
 
 		sf::Event event;

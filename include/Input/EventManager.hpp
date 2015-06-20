@@ -38,7 +38,6 @@ private:
 	sf::RenderWindow* target;
 	bool listening;
 	sf::Mutex confmtx;
-	sf::Time sampleRate;
 
 public:
 	EventManager(sf::RenderWindow* _target);
