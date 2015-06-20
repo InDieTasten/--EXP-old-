@@ -6,9 +6,8 @@ GUIMenu::GUIMenu(AssetManager* _assets) : Responsive(_assets)
 	y = 0;
 	height = 200;
 	width = 200;
-	once = false;
 
-	title = "-- BANANA --";
+	title = "Undefined MenuTitle";
 
 	update();
 	EXP::log("[Info]GUIMenu has been constructed: " + utils::tostring(this));
@@ -36,16 +35,16 @@ void GUIMenu::update()
 
 	components.closeButtonRect.setSize(sf::Vector2f(14, 14));
 	components.closeButtonRect.setPosition(x + width - 15, y + 1);
-	components.closeButtonRect.setFillColor(sf::Color(80, 80, 80, 0));
-	components.closeButtonRect.setOutlineColor(sf::Color(0, 255, 0, 255));
+	components.closeButtonRect.setFillColor(sf::Color(255, !state.quitting * 255, !state.quitting * 255, state.closeButtonHover * 255));
+	components.closeButtonRect.setOutlineColor(sf::Color(state.closeButtonHover * 255, !state.quitting * 255, !state.quitting * state.closeButtonHover * 255, 255));
 	components.closeButtonRect.setOutlineThickness(-1.0f);
 
 	components.closeButtonCross.setPrimitiveType(sf::PrimitiveType::Lines);
 	components.closeButtonCross.clear();
-	components.closeButtonCross.append(sf::Vertex(sf::Vector2f(x + width - 13, y + 3 ), sf::Color::White)); //upper left
-	components.closeButtonCross.append(sf::Vertex(sf::Vector2f(x + width - 3,  y + 13), sf::Color::White)); //lower right
-	components.closeButtonCross.append(sf::Vertex(sf::Vector2f(x + width - 13, y + 13), sf::Color::White)); //lower left
-	components.closeButtonCross.append(sf::Vertex(sf::Vector2f(x + width - 3,  y + 3 ), sf::Color::White)); //upper right
+	components.closeButtonCross.append(sf::Vertex(sf::Vector2f(x + width - 13, y + 3),  sf::Color(!state.closeButtonHover * 255, !state.closeButtonHover * 255, !state.closeButtonHover * 255))); //upper left
+	components.closeButtonCross.append(sf::Vertex(sf::Vector2f(x + width - 3, y + 13),  sf::Color(!state.closeButtonHover * 255, !state.closeButtonHover * 255, !state.closeButtonHover * 255))); //lower right
+	components.closeButtonCross.append(sf::Vertex(sf::Vector2f(x + width - 13, y + 13), sf::Color(!state.closeButtonHover * 255, !state.closeButtonHover * 255, !state.closeButtonHover * 255))); //lower left
+	components.closeButtonCross.append(sf::Vertex(sf::Vector2f(x + width - 3, y + 3),   sf::Color(!state.closeButtonHover * 255, !state.closeButtonHover * 255, !state.closeButtonHover * 255))); //upper right
 
 
 	components.titleText.setPosition(x + 3, y - 1);
@@ -55,6 +54,8 @@ void GUIMenu::update()
 }
 void GUIMenu::draw(sf::RenderTarget& _target, sf::RenderStates _states) const
 {
+	if (!state.open)
+		return;
 	_target.draw(components.titleRect, _states);
 	_target.draw(components.bodyRect, _states);
 	_target.draw(components.closeButtonRect, _states);
@@ -70,14 +71,22 @@ void GUIMenu::draw(sf::RenderTarget& _target, sf::RenderStates _states) const
 }
 void GUIMenu::handleEvent(sf::RenderTarget& target, sf::Event* _event)
 {
+	if (!state.open)
+		return;
 	sf::Vector2i mouseNow;
 	switch (_event->type)
 	{
 	case sf::Event::MouseButtonPressed:
-		state.moving = state.titleHover;
+		state.moving = state.titleHover && !state.closeButtonHover;
+		state.quitting = state.closeButtonHover;
+		update();
 		break;
 	case sf::Event::MouseButtonReleased:
 		state.moving = false;
+		if (state.quitting)
+		{
+			close();
+		}
 		break;
 	case sf::Event::MouseMoved:
 		mouseNow = (sf::Vector2i)target.mapPixelToCoords(sf::Vector2i(_event->mouseMove.x, _event->mouseMove.y));
@@ -88,9 +97,19 @@ void GUIMenu::handleEvent(sf::RenderTarget& target, sf::Event* _event)
 			update();
 		}
 
-
+		if (state.quitting)
+		{
+			state.quitting = false;
+			update();
+		}
+		
 		state.titleHover = utils::hovering(components.titleRect.getGlobalBounds(), state.lastPosition);
-		state.closeButtonHover = utils::hovering(components.closeButtonRect.getGlobalBounds(), state.lastPosition);
+		
+		bool old = state.closeButtonHover;
+		if (old != (state.closeButtonHover = utils::hovering(components.closeButtonRect.getGlobalBounds(), state.lastPosition)))
+		{
+			update();
+		}
 
 		state.lastPosition = mouseNow;
 		break;
@@ -100,6 +119,15 @@ void GUIMenu::handleEvent(sf::RenderTarget& target, sf::Event* _event)
 	{
 		it->handleEvent(target, _event);
 	}
+}
+
+void GUIMenu::show()
+{
+	state.open = true;
+}
+void GUIMenu::close()
+{
+	state.open = false;
 }
 
 int GUIMenu::addElement(GUIElement* _element)
