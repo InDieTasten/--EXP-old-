@@ -43,10 +43,11 @@ void EventManager::listen(GUIManager* _guiManager)
 	confmtx.lock();
 	listening = true;
 	sf::Clock limiter;
+	sf::Time time(sf::milliseconds(1000.0f/300.0f));
 	while (listening)
 	{
 		confmtx.unlock();
-		sf::sleep(sf::Time(sf::milliseconds(1000.0f / 60.0f) - limiter.restart()));
+		sf::sleep(time - limiter.restart());
 		confmtx.lock();
 
 		sf::Event event;
@@ -156,12 +157,6 @@ void EventManager::terminate()
 	confmtx.unlock();
 	sf::sleep(sf::seconds(0.05f));
 	confmtx.lock();
-	confmtx.unlock();
-}
-void EventManager::setSampleRate(sf::Time _looptime)
-{
-	confmtx.lock();
-	sampleRate = _looptime;
 	confmtx.unlock();
 }
 
