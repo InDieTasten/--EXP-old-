@@ -16,7 +16,6 @@ INCLUDES = \
 	-I..\..\UG_sfml\include \
 	-I..\..\UG_libavc\include \
 	-I..\include \
-	-I..\..\UG_boost \
 	-I..\..\UG_luabind
 
 LIBPATH = \
