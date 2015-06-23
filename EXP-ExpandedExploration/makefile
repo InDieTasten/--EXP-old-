@@ -6,7 +6,6 @@ COMPILER = "C:\Program Files (x86)\CodeBlocks\MinGW\bin\mingw32-g++.exe"
 
 CSWITCHES = \
 	-fexceptions \
-	-O3 \
 	-std=c++11 \
 	-D SFML_STATIC
 
@@ -16,12 +15,14 @@ INCLUDES = \
 	-I..\..\UG_lua\include \
 	-I..\..\UG_sfml\include \
 	-I..\..\UG_libavc\include \
-	-I..\include
+	-I..\include \
+	-I..\..\UG_luabind
 
 LIBPATH = \
 	-L..\..\UG_lua\src\Lua5.2.3\bin\Release \
 	-L..\..\UG_sfml\lib \
-	-L..\..\UG_libavc\lib
+	-L..\..\UG_libavc\lib \
+	-L..\..\UG_luabind\lib \
 
 LIBRARIES = \
 	-lsfml-audio-s \
@@ -68,7 +69,7 @@ OBJECTS = \
 	..\src\GUI\InputField.o \
 	..\src\GUI\Label.o \
 	..\src\GUI\Responsive.o \
-	..\src\SFML\Text.o
+	..\src\SFML\Text.o \
 
 rebuild: clean build
 	echo DONE!
@@ -88,4 +89,3 @@ clean:
 
 $(OBJECTS): $(SOURCEDIR)$(@R).cpp
 	$(COMPILER) $(CSWITCHES) $(INCLUDES) -c $(@R).cpp -o $(@R).o
-	
