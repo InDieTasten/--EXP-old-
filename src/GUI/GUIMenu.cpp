@@ -92,8 +92,6 @@ void GUIMenu::handleEvent(sf::RenderWindow& target, sf::Event* _event)
 	case sf::Event::MouseMoved:
 		mouseNow  = (sf::Vector2i)target.mapPixelToCoords(sf::Vector2i(_event->mouseMove.x, _event->mouseMove.y));
 
-		EXP::log("[DEBUG] Diff: " + utils::tostring(mouseNow.x) + " : " + utils::tostring(mouseNow.y));
-
 		if (state.moving)
 		{
 			x += mouseNow.x - state.lastPosition.x;
@@ -101,11 +99,6 @@ void GUIMenu::handleEvent(sf::RenderWindow& target, sf::Event* _event)
 			update();
 		}
 
-		if (state.quitting)
-		{
-			state.quitting = false;
-			update();
-		}
 		
 		state.lastPosition = mouseNow;
 
@@ -114,6 +107,10 @@ void GUIMenu::handleEvent(sf::RenderWindow& target, sf::Event* _event)
 		bool old = state.closeButtonHover;
 		if (old != (state.closeButtonHover = utils::hovering(components.closeButtonRect.getGlobalBounds(), state.lastPosition)))
 		{
+			if (state.quitting)
+			{
+				state.quitting = false;
+			}
 			update();
 		}
 
