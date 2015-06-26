@@ -5,8 +5,8 @@
 #include <GUI\Responsive.hpp>
 #include <GUI\GUIMenu.hpp>
 #include <Assets\AssetManager.hpp>
-#include <GUI\InputField.hpp>
-#include <GUI\Label.hpp>
+#include <GUI\Elements\InputField.hpp>
+#include <GUI\Elements\Label.hpp>
 
 #include <Utilities\Logger.hpp>
 #include <Utilities\Conversion.hpp>

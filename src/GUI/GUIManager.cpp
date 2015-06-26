@@ -10,6 +10,7 @@ GUIManager::GUIManager(AssetManager* _assets) : Responsive(_assets)
 
 	testMenu = new GUIMenu(assets);
 	testLabel = new Label(assets);
+	testLabel->setX(15);
 	testMenu->setBorderColor(sf::Color::Red);
 	testMenu->addElement(testLabel);
 	this->addMenu(testMenu);

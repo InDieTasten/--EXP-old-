@@ -17,10 +17,12 @@ GUIElement::~GUIElement()
 void GUIElement::setX(int _x)
 {
 	x = _x;
+	update();
 }
 void GUIElement::setY(int _y)
 {
 	y = _y;
+	update();
 }
 int GUIElement::getX()
 {
