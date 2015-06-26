@@ -57,6 +57,7 @@ void GUIMenu::update()
 	components.titleText.setColor(titleColor);
 	components.titleText.setStyle(sf::Text::Bold);
 	components.titleText.setFont(*assets->getFont(font)->get());
+
 	confmtx.unlock();
 }
 void GUIMenu::draw(sf::RenderTarget& _target, sf::RenderStates _states) const
