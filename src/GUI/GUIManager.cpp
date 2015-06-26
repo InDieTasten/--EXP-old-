@@ -7,12 +7,25 @@ GUIManager::GUIManager(AssetManager* _assets) : Responsive(_assets)
 	assets->getFont("Mono")->load();
 	assets->addTexture("missing", "./content/stock/texture/missing.png");
 	assets->getTexture("missing")->load();
+
+	testMenu = new GUIMenu(assets);
+	testLabel = new Label(assets);
+	testMenu->setBorderColor(sf::Color::Red);
+	testMenu->addElement(testLabel);
+	this->addMenu(testMenu);
+
 	EXP::log("[Info]GUIManager has been constructed: " + utils::tostring(this));
 }
 GUIManager::~GUIManager()
 {
 	EXP::log("[Info]Destructing GUIManager... " + utils::tostring(this));
 	EXP::log("[Info]Forcefully removing menus: " +  utils::tostring(this));
+	
+	delete testMenu;
+	testMenu = nullptr;
+	delete testLabel;
+	testLabel = nullptr;
+
 	while (menus.size() > 0)
 	{
 		removeMenu(0);
