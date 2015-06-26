@@ -33,7 +33,7 @@ void GUIMenu::update()
 	components.bodyRect.setSize(sf::Vector2f(width, height));
 	components.bodyRect.setPosition(x, y + 17); //17 because outline overlaps
 	components.bodyRect.setFillColor(backColor);
-	components.bodyRect.setOutlineColor(sf::Color(0, 255, 0, 255));
+	components.bodyRect.setOutlineColor(borderColor);
 	components.bodyRect.setOutlineThickness(1.0f);
 
 	components.closeButtonRect.setSize(sf::Vector2f(14, 14));
@@ -54,6 +54,7 @@ void GUIMenu::update()
 	components.titleText.setString(title);
 	components.titleText.setCharacterSize(14);
 	components.titleText.setColor(titleColor);
+	components.titleText.setStyle(sf::Text::Bold);
 	components.titleText.setFont(*assets->getFont(font)->get());
 }
 void GUIMenu::draw(sf::RenderTarget& _target, sf::RenderStates _states) const
@@ -177,18 +178,22 @@ void GUIMenu::setTitle(std::string _title)
 void GUIMenu::setFont(std::string _font)
 {
 	font = _font;
+	update();
 }
 void GUIMenu::setBorderColor(sf::Color _color)
 {
 	borderColor = _color;
+	update();
 }
 void GUIMenu::setBackColor(sf::Color _color)
 {
 	backColor = _color;
+	update();
 }
 void GUIMenu::setTitleColor(sf::Color _color)
 {
 	titleColor = _color;
+	update();
 }
 int GUIMenu::getX()
 {
