@@ -138,10 +138,22 @@ void GUIMenu::handleEvent(sf::RenderWindow& target, sf::Event* _event)
 
 		break;
 	}
+
+	sf::View pre = target.getView();
+	sf::View at = pre;
+
+	float heightFactor = height / at.getSize().y;
+	float widthFactor = width / at.getSize().x;
+	float xFactor = x / at.getSize().x;
+	float yFactor = (y + 16) / at.getSize().y;
+	at.reset(sf::FloatRect(0, 0, width, height));
+	at.setViewport(sf::FloatRect(xFactor, yFactor, widthFactor, heightFactor));
 	for (auto it : elements)
 	{
 		it->handleEvent(target, _event);
 	}
+	target.setView(pre);
+
 	confmtx.unlock();
 }
 
