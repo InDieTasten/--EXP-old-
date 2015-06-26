@@ -1,4 +1,4 @@
-#include <GUI\Button.hpp>
+#include <GUI\Elements\Button.hpp>
 
 Button::Button(AssetManager* _assets) : GUIElement(_assets)
 {

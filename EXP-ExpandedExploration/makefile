@@ -62,12 +62,12 @@ OBJECTS = \
 	..\src\Processing\GameEngine.o \
 	..\src\Processing\Renderer.o \
 	..\src\Processing\Simulator.o \
-	..\src\GUI\Button.o \
+	..\src\GUI\Elements\Button.o \
 	..\src\GUI\GUIElement.o \
 	..\src\GUI\GUIManager.o \
 	..\src\GUI\GUIMenu.o \
-	..\src\GUI\InputField.o \
-	..\src\GUI\Label.o \
+	..\src\GUI\Elements\InputField.o \
+	..\src\GUI\Elements\Label.o \
 	..\src\GUI\Responsive.o \
 	..\src\SFML\Text.o \
 

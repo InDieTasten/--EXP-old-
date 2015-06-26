@@ -22,6 +22,7 @@ public:
 	GUIElement(AssetManager* _assets);
 	~GUIElement();
 
+	virtual void update() = 0;
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const = 0;
 	virtual void handleEvent(sf::RenderWindow& target, sf::Event* _event) = 0;
 

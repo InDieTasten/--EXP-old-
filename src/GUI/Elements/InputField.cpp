@@ -1,4 +1,4 @@
-#include <GUI\InputField.hpp>
+#include <GUI\Elements\InputField.hpp>
 
 InputField::InputField(AssetManager* _assets) : GUIElement(_assets)
 {

@@ -16,6 +16,8 @@
 class GUIMenu : public sf::Drawable, public Taggable, public Responsive
 {
 private:
+	mutable sf::Mutex confmtx;
+
 	int x;
 	int y;
 	int width;
