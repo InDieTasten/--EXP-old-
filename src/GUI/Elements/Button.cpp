@@ -24,7 +24,7 @@ void Button::update()
 {
 	components.body.setPosition(x, y);
 	components.body.setSize(sf::Vector2f(width, height));
-	components.body.setFillColor(backColor);
+	components.body.setFillColor(backColor*sf::Color(255 * !states.clicking, 255 * !states.clicking, 255 * !states.clicking, 255 * !states.clicking) + borderColor*sf::Color(255 * states.clicking, 255 * states.clicking, 255 * states.clicking, 255 * states.clicking));
 	components.body.setOutlineColor(borderColor * sf::Color(255, 255, 255, 64 + enabled * (127+64)));
 	components.body.setOutlineThickness(1.0f);
 
@@ -44,7 +44,35 @@ void Button::draw(sf::RenderTarget& target, sf::RenderStates states) const
 }
 void Button::handleEvent(sf::RenderWindow& target, sf::Event* _event)
 {
-	//Button handling routine (WORK)
+	switch (_event->type)
+	{
+	case sf::Event::MouseButtonPressed:
+		if (states.clicking = states.hover)
+		{
+			update();
+		}
+		break;
+	case sf::Event::MouseButtonReleased:
+		if (states.clicking != (states.clicking = false))
+		{
+			EXP::log("[Info]Button has been clicked");
+			update();
+		}
+		break;
+	case sf::Event::MouseMoved:
+		sf::Vector2i mouse = (sf::Vector2i)target.mapPixelToCoords(sf::Vector2i(_event->mouseMove.x, _event->mouseMove.y));
+		sf::Vector2f mouse2 = target.getView().getTransform().transformPoint(mouse.x, mouse.y);
+		EXP::log("[DEBUG] MOUSE: " + utils::tostring(mouse2.x) + " | " + utils::tostring(mouse2.y));
+		bool old = states.hover;
+		if (states.hover != (states.hover = utils::hovering(components.body.getGlobalBounds(), mouse)))
+		{
+			EXP::log("[DEBUG] Hover: " + utils::tostring(states.hover));
+			states.clicking = states.clicking && states.hover;
+			update();
+		}
+
+		break;
+	}
 }
 
 void Button::setWidth(int _width)
