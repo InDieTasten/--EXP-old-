@@ -6,8 +6,11 @@ GUIMenu::GUIMenu(AssetManager* _assets) : Responsive(_assets)
 	width = 200;
 	x = 1;
 	y = 1;
-
 	title = "Undefined MenuTitle";
+	font = "Mono";
+	borderColor = sf::Color(0, 255, 0, 255);
+	backColor = sf::Color(80, 80, 80, 64);
+	titleColor = sf::Color::White;
 
 	update();
 	EXP::log("[Info]GUIMenu has been constructed: " + utils::tostring(this));
@@ -24,19 +27,19 @@ void GUIMenu::update()
 	components.titleRect.setSize(sf::Vector2f(width, 16));
 	components.titleRect.setPosition(x, y);
 	components.titleRect.setFillColor(sf::Color(80, 80, 80, 128));
-	components.titleRect.setOutlineColor(sf::Color(0, 255, 0, 255));
+	components.titleRect.setOutlineColor(borderColor);
 	components.titleRect.setOutlineThickness(1.0f);
 
 	components.bodyRect.setSize(sf::Vector2f(width, height));
 	components.bodyRect.setPosition(x, y + 17); //17 because outline overlaps
-	components.bodyRect.setFillColor(sf::Color(80, 80, 80, 64));
+	components.bodyRect.setFillColor(backColor);
 	components.bodyRect.setOutlineColor(sf::Color(0, 255, 0, 255));
 	components.bodyRect.setOutlineThickness(1.0f);
 
 	components.closeButtonRect.setSize(sf::Vector2f(14, 14));
 	components.closeButtonRect.setPosition(x + width - 15, y + 1);
 	components.closeButtonRect.setFillColor(sf::Color(255, !state.quitting * 255, !state.quitting * 255, state.closeButtonHover * 255));
-	components.closeButtonRect.setOutlineColor(sf::Color(state.closeButtonHover * 255, !state.quitting * 255, !state.quitting * state.closeButtonHover * 255, 255));
+	components.closeButtonRect.setOutlineColor((borderColor*sf::Color(!state.quitting * 255, !state.quitting * 255, !state.quitting * 255)) + sf::Color(state.closeButtonHover * 255, !state.quitting * 255, !state.quitting * state.closeButtonHover * 255, 255));
 	components.closeButtonRect.setOutlineThickness(-1.0f);
 
 	components.closeButtonCross.setPrimitiveType(sf::PrimitiveType::Lines);
@@ -50,7 +53,8 @@ void GUIMenu::update()
 	components.titleText.setPosition(x + 3, y - 1);
 	components.titleText.setString(title);
 	components.titleText.setCharacterSize(14);
-	components.titleText.setFont(*assets->getFont("MenuTitle")->get());
+	components.titleText.setColor(titleColor);
+	components.titleText.setFont(*assets->getFont(font)->get());
 }
 void GUIMenu::draw(sf::RenderTarget& _target, sf::RenderStates _states) const
 {
@@ -170,6 +174,22 @@ void GUIMenu::setTitle(std::string _title)
 	title = _title;
 	update();
 }
+void GUIMenu::setFont(std::string _font)
+{
+	font = _font;
+}
+void GUIMenu::setBorderColor(sf::Color _color)
+{
+	borderColor = _color;
+}
+void GUIMenu::setBackColor(sf::Color _color)
+{
+	backColor = _color;
+}
+void GUIMenu::setTitleColor(sf::Color _color)
+{
+	titleColor = _color;
+}
 int GUIMenu::getX()
 {
 	return x;
@@ -189,4 +209,20 @@ int GUIMenu::getHeight()
 std::string GUIMenu::getTitle()
 {
 	return title;
+}
+std::string GUIMenu::getFont()
+{
+	return font;
+}
+sf::Color GUIMenu::getBorderColor()
+{
+	return borderColor;
+}
+sf::Color GUIMenu::getBackColor()
+{
+	return backColor;
+}
+sf::Color GUIMenu::getTitleColor()
+{
+	return titleColor;
 }
