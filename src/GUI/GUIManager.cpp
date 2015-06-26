@@ -3,8 +3,8 @@
 GUIManager::GUIManager(AssetManager* _assets) : Responsive(_assets)
 {
 	EXP::log("[Info]Constructing GUIManager... " + utils::tostring(this));
-	assets->addFont("MenuTitle", "C:/Windows/Fonts/lucon.ttf");
-	assets->getFont("MenuTitle")->load();
+	assets->addFont("Mono", "C:/Windows/Fonts/lucon.ttf");
+	assets->getFont("Mono")->load();
 	assets->addTexture("missing", "./content/stock/texture/missing.png");
 	assets->getTexture("missing")->load();
 	EXP::log("[Info]GUIManager has been constructed: " + utils::tostring(this));
