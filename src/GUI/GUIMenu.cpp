@@ -72,7 +72,6 @@ void GUIMenu::draw(sf::RenderTarget& _target, sf::RenderStates _states) const
 	_target.draw(components.titleText, _states);
 
 
-	_states.transform.translate(sf::Vector2f((float)x, (float)y+16));
 	sf::View pre = _target.getView();
 	sf::View at = pre;
 
@@ -80,7 +79,7 @@ void GUIMenu::draw(sf::RenderTarget& _target, sf::RenderStates _states) const
 	float widthFactor = width / at.getSize().x;
 	float xFactor = x / at.getSize().x;
 	float yFactor = (y+16) / at.getSize().y;
-	at.reset(sf::FloatRect(x, y+16, width, height));
+	at.reset(sf::FloatRect(0, 0, width, height));
 	at.setViewport(sf::FloatRect(xFactor, yFactor, widthFactor, heightFactor));
 	
 	_target.setView(at);
