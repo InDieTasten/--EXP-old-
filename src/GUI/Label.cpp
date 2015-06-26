@@ -5,7 +5,7 @@ Label::Label(AssetManager* _assets) : GUIElement(_assets)
 	type = ElementType::Label;
 
 	text = "Default Label text";
-	font = "Label";
+	font = "Mono";
 	textColor = sf::Color::White;
 	textSize = 14;
 
@@ -25,6 +25,7 @@ void Label::update()
 	components.text.setPosition(x, y);
 	components.text.setCharacterSize(textSize);
 	components.text.setColor(textColor);
+	components.text.setString(text);
 }
 void Label::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
