@@ -62,11 +62,6 @@ void GameEngine::launch()
 
 	//gui manager
 	guiManager = new GUIManager(assets);
-	GUIMenu test(assets);
-	InputField x(assets);
-	GUIElement* p = &x;
-	test.addElement(p);
-	guiManager->addMenu(&test);
 
 	//create event handler for that window
 	eventManager = new EventManager(gameWindow);
