@@ -5,6 +5,7 @@
 #include <GUI\GUIElement.hpp>
 #include <SFML\Text.hpp>
 
+#include <Utilities\UI.hpp>
 #include <Utilities\Logger.hpp>
 #include <Utilities\Conversion.hpp>
 
