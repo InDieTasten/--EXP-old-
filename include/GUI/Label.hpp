@@ -7,7 +7,7 @@
 #include <Utilities\Logger.hpp>
 #include <Utilities\Conversion.hpp>
 
-class Label : GUIElement
+class Label : public GUIElement
 {
 private:
 	std::string text;
