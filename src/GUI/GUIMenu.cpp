@@ -23,6 +23,7 @@ GUIMenu::~GUIMenu()
 
 void GUIMenu::update()
 {
+	confmtx.lock();
 	//update components
 	components.titleRect.setSize(sf::Vector2f(width, 16));
 	components.titleRect.setPosition(x, y);
@@ -56,9 +57,11 @@ void GUIMenu::update()
 	components.titleText.setColor(titleColor);
 	components.titleText.setStyle(sf::Text::Bold);
 	components.titleText.setFont(*assets->getFont(font)->get());
+	confmtx.unlock();
 }
 void GUIMenu::draw(sf::RenderTarget& _target, sf::RenderStates _states) const
 {
+	confmtx.lock();
 	if (!state.open)
 		return;
 	_target.draw(components.titleRect, _states);
@@ -69,13 +72,27 @@ void GUIMenu::draw(sf::RenderTarget& _target, sf::RenderStates _states) const
 
 
 	_states.transform.translate(sf::Vector2f((float)x, (float)y+16));
+	sf::View pre = _target.getView();
+	sf::View at = pre;
+
+	float heightFactor = height / at.getSize().y;
+	float widthFactor = width / at.getSize().x;
+	float xFactor = x / at.getSize().x;
+	float yFactor = (y+16) / at.getSize().y;
+	at.reset(sf::FloatRect(x, y+16, width, height));
+	at.setViewport(sf::FloatRect(xFactor, yFactor, widthFactor, heightFactor));
+	
+	_target.setView(at);
 	for (auto it : elements)
 	{
 		it->draw(_target, _states);
 	}
+	_target.setView(pre);
+	confmtx.unlock();
 }
 void GUIMenu::handleEvent(sf::RenderWindow& target, sf::Event* _event)
 {
+	confmtx.lock();
 	if (!state.open)
 		return;
 	sf::Vector2i mouseNow;
@@ -125,6 +142,7 @@ void GUIMenu::handleEvent(sf::RenderWindow& target, sf::Event* _event)
 	{
 		it->handleEvent(target, _event);
 	}
+	confmtx.unlock();
 }
 
 void GUIMenu::show()

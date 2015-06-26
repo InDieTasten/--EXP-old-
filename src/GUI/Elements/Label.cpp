@@ -1,4 +1,4 @@
-#include <GUI\Label.hpp>
+#include <GUI\Elements\Label.hpp>
 
 Label::Label(AssetManager* _assets) : GUIElement(_assets)
 {
