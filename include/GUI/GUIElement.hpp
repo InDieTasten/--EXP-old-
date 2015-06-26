@@ -5,13 +5,14 @@
 #include <GUI\Responsive.hpp>
 #include <Data\Taggable.hpp>
 
-class GUIElement : sf::Drawable, Responsive, Taggable
+class GUIElement : public sf::Drawable, public Responsive, public Taggable
 {
 public:
 	enum ElementType{
 		Label,
 		Button,
 		InputField,
+		undefined,
 	};
 protected:
 	ElementType type;

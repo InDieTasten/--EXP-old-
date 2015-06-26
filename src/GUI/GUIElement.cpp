@@ -3,6 +3,9 @@
 GUIElement::GUIElement(AssetManager* _assets) : Responsive(_assets)
 {
 	EXP::log("[Info]Constructing GUIElement... " + utils::tostring(this));
+	type = ElementType::undefined;
+	x = 0;
+	y = 0;
 	EXP::log("[Info]GUIElement has been constructed: " + utils::tostring(this));
 }
 GUIElement::~GUIElement()
