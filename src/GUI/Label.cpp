@@ -32,7 +32,7 @@ void Label::draw(sf::RenderTarget& target, sf::RenderStates states) const
 }
 void Label::handleEvent(sf::RenderWindow& target, sf::Event* _event)
 {
-	//WORK
+	
 }
 
 void Label::setText(std::string _text)
