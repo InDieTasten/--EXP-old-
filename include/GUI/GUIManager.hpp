@@ -7,6 +7,7 @@
 #include <Assets\AssetManager.hpp>
 #include <GUI\Elements\InputField.hpp>
 #include <GUI\Elements\Label.hpp>
+#include <GUI\Elements\Button.hpp>
 
 #include <Utilities\Logger.hpp>
 #include <Utilities\Conversion.hpp>
@@ -18,6 +19,7 @@ private:
 
 	GUIMenu* testMenu;
 	Label* testLabel;
+	Button* testButton;
 
 public:
 	GUIManager(AssetManager* _assets);

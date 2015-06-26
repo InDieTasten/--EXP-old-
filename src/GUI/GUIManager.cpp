@@ -10,9 +10,13 @@ GUIManager::GUIManager(AssetManager* _assets) : Responsive(_assets)
 
 	testMenu = new GUIMenu(assets);
 	testLabel = new Label(assets);
+	testButton = new Button(assets);
 	testLabel->setX(15);
+	testButton->setX(30);
+	testButton->setY(100);
 	testMenu->setBorderColor(sf::Color::Red);
 	testMenu->addElement(testLabel);
+	testMenu->addElement(testButton);
 	this->addMenu(testMenu);
 
 	EXP::log("[Info]GUIManager has been constructed: " + utils::tostring(this));
@@ -26,6 +30,8 @@ GUIManager::~GUIManager()
 	testMenu = nullptr;
 	delete testLabel;
 	testLabel = nullptr;
+	delete testButton;
+	testButton = nullptr;
 
 	while (menus.size() > 0)
 	{
