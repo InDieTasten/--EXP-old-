@@ -86,6 +86,7 @@
     <ClCompile Include="..\src\GUI\GUIMenu.cpp" />
     <ClCompile Include="..\src\GUI\Responsive.cpp" />
     <ClCompile Include="..\src\Input\Actuator.cpp" />
+    <ClCompile Include="..\src\Input\Delegate.cpp" />
     <ClCompile Include="..\src\Input\EventManager.cpp" />
     <ClCompile Include="..\src\Processing\GameEngine.cpp" />
     <ClCompile Include="..\src\Processing\Renderer.cpp" />
