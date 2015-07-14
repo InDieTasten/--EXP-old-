@@ -140,6 +140,9 @@
     <ClCompile Include="..\src\GUI\Elements\Label.cpp">
       <Filter>5 GUI\Elements</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Input\Delegate.cpp">
+      <Filter>3 Input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Utilities\Logger.hpp">

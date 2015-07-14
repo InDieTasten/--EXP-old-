@@ -8,11 +8,13 @@
 
 class Publisher
 {
-private:
 public:
+	virtual std::string who() = 0;
+};
+class GenericPublisher : Publisher
+{
 	virtual std::string who() { return "Generic"; }
 };
-
 
 class Generic;
 template <class TEventType>
@@ -64,7 +66,16 @@ public:
 	virtual std::string who() { return "Pub1"; }
 };
 
-class Receiver
+class someStuff
+{
+	float a, b, c, d, e, f, g;
+};
+class someOtherStuff
+{
+	double a, b, c, d, e, f, g, h;
+};
+
+class Receiver : private someStuff, private someOtherStuff
 {
 public:
 	Delegate<int> getDelegate()
