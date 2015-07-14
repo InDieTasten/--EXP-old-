@@ -30,6 +30,12 @@ void Delegate<TEventType>::setMethod(void (TReceiver::* _methPtr)(EventPublisher
 }
 
 template <class TEventType>
+Generic* Delegate<TEventType>::getObject()
+{
+	return object;
+}
+
+template <class TEventType>
 void Delegate<TEventType>::operator()(EventPublisher* sender, TEventType eventArgs)
 {
 	(object->*methPtr)(sender, eventArgs);
