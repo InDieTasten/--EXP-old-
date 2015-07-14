@@ -33,6 +33,12 @@
     <Filter Include="0 SFML">
       <UniqueIdentifier>{852dffb1-94a5-48f0-a6e2-5c21a3c33999}</UniqueIdentifier>
     </Filter>
+    <Filter Include="5 GUI\Elements">
+      <UniqueIdentifier>{03f108b1-441c-486a-a614-7b07b3910712}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="5 GUI\Menus">
+      <UniqueIdentifier>{9580d0a3-88c1-4262-b84e-f9a1df796389}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Utilities\Logger.cpp">
@@ -101,19 +107,10 @@
     <ClCompile Include="..\src\GUI\GUIMenu.cpp">
       <Filter>5 GUI</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\GUI\InputField.cpp">
-      <Filter>5 GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\GUI\Button.cpp">
-      <Filter>5 GUI</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\GUI\GUIElement.cpp">
       <Filter>5 GUI</Filter>
     </ClCompile>
     <ClCompile Include="..\src\GUI\GUIManager.cpp">
-      <Filter>5 GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\GUI\Label.cpp">
       <Filter>5 GUI</Filter>
     </ClCompile>
     <ClCompile Include="..\src\GUI\Responsive.cpp">
@@ -133,6 +130,24 @@
     </ClCompile>
     <ClCompile Include="..\src\Utilities\UI.cpp">
       <Filter>8 Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GUI\Elements\Button.cpp">
+      <Filter>5 GUI\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GUI\Elements\InputField.cpp">
+      <Filter>5 GUI\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GUI\Elements\Label.cpp">
+      <Filter>5 GUI\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Input\Delegate.cpp">
+      <Filter>3 Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Input\EventPublisher.cpp">
+      <Filter>3 Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Input\GenericEventPublisher.cpp">
+      <Filter>3 Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -217,15 +232,6 @@
     <ClInclude Include="..\include\GUI\Responsive.hpp">
       <Filter>5 GUI</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\GUI\InputField.hpp">
-      <Filter>5 GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GUI\Label.hpp">
-      <Filter>5 GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GUI\Button.hpp">
-      <Filter>5 GUI</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\Assets\Font.hpp">
       <Filter>1 Assets</Filter>
     </ClInclude>
@@ -240,6 +246,24 @@
     </ClInclude>
     <ClInclude Include="..\include\Utilities\UI.hpp">
       <Filter>8 Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GUI\Elements\Button.hpp">
+      <Filter>5 GUI\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GUI\Elements\InputField.hpp">
+      <Filter>5 GUI\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GUI\Elements\Label.hpp">
+      <Filter>5 GUI\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Input\Delegate.hpp">
+      <Filter>3 Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Input\EventPublisher.hpp">
+      <Filter>3 Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Input\GenericEventPublisher.hpp">
+      <Filter>3 Input</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

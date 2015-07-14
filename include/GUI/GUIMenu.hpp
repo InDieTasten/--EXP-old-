@@ -16,11 +16,17 @@
 class GUIMenu : public sf::Drawable, public Taggable, public Responsive
 {
 private:
+	mutable sf::Mutex confmtx;
+
 	int x;
 	int y;
 	int width;
 	int height;
 	std::string title;
+	std::string font;
+	sf::Color borderColor;
+	sf::Color backColor;
+	sf::Color titleColor;
 
 	std::vector<GUIElement*> elements;
 
@@ -59,11 +65,19 @@ public:
 	void setWidth(int);
 	void setHeight(int);
 	void setTitle(std::string);
+	void setFont(std::string);
+	void setBorderColor(sf::Color);
+	void setBackColor(sf::Color);
+	void setTitleColor(sf::Color);
 	int getX();
 	int getY();
 	int getWidth();
 	int getHeight();
 	std::string getTitle();
+	std::string getFont();
+	sf::Color getBorderColor();
+	sf::Color getBackColor();
+	sf::Color getTitleColor();
 };
 
 #endif // !_GUIMenu_hpp_

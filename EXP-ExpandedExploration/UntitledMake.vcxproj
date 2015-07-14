@@ -43,7 +43,7 @@
     <NMakeReBuildCommandLine>nmake rebuild</NMakeReBuildCommandLine>
     <NMakePreprocessorDefinitions>WIN32;_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
     <OutDir>$(SolutionDir)\..\..\UG_content</OutDir>
-    <IncludePath>$(SolutionDir)\..\..\UG_libavc\include;$(SolutionDir)\..\..\UG_lua\include;$(SolutionDir)\..\..\UG_boost;$(SolutionDir)\..\..\UG_luabind;$(SolutionDir)\..\..\UG_sfml\include;$(SolutionDir)\..\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\..\..\UG_libavc\include;$(SolutionDir)\..\..\UG_lua\include;$(SolutionDir)\..\..\UG_luabind;$(SolutionDir)\..\..\UG_sfml\include;$(SolutionDir)\..\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <NMakeBuildCommandLine>nmake build</NMakeBuildCommandLine>
@@ -78,15 +78,18 @@
     <ClCompile Include="..\src\Data\Taggable.cpp" />
     <ClCompile Include="..\src\Data\Thruster.cpp" />
     <ClCompile Include="..\src\Data\Vector.cpp" />
-    <ClCompile Include="..\src\GUI\Button.cpp" />
+    <ClCompile Include="..\src\GUI\Elements\Button.cpp" />
+    <ClCompile Include="..\src\GUI\Elements\InputField.cpp" />
+    <ClCompile Include="..\src\GUI\Elements\Label.cpp" />
     <ClCompile Include="..\src\GUI\GUIElement.cpp" />
     <ClCompile Include="..\src\GUI\GUIManager.cpp" />
     <ClCompile Include="..\src\GUI\GUIMenu.cpp" />
-    <ClCompile Include="..\src\GUI\InputField.cpp" />
-    <ClCompile Include="..\src\GUI\Label.cpp" />
     <ClCompile Include="..\src\GUI\Responsive.cpp" />
     <ClCompile Include="..\src\Input\Actuator.cpp" />
+    <ClCompile Include="..\src\Input\Delegate.cpp" />
     <ClCompile Include="..\src\Input\EventManager.cpp" />
+    <ClCompile Include="..\src\Input\EventPublisher.cpp" />
+    <ClCompile Include="..\src\Input\GenericEventPublisher.cpp" />
     <ClCompile Include="..\src\Processing\GameEngine.cpp" />
     <ClCompile Include="..\src\Processing\Renderer.cpp" />
     <ClCompile Include="..\src\Processing\Simulator.cpp" />
@@ -112,15 +115,18 @@
     <ClInclude Include="..\include\Data\Taggable.hpp" />
     <ClInclude Include="..\include\Data\Thruster.hpp" />
     <ClInclude Include="..\include\Data\Vector.hpp" />
-    <ClInclude Include="..\include\GUI\Button.hpp" />
+    <ClInclude Include="..\include\GUI\Elements\Button.hpp" />
+    <ClInclude Include="..\include\GUI\Elements\InputField.hpp" />
+    <ClInclude Include="..\include\GUI\Elements\Label.hpp" />
     <ClInclude Include="..\include\GUI\GUIElement.hpp" />
     <ClInclude Include="..\include\GUI\GUIManager.hpp" />
     <ClInclude Include="..\include\GUI\GUIMenu.hpp" />
-    <ClInclude Include="..\include\GUI\InputField.hpp" />
-    <ClInclude Include="..\include\GUI\Label.hpp" />
     <ClInclude Include="..\include\GUI\Responsive.hpp" />
     <ClInclude Include="..\include\Input\Actuator.hpp" />
+    <ClInclude Include="..\include\Input\Delegate.hpp" />
     <ClInclude Include="..\include\Input\EventManager.hpp" />
+    <ClInclude Include="..\include\Input\EventPublisher.hpp" />
+    <ClInclude Include="..\include\Input\GenericEventPublisher.hpp" />
     <ClInclude Include="..\include\Processing\GameEngine.hpp" />
     <ClInclude Include="..\include\Processing\Renderer.hpp" />
     <ClInclude Include="..\include\Processing\Simulator.hpp" />

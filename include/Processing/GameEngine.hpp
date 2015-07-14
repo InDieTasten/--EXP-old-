@@ -6,7 +6,6 @@
 #include <Input\EventManager.hpp>
 #include <Processing\Renderer.hpp>
 #include <Processing\Simulator.hpp>
-#include <GUI\InputField.hpp>
 #include <Assets\AssetManager.hpp>
 
 #include <Utilities\Conversion.hpp>

@@ -47,6 +47,8 @@ OBJECTS = \
 	..\src\Assets\AssetManager.o \
 	..\src\Input\EventManager.o \
 	..\src\Input\Actuator.o \
+	..\src\Input\Delegate.o \
+	..\src\Input\EventPublisher.o \
 	..\src\Data\Vector.o \
 	..\src\Data\Mesh.o \
 	..\src\Data\PhysicalInfo.o \
@@ -62,12 +64,12 @@ OBJECTS = \
 	..\src\Processing\GameEngine.o \
 	..\src\Processing\Renderer.o \
 	..\src\Processing\Simulator.o \
-	..\src\GUI\Button.o \
+	..\src\GUI\Elements\Button.o \
 	..\src\GUI\GUIElement.o \
 	..\src\GUI\GUIManager.o \
 	..\src\GUI\GUIMenu.o \
-	..\src\GUI\InputField.o \
-	..\src\GUI\Label.o \
+	..\src\GUI\Elements\InputField.o \
+	..\src\GUI\Elements\Label.o \
 	..\src\GUI\Responsive.o \
 	..\src\SFML\Text.o \
 

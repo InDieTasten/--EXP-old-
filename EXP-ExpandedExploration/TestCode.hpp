@@ -9,6 +9,7 @@
 #include <Utilities\Conversion.hpp>
 #include <Data\Vector.hpp>
 #include <Data\Taggable.hpp>
+
 namespace tests {
 	int failed = 0;
 	int succeed = 0;
@@ -28,6 +29,7 @@ namespace tests {
 			return;
 		}
 	}
+
 	//SFML
 	//SFML/Sprite
 	void SFML_Sprite_Destruction1()
