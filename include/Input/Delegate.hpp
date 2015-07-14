@@ -6,98 +6,78 @@
 #include <list>
 
 
-
-
-
-class Sender
+class Publisher
 {
+private:
 public:
-	Sender();
-	~Sender();
-
-	virtual std::string who() = 0;
-};
-
-class Receiver
-{
-public:
-
+	virtual std::string who() { return "Generic"; }
 };
 
 
-template<class TEventType>
+class Generic;
+template <class TEventType>
 class Delegate
 {
 private:
-	Receiver* object;
-	void (Receiver::* methPtr)(Sender*, TEventType);
+	Generic* object;
+	void (Generic::*methPtr)(Publisher*, TEventType);
 public:
-	Delegate(Receiver* _receiver, void (Receiver::* _methPtr)(Sender*, TEventType))
+	Delegate()
 	{
-		object = _receiver;
-		methPtr = _methPtr;
+		object = nullptr;
+		methPtr = nullptr;
+	}
+	template <class TReceiver>
+	Delegate(TReceiver* _receiver, void (TReceiver::* _methPtr)(Publisher*, TEventType))
+	{
+		object = reinterpret_cast<Generic*>(_receiver);
+		methPtr = reinterpret_cast<void (Generic::*)(Publisher*, TEventType)>(_methPtr);
 	}
 
-	//void operator()(Sender& sender, TEventType eventArgs)
-	//{
-	//	(object->*methPtr)();
-	//}
-};
-//struct ButtonClicked
-//{
-//	int which;
-//};
-//class Publisher : public Sender
-//{
-//public:
-//
-//
-//	virtual std::string who()
-//	{
-//		return "Publisher";
-//	}
-//
-//	Delegate<ButtonClicked> OnButtonClicked;
-//
-//	void triggerSomeEvent()
-//	{
-//
-//	}
-//};
-
-#endif // !_Delegate_hpp_
-
-template <class TReceiver>
-class Delegate2
-{
-private:
-	void* object;
-	void (TReceiver::* methPtr)(Sender*, int);
-public:
-
-	Delegate2(TReceiver* _receiver, void (TReceiver::* _methPtr)(Sender*, int))
+	template <class TReceiver>
+	void setObject(TReceiver* _receiver)
 	{
-		object = _receiver;
-		methPtr = _methPtr;
+		object = reinterpret_cast<Generic*>(_receiver);
 	}
 
-	void operator()(Sender* sender, int eventArgs)
+	template <class TReceiver>
+	void setMethod(void (TReceiver::* _methPtr)(Publisher*, TEventType))
+	{
+		methPtr = reinterpret_cast<void (Generic::*)(Publisher*, TEventType)>(_methPtr);
+	}
+
+	void operator()(Publisher* sender, TEventType eventArgs)
 	{
 		(object->*methPtr)(sender, eventArgs);
 	}
 };
 
-class Receiver2 : public Receiver
+class Pub1 : public Publisher
+{
+private:
+	Delegate<int> del;
+public:
+	Pub1(Delegate<int> del1) : del(del1)
+	{
+		del(this, 15);
+	}
+	virtual std::string who() { return "Pub1"; }
+};
+
+class Receiver
 {
 public:
-	Receiver2()
+	Delegate<int> getDelegate()
 	{
-		Delegate2<Receiver2> del(this, &Receiver2::handle);
+		return Delegate<int>(this, &Receiver::handle);
 	}
-	void handle(Sender*, int)
+	void handle(Publisher*, int value)
 	{
-
+		std::cout << "Receiver got: " << value << std::endl;
 	}
 };
 
-Receiver2 rec2;
+Receiver rec;
+Pub1 pub1(rec.getDelegate());
+
+#endif // !_Delegate_hpp_
