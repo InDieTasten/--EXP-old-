@@ -47,6 +47,8 @@ OBJECTS = \
 	..\src\Assets\AssetManager.o \
 	..\src\Input\EventManager.o \
 	..\src\Input\Actuator.o \
+	..\src\Input\Delegate.o \
+	..\src\Input\EventPublisher.o \
 	..\src\Data\Vector.o \
 	..\src\Data\Mesh.o \
 	..\src\Data\PhysicalInfo.o \
