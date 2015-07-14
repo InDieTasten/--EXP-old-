@@ -7,8 +7,10 @@
 #include <SFML\System.hpp>
 
 #include <Utilities\Conversion.hpp>
+#include <Input\Delegate.hpp>
 #include <Data\Vector.hpp>
 #include <Data\Taggable.hpp>
+
 namespace tests {
 	int failed = 0;
 	int succeed = 0;
@@ -28,6 +30,7 @@ namespace tests {
 			return;
 		}
 	}
+
 	//SFML
 	//SFML/Sprite
 	void SFML_Sprite_Destruction1()
@@ -359,6 +362,11 @@ namespace tests {
 		{
 			throw std::string("Input_EventManager_Constructor_1: Could not construct");
 		}
+	}
+	void Input_Delegate_Check()
+	{
+		//Receiver my;
+		//Delegate<int> onVector(&my, &Receiver::handle);
 	}
 }
 

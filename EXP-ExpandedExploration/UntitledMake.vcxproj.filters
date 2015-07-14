@@ -247,6 +247,9 @@
     <ClInclude Include="..\include\GUI\Elements\Label.hpp">
       <Filter>5 GUI\Elements</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Input\Delegate.hpp">
+      <Filter>3 Input</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\LICENSE">
