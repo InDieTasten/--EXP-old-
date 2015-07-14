@@ -1,31 +1,36 @@
 #include <Input\Delegate.hpp>
 
-template <class TReceiver>
-Delegate::Delegate()
+template <class TEventType>
+Delegate<TEventType>::Delegate()
 {
 	object = nullptr;
 	methPtr = nullptr;
 }
+
+template <class TEventType>
 template <class TReceiver>
-Delegate::Delegate(TReceiver* _receiver, void (TReceiver::* _methPtr)(EventPublisher*, TEventType))
+Delegate<TEventType>::Delegate(TReceiver* _receiver, void (TReceiver::* _methPtr)(EventPublisher*, TEventType))
 {
 	object = reinterpret_cast<Generic*>(_receiver);
 	methPtr = reinterpret_cast<void (Generic::*)(EventPublisher*, TEventType)>(_methPtr);
 }
 
+template <class TEventType>
 template <class TReceiver>
-void Delegate::setObject(TReceiver* _receiver)
+void Delegate<TEventType>::setObject(TReceiver* _receiver)
 {
 	object = reinterpret_cast<Generic*>(_receiver);
 }
 
+template <class TEventType>
 template <class TReceiver>
-void Delegate::setMethod(void (TReceiver::* _methPtr)(EventPublisher*, TEventType))
+void Delegate<TEventType>::setMethod(void (TReceiver::* _methPtr)(EventPublisher*, TEventType))
 {
 	methPtr = reinterpret_cast<void (Generic::*)(EventPublisher*, TEventType)>(_methPtr);
 }
 
-void Delegate::operator()(EventPublisher* sender, TEventType eventArgs)
+template <class TEventType>
+void Delegate<TEventType>::operator()(EventPublisher* sender, TEventType eventArgs)
 {
 	(object->*methPtr)(sender, eventArgs);
 }
