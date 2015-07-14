@@ -149,6 +149,9 @@
     <ClCompile Include="..\src\Input\GenericEventPublisher.cpp">
       <Filter>3 Input</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Input\EventHandler.cpp">
+      <Filter>3 Input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Utilities\Logger.hpp">
@@ -263,6 +266,9 @@
       <Filter>3 Input</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Input\GenericEventPublisher.hpp">
+      <Filter>3 Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Input\EventHandler.hpp">
       <Filter>3 Input</Filter>
     </ClInclude>
   </ItemGroup>
