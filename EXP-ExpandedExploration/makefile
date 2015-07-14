@@ -49,6 +49,7 @@ OBJECTS = \
 	..\src\Input\Actuator.o \
 	..\src\Input\Delegate.o \
 	..\src\Input\EventPublisher.o \
+	..\src\Input\GenericEventPublisher.o \
 	..\src\Data\Vector.o \
 	..\src\Data\Mesh.o \
 	..\src\Data\PhysicalInfo.o \
