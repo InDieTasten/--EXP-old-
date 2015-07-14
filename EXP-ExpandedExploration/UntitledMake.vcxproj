@@ -89,6 +89,7 @@
     <ClCompile Include="..\src\Input\Delegate.cpp" />
     <ClCompile Include="..\src\Input\EventManager.cpp" />
     <ClCompile Include="..\src\Input\EventPublisher.cpp" />
+    <ClCompile Include="..\src\Input\GenericEventPublisher.cpp" />
     <ClCompile Include="..\src\Processing\GameEngine.cpp" />
     <ClCompile Include="..\src\Processing\Renderer.cpp" />
     <ClCompile Include="..\src\Processing\Simulator.cpp" />
@@ -125,6 +126,7 @@
     <ClInclude Include="..\include\Input\Delegate.hpp" />
     <ClInclude Include="..\include\Input\EventManager.hpp" />
     <ClInclude Include="..\include\Input\EventPublisher.hpp" />
+    <ClInclude Include="..\include\Input\GenericEventPublisher.hpp" />
     <ClInclude Include="..\include\Processing\GameEngine.hpp" />
     <ClInclude Include="..\include\Processing\Renderer.hpp" />
     <ClInclude Include="..\include\Processing\Simulator.hpp" />
