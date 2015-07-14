@@ -24,10 +24,7 @@ public:
 	template <class TReceiver>
 	void setMethod(void (TReceiver::* _methPtr)(EventPublisher*, TEventType));
 
-	void operator()(Publisher* sender, TEventType eventArgs)
-	{
-		(object->*methPtr)(sender, eventArgs);
-	}
+	void operator()(EventPublisher* sender, TEventType eventArgs);
 };
 
 #endif // !_Delegate_hpp_
