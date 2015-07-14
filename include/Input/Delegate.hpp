@@ -14,17 +14,44 @@ private:
 	Generic* object;
 	void (Generic::*methPtr)(EventPublisher*, TEventType);
 public:
-	Delegate();
+	Delegate()
+	{
+		object = nullptr;
+		methPtr = nullptr;
+	}
 	template <class TReceiver>
-	Delegate(TReceiver* _receiver, void (TReceiver::* _methPtr)(EventPublisher*, TEventType));
+	Delegate(TReceiver* _receiver, void (TReceiver::* _methPtr)(EventPublisher*, TEventType))
+	{
+		object = reinterpret_cast<Generic*>(_receiver);
+		methPtr = reinterpret_cast<void (Generic::*)(EventPublisher*, TEventType)>(_methPtr);
+	}
 
 	template <class TReceiver>
-	void setObject(TReceiver* _receiver);
+	void setObject(TReceiver* _receiver)
+	{
+		object = reinterpret_cast<Generic*>(_receiver);
+	}
 
 	template <class TReceiver>
-	void setMethod(void (TReceiver::* _methPtr)(EventPublisher*, TEventType));
+	void setMethod(void (TReceiver::* _methPtr)(EventPublisher*, TEventType))
+	{
+		methPtr = reinterpret_cast<void (Generic::*)(EventPublisher*, TEventType)>(_methPtr);
+	}
 
-	void operator()(EventPublisher* sender, TEventType eventArgs);
+	Generic* getObject()
+	{
+		return object;
+	}
+
+	void (Generic::*getMethod())(EventPublisher*, TEventType)
+	{
+		return methPtr;
+	}
+
+	void operator()(EventPublisher* sender, TEventType eventArgs)
+	{
+		(object->*methPtr)(sender, eventArgs);
+	}
 };
 
 #endif // !_Delegate_hpp_
