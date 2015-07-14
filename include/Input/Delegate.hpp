@@ -1,20 +1,10 @@
 #ifndef _Delegate_hpp_
 #define _Delegate_hpp_
 
+#include <Input\EventPublisher.hpp>
 
 #include <string>
 #include <list>
-
-
-class Publisher
-{
-public:
-	virtual std::string who() = 0;
-};
-class GenericPublisher : Publisher
-{
-	virtual std::string who() { return "Generic"; }
-};
 
 class Generic;
 template <class TEventType>
@@ -22,73 +12,22 @@ class Delegate
 {
 private:
 	Generic* object;
-	void (Generic::*methPtr)(Publisher*, TEventType);
+	void (Generic::*methPtr)(EventPublisher*, TEventType);
 public:
-	Delegate()
-	{
-		object = nullptr;
-		methPtr = nullptr;
-	}
+	Delegate();
 	template <class TReceiver>
-	Delegate(TReceiver* _receiver, void (TReceiver::* _methPtr)(Publisher*, TEventType))
-	{
-		object = reinterpret_cast<Generic*>(_receiver);
-		methPtr = reinterpret_cast<void (Generic::*)(Publisher*, TEventType)>(_methPtr);
-	}
+	Delegate(TReceiver* _receiver, void (TReceiver::* _methPtr)(EventPublisher*, TEventType));
 
 	template <class TReceiver>
-	void setObject(TReceiver* _receiver)
-	{
-		object = reinterpret_cast<Generic*>(_receiver);
-	}
+	void setObject(TReceiver* _receiver);
 
 	template <class TReceiver>
-	void setMethod(void (TReceiver::* _methPtr)(Publisher*, TEventType))
-	{
-		methPtr = reinterpret_cast<void (Generic::*)(Publisher*, TEventType)>(_methPtr);
-	}
+	void setMethod(void (TReceiver::* _methPtr)(EventPublisher*, TEventType));
 
 	void operator()(Publisher* sender, TEventType eventArgs)
 	{
 		(object->*methPtr)(sender, eventArgs);
 	}
 };
-
-class Pub1 : public Publisher
-{
-private:
-	Delegate<int> del;
-public:
-	Pub1(Delegate<int> del1) : del(del1)
-	{
-		del(this, 15);
-	}
-	virtual std::string who() { return "Pub1"; }
-};
-
-class someStuff
-{
-	float a, b, c, d, e, f, g;
-};
-class someOtherStuff
-{
-	double a, b, c, d, e, f, g, h;
-};
-
-class Receiver : private someStuff, private someOtherStuff
-{
-public:
-	Delegate<int> getDelegate()
-	{
-		return Delegate<int>(this, &Receiver::handle);
-	}
-	void handle(Publisher*, int value)
-	{
-		std::cout << "Receiver got: " << value << std::endl;
-	}
-};
-
-Receiver rec;
-Pub1 pub1(rec.getDelegate());
 
 #endif // !_Delegate_hpp_
