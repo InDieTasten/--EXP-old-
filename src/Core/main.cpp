@@ -10,6 +10,25 @@ extern void EXP::init();
 
 
 //TESTZONE START
+
+#include <Input\EventHandler.hpp>
+Delegate<double> del;
+EventHandler<float> handler;
+class me {
+public:
+	me()
+	{
+		handler += Delegate<float>(this, &me::nadu);
+		handler(nullptr, 13.37f);
+	}
+private:
+	void nadu(EventPublisher* sender, float value)
+	{
+		std::cout << "Received: " << value << std::endl;
+	}
+};
+me call;
+
 #include <..\EXP-ExpandedExploration\TestCode.hpp>
 extern void EXP::testCode();
 //TESTZONE END
