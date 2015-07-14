@@ -24,6 +24,8 @@ public:
 	template <class TReceiver>
 	void setMethod(void (TReceiver::* _methPtr)(EventPublisher*, TEventType));
 
+	Generic* getObject();
+
 	void operator()(EventPublisher* sender, TEventType eventArgs);
 };
 
