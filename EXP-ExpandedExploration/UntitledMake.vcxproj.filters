@@ -143,6 +143,9 @@
     <ClCompile Include="..\src\Input\Delegate.cpp">
       <Filter>3 Input</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Input\EventPublisher.cpp">
+      <Filter>3 Input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Utilities\Logger.hpp">
@@ -251,6 +254,9 @@
       <Filter>5 GUI\Elements</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Input\Delegate.hpp">
+      <Filter>3 Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Input\EventPublisher.hpp">
       <Filter>3 Input</Filter>
     </ClInclude>
   </ItemGroup>
