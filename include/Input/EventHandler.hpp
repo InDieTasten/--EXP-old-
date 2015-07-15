@@ -12,6 +12,7 @@ template<class TEventType>
 class EventHandler
 {
 private:
+	sf::Mutex confmtx;
 	std::list<Delegate<TEventType> > delegates;
 public:
 	EventHandler()
@@ -23,22 +24,33 @@ public:
 		EXP::log("[Info]EventHandler has been destructed: " + utils::tostring(this));
 	}
 
+	void clear()
+	{
+		confmtx.lock();
+		delegates.clear();
+		confmtx.unlock();
+	}
+
 	// Adds Delegate to EventHandler
 	void operator+=(Delegate<TEventType> _delegate)
 	{
+		confmtx.lock();
 		for (Delegate<TEventType> it : delegates)
 		{
 			if (it.getObject() == _delegate.getObject())
 			{
+				confmtx.unlock();
 				return;
 			}
 		}
 		delegates.push_back(_delegate);
+		confmtx.unlock();
 	}
 
 	// Removes Delegate from EventHandler
 	void operator-=(Delegate<TEventType> _delegate)
 	{
+		confmtx.lock();
 		typename std::list< Delegate<TEventType> >::iterator it = delegates.begin();
 		for (int index = 0; index < delegates.size(); index++)
 		{
@@ -49,13 +61,16 @@ public:
 			}
 			it++;
 		}
+		confmtx.unlock();
 	}
 	void operator()(EventPublisher* sender, TEventType eventArgs)
 	{
+		confmtx.lock();
 		for (Delegate<TEventType> it : delegates)
 		{
 			it(sender, eventArgs);
 		}
+		confmtx.unlock();
 	}
 };
 
