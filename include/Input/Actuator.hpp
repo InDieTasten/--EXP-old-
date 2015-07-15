@@ -26,8 +26,6 @@ public:
 	};
 private:
 
-	static void getNextAny(sf::Event* _event);
-
 	EventManager* eventManager;
 
 	InputType inputType;
@@ -42,6 +40,8 @@ private:
 	float value;
 
 	bool enabled;
+
+	void listenermethod(EventPublisher* sender, sf::Event*);
 
 public:
 	Actuator();
