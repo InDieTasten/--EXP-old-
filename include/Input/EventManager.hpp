@@ -50,6 +50,8 @@ public:
 	void listen(GUIManager* _guiManager);
 	void terminate();
 
+	virtual std::string who() { return "EventManager"; }
+
 	void addMouseMove(Delegate<sf::Event::MouseMoveEvent>);
 	void removeMouseMove(Delegate<sf::Event::MouseMoveEvent>);
 	void addMousePress(Delegate<sf::Event::MouseButtonEvent>);
