@@ -1,11 +1,5 @@
 #include <Input\Actuator.hpp>
 
-namespace ActDetection {
-	sf::Mutex detection;
-	Actuator* detecting;
-	Actuator::InputType* filter;
-}
-
 Actuator::Actuator()
 {
 	eventManager = nullptr;
@@ -37,98 +31,17 @@ Actuator::~Actuator()
 	EXP::log("[Info]Actuator has been destructed: " + utils::tostring(this));
 }
 
-void Actuator::getNextAny(sf::Event* _event)
-{
-	if (ActDetection::detecting)
-	{
-		if (_event->type == sf::Event::KeyPressed)
-		{
-			if (ActDetection::filter)
-			{
-				if (*ActDetection::filter != InputType::Keyboard)
-					return;
-				else
-					delete ActDetection::filter;
-				ActDetection::filter = nullptr;
-			}
-			ActDetection::detecting->setInputType(InputType::Keyboard);
-			ActDetection::detecting->setKey(_event->key.code);
-			ActDetection::detecting->eventManager->removeAny(Actuator::getNextAny);
-			ActDetection::detecting = nullptr;
-			ActDetection::detection.unlock();
-		}
-		if (_event->type == sf::Event::MouseButtonPressed)
-		{
-			if (ActDetection::filter)
-			{
-				if (*ActDetection::filter != InputType::MouseButton)
-					return;
-				else
-					delete ActDetection::filter;
-				ActDetection::filter = nullptr;
-			}
-			ActDetection::detecting->setInputType(InputType::MouseButton);
-			ActDetection::detecting->setButton(_event->mouseButton.button);
-			ActDetection::detecting->eventManager->removeAny(Actuator::getNextAny);
-			ActDetection::detecting = nullptr;
-			ActDetection::detection.unlock();
-		}
-		if (_event->type == sf::Event::JoystickButtonPressed)
-		{
-			if (ActDetection::filter)
-			{
-				if (*ActDetection::filter != InputType::JoystickButton)
-					return;
-				else
-					delete ActDetection::filter;
-				ActDetection::filter = nullptr;
-			}
-			ActDetection::detecting->setInputType(InputType::JoystickButton);
-			ActDetection::detecting->setJoyButton(_event->joystickButton.joystickId,
-				_event->joystickButton.button);
-			ActDetection::detecting->eventManager->removeAny(Actuator::getNextAny);
-			ActDetection::detecting = nullptr;
-			ActDetection::detection.unlock();
-		}
-		if (_event->type == sf::Event::JoystickMoved)
-		{
-			if (ActDetection::filter)
-			{
-				if (*ActDetection::filter != InputType::Joystick)
-					return;
-				else
-					delete ActDetection::filter;
-				ActDetection::filter = nullptr;
-			}
-			ActDetection::detecting->setInputType(InputType::Joystick);
-			ActDetection::detecting->setAxis(_event->joystickMove.joystickId,
-				_event->joystickMove.axis);
-			ActDetection::detecting->eventManager->removeAny(Actuator::getNextAny);
-			ActDetection::detecting = nullptr;
-			ActDetection::detection.unlock();
-		}
-	}
-}
-
 bool Actuator::getEnabled()
 {
 	return enabled;
 }
 void Actuator::detectNext()
 {
-	ActDetection::detection.lock();
-	EXP::log("[Info]Actuator detects: " + utils::tostring(this));
-	ActDetection::detecting = this;
-	ActDetection::filter = nullptr;
-	eventManager->addAny(Actuator::getNextAny);
+
 }
 void Actuator::detectNext(InputType _filter)
 {
-	ActDetection::detection.lock();
-	EXP::log("[Info]Actuator detects filtered: " + utils::tostring(this));
-	ActDetection::detecting = this;
-	ActDetection::filter = new InputType(_filter);
-	eventManager->addAny(Actuator::getNextAny);
+
 }
 
 void Actuator::setEventManager(EventManager* _eventManager)
