@@ -23,6 +23,7 @@ public:
 		EXP::log("[Info]EventHandler has been destructed: " + utils::tostring(this));
 	}
 
+	// Adds Delegate to EventHandler
 	void operator+=(Delegate<TEventType> _delegate)
 	{
 		for (Delegate<TEventType> it : delegates)
@@ -34,9 +35,20 @@ public:
 		}
 		delegates.push_back(_delegate);
 	}
+
+	// Removes Delegate from EventHandler
 	void operator-=(Delegate<TEventType> _delegate)
 	{
-		delegates.remove(_delegate);
+		typename std::list< Delegate<TEventType> >::iterator it = delegates.begin();
+		for (int index = 0; index < delegates.size(); index++)
+		{
+			if (*it == _delegate)
+			{
+				delegates.erase(it);
+				*this -= _delegate;
+			}
+			it++;
+		}
 	}
 	void operator()(EventPublisher* sender, TEventType eventArgs)
 	{
