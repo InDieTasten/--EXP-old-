@@ -52,6 +52,11 @@ public:
 	{
 		(object->*methPtr)(sender, eventArgs);
 	}
+
+	bool operator==(Delegate<TEventType>& rhs)
+	{
+		return (rhs.object == object && rhs.methPtr == methPtr);
+	}
 };
 
 #endif // !_Delegate_hpp_
