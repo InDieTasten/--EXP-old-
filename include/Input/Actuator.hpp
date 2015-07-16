@@ -8,6 +8,8 @@
 class Actuator
 {
 private:
+	sf::Mutex confmtx;
+
 	virtual float getRawVector() = 0;
 	float multiplier;
 	float adjustment;

@@ -13,22 +13,35 @@ Actuator::~Actuator()
 
 float Actuator::getControlVector()
 {
-	return multiplier * getRawVector() + adjustment;
+	confmtx.lock();
+	float result = multiplier * getRawVector() + adjustment;
+	confmtx.unlock();
+	return result;
 }
 
 void Actuator::setMultiplier(float _value)
 {
+	confmtx.lock();
 	multiplier = _value;
+	confmtx.unlock();
 }
 void Actuator::setAdjustment(float _value)
 {
+	confmtx.lock();
 	adjustment = _value;
+	confmtx.unlock();
 }
 float Actuator::getMultiplier()
 {
-	return multiplier;
+	confmtx.lock();
+	float result = multiplier;
+	confmtx.unlock();
+	return result;
 }
 float Actuator::getAdjustment()
 {
-	return adjustment;
+	confmtx.lock();
+	float result = adjustment;
+	confmtx.unlock();
+	return result;
 }
