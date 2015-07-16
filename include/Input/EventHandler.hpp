@@ -30,6 +30,13 @@ public:
 		delegates.clear();
 		confmtx.unlock();
 	}
+	size_t size()
+	{
+		confmtx.lock();
+		size_t result = delegates.size();
+		confmtx.unlock();
+		return result;
+	}
 
 	// Adds Delegate to EventHandler
 	void operator+=(Delegate<TEventType> _delegate)
