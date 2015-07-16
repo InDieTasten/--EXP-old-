@@ -1,19 +1,26 @@
 #ifndef _Actuator_hpp_
 #define _Actuator_hpp_
 
-#include <Input\EventManager.hpp>
-#include <SFML\Graphics.hpp>
 #include <Utilities\Logger.hpp>
 #include <Utilities\Conversion.hpp>
 
 
 class Actuator
 {
+private:
+	virtual float getRawVector() = 0;
+	float multiplier;
+	float adjustment;
 public:
 	Actuator();
 	~Actuator();
+	
+	float getControlVector();
 
-	virtual float getControlVector() = 0;
+	void setMultiplier(float);
+	void setAdjustment(float);
+	float getMultiplier();
+	float getAdjustment();
 };
 
 
