@@ -1,8 +1,12 @@
 #include <Input\KeyboardActuator.hpp>
 
-KeyboardActuator::KeyboardActuator(EventManager& _manager) : Actuator(), eventManager(_manager)
+KeyboardActuator::KeyboardActuator(EventManager* _manager) : Actuator()
 {
-
+	if (!_manager)
+	{
+		EXP::log("[Warning]KeyboardActuator constructed using nullptr as EventManager");
+	}
+	eventManager = _manager;
 	EXP::log("[Info]KeyboardActuator has been constructed: " + utils::tostring(this));
 }
 KeyboardActuator::~KeyboardActuator()
@@ -23,13 +27,13 @@ void KeyboardActuator::listen(EventPublisher* _sender, sf::Event::KeyEvent _even
 {
 	confmtx.lock();
 	code = _event.code;
-	eventManager.removeKeyPress(Delegate<sf::Event::KeyEvent>(this, &KeyboardActuator::listen));
+	eventManager->removeKeyPress(Delegate<sf::Event::KeyEvent>(this, &KeyboardActuator::listen));
 	confmtx.unlock();
 }
 
 void KeyboardActuator::detectNext()
 {
-	eventManager.addKeyPress(Delegate<sf::Event::KeyEvent>(this, &KeyboardActuator::listen));
+	eventManager->addKeyPress(Delegate<sf::Event::KeyEvent>(this, &KeyboardActuator::listen));
 }
 
 void KeyboardActuator::setKeyCode(sf::Keyboard::Key _key)
@@ -38,8 +42,12 @@ void KeyboardActuator::setKeyCode(sf::Keyboard::Key _key)
 	code = _key;
 	confmtx.unlock();
 }
-void KeyboardActuator::setEventManager(EventManager& _manager)
+void KeyboardActuator::setEventManager(EventManager* _manager)
 {
+	if (!_manager)
+	{
+		EXP::log("[Warning]KeyboardActuators EventManager set to nullptr");
+	}
 	confmtx.lock();
 	eventManager = _manager;
 	confmtx.unlock();
@@ -51,10 +59,10 @@ sf::Keyboard::Key KeyboardActuator::getKeyCode()
 	confmtx.unlock();
 	return result;
 }
-EventManager& KeyboardActuator::getEventManager()
+EventManager* KeyboardActuator::getEventManager()
 {
 	confmtx.lock();
-	EventManager& result = eventManager;
+	EventManager* result = eventManager;
 	confmtx.unlock();
 	return result;
 }
