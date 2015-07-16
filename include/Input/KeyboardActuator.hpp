@@ -9,20 +9,20 @@ class KeyboardActuator : public Actuator
 {
 private:
 	sf::Keyboard::Key code;
-	EventManager& eventManager;
+	EventManager* eventManager;
 
 	virtual float getRawVector();
 	void listen(EventPublisher*, sf::Event::KeyEvent);
 public:
-	KeyboardActuator(EventManager& _manager);
+	KeyboardActuator(EventManager* _manager);
 	~KeyboardActuator();
 
 	void detectNext();
 
 	void setKeyCode(sf::Keyboard::Key);
-	void setEventManager(EventManager&);
+	void setEventManager(EventManager*);
 	sf::Keyboard::Key getKeyCode();
-	EventManager& getEventManager();
+	EventManager* getEventManager();
 };
 
 #endif // !_KeyboardActuator_hpp_
