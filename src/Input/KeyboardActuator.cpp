@@ -9,6 +9,11 @@ KeyboardActuator::KeyboardActuator(EventManager* _manager) : Actuator()
 	eventManager = _manager;
 	EXP::log("[Info]KeyboardActuator has been constructed: " + utils::tostring(this));
 }
+KeyboardActuator::KeyboardActuator(EventManager* _manager, sf::Keyboard::Key _code) : Actuator()
+{
+	KeyboardActuator::KeyboardActuator(_manager);
+	setKeyCode(_code);
+}
 KeyboardActuator::~KeyboardActuator()
 {
 

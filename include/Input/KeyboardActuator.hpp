@@ -15,6 +15,7 @@ private:
 	void listen(EventPublisher*, sf::Event::KeyEvent);
 public:
 	KeyboardActuator(EventManager* _manager);
+	KeyboardActuator(EventManager* _manager, sf::Keyboard::Key _code);
 	~KeyboardActuator();
 
 	void detectNext();
