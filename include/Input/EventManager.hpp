@@ -39,12 +39,12 @@ private:
 	//(any)
 	EventHandler<sf::Event*> any;
 
-	sf::RenderWindow* target;
+	sf::RenderWindow& target;
 	bool listening;
 	sf::Mutex confmtx;
 
 public:
-	EventManager(sf::RenderWindow* _target);
+	EventManager(sf::RenderWindow& _target);
 	~EventManager();
 
 	void listen(GUIManager* _guiManager);

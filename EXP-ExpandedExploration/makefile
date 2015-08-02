@@ -47,6 +47,11 @@ OBJECTS = \
 	..\src\Assets\AssetManager.o \
 	..\src\Input\EventManager.o \
 	..\src\Input\Actuator.o \
+	..\src\Input\NullActuator.o \
+	..\src\Input\KeyboardActuator.o \
+	..\src\Input\JoystickActuator.o \
+	..\src\Input\MouseButtonActuator.o \
+	..\src\Input\JoystickButtonActuator.o \
 	..\src\Input\Delegate.o \
 	..\src\Input\EventPublisher.o \
 	..\src\Input\GenericEventPublisher.o \
