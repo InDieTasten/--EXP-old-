@@ -164,6 +164,9 @@
     <ClCompile Include="..\src\Input\MouseButtonActuator.cpp">
       <Filter>3 Input</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Input\NullActuator.cpp">
+      <Filter>3 Input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Utilities\Logger.hpp">
@@ -293,6 +296,9 @@
       <Filter>3 Input</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Input\JoystickButtonActuator.hpp">
+      <Filter>3 Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Input\NullActuator.hpp">
       <Filter>3 Input</Filter>
     </ClInclude>
   </ItemGroup>
