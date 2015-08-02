@@ -355,7 +355,7 @@ namespace tests {
 	{
 		try {
 			sf::RenderWindow testWindow;
-			EventManager test(&testWindow);
+			EventManager test(testWindow);
 		}
 		catch (...)
 		{
