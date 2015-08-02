@@ -1,8 +1,9 @@
 #include <Input\EventManager.hpp>
 
-EventManager::EventManager(sf::RenderWindow* _target) : EventPublisher()
+EventManager::EventManager(sf::RenderWindow& _target) :
+EventPublisher(),
+target(_target)
 {
-	target = _target;
 	listening = false;
 
 	EXP::log("[Info]EventManager has been constructed: " + utils::tostring(this));
@@ -14,7 +15,6 @@ EventManager::~EventManager()
 		EXP::log("[Warning]Forcefully terminating EventManager");
 		terminate();
 	}
-	target = nullptr;
 	EXP::log("[Info]Forcefully disconnecting listeners");
 	mouseMove.clear();
 	mousePress.clear();
@@ -55,10 +55,10 @@ void EventManager::listen(GUIManager* _guiManager)
 
 		any(this, &event);
 
-		while (target->pollEvent(event))
+		while (target.pollEvent(event))
 		{
-			target->setView(target->getDefaultView());
-			_guiManager->handleEvent(*target, &event);
+			target.setView(target.getDefaultView());
+			_guiManager->handleEvent(target, &event);
 
 			switch (event.type)
 			{
