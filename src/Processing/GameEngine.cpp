@@ -64,7 +64,7 @@ void GameEngine::launch()
 	guiManager = new GUIManager(assets);
 
 	//create event handler for that window
-	eventManager = new EventManager(gameWindow);
+	eventManager = new EventManager(*gameWindow);
 
 	//Here comes the loading screen logic (WORK)
 	// the main thread should just hook into that, so it requires an extra thread to launch the other threads and generate the level xD
