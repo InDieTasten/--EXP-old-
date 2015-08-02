@@ -95,6 +95,7 @@
     <ClCompile Include="..\src\Input\JoystickButtonActuator.cpp" />
     <ClCompile Include="..\src\Input\KeyboardActuator.cpp" />
     <ClCompile Include="..\src\Input\MouseButtonActuator.cpp" />
+    <ClCompile Include="..\src\Input\NullActuator.cpp" />
     <ClCompile Include="..\src\Processing\GameEngine.cpp" />
     <ClCompile Include="..\src\Processing\Renderer.cpp" />
     <ClCompile Include="..\src\Processing\Simulator.cpp" />
@@ -137,6 +138,7 @@
     <ClInclude Include="..\include\Input\JoystickButtonActuator.hpp" />
     <ClInclude Include="..\include\Input\KeyboardActuator.hpp" />
     <ClInclude Include="..\include\Input\MouseButtonActuator.hpp" />
+    <ClInclude Include="..\include\Input\NullActuator.hpp" />
     <ClInclude Include="..\include\Processing\GameEngine.hpp" />
     <ClInclude Include="..\include\Processing\Renderer.hpp" />
     <ClInclude Include="..\include\Processing\Simulator.hpp" />
