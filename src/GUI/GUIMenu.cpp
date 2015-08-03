@@ -2,13 +2,15 @@
 
 GUIMenu::GUIMenu(AssetManager* _assets) : Responsive(_assets)
 {
-	x = 0;
-	y = 0;
 	height = 200;
 	width = 200;
-	once = false;
-
-	title = "-- BANANA --";
+	x = 1;
+	y = 1;
+	title = "Undefined MenuTitle";
+	font = "Mono";
+	borderColor = sf::Color(0, 255, 0, 255);
+	backColor = sf::Color(80, 80, 80, 64);
+	titleColor = sf::Color::White;
 
 	update();
 	EXP::log("[Info]GUIMenu has been constructed: " + utils::tostring(this));
@@ -21,40 +23,48 @@ GUIMenu::~GUIMenu()
 
 void GUIMenu::update()
 {
+	confmtx.lock();
 	//update components
 	components.titleRect.setSize(sf::Vector2f(width, 16));
 	components.titleRect.setPosition(x, y);
 	components.titleRect.setFillColor(sf::Color(80, 80, 80, 128));
-	components.titleRect.setOutlineColor(sf::Color(0, 255, 0, 255));
+	components.titleRect.setOutlineColor(borderColor);
 	components.titleRect.setOutlineThickness(1.0f);
 
 	components.bodyRect.setSize(sf::Vector2f(width, height));
 	components.bodyRect.setPosition(x, y + 17); //17 because outline overlaps
-	components.bodyRect.setFillColor(sf::Color(80, 80, 80, 64));
-	components.bodyRect.setOutlineColor(sf::Color(0, 255, 0, 255));
+	components.bodyRect.setFillColor(backColor);
+	components.bodyRect.setOutlineColor(borderColor);
 	components.bodyRect.setOutlineThickness(1.0f);
 
 	components.closeButtonRect.setSize(sf::Vector2f(14, 14));
 	components.closeButtonRect.setPosition(x + width - 15, y + 1);
-	components.closeButtonRect.setFillColor(sf::Color(80, 80, 80, 0));
-	components.closeButtonRect.setOutlineColor(sf::Color(0, 255, 0, 255));
+	components.closeButtonRect.setFillColor(sf::Color(255, !state.quitting * 255, !state.quitting * 255, state.closeButtonHover * 255));
+	components.closeButtonRect.setOutlineColor((borderColor*sf::Color(!state.quitting * 255, !state.quitting * 255, !state.quitting * 255)) + sf::Color(state.closeButtonHover * 255, !state.quitting * 255, !state.quitting * state.closeButtonHover * 255, 255));
 	components.closeButtonRect.setOutlineThickness(-1.0f);
 
 	components.closeButtonCross.setPrimitiveType(sf::PrimitiveType::Lines);
 	components.closeButtonCross.clear();
-	components.closeButtonCross.append(sf::Vertex(sf::Vector2f(x + width - 13, y + 3 ), sf::Color::White)); //upper left
-	components.closeButtonCross.append(sf::Vertex(sf::Vector2f(x + width - 3,  y + 13), sf::Color::White)); //lower right
-	components.closeButtonCross.append(sf::Vertex(sf::Vector2f(x + width - 13, y + 13), sf::Color::White)); //lower left
-	components.closeButtonCross.append(sf::Vertex(sf::Vector2f(x + width - 3,  y + 3 ), sf::Color::White)); //upper right
+	components.closeButtonCross.append(sf::Vertex(sf::Vector2f(x + width - 13, y + 3),  sf::Color(!state.closeButtonHover * 255, !state.closeButtonHover * 255, !state.closeButtonHover * 255))); //upper left
+	components.closeButtonCross.append(sf::Vertex(sf::Vector2f(x + width - 3, y + 13),  sf::Color(!state.closeButtonHover * 255, !state.closeButtonHover * 255, !state.closeButtonHover * 255))); //lower right
+	components.closeButtonCross.append(sf::Vertex(sf::Vector2f(x + width - 13, y + 13), sf::Color(!state.closeButtonHover * 255, !state.closeButtonHover * 255, !state.closeButtonHover * 255))); //lower left
+	components.closeButtonCross.append(sf::Vertex(sf::Vector2f(x + width - 3, y + 3),   sf::Color(!state.closeButtonHover * 255, !state.closeButtonHover * 255, !state.closeButtonHover * 255))); //upper right
 
 
 	components.titleText.setPosition(x + 3, y - 1);
 	components.titleText.setString(title);
 	components.titleText.setCharacterSize(14);
-	components.titleText.setFont(*assets->getFont("MenuTitle")->get());
+	components.titleText.setColor(titleColor);
+	components.titleText.setStyle(sf::Text::Bold);
+	components.titleText.setFont(*assets->getFont(font)->get());
+
+	confmtx.unlock();
 }
 void GUIMenu::draw(sf::RenderTarget& _target, sf::RenderStates _states) const
 {
+	confmtx.lock();
+	if (!state.open)
+		return;
 	_target.draw(components.titleRect, _states);
 	_target.draw(components.bodyRect, _states);
 	_target.draw(components.closeButtonRect, _states);
@@ -62,25 +72,48 @@ void GUIMenu::draw(sf::RenderTarget& _target, sf::RenderStates _states) const
 	_target.draw(components.titleText, _states);
 
 
-	_states.transform.translate(sf::Vector2f((float)x, (float)y+16));
+	sf::View pre = _target.getView();
+	sf::View at = pre;
+
+	float heightFactor = height / at.getSize().y;
+	float widthFactor = width / at.getSize().x;
+	float xFactor = x / at.getSize().x;
+	float yFactor = (y+16) / at.getSize().y;
+	at.reset(sf::FloatRect(0, 0, width, height));
+	at.setViewport(sf::FloatRect(xFactor, yFactor, widthFactor, heightFactor));
+	
+	_target.setView(at);
 	for (auto it : elements)
 	{
 		it->draw(_target, _states);
 	}
+	_target.setView(pre);
+	confmtx.unlock();
 }
-void GUIMenu::handleEvent(sf::RenderTarget& target, sf::Event* _event)
+void GUIMenu::handleEvent(sf::RenderWindow& target, sf::Event* _event)
 {
+	confmtx.lock();
+	if (!state.open)
+		return;
 	sf::Vector2i mouseNow;
+
 	switch (_event->type)
 	{
 	case sf::Event::MouseButtonPressed:
-		state.moving = state.titleHover;
+		state.moving = state.titleHover && !state.closeButtonHover;
+		state.quitting = state.closeButtonHover;
+		update();
 		break;
 	case sf::Event::MouseButtonReleased:
 		state.moving = false;
+		if (state.quitting)
+		{
+			close();
+		}
 		break;
 	case sf::Event::MouseMoved:
-		mouseNow = (sf::Vector2i)target.mapPixelToCoords(sf::Vector2i(_event->mouseMove.x, _event->mouseMove.y));
+		mouseNow  = (sf::Vector2i)target.mapPixelToCoords(sf::Vector2i(_event->mouseMove.x, _event->mouseMove.y));
+
 		if (state.moving)
 		{
 			x += mouseNow.x - state.lastPosition.x;
@@ -88,18 +121,49 @@ void GUIMenu::handleEvent(sf::RenderTarget& target, sf::Event* _event)
 			update();
 		}
 
+		
+		state.lastPosition = mouseNow;
 
 		state.titleHover = utils::hovering(components.titleRect.getGlobalBounds(), state.lastPosition);
-		state.closeButtonHover = utils::hovering(components.closeButtonRect.getGlobalBounds(), state.lastPosition);
+		
+		bool old = state.closeButtonHover;
+		if (old != (state.closeButtonHover = utils::hovering(components.closeButtonRect.getGlobalBounds(), state.lastPosition)))
+		{
+			if (state.quitting)
+			{
+				state.quitting = false;
+			}
+			update();
+		}
 
-		state.lastPosition = mouseNow;
 		break;
 	}
 
+	sf::View pre = target.getView();
+	sf::View at = pre;
+
+	float heightFactor = height / at.getSize().y;
+	float widthFactor = width / at.getSize().x;
+	float xFactor = x / at.getSize().x;
+	float yFactor = (y + 16) / at.getSize().y;
+	at.reset(sf::FloatRect(0, 0, width, height));
+	at.setViewport(sf::FloatRect(xFactor, yFactor, widthFactor, heightFactor));
 	for (auto it : elements)
 	{
 		it->handleEvent(target, _event);
 	}
+	target.setView(pre);
+
+	confmtx.unlock();
+}
+
+void GUIMenu::show()
+{
+	state.open = true;
+}
+void GUIMenu::close()
+{
+	state.open = false;
 }
 
 int GUIMenu::addElement(GUIElement* _element)
@@ -141,6 +205,26 @@ void GUIMenu::setTitle(std::string _title)
 	title = _title;
 	update();
 }
+void GUIMenu::setFont(std::string _font)
+{
+	font = _font;
+	update();
+}
+void GUIMenu::setBorderColor(sf::Color _color)
+{
+	borderColor = _color;
+	update();
+}
+void GUIMenu::setBackColor(sf::Color _color)
+{
+	backColor = _color;
+	update();
+}
+void GUIMenu::setTitleColor(sf::Color _color)
+{
+	titleColor = _color;
+	update();
+}
 int GUIMenu::getX()
 {
 	return x;
@@ -160,4 +244,20 @@ int GUIMenu::getHeight()
 std::string GUIMenu::getTitle()
 {
 	return title;
+}
+std::string GUIMenu::getFont()
+{
+	return font;
+}
+sf::Color GUIMenu::getBorderColor()
+{
+	return borderColor;
+}
+sf::Color GUIMenu::getBackColor()
+{
+	return backColor;
+}
+sf::Color GUIMenu::getTitleColor()
+{
+	return titleColor;
 }

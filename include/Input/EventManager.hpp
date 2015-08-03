@@ -5,85 +5,89 @@
 #include <SFML\System.hpp>
 #include <SFML\Graphics.hpp>
 #include <GUI\GUIManager.hpp>
+#include <Input\EventPublisher.hpp>
+#include <Input\EventHandler.hpp>
 
 #include <Utilities\Logger.hpp>
 #include <Utilities\Conversion.hpp>
 
-class EventManager
+class EventArgs{};
+
+class EventManager : public EventPublisher
 {
 private:
 	//Listener Register
 	//(input)
-	std::list<void(*)(sf::Event::MouseMoveEvent)> mouseMove;
-	std::list<void(*)(sf::Event::MouseButtonEvent)> mousePress;
-	std::list<void(*)(sf::Event::MouseButtonEvent)> mouseRelease;
-	std::list<void(*)(sf::Event::MouseWheelEvent)> mouseWheel;
-	std::list<void(*)(sf::Event::KeyEvent)> keyPress;
-	std::list<void(*)(sf::Event::KeyEvent)> keyRelease;
-	std::list<void(*)(sf::Event::TextEvent)> textEnter;
-	std::list<void(*)(sf::Event::JoystickButtonEvent)> joyPress;
-	std::list<void(*)(sf::Event::JoystickButtonEvent)> joyRelease;
-	std::list<void(*)(sf::Event::JoystickConnectEvent)> joyConnect;
-	std::list<void(*)(sf::Event::JoystickConnectEvent)> joyDisconnect;
-	std::list<void(*)(sf::Event::JoystickMoveEvent)> joyMove;
+	EventHandler<sf::Event::MouseMoveEvent> mouseMove;
+	EventHandler<sf::Event::MouseButtonEvent> mousePress;
+	EventHandler<sf::Event::MouseButtonEvent> mouseRelease;
+	EventHandler<sf::Event::MouseWheelEvent> mouseWheel;
+	EventHandler<sf::Event::KeyEvent> keyPress;
+	EventHandler<sf::Event::KeyEvent> keyRelease;
+	EventHandler<sf::Event::TextEvent> textEnter;
+	EventHandler<sf::Event::JoystickButtonEvent> joyPress;
+	EventHandler<sf::Event::JoystickButtonEvent> joyRelease;
+	EventHandler<sf::Event::JoystickConnectEvent> joyConnect;
+	EventHandler<sf::Event::JoystickConnectEvent> joyDisconnect;
+	EventHandler<sf::Event::JoystickMoveEvent> joyMove;
 	//(misc)
-	std::list<void(*)(void)> focusGained;
-	std::list<void(*)(void)> focusLost;
-	std::list<void(*)(void)> mouseEnter;
-	std::list<void(*)(void)> mouseLeave;
-	std::list<void(*)(sf::Event::SizeEvent)> resize;
+	EventHandler<EventArgs> focusGained;
+	EventHandler<EventArgs> focusLost;
+	EventHandler<EventArgs> mouseEnter;
+	EventHandler<EventArgs> mouseLeave;
+	EventHandler<sf::Event::SizeEvent> resize;
 	//(any)
-	std::list<void(*)(sf::Event*)> any;
+	EventHandler<sf::Event*> any;
 
-	sf::RenderWindow* target;
+	sf::RenderWindow& target;
 	bool listening;
 	sf::Mutex confmtx;
-	sf::Time sampleRate;
 
 public:
-	EventManager(sf::RenderWindow* _target);
+	EventManager(sf::RenderWindow& _target);
 	~EventManager();
 
 	void listen(GUIManager* _guiManager);
 	void terminate();
-	void setSampleRate(sf::Time);
 
-	void addMouseMove(void(*_listener)(sf::Event::MouseMoveEvent));
-	void removeMouseMove(void(*_listener)(sf::Event::MouseMoveEvent));
-	void addMousePress(void(*_listener)(sf::Event::MouseButtonEvent));
-	void removeMousePress(void(*_listener)(sf::Event::MouseButtonEvent));
-	void addMouseRelease(void(*_listener)(sf::Event::MouseButtonEvent));
-	void removeMouseRelease(void(*_listener)(sf::Event::MouseButtonEvent));
-	void addMouseWheel(void(*_listener)(sf::Event::MouseWheelEvent));
-	void removeMouseWheel(void(*_listener)(sf::Event::MouseWheelEvent));
-	void addKeyPress(void(*_listener)(sf::Event::KeyEvent));
-	void removeKeyPress(void(*_listener)(sf::Event::KeyEvent));
-	void addKeyRelease(void(*_listener)(sf::Event::KeyEvent));
-	void removeKeyRelease(void(*_listener)(sf::Event::KeyEvent));
-	void addTextEnter(void(*_listener)(sf::Event::TextEvent));
-	void removeTextEnter(void(*_listener)(sf::Event::TextEvent));
-	void addJoyPress(void(*_listener)(sf::Event::JoystickButtonEvent));
-	void removeJoyPress(void(*_listener)(sf::Event::JoystickButtonEvent));
-	void addJoyRelease(void(*_listener)(sf::Event::JoystickButtonEvent));
-	void removeJoyRelease(void(*_listener)(sf::Event::JoystickButtonEvent));
-	void addJoyConnect(void(*_listener)(sf::Event::JoystickConnectEvent));
-	void removeJoyConnect(void(*_listener)(sf::Event::JoystickConnectEvent));
-	void addJoyDisconnect(void(*_listener)(sf::Event::JoystickConnectEvent));
-	void removeJoyDisconnect(void(*_listener)(sf::Event::JoystickConnectEvent));
-	void addJoyMove(void(*_listener)(sf::Event::JoystickMoveEvent));
-	void removeJoyMove(void(*_listener)(sf::Event::JoystickMoveEvent));
-	void addFocusGained(void(*_listener)(void));
-	void removeFocusGained(void(*_listener)(void));
-	void addFocusLost(void(*_listener)(void));
-	void removeFocusLost(void(*_listener)(void));
-	void addMouseEnter(void(*_listener)(void));
-	void removeMouseEnter(void(*_listener)(void));
-	void addMouseLeave(void(*_listener)(void));
-	void removeMouseLeave(void(*_listener)(void));
-	void addResize(void(*_listener)(sf::Event::SizeEvent));
-	void removeResize(void(*_listener)(sf::Event::SizeEvent));
-	void addAny(void(*_listener)(sf::Event*));
-	void removeAny(void(*_listener)(sf::Event*));
+	virtual std::string who() { return "EventManager"; }
+
+	void addMouseMove(Delegate<sf::Event::MouseMoveEvent>);
+	void removeMouseMove(Delegate<sf::Event::MouseMoveEvent>);
+	void addMousePress(Delegate<sf::Event::MouseButtonEvent>);
+	void removeMousePress(Delegate<sf::Event::MouseButtonEvent>);
+	void addMouseRelease(Delegate<sf::Event::MouseButtonEvent>);
+	void removeMouseRelease(Delegate<sf::Event::MouseButtonEvent>);
+	void addMouseWheel(Delegate<sf::Event::MouseWheelEvent>);
+	void removeMouseWheel(Delegate<sf::Event::MouseWheelEvent>);
+	void addKeyPress(Delegate<sf::Event::KeyEvent>);
+	void removeKeyPress(Delegate<sf::Event::KeyEvent>);
+	void addKeyRelease(Delegate<sf::Event::KeyEvent>);
+	void removeKeyRelease(Delegate<sf::Event::KeyEvent>);
+	void addTextEnter(Delegate<sf::Event::TextEvent>);
+	void removeTextEnter(Delegate<sf::Event::TextEvent>);
+	void addJoyPress(Delegate<sf::Event::JoystickButtonEvent>);
+	void removeJoyPress(Delegate<sf::Event::JoystickButtonEvent>);
+	void addJoyRelease(Delegate<sf::Event::JoystickButtonEvent>);
+	void removeJoyRelease(Delegate<sf::Event::JoystickButtonEvent>);
+	void addJoyConnect(Delegate<sf::Event::JoystickConnectEvent>);
+	void removeJoyConnect(Delegate<sf::Event::JoystickConnectEvent>);
+	void addJoyDisconnect(Delegate<sf::Event::JoystickConnectEvent>);
+	void removeJoyDisconnect(Delegate<sf::Event::JoystickConnectEvent>);
+	void addJoyMove(Delegate<sf::Event::JoystickMoveEvent>);
+	void removeJoyMove(Delegate<sf::Event::JoystickMoveEvent>);
+	void addFocusGained(Delegate<EventArgs>);
+	void removeFocusGained(Delegate<EventArgs>);
+	void addFocusLost(Delegate<EventArgs>);
+	void removeFocusLost(Delegate<EventArgs>);
+	void addMouseEnter(Delegate<EventArgs>);
+	void removeMouseEnter(Delegate<EventArgs>);
+	void addMouseLeave(Delegate<EventArgs>);
+	void removeMouseLeave(Delegate<EventArgs>);
+	void addResize(Delegate<sf::Event::SizeEvent>);
+	void removeResize(Delegate<sf::Event::SizeEvent>);
+	void addAny(Delegate<sf::Event*>);
+	void removeAny(Delegate<sf::Event*>);
 };
 
 #endif // !_EventManager_hpp_

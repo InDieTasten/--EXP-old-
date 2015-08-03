@@ -5,6 +5,9 @@
 #include <GUI\Responsive.hpp>
 #include <GUI\GUIMenu.hpp>
 #include <Assets\AssetManager.hpp>
+#include <GUI\Elements\InputField.hpp>
+#include <GUI\Elements\Label.hpp>
+#include <GUI\Elements\Button.hpp>
 
 #include <Utilities\Logger.hpp>
 #include <Utilities\Conversion.hpp>
@@ -13,6 +16,11 @@ class GUIManager : public sf::Drawable, public Responsive
 {
 private:
 	std::vector<GUIMenu*> menus;
+
+	GUIMenu* testMenu;
+	Label* testLabel;
+	Button* testButton;
+
 public:
 	GUIManager(AssetManager* _assets);
 	~GUIManager();
@@ -22,7 +30,7 @@ public:
 	void removeMenu(int);
 
 	void draw(sf::RenderTarget& _target, sf::RenderStates _states) const;
-	void handleEvent(sf::RenderTarget& _target, sf::Event* _event);
+	void handleEvent(sf::RenderWindow& _target, sf::Event* _event);
 };
 
 #endif // !_GUIManager_hpp_

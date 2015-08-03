@@ -6,7 +6,6 @@ COMPILER = "C:\Program Files (x86)\CodeBlocks\MinGW\bin\mingw32-g++.exe"
 
 CSWITCHES = \
 	-fexceptions \
-	-O3 \
 	-std=c++11 \
 	-D SFML_STATIC
 
@@ -16,12 +15,14 @@ INCLUDES = \
 	-I..\..\UG_lua\include \
 	-I..\..\UG_sfml\include \
 	-I..\..\UG_libavc\include \
-	-I..\include
+	-I..\include \
+	-I..\..\UG_luabind
 
 LIBPATH = \
 	-L..\..\UG_lua\src\Lua5.2.3\bin\Release \
 	-L..\..\UG_sfml\lib \
-	-L..\..\UG_libavc\lib
+	-L..\..\UG_libavc\lib \
+	-L..\..\UG_luabind\lib \
 
 LIBRARIES = \
 	-lsfml-audio-s \
@@ -46,6 +47,15 @@ OBJECTS = \
 	..\src\Assets\AssetManager.o \
 	..\src\Input\EventManager.o \
 	..\src\Input\Actuator.o \
+	..\src\Input\NullActuator.o \
+	..\src\Input\KeyboardActuator.o \
+	..\src\Input\JoystickActuator.o \
+	..\src\Input\MouseButtonActuator.o \
+	..\src\Input\JoystickButtonActuator.o \
+	..\src\Input\Delegate.o \
+	..\src\Input\EventPublisher.o \
+	..\src\Input\GenericEventPublisher.o \
+	..\src\Input\EventHandler.o \
 	..\src\Data\Vector.o \
 	..\src\Data\Mesh.o \
 	..\src\Data\PhysicalInfo.o \
@@ -61,14 +71,14 @@ OBJECTS = \
 	..\src\Processing\GameEngine.o \
 	..\src\Processing\Renderer.o \
 	..\src\Processing\Simulator.o \
-	..\src\GUI\Button.o \
+	..\src\GUI\Elements\Button.o \
 	..\src\GUI\GUIElement.o \
 	..\src\GUI\GUIManager.o \
 	..\src\GUI\GUIMenu.o \
-	..\src\GUI\InputField.o \
-	..\src\GUI\Label.o \
+	..\src\GUI\Elements\InputField.o \
+	..\src\GUI\Elements\Label.o \
 	..\src\GUI\Responsive.o \
-	..\src\SFML\Text.o
+	..\src\SFML\Text.o \
 
 rebuild: clean build
 	echo DONE!
@@ -88,4 +98,3 @@ clean:
 
 $(OBJECTS): $(SOURCEDIR)$(@R).cpp
 	$(COMPILER) $(CSWITCHES) $(INCLUDES) -c $(@R).cpp -o $(@R).o
-	

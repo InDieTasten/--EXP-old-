@@ -16,13 +16,17 @@
 class GUIMenu : public sf::Drawable, public Taggable, public Responsive
 {
 private:
+	mutable sf::Mutex confmtx;
+
 	int x;
 	int y;
 	int width;
 	int height;
 	std::string title;
-
-	mutable bool once;
+	std::string font;
+	sf::Color borderColor;
+	sf::Color backColor;
+	sf::Color titleColor;
 
 	std::vector<GUIElement*> elements;
 
@@ -38,6 +42,8 @@ private:
 		bool moving = false;
 		sf::Vector2i lastPosition;
 		bool closeButtonHover = false;
+		bool open = true;
+		bool quitting = false;
 	} state;
 public:
 	GUIMenu(AssetManager* _assets);
@@ -45,7 +51,10 @@ public:
 
 	void update();
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-	void handleEvent(sf::RenderTarget& target, sf::Event* _event);
+	void handleEvent(sf::RenderWindow& target, sf::Event* _event);
+
+	void show();
+	void close();
 
 	int addElement(GUIElement* _element);
 	GUIElement* getElement(int);
@@ -56,11 +65,19 @@ public:
 	void setWidth(int);
 	void setHeight(int);
 	void setTitle(std::string);
+	void setFont(std::string);
+	void setBorderColor(sf::Color);
+	void setBackColor(sf::Color);
+	void setTitleColor(sf::Color);
 	int getX();
 	int getY();
 	int getWidth();
 	int getHeight();
 	std::string getTitle();
+	std::string getFont();
+	sf::Color getBorderColor();
+	sf::Color getBackColor();
+	sf::Color getTitleColor();
 };
 
 #endif // !_GUIMenu_hpp_

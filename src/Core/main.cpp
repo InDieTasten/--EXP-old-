@@ -21,6 +21,8 @@ extern "C" {
 #include <lauxlib.h>
 }
 
+#include <luabind\luabind.hpp>
+
 int gameStart(int argc, char *argv[])
 {
 	EXP::init();
